@@ -27,15 +27,4 @@ $('#globalContainer').live('DOMSubtreeModified', function() {// DOMSubtreeModifi
 
 });
 
-/*
- * $('#globalContainer').live('DOMNodeInserted', function() {//
- * DOMSubtreeModified
- * 
- * $('*[includeself="false"]').each(function(i, e) { var s =
- * document.createElement("script"); s.type = "text/javascript"; s.textContent =
- * "FB.XFBML.parse(" + e[0] + ");"; document.body.appendChild(s); });
- * 
- * });
- */
-
 initTools();
