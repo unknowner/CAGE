@@ -1,0 +1,61 @@
+{
+
+	"name": "CAGE - Castle Age Game Enhancer",
+	"version": "1.0.0",
+	"description": "A plain text description",
+	"background_page": "background.html",
+	"content_scripts": [
+		{
+			"matches": ["*://web.castleagegame.com/castle/*"],
+			"css":[
+				//"css/jqueryui.css",
+				"css/ca_cage.css"
+			],
+      "js": [
+				"js/jquery.js",
+				"js/jqueryui.js",
+				"js/common.js",
+				"js/com.js",
+				"js/tool.js",
+				"js/ca/ca_receiver.js",
+				"js/ca/ca_general.js",
+				"js/ca/ca_page.js",
+				"js/tool/heal.js",
+				"js/tool/page.js",
+				"js/page/allpages.js",
+				"js/page/index.js",
+				"js/page/guild_battle.js",
+				"js/page/keep.js",
+				"js/castleage.js"
+      ],
+      "all_frames":true
+		},
+		{
+			"matches": ["*://apps.facebook.com/castle_age/*"],
+			"css":[
+				//"css/jqueryui.css",
+				"css/fb_cage.css"
+			],
+      "js": [
+				"js/jquery.js",
+				"js/jqueryui.js",
+				"js/common.js",
+				"js/com.js",
+				"js/tool.js",
+				"js/fb/fb_start.js",
+				"js/fb/fb_general.js",
+				"js/tool/heal.js",
+				"js/tool/page.js",
+				"js/fb/fb_receiver.js",
+				"js/facebook.js"
+			]
+		}
+	],
+	"homepage_url": "http://cagenhancer.blogspot.com/",
+	"permissions": [
+		"tabs",
+		"*://apps.facebook.com/castle_age/*",
+		"*://web.castleagegame.com/castle/*"
+	]
+
+}
