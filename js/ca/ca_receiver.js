@@ -4,7 +4,7 @@ function receiver(_data) {
 	switch (_data.task) {
 
 	case com.task.getGeneral:
-		general.get();
+		tools['General'].get();
 		break;
 
 	case com.task.signed:

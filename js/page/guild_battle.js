@@ -14,10 +14,11 @@ tools['Page'].cache['guild_battle.php'] = function() {
 	$_enemy.html($_enemy.html() + ' (' + _enemy.toFixed(1) + '%)');
 	$_enemy = $('span.result_body div[style*="width: 285px;"]:last');
 	if ($_enemy.length > 0) {
-		var _target = $('span.result_body input[name="target_id"]').attr('value');
+		var _target = $('span.result_body input[name="target_id"]').attr(
+				'value');
 		var _health = /Health:\s*(\d+)\/\d+/.exec($(
-				'#enemy_guild_battle_section_battle_list img[src*="' + _target + '"]')
-				.parents('div').eq(2).text())[1];
+				'#enemy_guild_battle_section_battle_list  *[uid="' + _target
+						+ '"]').parents().eq(3).text())[1];
 		$_enemy.html($_enemy.html() + ' (' + _health + ')');
 	}
 	// resize top image
@@ -30,5 +31,8 @@ tools['Page'].cache['guild_battle.php'] = function() {
 	var _tokens = $('div.result div:contains("-1 Battle Tokens"):last');
 	_tokens.text(_tokens.text() + ' (' + $('#guild_token_current_value').text()
 			+ ' left)');
-
+	// fix gate reseting when attacking with duel button
+	var _gate = /\d/.exec($('#enemy_guild_battle_section_battle_list').attr('class'));
+	$('#results_main_wrapper form').append('<input type="hidden" name="sel_pos" value="'+_gate+'">');
+	
 };

@@ -18,10 +18,9 @@
 				"js/com.js",
 				"js/tool.js",
 				"js/ca/ca_receiver.js",
-				"js/ca/ca_general.js",
-				"js/ca/ca_page.js",
 				"js/tool/heal.js",
 				"js/tool/page.js",
+				"js/tool/generals.js",
 				"js/page/allpages.js",
 				"js/page/index.js",
 				"js/page/guild_battle.js",
@@ -42,11 +41,11 @@
 				"js/common.js",
 				"js/com.js",
 				"js/tool.js",
+				"js/fb/fb_receiver.js",
 				"js/fb/fb_start.js",
-				"js/fb/fb_general.js",
 				"js/tool/heal.js",
 				"js/tool/page.js",
-				"js/fb/fb_receiver.js",
+				"js/tool/generals.js",
 				"js/facebook.js"
 			]
 		}

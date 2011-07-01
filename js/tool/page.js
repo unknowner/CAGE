@@ -16,9 +16,9 @@ tools['Page'].init[com.port.castleAge] = function() {
 
 	$(document.body).append(
 			$('<div id="cagePageURL"></div>').bind('cagePageURL', function() {
-				general.update();
+				tools['General'].update();
 				tools['Page'].cache['allPages']();
-				if(tools['Page'].cache[$('#cagePageURL').html()]){
+				if (tools['Page'].cache[$('#cagePageURL').html()]) {
 					tools['Page'].cache[$('#cagePageURL').html()]();
 				}
 			}));
@@ -64,49 +64,56 @@ tools['Page'].get_cached_ajax = function() {
 			ajaxPerforming = true;
 			showLoaderIfAjax();
 
-			$.ajax({
-				url : url,
-				context : document.body,
-				data : params,
-				type : 'POST',
-				success : function(data) {
-					/*
-					 * if (cageCAGE.cache.UseImageServer &&
-					 * cageCAGE.cache.ImageServer.length > 0) { data = data .replace(
-					 * /(http:\/\/image4\.castleagegame\.com\/graphics.*?)(?=\/\w*?\.\w{3})/g,
-					 * cageCAGE.cache.ImageServer); }
-					 */
-					stopTimers = false;
-					ajaxPerforming = false;
-					$('#AjaxLoadIcon').hide();
-					if ((get_type == 'cache_body') || (get_type == 'get_body')) {
+			$
+					.ajax({
+						url : url,
+						context : document.body,
+						data : params,
+						type : 'POST',
+						success : function(data) {
+							/*
+							 * if (cageCAGE.cache.UseImageServer &&
+							 * cageCAGE.cache.ImageServer.length > 0) { data =
+							 * data .replace(
+							 * /(http:\/\/image4\.castleagegame\.com\/graphics.*?)(?=\/\w*?\.\w{3})/g,
+							 * cageCAGE.cache.ImageServer); }
+							 */
+							stopTimers = false;
+							ajaxPerforming = false;
+							$('#AjaxLoadIcon').hide();
+							if ((get_type == 'cache_body')
+									|| (get_type == 'get_body')) {
 
-						if (data.lastIndexOf('<fb:') == -1) {
-							$('#app_body_container').html(data);
-							pageUrlEvent();
-						} else {
-							document.getElementById('app_body_container').innerHTML = data;
-							FB.XFBML.parse(document.getElementById('app_body_container'));
-							pageUrlEvent();
+								if (data.lastIndexOf('<fb:') == -1) {
+									$('#app_body_container').html(data);
+									pageUrlEvent();
+								} else {
+									document
+											.getElementById('app_body_container').innerHTML = data;
+									FB.XFBML
+											.parse(document
+													.getElementById('app_body_container'));
+									pageUrlEvent();
+								}
+								// cage.loadDone(url);
+
+							} else {
+
+								if (data.lastIndexOf('<fb:') == -1) {
+									$('#globalContainer').html(data);
+									pageUrlEvent();
+								} else {
+									document.getElementById('globalContainer').innerHTML = data;
+									FB.XFBML.parse(document
+											.getElementById('globalContainer'));
+									pageUrlEvent();
+								}
+								;
+								// tools['Page'].done(_url);
+							}
+							centerPopups();
 						}
-						cage.loadDone(url);
-
-					} else {
-
-						if (data.lastIndexOf('<fb:') == -1) {
-							$('#globalContainer').html(data);
-							pageUrlEvent();
-						} else {
-							document.getElementById('globalContainer').innerHTML = data;
-							FB.XFBML.parse(document.getElementById('globalContainer'));
-							pageUrlEvent();
-						}
-						;
-						// tools['Page'].done(_url);
-					}
-					centerPopups();
-				}
-			});
+					});
 		}
 		scrollToElement('#main_anchor');
 	};
@@ -115,25 +122,6 @@ tools['Page'].get_cached_ajax = function() {
 tools['Page'].done = function(_url, _div) {
 
 	console.log('page done');
-	/*
-	 * cage_pages['allPages'].script(); cage_pages['allPages'].data(); _url =
-	 * _url.indexOf('?') == -1 ? _url : _url.substring(0, _url.indexOf('?'));
-	 * cagePage.reassign(); cageStats.reassign(); cageStats.work(); if
-	 * (cage_pages[_url]) { if (cage_pages[_url].data) { cage_pages[_url].data(); }
-	 * if (cage_pages[_url].script) { cage_pages[_url].script(); } } if (_div &&
-	 * _div === 'globalContainer') {
-	 * $jQ('#CAGEStats_gold').text($jQ('#gold_current_value').text());
-	 * $jQ('#CAGEStats_energy > span.current').text(
-	 * $jQ('#energy_current_value').text()); $jQ('#CAGEStats_health >
-	 * span.current').text( $jQ('#health_current_value').text());
-	 * $jQ('#CAGEStats_stamina > span.current').text(
-	 * $jQ('#stamina_current_value').text()); $jQ('#CAGEStats_energy >
-	 * span.max').text( $jQ('#energy_current_value').next().text());
-	 * $jQ('#CAGEStats_health > span.max').text(
-	 * $jQ('#health_current_value').next().text()); $jQ('#CAGEStats_stamina >
-	 * span.max').text( $jQ('#stamina_current_value').next().text()); }
-	 * cageGenerals.changeToCurrent();
-	 */
 	$('body, html').animate({
 		scrollTop : 0
 	}, 'slow');
@@ -237,7 +225,8 @@ tools['Page'].ajaxFormSend = function(div, url, formElement, anchor) {
 			success : function(data) {
 				/*
 				 * if (cageCAGE.cache.UseImageServer &&
-				 * cageCAGE.cache.ImageServer.length > 0) { data = data .replace(
+				 * cageCAGE.cache.ImageServer.length > 0) { data = data
+				 * .replace(
 				 * /(http:\/\/image4\.castleagegame\.com\/graphics.*?)(?=\/\w*?\.\w{3})/g,
 				 * cageCAGE.cache.ImageServer); }
 				 */

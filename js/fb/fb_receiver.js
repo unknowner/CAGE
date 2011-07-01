@@ -8,7 +8,7 @@ function receiver(_data) {
 		break;
 
 	case com.task.general:
-		general(_data.data);
+		tools['General'].set(_data.data);
 		break;
 
 	case com.task.fbButtonEnable:
