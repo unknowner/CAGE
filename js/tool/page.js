@@ -16,6 +16,7 @@ tools['Page'].init[com.port.castleAge] = function() {
 
 	$(document.body).append(
 			$('<div id="cagePageURL"></div>').bind('cagePageURL', function() {
+				general.update();
 				tools['Page'].cache['allPages']();
 				if(tools['Page'].cache[$('#cagePageURL').html()]){
 					tools['Page'].cache[$('#cagePageURL').html()]();
