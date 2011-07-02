@@ -16,7 +16,8 @@ var com = {
 		castleAgeReady : 'COM_CAREADY',
 		heal : 'COM_HEAL',
 		signed : 'COM_SIGNED',
-		fbButtonEnable : 'COM_FBBUTTONENABLE'
+		fbButtonEnable : 'COM_FBBUTTONENABLE',
+		scroll : 'COM_SCROLL'
 
 	},
 
@@ -59,10 +60,10 @@ var com = {
 		});
 	},
 
-	addFunction : function(_func, _para, _run, _once) {
+	addFunction : function(_func, _arg, _run, _once) {
 		var script = document.createElement('script');
 		script.textContent = (_run ? '(' : '') + _func
-				+ (_run ? ')(' + _para + ');' : ';');
+				+ (_run ? ')(' + _arg + ');' : ';');
 		document.body.appendChild(script);
 		if (_once) {
 			document.body.removeChild(script);

@@ -15,6 +15,10 @@ function receiver(_data) {
 		tools[_data.data].fbButton.enable();
 		break;
 
+	case com.task.scroll:
+		tools['Scroll'].start[com.port.facebook](_data.data);
+		break;
+		
 	}
 
 }

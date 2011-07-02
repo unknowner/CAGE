@@ -2,26 +2,54 @@ new tool('Page');
 
 tools['Page'].cache = {};
 
+tools['Page'].addEvent = function(_event, _function) {
+
+	com.addFunction(function() {
+		var _arg = arguments[0].event;
+		window[('fire' + _arg)] = function(_data) {
+			if (_data) {
+				$('#' + _arg).html(_data);
+			}
+			var customEvent = document.createEvent('Event');
+			customEvent.initEvent(_arg, true, true);
+			document.getElementById(_arg).dispatchEvent(customEvent);
+		};
+
+		window[('set' + _arg)] = function(_data) {
+			$('#' + _arg).html(_data);
+		};
+
+	}, JSON.stringify({
+		event : _event
+	}), true, true);
+
+	$(document.body).append(
+			$('<div id="' + _event + '"></div>').bind(_event, _function));
+
+};
+
 tools['Page'].init[com.port.castleAge] = function() {
 
 	com.addFunction(tools['Page'].get_cached_ajax, null, true, true);
 	com.addFunction(tools['Page'].ajaxLinkSend, null, true, true);
 	com.addFunction(tools['Page'].ajaxFormSend, null, true, true);
 
-	com.addFunction(function pageUrlEvent() {
-		var customEvent = document.createEvent('Event');
-		customEvent.initEvent('cagePageURL', true, true);
-		document.getElementById('cagePageURL').dispatchEvent(customEvent);
+	tools['Page'].addEvent('PageURL', function() {
+		var _value = $('#PageURL').text();
+		tools['General'].update();
+		tools['Page'].cache['allPages']();
+		if (tools['Page'].cache[_value]) {
+			tools['Page'].cache[_value]();
+		}
 	});
 
-	$(document.body).append(
-			$('<div id="cagePageURL"></div>').bind('cagePageURL', function() {
-				tools['General'].update();
-				tools['Page'].cache['allPages']();
-				if (tools['Page'].cache[$('#cagePageURL').html()]) {
-					tools['Page'].cache[$('#cagePageURL').html()]();
-				}
-			}));
+	tools['Page'].addEvent('Scroll', function() {
+		console.log(arguments[0]);
+		var _value = $('#Scroll').text();
+		com.send(com.task.scroll, com.port.facebook, {
+			to : _value,
+		});
+	});
 
 };
 
@@ -34,16 +62,16 @@ tools['Page'].get_cached_ajax = function() {
 		if (url.indexOf('?') != -1) {
 			url_key = url.substring(0, url.indexOf('?'));
 		}
-		$('#cagePageURL').html(url_key);
+		setPageURL(url_key);
 
 		if (get_type == 'cache_body' && pageCache[url_key]) {
 			if (pageCache[url_key].lastIndexOf('<fb:') == -1) {
 				$('#app_body_container').html(pageCache[url_key]);
-				pageUrlEvent();
+				firePageURL();
 			} else {
 				document.getElementById('app_body_container').innerHTML = data;
 				FB.XFBML.parse(document.getElementById('app_body_container'));
-				pageUrlEvent();
+				firePageURL();
 			}
 		} else {
 
@@ -86,36 +114,35 @@ tools['Page'].get_cached_ajax = function() {
 
 								if (data.lastIndexOf('<fb:') == -1) {
 									$('#app_body_container').html(data);
-									pageUrlEvent();
+									firePageURL();
 								} else {
 									document
 											.getElementById('app_body_container').innerHTML = data;
 									FB.XFBML
 											.parse(document
 													.getElementById('app_body_container'));
-									pageUrlEvent();
+									firePageURL();
 								}
-								// cage.loadDone(url);
+								fireScroll(0);
 
 							} else {
 
 								if (data.lastIndexOf('<fb:') == -1) {
 									$('#globalContainer').html(data);
-									pageUrlEvent();
+									firePageURL();
 								} else {
 									document.getElementById('globalContainer').innerHTML = data;
 									FB.XFBML.parse(document
 											.getElementById('globalContainer'));
-									pageUrlEvent();
+									firePageURL();
 								}
-								;
-								// tools['Page'].done(_url);
+								fireScroll(0);
 							}
 							centerPopups();
 						}
 					});
 		}
-		scrollToElement('#main_anchor');
+		fireScroll(0);
 	};
 };
 
@@ -150,7 +177,7 @@ tools['Page'].ajaxLinkSend = function() {
 		if (url.indexOf('?') != -1) {
 			url_key = url.substring(0, url.indexOf('?'));
 		}
-		$('#cagePageURL').html(url_key);
+		setPageURL(url_key);
 
 		$.ajax({
 			url : url,
@@ -163,12 +190,13 @@ tools['Page'].ajaxLinkSend = function() {
 
 				if (data.lastIndexOf('<fb:') == -1) {
 					$('#' + div).html(data);
-					pageUrlEvent();
+					firePageURL();
 				} else {
 					document.getElementById(div).innerHTML = data;
 					FB.XFBML.parse(document.getElementById(div));
-					pageUrlEvent();
+					firePageURL();
 				}
+				fireScroll(0);
 				centerPopups();
 			}
 		});
@@ -212,8 +240,8 @@ tools['Page'].ajaxFormSend = function(div, url, formElement, anchor) {
 		if (url.indexOf('?') != -1) {
 			url_key = url.substring(0, url.indexOf('?'));
 		}
-		$('#cagePageURL').html(url_key);
-
+		setPageURL(url_key);
+		
 		ajaxPerforming = true;
 		showLoaderIfAjax();
 
@@ -235,13 +263,13 @@ tools['Page'].ajaxFormSend = function(div, url, formElement, anchor) {
 				$('#AjaxLoadIcon').hide();
 				if (data.lastIndexOf('<fb:') == -1) {
 					$('#' + div).html(data);
-					pageUrlEvent();
+					firePageURL();
 				} else {
 					document.getElementById(div).innerHTML = data;
 					FB.XFBML.parse(document.getElementById(div));
-					pageUrlEvent();
+					firePageURL();
 				}
-				// tools['Page'].done(url, div);
+				fireScroll(0);
 				centerPopups();
 			}
 		});
