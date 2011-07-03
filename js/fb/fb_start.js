@@ -20,5 +20,6 @@ function startCAGE() {
 	initTools();
 	
 	com.send(com.task.signed, com.port.castleAge, $('input[name="signed_request"]').attr('value'));
+	com.send(com.task.getGeneral, com.port.castleAge, null);
 	
 }

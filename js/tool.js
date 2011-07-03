@@ -48,8 +48,8 @@ function tool(_id) {
 function initTools() {
 
 	$.each(tools, function(_index, _tool) {
-		if (_tool.init[com.port.current]) {
-			_tool.init[com.port.current]();
+		if (_tool.init[com.port.current.name]) {
+			_tool.init[com.port.current.name]();
 		}
 	});
 

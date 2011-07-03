@@ -8,7 +8,6 @@ var CastleAge = {
 };
 
 com.init(com.port.castleAge);
-console.log('CA started.');
 
 tools['Page'].cache['allPages']();
 if (tools['Page'].cache[$('#current_pg_info').attr('value') + '.php']) {
@@ -20,15 +19,6 @@ $('head').append(
 				+ chrome.extension.getURL('css/trontastic/jquery-ui.css')
 				+ '">');
 
-/*
- * $('#globalContainer').live('DOMSubtreeModified', function() {//
- * DOMSubtreeModified
- * 
- * general.update();
- * 
- * });
- */
-
 initTools();
 
-com.send(com.task.castleAgeReady, com.port.facebook, null);
+com.send(com.task.castleAgeReady, com.port.facebook, {});

@@ -1,15 +1,12 @@
 var com = {
 
 	port : {
-
 		current : null,
 		castleAge : 'COM_CASTLEAGE',
 		facebook : 'COM_FACEBOOK'
-
 	},
 
 	task : {
-
 		init : 'COM_INIT',
 		getGeneral : 'COM_GETGENERAL',
 		general : 'COM_GENERAL',
@@ -18,33 +15,22 @@ var com = {
 		signed : 'COM_SIGNED',
 		fbButtonEnable : 'COM_FBBUTTONENABLE',
 		scroll : 'COM_SCROLL'
-
 	},
 
 	init : function(_port) {
-		com.port.current = _port;
-		window.addEventListener("message", com.receive, false);
-		chrome.extension.sendRequest({
-			task : com.task.init,
-			port : _port,
-			data : document.location.origin
+		com.port.current = chrome.extension.connect({
+			name : _port
 		});
+		com.port.current.onMessage.addListener(receiver);
 	},
 
 	send : function(_task, _port, _data) {
-		chrome.extension.sendRequest({
+		console.log('send');
+		com.port.current.postMessage({
 			task : _task,
 			port : _port,
 			data : _data
 		});
-	},
-
-	receive : function(_message) {
-		if (_message.origin == document.location.origin) {
-			if (_message.data.type == 'CAGE') {
-				receiver(_message.data);
-			}
-		}
 	},
 
 	execute : function(_task, _port, _data) {

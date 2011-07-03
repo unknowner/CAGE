@@ -24,7 +24,8 @@ tools['Page'].addEvent = function(_event, _function) {
 	}), true, true);
 
 	$(document.body).append(
-			$('<div id="' + _event + '"></div>').bind(_event, _function));
+			$('<div id="' + _event + '" style="display:none;"></div>').bind(
+					_event, _function));
 
 };
 
@@ -44,7 +45,6 @@ tools['Page'].init[com.port.castleAge] = function() {
 	});
 
 	tools['Page'].addEvent('Scroll', function() {
-		console.log(arguments[0]);
 		var _value = $('#Scroll').text();
 		com.send(com.task.scroll, com.port.facebook, {
 			to : _value,
@@ -241,7 +241,7 @@ tools['Page'].ajaxFormSend = function(div, url, formElement, anchor) {
 			url_key = url.substring(0, url.indexOf('?'));
 		}
 		setPageURL(url_key);
-		
+
 		ajaxPerforming = true;
 		showLoaderIfAjax();
 
