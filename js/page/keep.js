@@ -1,6 +1,6 @@
 // Keep
 
-tools['Page'].cache['keep.php'] = function() {
+tools['Page'].runtime['keep.php'] = function() {
 
 	// folding units, items ...
 	$('div.statsT2:has(div.statsTTitle)').css({

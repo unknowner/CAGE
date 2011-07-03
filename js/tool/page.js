@@ -1,6 +1,6 @@
 new tool('Page');
 
-tools['Page'].cache = {};
+tools['Page'].runtime = {};
 
 tools['Page'].addFunction = function(_func, _arg, _run, _once) {
 	var script = document.createElement('script');
@@ -48,9 +48,9 @@ tools['Page'].init[com.port.castleAge] = function() {
 	tools['Page'].addEvent('PageURL', function() {
 		var _value = $('#PageURL').html();
 		tools['General'].update();
-		tools['Page'].cache['allPages']();
-		if (tools['Page'].cache[_value]) {
-			tools['Page'].cache[_value]();
+		tools['Page'].runtime['allPages']();
+		if (tools['Page'].runtime[_value]) {
+			tools['Page'].runtime[_value]();
 		}
 	});
 

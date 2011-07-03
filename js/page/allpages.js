@@ -1,6 +1,6 @@
 // All Pages
 
-tools['Page'].cache['allPages'] = function() {
+tools['Page'].runtime['allPages'] = function() {
 
 	// New results closing
 	$('div.results img[src$="help_close_x.gif"]').each(function(_index, _element){
