@@ -11,7 +11,7 @@ tools['Page'].cache['allPages'] = function() {
 				$(this).remove();
 			});
 			$(this).parents('div.results:first').next('br').hide();
-		}).css('cursor', 'pointer').attr('onclick','');
+		}).css('cursor', 'pointer');
 		$(_element).unwrap();
 	});
 

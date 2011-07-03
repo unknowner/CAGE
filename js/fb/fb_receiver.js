@@ -1,6 +1,5 @@
 function receiver(_data) {
 
-	console.log('fb_receiver: ' + _data.task);
 	switch (_data.task) {
 
 	case com.task.castleAgeReady:

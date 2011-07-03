@@ -55,6 +55,10 @@
 		"tabs",
 		"*://apps.facebook.com/castle_age/*",
 		"*://web.castleagegame.com/castle/*"
-	]
-
+	],
+  "icons": {
+    "16": "img/icon16.png",
+    "64": "img/icon64.png",
+    "128": "img/icon128.png"
+  }
 }

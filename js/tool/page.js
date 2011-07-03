@@ -2,9 +2,19 @@ new tool('Page');
 
 tools['Page'].cache = {};
 
+tools['Page'].addFunction = function(_func, _arg, _run, _once) {
+	var script = document.createElement('script');
+	script.textContent = (_run ? '(' : '') + _func
+			+ (_run ? ')(' + _arg + ');' : ';');
+	document.body.appendChild(script);
+	if (_once) {
+		document.body.removeChild(script);
+	}
+},
+
 tools['Page'].addEvent = function(_event, _function) {
 
-	com.addFunction(function() {
+	tools['Page'].addFunction(function() {
 		var _arg = arguments[0].event;
 		window[('fire' + _arg)] = function(_data) {
 			if (_data) {
@@ -31,12 +41,12 @@ tools['Page'].addEvent = function(_event, _function) {
 
 tools['Page'].init[com.port.castleAge] = function() {
 
-	com.addFunction(tools['Page'].get_cached_ajax, null, true, true);
-	com.addFunction(tools['Page'].ajaxLinkSend, null, true, true);
-	com.addFunction(tools['Page'].ajaxFormSend, null, true, true);
+	tools['Page'].addFunction(tools['Page'].get_cached_ajax, null, true, true);
+	tools['Page'].addFunction(tools['Page'].ajaxLinkSend, null, true, true);
+	tools['Page'].addFunction(tools['Page'].ajaxFormSend, null, true, true);
 
 	tools['Page'].addEvent('PageURL', function() {
-		var _value = $('#PageURL').text();
+		var _value = $('#PageURL').html();
 		tools['General'].update();
 		tools['Page'].cache['allPages']();
 		if (tools['Page'].cache[_value]) {
@@ -124,9 +134,7 @@ tools['Page'].get_cached_ajax = function() {
 									firePageURL();
 								}
 								fireScroll(0);
-
 							} else {
-
 								if (data.lastIndexOf('<fb:') == -1) {
 									$('#globalContainer').html(data);
 									firePageURL();
@@ -144,6 +152,7 @@ tools['Page'].get_cached_ajax = function() {
 		}
 		fireScroll(0);
 	};
+
 };
 
 tools['Page'].done = function(_url, _div) {
@@ -158,7 +167,6 @@ tools['Page'].done = function(_url, _div) {
 tools['Page'].ajaxLinkSend = function() {
 
 	ajaxLinkSend = function(div, url) {
-		console.log('cage ajaxLinkSend');
 		friend_browse_offset = 0;
 		reset_raid_lst();
 
@@ -207,7 +215,7 @@ tools['Page'].ajaxLinkSend = function() {
 			appId : '46755028429',
 			status : true, // check login status
 			cookie : true, // enable cookies to allow the server to access the
-			// session
+							// session
 			xfbml : true
 		// parse XFBML
 		});

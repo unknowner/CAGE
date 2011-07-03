@@ -1,6 +1,5 @@
 function receiver(_data) {
 
-	console.log('ca_receiver: ' + _data.task);
 	switch (_data.task) {
 
 	case com.task.getGeneral:
