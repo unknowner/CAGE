@@ -15,7 +15,7 @@ function receiver(_data) {
 		break;
 
 	case com.task.heal:
-		tools['Heal'].start[com.port.current]();
+		tools['Heal'].start[com.port.castleAge]();
 		break;
 
 	}
