@@ -2,8 +2,8 @@
 
 var CastleAge = {
 
-    bqh : null,
-    signed_request : null
+	bqh : null,
+	signed_request : null
 
 };
 
@@ -11,13 +11,10 @@ com.initContentScript(com.port.castleAge);
 
 tools['Page'].cache['allPages']();
 if (tools['Page'].cache[$('#current_pg_info').attr('value') + '.php']) {
-    tools['Page'].cache[$('#current_pg_info').attr('value') + '.php']();
+	tools['Page'].cache[$('#current_pg_info').attr('value') + '.php']();
 }
 
-$('head').append(
-	'<link rel="stylesheet" type="text/css" href="'
-		+ chrome.extension.getURL('css/trontastic/jquery-ui.css')
-		+ '">');
+$('head').append('<link rel="stylesheet" type="text/css" href="' + chrome.extension.getURL('css/trontastic/jquery-ui.css') + '">');
 
 initTools();
 

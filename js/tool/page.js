@@ -1,20 +1,19 @@
 new tool('Page');
+new tool('Page');
 
 tools['Page'].runtime = {};
 
 tools['Page'].addFunction = function(_func, _arg, _run, _once) {
 	var script = document.createElement('script');
-	script.textContent = (_run ? '(' : '') + _func
-			+ (_run ? ')(' + _arg + ');' : ';');
+	script.textContent = (_run ? '(' : '') + _func + (_run ? ')(' + _arg + ');' : ';');
 	document.body.appendChild(script);
 	if (_once) {
 		document.body.removeChild(script);
 	}
 },
-
 tools['Page'].addEvent = function(_event, _function) {
 
-	tools['Page'].addFunction(function() {
+	tools['Page'].addFunction( function() {
 		var _arg = arguments[0].event;
 		window[('fire' + _arg)] = function(_data) {
 			if (_data) {
@@ -24,21 +23,18 @@ tools['Page'].addEvent = function(_event, _function) {
 			customEvent.initEvent(_arg, true, true);
 			document.getElementById(_arg).dispatchEvent(customEvent);
 		};
-
 		window[('set' + _arg)] = function(_data) {
 			$('#' + _arg).html(_data);
 		};
-
 	}, JSON.stringify({
 		event : _event
 	}), true, true);
 
 	$(document.body).append(
-			$('<div id="' + _event + '" style="display:none;"></div>').bind(
-					_event, _function));
+	$('<div id="' + _event + '" style="display:none;"></div>').bind(
+	_event, _function));
 
 };
-
 tools['Page'].init[com.port.castleAge] = function() {
 
 	tools['Page'].addFunction(tools['Page'].get_cached_ajax, null, true, true);
@@ -53,16 +49,13 @@ tools['Page'].init[com.port.castleAge] = function() {
 			tools['Page'].runtime[_value]();
 		}
 	});
-
 	tools['Page'].addEvent('Scroll', function() {
 		var _value = $('#Scroll').text();
 		com.send(com.task.scroll, com.port.facebook, {
 			to : _value,
 		});
 	});
-
 };
-
 tools['Page'].get_cached_ajax = function() {
 
 	get_cached_ajax = function(url, div) {
@@ -103,58 +96,56 @@ tools['Page'].get_cached_ajax = function() {
 			showLoaderIfAjax();
 
 			$
-					.ajax({
-						url : url,
-						context : document.body,
-						data : params,
-						type : 'POST',
-						success : function(data) {
-							/*
-							 * if (cageCAGE.cache.UseImageServer &&
-							 * cageCAGE.cache.ImageServer.length > 0) { data =
-							 * data .replace(
-							 * /(http:\/\/image4\.castleagegame\.com\/graphics.*?)(?=\/\w*?\.\w{3})/g,
-							 * cageCAGE.cache.ImageServer); }
-							 */
-							stopTimers = false;
-							ajaxPerforming = false;
-							$('#AjaxLoadIcon').hide();
-							if ((get_type == 'cache_body')
-									|| (get_type == 'get_body')) {
+			.ajax({
+				url : url,
+				context : document.body,
+				data : params,
+				type : 'POST',
+				success : function(data) {
+					/*
+					 * if (cageCAGE.cache.UseImageServer &&
+					 * cageCAGE.cache.ImageServer.length > 0) { data =
+					 * data .replace(
+					 * /(http:\/\/image4\.castleagegame\.com\/graphics.*?)(?=\/\w*?\.\w{3})/g,
+					 * cageCAGE.cache.ImageServer); }
+					 */
+					stopTimers = false;
+					ajaxPerforming = false;
+					$('#AjaxLoadIcon').hide();
+					if ((get_type == 'cache_body')
+					|| (get_type == 'get_body')) {
 
-								if (data.lastIndexOf('<fb:') == -1) {
-									$('#app_body_container').html(data);
-									firePageURL();
-								} else {
-									document
-											.getElementById('app_body_container').innerHTML = data;
-									FB.XFBML
-											.parse(document
-													.getElementById('app_body_container'));
-									firePageURL();
-								}
-								fireScroll(0);
-							} else {
-								if (data.lastIndexOf('<fb:') == -1) {
-									$('#globalContainer').html(data);
-									firePageURL();
-								} else {
-									document.getElementById('globalContainer').innerHTML = data;
-									FB.XFBML.parse(document
-											.getElementById('globalContainer'));
-									firePageURL();
-								}
-								fireScroll(0);
-							}
-							centerPopups();
+						if (data.lastIndexOf('<fb:') == -1) {
+							$('#app_body_container').html(data);
+							firePageURL();
+						} else {
+							document
+							.getElementById('app_body_container').innerHTML = data;
+							FB.XFBML
+							.parse(document
+							.getElementById('app_body_container'));
+							firePageURL();
 						}
-					});
+						fireScroll(0);
+					} else {
+						if (data.lastIndexOf('<fb:') == -1) {
+							$('#globalContainer').html(data);
+							firePageURL();
+						} else {
+							document.getElementById('globalContainer').innerHTML = data;
+							FB.XFBML.parse(document
+							.getElementById('globalContainer'));
+							firePageURL();
+						}
+						fireScroll(0);
+					}
+					centerPopups();
+				}
+			});
 		}
 		fireScroll(0);
 	};
-
 };
-
 tools['Page'].done = function(_url, _div) {
 
 	console.log('page done');
@@ -163,7 +154,6 @@ tools['Page'].done = function(_url, _div) {
 	}, 'slow');
 
 };
-
 tools['Page'].ajaxLinkSend = function() {
 
 	ajaxLinkSend = function(div, url) {
@@ -215,15 +205,13 @@ tools['Page'].ajaxLinkSend = function() {
 			appId : '46755028429',
 			status : true, // check login status
 			cookie : true, // enable cookies to allow the server to access the
-							// session
+			// session
 			xfbml : true
-		// parse XFBML
+			// parse XFBML
 		});
 		FB.Canvas.setAutoResize();
 	};
-
 };
-
 tools['Page'].ajaxFormSend = function(div, url, formElement, anchor) {
 
 	ajaxFormSend = function(div, url, formElement, anchor) {
@@ -284,5 +272,4 @@ tools['Page'].ajaxFormSend = function(div, url, formElement, anchor) {
 
 		scrollToElement('#' + anchor);
 	};
-
 };
