@@ -1,21 +1,17 @@
 new tool('Page');
 new tool('Page');
-
 tools['Page'].runtime = {};
-
-tools['Page'].addFunction = function(_func, _arg, _run, _once) {
+tools['Page'].addFunction = function (_func, _arg, _run, _once) {
 	var script = document.createElement('script');
 	script.textContent = (_run ? '(' : '') + _func + (_run ? ')(' + _arg + ');' : ';');
 	document.body.appendChild(script);
 	if (_once) {
 		document.body.removeChild(script);
 	}
-},
-tools['Page'].addEvent = function(_event, _function) {
-
-	tools['Page'].addFunction( function() {
+}, tools['Page'].addEvent = function (_event, _function) {
+	tools['Page'].addFunction(function () {
 		var _arg = arguments[0].event;
-		window[('fire' + _arg)] = function(_data) {
+		window[('fire' + _arg)] = function (_data) {
 			if (_data) {
 				$('#' + _arg).html(_data);
 			}
@@ -23,25 +19,21 @@ tools['Page'].addEvent = function(_event, _function) {
 			customEvent.initEvent(_arg, true, true);
 			document.getElementById(_arg).dispatchEvent(customEvent);
 		};
-		window[('set' + _arg)] = function(_data) {
+		window[('set' + _arg)] = function (_data) {
 			$('#' + _arg).html(_data);
 		};
 	}, JSON.stringify({
-		event : _event
+		event: _event
 	}), true, true);
-
 	$(document.body).append(
 	$('<div id="' + _event + '" style="display:none;"></div>').bind(
 	_event, _function));
-
 };
-tools['Page'].init[com.port.castleAge] = function() {
-
+tools['Page'].init[com.port.castleAge] = function () {
 	tools['Page'].addFunction(tools['Page'].get_cached_ajax, null, true, true);
 	tools['Page'].addFunction(tools['Page'].ajaxLinkSend, null, true, true);
 	tools['Page'].addFunction(tools['Page'].ajaxFormSend, null, true, true);
-
-	tools['Page'].addEvent('PageURL', function() {
+	tools['Page'].addEvent('PageURL', function () {
 		var _value = $('#PageURL').html();
 		tools['General'].update();
 		tools['Page'].runtime['allPages']();
@@ -49,16 +41,15 @@ tools['Page'].init[com.port.castleAge] = function() {
 			tools['Page'].runtime[_value]();
 		}
 	});
-	tools['Page'].addEvent('Scroll', function() {
+	tools['Page'].addEvent('Scroll', function () {
 		var _value = $('#Scroll').text();
 		com.send(com.task.scroll, com.port.facebook, {
-			to : _value,
+			to: _value,
 		});
 	});
 };
-tools['Page'].get_cached_ajax = function() {
-
-	get_cached_ajax = function(url, div) {
+tools['Page'].get_cached_ajax = function () {
+	get_cached_ajax = function (url, div) {
 		// just_body_cache
 		console.log('cage get_cached_ajax');
 		var url_key = url;
@@ -66,42 +57,39 @@ tools['Page'].get_cached_ajax = function() {
 			url_key = url.substring(0, url.indexOf('?'));
 		}
 		setPageURL(url_key);
-
 		if (get_type == 'cache_body' && pageCache[url_key]) {
 			if (pageCache[url_key].lastIndexOf('<fb:') == -1) {
 				$('#app_body_container').html(pageCache[url_key]);
 				firePageURL();
-			} else {
+			}
+			else {
 				document.getElementById('app_body_container').innerHTML = data;
 				FB.XFBML.parse(document.getElementById('app_body_container'));
 				firePageURL();
 			}
-		} else {
-
+		}
+		else {
 			if (get_type == 'get_page') {
 				stopTimers = true;
 				pageCache[url_key] = null;
-			} else if (get_type == 'destroy_all_get_page') {
+			}
+			else if (get_type == 'destroy_all_get_page') {
 				stopTimers = true;
 				pageCache = {};
 			}
 			var params = 'ajax=1';
 			params += '&signed_request=' + $('#signed_request').attr('value');
-
 			if ((get_type == 'cache_body') || (get_type == 'get_body')) {
 				params += '&get_type=body';
 			}
-
 			ajaxPerforming = true;
 			showLoaderIfAjax();
-
-			$
-			.ajax({
-				url : url,
-				context : document.body,
-				data : params,
-				type : 'POST',
-				success : function(data) {
+			$.ajax({
+				url: url,
+				context: document.body,
+				data: params,
+				type: 'POST',
+				success: function (data) {
 					/*
 					 * if (cageCAGE.cache.UseImageServer &&
 					 * cageCAGE.cache.ImageServer.length > 0) { data =
@@ -112,29 +100,26 @@ tools['Page'].get_cached_ajax = function() {
 					stopTimers = false;
 					ajaxPerforming = false;
 					$('#AjaxLoadIcon').hide();
-					if ((get_type == 'cache_body')
-					|| (get_type == 'get_body')) {
-
+					if ((get_type == 'cache_body') || (get_type == 'get_body')) {
 						if (data.lastIndexOf('<fb:') == -1) {
 							$('#app_body_container').html(data);
 							firePageURL();
-						} else {
-							document
-							.getElementById('app_body_container').innerHTML = data;
-							FB.XFBML
-							.parse(document
-							.getElementById('app_body_container'));
+						}
+						else {
+							document.getElementById('app_body_container').innerHTML = data;
+							FB.XFBML.parse(document.getElementById('app_body_container'));
 							firePageURL();
 						}
 						fireScroll(0);
-					} else {
+					}
+					else {
 						if (data.lastIndexOf('<fb:') == -1) {
 							$('#globalContainer').html(data);
 							firePageURL();
-						} else {
+						}
+						else {
 							document.getElementById('globalContainer').innerHTML = data;
-							FB.XFBML.parse(document
-							.getElementById('globalContainer'));
+							FB.XFBML.parse(document.getElementById('globalContainer'));
 							firePageURL();
 						}
 						fireScroll(0);
@@ -146,28 +131,21 @@ tools['Page'].get_cached_ajax = function() {
 		fireScroll(0);
 	};
 };
-tools['Page'].done = function(_url, _div) {
-
+tools['Page'].done = function (_url, _div) {
 	console.log('page done');
 	$('body, html').animate({
-		scrollTop : 0
+		scrollTop: 0
 	}, 'slow');
-
 };
-tools['Page'].ajaxLinkSend = function() {
-
-	ajaxLinkSend = function(div, url) {
+tools['Page'].ajaxLinkSend = function () {
+	ajaxLinkSend = function (div, url) {
 		friend_browse_offset = 0;
 		reset_raid_lst();
-
 		pageCache = {};
 		ajaxPerforming = true;
-
 		showLoaderIfAjax();
-
 		var params = 'ajax=1';
 		params += '&signed_request=' + $('#signed_request').attr('value');
-
 		if (!url) {
 			url = 'index.php?adkx=2';
 		}
@@ -176,20 +154,19 @@ tools['Page'].ajaxLinkSend = function() {
 			url_key = url.substring(0, url.indexOf('?'));
 		}
 		setPageURL(url_key);
-
 		$.ajax({
-			url : url,
-			context : document.body,
-			data : params,
-			type : 'POST',
-			success : function(data) {
+			url: url,
+			context: document.body,
+			data: params,
+			type: 'POST',
+			success: function (data) {
 				ajaxPerforming = false;
 				$('#AjaxLoadIcon').hide();
-
 				if (data.lastIndexOf('<fb:') == -1) {
 					$('#' + div).html(data);
 					firePageURL();
-				} else {
+				}
+				else {
 					document.getElementById(div).innerHTML = data;
 					FB.XFBML.parse(document.getElementById(div));
 					firePageURL();
@@ -198,36 +175,31 @@ tools['Page'].ajaxLinkSend = function() {
 				centerPopups();
 			}
 		});
-
 		scrollToElement('#main_anchor');
-
 		FB.init({
-			appId : '46755028429',
-			status : true, // check login status
-			cookie : true, // enable cookies to allow the server to access the
+			appId: '46755028429',
+			status: true,
+			// check login status
+			cookie: true,
+			// enable cookies to allow the server to access the
 			// session
-			xfbml : true
+			xfbml: true
 			// parse XFBML
 		});
 		FB.Canvas.setAutoResize();
 	};
 };
-tools['Page'].ajaxFormSend = function(div, url, formElement, anchor) {
-
-	ajaxFormSend = function(div, url, formElement, anchor) {
+tools['Page'].ajaxFormSend = function (div, url, formElement, anchor) {
+	ajaxFormSend = function (div, url, formElement, anchor) {
 		console.log('cage ajaxFormSend');
 		friend_browse_offset = 0;
-
 		if (!anchor) {
 			anchor = 'main_anchor';
 		}
-
 		stopTimers = true;
-
 		params = $(formElement).serialize();
 		params += '&ajax=1';
 		params += '&signed_request=' + $('#signed_request').attr('value');
-
 		pageCache = {};
 		if (!url) {
 			url = 'index.php?adkx=7';
@@ -237,16 +209,14 @@ tools['Page'].ajaxFormSend = function(div, url, formElement, anchor) {
 			url_key = url.substring(0, url.indexOf('?'));
 		}
 		setPageURL(url_key);
-
 		ajaxPerforming = true;
 		showLoaderIfAjax();
-
 		$.ajax({
-			url : url,
-			context : document.body,
-			data : params,
-			type : 'POST',
-			success : function(data) {
+			url: url,
+			context: document.body,
+			data: params,
+			type: 'POST',
+			success: function (data) {
 				/*
 				 * if (cageCAGE.cache.UseImageServer &&
 				 * cageCAGE.cache.ImageServer.length > 0) { data = data
@@ -260,7 +230,8 @@ tools['Page'].ajaxFormSend = function(div, url, formElement, anchor) {
 				if (data.lastIndexOf('<fb:') == -1) {
 					$('#' + div).html(data);
 					firePageURL();
-				} else {
+				}
+				else {
 					document.getElementById(div).innerHTML = data;
 					FB.XFBML.parse(document.getElementById(div));
 					firePageURL();
@@ -269,7 +240,6 @@ tools['Page'].ajaxFormSend = function(div, url, formElement, anchor) {
 				centerPopups();
 			}
 		});
-
 		scrollToElement('#' + anchor);
 	};
 };

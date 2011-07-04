@@ -1,64 +1,63 @@
 {
-
 	"name": "CAGE - Castle Age Game Enhancer",
 	"version": "1.0.0",
 	"description": "A plain text description",
 	"background_page": "background.html",
 	"content_scripts": [
 		{
-			"matches": ["*://web.castleagegame.com/castle/*"],
-			"css":[
-				//"css/jqueryui.css",
-				"css/ca_cage.css"
+		"matches": ["*://web.castleagegame.com/castle/*"],
+		"css": [
+			//"css/jqueryui.css",
+					"css/ca_cage.css"
 			],
-      "js": [
-				"js/jquery.js",
-				"js/jqueryui.js",
-				"js/com.js",
-				"js/tool.js",
-				"js/ca/ca_receiver.js",
-				"js/tool/heal.js",
-				"js/tool/page.js",
-				"js/tool/generals.js",
-				"js/tool/scroll.js",
-				"js/page/allpages.js",
-				"js/page/index.js",
-				"js/page/guild_battle.js",
-				"js/page/keep.js",
-				"js/castleage.js"
-      ],
-      "all_frames":true
-		},
+		"js": [
+			"js/jquery.js",
+			"js/jqueryui.js",
+			"js/com.js",
+			"js/tool.js",
+			"js/ca/ca_receiver.js",
+			"js/tool/heal.js",
+			"js/tool/page.js",
+			"js/tool/generals.js",
+			"js/tool/scroll.js",
+			"js/page/allpages.js",
+			"js/page/index.js",
+			"js/page/guild_battle.js",
+			"js/page/keep.js",
+			"js/castleage.js"
+			],
+		"all_frames": true
+	},
 		{
-			"matches": ["*://apps.facebook.com/castle_age/*"],
-			"css":[
-				//"css/jqueryui.css",
-				"css/fb_cage.css"
+		"matches": ["*://apps.facebook.com/castle_age/*"],
+		"css": [
+			//"css/jqueryui.css",
+					"css/fb_cage.css"
 			],
-      "js": [
-				"js/jquery.js",
-				"js/jqueryui.js",
-				"js/com.js",
-				"js/tool.js",
-				"js/fb/fb_receiver.js",
-				"js/fb/fb_start.js",
-				"js/tool/heal.js",
-				"js/tool/page.js",
-				"js/tool/generals.js",
-				"js/tool/scroll.js",
-				"js/facebook.js"
+		"js": [
+			"js/jquery.js",
+			"js/jqueryui.js",
+			"js/com.js",
+			"js/tool.js",
+			"js/fb/fb_receiver.js",
+			"js/fb/fb_start.js",
+			"js/tool/heal.js",
+			"js/tool/page.js",
+			"js/tool/generals.js",
+			"js/tool/scroll.js",
+			"js/facebook.js"
 			]
-		}
+	}
 	],
 	"homepage_url": "http://cagenhancer.blogspot.com/",
 	"permissions": [
 		"tabs",
 		"*://apps.facebook.com/castle_age/*",
 		"*://web.castleagegame.com/castle/*"
-	],
-  "icons": {
-    "16": "img/icon16.png",
-    "64": "img/icon64.png",
-    "128": "img/icon128.png"
-  }
+		],
+	"icons": {
+		"16": "img/icon16.png",
+		"64": "img/icon64.png",
+		"128": "img/icon128.png"
+	}
 }
