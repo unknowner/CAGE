@@ -9,11 +9,7 @@ tools['General'].get = function () {
 		}));
 	}
 };
-tools['General'].update = function () {
-	if ($('#equippedGeneralContainer div.general_name_div3').length > 0 && $('#equippedGeneralContainer div.general_name_div3').text().trim() !== tools['General'].current) {
-		tools['General'].get();
-	}
-};
+
 tools['General'].set = function (_general) {
 	_general = JSON.parse(_general);
 	$('#cageGeneralImage').attr('src', _general.img);

@@ -15,11 +15,13 @@
 			"js/jqueryui.js",
 			"js/com.js",
 			"js/tool.js",
+			"js/common.js",
 			"js/ca/ca_receiver.js",
 			"js/tool/heal.js",
 			"js/tool/page.js",
 			"js/tool/generals.js",
 			"js/tool/scroll.js",
+			"js/tool/eliteguard.js",
 			"js/page/allpages.js",
 			"js/page/index.js",
 			"js/page/guild_battle.js",
@@ -39,12 +41,14 @@
 			"js/jqueryui.js",
 			"js/com.js",
 			"js/tool.js",
+			"js/common.js",
 			"js/fb/fb_receiver.js",
 			"js/fb/fb_start.js",
 			"js/tool/heal.js",
 			"js/tool/page.js",
 			"js/tool/generals.js",
 			"js/tool/scroll.js",
+			"js/tool/eliteguard.js",
 			"js/facebook.js"
 			]
 	}
