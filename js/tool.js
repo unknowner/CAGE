@@ -8,7 +8,7 @@ function tool(_id) {
 		id: 'cageToolButton' + _id,
 		add: function (_text, _call) {
 			$('#cageToolsContainer').append('<button id="' + this.id + '" class="cageToolButton">' + _text + '</button>');
-			$('#' + this.id).button().removeClass('ui-corner-all').addClass('ui-corner-left').click(_call);
+			$('#' + this.id).button().removeClass('ui-corner-all').addClass('ui-corner-right').click(_call);
 		},
 		enable: function () {
 			$('#' + this.id).button("option", "disabled", false);

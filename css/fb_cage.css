@@ -1,24 +1,23 @@
 #cageGeneralName {
 	height: 18px;
-	left: 78px;
 	padding: 2px 0 0 6px;
 	position: absolute;
 	text-shadow: 1px 1px black;
 	top: 9px;
-	width: 100%;
+	left: 69px;
+	border-left: 0;
+	width: 163px;
 }
-
 #cageGeneralImage {
 	height: 65px;
 	padding: 0;
 	margin: 3px 0 1px 3px;
 }
-
 #cageToolsContainer {
 	margin-top: 10px;
-	padding: 3px 0px 3px 3px;
+	padding: 3px 3px 3px 0;
+	width: 200px;
 }
-
 .cageToolButton {
 	width: 100%;
 }
