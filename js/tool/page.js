@@ -29,6 +29,13 @@ tools['Page'].init[com.port.castleAge] = function () {
 		setCASize();
 	});
 };
+tools['Page'].loadPage = function(_page) {
+	console.log('Loadpage:' + _page);
+	addFunction( function(_p) {
+		console.log('_p'+_p);
+		get_cached_ajax(_p + '?signed_request=' + $('#signed_request').attr('value'));
+	}, _page, true, true);
+};
 tools['Page'].swapElementClass = function () {
 	swapElementClass = function (elem_id, classname) {
 		$('#' + elem_id).removeAttr('class').addClass(classname);
@@ -36,9 +43,9 @@ tools['Page'].swapElementClass = function () {
 	}
 };
 tools['Page'].get_cached_ajax = function () {
-	get_cached_ajax = function (url, div) {
+	get_cached_ajax = function (url, get_type) {
 		// just_body_cache
-		console.log('cage get_cached_ajax');
+		console.log('cage get_cached_ajax:');
 		var url_key = url;
 		if (url.indexOf('?') != -1) {
 			url_key = url.substring(0, url.indexOf('?'));

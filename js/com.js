@@ -17,7 +17,8 @@ var com = {
 		signed: 'TASK_SIGNED',
 		fbButtonEnable: 'TASK_FBBUTTONENABLE',
 		scroll: 'TASK_SCROLL',
-		eliteGuard: 'TASK_ELITEGUARD'
+		eliteGuard: 'TASK_ELITEGUARD',
+		loadPage: 'LOADPAGE'
 	},
 	// Called in content script to setup port
 	initContentScript: function (_port) {

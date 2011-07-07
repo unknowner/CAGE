@@ -9,9 +9,13 @@ tools['General'].get = function () {
 		}));
 	}
 };
-
 tools['General'].set = function (_general) {
 	_general = JSON.parse(_general);
 	$('#cageGeneralImage').attr('src', _general.img);
 	$('#cageGeneralName').text(_general.name);
 };
+tools['General'].init[com.port.facebook] = function() {
+	$('#cageGeneralImage').click(function(){
+		com.send(com.task.loadPage, com.port.castleAge, '"generals.php"');
+	});
+}

@@ -13,5 +13,8 @@ function receiver(_data) {
 		case com.task.eliteGuard:
 			tools['Eliteguard'].start[com.port.castleAge]();
 			break;
+		case com.task.loadPage:
+			tools['Page'].loadPage(_data.data);
+			break;
 	}
 }
