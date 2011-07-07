@@ -7,17 +7,20 @@ tools['Page'].init[com.port.castleAge] = function () {
 	addFunction(tools['Page'].ajaxLinkSend, null, true, true);
 	addFunction(tools['Page'].ajaxFormSend, null, true, true);
 	
+	// Do stuff after page loaded
 	customEvent('PageURL', function () {
-		var _value = $('#PageURL').val();
+		var _page = $('#PageURL').val();
 		tools['General'].get();
 		tools['Page'].runtime['allPages']();
-		if (tools['Page'].runtime[_value]) {
-			tools['Page'].runtime[_value]();
+		if (tools['Page'].runtime[_page]) {
+			tools['Page'].runtime[_page]();
 		}
+		setCASize();
 	});
-	
+
 	customEvent('Scroll', function () {
 		var _value = $('#Scroll').val();
+		console.log('event:scroll: '+_value);
 		com.send(com.task.scroll, com.port.facebook, {
 			to: _value,
 		});
@@ -37,10 +40,12 @@ tools['Page'].get_cached_ajax = function () {
 			if (pageCache[url_key].lastIndexOf('<fb:') == -1) {
 				$('#app_body_container').html(pageCache[url_key]);
 				firePageURL();
+				fireScroll(0);
 			} else {
 				document.getElementById('app_body_container').innerHTML = data;
 				FB.XFBML.parse(document.getElementById('app_body_container'));
 				firePageURL();
+				fireScroll(0);
 			}
 		} else {
 			if (get_type == 'get_page') {
@@ -82,6 +87,7 @@ tools['Page'].get_cached_ajax = function () {
 							FB.XFBML.parse(document.getElementById('app_body_container'));
 							firePageURL();
 						}
+						FB.Canvas.setSize();
 						fireScroll(0);
 					} else {
 						if (data.lastIndexOf('<fb:') == -1) {
@@ -103,13 +109,11 @@ tools['Page'].get_cached_ajax = function () {
 
 tools['Page'].done = function (_url, _div) {
 	console.log('page done');
-	$('body, html').animate({
-		scrollTop: 0
-	}, 'slow');
 };
 
 tools['Page'].ajaxLinkSend = function () {
 	ajaxLinkSend = function (div, url) {
+		console.log('cage ajaxLinkSend');
 		friend_browse_offset = 0;
 		reset_raid_lst();
 		pageCache = {};
@@ -140,7 +144,7 @@ tools['Page'].ajaxLinkSend = function () {
 					document.getElementById(div).innerHTML = data;
 					FB.XFBML.parse(document.getElementById(div));
 					firePageURL();
-				}
+				}				
 				fireScroll(0);
 				centerPopups();
 			}
@@ -156,7 +160,7 @@ tools['Page'].ajaxLinkSend = function () {
 			xfbml: true
 			// parse XFBML
 		});
-		FB.Canvas.setAutoResize();
+		//FB.Canvas.setAutoResize();
 	};
 };
 

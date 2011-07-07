@@ -6,7 +6,7 @@ function addFunction(_func, _arg, _run, _once) {
 	if (_once) {
 		document.body.removeChild(script);
 	}
-};
+}
 
 // Return Array with unique values
 function unique(_array) {
@@ -16,7 +16,7 @@ function unique(_array) {
 	for(i in o)
 		r.push(o[i]);
 	return r;
-};
+}
 
 // Add custom event to centent site and listener to content_script
 function customEvent(_event, _function) {
@@ -26,15 +26,19 @@ function customEvent(_event, _function) {
 
 		// fire the event opt. with data
 		window[('fire' + _arg)] = function (_data) {
-			if (_data) {
+			console.log('fire:' + _data);
+			if (_data !== undefined) {
 				$('#' + _arg).val(_data);
+				//window[('set' + _arg)](_data);
 			}
+			console.log('fire val:' + $('#' + _arg).val());
 			var customEvent = document.createEvent('Event');
 			customEvent.initEvent(_arg, true, true);
 			document.getElementById(_arg).dispatchEvent(customEvent);
 		};
 		// set data for the event
 		window[('set' + _arg)] = function (_data) {
+			console.log('set:' + _data);
 			$('#' + _arg).val(_data);
 		};
 		// remove the event and the div
@@ -47,4 +51,17 @@ function customEvent(_event, _function) {
 	$(document.body).append(
 	$('<input type="hidden" id="' + _event + '" value="" />').bind(_event, _function));
 
-};
+}
+
+function setCASize(_scrollTo) {
+	addFunction( function(_scrollTo) {
+		console.log('setCASize:' + _scrollTo)
+		FB.Canvas.setSize({
+			height:$(document.body).height()
+		});
+		if(_scrollTo !== undefined){
+			console.log('setCASize _scrollTo:' + _scrollTo)
+			fireScroll(_scrollTo);
+		}
+	}, _scrollTo, true, true);
+}

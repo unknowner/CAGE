@@ -1,0 +1,9 @@
+.itemNumbers {
+	position: relative;
+	top: -25px;
+	text-shadow: 0 0 2px #000;
+	text-align: left;
+	left: 8px;
+	font-weight: bold;
+	color: #fff;
+}
