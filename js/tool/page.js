@@ -1,12 +1,11 @@
 new tool('Page');
 new tool('Page');
 tools['Page'].runtime = {};
-
 tools['Page'].init[com.port.castleAge] = function () {
 	addFunction(tools['Page'].get_cached_ajax, null, true, true);
 	addFunction(tools['Page'].ajaxLinkSend, null, true, true);
 	addFunction(tools['Page'].ajaxFormSend, null, true, true);
-	
+	addFunction(tools['Page'].swapElementClass, null, true, true);
 	// Do stuff after page loaded
 	customEvent('PageURL', function () {
 		var _page = $('#PageURL').val();
@@ -17,16 +16,25 @@ tools['Page'].init[com.port.castleAge] = function () {
 		}
 		setCASize();
 	});
-
+	// scroll to
 	customEvent('Scroll', function () {
 		var _value = $('#Scroll').val();
-		console.log('event:scroll: '+_value);
+		console.log('event:scroll: ' + _value);
 		com.send(com.task.scroll, com.port.facebook, {
 			to: _value,
 		});
 	});
+	// Set Canvas Size
+	customEvent('SetSize', function () {
+		setCASize();
+	});
 };
-
+tools['Page'].swapElementClass = function () {
+	swapElementClass = function (elem_id, classname) {
+		$('#' + elem_id).removeAttr('class').addClass(classname);
+		fireSetSize();
+	}
+};
 tools['Page'].get_cached_ajax = function () {
 	get_cached_ajax = function (url, div) {
 		// just_body_cache
@@ -106,11 +114,9 @@ tools['Page'].get_cached_ajax = function () {
 		}
 	};
 };
-
 tools['Page'].done = function (_url, _div) {
 	console.log('page done');
 };
-
 tools['Page'].ajaxLinkSend = function () {
 	ajaxLinkSend = function (div, url) {
 		console.log('cage ajaxLinkSend');
@@ -144,7 +150,7 @@ tools['Page'].ajaxLinkSend = function () {
 					document.getElementById(div).innerHTML = data;
 					FB.XFBML.parse(document.getElementById(div));
 					firePageURL();
-				}				
+				}
 				fireScroll(0);
 				centerPopups();
 			}
@@ -163,7 +169,6 @@ tools['Page'].ajaxLinkSend = function () {
 		//FB.Canvas.setAutoResize();
 	};
 };
-
 tools['Page'].ajaxFormSend = function (div, url, formElement, anchor) {
 	ajaxFormSend = function (div, url, formElement, anchor) {
 		console.log('cage ajaxFormSend');
