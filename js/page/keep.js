@@ -31,18 +31,26 @@ tools['Page'].runtime['keep.php'] = function () {
 			'width': 180
 		}).html('BSI: ' + _bsi.toFixed(2) + '<br><span style="font-size:9px;">Battle Strength Index</span><br>LSI: ' + _lsi.toFixed(2) + '<br><span style="font-size:9px;">Levelling Speed Index</span><br>TSI: ' + _tsi.toFixed(2) + '<br><span style="font-size:9px;">Total Skillpoints per Level</span><br>'));
 	}
-	
+
 	$('div.statsTTitle').toggle( function () {
-		$(this).parents('div.statsT2:first').animate({'height': '100%'}, 'fast');
-		console.log('pos:' + $(this).offset().top)
-		setCASize($(this).offset().top);
+		var _this = this;
+		$(this).parents('div.statsT2:first').animate({
+			'height': '100%'
+		}, 'fast', function() {
+			console.log('pos:' + $(this).offset().top)
+			setCASize($(_this).offset().top);
+		});
+		//console.log('pos:' + $(this).offset().top)
+		//setCASize($(this).offset().top);
 	}, function () {
-		$(this).parents('div.statsT2:first').animate({'height': 30}, 'fast');
-		setCASize();
+		$(this).parents('div.statsT2:first').animate({
+			'height': 30
+		}, 'fast', function() {
+			setCASize();
+		});
 	});
-	
 	$('div.statUnit a img').addClass('ui-corner-all');
-	
-	$('div.statUnit').css('height', 75).find('div:last:contains(X)').addClass('itemNumbers');
-	
+
+	$('div.statUnit').find('div:last:contains(X)').addClass('itemNumbers');
+
 };

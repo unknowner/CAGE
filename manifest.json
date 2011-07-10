@@ -1,13 +1,12 @@
 {
-	"name": "CAGE - Castle Age Game Enhancer",
+	"name": "CAGE - Castle Age Game Enhancer [α]",
 	"version": "1.0.0",
-	"description": "A plain text description",
+	"description": "Development build of CAGE. For testing purpose only.",
 	"background_page": "background.html",
 	"content_scripts": [
 		{
 		"matches": ["*://web.castleagegame.com/castle/*"],
 		"css": [
-			//"css/jqueryui.css",
 					"css/ca_cage.css"
 			],
 		"js": [
@@ -33,7 +32,6 @@
 		{
 		"matches": ["*://apps.facebook.com/castle_age/*"],
 		"css": [
-			//"css/jqueryui.css",
 					"css/fb_cage.css"
 			],
 		"js": [
