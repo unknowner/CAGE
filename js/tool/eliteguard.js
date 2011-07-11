@@ -69,7 +69,7 @@ tools['Eliteguard'].done[com.port.castleAge] = function () {
 	com.send(com.task.fbButtonEnable, com.port.facebook, 'Eliteguard');
 };
 tools['Eliteguard'].init[com.port.facebook] = function () {
-	tools['Eliteguard'].fbButton.add('Elite guard', function () {
+	tools['Eliteguard'].fbButton.add(chrome.i18n.getMessage("buttonEliteGuard"), function () {
 		tools['Eliteguard'].fbButton.disable();
 		com.send(com.task.eliteGuard, com.port.castleAge, null);
 	});

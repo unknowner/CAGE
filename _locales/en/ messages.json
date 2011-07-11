@@ -1,0 +1,10 @@
+{
+  "buttonHeal": {
+    "message": "Heal",
+    "description": "fb UI button: Heal"
+  },
+  "buttonEliteGuard": {
+    "message": "Elite guard",
+    "description": "fb UI button: Elite Guard"
+  }
+}

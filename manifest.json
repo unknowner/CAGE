@@ -3,6 +3,7 @@
 	"version": "1.0.0",
 	"description": "Development build of CAGE. For testing purpose only.",
 	"background_page": "background.html",
+	"default_locale": "en",
 	"content_scripts": [
 		{
 		"matches": ["*://web.castleagegame.com/castle/*"],

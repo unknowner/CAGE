@@ -26,7 +26,7 @@ tools['Heal'].done[com.port.castleAge] = function () {
 };
 
 tools['Heal'].init[com.port.facebook] = function () {
-	tools['Heal'].fbButton.add('Heal', function () {
+	tools['Heal'].fbButton.add(chrome.i18n.getMessage("buttonHeal"), function () {
 		tools['Heal'].fbButton.disable();
 		com.send(com.task.heal, com.port.castleAge, null);
 	});
