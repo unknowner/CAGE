@@ -26,7 +26,7 @@ function customEvent(_event, _function) {
 
 		// fire the event opt. with data
 		window[('fire' + _arg)] = function (_data) {
-			console.log('fire:' + _data);
+			console.log('fire:' _arg + ' > ' + _data);
 			if (_data !== undefined) {
 				$('#' + _arg).val(_data);
 				//window[('set' + _arg)](_data);
@@ -38,7 +38,7 @@ function customEvent(_event, _function) {
 		};
 		// set data for the event
 		window[('set' + _arg)] = function (_data) {
-			console.log('set:' + _data);
+			console.log('set:' _arg + ' > ' + _data);
 			$('#' + _arg).val(_data);
 		};
 		// remove the event and the div
@@ -55,12 +55,10 @@ function customEvent(_event, _function) {
 
 function setCASize(_scrollTo) {
 	addFunction( function(_scrollTo) {
-		console.log('setCASize:' + _scrollTo)
 		FB.Canvas.setSize({
 			height:$(document.body).height()
 		});
 		if(_scrollTo !== undefined){
-			console.log('setCASize _scrollTo:' + _scrollTo)
 			fireScroll(_scrollTo);
 		}
 	}, _scrollTo, true, true);

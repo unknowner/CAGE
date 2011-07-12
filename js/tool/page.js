@@ -19,7 +19,6 @@ tools['Page'].init[com.port.castleAge] = function () {
 	// scroll to
 	customEvent('Scroll', function () {
 		var _value = $('#Scroll').val();
-		console.log('event:scroll: ' + _value);
 		com.send(com.task.scroll, com.port.facebook, {
 			to: _value,
 		});
@@ -32,7 +31,6 @@ tools['Page'].init[com.port.castleAge] = function () {
 tools['Page'].loadPage = function(_page) {
 	console.log('Loadpage:' + _page);
 	addFunction( function(_p) {
-		console.log('_p'+_p);
 		get_cached_ajax(_p + '?signed_request=' + $('#signed_request').attr('value'));
 	}, _page, true, true);
 };
@@ -45,7 +43,6 @@ tools['Page'].swapElementClass = function () {
 tools['Page'].get_cached_ajax = function () {
 	get_cached_ajax = function (url, get_type) {
 		// just_body_cache
-		console.log('cage get_cached_ajax:');
 		var url_key = url;
 		if (url.indexOf('?') != -1) {
 			url_key = url.substring(0, url.indexOf('?'));
@@ -126,7 +123,6 @@ tools['Page'].done = function (_url, _div) {
 };
 tools['Page'].ajaxLinkSend = function () {
 	ajaxLinkSend = function (div, url) {
-		console.log('cage ajaxLinkSend');
 		friend_browse_offset = 0;
 		reset_raid_lst();
 		pageCache = {};
@@ -178,7 +174,6 @@ tools['Page'].ajaxLinkSend = function () {
 };
 tools['Page'].ajaxFormSend = function (div, url, formElement, anchor) {
 	ajaxFormSend = function (div, url, formElement, anchor) {
-		console.log('cage ajaxFormSend');
 		friend_browse_offset = 0;
 		if (!anchor) {
 			anchor = 'main_anchor';

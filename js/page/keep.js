@@ -37,7 +37,6 @@ tools['Page'].runtime['keep.php'] = function () {
 		$(this).parents('div.statsT2:first').animate({
 			'height': '100%'
 		}, 'fast', function() {
-			console.log('pos:' + $(this).offset().top)
 			setCASize($(_this).offset().top);
 		});
 		//console.log('pos:' + $(this).offset().top)
