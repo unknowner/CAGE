@@ -9,6 +9,7 @@ tools['Page'].init[com.port.castleAge] = function () {
 	// Do stuff after page loaded
 	customEvent('PageURL', function () {
 		var _page = $('#PageURL').val();
+		console.log()
 		tools['General'].get();
 		tools['Page'].runtime['allPages']();
 		if (tools['Page'].runtime[_page]) {

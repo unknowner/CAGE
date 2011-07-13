@@ -26,7 +26,6 @@ function customEvent(_event, _function) {
 
 		// fire the event opt. with data
 		window[('fire' + _arg)] = function (_data) {
-			console.log('fire:' + _arg + ' > ' + _data);
 			if (_data !== undefined) {
 				$('#' + _arg).val(_data);
 				//window[('set' + _arg)](_data);
@@ -58,7 +57,7 @@ function setCASize(_scrollTo) {
 		FB.Canvas.setSize({
 			height:$(document.body).height()
 		});
-		if(_scrollTo !== undefined){
+		if(_scrollTo !== undefined) {
 			fireScroll(_scrollTo);
 		}
 	}, _scrollTo, true, true);

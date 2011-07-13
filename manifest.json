@@ -1,6 +1,6 @@
 {
 	"name": "CAGE - Castle Age Game Enhancer [α]",
-	"version": "1.0.3",
+	"version": "1.0.4",
 	"description": "Development build of CAGE. For testing purpose only.",
 	"background_page": "background.html",
 	"default_locale": "en",
@@ -25,6 +25,8 @@
 			"js/page/allpages.js",
 			"js/page/index.js",
 			"js/page/guild_battle.js",
+			"js/page/festival_duel_home.js",
+			"js/page/gift.js",
 			"js/page/keep.js",
 			"js/castleage.js"
 			],

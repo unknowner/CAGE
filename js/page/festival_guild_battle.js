@@ -1,6 +1,6 @@
 // Festival battle
 tools['Page'].runtime['festival_guild_battle.php'] = function () {
-	cageDbg.info('Reworking data: Guild Battle');
+	console.log('Reworking data: Guild Battle');
 	var _your = (1 - ($('div[style*="/guild_battle_bar_you.gif"]').width() / $('div[style*="/guild_battle_bar_you.gif"]').parent().width())) * 100;
 	var _enemy = (1 - ($('div[style*="/guild_battle_bar_enemy.gif"]').width() / $('div[style*="/guild_battle_bar_enemy.gif"]').parent().width())) * 100;
 	var $_your = $('#guild_battle_health span:contains("/"):first');
