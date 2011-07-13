@@ -1,6 +1,8 @@
 // All Pages
 tools['Page'].runtime['allPages'] = function () {
-	// New results closing $().next('br')
+	if($('#globalContainer > div:first').height() == 80) {
+		$('#globalContainer > div:first').remove();
+	}
 	$('div.results:has(img[src$="help_close_x.gif"])').each( function (_index, _element) {
 		var $_element = $(_element);
 		$('img[src$="help_close_x.gif"]', _element).unwrap().click( function () {
