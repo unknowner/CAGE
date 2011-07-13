@@ -1,17 +1,19 @@
 // All Pages
 tools['Page'].runtime['allPages'] = function () {
-	// New results closing
-	$('div.results img[src$="help_close_x.gif"]').each( function (_index, _element) {
-		var $_that = $(this);
-		$(_element).click( function () {
-			var $_this = $(this);
-			$_that.css('height', 18).attr('src', 'http://image4.castleagegame.com/graphics/shield_wait.gif');
+	// New results closing $().next('br')
+	$('div.results:has(img[src$="help_close_x.gif"])').each( function (_index, _element) {
+		var $_element = $(_element);
+		$('img[src$="help_close_x.gif"]', _element).unwrap().click( function () {
+			$(this).css('height', 18).attr('src', 'http://image4.castleagegame.com/graphics/shield_wait.gif');
 			$.get($('#PageURL').val() + '?close_result=global_top&signed_request=' + CastleAge.signed_request, function () {
-				$_this.parents('div.results:first').hide('slow', function () {
-					$_this.remove();
+				$_element.next('br').slideUp('slow', function() {
+					$(this).remove();
+				});
+				$_element.slideUp('slow', function () {
+					$_element.remove();
 				});
 			});
-			$(this).parents('div.results:first').next('br').hide();
+			//$(this).parents('div.results:first').next('br').hide();
 		}).css('cursor', 'pointer');
 		$(_element).unwrap();
 	});
