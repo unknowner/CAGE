@@ -5,10 +5,10 @@ tools['Page'].runtime['gift.php'] = function () {
 	var _giftNum = /(?:act=create&gift=)(\d+)/.exec($_img.attr('onclick'))[1];
 	var _giftName = /(sent you a )(.+)( in Castle Age!)/.exec($_img.attr('onclick'))[2];
 	$_img.attr('onclick', '').click( function () {
-		addFunction( function () {
+		addFunction( function (_gift) {
 			FB.api('/me', function (response) {
-				showRequestForm('Castle Age', escape(response.name) + ' has sent you a ' + _giftName + ' in Castle Age! Click to accept gift.', 'abc=123', 'act=create&gift=' + _giftNum);
+				showRequestForm('Castle Age', encodeURI(response.first_name) + ' ' + encodeURI(response.last_name) + ' has sent you a ' + _gift.name + ' in Castle Age! Click to accept gift.', 'abc=123', 'act=create&gift=' + _gift.num);
 			});
-		}, null, true, true);
+		}, JSON.stringify({num : _giftNum, name : _giftName}), true, true);
 	});
 };

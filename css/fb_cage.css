@@ -1,5 +1,6 @@
 #cageGeneralContainer {
 	padding:0 0 2px 0;
+	position: relative;
 }
 #cageGeneralName {
 	height: 18px;
