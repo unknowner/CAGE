@@ -4,7 +4,6 @@ tools['Page'].runtime['guild_shop.php'] = function () {
 	var $_img = $('img[src*="hero_result_button_recruit_25.jpg"]');
 	var _promoId = /promo_id=.+/.exec($_img.attr('onclick'))[0];
 	var _itemName = /(the item )(.+)( in Castle)/.exec($_img.attr('onclick'))[2];
-	var $_img = $('img[src*="invite_army.gif"]');
 	$_img.attr('onclick', '').click( function () {
 		addFunction( function (_item) {
 			FB.api('/me', function (response) {
