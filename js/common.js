@@ -9,13 +9,40 @@ function addFunction(_func, _arg, _run, _once) {
 }
 
 // Return Array with unique values
-function unique(_array) {
+function unique(_array, _tostring) {
 	var o = {}, i, l = _array.length, r = [];
-	for(i=0; i<l;i+=1)
+	for(i=0; i<l;i+=1) {
 		o[_array[i]] = _array[i];
-	for(i in o)
-		r.push(o[i]);
+	}
+	if (_tostring) {
+		for(i in o) {
+			r.push(o[i].toString());
+		}
+	} else {
+		for(i in o) {
+			r.push(o[i]);
+		}
+	}
 	return r;
+}
+
+// removes all items that are listet more than once
+function removeDuplicates(_array) {
+	var _uniques = [];
+	var _dupl = [];
+	for (var i = 0; i <= _array.length; i++) {
+		var v = _array[i]
+		console.log(i +'-' + v);
+		if (_array.lastIndexOf(v) > i || _dupl.indexOf(v) > -1) {
+			_dupl.push(v);
+		} else {
+			_uniques[_uniques.length] = v;
+		}
+	}
+
+	return  $.grep(_uniques, function(n,i) {
+		return(n);
+	});;
 }
 
 // Add custom event to centent site and listener to content_script

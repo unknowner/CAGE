@@ -16,5 +16,8 @@ function receiver(_data) {
 		case com.task.loadPage:
 			tools['Page'].loadPage(_data.data);
 			break;
+		case com.task.gifter:
+			tools['Gifter'].start[com.port.castleAge](_data.data);
+			break;
 	}
 }
