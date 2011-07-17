@@ -3,9 +3,10 @@ new tool('Gifter');
 tools['Gifter'].runtime = {};
 
 tools['Gifter'].update = function() {
-
+console.log('update');
+console.log(item.get('CAGEsendGiftTo'));
 	tools['Gifter'].runtime['sendGiftTo'] = item.get('CAGEsendGiftTo', new Array());
-	if(tools['Gifter'].runtime['sendGiftTo'].indexOf(',') > -1){
+	if(tools['Gifter'].runtime['sendGiftTo'].indexOf(',') !== -1){
 		tools['Gifter'].runtime['sendGiftTo'] = tools['Gifter'].runtime['sendGiftTo'].split(',');
 	}
 	tools['Gifter'].runtime['requests'] = [];
@@ -19,9 +20,8 @@ tools['Gifter'].update = function() {
 		console.log(_gifts);
 		if(_gifts) {
 			$.each(_gifts.data, function(_i, _e) {
-				if($.inArray(_e.from.id, tools['Gifter'].runtime['sendGiftTo']) > -1) {
+				if($.inArray(_e.from.id, tools['Gifter'].runtime['sendGiftTo']) == -1) {
 					tools['Gifter'].runtime['sendGiftTo'].push(_e.from.id);
-					console.log(_e.from.id);
 				}
 				tools['Gifter'].runtime['requests'].push(_e.id);
 			});

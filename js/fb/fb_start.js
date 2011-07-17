@@ -13,11 +13,10 @@ function startCAGE() {
 	.append('<span id="cageGeneralName" class="ui-state-active ui-corner-right"></span>'))
 	.append('<div id="cageToolsContainer" class="ui-state-default ui-corner-right"></div>');
 	console.log('init fb');
-	initTools();
 
 	com.send(com.task.signed, com.port.castleAge, $('input[name="signed_request"]').val());
-	
-	addFunction(function(){
+
+	addFunction( function() {
 		var _i = document.createElement('INPUT');
 		_i.type = 'hidden';
 		_i.id = 'EnvUser';
@@ -25,8 +24,9 @@ function startCAGE() {
 		document.body.appendChild(_i);
 	}, null, true, true);
 	com.send(com.task.userId, com.port.castleAge, $('#EnvUser').val());
-	
-	
+
 	com.send(com.task.getGeneral, com.port.castleAge, null);
+
+	initTools();
 
 }

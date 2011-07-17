@@ -1,10 +1,9 @@
 var item = {
 	get : function(_name, _default) {
+		console.log(CastleAge.userId);
 		if (localStorage[CastleAge.userId + '_' + _name] !== undefined) {
-			console.log(localStorage[CastleAge.userId + '_' + _name]);
 			return localStorage[CastleAge.userId + '_' + _name];
 		} else {
-			console.log(_default);
 			return _default;
 		}
 	},
