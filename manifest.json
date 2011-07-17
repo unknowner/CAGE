@@ -16,6 +16,7 @@
 			"js/com.js",
 			"js/tool.js",
 			"js/common.js",
+			"js/ca/ca_tools.js",
 			"js/ca/ca_receiver.js",
 			"js/tool/page.js",
 			"js/tool/generals.js",
@@ -62,7 +63,8 @@
 	"permissions": [
 		"tabs",
 		"*://apps.facebook.com/castle_age/*",
-		"*://web.castleagegame.com/castle/*"
+		"*://web.castleagegame.com/castle/*",
+		"*://www.facebook.com/*"
 		],
 	"icons": {
 		"16": "img/icon16.png",

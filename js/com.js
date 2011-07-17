@@ -15,11 +15,13 @@ var com = {
 		castleAgeReady: 'TASK_CAREADY',
 		heal: 'TASK_HEAL',
 		signed: 'TASK_SIGNED',
+		userId: 'TASK_USERID',
 		fbButtonEnable: 'TASK_FBBUTTONENABLE',
 		scroll: 'TASK_SCROLL',
 		eliteGuard: 'TASK_ELITEGUARD',
 		loadPage: 'LOADPAGE',
-		gifter: 'TASK_GIFTER'
+		updateGifter: 'TASK_UPDATEGIFTER',
+		startGifter: 'TASK_STARTGIFTER'
 	},
 	// Called in content script to setup port
 	initContentScript: function (_port) {
@@ -30,9 +32,9 @@ var com = {
 	},
 	// Called in background.html to setup port listeners
 	initBackground: function () {
-		chrome.extension.onConnect.addListener(function (_port) {
+		chrome.extension.onConnect.addListener( function (_port) {
 			com.ports[_port.name] = _port;
-			_port.onMessage.addListener(function (_message) {
+			_port.onMessage.addListener( function (_message) {
 				com.ports[_message.port].postMessage(_message);
 			});
 		});

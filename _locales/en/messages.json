@@ -6,5 +6,9 @@
   "buttonEliteGuard": {
     "message": "Elite guard",
     "description": "fb UI button: Elite Guard"
+  },
+  "buttonGifter": {
+    "message": "Get gifts",
+    "description": "fb UI button: Gifter"
   }
 }

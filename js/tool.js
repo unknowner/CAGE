@@ -27,12 +27,12 @@ function tool(_id) {
 	this.start[com.port.facebook] = null;
 	// work it
 	this.work = {};
-	this.work[com.port.castleAge] = null;
-	this.work[com.port.facebook] = null;
+	//this.work[com.port.castleAge] = null;
+	//this.work[com.port.facebook] = null;
 	// clean up
 	this.done = {};
-	this.done[com.port.castleAge] = null;
-	this.done[com.port.facebook] = null;
+	//this.done[com.port.castleAge] = null;
+	//this.done[com.port.facebook] = null;
 }
 
 function initTools() {

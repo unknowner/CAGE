@@ -2,6 +2,7 @@
 var CastleAge = {
 	bqh: null,
 	signed_request: null,
+	userId: null,
 	pageModTimer: null
 };
 
@@ -19,11 +20,9 @@ initTools();
 addFunction( function() {
 	FB.Canvas.setAutoResize(false);
 }, null, true, true);
-
 $('#app_body').live('DOMSubtreeModified', function(event) {
 	window.clearTimeout(CastleAge.pageModTimer);
 	CastleAge.pageModTimer = window.setTimeout(setCASize, 50);
 });
-
 com.send(com.task.castleAgeReady, com.port.facebook, {});
 setCASize();

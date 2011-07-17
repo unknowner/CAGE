@@ -15,16 +15,18 @@ function startCAGE() {
 	console.log('init fb');
 	initTools();
 
-	var _requestIds = location.search.replace(/bm=1|request_ids=|ref=notif|ref=bookmarks|notif_t=app_request|\?|&/g,'');
-	if (_requestIds !== null && _requestIds.length > 0) {
-		_requestIds = _requestIds.split('%2C').join(',');
-	} else {
-		_requestIds = null;
-	}
-	console.log('requestIds:' + _requestIds);
-	com.send(com.task.gifter, com.port.castleAge, _requestIds);
-
-	com.send(com.task.signed, com.port.castleAge, $('input[name="signed_request"]').attr('value'));
+	com.send(com.task.signed, com.port.castleAge, $('input[name="signed_request"]').val());
+	
+	addFunction(function(){
+		var _i = document.createElement('INPUT');
+		_i.type = 'hidden';
+		_i.id = 'EnvUser';
+		_i.value = Env.user;
+		document.body.appendChild(_i);
+	}, null, true, true);
+	com.send(com.task.userId, com.port.castleAge, $('#EnvUser').val());
+	
+	
 	com.send(com.task.getGeneral, com.port.castleAge, null);
 
 }
