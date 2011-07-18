@@ -6,8 +6,13 @@ tools['Gifter'].update = function() {
 	console.log('update');
 	console.log(item.get('CAGEsendGiftTo'));
 	tools['Gifter'].runtime['sendGiftTo'] = item.get('CAGEsendGiftTo', new Array());
+	if (tools['Gifter'].runtime['sendGiftTo'].length == 0){
+		tools['Gifter'].runtime['sendGiftTo'] = [];
+	}
 	if(tools['Gifter'].runtime['sendGiftTo'].indexOf(',') !== -1) {
 		tools['Gifter'].runtime['sendGiftTo'] = tools['Gifter'].runtime['sendGiftTo'].split(',');
+	} else {
+		tools['Gifter'].runtime['sendGiftTo'] = $.makeArray(tools['Gifter'].runtime['sendGiftTo']);
 	}
 	tools['Gifter'].runtime['requests'] = [];
 
@@ -43,9 +48,8 @@ tools['Gifter'].start[com.port.castleAge] = function () {
 tools['Gifter'].work[com.port.castleAge] = function () {
 	console.log('work[com.port.castleAge]');
 	if(tools['Gifter'].runtime['requests'].length > 0) {
-		console.log(tools['Gifter'].runtime['requests'].join(','))
+		console.log(tools['Gifter'].runtime['requests'])
 		$.get('index.php?request_ids=' + tools['Gifter'].runtime['requests'].join(',') + '&signed_request=' + $('#signed_request').val(), function(_data) {
-			console.log(_data);
 			tools['Gifter'].done[com.port.castleAge]();
 		});
 	} else {
@@ -121,8 +125,12 @@ tools['Gifter'].init[com.port.castleAge] = function () {
 										_store.splice(_store.indexOf(myObject.to.id),1);
 									}
 								}
-								localStorage[FB._session.uid + '_' + 'CAGEsendGiftTo'] = _store.join(',');
-								console.log('clear');
+								if (_store.length > 0) {
+									localStorage[FB._session.uid + '_' + 'CAGEsendGiftTo'] = _store.join(',');
+								} else {
+									console.log('clear');
+									localStorage.removeItem(FB._session.uid + '_' + 'CAGEsendGiftTo');
+								}
 								console.log(localStorage[FB._session.uid + '_' + 'CAGEsendGiftTo']);
 							});
 						}
