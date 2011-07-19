@@ -1,0 +1,10 @@
+2011-07-19 Unknowner
+
+	* gifter.js:
+	FIX: not showing empty CAGE filter
+	
+2011-07-19 Unknowner
+
+	* manifest.json
+	version: 1.0.10
+	

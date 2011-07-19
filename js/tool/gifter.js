@@ -77,10 +77,11 @@ tools['Gifter'].init[com.port.castleAge] = function () {
 				method: 'apprequests',
 				message: msg,
 				data: track,
-				title: tit
+				title: tit,
+				filters: ['app_users','all','app_non_users']
 			};
-console.log(localStorage[FB._session.uid + '_' + 'CAGEsendGiftTo']);
-			if(localStorage[FB._session.uid + '_' + 'CAGEsendGiftTo'] !== undefined ) {
+			console.log(localStorage[FB._session.uid + '_' + 'CAGEsendGiftTo']);
+			if(localStorage[FB._session.uid + '_' + 'CAGEsendGiftTo'] !== undefined && localStorage[FB._session.uid + '_' + 'CAGEsendGiftTo'].length !== 0) {
 				_ui.filters = [{
 					name: 'CAGE',
 					user_ids: localStorage[FB._session.uid + '_' + 'CAGEsendGiftTo'].split(',')
