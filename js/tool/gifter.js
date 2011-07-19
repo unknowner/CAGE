@@ -79,8 +79,8 @@ tools['Gifter'].init[com.port.castleAge] = function () {
 				data: track,
 				title: tit
 			};
-
-			if(localStorage[FB._session.uid + '_' + 'CAGEsendGiftTo'] !== null ) {
+console.log(localStorage[FB._session.uid + '_' + 'CAGEsendGiftTo']);
+			if(localStorage[FB._session.uid + '_' + 'CAGEsendGiftTo'] !== undefined ) {
 				_ui.filters = [{
 					name: 'CAGE',
 					user_ids: localStorage[FB._session.uid + '_' + 'CAGEsendGiftTo'].split(',')
@@ -104,7 +104,7 @@ tools['Gifter'].init[com.port.castleAge] = function () {
 					var request_id_count = request_id_array.length;
 
 					// get all ids from sent gifts and remove them from the list
-					if(localStorage[FB._session.uid + '_' + 'CAGEsendGiftTo'] !== null) {
+					if(localStorage[FB._session.uid + '_' + 'CAGEsendGiftTo'] !== undefined) {
 						var ids = result.request_ids;
 						var _batch = [];
 						for (var i = 0; i < ids.length; i++) {
