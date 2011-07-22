@@ -24,6 +24,7 @@
 			"js/tool/eliteguard.js",
 			"js/tool/heal.js",
 			"js/tool/gifter.js",
+			"js/tool/stash.js",
 			"js/page/allpages.js",
 			"js/page/index.js",
 			"js/page/guild_battle.js",
@@ -55,6 +56,7 @@
 			"js/tool/eliteguard.js",
 			"js/tool/heal.js",
 			"js/tool/gifter.js",
+			"js/tool/stash.js",
 			"js/facebook.js"
 			]
 	}

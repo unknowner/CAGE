@@ -12,6 +12,7 @@ var com = {
 		init: 'TASK_INIT',
 		getGeneral: 'TASK_GETGENERAL',
 		general: 'TASK_GENERAL',
+		updateGenerals: 'TASK_UPDATEGENERALS',
 		castleAgeReady: 'TASK_CAREADY',
 		heal: 'TASK_HEAL',
 		signed: 'TASK_SIGNED',
@@ -21,7 +22,8 @@ var com = {
 		eliteGuard: 'TASK_ELITEGUARD',
 		loadPage: 'LOADPAGE',
 		updateGifter: 'TASK_UPDATEGIFTER',
-		startGifter: 'TASK_STARTGIFTER'
+		startGifter: 'TASK_STARTGIFTER',
+		startStash: 'TASK_STASH'
 	},
 	// Called in content script to setup port
 	initContentScript: function (_port) {
@@ -41,6 +43,7 @@ var com = {
 	},
 	// Send Messages to ports
 	send: function (_task, _port, _data) {
+		console.log(_task + ' >> ' + _port);
 		com.port.current.postMessage({
 			task: _task,
 			port: _port,

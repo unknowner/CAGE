@@ -25,4 +25,5 @@ $('#app_body').live('DOMSubtreeModified', function(event) {
 	CastleAge.pageModTimer = window.setTimeout(setCASize, 50);
 });
 com.send(com.task.castleAgeReady, com.port.facebook, {});
+
 setCASize();

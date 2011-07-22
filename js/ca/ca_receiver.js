@@ -3,6 +3,9 @@ function receiver(_data) {
 		case com.task.getGeneral:
 			tools['General'].get();
 			break;
+		case com.task.updateGenerals:
+			tools['General'].update();
+			break;
 		case com.task.signed:
 			CastleAge.signed_request = _data.data;
 			$(document.body).append('<input id="signed_request" type="hidden" name="signed_request" value="' + _data.data + '" />');
@@ -25,5 +28,10 @@ function receiver(_data) {
 		case com.task.startGifter:
 			tools['Gifter'].start[com.port.castleAge]();
 			break;
+		case com.task.startStash:
+			tools['Stash'].start[com.port.castleAge]();
+			break;
+		default:
+			console.log(_data.task + ' unknown!');		
 	}
 }

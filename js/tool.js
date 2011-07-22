@@ -38,6 +38,7 @@ function tool(_id) {
 function initTools() {
 	$.each(tools, function (_index, _tool) {
 		if (_tool.init[com.port.current.name]) {
+			console.log('INIT@' + com.port.current.name + ':' + _tool.id);
 			_tool.init[com.port.current.name]();
 		}
 	});

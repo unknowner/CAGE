@@ -1,10 +1,22 @@
+2011-07-23 Unknowner
+
+	* stash.js:
+		ADD: Stash all gold, if available switch to Aeris
+
+2011-07-22 Unknowner
+
+	* allpages.js:
+		FIX: Guild battle result not closing
+	* page.js
+		CHG: Optimized some page scrolls etc.
+
 2011-07-19 Unknowner
 
 	* gifter.js:
-	FIX: not showing empty CAGE filter
+		FIX: not showing empty CAGE filter
 	
 2011-07-19 Unknowner
 
 	* manifest.json
-	version: 1.0.11
+		version: 1.0.11
 	

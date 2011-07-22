@@ -1,86 +1,85 @@
 new tool('Page');
 new tool('Page');
 tools['Page'].runtime = {};
-tools['Page'].init[com.port.castleAge] = function () {
+tools['Page'].init[com.port.castleAge] = function() {
 	addFunction(tools['Page'].get_cached_ajax, null, true, true);
 	addFunction(tools['Page'].ajaxLinkSend, null, true, true);
 	addFunction(tools['Page'].ajaxFormSend, null, true, true);
 	addFunction(tools['Page'].swapElementClass, null, true, true);
 	// Do stuff after page loaded
-	customEvent('PageURL', function () {
+	customEvent('PageURL', function() {
 		var _page = $('#PageURL').val();
 		console.log()
 		tools['General'].get();
 		tools['Page'].runtime['allPages']();
-		if (tools['Page'].runtime[_page]) {
+		if(tools['Page'].runtime[_page]) {
 			tools['Page'].runtime[_page]();
 		}
 		setCASize();
 	});
 	// scroll to
-	customEvent('Scroll', function () {
+	customEvent('Scroll', function() {
 		var _value = $('#Scroll').val();
 		com.send(com.task.scroll, com.port.facebook, {
-			to: _value,
+			to : _value,
 		});
 	});
 	// Set Canvas Size
-	customEvent('SetSize', function () {
+	customEvent('SetSize', function() {
 		setCASize();
 	});
 };
 tools['Page'].loadPage = function(_page) {
 	console.log('Loadpage:' + _page);
-	addFunction( function(_p) {
+	addFunction(function(_p) {
 		get_cached_ajax(_p + '?signed_request=' + $('#signed_request').attr('value'));
 	}, _page, true, true);
 };
-tools['Page'].swapElementClass = function () {
-	swapElementClass = function (elem_id, classname) {
+tools['Page'].swapElementClass = function() {
+	swapElementClass = function(elem_id, classname) {
 		$('#' + elem_id).removeAttr('class').addClass(classname);
 		fireSetSize();
 	}
 };
-tools['Page'].get_cached_ajax = function () {
-	get_cached_ajax = function (url, get_type) {
+tools['Page'].get_cached_ajax = function() {
+	get_cached_ajax = function(url, get_type) {
 		// just_body_cache
 		var url_key = url;
-		if (url.indexOf('?') != -1) {
+		if(url.indexOf('?') != -1) {
 			url_key = url.substring(0, url.indexOf('?'));
 		}
 		setPageURL(url_key);
-		if (get_type == 'cache_body' && pageCache[url_key]) {
-			if (pageCache[url_key].lastIndexOf('<fb:') == -1) {
+		if(get_type == 'cache_body' && pageCache[url_key]) {
+			if(pageCache[url_key].lastIndexOf('<fb:') == -1) {
 				$('#app_body_container').html(pageCache[url_key]);
-				firePageURL();
-				fireScroll(0);
 			} else {
 				document.getElementById('app_body_container').innerHTML = data;
 				FB.XFBML.parse(document.getElementById('app_body_container'));
-				firePageURL();
-				fireScroll(0);
 			}
+			firePageURL();
+			fireScroll(0);
+			fireSetSize();
 		} else {
-			if (get_type == 'get_page') {
+			if(get_type == 'get_page') {
 				stopTimers = true;
 				pageCache[url_key] = null;
-			} else if (get_type == 'destroy_all_get_page') {
+			} else if(get_type == 'destroy_all_get_page') {
 				stopTimers = true;
 				pageCache = {};
 			}
 			var params = 'ajax=1';
 			params += '&signed_request=' + $('#signed_request').attr('value');
-			if ((get_type == 'cache_body') || (get_type == 'get_body')) {
+			if((get_type == 'cache_body') || (get_type == 'get_body')) {
 				params += '&get_type=body';
 			}
 			ajaxPerforming = true;
 			showLoaderIfAjax();
 			$.ajax({
-				url: url,
-				context: document.body,
-				data: params,
-				type: 'POST',
-				success: function (data) {
+				url : url,
+				context : document.body,
+				data : params,
+				type : 'POST',
+				success : function(data) {
 					/*
 					 * if (cageCAGE.cache.UseImageServer &&
 					 * cageCAGE.cache.ImageServer.length > 0) { data =
@@ -91,39 +90,36 @@ tools['Page'].get_cached_ajax = function () {
 					stopTimers = false;
 					ajaxPerforming = false;
 					$('#AjaxLoadIcon').hide();
-					if ((get_type == 'cache_body') || (get_type == 'get_body')) {
-						if (data.lastIndexOf('<fb:') == -1) {
+					if((get_type == 'cache_body') || (get_type == 'get_body')) {
+						if(data.lastIndexOf('<fb:') == -1) {
 							$('#app_body_container').html(data);
-							firePageURL();
+
 						} else {
 							document.getElementById('app_body_container').innerHTML = data;
 							FB.XFBML.parse(document.getElementById('app_body_container'));
-							firePageURL();
 						}
-						FB.Canvas.setSize();
-						fireScroll(0);
 					} else {
-						if (data.lastIndexOf('<fb:') == -1) {
+						if(data.lastIndexOf('<fb:') == -1) {
 							$('#globalContainer').html(data);
-							firePageURL();
 						} else {
 							document.getElementById('globalContainer').innerHTML = data;
 							FB.XFBML.parse(document.getElementById('globalContainer'));
-							firePageURL();
 						}
-						fireScroll(0);
 					}
+					firePageURL();
+					fireScroll(0);
+					fireSetSize();
 					centerPopups();
 				}
 			});
 		}
 	};
 };
-tools['Page'].done = function (_url, _div) {
+tools['Page'].done = function(_url, _div) {
 	console.log('page done');
 };
-tools['Page'].ajaxLinkSend = function () {
-	ajaxLinkSend = function (div, url) {
+tools['Page'].ajaxLinkSend = function() {
+	ajaxLinkSend = function(div, url) {
 		friend_browse_offset = 0;
 		reset_raid_lst();
 		pageCache = {};
@@ -131,52 +127,52 @@ tools['Page'].ajaxLinkSend = function () {
 		showLoaderIfAjax();
 		var params = 'ajax=1';
 		params += '&signed_request=' + $('#signed_request').attr('value');
-		if (!url) {
+		if(!url) {
 			url = 'index.php?adkx=2';
 		}
 		var url_key = url;
-		if (url.indexOf('?') != -1) {
+		if(url.indexOf('?') != -1) {
 			url_key = url.substring(0, url.indexOf('?'));
 		}
 		setPageURL(url_key);
 		$.ajax({
-			url: url,
-			context: document.body,
-			data: params,
-			type: 'POST',
-			success: function (data) {
+			url : url,
+			context : document.body,
+			data : params,
+			type : 'POST',
+			success : function(data) {
 				ajaxPerforming = false;
 				$('#AjaxLoadIcon').hide();
-				if (data.lastIndexOf('<fb:') == -1) {
+				if(data.lastIndexOf('<fb:') == -1) {
 					$('#' + div).html(data);
-					firePageURL();
 				} else {
 					document.getElementById(div).innerHTML = data;
 					FB.XFBML.parse(document.getElementById(div));
-					firePageURL();
 				}
+				firePageURL();
 				fireScroll(0);
+				fireSetSize();
 				centerPopups();
 			}
 		});
 		scrollToElement('#main_anchor');
 		FB.init({
-			appId: '46755028429',
-			status: true,
+			appId : '46755028429',
+			status : true,
 			// check login status
-			cookie: true,
+			cookie : true,
 			// enable cookies to allow the server to access the
 			// session
-			xfbml: true
+			xfbml : true
 			// parse XFBML
 		});
 		//FB.Canvas.setAutoResize();
 	};
 };
-tools['Page'].ajaxFormSend = function (div, url, formElement, anchor) {
-	ajaxFormSend = function (div, url, formElement, anchor) {
+tools['Page'].ajaxFormSend = function(div, url, formElement, anchor) {
+	ajaxFormSend = function(div, url, formElement, anchor) {
 		friend_browse_offset = 0;
-		if (!anchor) {
+		if(!anchor) {
 			anchor = 'main_anchor';
 		}
 		stopTimers = true;
@@ -184,22 +180,22 @@ tools['Page'].ajaxFormSend = function (div, url, formElement, anchor) {
 		params += '&ajax=1';
 		params += '&signed_request=' + $('#signed_request').attr('value');
 		pageCache = {};
-		if (!url) {
+		if(!url) {
 			url = 'index.php?adkx=7';
 		}
 		var url_key = url;
-		if (url.indexOf('?') != -1) {
+		if(url.indexOf('?') != -1) {
 			url_key = url.substring(0, url.indexOf('?'));
 		}
 		setPageURL(url_key);
 		ajaxPerforming = true;
 		showLoaderIfAjax();
 		$.ajax({
-			url: url,
-			context: document.body,
-			data: params,
-			type: 'POST',
-			success: function (data) {
+			url : url,
+			context : document.body,
+			data : params,
+			type : 'POST',
+			success : function(data) {
 				/*
 				 * if (cageCAGE.cache.UseImageServer &&
 				 * cageCAGE.cache.ImageServer.length > 0) { data = data
@@ -210,15 +206,15 @@ tools['Page'].ajaxFormSend = function (div, url, formElement, anchor) {
 				stopTimers = false;
 				ajaxPerforming = false;
 				$('#AjaxLoadIcon').hide();
-				if (data.lastIndexOf('<fb:') == -1) {
+				if(data.lastIndexOf('<fb:') == -1) {
 					$('#' + div).html(data);
-					firePageURL();
 				} else {
 					document.getElementById(div).innerHTML = data;
 					FB.XFBML.parse(document.getElementById(div));
-					firePageURL();
 				}
+				firePageURL();
 				fireScroll(0);
+				fireSetSize();
 				centerPopups();
 			}
 		});
