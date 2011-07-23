@@ -1,3 +1,10 @@
+2001-07-23 Unknowner
+
+	* manifest.json
+		version: 1.0.12
+	* allpeages.js
+		CHG: Result closing changed from get to post
+
 2011-07-23 Unknowner
 
 	* stash.js:

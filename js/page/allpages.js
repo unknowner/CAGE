@@ -9,7 +9,7 @@ tools['Page'].runtime['allPages'] = function () {
 		var _close = $_img.parent('a').attr('onclick').match('global_bottom') !== null ? 'global_bottom' : 'global_top';
 		$_img.unwrap().click(function () {
 			$(this).css('height', 18).attr('src', 'http://image4.castleagegame.com/graphics/shield_wait.gif');
-			$.get($('#PageURL').val() + '?close_result=' + _close + '&signed_request=' + CastleAge.signed_request, function () {
+			$.post($('#PageURL').val() + '?close_result=' + _close + '&signed_request=' + CastleAge.signed_request, function () {
 				$_element.next('br').slideUp('slow', function () {
 					$(this).remove();
 				});
