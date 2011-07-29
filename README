@@ -1,4 +1,11 @@
-2001-07-23 Unknowner
+2011-07-29 Unknowner
+
+	* allpages.js
+		CHG: Can now close all results
+	* fb_cage.css
+		CHG: fixed menu position
+
+2011-07-23 Unknowner
 
 	* manifest.json
 		version: 1.0.12

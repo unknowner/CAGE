@@ -3,8 +3,7 @@ new tool('Gifter');
 tools['Gifter'].runtime = {};
 
 tools['Gifter'].update = function() {
-	console.log('update');
-	console.log(item.get('CAGEsendGiftTo'));
+
 	tools['Gifter'].runtime['sendGiftTo'] = item.get('CAGEsendGiftTo', new Array());
 	if (tools['Gifter'].runtime['sendGiftTo'].length == 0){
 		tools['Gifter'].runtime['sendGiftTo'] = [];
@@ -16,13 +15,10 @@ tools['Gifter'].update = function() {
 	}
 	tools['Gifter'].runtime['requests'] = [];
 
-	console.log(tools['Gifter'].runtime['sendGiftTo']);
-
 	//prepare update event to receive userids and request ids
 	customEvent('GiftRequests', function() {
 
 		var _gifts = JSON.parse($('#GiftRequests').val());
-		console.log(_gifts);
 		if(_gifts) {
 			$.each(_gifts.data, function(_i, _e) {
 				if($.inArray(_e.from.id, tools['Gifter'].runtime['sendGiftTo']) == -1) {
@@ -30,7 +26,6 @@ tools['Gifter'].update = function() {
 				}
 				tools['Gifter'].runtime['requests'].push(_e.id);
 			});
-			console.log(tools['Gifter'].runtime['sendGiftTo']);
 			item.set('CAGEsendGiftTo', tools['Gifter'].runtime['sendGiftTo'].join(','));
 		}
 		tools['Gifter'].work[com.port.castleAge]();
@@ -42,11 +37,10 @@ tools['Gifter'].update = function() {
 	}, null, true, true);
 };
 tools['Gifter'].start[com.port.castleAge] = function () {
-	console.log('start[com.port.castleAge]');
 	tools['Gifter'].update();
 };
 tools['Gifter'].work[com.port.castleAge] = function () {
-	console.log('work[com.port.castleAge]');
+
 	if(tools['Gifter'].runtime['requests'].length > 0) {
 		console.log(tools['Gifter'].runtime['requests'])
 		$.get('index.php?request_ids=' + tools['Gifter'].runtime['requests'].join(',') + '&signed_request=' + $('#signed_request').val(), function(_data) {
@@ -66,12 +60,10 @@ tools['Gifter'].init[com.port.facebook] = function () {
 	});
 };
 tools['Gifter'].init[com.port.castleAge] = function () {
-	console.log('init gifter ca');
+
 	addFunction( function(_giftData) {
 
 		window['showRequestForm'] = function(tit, msg, track, request_params) {
-
-			console.log('CAGE showRequestForm');
 
 			var _ui = {
 				method: 'apprequests',
@@ -80,7 +72,7 @@ tools['Gifter'].init[com.port.castleAge] = function () {
 				title: tit,
 				filters: ['app_users','all','app_non_users']
 			};
-			console.log(localStorage[FB._session.uid + '_' + 'CAGEsendGiftTo']);
+
 			if(localStorage[FB._session.uid + '_' + 'CAGEsendGiftTo'] !== undefined && localStorage[FB._session.uid + '_' + 'CAGEsendGiftTo'].length !== 0) {
 				_ui.filters = [{
 					name: 'CAGE',
@@ -132,7 +124,6 @@ tools['Gifter'].init[com.port.castleAge] = function () {
 									console.log('clear');
 									localStorage.removeItem(FB._session.uid + '_' + 'CAGEsendGiftTo');
 								}
-								console.log(localStorage[FB._session.uid + '_' + 'CAGEsendGiftTo']);
 							});
 						}
 					}

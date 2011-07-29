@@ -66,6 +66,5 @@ tools['General'].update = function() {
 				text : _text
 			};
 		});
-		console.log(tools['General'].general);
 	});
 };

@@ -2,8 +2,9 @@ function startCAGE() {
 	$('#globalContainer').css('width', 1005);
 	$('#contentCol').css('paddingTop', 0);
 	$('div.fixedAux').css({
-		'width': 245,
-		'border': 0
+		'width': 205,
+		'border': 0,
+		'position': 'fixed'
 	}).empty().append(
 		$('<div id="cageGeneralContainer" class="ui-corner-br ui-state-default"></div>')
 			.append(
