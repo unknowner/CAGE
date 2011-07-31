@@ -38,6 +38,6 @@ tools['Stash'].done = function() {
 tools['Stash'].init = function() {
 	tools['Stash'].fbButton.add(chrome.i18n.getMessage("buttonStash"), function() {
 		tools['Stash'].fbButton.disable();
-		com.send(com.task.startStash, com.port.castleAge, null);
+		tools['Stash'].start();
 	});
 };
