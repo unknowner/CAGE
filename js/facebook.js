@@ -15,7 +15,7 @@ $('#blueBar').css({
 	'zIndex': 1
 });
 $('#iframe_canvas').css({
-	'marginTop': 41
+	'marginTop': 56
 });
 
 window.onresize = function (evt) {

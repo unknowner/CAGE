@@ -1,6 +1,7 @@
 // All Pages
 tools['Page'].runtime['allPages'] = function () {
 
+	$('a[href="http://apps.facebook.com/castle_hod/?xprom=cax"]:first').parent('div:first').remove();
 	$('#globalContainer').css({
 		'overflow': 'auto'
 	});
