@@ -4,7 +4,6 @@ tools['General'].current = null;
 tools['General'].general = {};
 //get current general from CA and set it in fb ui
 tools['General'].get = function() {
-	console.log('get');
 	if($('#equippedGeneralContainer div.general_name_div3').length > 0) {
 		tools['General'].current = $('#equippedGeneralContainer div.general_name_div3').text().trim();
 		tools['General'].set();
@@ -12,13 +11,11 @@ tools['General'].get = function() {
 };
 // Set general image & name in fb ui
 tools['General'].set = function(_general) {
-	console.log('set');
 	$('#cageGeneralImage').attr('src', tools['General'].general[tools['General'].current].image);
 	$('#cageGeneralName').text(tools['General'].current);
 };
 // Set General by name
 tools['General'].setByName = function(_name, _callback) {
-	console.log('setByName');
 	var _g = tools['General'].general[_name];
 	if(_g !== null) {
 		$.get('generals.php?item=' + _g.item + '&itype=' + _g.itype + '&bqh=' + CastleAge.bqh + '&signed_request=' + CastleAge.signed_request, function() {
@@ -32,7 +29,6 @@ tools['General'].setByName = function(_name, _callback) {
 };
 // init general tool @fb
 tools['General'].init = function() {
-	console.log('init');
 	$('#cageGeneralImage').click( function() {
 		tools['Page'].loadPage('generals.php');
 	});
@@ -40,7 +36,6 @@ tools['General'].init = function() {
 }
 // update generals object
 tools['General'].update = function() {
-	console.log('update');
 	if(CastleAge.signed_request !== null) {
 		$.get('generals.php?signed_request=' + CastleAge.signed_request, function(_data) {
 			tools['General'].general = {};

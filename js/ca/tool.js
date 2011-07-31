@@ -11,35 +11,27 @@ function tool(_id) {
 			$('#' + this.id).button().removeClass('ui-corner-all').addClass('ui-corner-right').click(_call);
 		},
 		enable: function () {
-			$('#' + this.id).button("option", "disabled", false);
+			$('#' + this.id).button("option", "disabled", false).removeClass('ui-state-hover');
 		},
 		disable: function () {
 			$('#' + this.id).button("option", "disabled", true);
 		}
 	};
 	// prepare tool e.g add button to fb gui etc.
-	this.init = {};
-	this.init[com.port.castleAge] = null;
-	this.init[com.port.facebook] = null;
+	this.init = null;
 	// start tool on click/task
-	this.start = {};
-	this.start[com.port.castleAge] = null;
-	this.start[com.port.facebook] = null;
+	this.start = null;
 	// work it
-	this.work = {};
+	this.work = null;
 	// clean up
-	this.done = {};
+	this.done = null;
 }
 
 function initTools() {
 	$.each(tools, function (_index, _tool) {
-		if (_tool.init[com.port.current.name]) {
+		if (_tool.init) {
 			console.log('INIT@' + com.port.current.name + ':' + _tool.id);
-			_tool.init[com.port.current.name]();
-		} else {
-			if(com.port.current.name == com.port.castleAge &&  (typeof _tool.init) == 'function') {
-				_tool.init();
-			}
+			_tool.init();
 		}
 	});
 }

@@ -12,15 +12,15 @@ if (tools['Page'].runtime[$('#current_pg_info').attr('value') + '.php']) {
 	tools['Page'].runtime[$('#current_pg_info').attr('value') + '.php']();
 }
 
-$('head').append('<link rel="stylesheet" type="text/css" href="' + chrome.extension.getURL('css/trontastic/jquery-ui.css') + '">');
+$('head').append('<link rel="stylesheet" type="text/css" href="' + chrome.extension.getURL('css/dark-hive/jquery-ui.css') + '">');
 
 var _elm = {
 	cage : '<div id="cageContainer"></div>',
-	general : '<div id="cageGeneralContainer" class="ui-corner-br ui-state-default"></div>',
+	general : '<div id="cageGeneralContainer" class="ui-corner-br ui-widget-content"></div>',
 	generalImageContainer : '<div id="cageGeneralImageContainer" class="ui-state-active ui-corner-all"></div>',
-	generalImage : '<img id="cageGeneralImage" class="ui-corner-all" />',
+	generalImage : '<img id="cageGeneralImage" class="ui-corner-all" src="http://image4.castleagegame.com/graphics/shield_wait.gif"/>',
 	generalName : '<span id="cageGeneralName" class="ui-state-active ui-corner-right"></span>',
-	tools : '<div id="cageToolsContainer" class="ui-state-default ui-corner-right"></div>'
+	tools : '<div id="cageToolsContainer" class="ui-widget-content ui-corner-right"></div>'
 }
 
 $(document.body).append($(_elm.cage).append($(_elm.general).append($(_elm.generalImageContainer).append(_elm.generalImage)).append(_elm.generalName)).append(_elm.tools));

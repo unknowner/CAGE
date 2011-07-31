@@ -1,11 +1,11 @@
 new tool('Page');
 new tool('Page');
 tools['Page'].runtime = {};
-tools['Page'].init[com.port.castleAge] = function() {
+tools['Page'].init = function() {
 	addFunction(tools['Page'].get_cached_ajax, null, true, true);
 	addFunction(tools['Page'].ajaxLinkSend, null, true, true);
 	addFunction(tools['Page'].ajaxFormSend, null, true, true);
-	addFunction(tools['Page'].swapElementClass, null, true, true);
+	//addFunction(tools['Page'].swapElementClass, null, true, true);
 	// Do stuff after page loaded
 	customEvent('PageURL', function() {
 		var _page = $('#PageURL').val();
@@ -35,12 +35,13 @@ tools['Page'].loadPage = function(_page) {
 		get_cached_ajax(_p + '?signed_request=' + $('#signed_request').val());
 	}, '"' + _page + '"', true, true);
 };
-tools['Page'].swapElementClass = function() {
-	swapElementClass = function(elem_id, classname) {
-		$('#' + elem_id).removeAttr('class').addClass(classname);
-		////fireSetSize();
-	}
-};
+/*
+ tools['Page'].swapElementClass = function() {
+ swapElementClass = function(elem_id, classname) {
+ $('#' + elem_id).removeAttr('class').addClass(classname);
+ ////fireSetSize();
+ }
+ };*/
 tools['Page'].get_cached_ajax = function() {
 	get_cached_ajax = function(url, get_type) {
 		// just_body_cache

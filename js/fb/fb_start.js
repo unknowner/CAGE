@@ -3,7 +3,8 @@ function startCAGE() {
 	$('#contentArea').css('width', 1005);
 	$('#pagelet_canvas_footer_content').hide();
 	$('#contentCol').css('paddingTop', 0);
-	$('div.fixedAux').css({
+	$('div.fixedAux').hide();
+	/*$('div.fixedAux').css({
 		'width': 205,
 		'border': 0,
 		'position': 'fixed'
@@ -13,7 +14,7 @@ function startCAGE() {
 	$('<div id="cageGeneralImageContainer" class="ui-state-active ui-corner-all"></div>')
 	.append('<img id="cageGeneralImage" class="ui-corner-all" />')
 	).append('<span id="cageGeneralName" class="ui-state-active ui-corner-right"></span>')
-	).append('<div id="cageToolsContainer" class="ui-state-default ui-corner-right"></div>');
+	).append('<div id="cageToolsContainer" class="ui-state-default ui-corner-right"></div>');*/
 	addFunction( function () {
 		var _i = document.createElement('INPUT');
 		_i.type = 'hidden';
@@ -30,6 +31,5 @@ function startCAGE() {
 	com.send(com.task.userId, com.port.castleAge, $('#EnvUser').val());
 	//com.send(com.task.updateGenerals, com.port.castleAge, null);
 	//com.send(com.task.getGeneral, com.port.castleAge, null);
-	initTools();
 
 }
