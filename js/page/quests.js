@@ -11,8 +11,8 @@ tools['Page'].runtime['quests.php'] = function () {
 			});
 		})
 		.css({
-			'marginTop'	: -17,
-			'position'	: 'absolute',
+			'top'	: -17,
+			'position'	: 'relative',
 			'width'		: 78,
 			'cursor'	: 'pointer'
 		})

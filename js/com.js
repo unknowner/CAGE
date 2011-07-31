@@ -23,7 +23,8 @@ var com = {
 		loadPage: 'LOADPAGE',
 		updateGifter: 'TASK_UPDATEGIFTER',
 		startGifter: 'TASK_STARTGIFTER',
-		startStash: 'TASK_STASH'
+		startStash: 'TASK_STASH',
+		resize: 'TASK_RESIZE'
 	},
 	// Called in content script to setup port
 	initContentScript: function (_port) {
@@ -43,7 +44,9 @@ var com = {
 	},
 	// Send Messages to ports
 	send: function (_task, _port, _data) {
-		console.log(_task + ' >> ' + _port);
+		//if(_task !== com.task.resize) {
+			console.log(_task + ' >> ' + _port);
+		//}
 		com.port.current.postMessage({
 			task: _task,
 			port: _port,

@@ -4,17 +4,17 @@ tools['Stash'].runtime = {};
 
 tools['Stash'].runtime.general = null;
 
-tools['Stash'].start[com.port.castleAge] = function() {
+tools['Stash'].start = function() {
 
 	if(tools['General'].general['Aeris'] !== null) {
 		tools['Stash'].runtime.general = tools['General'].current;
-		tools['General'].setByName('Aeris', tools['Stash'].work[com.port.castleAge]);
+		tools['General'].setByName('Aeris', tools['Stash'].work);
 	} else {
-		tools['Stash'].work[com.port.castleAge]();
+		tools['Stash'].work();
 	}
 
 };
-tools['Stash'].work[com.port.castleAge] = function() {
+tools['Stash'].work = function() {
 	$.get('keep.php?do=Stash&stash_gold=' + $('#gold_current_value').text().match(/\d*/g).join('') + '&bqh=' + CastleAge.bqh + '&signed_request=' + CastleAge.signed_request, function() {
 		addFunction(function() {
 			clearTimeout(timedStats['gold']);
@@ -26,16 +26,16 @@ tools['Stash'].work[com.port.castleAge] = function() {
 		}
 		$('#gold_current_value').text('$0');
 		if(tools['Stash'].runtime.general !== tools['General'].current) {
-			tools['General'].setByName(tools['Stash'].runtime.general, tools['Stash'].done[com.port.castleAge]);
+			tools['General'].setByName(tools['Stash'].runtime.general, tools['Stash'].done);
 		} else {
-			tools['Stash'].done[com.port.castleAge]();
+			tools['Stash'].done();
 		}
 	});
 };
-tools['Stash'].done[com.port.castleAge] = function() {
+tools['Stash'].done = function() {
 	com.send(com.task.fbButtonEnable, com.port.facebook, 'Stash');
 };
-tools['Stash'].init[com.port.facebook] = function() {
+tools['Stash'].init = function() {
 	tools['Stash'].fbButton.add(chrome.i18n.getMessage("buttonStash"), function() {
 		tools['Stash'].fbButton.disable();
 		com.send(com.task.startStash, com.port.castleAge, null);

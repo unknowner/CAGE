@@ -19,9 +19,9 @@ tools['Eliteguard'].getUserIds = function () {
 				$.each(JSON.parse(_army), function(_i, _e) {
 					tools['Eliteguard'].runtime['id'].push(_e['uid']);
 				});
-				tools['Eliteguard'].start[com.port.castleAge]();
+				tools['Eliteguard'].start();
 			} else {
-				tools['Eliteguard'].start[com.port.castleAge]();
+				tools['Eliteguard'].start();
 			}
 		});
 		addFunction( function() {
@@ -40,37 +40,37 @@ tools['Eliteguard'].getUserIds = function () {
 		}, null, true, true);
 	});
 };
-tools['Eliteguard'].start[com.port.castleAge] = function () {
+tools['Eliteguard'].start = function () {
 	if (!tools['Eliteguard'].runtime['id']) {
 		console.log('Eliteguard: Reading ids...');
 		tools['Eliteguard'].runtime['id'] = [];
 		tools['Eliteguard'].getUserIds();
 	} else {
 		console.log('Eliteguard: do it...');
-		tools['Eliteguard'].work[com.port.castleAge]();
+		tools['Eliteguard'].work();
 	}
 };
-tools['Eliteguard'].work[com.port.castleAge] = function () {
+tools['Eliteguard'].work = function () {
 
 	if (tools['Eliteguard'].runtime['id'] .length > 0) {
 		var _id = tools['Eliteguard'].runtime['id'].pop();
 		$.get('party.php?twt=jneg&jneg=true&user=' + _id + '&lka=' + _id + '&etw=1&ref=nf&signed_request=' + CastleAge.signed_request, function(_guarddata) {
 			if ($(_guarddata).text().match(/YOUR Elite Guard is FULL!/i)) {
-				tools['Eliteguard'].done[com.port.castleAge]();
+				tools['Eliteguard'].done();
 			} else {
-				tools['Eliteguard'].work[com.port.castleAge]();
+				tools['Eliteguard'].work();
 			}
 		});
 	} else {
-		tools['Eliteguard'].done[com.port.castleAge]();
+		tools['Eliteguard'].done();
 	}
 };
-tools['Eliteguard'].done[com.port.castleAge] = function () {
-	com.send(com.task.fbButtonEnable, com.port.facebook, 'Eliteguard');
+tools['Eliteguard'].done = function () {
+	tools['Eliteguard'].fbButton.enable();
 };
-tools['Eliteguard'].init[com.port.facebook] = function () {
+tools['Eliteguard'].init = function () {
 	tools['Eliteguard'].fbButton.add(chrome.i18n.getMessage("buttonEliteGuard"), function () {
 		tools['Eliteguard'].fbButton.disable();
-		com.send(com.task.eliteGuard, com.port.castleAge, null);
+		tools['Eliteguard'].start();
 	});
 };

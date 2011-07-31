@@ -46,7 +46,8 @@ function removeDuplicates(_array) {
 }
 
 function setCASize(_scrollTo) {
-	addFunction( function(_scrollTo) {
+	
+	/*addFunction( function(_scrollTo) {
 		FB.Canvas.setSize({
 			height:$(document.body).height()
 		});
@@ -54,4 +55,5 @@ function setCASize(_scrollTo) {
 			fireScroll(_scrollTo);
 		}
 	}, _scrollTo, true, true);
+	*/
 }

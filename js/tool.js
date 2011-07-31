@@ -27,12 +27,8 @@ function tool(_id) {
 	this.start[com.port.facebook] = null;
 	// work it
 	this.work = {};
-	//this.work[com.port.castleAge] = null;
-	//this.work[com.port.facebook] = null;
 	// clean up
 	this.done = {};
-	//this.done[com.port.castleAge] = null;
-	//this.done[com.port.facebook] = null;
 }
 
 function initTools() {
@@ -40,6 +36,10 @@ function initTools() {
 		if (_tool.init[com.port.current.name]) {
 			console.log('INIT@' + com.port.current.name + ':' + _tool.id);
 			_tool.init[com.port.current.name]();
+		} else {
+			if(com.port.current.name == com.port.castleAge &&  (typeof _tool.init) == 'function') {
+				_tool.init();
+			}
 		}
 	});
 }
