@@ -1,4 +1,7 @@
-2011-07-31
+2011-07-31 Unknowner
+	VER: 1.0.13
+
+2011-07-31 Unknowner
 	CHG: A lot changes to positions and css stuff
 	CHG: All tools now working in CA context
 	CHG: Tools are now CA only
@@ -23,8 +26,7 @@
 	CHG: Optimized some page scrolls etc.
 
 2011-07-19 Unknowner
+	VER: 1.0.11
 	FIX: not showing empty CAGE filter
 	
-2011-07-19 Unknowner
-	VER: 1.0.11
 	
