@@ -16,7 +16,7 @@ tools['Stash'].start = function() {
 };
 tools['Stash'].work = function() {
 	$.get('keep.php?do=Stash&stash_gold=' + $('#gold_current_value').text().match(/\d*/g).join('') + '&bqh=' + CastleAge.bqh + '&signed_request=' + CastleAge.signed_request, function() {
-		addFunction(function() {
+		addFunction( function() {
 			clearTimeout(timedStats['gold']);
 			stat_increase_ticker(0, 0, 0, 0, 0, 'gold', false);
 		}, null, true, true);
@@ -33,7 +33,7 @@ tools['Stash'].work = function() {
 	});
 };
 tools['Stash'].done = function() {
-	com.send(com.task.fbButtonEnable, com.port.facebook, 'Stash');
+	tools['Stash'].fbButton.enable();
 };
 tools['Stash'].init = function() {
 	tools['Stash'].fbButton.add(chrome.i18n.getMessage("buttonStash"), function() {
