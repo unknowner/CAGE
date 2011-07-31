@@ -10,9 +10,11 @@ tools['General'].get = function() {
 	}
 };
 // Set general image & name in fb ui
-tools['General'].set = function(_general) {
+tools['General'].set = function() {
 	$('#cageGeneralImage').attr('src', tools['General'].general[tools['General'].current].image);
 	$('#cageGeneralName').text(tools['General'].current);
+	$('#cageGeneralAttack').text(tools['General'].general[tools['General'].current].attack);
+	$('#cageGeneralDefense').text(tools['General'].general[tools['General'].current].defense);
 };
 // Set General by name
 tools['General'].setByName = function(_name, _callback) {

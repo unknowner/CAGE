@@ -34,6 +34,15 @@ tools['Page'].runtime['allPages'] = function () {
 	if ($('#globalContainer > div:first').height() == 80) {
 		$('#globalContainer > div:first').remove();
 	}
+	// xp to next lvl
+	$('#main_ststb > div:first').css({
+		'height': 16,
+		'marginBottom': -2
+	});
+	//$('#st_5 div:contains("Level"):last').text(/\d+/.exec($('#st_5').attr('title'))[0]);
+	$('#st_5 div.lvlBr div').css('height', 13).addClass('ui-corner-all');
+	$('#st_2_5 strong').text(/\d+/.exec($('#st_5').attr('title'))[0] + ' to ' + /\d+\/(\d+)/.exec($('#st_2_5 strong').text())[1]);
+	// closing results
 	$('div.results:has(img[src$="help_close_x.gif"])').each( function (_index, _element) {
 		var $_element = $(_element);
 		var $_img = $('img[src$="help_close_x.gif"]', _element);

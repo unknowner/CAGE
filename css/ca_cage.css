@@ -13,11 +13,13 @@
 	width: 209px;
 	top: 0;
 	font-size: 11px;
+	font-family: arial;
 }
 #cageGeneralContainer {
 	padding:0 0 2px 0;
 }
 #cageGeneralName {
+	font-weight: bold;
 	height: 18px;
 	padding: 7px 0 0 5px;
 	position: absolute;
@@ -37,6 +39,28 @@
 	padding: 0px;
 	margin: 3px 0px 1px 3px;
 	cursor: pointer;
+}
+#cageGeneralValues {
+	position: absolute;
+	left: 70px;
+	top: 35px;
+	width: 85px;
+	height: 12px;
+	text-shadow: 1px 1px black;
+	height: 28px;
+	width: 104px;
+}
+.cageGeneralAttDefText {
+	top: -5px;
+	position: relative;
+	font-weight: bold;
+	margin-right: 5px;
+}
+.cageGeneralAttDefImg {
+	height: 20px;
+	margin-top: 4px;
+	margin-left: 8px;
+	margin-right: 4px;
 }
 #cageToolsContainer {
 	margin-top: 10px;
