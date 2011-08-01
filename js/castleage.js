@@ -20,7 +20,7 @@ var _elm = {
 	generalImageContainer : '<div id="cageGeneralImageContainer" class="ui-state-active ui-corner-all"></div>',
 	generalImage : '<img id="cageGeneralImage" class="ui-corner-all" src="http://image4.castleagegame.com/graphics/shield_wait.gif"/>',
 	generalName : '<span id="cageGeneralName" class="ui-state-active ui-corner-right"></span>',
-	generalValues : '<span id="cageGeneralValues" class="ui-state-hover ui-corner-br"><img src="http://image4.castleagegame.com/graphics/icon_weapon.gif" class="cageGeneralAttDefImg" /><span id="cageGeneralAttack" class="cageGeneralAttDefText"></span><img src="http://image4.castleagegame.com/graphics/icon_shield.gif" class="cageGeneralAttDefImg" /><span id="cageGeneralDefense" class="cageGeneralAttDefText"></span></span>',
+	generalValues : '<span id="cageGeneralValues" class="ui-state-hover ui-corner-br"><img src="http://image4.castleagegame.com/graphics/demi_symbol_2.gif" class="cageGeneralAttDefImg" /><span id="cageGeneralAttack" class="cageGeneralAttDefText"></span><img src="http://image4.castleagegame.com/graphics/demi_symbol_3.gif" class="cageGeneralAttDefImg" /><span id="cageGeneralDefense" class="cageGeneralAttDefText"></span></span>',
 	tools : '<div id="cageToolsContainer" class="ui-widget-content ui-corner-right"></div>'
 }
 

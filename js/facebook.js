@@ -15,8 +15,10 @@ $('#blueBar').css({
 	'zIndex': 1
 });
 $('#iframe_canvas').css({
-	'marginTop': 56
+	'top': 41,
+	'position' : 'relative'
 });
+$('#app_content_46755028429').css('overflow', 'visible');
 
 window.onresize = function (evt) {
 

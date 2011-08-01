@@ -1,4 +1,9 @@
 2011-08-01 Unknowner
+	VER: 1.0.14
+	CHG: other att/def symbols
+	CHG: IFrame position reworked
+
+2011-08-01 Unknowner
 	ADD: Att/Def values to current geneneral
 	FIX: Sometimes CA:HOD ad showing
 
