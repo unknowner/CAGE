@@ -5,6 +5,13 @@ $(document.body).css({
 	'backgroundColor': '#000',
 	'overflowY' : 'hidden'
 });
+$('#contentArea').css({
+	'width': 1005,
+	'paddingTop' : 41
+});
+$('#pagelet_canvas_footer_content').hide();
+$('#contentCol').css('paddingTop', 0);
+$('div.fixedAux').hide();
 $('#contentCol').css('backgroundColor', '#000');
 $('#pageHead').css({
 	'position': 'fixed',
@@ -15,7 +22,7 @@ $('#blueBar').css({
 	'zIndex': 1
 });
 $('#iframe_canvas').css({
-	'top': 41,
+	//'top': 41,
 	'position' : 'relative'
 });
 $('#app_content_46755028429').css('overflow', 'visible');

@@ -14,7 +14,7 @@ tools['Page'].runtime['allPages'] = function () {
 		'zIndex': 2
 	});
 	$('div.game').css({
-		'width': 779
+		'width': 779,
 	});
 	$('#globalcss').css({
 		'paddingLeft': 10

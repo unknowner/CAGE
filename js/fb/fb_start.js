@@ -1,9 +1,6 @@
 function startCAGE() {
 
-	$('#contentArea').css('width', 1005);
-	$('#pagelet_canvas_footer_content').hide();
-	$('#contentCol').css('paddingTop', 0);
-	$('div.fixedAux').hide();
+
 	/*$('div.fixedAux').css({
 		'width': 205,
 		'border': 0,

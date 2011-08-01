@@ -11,10 +11,11 @@ tools['General'].get = function() {
 };
 // Set general image & name in fb ui
 tools['General'].set = function() {
-	$('#cageGeneralImage').attr('src', tools['General'].general[tools['General'].current].image);
+	var _g = tools['General'].general[tools['General'].current];
+	$('#cageGeneralImage').attr('src', _g.image);
 	$('#cageGeneralName').text(tools['General'].current);
-	$('#cageGeneralAttack').text(tools['General'].general[tools['General'].current].attack);
-	$('#cageGeneralDefense').text(tools['General'].general[tools['General'].current].defense);
+	$('#cageGeneralAttack').text(_g.attack);
+	$('#cageGeneralDefense').text(_g.defense);
 };
 // Set General by name
 tools['General'].setByName = function(_name, _callback) {

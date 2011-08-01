@@ -50,6 +50,10 @@
 	height: 28px;
 	width: 104px;
 }
+#cageGeneralAttack {
+	width: 10px;
+	display: inline-block;
+}
 .cageGeneralAttDefText {
 	top: -5px;
 	position: relative;

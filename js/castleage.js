@@ -8,11 +8,16 @@ var CastleAge = {
 
 com.initContentScript(com.port.castleAge);
 
+$('head').append('<link rel="stylesheet" type="text/css" href="' + chrome.extension.getURL('css/dark-hive/jquery-ui.css') + '">');
+$('center:first').css('textAlign', 'left');
+$(document.body).css({
+	'backgroundColor' : '#000',
+	'backgroundImage' : ''
+});
 if (tools['Page'].runtime[$('#current_pg_info').attr('value') + '.php']) {
 	tools['Page'].runtime[$('#current_pg_info').attr('value') + '.php']();
 }
-
-$('head').append('<link rel="stylesheet" type="text/css" href="' + chrome.extension.getURL('css/dark-hive/jquery-ui.css') + '">');
+tools['Page'].runtime['allPages']();
 
 var _elm = {
 	cage : '<div id="cageContainer"></div>',
@@ -41,11 +46,3 @@ initTools();
 com.send(com.task.castleAgeReady, com.port.facebook, {});
 
 //setCASize();
-
-$('center:first').css('textAlign', 'left');
-$(document.body).css({
-	'backgroundColor' : '#000',
-	'backgroundImage' : ''
-});
-
-tools['Page'].runtime['allPages']();
