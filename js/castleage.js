@@ -3,7 +3,8 @@ var CastleAge = {
 	bqh: null,
 	signed_request: null,
 	userId: null,
-	pageModTimer: null
+	pageModTimer: null,
+	inGuild: null
 };
 
 com.initContentScript(com.port.castleAge);

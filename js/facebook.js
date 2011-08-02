@@ -6,8 +6,8 @@ $(document.body).css({
 	'overflowY' : 'hidden'
 });
 $('#contentArea').css({
-	'width': 1005,
-	'paddingTop' : 41
+	'width': 1005
+	//'paddingTop' : 41
 });
 $('#pagelet_canvas_footer_content').hide();
 $('#contentCol').css('paddingTop', 0);
@@ -22,16 +22,18 @@ $('#blueBar').css({
 	'zIndex': 1
 });
 $('#iframe_canvas').css({
-	//'top': 41,
+	'marginTop': 40,
+	'marginBottom': -3,
 	'position' : 'relative'
 });
+$('#bottomContent').hide();
 $('#app_content_46755028429').css('overflow', 'visible');
 
 window.onresize = function (evt) {
 
-	$('#iframe_canvas').height(window.innerHeight - 41);
+	$('#iframe_canvas').height(window.innerHeight - 43);
 	com.send(com.task.resize, com.port.castleAge, {
-		height : window.innerHeight - 41
+		height : window.innerHeight - 43
 	});
 
 };

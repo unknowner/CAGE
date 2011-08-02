@@ -66,6 +66,7 @@ tools['Eliteguard'].work = function () {
 	}
 };
 tools['Eliteguard'].done = function () {
+	$('#GetArmy').val('');
 	tools['Eliteguard'].fbButton.enable();
 };
 tools['Eliteguard'].init = function () {

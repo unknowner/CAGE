@@ -19,7 +19,7 @@ tools['Gifter'].runtime['menu'] = {
 				url: 'festival_tower.php',
 			},
 			'Monster List': {
-				url: 'festival_tower.php?tab=monster',
+				url: 'festival_tower.php?tab=monster'
 			},
 			'Games': {
 				url: 'festival_games.php',
@@ -74,7 +74,7 @@ tools['Gifter'].runtime['menu'] = {
 				url: 'view_class_progress.php'
 			},
 			'Live feed': {
-				url: 'army_news_feed.php',
+				url: 'army_news_feed.php'
 			}
 		}
 	},
@@ -110,7 +110,7 @@ tools['Gifter'].runtime['menu'] = {
 				url: 'symbols.php'
 			},
 			'Chest': {
-				url: 'treasure_chest.php',
+				url: 'treasure_chest.php'
 			}
 		}
 	},
@@ -118,7 +118,7 @@ tools['Gifter'].runtime['menu'] = {
 		url: 'keep.php',
 		items: {
 			'Elite guard': {
-				url: 'party.php',
+				url: 'party.php'
 			},
 			'Achievements': {
 				url: 'achievements.php'
@@ -133,41 +133,33 @@ tools['Gifter'].runtime['menu'] = {
 	},
 	'Gift': {
 		url: 'gift.php',
-		type: 'get_body',
 		items: {
 			'Invite': {
-				url: 'army.php',
+				url: 'army.php'
 			},
 			'View army': {
-				url: 'army_member.php',
+				url: 'army_member.php'
 			},
 			'Sent invites': {
-				url: 'army_reqs.php',
+				url: 'army_reqs.php'
 			}
 		}
 	},
 	'Guild': {
-		url: 'guild.php',
-		items: {
-			'Leaderboard': {
-				url: 'http://web.castleagegame.com/castle/leaderboard.php',
-				type: 'offpage'
-			}
-		}
+		url: 'guild.php'
 	}
 };
 tools['Nav'].init = function () {
 	$(document.body).append($('<div id="cageMenu"><ul></ul></div>').addClass('ui-widget ui-state-default'));
 	$.each(tools['Gifter'].runtime['menu'], function(_i, _e) {
 		console.log(_i);
-		$('#cageMenu ul:first').append($('<li id="cageMenu'+_i+'">').append($('<button>' + _i + '</button>').click( function() {
-			tools['Page'].loadPage(_e.url);
-		})));
-		$('#cageMenu'+_i+' button').hover( function() {
+		$('#cageMenu ul:first').append($('<li id="cageMenu'+_i+'">').hover( function() {
 			$(this).find('ul').show();
 		}, function() {
 			$(this).find('ul').hide();
-		})
+		}).append($('<button>' + _i + '</button>').click( function() {
+			tools['Page'].loadPage(_e.url);
+		})));
 		if(_e.items) {
 			$('#cageMenu'+_i).append('<ul class="cageSubMenu">');
 			var _list = $('#cageMenu'+_i+' ul');
