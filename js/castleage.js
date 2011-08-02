@@ -34,15 +34,5 @@ $(document.body).append($(_elm.cage).append($(_elm.general).append($(_elm.genera
 _elm = null;
 
 initTools();
-/*
- addFunction( function() {
- FB.Canvas.setAutoResize(false);
- }, null, true, true);
- $('#app_body').live('DOMSubtreeModified', function(event) {
- window.clearTimeout(CastleAge.pageModTimer);
- CastleAge.pageModTimer = window.setTimeout(setCASize, 50);
- });
- */
-com.send(com.task.castleAgeReady, com.port.facebook, {});
 
-//setCASize();
+com.send(com.task.castleAgeReady, com.port.facebook, {});

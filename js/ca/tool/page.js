@@ -30,10 +30,11 @@ tools['Page'].init = function() {
 	});
 };
 tools['Page'].loadPage = function(_page) {
-	console.log('Loadpage:' + _page);
-	addFunction( function(_p) {
-		get_cached_ajax(_p + '?signed_request=' + $('#signed_request').val());
-	}, '"' + _page + '"', true, true);
+	console.log('Loadpage:' + _page );
+	addFunction( function(_data) {
+		//get_cached_ajax(_data._page + '?signed_request=' + $('#signed_request').val(), _data._type ? _data._type : 'cache_body');
+		ajaxLinkSend('globalContainer', _data);
+	}, JSON.stringify(_page), true, true);
 };
 /*
  tools['Page'].swapElementClass = function() {

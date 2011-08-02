@@ -24,6 +24,7 @@
 			"js/ca/tool/heal.js",
 			"js/ca/tool/gifter.js",
 			"js/ca/tool/stash.js",
+			"js/ca/tool/nav.js",
 			"js/ca/page/allpages.js",
 			"js/ca/page/index.js",
 			"js/ca/page/guild_battle.js",

@@ -74,3 +74,35 @@
 .cageToolButton {
 	width: 100%;
 }
+#cageMenu {
+	position: absolute;
+	height: 28px;
+	z-index: 2;
+	box-shadow: 0 10px 20px black;
+	top: 61px;
+	border-left: 0;
+	border-right: 0;
+	left: 10px;
+	width: 761px;
+	font-size: 12px;
+	text-align: center;
+}
+#cageMenu ul, #cageMenu ul li {
+	list-style:none;
+	padding: 0;
+}
+#cageMenu ul {
+	position: relative;
+	top: -13px;
+}
+#cageMenu ul li {
+	display:inline-block;
+}
+#cageMenu button {
+	margin: 0;
+	height: 30px;
+}
+.cageSubMenu {
+	display: none;
+	position: absolute;
+}

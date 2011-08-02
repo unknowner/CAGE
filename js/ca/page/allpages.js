@@ -1,7 +1,7 @@
 // All Pages
 tools['Page'].runtime['allPages'] = function () {
 
-	$('a[href="http://apps.facebook.com/castle_hod/?xprom=cax"]:first').parent('div:first').remove();
+	$('a[href="http://apps.facebook.com/castle_hod/?xprom=cax"]:first').parent('div:first').hide();
 	$('#globalContainer').css({
 		'overflow': 'auto'
 	});
@@ -21,19 +21,18 @@ tools['Page'].runtime['allPages'] = function () {
 	});
 	$('#app_body').css({
 		'width': 740,
-		'marginTop': 19
+		'marginTop': 8,
+		'boxShadow': 'inset 0 0 5px 5px rgba(0, 0, 0, 0.5)'
 	});
 	$('#nvbar').css({
-		'position': 'fixed',
-		'width': 760,
-		'zIndex': 2
+		'display': 'none'
 	});
 	$('#app_body_container').css({
 		'paddingTop': 70
 	});
 
 	if ($('#globalContainer > div:first').height() == 80) {
-		$('#globalContainer > div:first').remove();
+		$('#globalContainer > div:first').hide();
 	}
 	// xp to next lvl
 	$('#main_ststb > div:first').css({
