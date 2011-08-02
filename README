@@ -1,15 +1,35 @@
+=================================
+VER: 1.0.15
+---------------------------------
+
+=================================
+VER: 1.0.14
+---------------------------------
+2011-08-02 Unknowner
+	ADD: New Navbar
+	FIX: IFrame position
+	CHG: Page loading
+
 2011-08-01 Unknowner
-	VER: 1.0.14
 	CHG: other att/def symbols
 	CHG: IFrame position reworked
 
+2011-08-01 Unknowner
+	
+
+=================================
+VER: 1.0.13
+---------------------------------
 2011-08-01 Unknowner
 	ADD: Att/Def values to current geneneral
 	FIX: Sometimes CA:HOD ad showing
 
 2011-07-31 Unknowner
-	VER: 1.0.13
+	
 
+=================================
+VER: 1.0.12
+---------------------------------
 2011-07-31 Unknowner
 	CHG: A lot changes to positions and css stuff
 	CHG: All tools now working in CA context
@@ -23,19 +43,18 @@
 	CHG: Can now close all results
 	CHG: fixed menu position
 
-2011-07-23 Unknowner
-	VER: 1.0.12
-	CHG: Result closing changed from get to post
-
+=================================
+VER: 1.0.11
+---------------------------------
 2011-07-23 Unknowner
 	ADD: Stash all gold, if available switch to Aeris
+	CHG: Result closing changed from get to post
 
 2011-07-22 Unknowner
 	FIX: Guild battle result not closing
 	CHG: Optimized some page scrolls etc.
 
 2011-07-19 Unknowner
-	VER: 1.0.11
 	FIX: not showing empty CAGE filter
-	
+
 	
