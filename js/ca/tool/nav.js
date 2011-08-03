@@ -75,6 +75,9 @@ tools['Gifter'].runtime['menu'] = {
 			},
 			'Live feed': {
 				url: 'army_news_feed.php'
+			},
+			'Public monsters': {
+				url: 'public_monster_list.php'
 			}
 		}
 	},
@@ -150,25 +153,64 @@ tools['Gifter'].runtime['menu'] = {
 	}
 };
 tools['Nav'].init = function () {
+
 	$(document.body).append($('<div id="cageMenu"><ul></ul></div>').addClass('ui-widget ui-state-default'));
-	$.each(tools['Gifter'].runtime['menu'], function(_i, _e) {
-		console.log(_i);
-		$('#cageMenu ul:first').append($('<li id="cageMenu'+_i+'">').hover( function() {
-			$(this).find('ul').show();
-		}, function() {
-			$(this).find('ul').hide();
-		}).append($('<button>' + _i + '</button>').click( function() {
-			tools['Page'].loadPage(_e.url);
-		})));
-		if(_e.items) {
-			$('#cageMenu'+_i).append('<ul class="cageSubMenu">');
-			var _list = $('#cageMenu'+_i+' ul');
-			$.each(_e.items, function(_item, _itemdata) {
-				_list.append($('<li><button>' + _item + '</button></li>').click( function() {
-					tools['Page'].loadPage(_itemdata.url);
-				}))
-			});
+	tools['Nav'].start();
+
+};
+tools['Nav'].start = function() {
+
+	if(CastleAge.inGuild !== null) {
+		if(CastleAge.inGuild == true) {
+			tools['Gifter'].runtime['menu'].Guild = {
+				url : 'guild.php',
+				items : {
+					'Management' : {
+						url : 'guild_panel.php'
+					},
+					'Character Class': {
+						url : 'guild_class.php'
+					},
+					'Guild List' : {
+						url : 'guild.php?guild_page=1'
+					},
+					'Guild Battles' : {
+						url : 'guild_current_battles.php'
+					},
+					'Guild Monsters' : {
+						url : 'guild_current_monster_battles.php'
+					}
+				}
+			};
 		}
-	});
-	$('#cageMenu ul li button').button().removeClass('ui-corner-all');
+		$.each(tools['Gifter'].runtime['menu'], function(_i, _e) {
+			$('#cageMenu ul:first').append($('<li id="cageMenu'+_i+'">').hover( function() {
+				$(this).find('ul').show();
+			}, function() {
+				$(this).find('ul').hide();
+			}).append($('<button>' + _i + '</button>').click( function() {
+				tools['Page'].loadPage(_e.url);
+			})));
+			if(_e.items) {
+				$('#cageMenu'+_i).append('<ul class="cageSubMenu">');
+				var _list = $('#cageMenu'+_i+' ul');
+				$.each(_e.items, function(_item, _itemdata) {
+					_list.append($('<li><button>' + _item + '</button></li>').click( function() {
+						tools['Page'].loadPage(_itemdata.url);
+					}))
+				});
+			}
+		});
+		$('#cageMenu ul li button').button().removeClass('ui-corner-all');
+	} else {
+		if(CastleAge.signed_request !== null) {
+			$.get('guild.php?signed_request=' + CastleAge.signed_request, function(data) {
+				CastleAge.inGuild = data.search(/tab_guild_current_battles/) == -1 ? false : true;
+				tools['Nav'].start();
+			});
+		} else {
+			window.setTimeout(tools['Nav'].start, 100);
+		}
+	}
+
 };

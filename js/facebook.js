@@ -22,7 +22,7 @@ $('#blueBar').css({
 	'zIndex': 1
 });
 $('#iframe_canvas').css({
-	'marginTop': 40,
+	//'marginTop': 40,
 	'marginBottom': -3,
 	'position' : 'relative'
 });

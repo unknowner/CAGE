@@ -30,6 +30,7 @@ var _elm = {
 	tools : '<div id="cageToolsContainer" class="ui-widget-content ui-corner-right"></div>'
 }
 
+
 $(document.body).append($(_elm.cage).append($(_elm.general).append($(_elm.generalImageContainer).append(_elm.generalImage)).append(_elm.generalName).append(_elm.generalValues)).append(_elm.tools));
 
 _elm = null;
