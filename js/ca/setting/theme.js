@@ -1,6 +1,21 @@
-new tool('Settings');
+new tool('Theme');
 
-tools['Settings'].init = function () {
+tools['Theme'].start = function() {
+
+	var _theme = item.get('Theme', chrome.extension.getURL('css/dark-hive/'));
+	$('#cageTheme').attr('href', CAGE.themes[_theme] + 'jquery-ui.css');
+	$('#cageThemeSelector option[value="'+_theme+'"]').attr('selected',true);
+	$('#cageThemeSelector').selectmenu({
+		maxHeight: 150
+	});
+	$('#cageThemeSelector-button').css('marginLeft', 3);
+	$('#cageThemeSelector-menu').css({
+		'fontSize': 12,
+		'marginLeft': 3
+	});
+
+};
+tools['Theme'].init = function () {
 
 	// Themes
 	CAGE.themes = {
@@ -26,7 +41,7 @@ tools['Settings'].init = function () {
 		'South Street' : 'http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/south-street/',
 		'Start' : 'http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/start/',
 		'Sunny' : 'http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/sunny/',
-		'Swanky Purse' : 'http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/swanky-purse/',
+		//'Swanky Purse' : 'http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/swanky-purse/',
 		'Trontastic' : 'http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/trontastic/',
 		'Vader' : 'http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/vader/'
 
@@ -34,16 +49,10 @@ tools['Settings'].init = function () {
 	$('#cageSettingContainer').append('<select id="cageThemeSelector" size="1">');
 	var _sel = $('#cageThemeSelector');
 	$.each(CAGE.themes, function(_i, _e) {
-		_sel.append('<option>'+_i+'</option>')
+		_sel.append('<option value="'+_i+'">'+_i+'</option>')
 	});
 	_sel.change( function() {
+		item.set('Theme', $(this).val());
 		$('#cageTheme').attr('href', CAGE.themes[$(this).val()] + 'jquery-ui.css');
-	}).selectmenu({
-		maxHeight: 150,
-	});
-	$('#cageThemeSelector-button').css('marginLeft', 3);
-	$('#cageThemeSelector-menu').css({
-		'fontSize': 12,
-		'marginLeft': 3
-	});
+	});//.selectmenu({		maxHeight: 150	});
 };

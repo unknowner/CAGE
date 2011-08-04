@@ -11,7 +11,6 @@ var CAGE = {}
 
 com.initContentScript(com.port.castleAge);
 
-
 $('head').append('<link id="cageTheme" rel="stylesheet" type="text/css" href="' + chrome.extension.getURL('css/dark-hive/') + 'jquery-ui.css">');
 $('center:first').css('textAlign', 'left');
 $(document.body).css({

@@ -15,7 +15,6 @@ tools['Page'].init = function() {
 		if(tools['Page'].runtime[_page]) {
 			tools['Page'].runtime[_page]();
 		}
-		setCASize();
 	});
 	// scroll to
 	customEvent('Scroll', function() {
@@ -23,10 +22,6 @@ tools['Page'].init = function() {
 		com.send(com.task.scroll, com.port.facebook, {
 			to : _value,
 		});
-	});
-	// Set Canvas Size
-	customEvent('SetSize', function() {
-		setCASize();
 	});
 };
 tools['Page'].loadPage = function(_page) {
