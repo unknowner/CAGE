@@ -37,7 +37,7 @@
 #cageGeneralImage {
 	height: 59px;
 	padding: 0px;
-	margin: 3px 0px 1px 3px;
+	margin: 3px 0px 2px 3px;
 	cursor: pointer;
 }
 #cageGeneralValues {
@@ -49,6 +49,7 @@
 	text-shadow: 1px 1px black;
 	height: 28px;
 	width: 104px;
+	opacity: 0.8;
 }
 #cageGeneralAttack {
 	width: 10px;
@@ -111,4 +112,13 @@
 	width: 140px;
 	text-align: left;
 	box-shadow: 0 10px 20px black;
+}
+#cageSettingContainer {
+	margin-top: 10px;
+	padding: 3px 3px 3px 0;
+	width: 200px;
+}
+#cageThemeSelector {
+	width: 195px;
+	margin-left: 5px;
 }

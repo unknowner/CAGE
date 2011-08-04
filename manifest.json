@@ -8,11 +8,13 @@
 		{
 		"matches": ["*://web.castleagegame.com/castle/*"],
 		"css": [
-					"css/ca_cage.css"
+					"css/ca_cage.css",
+					"css/ui.selectmenu.css"
 			],
 		"js": [
 			"js/jquery.js",
 			"js/jqueryui.js",
+			"js/ui.selectmenu.js",
 			"js/com.js",
 			"js/common.js",
 			"js/ca/tool.js",
@@ -25,6 +27,7 @@
 			"js/ca/tool/gifter.js",
 			"js/ca/tool/stash.js",
 			"js/ca/tool/nav.js",
+			"js/ca/tool/settings.js",
 			"js/ca/page/allpages.js",
 			"js/ca/page/index.js",
 			"js/ca/page/guild_battle.js",

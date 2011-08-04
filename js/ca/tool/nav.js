@@ -12,7 +12,10 @@ tools['Gifter'].runtime['menu'] = {
 	'Festival': {
 		url: 'festival_home.php',
 		items: {
-			'Battle': {
+			'Duel': {
+				url: 'festival_duel_home.php'
+			},
+			'Guild': {
 				url: 'festival_battle_home.php'
 			},
 			'Monster Tower': {

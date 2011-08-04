@@ -44,16 +44,3 @@ function removeDuplicates(_array) {
 		return(n);
 	});;
 }
-
-function setCASize(_scrollTo) {
-	
-	/*addFunction( function(_scrollTo) {
-		FB.Canvas.setSize({
-			height:$(document.body).height()
-		});
-		if(_scrollTo !== undefined) {
-			fireScroll(_scrollTo);
-		}
-	}, _scrollTo, true, true);
-	*/
-}

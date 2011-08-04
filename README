@@ -1,6 +1,13 @@
 =================================
 VER: 1.0.15
 ---------------------------------
+2001-08-03
+	ADD: Missing Guild stuff for nav bar
+	FIX: IFrame, once more
+
+2011-08-04
+	FIX: Elite guard started from army not guild
+	ADD: Theme selector
 
 =================================
 VER: 1.0.14
@@ -14,9 +21,6 @@ VER: 1.0.14
 	CHG: other att/def symbols
 	CHG: IFrame position reworked
 
-2011-08-01 Unknowner
-	
-
 =================================
 VER: 1.0.13
 ---------------------------------
@@ -24,8 +28,6 @@ VER: 1.0.13
 	ADD: Att/Def values to current geneneral
 	FIX: Sometimes CA:HOD ad showing
 
-2011-07-31 Unknowner
-	
 
 =================================
 VER: 1.0.12
@@ -56,5 +58,3 @@ VER: 1.0.11
 
 2011-07-19 Unknowner
 	FIX: not showing empty CAGE filter
-
-	

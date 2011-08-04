@@ -53,7 +53,7 @@ tools['Eliteguard'].start = function () {
 tools['Eliteguard'].work = function () {
 
 	if (tools['Eliteguard'].runtime['id'] .length > 0) {
-		var _id = tools['Eliteguard'].runtime['id'].pop();
+		var _id = tools['Eliteguard'].runtime['id'].shift();
 		$.get('party.php?twt=jneg&jneg=true&user=' + _id + '&lka=' + _id + '&etw=1&ref=nf&signed_request=' + CastleAge.signed_request, function(_guarddata) {
 			if ($(_guarddata).text().match(/YOUR Elite Guard is FULL!/i)) {
 				tools['Eliteguard'].done();
