@@ -36,17 +36,11 @@ tools['Page'].runtime['keep.php'] = function () {
 		var _this = this;
 		$(this).parents('div.statsT2:first').animate({
 			'height': '100%'
-		}, 'fast', function() {
-			setCASize($(_this).offset().top);
-		});
-		//console.log('pos:' + $(this).offset().top)
-		//setCASize($(this).offset().top);
+		}, 'fast');
 	}, function () {
 		$(this).parents('div.statsT2:first').animate({
 			'height': 30
-		}, 'fast', function() {
-			setCASize();
-		});
+		}, 'fast');
 	});
 	$('div.statUnit a img').addClass('ui-corner-all');
 

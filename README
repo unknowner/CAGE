@@ -5,6 +5,7 @@ VER: 1.0.16
 	CHG: All CSS stuff reworked
 	ADD: General selector
 	ADD: New Setting to clear all data (send git to, theme...)
+	FIX: Resizing bug in keep
 
 2011-08-04
 	CHG: IFrame positioning reworked
