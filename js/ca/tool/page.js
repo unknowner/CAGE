@@ -54,7 +54,7 @@ tools['Page'].get_cached_ajax = function() {
 				FB.XFBML.parse(document.getElementById('app_body_container'));
 			}
 			firePageURL();
-			$('#globalContainer').animate({
+			$('body').animate({
 				scrollTop : 0
 			}, 'slow');//fireScroll(0);
 			//fireSetSize();
@@ -106,7 +106,7 @@ tools['Page'].get_cached_ajax = function() {
 						}
 					}
 					firePageURL();
-					$('#globalContainer').animate({
+					$('body').animate({
 						scrollTop : 0
 					}, 'slow');//fireScroll(0);
 					//fireSetSize();
@@ -151,7 +151,7 @@ tools['Page'].ajaxLinkSend = function() {
 					FB.XFBML.parse(document.getElementById(div));
 				}
 				firePageURL();
-				$('#globalContainer').animate({
+				$('body').animate({
 					scrollTop : 0
 				}, 'slow');//fireScroll(0);
 				//fireSetSize();
@@ -216,7 +216,7 @@ tools['Page'].ajaxFormSend = function(div, url, formElement, anchor) {
 					FB.XFBML.parse(document.getElementById(div));
 				}
 				firePageURL();
-				$('#globalContainer').animate({
+				$('body').animate({
 					scrollTop : 0
 				}, 'slow');//fireScroll(0);
 				//fireSetSize();

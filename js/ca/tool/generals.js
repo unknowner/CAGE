@@ -68,10 +68,10 @@ tools['General'].update = function() {
 					tools['General'].setByName(_e.name);
 					$('#cageGeneralSelector').slideToggle('slow');
 				}).hover( function() {
-					$(this).css('boxShadow', '0 0 15px #fff');
+					$(this).css({'boxShadow': '0 0 30px #26B3F7', 'border': '1px solid #26B3F7'});
 					$('#cageSelectorInfo').html(_e.name + ' <img src="http://image4.castleagegame.com/graphics/demi_symbol_2.gif" style="height:12px;"/> ' + _e.attack + ' <img src="http://image4.castleagegame.com/graphics/demi_symbol_3.gif" style="height:12px;"/> ' + _e.defense + ' - ' + _e.text);
 				}, function() {
-					$(this).css('boxShadow', '');
+					$(this).css({'boxShadow': '', 'border': '1px solid transparent'});
 					$('#cageSelectorInfo').html('');
 				})
 				)

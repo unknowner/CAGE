@@ -2,18 +2,15 @@ new tool('Theme');
 
 tools['Theme'].start = function() {
 
-	var _theme = item.get('Theme', chrome.extension.getURL('css/dark-hive/'));
+	var _theme = item.get('Theme', 'Dark Hive (default)');
+	console.log(_theme);
 	$('#cageTheme').attr('href', CAGE.themes[_theme] + 'jquery-ui.css');
 	$('#cageThemeSelector option[value="'+_theme+'"]').attr('selected',true);
 	$('#cageThemeSelector').selectmenu({
 		maxHeight: 150
 	});
-	$('#cageThemeSelector-button').css('marginLeft', 3);
-	$('#cageThemeSelector-menu').css({
-		'fontSize': 12,
-		'marginLeft': 3
-	});
-
+	//$('#cageThemeSelector-button').css('marginLeft', 3);
+	$('#cageThemeSelector-button').addClass('cageThemeSelector');
 };
 tools['Theme'].init = function () {
 
@@ -46,7 +43,7 @@ tools['Theme'].init = function () {
 		'Vader' : 'http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/vader/'
 
 	};
-	$('#cageSettingContainer').append('<select id="cageThemeSelector" size="1">');
+	$('#cageSettingContainer').append('<select id="cageThemeSelector">');
 	var _sel = $('#cageThemeSelector');
 	$.each(CAGE.themes, function(_i, _e) {
 		_sel.append('<option value="'+_i+'">'+_i+'</option>')

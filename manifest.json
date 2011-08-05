@@ -29,6 +29,7 @@
 			"js/ca/tool/stash.js",
 			"js/ca/tool/nav.js",
 			"js/ca/setting/theme.js",
+			"js/ca/setting/data.js",
 			"js/ca/page/allpages.js",
 			"js/ca/page/index.js",
 			"js/ca/page/guild_battle.js",

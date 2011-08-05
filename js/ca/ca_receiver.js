@@ -25,6 +25,6 @@ function receiver(_data) {
 			$('#globalContainer').height(_data.data.height);
 			break;
 		default:
-			console.log(_data.task + ' unknown!');		
+			console.log(_data.task + ' unknown!');
 	}
 }
