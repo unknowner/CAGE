@@ -19,24 +19,20 @@ tools['General'].set = function() {
 };
 // Set General by name
 tools['General'].setByName = function(_name, _callback) {
-	var _g = tools['General'].general[_name];
-	if(_g !== null) {
-		$.get('generals.php?item=' + _g.item + '&itype=' + _g.itype + '&bqh=' + CastleAge.bqh + '&signed_request=' + CastleAge.signed_request, function() {
-			tools['General'].current = _name;
-			tools['General'].set();
-			if(_callback !== undefined) {
-				_callback();
-			}
-		});
+	if(_name !== tools['General'].current) {
+		var _g = tools['General'].general[_name];
+		if(_g !== null) {
+			$('#cageGeneralImage').attr('src', 'http://image4.castleagegame.com/graphics/shield_wait.gif');
+			$.get('generals.php?item=' + _g.item + '&itype=' + _g.itype + '&bqh=' + CastleAge.bqh + '&signed_request=' + CastleAge.signed_request, function() {
+				tools['General'].current = _name;
+				tools['General'].set();
+				if(_callback !== undefined) {
+					_callback();
+				}
+			});
+		}
 	}
 };
-// init general tool @fb
-tools['General'].init = function() {
-	$('#cageGeneralImage').click( function() {
-		tools['Page'].loadPage('generals.php');
-	});
-	tools['General'].update();
-}
 // update generals object
 tools['General'].update = function() {
 	if(CastleAge.signed_request !== null) {
@@ -64,9 +60,33 @@ tools['General'].update = function() {
 					text : _text
 				};
 			});
+			$('#cageGeneralSelector').empty().append('<span id="cageSelectorInfo" class="ui-state-active ui-corner-all"></span>');
+			$.each(tools['General'].general, function(_i, _e) {
+				$('#cageGeneralSelector').append(
+				$('<img class="cageSelectorImage ui-corner-all" src="'+_e.image+'"/>')
+				.click( function() {
+					tools['General'].setByName(_e.name);
+					$('#cageGeneralSelector').slideToggle('slow');
+				}).hover( function() {
+					$(this).css('boxShadow', '0 0 15px #fff');
+					$('#cageSelectorInfo').html(_e.name + ' <img src="http://image4.castleagegame.com/graphics/demi_symbol_2.gif" style="height:12px;"/> ' + _e.attack + ' <img src="http://image4.castleagegame.com/graphics/demi_symbol_3.gif" style="height:12px;"/> ' + _e.defense + ' - ' + _e.text);
+				}, function() {
+					$(this).css('boxShadow', '');
+					$('#cageSelectorInfo').html('');
+				})
+				)
+			});
 			tools['General'].get();
 		});
 	} else {
 		window.setTimeout(tools['General'].update, 100);
 	}
 };
+// init general tool @fb
+tools['General'].init = function() {
+
+	$('#cageGeneralImage').click( function() {
+		$('#cageGeneralSelector').slideToggle('slow');
+	});
+	tools['General'].update();
+}
