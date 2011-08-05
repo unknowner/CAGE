@@ -7,12 +7,10 @@ function startCAGE() {
 		_i.value = Env.user;
 		document.body.appendChild(_i);
 	}, null, true, true);
-	
-	$('#iframe_canvas').height(window.innerHeight - 43);
-	com.send(com.task.resize, com.port.castleAge, {
-		height : window.innerHeight - 43
-	});
 
+	$('#cageIFrame').html('.cageIFrame {height:' + (window.innerHeight - 34) + 'px !important;}');
+	$('#iframe_canvas').addClass('cageIFrame').attr('scrolling', 'yes');
+	
 	com.send(com.task.signed, com.port.castleAge, $('input[name="signed_request"]').val());
 	com.send(com.task.userId, com.port.castleAge, $('#EnvUser').val());
 

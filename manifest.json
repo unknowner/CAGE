@@ -1,6 +1,6 @@
 {
 	"name": "CAGE - Castle Age Game Enhancer [α]",
-	"version": "1.0.15",
+	"version": "1.0.16",
 	"description": "Development build of CAGE. For testing purpose only.",
 	"background_page": "background.html",
 	"default_locale": "en",
@@ -8,6 +8,7 @@
 		{
 		"matches": ["*://web.castleagegame.com/castle/*"],
 		"css": [
+					"css/cage.css",
 					"css/ca_cage.css",
 					"css/ui.selectmenu.css"
 			],

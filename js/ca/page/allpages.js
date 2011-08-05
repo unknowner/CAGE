@@ -2,35 +2,18 @@
 tools['Page'].runtime['allPages'] = function () {
 
 	$('a[href="http://apps.facebook.com/castle_hod/?xprom=cax"]:first').parent('div:first').hide();
+/*
+$('center:first').css('textAlign', 'left');
+$(document.body).css({
+	'backgroundColor' : '#000',
+	'backgroundImage' : ''
+});
+
 	$('#globalContainer').css({
 		'overflow': 'auto'
 	});
-	$('#main_bntp').hide();
-	$('#main_bn').hide();
-	$('#main_bn_container').hide();
-	$('#main_sts_container').css({
-		'height': 70,
-		'position': 'fixed',
-		'zIndex': 2
-	});
-	$('div.game').css({
-		'width': 779,
-	});
-	$('#globalcss').css({
-		'paddingLeft': 10
-	});
-	$('#app_body').css({
-		'width': 740,
-		'marginTop': 8,
-		'boxShadow': 'inset 0 0 5px 5px rgba(0, 0, 0, 0.5)'
-	});
-	$('#nvbar').css({
-		'display': 'none'
-	});
-	$('#app_body_container').css({
-		'paddingTop': 70
-	});
 
+*/
 	if ($('#globalContainer > div:first').height() == 80) {
 		$('#globalContainer > div:first').hide();
 	}

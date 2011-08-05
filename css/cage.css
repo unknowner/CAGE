@@ -1,0 +1,122 @@
+.itemNumbers {
+	position: relative;
+	top: -25px;
+	text-shadow: 0 0 2px #000;
+	text-align: left;
+	left: 8px;
+	font-weight: bold;
+	color: #fff;
+}
+#cageContainer {
+	position: fixed;
+	left: 779px;
+	width: 209px;
+	top: 0;
+	font-size: 11px;
+	font-family: arial;
+}
+#cageGeneralContainer {
+	padding:0 0 2px 0;
+}
+#cageGeneralName {
+	font-weight: bold;
+	height: 18px;
+	padding: 7px 0 0 5px;
+	position: absolute;
+	text-shadow: 1px 1px black;
+	top: 9px;
+	left: 70px;
+	border-left: 0;
+	width: 123px;
+}
+#cageGeneralImageContainer {
+	margin: 3px 0px 1px 3px;
+	height: 65px;
+	width: 65px;
+}
+#cageGeneralImage {
+	height: 59px;
+	padding: 0px;
+	margin: 3px 0px 2px 3px;
+	cursor: pointer;
+}
+#cageGeneralValues {
+	position: absolute;
+	left: 70px;
+	top: 35px;
+	width: 85px;
+	height: 12px;
+	text-shadow: 1px 1px black;
+	height: 28px;
+	width: 104px;
+	opacity: 0.8;
+}
+#cageGeneralAttack {
+	width: 10px;
+	display: inline-block;
+}
+.cageGeneralAttDefText {
+	top: -5px;
+	position: relative;
+	font-weight: bold;
+	margin-right: 5px;
+}
+.cageGeneralAttDefImg {
+	height: 20px;
+	margin-top: 4px;
+	margin-left: 8px;
+	margin-right: 4px;
+}
+#cageToolsContainer {
+	margin-top: 10px;
+	padding: 3px 3px 3px 0;
+}
+.cageToolButton {
+	width: 100%;
+}
+#cageMenu {
+	position: fixed;
+	height: 28px;
+	z-index: 2;
+	box-shadow: 0 10px 20px black;
+	top: 61px;
+	border-left: 0;
+	border-right: 0;
+	left: 10px;
+	width: 761px;
+	font-size: 12px;
+	text-align: center;
+}
+#cageMenu ul, #cageMenu ul li {
+	list-style:none;
+	padding: 0;
+}
+#cageMenu > ul {
+	position: relative;
+	top: -13px;
+}
+#cageMenu ul li {
+	display:inline-block;
+}
+#cageMenu button {
+	margin: 0;
+	height: 30px;
+}
+.cageSubMenu {
+	display: none;
+	position: absolute;
+	width: 160px;
+}
+.cageSubMenu button {
+	width: 160px;
+	text-align: left;
+	box-shadow: 0 10px 20px black;
+}
+#cageSettingContainer {
+	margin-top: 10px;
+	padding: 3px 3px 3px 0;
+}
+#cageThemeSelector {
+	width: 195px;
+	margin-left: 5px;
+}

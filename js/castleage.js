@@ -12,11 +12,7 @@ var CAGE = {}
 com.initContentScript(com.port.castleAge);
 
 $('head').append('<link id="cageTheme" rel="stylesheet" type="text/css" href="' + chrome.extension.getURL('css/dark-hive/') + 'jquery-ui.css">');
-$('center:first').css('textAlign', 'left');
-$(document.body).css({
-	'backgroundColor' : '#000',
-	'backgroundImage' : ''
-});
+
 if (tools['Page'].runtime[$('#current_pg_info').attr('value') + '.php']) {
 	tools['Page'].runtime[$('#current_pg_info').attr('value') + '.php']();
 }
@@ -34,7 +30,7 @@ var _elm = {
 }
 
 
-$(document.body).append($(_elm.cage).append($(_elm.general).append($(_elm.generalImageContainer).append(_elm.generalImage)).append(_elm.generalName).append(_elm.generalValues)).append(_elm.tools).append(_elm.settings));
+$(document.body).prepend($(_elm.cage).append($(_elm.general).append($(_elm.generalImageContainer).append(_elm.generalImage)).append(_elm.generalName).append(_elm.generalValues)).append(_elm.tools).append(_elm.settings));
 
 _elm = null;
 

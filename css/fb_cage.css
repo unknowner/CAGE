@@ -1,0 +1,51 @@
+body {
+	overflow: hidden !important;
+	background-color: #000 !important;
+}
+#blueBar {
+	display: none !important;
+}
+#globalContainer {
+	width: 100% !important;
+	left: 0 !important;
+}
+#pageHead {
+	height: 33px !important;
+	padding: 0 0 0 5px !important;
+	background-color: #3B5998 !important;
+	border-bottom: black solid 1px !important;
+}
+#headNav .rfloat {
+	float: none !important;
+	display: inline-block !important;
+}
+#contentCol {
+	padding:0 !important;
+}
+#rightCol {
+	display:none !important;
+}
+#contentArea {
+	width: 100% !important;
+	padding-left: 0 !important;
+	margin-left: 0 !important;
+}
+.fbChatSidebar {
+	margin-right: 19px;
+	bottom: 0 !important;
+	top: auto !important;
+	margin-bottom: -34px;
+}
+.fbChatOrderedList .item a .pic {
+	height: 26px !important;
+	width: 26px! important;
+}
+.fbChatOrderedList .item a .name {
+	line-height: 26px !important;
+}
+.fbChatSidebarFooter {
+	margin-bottom: 34px;
+}
+#pagelet_canvas_footer_content {
+	display :none !important;
+}

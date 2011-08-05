@@ -1,124 +1,42 @@
-.itemNumbers {
-	position: relative;
-	top: -25px;
-	text-shadow: 0 0 2px #000;
-	text-align: left;
-	left: 8px;
-	font-weight: bold;
-	color: #fff;
+body {
+	overflow-y: scroll !important;
+	background: #000 !important;
 }
-#cageContainer {
-	position: absolute;
-	right: 17px;
-	width: 209px;
-	top: 0;
-	font-size: 11px;
-	font-family: arial;
+body > center {
+	text-align: left !important;
+	width: 778px !important;
 }
-#cageGeneralContainer {
-	padding:0 0 2px 0;
+#main_bntp {
+	display:none !important;
 }
-#cageGeneralName {
-	font-weight: bold;
-	height: 18px;
-	padding: 7px 0 0 5px;
-	position: absolute;
-	text-shadow: 1px 1px black;
-	top: 9px;
-	left: 70px;
-	border-left: 0;
-	width: 123px;
+#main_bn {
+	display:none !important;
 }
-#cageGeneralImageContainer {
-	margin: 3px 0px 1px 3px;
-	height: 65px;
-	width: 65px;
+#main_bn_container {
+	display:none !important;
 }
-#cageGeneralImage {
-	height: 59px;
-	padding: 0px;
-	margin: 3px 0px 2px 3px;
-	cursor: pointer;
+#main_sts_container {
+	height: 70px !important;
+	position: fixed !important;
+	z-index: 2
 }
-#cageGeneralValues {
-	position: absolute;
-	left: 70px;
-	top: 35px;
-	width: 85px;
-	height: 12px;
-	text-shadow: 1px 1px black;
-	height: 28px;
-	width: 104px;
-	opacity: 0.8;
+div.game {
+	width: 779px !important;
 }
-#cageGeneralAttack {
-	width: 10px;
-	display: inline-block;
+#globalcss {
+	padding-left: 10px !important;
 }
-.cageGeneralAttDefText {
-	top: -5px;
-	position: relative;
-	font-weight: bold;
-	margin-right: 5px;
+#app_body {
+	width: 740px !important;
+	margin-top: 8px !important;
+	box-shadow: inset 0 0 5px 5px rgba(0,0,0,0.5)
 }
-.cageGeneralAttDefImg {
-	height: 20px;
-	margin-top: 4px;
-	margin-left: 8px;
-	margin-right: 4px;
+#nvbar {
+	display: none !important;
 }
-#cageToolsContainer {
-	margin-top: 10px;
-	padding: 3px 3px 3px 0;
-	width: 200px;
+#app_body_container {
+	padding-top: 70px !important;
 }
-.cageToolButton {
-	width: 100%;
-}
-#cageMenu {
-	position: absolute;
-	height: 28px;
-	z-index: 2;
-	box-shadow: 0 10px 20px black;
-	top: 61px;
-	border-left: 0;
-	border-right: 0;
-	left: 10px;
-	width: 761px;
-	font-size: 12px;
-	text-align: center;
-}
-#cageMenu ul, #cageMenu ul li {
-	list-style:none;
-	padding: 0;
-}
-#cageMenu > ul {
-	position: relative;
-	top: -13px;
-}
-#cageMenu ul li {
-	display:inline-block;
-}
-#cageMenu button {
-	margin: 0;
-	height: 30px;
-}
-.cageSubMenu {
-	display: none;
-	position: absolute;
-	width: 140px;
-}
-.cageSubMenu button {
-	width: 140px;
-	text-align: left;
-	box-shadow: 0 10px 20px black;
-}
-#cageSettingContainer {
-	margin-top: 10px;
-	padding: 3px 3px 3px 0;
-	width: 200px;
-}
-#cageThemeSelector {
-	width: 195px;
-	margin-left: 5px;
+#globalContainer{
+	width: 778px !important;
 }
