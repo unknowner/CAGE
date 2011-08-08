@@ -1,3 +1,4 @@
+// Chrome
 var com = {
 	// Port names
 	port: {

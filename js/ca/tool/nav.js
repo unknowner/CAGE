@@ -1,6 +1,6 @@
 new tool('Nav');
-tools['Gifter'].runtime = {};
-tools['Gifter'].runtime['menu'] = {
+tools['Nav'].runtime = {};
+tools['Nav'].runtime['menu'] = {
 	'Home': {
 		url: 'index.php',
 		items: {
@@ -165,7 +165,7 @@ tools['Nav'].start = function() {
 
 	if(CastleAge.inGuild !== null) {
 		if(CastleAge.inGuild == true) {
-			tools['Gifter'].runtime['menu'].Guild = {
+			tools['Nav'].runtime['menu'].Guild = {
 				url : 'guild.php',
 				items : {
 					'Management' : {
@@ -186,7 +186,7 @@ tools['Nav'].start = function() {
 				}
 			};
 		}
-		$.each(tools['Gifter'].runtime['menu'], function(_i, _e) {
+		$.each(tools['Nav'].runtime['menu'], function(_i, _e) {
 			$('#cageMenu ul:first').append($('<li id="cageMenu'+_i+'">').hover( function() {
 				$(this).find('ul').show();
 			}, function() {

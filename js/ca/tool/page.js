@@ -5,7 +5,6 @@ tools['Page'].init = function() {
 	addFunction(tools['Page'].get_cached_ajax, null, true, true);
 	addFunction(tools['Page'].ajaxLinkSend, null, true, true);
 	addFunction(tools['Page'].ajaxFormSend, null, true, true);
-	//addFunction(tools['Page'].swapElementClass, null, true, true);
 	// Do stuff after page loaded
 	customEvent('PageURL', function() {
 		var _page = $('#PageURL').val();
@@ -27,17 +26,10 @@ tools['Page'].init = function() {
 tools['Page'].loadPage = function(_page) {
 	console.log('Loadpage:' + _page );
 	addFunction( function(_data) {
-		//get_cached_ajax(_data._page + '?signed_request=' + $('#signed_request').val(), _data._type ? _data._type : 'cache_body');
 		ajaxLinkSend('globalContainer', _data);
 	}, JSON.stringify(_page), true, true);
 };
-/*
- tools['Page'].swapElementClass = function() {
- swapElementClass = function(elem_id, classname) {
- $('#' + elem_id).removeAttr('class').addClass(classname);
- ////fireSetSize();
- }
- };*/
+
 tools['Page'].get_cached_ajax = function() {
 	get_cached_ajax = function(url, get_type) {
 		// just_body_cache
@@ -56,8 +48,7 @@ tools['Page'].get_cached_ajax = function() {
 			firePageURL();
 			$('body').animate({
 				scrollTop : 0
-			}, 'slow');//fireScroll(0);
-			//fireSetSize();
+			}, 'slow');
 		} else {
 			if(get_type == 'get_page') {
 				stopTimers = true;
@@ -108,8 +99,7 @@ tools['Page'].get_cached_ajax = function() {
 					firePageURL();
 					$('body').animate({
 						scrollTop : 0
-					}, 'slow');//fireScroll(0);
-					//fireSetSize();
+					}, 'slow');
 					centerPopups();
 				}
 			});
@@ -153,8 +143,7 @@ tools['Page'].ajaxLinkSend = function() {
 				firePageURL();
 				$('body').animate({
 					scrollTop : 0
-				}, 'slow');//fireScroll(0);
-				//fireSetSize();
+				}, 'slow');
 				centerPopups();
 			}
 		});
@@ -218,8 +207,7 @@ tools['Page'].ajaxFormSend = function(div, url, formElement, anchor) {
 				firePageURL();
 				$('body').animate({
 					scrollTop : 0
-				}, 'slow');//fireScroll(0);
-				//fireSetSize();
+				}, 'slow');
 				centerPopups();
 			}
 		});
