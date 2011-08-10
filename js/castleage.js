@@ -13,11 +13,6 @@ com.initContentScript(com.port.castleAge);
 
 $('head').append('<link id="cageTheme" rel="stylesheet" type="text/css" href="' + chrome.extension.getURL('css/dark-hive/') + 'jquery-ui.css">');
 
-if (tools['Page'].runtime[$('#current_pg_info').attr('value') + '.php']) {
-	tools['Page'].runtime[$('#current_pg_info').attr('value') + '.php']();
-}
-tools['Page'].runtime['allPages']();
-
 var _elm = {
 	cage : '<div id="cageContainer"></div>',
 	general : '<div id="cageGeneralContainer" class="ui-corner-br ui-widget-content"></div>',
@@ -35,5 +30,10 @@ $(document.body).prepend($(_elm.cage).append($(_elm.general).append($(_elm.gener
 _elm = null;
 
 initTools();
+
+if (tools['Page'].runtime[$('#current_pg_info').attr('value') + '.php']) {
+	tools['Page'].runtime[$('#current_pg_info').attr('value') + '.php']();
+}
+tools['Page'].runtime['allPages']();
 
 com.send(com.task.castleAgeReady, com.port.facebook, {});

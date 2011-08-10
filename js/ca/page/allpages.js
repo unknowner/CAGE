@@ -2,18 +2,6 @@
 tools['Page'].runtime['allPages'] = function () {
 
 	$('a[href="http://apps.facebook.com/castle_hod/?xprom=cax"]:first').parent('div:first').hide();
-/*
-$('center:first').css('textAlign', 'left');
-$(document.body).css({
-	'backgroundColor' : '#000',
-	'backgroundImage' : ''
-});
-
-	$('#globalContainer').css({
-		'overflow': 'auto'
-	});
-
-*/
 	if ($('#globalContainer > div:first').height() == 80) {
 		$('#globalContainer > div:first').hide();
 	}
@@ -43,4 +31,5 @@ $(document.body).css({
 		}).css('cursor', 'pointer');
 		$(_element).unwrap();
 	});
+
 };

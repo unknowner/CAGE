@@ -1,18 +1,22 @@
 {
 	"buttonHeal": {
 		"message": "Heal",
-		"description": "fb UI button: Heal"
+		"description": "button text: Heal"
 	},
 	"buttonEliteGuard": {
 		"message": "Elite guard",
-		"description": "fb UI button: Elite Guard"
+		"description": "button text: Elite Guard"
 	},
 	"buttonGifter": {
 		"message": "Receive gifts",
-		"description": "fb UI button: Gifter"
+		"description": "button text: Gifter"
 	},
 	"buttonStash": {
 		"message": "Stash gold",
-		"description": "fb UI button: Stash"
+		"description": "button text: Stash"
+	},
+	"buttonClearData": {
+		"message": "Clear Data",
+		"description": "button text: Setting clear data"
 	}
 }

@@ -44,6 +44,8 @@ tools['Page'].get_cached_ajax = function() {
 			} else {
 				document.getElementById('app_body_container').innerHTML = data;
 				FB.XFBML.parse(document.getElementById('app_body_container'));
+				console.log('parse');
+				FB.XFBML.parse();
 			}
 			firePageURL();
 			$('body').animate({
@@ -111,6 +113,7 @@ tools['Page'].done = function(_url, _div) {
 };
 tools['Page'].ajaxLinkSend = function() {
 	ajaxLinkSend = function(div, url) {
+		console.log(div);
 		friend_browse_offset = 0;
 		reset_raid_lst();
 		pageCache = {};
@@ -132,23 +135,7 @@ tools['Page'].ajaxLinkSend = function() {
 			data : params,
 			type : 'POST',
 			success : function(data) {
-				ajaxPerforming = false;
-				$('#AjaxLoadIcon').hide();
-				if(data.lastIndexOf('<fb:') == -1) {
-					$('#' + div).html(data);
-				} else {
-					document.getElementById(div).innerHTML = data;
-					FB.XFBML.parse(document.getElementById(div));
-				}
-				firePageURL();
-				$('body').animate({
-					scrollTop : 0
-				}, 'slow');
-				centerPopups();
-			}
-		});
-		scrollToElement('#main_anchor');
-		FB.init({
+				FB.init({
 			appId : '46755028429',
 			status : true,
 			// check login status
@@ -158,6 +145,26 @@ tools['Page'].ajaxLinkSend = function() {
 			xfbml : true
 			// parse XFBML
 		});
+				ajaxPerforming = false;
+				$('#AjaxLoadIcon').hide();
+				if(data.lastIndexOf('<fb:') == -1) {
+					console.log('no xfbml');
+					$('#' + div).html(data);
+				} else {
+					document.getElementById(div).innerHTML = data;
+					console.log('parse xfbml');
+					//FB.XFBML.parse(document.getElementById(div));
+					FB.XFBML.parse();
+				}
+				firePageURL();
+				$('body').animate({
+					scrollTop : 0
+				}, 'slow');
+				centerPopups();
+			}
+		});
+		scrollToElement('#main_anchor');
+		
 		//FB.Canvas.setAutoResize();
 	};
 };

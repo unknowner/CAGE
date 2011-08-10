@@ -37,6 +37,13 @@ div.game {
 #app_body_container {
 	padding-top: 70px !important;
 }
-#globalContainer{
+#globalContainer {
 	width: 778px !important;
+}
+#AjaxLoadIcon {
+	width: 80px !important;
+	position: fixed !important;
+	height: 80px !important;
+	top: 100px !important;
+	left: 350px !important;
 }

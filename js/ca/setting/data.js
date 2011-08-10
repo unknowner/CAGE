@@ -13,7 +13,7 @@ tools['Data'].start = function() {
 };
 tools['Data'].init = function () {
 
-	$('#cageSettingContainer').append('<button id="cageClearData" class="cageToolButton">Clear Data</button>');
+	$('#cageSettingContainer').append('<button id="cageClearData" class="cageToolButton">' + chrome.i18n.getMessage("buttonClearData") + '</button>');
 	$('#cageClearData').button().removeClass('ui-corner-all').addClass('ui-corner-right').click(tools['Data'].start);
 
 };

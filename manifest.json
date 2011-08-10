@@ -1,7 +1,7 @@
 {
 	"name": "CAGE - Castle Age Game Enhancer [α]",
-	"version": "1.0.18",
-	"description": "Development build of CAGE. For testing purpose only.",
+	"version": "1.0.19",
+	"description": "CAGE Alpha build. Only few things missing until Beta is reached.",
 	"background_page": "background.html",
 	"default_locale": "en",
 	"content_scripts": [
@@ -42,6 +42,8 @@
 			"js/ca/page/monsterquests.js",
 			"js/ca/page/symbolquests.js",
 			"js/ca/page/player_monster_list.js",
+			"js/ca/page/battle_monster.js",
+			"js/ca/page/festival_battle_monster.js",
 			"js/castleage.js"
 			],
 		"all_frames": true
