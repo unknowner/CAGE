@@ -43,6 +43,7 @@
 			"js/ca/page/symbolquests.js",
 			"js/ca/page/player_monster_list.js",
 			"js/ca/page/battle_monster.js",
+			"js/ca/page/arena_battle.js",
 			"js/ca/page/festival_battle_monster.js",
 			"js/castleage.js"
 			],

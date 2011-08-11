@@ -29,7 +29,6 @@ tools['Page'].loadPage = function(_page) {
 		ajaxLinkSend('globalContainer', _data);
 	}, JSON.stringify(_page), true, true);
 };
-
 tools['Page'].get_cached_ajax = function() {
 	get_cached_ajax = function(url, get_type) {
 		// just_body_cache
@@ -113,6 +112,9 @@ tools['Page'].done = function(_url, _div) {
 };
 tools['Page'].ajaxLinkSend = function() {
 	ajaxLinkSend = function(div, url) {
+		$('body').animate({
+			scrollTop : 0
+		}, 'slow');
 		console.log(div);
 		friend_browse_offset = 0;
 		reset_raid_lst();
@@ -136,15 +138,15 @@ tools['Page'].ajaxLinkSend = function() {
 			type : 'POST',
 			success : function(data) {
 				FB.init({
-			appId : '46755028429',
-			status : true,
-			// check login status
-			cookie : true,
-			// enable cookies to allow the server to access the
-			// session
-			xfbml : true
-			// parse XFBML
-		});
+					appId : '46755028429',
+					status : true,
+					// check login status
+					cookie : true,
+					// enable cookies to allow the server to access the
+					// session
+					xfbml : true
+					// parse XFBML
+				});
 				ajaxPerforming = false;
 				$('#AjaxLoadIcon').hide();
 				if(data.lastIndexOf('<fb:') == -1) {
@@ -157,14 +159,11 @@ tools['Page'].ajaxLinkSend = function() {
 					FB.XFBML.parse();
 				}
 				firePageURL();
-				$('body').animate({
-					scrollTop : 0
-				}, 'slow');
 				centerPopups();
 			}
 		});
 		scrollToElement('#main_anchor');
-		
+
 		//FB.Canvas.setAutoResize();
 	};
 };

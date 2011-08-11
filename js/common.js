@@ -8,6 +8,10 @@ function addFunction(_func, _arg, _run, _once) {
 	}
 }
 
+// http://www.foliotek.com/devblog/jquery-custom-selector-for-selecting-elements-by-exact-text-textequals/
+$.expr[':'].textEquals = function(a, i, m) {
+	return $(a).text().match("^" + m[3] + "$");
+};
 // Return Array with unique values
 function unique(_array, _tostring) {
 	var o = {}, i, l = _array.length, r = [];
