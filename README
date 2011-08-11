@@ -4,6 +4,7 @@ VER: 1.0.19
 2011-08-11
 	ADD: Fix for monster/arena timers
 	ADD: Monster health/defense percentage
+	CHG: Generals sorted by name
 
 ==================================================================
 VER: 1.0.18

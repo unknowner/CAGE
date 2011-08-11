@@ -60,22 +60,36 @@ tools['General'].update = function() {
 					text : _text
 				};
 			});
+			tools['General'].general;
 			$('#cageGeneralSelector').empty().append('<span id="cageSelectorInfo" class="ui-state-active ui-corner-all"></span>');
+			var _names = [];
 			$.each(tools['General'].general, function(_i, _e) {
+				_names.push(_e.name);
+			});
+			_names.sort();
+			//$.each(tools['General'].general, function(_i, _e) {
+			for (var i=0, len=_names.length; i<len; i++) {
+				var _e = tools['General'].general[_names[i]];
 				$('#cageGeneralSelector').append(
 				$('<img class="cageSelectorImage ui-corner-all" src="'+_e.image+'"/>')
 				.click( function() {
 					tools['General'].setByName(_e.name);
 					$('#cageGeneralSelector').slideToggle('slow');
 				}).hover( function() {
-					$(this).css({'boxShadow': '0 0 30px #26B3F7', 'border': '1px solid #26B3F7'});
+					$(this).css({
+						'boxShadow': '0 0 30px #26B3F7',
+						'border': '1px solid #26B3F7'
+					});
 					$('#cageSelectorInfo').html(_e.name + ' <img src="http://image4.castleagegame.com/graphics/demi_symbol_2.gif" style="height:12px;"/> ' + _e.attack + ' <img src="http://image4.castleagegame.com/graphics/demi_symbol_3.gif" style="height:12px;"/> ' + _e.defense + ' - ' + _e.text);
 				}, function() {
-					$(this).css({'boxShadow': '', 'border': '1px solid transparent'});
+					$(this).css({
+						'boxShadow': '',
+						'border': '1px solid transparent'
+					});
 					$('#cageSelectorInfo').html('');
 				})
 				)
-			});
+			}//);
 			tools['General'].get();
 		});
 	} else {

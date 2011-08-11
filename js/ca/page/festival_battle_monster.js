@@ -12,9 +12,7 @@ tools['Page'].runtime['festival_battle_monster.php'] = function () {
 
 	// add percentage to defense/forcefield/..
 	var _defense = $('img[src*="bar_dispel.gif"],[src*="nm_green.jpg"],[src*="seamonster_ship_health.jpg"]').parent()[0];
-	console.log(_defense);
-	var _defText = $('#app_body div:textEquals("Party Health/Strength"):first, #app_body div:textEquals("Skaar\'s Mana Forcefield "):first, #app_body div:textEquals("Illvasa, Plateau City\'s Defense "):first, #app_body div:textEquals("Castle Defense "):first, #app_body div:textEquals("Your Ship\'s Defense"):first');
-	console.log(_defText);
+	var _defText = $('#app_body div:textEquals("Party Health/Strength "):first, #app_body div:textEquals("Skaar\'s Mana Forcefield "):first, #app_body div:textEquals("Illvasa, Plateau City\'s Defense "):first, #app_body div:textEquals("Castle Defense"):first, #app_body div:textEquals("Your Ship\'s Defense"):first');
 	if(_defense && _defense.style && _defense.style.width !== "" && _defText && _defText.text()) {
 		_defText.text(_defText.text() + ' (' + _defense.style.width.substr(0,5) + '%) ');
 	}
