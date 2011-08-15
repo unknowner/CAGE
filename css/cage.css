@@ -123,7 +123,7 @@
 #cageThemeSelector-button {
 	font-size: 12px;
 	border-bottom-left-radius:  0;
-	border-top-left-radius: 0;	
+	border-top-left-radius: 0;
 }
 #cageThemeSelector-menu {
 	font-size: 12px;
@@ -156,4 +156,17 @@
 	font-family: arial;
 	font-size: 12px;
 	line-height: 20px;
+}
+.cageQuestSwitchGeneral {
+	top: -14px;
+	position: relative;
+	width: 78px;
+	cursor: pointer;
+}
+.cageSelectorGeneral {
+	border: 1px solid transparent;
+}
+.cageSelectorGeneralHover {
+	box-Shadow: 0 0 30px #26B3F7;
+	border:1px solid #26B3F7 !important;
 }
