@@ -14,12 +14,18 @@ body {
 	padding: 0 0 0 5px !important;
 	background-color: #3B5998 !important;
 	border-bottom: black solid 1px !important;
+	width: 100% !important;
+	margin-left: 0 !important;
 }
 #headNav .rfloat {
 	float: none !important;
 	display: inline-block !important;
 }
+#fbDockChat {
+	margin-right: 3px !important;
+}
 #contentCol {
+	margin-top: 32px !important;
 	padding:0 !important;
 }
 #rightCol {
