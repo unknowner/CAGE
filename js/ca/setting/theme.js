@@ -46,7 +46,7 @@ tools['Theme'].init = function () {
 	$('#cageSettingContainer').append('<select id="cageThemeSelector">');
 	var _sel = $('#cageThemeSelector');
 	$.each(CAGE.themes, function(_i, _e) {
-		_sel.append('<option value="'+_i+'">'+_i+'</option>')
+		_sel.append('<option value="'+_i+'">'+_i+'</option>');
 	});
 	_sel.change( function() {
 		item.set('Theme', $(this).val());

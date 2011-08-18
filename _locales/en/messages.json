@@ -18,5 +18,9 @@
 	"buttonClearData": {
 		"message": "Clear Data",
 		"description": "button text: Setting clear data"
+	},
+	"buttonAssister": {
+		"message": "Assist",
+		"description": "button text: Assist Life feed/guild..."
 	}
 }

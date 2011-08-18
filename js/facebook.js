@@ -1,7 +1,7 @@
 // CAGE stuff working on facebook site
 com.initContentScript(com.port.facebook);
 
-$('head').append('<style type="text/css" id="cageIFrame">')
+$('head').append('<style type="text/css" id="cageIFrame">');
 
 window.onresize = function (evt) {
 

@@ -10,7 +10,7 @@ tools['Page'].runtime['allPages'] = function () {
 		'height': 16,
 		'marginBottom': -2
 	});
-	//$('#st_5 div:contains("Level"):last').text(/\d+/.exec($('#st_5').attr('title'))[0]);
+	$('div.st_row_2').css('marginTop', 2);
 	$('#st_5 div.lvlBr div').css('height', 13).addClass('ui-corner-all');
 	$('#st_2_5 strong').text(/\d+/.exec($('#st_5').attr('title'))[0] + ' to ' + /\d+\/(\d+)/.exec($('#st_2_5 strong').text())[1]);
 	// closing results

@@ -7,7 +7,7 @@ var CastleAge = {
 	inGuild: null
 };
 
-var CAGE = {}
+var CAGE = {};
 
 com.initContentScript(com.port.castleAge);
 
@@ -23,7 +23,7 @@ var _elm = {
 	generalSelector : '<div id="cageGeneralSelector" class="ui-widget-content ui-corner-bottom">',
 	tools : '<div id="cageToolsContainer" class="ui-widget-content ui-corner-right"></div>',
 	settings : '<div id="cageSettingContainer" class="ui-widget-content ui-corner-right"></div>'
-}
+};
 
 $(document.body).prepend($(_elm.cage).append($(_elm.general).append($(_elm.generalImageContainer).append(_elm.generalImage)).append(_elm.generalName).append(_elm.generalValues)).append(_elm.tools).append(_elm.settings)).prepend(_elm.generalSelector);
 

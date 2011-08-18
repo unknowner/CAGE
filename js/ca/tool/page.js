@@ -8,7 +8,6 @@ tools['Page'].init = function() {
 	// Do stuff after page loaded
 	customEvent('PageURL', function() {
 		var _page = $('#PageURL').val();
-		console.log()
 		tools['General'].get();
 		tools['Page'].runtime['allPages']();
 		if(tools['Page'].runtime[_page]) {
@@ -19,7 +18,7 @@ tools['Page'].init = function() {
 	customEvent('Scroll', function() {
 		var _value = $('#Scroll').val();
 		com.send(com.task.scroll, com.port.facebook, {
-			to : _value,
+			to : _value
 		});
 	});
 };

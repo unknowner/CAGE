@@ -1,6 +1,8 @@
 // Festival duel
 tools['Page'].runtime['gift.php'] = function () {
+	
 	console.log('Page: gift.php');
+	
 	var $_img = $('img[src*="invite_sendgift.gif"]');
 	var _giftNum = /(?:act=create&gift=)(\d+)/.exec($_img.attr('onclick'))[1];
 	var _giftName = /(sent you a )(.+)( in Castle Age!)/.exec($_img.attr('onclick'))[2];
@@ -11,4 +13,7 @@ tools['Page'].runtime['gift.php'] = function () {
 			});
 		}, JSON.stringify({num : _giftNum, name : _giftName}), true, true);
 	});
+	
+	//$('#giftContainer').prepend('123');
+	
 };

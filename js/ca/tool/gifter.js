@@ -146,6 +146,6 @@ tools['Gifter'].newRequestForm = function () {
 				}
 			}
 			);
-		}
+		};
 	}, null, true, true);
 };

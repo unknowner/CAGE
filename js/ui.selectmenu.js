@@ -386,7 +386,7 @@ $.widget("ui.selectmenu", {
 		if ( this.element.attr( 'disabled' ) === true ) {
 			this.disable();
 		} else {
-			this.enable()
+			this.enable();
 		}
 		
 		// update value
@@ -446,9 +446,9 @@ $.widget("ui.selectmenu", {
 					// allow the typeahead attribute on the option tag for a more specific lookup
 					var thisText = $(this).attr('typeahead') || $(this).text();
 					if (thisText.indexOf(find+C) == 0) {
-						focusOptSeq(this,i,C)
+						focusOptSeq(this,i,C);
 					} else if (thisText.indexOf(find+c) == 0) {
-						focusOptSeq(this,i,c)
+						focusOptSeq(this,i,c);
 					}
 				}
 			});

@@ -1,161 +1,161 @@
 new tool('Nav');
 tools['Nav'].runtime = {};
 tools['Nav'].runtime['menu'] = {
-	'Home': {
-		url: 'index.php',
-		items: {
-			'Crusaders': {
-				url: 'specialmembership.php'
+	'Home' : {
+		url : 'index.php',
+		items : {
+			'Crusaders' : {
+				url : 'specialmembership.php'
 			}
 		}
 	},
-	'Festival': {
-		url: 'festival_home.php',
-		items: {
-			'Duel': {
-				url: 'festival_duel_home.php'
+	'Festival' : {
+		url : 'festival_home.php',
+		items : {
+			'Duel' : {
+				url : 'festival_duel_home.php'
 			},
-			'Guild': {
-				url: 'festival_battle_home.php'
+			'Guild' : {
+				url : 'festival_battle_home.php'
 			},
-			'Monster Tower': {
-				url: 'festival_tower.php',
+			'Monster Tower' : {
+				url : 'festival_tower.php'
 			},
-			'Monster List': {
-				url: 'festival_tower.php?tab=monster'
+			'Monster List' : {
+				url : 'festival_tower.php?tab=monster'
 			},
-			'Games': {
-				url: 'festival_games.php',
+			'Games' : {
+				url : 'festival_games.php'
 			},
-			'Feats': {
-				url: 'festival_feat_nav.php'
+			'Feats' : {
+				url : 'festival_feat_nav.php'
 			},
-			'Quests': {
-				url: 'festival_quests.php'
+			'Quests' : {
+				url : 'festival_quests.php'
 			}
 		}
 	},
-	'Quests': {
-		url: 'quests.php',
-		items: {
-			'Demi Quests': {
-				url: 'symbolquests.php'
+	'Quests' : {
+		url : 'quests.php',
+		items : {
+			'Demi Quests' : {
+				url : 'symbolquests.php'
 			},
-			'Atlantis': {
-				url: 'monster_quests.php'
+			'Atlantis' : {
+				url : 'monster_quests.php'
 			}
 		}
 
 	},
-	'Battle': {
-		url: 'battle.php',
-		items: {
-			'Battle Rank': {
-				url: 'battlerank.php'
+	'Battle' : {
+		url : 'battle.php',
+		items : {
+			'Battle Rank' : {
+				url : 'battlerank.php'
 			},
-			'War Rank': {
-				url: 'war_rank.php'
+			'War Rank' : {
+				url : 'war_rank.php'
 			},
-			'War Council': {
-				url: 'war_council.php'
+			'War Council' : {
+				url : 'war_council.php'
 			},
-			'Raid': {
-				url: 'raid.php'
+			'Raid' : {
+				url : 'raid.php'
 			},
-			'Arena': {
-				url: 'arena.php'
+			'Arena' : {
+				url : 'arena.php'
 			}
 		}
 	},
-	'Monster': {
-		url: 'player_monster_list.php',
-		items: {
-			'Summon monster': {
-				url: 'monster_summon_list.php'
+	'Monster' : {
+		url : 'player_monster_list.php',
+		items : {
+			'Summon monster' : {
+				url : 'monster_summon_list.php'
 			},
-			'Monster class': {
-				url: 'view_class_progress.php'
+			'Monster class' : {
+				url : 'view_class_progress.php'
 			},
-			'Live feed': {
-				url: 'army_news_feed.php'
+			'Live feed' : {
+				url : 'army_news_feed.php'
 			},
-			'Public monsters': {
-				url: 'public_monster_list.php'
+			'Public monsters' : {
+				url : 'public_monster_list.php'
 			}
 		}
 	},
-	'Generals': {
-		url: 'generals.php',
-		items: {
-			'Heroes': {
-				url: 'mercenary.php'
+	'Generals' : {
+		url : 'generals.php',
+		items : {
+			'Heroes' : {
+				url : 'mercenary.php'
 			}
 		}
 	},
-	'Soldiers': {
-		url: 'soldiers.php',
-		items: {
-			'Black smith': {
-				url: 'item.php'
+	'Soldiers' : {
+		url : 'soldiers.php',
+		items : {
+			'Black smith' : {
+				url : 'item.php'
 			},
-			'Magic': {
-				url: 'magic.php'
+			'Magic' : {
+				url : 'magic.php'
 			},
-			'Land': {
-				url: 'land.php'
+			'Land' : {
+				url : 'land.php'
 			}
 		}
 	},
-	'Oracle': {
-		url: 'oracle.php',
-		items: {
-			'Reinforcements': {
-				url: 'reinforcements.php'
+	'Oracle' : {
+		url : 'oracle.php',
+		items : {
+			'Reinforcements' : {
+				url : 'reinforcements.php'
 			},
-			'Demi power': {
-				url: 'symbols.php'
+			'Demi power' : {
+				url : 'symbols.php'
 			},
-			'Chest': {
-				url: 'treasure_chest.php'
+			'Chest' : {
+				url : 'treasure_chest.php'
 			}
 		}
 	},
-	'Keep': {
-		url: 'keep.php',
-		items: {
-			'Elite guard': {
-				url: 'party.php'
+	'Keep' : {
+		url : 'keep.php',
+		items : {
+			'Elite guard' : {
+				url : 'party.php'
 			},
-			'Achievements': {
-				url: 'achievements.php'
+			'Achievements' : {
+				url : 'achievements.php'
 			},
-			'Alchemy': {
-				url: 'alchemy.php'
+			'Alchemy' : {
+				url : 'alchemy.php'
 			},
-			'Goblin emporium': {
-				url: 'goblin_emp.php'
+			'Goblin emporium' : {
+				url : 'goblin_emp.php'
 			}
 		}
 	},
-	'Gift': {
-		url: 'gift.php',
-		items: {
-			'Invite': {
-				url: 'army.php'
+	'Gift' : {
+		url : 'gift.php',
+		items : {
+			'Invite' : {
+				url : 'army.php'
 			},
-			'View army': {
-				url: 'army_member.php'
+			'View army' : {
+				url : 'army_member.php'
 			},
-			'Sent invites': {
-				url: 'army_reqs.php'
+			'Sent invites' : {
+				url : 'army_reqs.php'
 			}
 		}
 	},
-	'Guild': {
-		url: 'guild.php'
+	'Guild' : {
+		url : 'guild.php'
 	}
 };
-tools['Nav'].init = function () {
+tools['Nav'].init = function() {
 
 	$(document.body).append($('<div id="cageMenu"><ul></ul></div>').addClass('ui-widget ui-state-default'));
 	tools['Nav'].start();
@@ -171,7 +171,7 @@ tools['Nav'].start = function() {
 					'Management' : {
 						url : 'guild_panel.php'
 					},
-					'Character Class': {
+					'Character Class' : {
 						url : 'guild_class.php'
 					},
 					'Guild List' : {
@@ -187,20 +187,20 @@ tools['Nav'].start = function() {
 			};
 		}
 		$.each(tools['Nav'].runtime['menu'], function(_i, _e) {
-			$('#cageMenu ul:first').append($('<li id="cageMenu'+_i+'">').hover( function() {
+			$('#cageMenu ul:first').append($('<li id="cageMenu' + _i + '">').hover(function() {
 				$(this).find('ul').show();
 			}, function() {
 				$(this).find('ul').hide();
-			}).append($('<button>' + _i + '</button>').click( function() {
+			}).append($('<button>' + _i + '</button>').click(function() {
 				tools['Page'].loadPage(_e.url);
 			})));
 			if(_e.items) {
-				$('#cageMenu'+_i).append('<ul class="cageSubMenu">');
-				var _list = $('#cageMenu'+_i+' ul');
+				$('#cageMenu' + _i).append('<ul class="cageSubMenu">');
+				var _list = $('#cageMenu' + _i + ' ul');
 				$.each(_e.items, function(_item, _itemdata) {
-					_list.append($('<li><button>' + _item + '</button></li>').click( function() {
+					_list.append($('<li><button>' + _item + '</button></li>').click(function() {
 						tools['Page'].loadPage(_itemdata.url);
-					}))
+					}));
 				});
 			}
 		});
