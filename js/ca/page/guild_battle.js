@@ -1,6 +1,9 @@
 // Guild battle
-tools['Page'].runtime['guild_battle.php'] = function () {
+tools['Page'].runtime['guild_battle.php'] = function() {
 	console.log('Page: guild_battle.php');
+	// fix for timers
+	addFunction(new Function($('#monsterTicker').next('script').html()), null, true, true);
+	addFunction(new Function($('#guild_token_time_container').next('script').html()), null, true, true);
 	// add percentage to health bars
 	var _your = (1 - ($('div[style*="/guild_battle_bar_you.gif"]').width() / $('div[style*="/guild_battle_bar_you.gif"]').parent().width())) * 100;
 	var _enemy = (1 - ($('div[style*="/guild_battle_bar_enemy.gif"]').width() / $('div[style*="/guild_battle_bar_enemy.gif"]').parent().width())) * 100;
@@ -9,7 +12,7 @@ tools['Page'].runtime['guild_battle.php'] = function () {
 	$_your.html($_your.html() + ' (' + _your.toFixed(1) + '%)');
 	$_enemy.html($_enemy.html() + ' (' + _enemy.toFixed(1) + '%)');
 	$_enemy = $('span.result_body div[style*="width: 285px;"]:last');
-	if ($_enemy.length > 0) {
+	if($_enemy.length > 0) {
 		var _target = $('span.result_body input[name="target_id"]').attr('value');
 		var _health = /Health:\s*(\d+)\/\d+/.exec($('#enemy_guild_battle_section_battle_list  *[uid="' + _target + '"]').parents().eq(3).text())[1];
 		$_enemy.html($_enemy.html() + ' (' + _health + ')');

@@ -1,11 +1,13 @@
 ==================================================================
 VER: 1.0.22
 ------------------------------------------------------------------
+2011-08-18
+	ADD: Favourites for Generals
+	ADD: Fix for guild battle timers
+	
 2011-08-16
 	FIX: Fixed a lot of smaller bugs
 	CHG: Updated jQueryUI to 1.18.15
-
-2011-08-16
 	ADD: Assister added, not ready yet
 
 2011-08-15

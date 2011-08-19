@@ -2,13 +2,13 @@ var item = {
 	get : function(_name, _default) {
 		console.log(CastleAge.userId);
 		if (localStorage[CastleAge.userId + '_' + _name] !== undefined) {
-			return localStorage[CastleAge.userId + '_' + _name];
+			return JSON.parse(localStorage[CastleAge.userId + '_' + _name]);
 		} else {
 			return _default;
 		}
 	},
 	set : function(_name, _value) {
-		localStorage[CastleAge.userId  + '_' + _name] = _value;
+		localStorage[CastleAge.userId  + '_' + _name] = JSON.stringify(_value);
 	},
 	del : function(_name) {
 		localStorage.remove(CastleAge.userId  + '_' + _name);

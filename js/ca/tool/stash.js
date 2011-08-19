@@ -6,7 +6,7 @@ tools['Stash'].runtime.general = null;
 
 tools['Stash'].start = function() {
 
-	if(tools['General'].general['Aeris'] !== null) {
+	if(tools['General'].runtime.general['Aeris'] !== null) {
 		tools['Stash'].runtime.general = tools['General'].current;
 		tools['General'].setByName('Aeris', tools['Stash'].work);
 	} else {

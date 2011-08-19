@@ -46,6 +46,7 @@
 			"js/ca/page/battle_monster.js",
 			"js/ca/page/arena_battle.js",
 			"js/ca/page/festival_battle_monster.js",
+			"js/ca/page/generals.js",
 			"js/castleage.js"
 			],
 		"all_frames": true
