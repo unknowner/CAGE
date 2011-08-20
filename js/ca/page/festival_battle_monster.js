@@ -20,5 +20,6 @@ tools['Page'].runtime['festival_battle_monster.php'] = function () {
 	}
 	// fix for monster timer
 	addFunction(new Function($('#monsterTicker').next('script').html()), null, true, true);
+	addFunction(new Function($('#monsterTicker').parent().next('script').html()), null, true, true);
 
 };

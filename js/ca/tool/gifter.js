@@ -2,15 +2,6 @@ new tool('Gifter');
 tools['Gifter'].runtime = {};
 tools['Gifter'].update = function () {
 	tools['Gifter'].runtime['sendGiftTo'] = item.get('CAGEsendGiftTo', new Array());
-	/*if (tools['Gifter'].runtime['sendGiftTo'].length == 0) {
-		tools['Gifter'].runtime['sendGiftTo'] = [];
-	}
-	if (tools['Gifter'].runtime['sendGiftTo'].indexOf(',') !== -1) {
-		tools['Gifter'].runtime['sendGiftTo'] = tools['Gifter'].runtime['sendGiftTo'].split(',');
-	}
-	else {
-		tools['Gifter'].runtime['sendGiftTo'] = $.makeArray(tools['Gifter'].runtime['sendGiftTo']);
-	}*/
 	tools['Gifter'].runtime['requests'] = [];
 	//prepare update event to receive userids and request ids
 	customEvent('GiftRequests', function () {
@@ -70,7 +61,7 @@ tools['Gifter'].newRequestForm = function () {
 			console.log(typeof JSON.parse(localStorage[FB._session.uid + '_' + 'CAGEsendGiftTo']));
 			if (localStorage[FB._session.uid + '_' + 'CAGEsendGiftTo'] !== undefined && localStorage[FB._session.uid + '_' + 'CAGEsendGiftTo'].length !== 0) {
 				_ui.filters = [{
-					name: 'CAGE',
+					name: 'Return the favour',
 					user_ids: JSON.parse(localStorage[FB._session.uid + '_' + 'CAGEsendGiftTo'])
 				},
 					                'app_users',
