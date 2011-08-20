@@ -11,6 +11,7 @@ var com = {
 	// Available tasks
 	task: {
 		init: 'TASK_INIT',
+		fbReady: 'TASK_FBREADY',
 		getGeneral: 'TASK_GETGENERAL',
 		general: 'TASK_GENERAL',
 		updateGenerals: 'TASK_UPDATEGENERALS',
@@ -45,9 +46,8 @@ var com = {
 	},
 	// Send Messages to ports
 	send: function (_task, _port, _data) {
-		//if(_task !== com.task.resize) {
-			console.log(_task + ' >> ' + _port);
-		//}
+		console.log(_task + ' >> ' + _port + ' data:');
+		console.log(_data);
 		com.port.current.postMessage({
 			task: _task,
 			port: _port,

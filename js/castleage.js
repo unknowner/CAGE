@@ -1,10 +1,12 @@
 // CAGE stuff working on Castle Age site
 var CastleAge = {
-	bqh: null,
-	signed_request: null,
-	userId: null,
-	pageModTimer: null,
-	inGuild: null
+	bqh : null,
+	signed_request : null,
+	userId : null,
+	//pageModTimer: null,
+	inGuild : null,
+	startInterval : null,
+	started : false
 };
 
 var CAGE = {};
@@ -26,14 +28,22 @@ var _elm = {
 };
 
 $(document.body).prepend($(_elm.cage).append($(_elm.general).append($(_elm.generalImageContainer).append(_elm.generalImage)).append(_elm.generalName).append(_elm.generalValues)).append(_elm.tools).append(_elm.settings)).prepend(_elm.generalSelector);
-
 _elm = null;
 
 initTools();
 
-if (tools['Page'].runtime[$('#current_pg_info').attr('value') + '.php']) {
+if(tools['Page'].runtime[$('#current_pg_info').attr('value') + '.php']) {
 	tools['Page'].runtime[$('#current_pg_info').attr('value') + '.php']();
 }
 tools['Page'].runtime['allPages']();
 
-com.send(com.task.castleAgeReady, com.port.facebook, {});
+CastleAge.startInterval = window.setInterval(function() {
+	console.log('interval');
+	if(CastleAge.started == false) {
+		console.log('interval false');
+		com.send(com.task.castleAgeReady, com.port.facebook);
+	} else {
+		console.log('interval clear');
+		window.clearInterval(CastleAge.startInterval);
+	}
+}, 100);
