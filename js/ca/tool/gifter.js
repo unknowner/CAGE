@@ -58,15 +58,15 @@ tools['Gifter'].newRequestForm = function () {
 			};
 			console.log('CAGE Filter1');
 			console.log(JSON.parse(localStorage[FB._session.uid + '_' + 'CAGEsendGiftTo']));
-			if (localStorage[FB._session.uid + '_' + 'CAGEsendGiftTo'] !== undefined && localStorage[FB._session.uid + '_' + 'CAGEsendGiftTo'].length !== 0) {
+			if (localStorage[FB._session.uid + '_' + 'CAGEsendGiftTo'] !== undefined) {
 				_ui.filters = [{
 					name: 'Return the favour',
-					user_ids: JSON.parse(localStorage[FB._session.uid + '_' + 'CAGEsendGiftTo'])
+					user_ids: localStorage[FB._session.uid + '_' + 'CAGEsendGiftTo']
 				},
-					                'app_users',
-					                'all',
-					                'app_non_users'
-					                ];
+          'app_users',
+          'all',
+          'app_non_users'
+        ];
 			}
 			console.log('CAGE Filter2');
 			FB.ui(_ui, function (result) {
@@ -79,7 +79,9 @@ tools['Gifter'].newRequestForm = function () {
 					var request_id_array = request_id_string.split(',');
 					var request_id_count = request_id_array.length;
 					// get all ids from sent gifts and remove them from the list
+					console.log('check for RTFs');
 					if (localStorage[FB._session.uid + '_' + 'CAGEsendGiftTo'] !== undefined) {
+						console.log('found for RTFs');
 						var ids = result.request_ids;
 						var _batch = [];
 						for (var i = 0; i < ids.length; i++) {
@@ -93,19 +95,19 @@ tools['Gifter'].newRequestForm = function () {
 								batch: _batch
 							}, function (res) {
 								console.log(res);
-								var _store = localStorage[FB._session.uid + '_' + 'CAGEsendGiftTo'].split(',');
+								var _store = JSON.parse(localStorage[FB._session.uid + '_' + 'CAGEsendGiftTo']);
 								for (var j = 0; j < res.length; j++) {
 									body = res[j].body;
 									var myObject = eval('(' + body + ')');
 									console.log(myObject);
 									if (_store.indexOf(myObject.to.id) > -1) {
+										console.log('found id:' + myObject.to.id);
 										_store.splice(_store.indexOf(myObject.to.id), 1);
 									}
 								}
 								if (_store.length > 0) {
-									localStorage[FB._session.uid + '_' + 'CAGEsendGiftTo'] = _store.join(',');
-								}
-								else {
+									localStorage[FB._session.uid + '_' + 'CAGEsendGiftTo'] = JSON.stringify(_store);
+								}	else {
 									console.log('clear');
 									localStorage.removeItem(FB._session.uid + '_' + 'CAGEsendGiftTo');
 								}
