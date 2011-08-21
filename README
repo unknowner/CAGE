@@ -1,12 +1,18 @@
 ==================================================================
 VER: 1.0.23
 ------------------------------------------------------------------
+2011-08-22
+	FIX: Sent gift filter not working correct
+	FIX: % for Ragnarok armor
+	
+2011-08-21
+	ADD: Rearranged monster battle results
+
 2011-08-19
 	ADD: Gift page reworked
 	FIX: Another Fix for monster timers
 	FIX: Start problems (no menu/general)
 	CHG: Start page reworked
-	ADD: Rearranged monster battle results
 
 ==================================================================
 VER: 1.0.22
