@@ -58,7 +58,6 @@ tools['Gifter'].newRequestForm = function () {
 			};
 			console.log('CAGE Filter1');
 			console.log(JSON.parse(localStorage[FB._session.uid + '_' + 'CAGEsendGiftTo']));
-			console.log(typeof JSON.parse(localStorage[FB._session.uid + '_' + 'CAGEsendGiftTo']));
 			if (localStorage[FB._session.uid + '_' + 'CAGEsendGiftTo'] !== undefined && localStorage[FB._session.uid + '_' + 'CAGEsendGiftTo'].length !== 0) {
 				_ui.filters = [{
 					name: 'Return the favour',
@@ -93,10 +92,12 @@ tools['Gifter'].newRequestForm = function () {
 							FB.api('/', 'POST', {
 								batch: _batch
 							}, function (res) {
+								console.log(res);
 								var _store = localStorage[FB._session.uid + '_' + 'CAGEsendGiftTo'].split(',');
 								for (var j = 0; j < res.length; j++) {
 									body = res[j].body;
 									var myObject = eval('(' + body + ')');
+									console.log(myObject);
 									if (_store.indexOf(myObject.to.id) > -1) {
 										_store.splice(_store.indexOf(myObject.to.id), 1);
 									}
