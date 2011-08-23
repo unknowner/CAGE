@@ -18,11 +18,11 @@ tools['Nav'].runtime['menu'] = {
 			'Guild' : {
 				url : 'festival_battle_home.php'
 			},
-			'Monster Tower' : {
+			'Monster Tower I' : {
 				url : 'festival_tower.php'
 			},
-			'Monster List' : {
-				url : 'festival_tower.php?tab=monster'
+			'Monster Tower II' : {
+				url : 'festival_tower2.php'
 			},
 			'Games' : {
 				url : 'festival_games.php'
