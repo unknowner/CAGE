@@ -46,8 +46,8 @@ var com = {
 	},
 	// Send Messages to ports
 	send: function (_task, _port, _data) {
-		console.log(_task + ' >> ' + _port + ' data:');
-		console.log(_data);
+		//console.log(_task + ' >> ' + _port + ' data:');
+		//console.log(_data);
 		com.port.current.postMessage({
 			task: _task,
 			port: _port,

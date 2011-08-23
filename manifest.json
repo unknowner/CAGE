@@ -21,6 +21,7 @@
 			"js/ca/tool.js",
 			"js/ca/ca_tools.js",
 			"js/ca/ca_receiver.js",
+			
 			"js/ca/tool/page.js",
 			"js/ca/tool/generals.js",
 			"js/ca/tool/eliteguard.js",
@@ -28,9 +29,11 @@
 			"js/ca/tool/gifter.js",
 			"js/ca/tool/stash.js",
 			"js/ca/tool/nav.js",
+			"js/ca/tool/abilities.js",
 
 			"js/ca/setting/theme.js",
 			"js/ca/setting/data.js",
+			
 			"js/ca/page/allpages.js",
 			"js/ca/page/index.js",
 			"js/ca/page/guild_battle.js",
@@ -47,6 +50,7 @@
 			"js/ca/page/arena_battle.js",
 			"js/ca/page/festival_battle_monster.js",
 			"js/ca/page/generals.js",
+			
 			"js/castleage.js"
 			],
 		"all_frames": true

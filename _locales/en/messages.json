@@ -22,5 +22,9 @@
 	"buttonAssister": {
 		"message": "Assist",
 		"description": "button text: Assist Life feed/guild..."
+	},
+	"buttonAbilities": {
+		"message": "Abilities",
+		"description": "button text: Change class ablities"
 	}
 }

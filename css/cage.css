@@ -15,6 +15,9 @@
 	font-size: 11px;
 	font-family: arial;
 }
+#cageAbilitiesContainer {
+	padding: 0 0 2px 0;
+}
 #cageGeneralContainer {
 	padding: 0 0 2px 0;
 }

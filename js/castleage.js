@@ -17,6 +17,7 @@ $('head').append('<link id="cageTheme" rel="stylesheet" type="text/css" href="' 
 
 var _elm = {
 	cage : '<div id="cageContainer"></div>',
+	abilities : '<div id="AbilitiesContainer" class="ui-corner-br ui-widget-content"></div>',
 	general : '<div id="cageGeneralContainer" class="ui-corner-br ui-widget-content"></div>',
 	generalImageContainer : '<div id="cageGeneralImageContainer" class="ui-state-active ui-corner-all"></div>',
 	generalImage : '<img id="cageGeneralImage" class="ui-corner-all" src="http://image4.castleagegame.com/graphics/shield_wait.gif"/>',
@@ -38,12 +39,9 @@ if(tools['Page'].runtime[$('#current_pg_info').attr('value') + '.php']) {
 tools['Page'].runtime['allPages']();
 
 CastleAge.startInterval = window.setInterval(function() {
-	console.log('interval');
 	if(CastleAge.started == false) {
-		console.log('interval false');
 		com.send(com.task.castleAgeReady, com.port.facebook);
 	} else {
-		console.log('interval clear');
 		window.clearInterval(CastleAge.startInterval);
 	}
 }, 100);

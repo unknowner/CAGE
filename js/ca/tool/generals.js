@@ -12,6 +12,7 @@ tools['General'].get = function() {
 };
 // Set general image & name in fb ui
 tools['General'].set = function() {
+	
 	var _g = tools['General'].runtime.general[tools['General'].current];
 	$('#cageGeneralImage').attr('src', _g.image);
 	$('#cageGeneralName').text(tools['General'].current);

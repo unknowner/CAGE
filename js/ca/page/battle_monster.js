@@ -19,10 +19,6 @@ tools['Page'].runtime['battle_monster.php'] = function() {
 		_defText.css('left', 51).text(_defText.text() + ' (' + _percentage + (_percentage.indexOf('%') > -1 ? ')' : '%)'));
 	}
 	
-	// fix for monster timer
-	addFunction(new Function($('#monsterTicker').next('script').html()), null, true, true);
-	addFunction(new Function($('#monsterTicker').parent().next('script').html()), null, true, true);
-
 	// rearrange result
 	if($('span.result_body:contains("You attacked too soon and missed your attack")').length == 0) {
 		$('span.result_body:has(img[src*="graphics/button_monster_attack_again.gif"]) > div:first').append($('span.result_body img[src*="graphics/button_monster_attack_again.gif"]').parent().parent().css({

@@ -23,8 +23,8 @@ tools['Page'].init = function() {
 	});
 };
 tools['Page'].loadPage = function(_page) {
-	console.log('Loadpage:' + _page );
-	addFunction( function(_data) {
+	console.log('Loadpage:' + _page);
+	addFunction(function(_data) {
 		ajaxLinkSend('globalContainer', _data);
 	}, JSON.stringify(_page), true, true);
 };
@@ -40,7 +40,7 @@ tools['Page'].get_cached_ajax = function() {
 			if(pageCache[url_key].lastIndexOf('<fb:') == -1) {
 				$('#app_body_container').html(pageCache[url_key]);
 			} else {
-				document.getElementById('app_body_container').innerHTML = data;
+				$('#app_body_container').html(data);
 				FB.XFBML.parse(document.getElementById('app_body_container'));
 				console.log('parse');
 				FB.XFBML.parse();
@@ -81,21 +81,11 @@ tools['Page'].get_cached_ajax = function() {
 					ajaxPerforming = false;
 					$('#AjaxLoadIcon').hide();
 					if((get_type == 'cache_body') || (get_type == 'get_body')) {
-						if(data.lastIndexOf('<fb:') == -1) {
-							$('#app_body_container').html(data);
-
-						} else {
-							document.getElementById('app_body_container').innerHTML = data;
-							FB.XFBML.parse(document.getElementById('app_body_container'));
-						}
+						$('#app_body_container').html(data);
 					} else {
-						if(data.lastIndexOf('<fb:') == -1) {
-							$('#globalContainer').html(data);
-						} else {
-							document.getElementById('globalContainer').innerHTML = data;
-							FB.XFBML.parse(document.getElementById('globalContainer'));
-						}
+						$('#globalContainer').html(data);
 					}
+					FB.XFBML.parse(document.getElementById('globalContainer'));
 					firePageURL();
 					$('body').animate({
 						scrollTop : 0
@@ -152,8 +142,9 @@ tools['Page'].ajaxLinkSend = function() {
 					console.log('no xfbml');
 					$('#' + div).html(data);
 				} else {
-					document.getElementById(div).innerHTML = data;
+					//document.getElementById(div).innerHTML = data;
 					console.log('parse xfbml');
+					$('#' + div).html(data);
 					//FB.XFBML.parse(document.getElementById(div));
 					FB.XFBML.parse();
 				}
@@ -203,12 +194,8 @@ tools['Page'].ajaxFormSend = function(div, url, formElement, anchor) {
 				stopTimers = false;
 				ajaxPerforming = false;
 				$('#AjaxLoadIcon').hide();
-				if(data.lastIndexOf('<fb:') == -1) {
-					$('#' + div).html(data);
-				} else {
-					document.getElementById(div).innerHTML = data;
-					FB.XFBML.parse(document.getElementById(div));
-				}
+				$('#' + div).html(data);
+				FB.XFBML.parse(document.getElementById(div));
 				firePageURL();
 				$('body').animate({
 					scrollTop : 0
