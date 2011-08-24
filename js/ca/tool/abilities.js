@@ -9,12 +9,19 @@ tools['Abilities'].start = function() {
 	get('guild_class.php', function(_data) {
 
 		customEvent('AbilityChanged', function() {
-			tools['Abilities'].done();
+			tools['Abilities'].done();  
 		});
 
 		$('#cageAbilitiesContainer').hide().html($('div[id^="expanded_power_"]', _data).html());
+
 		addFunction(function() {
 
+			window['showItemPopup'] = function(button_id, parent, x_offset, y_offset) {
+				var elem = $('#' + button_id);
+				move_box(parent, elem, x_offset-75, y_offset-100);
+				elem.css('visibility', 'visible');
+			};
+			
 			window['classPowers'] = {
 				'1' : [],
 				'2' : [],
@@ -26,7 +33,6 @@ tools['Abilities'].start = function() {
 
 				console.log(class_id + '-' + cat + '-' + id + '-' + js_string_var);
 
-				console.log($('div[id^="free_slot_"]').length);
 				var max_class_slots = $('div[id^="free_slot_"]').length;
 				var class_power_elem = $('#class_power_' + class_id + '_' + cat + '_' + id);
 
@@ -57,10 +63,9 @@ tools['Abilities'].start = function() {
 				}
 			}
 			window['unpickPower'] = function(class_id, cat, id) {
+
 				console.log('unpickPower');
 				var class_power_elem = $('#class_power_' + class_id + '_' + cat + '_' + id);
-				//var max_class_slots = parseInt($('#class_slots_' + class_id).val());
-				console.log($('div[id^="free_slot_"]').length);
 				var max_class_slots = $('div[id^="free_slot_"]').length;
 				if(class_power_elem) {
 					var big_img = $('#large_image_' + class_id + '_' + cat + '_' + id);
@@ -135,8 +140,8 @@ tools['Abilities'].start = function() {
 			$('img[src*="class_cancelnew.jpg"]').parent().click(function() {
 				$('#cageAbilitiesContainer').slideUp('slow', function() {
 					$(this).empty();
+					fireAbilityChanged();
 				});
-				fireAbilityChanged();
 			});
 		}, null, true, true);
 
