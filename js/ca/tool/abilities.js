@@ -12,7 +12,7 @@ tools['Abilities'].start = function() {
 			tools['Abilities'].done();
 		});
 
-		$('#cageAbilitiesContainer').hide().html($('#expanded_power_cleric', _data).html());
+		$('#cageAbilitiesContainer').hide().html($('div[id^="expanded_power_"]', _data).html());
 		addFunction(function() {
 
 			window['classPowers'] = {
@@ -25,9 +25,7 @@ tools['Abilities'].start = function() {
 			window['pickPower'] = function(class_id, cat, id, js_string_var) {
 
 				console.log(class_id + '-' + cat + '-' + id + '-' + js_string_var);
-				//var current_class_powers= classPowers[class_id];
 
-				//var max_class_slots = parseInt($('#class_slots_' + class_id).val());
 				console.log($('div[id^="free_slot_"]').length);
 				var max_class_slots = $('div[id^="free_slot_"]').length;
 				var class_power_elem = $('#class_power_' + class_id + '_' + cat + '_' + id);
