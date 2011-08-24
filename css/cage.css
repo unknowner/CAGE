@@ -15,9 +15,6 @@
 	font-size: 11px;
 	font-family: arial;
 }
-#cageAbilitiesContainer {
-	padding: 0 0 2px 0;
-}
 #cageGeneralContainer {
 	padding: 0 0 2px 0;
 }
@@ -140,6 +137,15 @@
 	z-index: 2;
 	padding: 17px;
 	width: 704px;
+}
+#cageAbilitiesContainer {
+	position: fixed;
+	top: 92px;
+	left: 78px;
+	display: block;
+	box-shadow: black 0px 10px 20px;
+	z-index: 2;
+	border-radius: 35px;
 }
 .cageSelectorImage {
 	width: 50px;

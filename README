@@ -1,6 +1,9 @@
 ==================================================================
 VER: 1.0.24
 ------------------------------------------------------------------
+2011-08-24
+	ADD: Class ability changer
+	
 2011-08-23
 	ADD: Festival Tower 2
 	CHG: All timers now work without extra page fixes (page.js fixed)
