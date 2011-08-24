@@ -5,6 +5,7 @@ tools['Page'].init = function() {
 	addFunction(tools['Page'].get_cached_ajax, null, true, true);
 	addFunction(tools['Page'].ajaxLinkSend, null, true, true);
 	addFunction(tools['Page'].ajaxFormSend, null, true, true);
+	addFunction(tools['Page'].ajaxSkip, null, true, true);
 	// Do stuff after page loaded
 	customEvent('PageURL', function() {
 		var _page = $('#PageURL').val();
@@ -27,6 +28,11 @@ tools['Page'].loadPage = function(_page) {
 	addFunction(function(_data) {
 		ajaxLinkSend('globalContainer', _data);
 	}, JSON.stringify(_page), true, true);
+};
+tools['Page'].ajaxSkip = function() {
+	ajaxSkip = function(div, url) {
+		ajaxLinkSend(div, (url + (url.indexOf('?') > -1 ? '&' : '?') + 'ajax=1&skip=1'));
+	}
 };
 tools['Page'].get_cached_ajax = function() {
 	get_cached_ajax = function(url, get_type) {
