@@ -9,17 +9,17 @@ tools['Abilities'].start = function() {
 	get('guild_class.php', function(_data) {
 
 		customEvent('AbilityChanged', function() {
-			tools['Abilities'].done();  
+			tools['Abilities'].done();
 		});
 
-		$('#cageAbilitiesContainer').hide().html($('div[id^="expanded_power_"]', _data).html());
+		$('#cageAbilitiesContainer').hide().html($('div[id^="expanded_power_"]', _data).html()).find('> div:last').empty().css('cursor', 'default').attr('onclick', '');
 
 		addFunction(function() {
 
 			window['showItemPopup'] = function(button_id, parent, x_offset, y_offset) {
 				var elem = $('#' + button_id);
-				move_box(parent, elem, x_offset-75, y_offset-100);
-				elem.css('visibility', 'visible');
+				move_box(parent, elem, x_offset - 75, y_offset - 100);
+				elem.show();
 			};
 			
 			window['classPowers'] = {
@@ -129,9 +129,8 @@ tools['Abilities'].start = function() {
 						$('#AjaxLoadIcon').hide();
 						$('#cageAbilitiesContainer').slideUp('slow', function() {
 							$(this).empty();
+							fireAbilityChanged();
 						});
-						fireAbilityChanged();
-
 					}
 				});
 			};
@@ -148,6 +147,7 @@ tools['Abilities'].start = function() {
 		$('div.imgButton[id^="large_image_"]').parent().css('cssText', 'float:left;padding:8px;');
 		$('#cageAbilitiesContainer').slideDown('slow');
 	});
+	
 };
 
 tools['Abilities'].done = function() {
