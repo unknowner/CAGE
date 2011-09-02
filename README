@@ -1,6 +1,16 @@
 ==================================================================
 VER: 1.0.25
 ------------------------------------------------------------------
+2011-09-02
+	FIX: Facebook bar not showing (fb changes)
+	FIX: Stash when Aeris already selected not working
+	CHG: Catch error when gift received is broken (web3?)
+	
+2011-09-01
+	FIX: Background image in monsterlist missing
+	CHG: Guild abilities with some minor changes
+
+2011-08-25
 	FIX: Skip button in monster
 	FIX: Ability info popup position
 

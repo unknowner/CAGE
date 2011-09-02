@@ -8,10 +8,12 @@ tools['Gifter'].update = function () {
 		var _gifts = JSON.parse($('#GiftRequests').val());
 		if (_gifts) {
 			$.each(_gifts.data, function (_i, _e) {
-				if ($.inArray(_e.from.id, tools['Gifter'].runtime['sendGiftTo']) == -1) {
-					tools['Gifter'].runtime['sendGiftTo'].push(_e.from.id);
+				if(_e.from !== null){
+					if ($.inArray(_e.from.id, tools['Gifter'].runtime['sendGiftTo']) == -1) {
+						tools['Gifter'].runtime['sendGiftTo'].push(_e.from.id);
+					}
+					tools['Gifter'].runtime['requests'].push(_e.id);
 				}
-				tools['Gifter'].runtime['requests'].push(_e.id);
 			});
 			item.set('CAGEsendGiftTo', tools['Gifter'].runtime['sendGiftTo']);
 		}
