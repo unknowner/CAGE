@@ -91,6 +91,7 @@ tools['Page'].get_cached_ajax = function() {
 					} else {
 						$('#globalContainer').html(data);
 					}
+					startAllTimers();
 					FB.XFBML.parse(document.getElementById('globalContainer'));
 					firePageURL();
 					$('body').animate({
@@ -143,17 +144,10 @@ tools['Page'].ajaxLinkSend = function() {
 					// parse XFBML
 				});
 				ajaxPerforming = false;
-				$('#AjaxLoadIcon').hide();
-				if(data.lastIndexOf('<fb:') == -1) {
-					console.log('no xfbml');
-					$('#' + div).html(data);
-				} else {
-					//document.getElementById(div).innerHTML = data;
-					console.log('parse xfbml');
-					$('#' + div).html(data);
-					//FB.XFBML.parse(document.getElementById(div));
-					FB.XFBML.parse();
-				}
+				$('#AjaxLoadIcon').hide('fast');
+				$('#' + div).html(data);
+				startAllTimers();
+				FB.XFBML.parse(document.getElementById(div));
 				firePageURL();
 				centerPopups();
 			}
@@ -199,8 +193,9 @@ tools['Page'].ajaxFormSend = function(div, url, formElement, anchor) {
 				 */
 				stopTimers = false;
 				ajaxPerforming = false;
-				$('#AjaxLoadIcon').hide();
+				$('#AjaxLoadIcon').hide('fast');
 				$('#' + div).html(data);
+				startAllTimers();
 				FB.XFBML.parse(document.getElementById(div));
 				firePageURL();
 				$('body').animate({

@@ -2,6 +2,12 @@
 VER: 1.0.25
 ------------------------------------------------------------------
 2011-09-02
+	FIX: Broken timers because CA fixed them
+
+==================================================================
+VER: 1.0.25
+------------------------------------------------------------------
+2011-09-02
 	FIX: Facebook bar not showing (fb changes)
 	FIX: Stash when Aeris already selected not working
 	CHG: Catch error when gift received is broken (web3?)
