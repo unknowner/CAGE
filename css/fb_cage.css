@@ -3,7 +3,8 @@ body {
 	background-color: #000 !important;
 }
 #blueBar {
-	display: none !important;
+	display: block !important;
+	height: 0;
 }
 #globalContainer {
 	width: 100% !important;
