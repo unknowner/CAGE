@@ -18,7 +18,13 @@ tools['Page'].runtime['festival_guild_battle.php'] = function() {
 		var _health = /Health:\s*(\d+)\/\d+/.exec($('#enemy_guild_battle_section_battle_list  *[uid="' + _target + '"]').parents().eq(3).text())[1];
 		$_enemy.html($_enemy.html() + ' (' + _health + ')');
 	}
+	
+	// add current tokens to result
 	var _tokens = $('div.result div:contains("-1 Battle Tokens"):last');
 	_tokens.text(_tokens.text() + ' (' + $('#guild_token_current_value').text() + ' left)');
+
+	// fix gate reseting when attacking with duel button
+	var _gate = /\d/.exec($('#enemy_guild_battle_section_battle_list').attr('class'));
+	$('#results_main_wrapper form').append('<input type="hidden" name="attacking_position" value="' + _gate + '">');
 
 };
