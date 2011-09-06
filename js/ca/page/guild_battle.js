@@ -3,10 +3,6 @@ tools['Page'].runtime['guild_battle.php'] = function() {
 	
 	console.log('Page: guild_battle.php');
 	
-	// fix for timers
-	//addFunction(new Function($('#monsterTicker').next('script').html()), null, true, true);
-	//addFunction(new Function($('#guild_token_time_container').next('script').html()), null, true, true);
-	
 	// add percentage to health bars
 	var _your = (1 - ($('div[style*="/guild_battle_bar_you.gif"]').width() / $('div[style*="/guild_battle_bar_you.gif"]').parent().width())) * 100;
 	var _enemy = (1 - ($('div[style*="/guild_battle_bar_enemy.gif"]').width() / $('div[style*="/guild_battle_bar_enemy.gif"]').parent().width())) * 100;

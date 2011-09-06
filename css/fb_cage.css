@@ -17,6 +17,7 @@ body {
 	border-bottom: black solid 1px !important;
 	width: 100% !important;
 	margin-left: 0 !important;
+	left: 0 !important;
 }
 #headNav .rfloat {
 	float: none !important;

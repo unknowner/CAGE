@@ -47,3 +47,36 @@ div.game {
 	top: 100px !important;
 	left: 350px !important;
 }
+.MonsterListBackground{
+	background-image: url("http://image4.castleagegame.com/graphics/monsterlist_container.gif");
+	background-repeat: no-repeat;
+	height: 90px;
+	padding-bottom: 15px;
+}
+.MonsterListButton{
+	float: left;
+	width: 200px;
+	text-align: center;
+	padding-top: 20px;
+}
+.MonsterListName {
+	float: left;
+	text-align: center;
+	color: black;
+	padding-left: 35px;
+	width:240px;
+	padding-top: 15px;
+}
+.MonsterListImage {
+	float: left;
+	padding: 15px 0 0 33px
+	;overflow: hidden;
+}
+.MonsterListText {
+	position: relative;
+	top: -18px;
+	color: white;
+	font-weight: bold;
+	text-shadow: 0 0 2px black;
+	left: 5px;
+}
