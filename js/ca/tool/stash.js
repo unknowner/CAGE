@@ -15,11 +15,13 @@ tools['Stash'].start = function() {
 
 };
 tools['Stash'].work = function() {
-	$.get('keep.php?do=Stash&stash_gold=' + $('#gold_current_value').text().match(/\d*/g).join('') + '&bqh=' + CastleAge.bqh + '&signed_request=' + CastleAge.signed_request, function() {
-		addFunction( function() {
-			clearTimeout(timedStats['gold']);
-			stat_increase_ticker(0, 0, 0, 0, 0, 'gold', false);
-		}, null, true, true);
+	$.get('keep.php?do=Stash&stash_gold=' + $('#gold_current_value').text().match(/\d*/g).join('') + '&bqh=' + CastleAge.bqh + '&signed_request=' + CastleAge.signed_request, function(_data) {
+		var _time_left = $('#gold_time_sec', _data);
+		if(_time_left) {
+			addFunction(function(gold_token_time_left_obj) {
+				gold_increase_ticker(gold_token_time_left_obj, 0, $('#gold_current_recharge_time').val(), $('#gold_current_increment').val(), 'gold', true);
+			}, JSON.stringify(_time_left.val()), true, true);
+		}
 		if($('input[name="stash_gold"]').length > 0) {
 			$('input[name="stash_gold"]').val('0');
 			$('b.money').text($('b.money').text());
