@@ -45,3 +45,4 @@ CastleAge.startInterval = window.setInterval(function() {
 		window.clearInterval(CastleAge.startInterval);
 	}
 }, 100);
+
