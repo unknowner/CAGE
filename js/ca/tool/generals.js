@@ -25,7 +25,8 @@ tools['General'].setByName = function(_name, _callback) {
 		var _g = tools['General'].runtime.general[_name];
 		if(_g !== null) {
 			$('#cageGeneralImage').attr('src', 'http://image4.castleagegame.com/graphics/shield_wait.gif');
-			$.get('generals.php?item=' + _g.item + '&itype=' + _g.itype + '&bqh=' + CastleAge.bqh + '&signed_request=' + CastleAge.signed_request, function() {
+			$.get('generals.php?item=' + _g.item + '&itype=' + _g.itype + '&bqh=' + CastleAge.bqh + '&signed_request=' + CastleAge.signed_request, function(_data) {
+				tools['General'].parsePage(_data);
 				tools['General'].current = _name;
 				tools['General'].set();
 				if(_callback !== undefined) {
@@ -40,7 +41,6 @@ tools['General'].update = function() {
 	if(CastleAge.signed_request !== null) {
 		get('generals.php', function(_data) {
 			tools['General'].parsePage(_data);
-			window.setTimeout(tools['General'].update, 600000);
 		})
 	} else {
 		window.setTimeout(tools['General'].update, 50);
@@ -66,9 +66,6 @@ tools['General'].parsePage = function(_data) {
 		var _lvl = $_general.find('div:contains("Level"):last').text().trim();
 		var _charge = $_general.find('div:contains("Charged"):last').text().trim();
 		_charge = _charge.length > 0 ? /\d+/.exec(_charge) : null;
-		/*if(_charge){
-		 _charge = _charge < 25 ? 0 : (_charge < 50 ? 1 : (_charge < 75 ? 2 : (_charge < 100 ? 3 : 4)));
-		 }*/
 		tools['General'].runtime.general[_name] = {
 			name : _name,
 			image : _image,
