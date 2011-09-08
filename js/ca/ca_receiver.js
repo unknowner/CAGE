@@ -4,7 +4,11 @@ function receiver(_data) {
 	switch (_data.task) {
 		case com.task.signed:
 			CastleAge.signed_request = _data.data;
-			$(document.body).append('<input id="signed_request" type="hidden" name="signed_request" value="' + _data.data + '" />');
+			if($('#signed_request').length > 0) {
+				$('#signed_request').val(_data.data);
+			} else {
+				$(document.body).append('<input id="signed_request" type="hidden" name="signed_request" value="' + _data.data + '" />');
+			}
 			break;
 		case com.task.userId:
 			CastleAge.userId = _data.data;
@@ -13,7 +17,7 @@ function receiver(_data) {
 		case com.task.fbReady:
 			CastleAge.started = true;
 			break;
-			// start stuff that requires user id here
+		// start stuff that requires user id here
 		case com.task.heal:
 			tools['Heal'].start[com.port.castleAge]();
 			break;

@@ -45,3 +45,18 @@ CastleAge.startInterval = window.setInterval(function() {
 		window.clearInterval(CastleAge.startInterval);
 	}
 }, 100);
+
+addFunction(function() {
+	var signedRequest;
+
+	FB.getLoginStatus(handleResCallback, true);
+	console.log('called');
+	function handleResCallback(res) {
+		console.log(res);
+		if(res.authResponse) {
+			signedRequest = res.authResponse.signedRequest;
+			console.log('FB:' + signedRequest);
+		}
+	}
+
+}, null, true, true);
