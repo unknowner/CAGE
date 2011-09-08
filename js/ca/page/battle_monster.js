@@ -20,7 +20,8 @@ tools['Page'].runtime['battle_monster.php'] = function() {
 	}
 
 	// rearrange result
-	if($('span.result_body:contains("You attacked too soon and missed your attack")').length == 0) {
+	
+	/*if($('span.result_body:contains("You attacked too soon and missed your attack")').length == 0) {
 		$('span.result_body:has(img[src*="graphics/button_monster_attack_again.gif"]) > div:first').css('marginBottom', 15).append($('span.result_body img[src*="graphics/button_monster_attack_again.gif"]').parent().parent().css({
 			'position' : 'relative',
 			'top' : -94,
@@ -30,6 +31,6 @@ tools['Page'].runtime['battle_monster.php'] = function() {
 			'height' : 142,
 			'borderRadius' : 6
 		});
-	}
+	}*/
 
 };

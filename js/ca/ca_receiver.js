@@ -11,8 +11,10 @@ function receiver(_data) {
 			}
 			break;
 		case com.task.userId:
-			CastleAge.userId = _data.data;
-			tools['Theme'].start();
+			if(!CastleAge.userId) {
+				CastleAge.userId = _data.data;
+				tools['Theme'].start();
+			}
 			break;
 		case com.task.fbReady:
 			CastleAge.started = true;
