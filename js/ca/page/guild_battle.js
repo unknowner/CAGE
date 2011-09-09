@@ -35,12 +35,8 @@ tools['Page'].runtime['guild_battle.php'] = function() {
 		var _class = new RegExp($('#cageGateClassFilter').val());
 		var _activ = new RegExp($('#cageGateActivityFilter').val());
 		var _state = new RegExp($('#cageGateStatusFilter').val());
-		console.log(_class);
-		console.log(_activ);
-		console.log(_state);
 		$('#your_guild_member_list > div > div, #enemy_guild_member_list > div > div').each(function(_i, _e) {
 			var _text = $(_e).text();
-			console.log(_class.exec(_text) + '-' + _activ.exec(_text) + '-' + _state.exec(_text));
 			if(_text.match(_class) && _text.match(_activ) && _text.match(_state)) {
 				$(_e).show();
 			} else {

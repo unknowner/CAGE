@@ -2,7 +2,7 @@
 VER: 1.0.29
 ------------------------------------------------------------------
 2011-09-09
-	ADD: Guild battle filter (class)
+	ADD: Guild battle filter (class, status, activity)
 	ADD: Guild battle page size reduced
 	FIX: First time start didn't execute page mod
 	
