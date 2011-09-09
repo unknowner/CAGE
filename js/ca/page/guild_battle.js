@@ -30,40 +30,69 @@ tools['Page'].runtime['guild_battle.php'] = function() {
 	var _gate = /\d/.exec($('#enemy_guild_battle_section_battle_list').attr('class'));
 	$('#results_main_wrapper form').append('<input type="hidden" name="sel_pos" value="' + _gate + '">');
 
-		//class filter
-	var classFilters = {
-		0 : 'All',
-		1 : 'Cleric',
-		2 : 'Mage',
-		3 : 'Rogue',
-		4 : 'Warrior'
+	//gate filter
+	function filterGate() {
+		var _class = new RegExp($('#cageGateClassFilter').val());
+		var _activ = new RegExp($('#cageGateActivityFilter').val());
+		var _state = new RegExp($('#cageGateStatusFilter').val());
+		console.log(_class);
+		console.log(_activ);
+		console.log(_state);
+		$('#your_guild_member_list > div > div, #enemy_guild_member_list > div > div').each(function(_i, _e) {
+			var _text = $(_e).text();
+			console.log(_class.exec(_text) + '-' + _activ.exec(_text) + '-' + _state.exec(_text));
+			if(_text.match(_class) && _text.match(_activ) && _text.match(_state)) {
+				$(_e).show();
+			} else {
+				$(_e).hide();
+			}
+		});
+	}
+
+	//class filter
+	var filterClass = {
+		'All' : 'Cleric|Mage|Rogue|Warrior',
+		'Cleric' : 'Cleric',
+		'Mage' : 'Mage',
+		'Rogue' : 'Rogue',
+		'Warrior' : 'Warrior'
+	}, filterActivity = {
+		'All' : 'Battle Activity Points:',
+		'Active' : 'Battle Activity Points: [^0]',
+		'Inactive' : 'Battle Activity Points: 0'
+	}, filterStatus = {
+		'All' : 'Healthy|Stunned|Weakened',
+		'Healthy' : 'Healthy',
+		'Weakened' : 'Weakened',
+		'Stunned' : 'Stunned'
 	};
-	$('#guild_battle_health').append('<span id="cageGateClassFilterTitle" class="ui-button ui-state-default"> Class </span><select id="cageGateClassFilter">');
+	// Class filter
+	$('#guild_battle_health').append('<span class="cageGateFilterTitle ui-button ui-state-default"> Class </span><select id="cageGateClassFilter">');
 	_sel = $('#cageGateClassFilter');
-	$.each(classFilters, function(_i, _e) {
-		_sel.append('<option value="' + _e + '">' + _e + '</option>');
+	$.each(filterClass, function(_i, _e) {
+		_sel.append('<option value="' + _e + '">' + _i + '</option>');
 	});
-	_sel.change(function() {
-		var _class = $(this).val();
-		if(_class == 'All') {
-			$('#your_guild_member_list > div > div, #enemy_guild_member_list > div > div').show();
-		} else {
-			$('#your_guild_member_list > div > div, #enemy_guild_member_list > div > div').each(function(_i, _e) {
-				if($(_e).text().search(_class) == -1) {
-					$(_e).hide();
-				} else {
-					$(_e).show();
-				}
-			});
-		}
-	}).selectmenu();
-	
+	_sel.change(filterGate).selectmenu();
+	// Activity filter
+	$('#guild_battle_health').append('<span class="cageGateFilterTitle ui-button ui-state-default"> Activity </span><select id="cageGateActivityFilter">');
+	_sel = $('#cageGateActivityFilter');
+	$.each(filterActivity, function(_i, _e) {
+		_sel.append('<option value="' + _e + '">' + _i + '</option>');
+	});
+	_sel.change(filterGate).selectmenu();
+	// status filter
+	$('#guild_battle_health').append('<span class="cageGateFilterTitle ui-button ui-state-default"> Status </span><select id="cageGateStatusFilter">');
+	_sel = $('#cageGateStatusFilter');
+	$.each(filterStatus, function(_i, _e) {
+		_sel.append('<option value="' + _e + '">' + _i + '</option>');
+	});
+	_sel.change(filterGate).selectmenu();
+
 	//reduce gate size and add number
 	$('#enemy_guild_member_list > div > div, #your_guild_member_list > div > div').each(function(_i, _e) {
-		$(_e).find('img[src*="guild_class_upgrades"]').each(function(_i, _e){
+		$(_e).find('img[src*="guild_class_upgrades"]').each(function(_i, _e) {
 
 		});
-		$(_e).addClass('GuildList').append('<span class="GuildNum">' + (_i+1) + '<span>')
+		$(_e).addClass('GuildList').append('<span class="GuildNum">' + (_i + 1) + '<span>')
 	});
-
 };

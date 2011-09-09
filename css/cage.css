@@ -202,25 +202,14 @@
 	background-color: #26B3F7;
 	margin-right: -7px;
 }
-#cageEnemyFilter {
-	width: 100px;
-}
-#cageEnemyFilter-button {
-	color: white;
-	right: 8px;
-	position: relative;
-	top: 29px;
-	float: right;
+.cageGateFilterTitle {
+	position: relative !important;
+	left: 11px;
+	top: 2px;
+	float: left;
 	font-size: 12px;
-	border-bottom-left-radius: 0;
-	border-top-right-radius: 0;
-	border-bottom-right-radius: 0;
-}
-#cageEnemyFilter-menu {
-	font-size: 12px;
-}
-#cageGateClassFilter {
-	width: 100px;
+	height: 16px;
+	padding: 4px !important;
 }
 #cageGateClassFilter-button {
 	color: white;
@@ -230,16 +219,37 @@
 	float: left;
 	font-size: 12px;
 	border-radius: 0;
+	width: 90px !important;
 }
 #cageGateClassFilter-menu {
 	font-size: 12px;
+	width: 90px !important;
 }
-#cageGateClassFilterTitle {
-	position: relative;
-	left: 11px;
+#cageGateActivityFilter-button {
+	color: white;
 	top: 2px;
+	left: 9px;
+	position: relative;
 	float: left;
 	font-size: 12px;
-	height: 16px;
-	padding: 4px;
+	border-radius: 0;
+	width: 80px !important;
+}
+#cageGateActivityFilter-menu {
+	font-size: 12px;
+	width: 80px !important;
+}
+#cageGateStatusFilter-button {
+	color: white;
+	top: 2px;
+	left: 9px;
+	position: relative;
+	float: left;
+	font-size: 12px;
+	border-radius: 0;
+	width: 100px !important;
+}
+#cageGateStatusFilter-menu {
+	font-size: 12px;
+	width: 100px !important;
 }
