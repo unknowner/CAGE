@@ -21,6 +21,6 @@ function startCAGE() {
 			com.send(com.task.signed, com.port.castleAge, /signed_request\\" value=\\"(.+?)\\"/.exec(_data)[1]);
 			_data = null;
 		}, "text")
-	}, 600000);
+	}, 1200000);
 	
 }
