@@ -188,8 +188,9 @@
 	cursor: pointer;
 }
 #cageFavouriteGenerals {
-	box-shadow: 0 0 10px #26b3f7;
+	box-shadow: 0 0 10px #26b3f7, 0 0 10px #26b3f7 inset;
 	margin-bottom: 3px;
+	height: 54px;
 }
 .cageCharge {
 	position: relative;
