@@ -3,7 +3,6 @@ var CastleAge = {
 	bqh : null,
 	signed_request : null,
 	userId : null,
-	//pageModTimer: null,
 	inGuild : null,
 	startInterval : null,
 	started : false
@@ -32,10 +31,15 @@ $(document.body).prepend($(_elm.cage).append(_elm.abilities).append($(_elm.gener
 _elm = null;
 
 initTools();
-
-if(tools['Page'].runtime[$('#current_pg_info').attr('value') + '.php']) {
-	tools['Page'].runtime[$('#current_pg_info').attr('value') + '.php']();
+var _startURL = $('#current_pg_url').attr('value');
+if(_startURL.indexOf('?') != -1) {
+	_startURL = _startURL.substring(0, _startURL.indexOf('?'));
 }
+console.log("URL:" + _startURL);
+if(tools['Page'].runtime[_startURL]) {
+	tools['Page'].runtime[_startURL]();
+}
+_startUrl = undefined;
 tools['Page'].runtime['allPages']();
 
 CastleAge.startInterval = window.setInterval(function() {
@@ -44,5 +48,5 @@ CastleAge.startInterval = window.setInterval(function() {
 	} else {
 		window.clearInterval(CastleAge.startInterval);
 	}
-}, 100);
+}, 250);
 
