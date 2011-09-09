@@ -7,13 +7,13 @@ body > center {
 	width: 778px !important;
 }
 #main_bntp {
-	display:none !important;
+	display: none !important;
 }
 #main_bn {
-	display:none !important;
+	display: none !important;
 }
 #main_bn_container {
-	display:none !important;
+	display: none !important;
 }
 #main_sts_container {
 	height: 70px !important;
@@ -47,13 +47,13 @@ div.game {
 	top: 100px !important;
 	left: 350px !important;
 }
-.MonsterListBackground{
+.MonsterListBackground {
 	background-image: url("http://image4.castleagegame.com/graphics/monsterlist_container.gif");
 	background-repeat: no-repeat;
 	height: 90px;
 	padding-bottom: 15px;
 }
-.MonsterListButton{
+.MonsterListButton {
 	float: left;
 	width: 200px;
 	text-align: center;
@@ -64,13 +64,13 @@ div.game {
 	text-align: center;
 	color: black;
 	padding-left: 35px;
-	width:240px;
+	width: 240px;
 	padding-top: 15px;
 }
 .MonsterListImage {
 	float: left;
-	padding: 15px 0 0 33px
-	;overflow: hidden;
+	padding: 15px 0 0 33px;
+	overflow: hidden;
 }
 .MonsterListText {
 	position: relative;
@@ -79,4 +79,21 @@ div.game {
 	font-weight: bold;
 	text-shadow: 0 0 2px black;
 	left: 5px;
+}
+.GuildList {
+	height: 105px !important;
+	padding: 3px 0px 5px 20px !important;
+	background-image: url('http://image4.castleagegame.com/5725/graphics/guild_monster/guild_battle_bg.jpg');
+	border-bottom: 3px groove #AAA;
+	background-repeat: no-repeat;
+	background-position: 0 -8px;
+	font-size: 13px;
+}
+.GuildNum {
+	color: white;
+	position: relative;
+	top: -100px;
+	left: 6px;
+	text-shadow: 0 0 1px black, 0 0 4px black;
+	font-weight: bold;
 }
