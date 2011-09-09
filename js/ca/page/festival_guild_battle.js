@@ -61,21 +61,21 @@ tools['Page'].runtime['festival_guild_battle.php'] = function() {
 		'Stunned' : 'Stunned'
 	};
 	// Class filter
-	$('#guild_battle_health').append('<span class="cageGateFilterTitle ui-button ui-state-default"> Class </span><select id="cageGateClassFilter">');
+	$('#guild_battle_health').append('<span class="cageGateFilterTitle ui-state-default"> Class </span><select id="cageGateClassFilter">');
 	_sel = $('#cageGateClassFilter');
 	$.each(filterClass, function(_i, _e) {
 		_sel.append('<option value="' + _e + '">' + _i + '</option>');
 	});
 	_sel.change(filterGate).selectmenu();
 	// Activity filter
-	$('#guild_battle_health').append('<span class="cageGateFilterTitle ui-button ui-state-default"> Activity </span><select id="cageGateActivityFilter">');
+	$('#guild_battle_health').append('<span class="cageGateFilterTitle ui-state-default"> Activity </span><select id="cageGateActivityFilter">');
 	_sel = $('#cageGateActivityFilter');
 	$.each(filterActivity, function(_i, _e) {
 		_sel.append('<option value="' + _e + '">' + _i + '</option>');
 	});
 	_sel.change(filterGate).selectmenu();
 	// status filter
-	$('#guild_battle_health').append('<span class="cageGateFilterTitle ui-button ui-state-default"> Status </span><select id="cageGateStatusFilter">');
+	$('#guild_battle_health').append('<span class="cageGateFilterTitle ui-state-default"> Status </span><select id="cageGateStatusFilter">');
 	_sel = $('#cageGateStatusFilter');
 	$.each(filterStatus, function(_i, _e) {
 		_sel.append('<option value="' + _e + '">' + _i + '</option>');
