@@ -54,8 +54,9 @@ tools['Page'].runtime['festival_guild_battle.php'] = function() {
 		'Active' : 'Festival Activity Points: [^0]',
 		'Inactive' : 'Festival Activity Points: 0'
 	}, filterStatus = {
-		'All' : 'Healthy|Stunned|Weakened',
+		'All' : 'Healthy|Stunned|Weakened|Good',
 		'Healthy' : 'Healthy',
+		'Good' : 'Good',
 		'Weakened' : 'Weakened',
 		'Stunned' : 'Stunned'
 	};

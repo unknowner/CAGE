@@ -57,8 +57,9 @@ tools['Page'].runtime['guild_battle.php'] = function() {
 		'Active' : 'Battle Activity Points: [^0]',
 		'Inactive' : 'Battle Activity Points: 0'
 	}, filterStatus = {
-		'All' : 'Healthy|Stunned|Weakened',
+		'All' : 'Healthy|Stunned|Weakened|Good',
 		'Healthy' : 'Healthy',
+		'Good' : 'Good',
 		'Weakened' : 'Weakened',
 		'Stunned' : 'Stunned'
 	};
