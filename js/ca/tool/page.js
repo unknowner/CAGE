@@ -41,6 +41,8 @@ tools['Page'].get_cached_ajax = function() {
 		if(url.indexOf('?') != -1) {
 			url_key = url.substring(0, url.indexOf('?'));
 		}
+		var _oldurl = $('#PageURL').val();
+		console.log(url_key + '-' + _oldurl);
 		setPageURL(url_key);
 		if(get_type == 'cache_body' && pageCache[url_key]) {
 			if(pageCache[url_key].lastIndexOf('<fb:') == -1) {
@@ -52,9 +54,11 @@ tools['Page'].get_cached_ajax = function() {
 				FB.XFBML.parse();
 			}
 			firePageURL();
-			$('body').animate({
-				scrollTop : 0
-			}, 'slow');
+			if(url_key !== _oldurl) {
+				$('body').animate({
+					scrollTop : 0
+				}, 'slow');
+			}
 		} else {
 			if(get_type == 'get_page') {
 				stopTimers = true;
@@ -94,10 +98,11 @@ tools['Page'].get_cached_ajax = function() {
 					startAllTimers();
 					FB.XFBML.parse(document.getElementById('globalContainer'));
 					firePageURL();
-					$('body').animate({
-						scrollTop : 0
-					}, 'slow');
-					centerPopups();
+					if(url_key !== _oldurl) {
+						$('body').animate({
+							scrollTop : 0
+						}, 'slow');
+					}
 				}
 			});
 		}
@@ -126,6 +131,8 @@ tools['Page'].ajaxLinkSend = function() {
 		if(url.indexOf('?') != -1) {
 			url_key = url.substring(0, url.indexOf('?'));
 		}
+		var _oldurl = $('#PageURL').val();
+		console.log(url_key + '-' + _oldurl);
 		setPageURL(url_key);
 		$.ajax({
 			url : url,
@@ -149,6 +156,11 @@ tools['Page'].ajaxLinkSend = function() {
 				startAllTimers();
 				FB.XFBML.parse(document.getElementById(div));
 				firePageURL();
+				if(url_key !== _oldurl) {
+					$('body').animate({
+						scrollTop : 0
+					}, 'slow');
+				}
 				centerPopups();
 			}
 		});
@@ -175,6 +187,8 @@ tools['Page'].ajaxFormSend = function(div, url, formElement, anchor) {
 		if(url.indexOf('?') != -1) {
 			url_key = url.substring(0, url.indexOf('?'));
 		}
+		var _oldurl = $('#PageURL').val();
+		console.log(url_key + '-' + _oldurl);
 		setPageURL(url_key);
 		ajaxPerforming = true;
 		showLoaderIfAjax();
@@ -198,9 +212,11 @@ tools['Page'].ajaxFormSend = function(div, url, formElement, anchor) {
 				startAllTimers();
 				FB.XFBML.parse(document.getElementById(div));
 				firePageURL();
-				$('body').animate({
-					scrollTop : 0
-				}, 'slow');
+				if(url_key !== _oldurl) {
+					$('body').animate({
+						scrollTop : 0
+					}, 'slow');
+				}
 				centerPopups();
 			}
 		});
