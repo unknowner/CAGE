@@ -28,7 +28,7 @@ tools['Page'].runtime['guild_battle.php'] = function() {
 
 	// fix gate reseting when attacking with duel button
 	var _gate = /\d/.exec($('#enemy_guild_battle_section_battle_list').attr('class'));
-	$('#results_main_wrapper form').append('<input type="hidden" name="sel_pos" value="' + _gate + '">');
+	$('#results_container form').append('<input type="hidden" name="sel_pos" value="' + _gate + '">');
 
 	//gate filter
 	function filterGate() {

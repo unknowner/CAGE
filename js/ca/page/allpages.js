@@ -52,6 +52,9 @@ tools['Page'].runtime['allPages'] = function() {
 				});
 			}).css('cursor', 'pointer');
 		});
+		
+	
+		
 	}
 
 };

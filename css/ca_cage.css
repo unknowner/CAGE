@@ -105,7 +105,8 @@ div.game {
 	border-radius: 6px;
 	padding: 5px;
 	background-image: url('http://image4.castleagegame.com/5725/graphics/bg_main_middle.jpg');
-	overflow: auto;
+	overflow-x: hidden;
+	overflow-y: auto;
 	max-height: 700px;
 	left: 10px;
 	width: 750px;
@@ -115,3 +116,9 @@ div.game {
 	position: relative;
 	cursor: pointer;
 }
+.MonsterResultDamage {
+	float: left;
+	width: 300px;
+	text-align: left;
+}
+

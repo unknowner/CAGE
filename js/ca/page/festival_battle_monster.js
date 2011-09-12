@@ -9,6 +9,7 @@ tools['Page'].runtime['festival_battle_monster.php'] = function() {
 	if(_health && _health.style && _health.style.width !== "" && _monstername && _monstername.text()) {
 		var _percentage = _health.style.width.substr(0, 5);
 		_monstername.text(_monstername.text() + ' (' + _percentage + (_percentage.indexOf('%') > -1 ? ')' : '%)'));
+		console.log(_monstername.text());
 	}
 
 	/// add percentage to defense/forcefield/..
@@ -17,17 +18,7 @@ tools['Page'].runtime['festival_battle_monster.php'] = function() {
 	if(_defense && _defense.style && _defense.style.width !== "" && _defText && _defText.text()) {
 		var _percentage = _defense.style.width.substr(0, 5);
 		_defText.css('left', 51).text(_defText.text() + ' (' + _percentage + (_percentage.indexOf('%') > -1 ? ')' : '%)'));
+		console.log(_defText.text());
 	}
-
-	// rearrange result
-	/*if($('span.result_body:contains("You attacked too soon and missed your attack")').length == 0) {
-		$('span.result_body:has(img[src*="graphics/button_monster_attack_again.gif"]) > div:first').css('marginBottom', 15).append($('span.result_body img[src*="graphics/button_monster_attack_again.gif"]').parent().parent().css({
-			'position' : 'absolute',
-			'top' : 255,
-			'left' : 75,
-		}).detach()).find('img:first').css({
-			'borderRadius' : 6
-		});
-	}*/
 
 };
