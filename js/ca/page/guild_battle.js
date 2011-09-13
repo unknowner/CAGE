@@ -28,7 +28,7 @@ tools['Page'].runtime['guild_battle.php'] = function() {
 
 	// fix gate reseting when attacking with duel button
 	var _gate = /\d/.exec($('#enemy_guild_battle_section_battle_list').attr('class'));
-	$('#results_main_wrapper form').append('<input type="hidden" name="sel_pos" value="' + _gate + '">');
+	$('#results_container form').append('<input type="hidden" name="sel_pos" value="' + _gate + '">');
 
 	//gate filter
 	function filterGate() {
@@ -64,21 +64,21 @@ tools['Page'].runtime['guild_battle.php'] = function() {
 		'Stunned' : 'Stunned'
 	};
 	// Class filter
-	$('#guild_battle_health').append('<span class="cageGateFilterTitle ui-button ui-state-default"> Class </span><select id="cageGateClassFilter">');
+	$('#guild_battle_health').append('<span class="cageGateFilterTitle ui-state-default"> Class </span><select id="cageGateClassFilter">');
 	_sel = $('#cageGateClassFilter');
 	$.each(filterClass, function(_i, _e) {
 		_sel.append('<option value="' + _e + '">' + _i + '</option>');
 	});
 	_sel.change(filterGate).selectmenu();
 	// Activity filter
-	$('#guild_battle_health').append('<span class="cageGateFilterTitle ui-button ui-state-default"> Activity </span><select id="cageGateActivityFilter">');
+	$('#guild_battle_health').append('<span class="cageGateFilterTitle ui-state-default"> Activity </span><select id="cageGateActivityFilter">');
 	_sel = $('#cageGateActivityFilter');
 	$.each(filterActivity, function(_i, _e) {
 		_sel.append('<option value="' + _e + '">' + _i + '</option>');
 	});
 	_sel.change(filterGate).selectmenu();
 	// status filter
-	$('#guild_battle_health').append('<span class="cageGateFilterTitle ui-button ui-state-default"> Status </span><select id="cageGateStatusFilter">');
+	$('#guild_battle_health').append('<span class="cageGateFilterTitle ui-state-default"> Status </span><select id="cageGateStatusFilter">');
 	_sel = $('#cageGateStatusFilter');
 	$.each(filterStatus, function(_i, _e) {
 		_sel.append('<option value="' + _e + '">' + _i + '</option>');
