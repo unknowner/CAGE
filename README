@@ -2,8 +2,9 @@
 VER: 1.0.31
 ------------------------------------------------------------------
 2011-09-12
-	ADD: Fixed Results, no scrolling on result add/change
-	
+	ADD: Static Results, no scrolling on result add/change (eg Quests)
+	ADD: Some info to monster battle results
+	FIX: Added percentage for Thanatos
 
 ==================================================================
 VER: 1.0.31

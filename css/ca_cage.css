@@ -116,9 +116,11 @@ div.game {
 	position: relative;
 	cursor: pointer;
 }
-.MonsterResultDamage {
+#MonsterResultDamage {
 	float: left;
-	width: 300px;
+	width: 350px;
 	text-align: left;
+	font-weight: bold;
+	padding: 10px;
 }
 
