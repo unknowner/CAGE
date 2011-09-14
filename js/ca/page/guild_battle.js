@@ -64,6 +64,7 @@ tools['Page'].runtime['guild_battle.php'] = function() {
 		'Stunned' : 'Stunned'
 	};
 	// Class filter
+	$('body > ul.ui-selectmenu-menu').remove();
 	$('#guild_battle_health').append('<span class="cageGateFilterTitle ui-state-default"> Class </span><select id="cageGateClassFilter">');
 	_sel = $('#cageGateClassFilter');
 	$.each(filterClass, function(_i, _e) {
