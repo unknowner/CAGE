@@ -18,6 +18,8 @@
 			"js/ui.selectmenu.js",
 			"js/com.js",
 			"js/common.js",
+			"js/news.js",
+			
 			"js/ca/tool.js",
 			"js/ca/ca_tools.js",
 			"js/ca/ca_receiver.js",
@@ -44,7 +46,7 @@
 			"js/ca/page/army.js",
 			"js/ca/page/guild_shop.js",
 			"js/ca/page/quests.js",
-			"js/ca/page/monsterquests.js",
+			"js/ca/page/monster_quests.js",
 			"js/ca/page/symbolquests.js",
 			"js/ca/page/player_monster_list.js",
 			"js/ca/page/battle_monster.js",
