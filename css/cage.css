@@ -78,7 +78,7 @@
 #cageMenu {
 	position: fixed;
 	height: 28px;
-	z-index: 2;
+	z-index: 4;
 	box-shadow: 0 10px 20px black;
 	top: 61px;
 	border-left: 0;
@@ -134,7 +134,7 @@
 	left: 20px;
 	display: none;
 	box-shadow: 0 10px 20px black;
-	z-index: 2;
+	z-index: 3;
 	padding: 17px;
 	width: 704px;
 }
@@ -144,7 +144,7 @@
 	left: 78px;
 	display: block;
 	box-shadow: black 0px 10px 20px;
-	z-index: 2;
+	z-index: 3;
 	border-radius: 35px;
 }
 .cageSelectorImage {
