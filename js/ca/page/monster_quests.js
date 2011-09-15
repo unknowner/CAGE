@@ -1,6 +1,9 @@
 // monsterquests
-tools['Page'].runtime['monsterquests.php'] = function () {
 
+tools['Page'].runtime['monster_quests.php'] = function () {
+
+	console.log('Page: monster_quests.php');
+	
 	$('div.quest_act_gen:not(:has(img[src*="nogen.gif"]))').each( function() {
 		$(this).append(
 			$('<img class="cageQuestSwitchGeneral" src="http://image4.castleagegame.com/graphics/quick_switch_button.gif">').click( function() {
@@ -13,4 +16,5 @@ tools['Page'].runtime['monsterquests.php'] = function () {
 		)
 		.find('img:first').unwrap();
 	});
+	
 };

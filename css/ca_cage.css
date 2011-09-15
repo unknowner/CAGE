@@ -123,4 +123,23 @@ div.game {
 	font-weight: bold;
 	padding: 10px;
 }
-
+#cageNewsHead {
+	text-align: center;
+	font-weight: bold;
+	font-size: 16px;
+	padding: 10px;
+	border-bottom: 1px solid #701919;
+}
+#cageNewsBody {
+	padding: 5px 30px 0 40px;
+	border-bottom: 1px solid #701919;
+}
+#cageNewsFoot {
+	text-align: center;
+	padding: 10px;
+}
+#cageNewsChanges span {
+	width: 45px;
+	display: inline-block;
+	font-weight: bold;
+}
