@@ -1,11 +1,14 @@
 ==================================================================
 VER: 1.0.32
 ------------------------------------------------------------------
+2011-09-15
+	CHG: Static results turned off until settings available
+2011-09-14
+	CHG: jQuery updated to 1.6.4
+	CHG: Results are shown under general selector/abilites
 2011-09-13
 	FIX: Results shows scrollbar for empty area
 	FIX: General switcher for Atlantis
-	CHG: jQuery updated to 1.6.4
-	CHG: Results are shown under general selector/abilites
 
 ==================================================================
 VER: 1.0.31

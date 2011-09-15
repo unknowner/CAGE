@@ -98,11 +98,11 @@ tools['Page'].get_cached_ajax = function() {
 					startAllTimers();
 					FB.XFBML.parse(document.getElementById('globalContainer'));
 					firePageURL();
-					if(url_key !== _oldurl) {
-						$('body').animate({
-							scrollTop : 0
-						}, 'slow');
-					}
+					//if(url_key !== _oldurl) {
+					$('body').animate({
+						scrollTop : 0
+					}, 'slow');
+					//}
 				}
 			});
 		}
@@ -156,11 +156,11 @@ tools['Page'].ajaxLinkSend = function() {
 				startAllTimers();
 				FB.XFBML.parse(document.getElementById(div));
 				firePageURL();
-				if(url_key !== _oldurl) {
-					$('body').animate({
-						scrollTop : 0
-					}, 'slow');
-				}
+				//if(url_key !== _oldurl) {
+				$('body').animate({
+					scrollTop : 0
+				}, 'slow');
+				//}
 				centerPopups();
 			}
 		});
@@ -212,11 +212,11 @@ tools['Page'].ajaxFormSend = function(div, url, formElement, anchor) {
 				startAllTimers();
 				FB.XFBML.parse(document.getElementById(div));
 				firePageURL();
-				if(url_key !== _oldurl) {
-					$('body').animate({
-						scrollTop : 0
-					}, 'slow');
-				}
+				//if(url_key !== _oldurl) {
+				$('body').animate({
+					scrollTop : 0
+				}, 'slow');
+				//}
 				centerPopups();
 			}
 		});

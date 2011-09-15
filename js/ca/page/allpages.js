@@ -14,16 +14,16 @@ tools['Page'].runtime['allPages'] = function() {
 	$('#st_5 div.lvlBr div').css('height', 13).addClass('ui-corner-all');
 	$('#st_2_5 strong').text(/\d+/.exec($('#st_5').attr('title'))[0] + ' to ' + /\d+\/(\d+)/.exec($('#st_2_5 strong').text())[1]);
 
-	
 	// move results in container for better handling
 	if($('div.results').length > 0) {
-		$('#results_container').show().removeClass('results_container').addClass('cageResults').html($('#results_main_wrapper').html()).prepend('<img id="cageCloseResult" src="http://image4.castleagegame.com/graphics/help_close_x.gif">');
+		//$('#results_container').show().removeClass('results_container').addClass('cageResults').html($('#results_main_wrapper').html()).prepend('<img id="cageCloseResult" src="http://image4.castleagegame.com/graphics/help_close_x.gif">');
+		$('#results_container').show().html($('#results_main_wrapper').html()).prepend('<img id="cageCloseResult" src="http://image4.castleagegame.com/graphics/help_close_x.gif">');
 		$('#cageCloseResult').click(function() {
 			$(this).css({
 				'height' : 18,
 				'margin-Left' : 34
 			}).attr('src', 'http://image4.castleagegame.com/graphics/shield_wait.gif');
-			$('#results_container').fadeOut('slow', function() {
+			$('#results_container').slideUp('slow', function() {
 				$(this).remove();
 			});
 		});
@@ -46,16 +46,16 @@ tools['Page'].runtime['allPages'] = function() {
 					'margin-Left' : 34
 				}).attr('src', 'http://image4.castleagegame.com/graphics/shield_wait.gif');
 				$.post(_close + '&signed_request=' + CastleAge.signed_request, function() {
-					$_element.fadeOut('slow', function() {
+					$_element.slideUp('slow', function() {
 						$_element.remove();
 						$('#results_container').hide();
 					});
 				});
 			}).css('cursor', 'pointer');
 		});
-		if($('#results_container').height() < 700) {
-			$('#results_container').css('overflowY', 'hidden !important')
-		}
+		/*if($('#results_container').height() < 700) {
+		 $('#results_container').css('overflowY', 'hidden !important')
+		 }*/
 
 	}
 

@@ -138,3 +138,8 @@ div.game {
 	text-align: center;
 	padding: 10px;
 }
+#cageNewsChanges span {
+	width: 45px;
+	display: inline-block;
+	font-weight: bold;
+}
