@@ -2,6 +2,9 @@ body {
 	overflow: hidden !important;
 	background-color: #000 !important;
 }
+#blueBarHolder {
+	height: 0 !important;
+}
 #blueBar {
 	display: block !important;
 	height: 34px !important;
