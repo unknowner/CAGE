@@ -58,6 +58,7 @@ tools['Page'].runtime['festival_guild_battle.php'] = function() {
 		'All' : 'Healthy|Stunned|Weakened|Good',
 		'Healthy' : 'Healthy',
 		'Good' : 'Good',
+		'Fair' : 'Fair',
 		'Weakened' : 'Weakened',
 		'Stunned' : 'Stunned'
 	};
