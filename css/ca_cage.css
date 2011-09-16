@@ -134,7 +134,7 @@ div.game {
 	border-bottom-left-radius: 6px;
 	border-bottom-right-radius: 6px;
 }
-#results_main_wrapper {
+.resultsmainwrapper {
 	margin-bottom: 10px;
 	background-image: url('http://image4.castleagegame.com/6010/graphics/bg_main_middle.jpg');
 	border-radius: 6px;

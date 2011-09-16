@@ -20,8 +20,7 @@ tools['Page'].runtime['allPages'] = function() {
 			'width' : 728,
 			'border' : '0'
 		});
-		//$('#results_container').show().removeClass('results_container').addClass('cageResults').html($('#results_main_wrapper').html()).prepend('<img id="cageCloseResult" src="http://image4.castleagegame.com/graphics/help_close_x.gif">');
-		$('#results_main_wrapper').prepend('<img id="cageCloseResult" src="http://image4.castleagegame.com/graphics/help_close_x.gif">');
+		$('#results_main_wrapper').addClass('resultsmainwrapper').prepend('<img id="cageCloseResult" src="http://image4.castleagegame.com/graphics/help_close_x.gif">');
 		$('#results_main_wrapper > br').remove();
 		$('#cageCloseResult').click(function() {
 			$(this).css({
@@ -32,8 +31,6 @@ tools['Page'].runtime['allPages'] = function() {
 				$(this).remove();
 			});
 		});
-		//$('#results_main_wrapper').remove();
-		//$('div.results').removeClass('results').addClass('blankedResults').attr('style', '').css('width', 728);
 		// remove some stuff
 		$('span.result_body > div:last:contains("Increase quest efficiency and battle prowess by growing your army")').prev().remove().end().prev().remove().end().remove();
 		//fix some results eg out of stamina general image
@@ -57,12 +54,8 @@ tools['Page'].runtime['allPages'] = function() {
 				});
 			}).css('cursor', 'pointer');
 		});
-		/*if($('#results_container').height() < 700) {
-		 $('#results_container').css('overflowY', 'hidden !important')
-		 }*/
-
 	} else {
-		$('#results_main_wrapper').hide();
+		$('#results_main_wrapper').css('border', 0);
 	}
 
 };

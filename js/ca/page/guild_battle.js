@@ -3,6 +3,11 @@ tools['Page'].runtime['guild_battle.php'] = function() {
 
 	console.log('Page: guild_battle.php');
 
+	// fix gate reseting when attacking with duel button
+	var _gate = /\d/.exec($('#enemy_guild_battle_section_battle_list').attr('class'));
+	console.log('gate:' + _gate);
+	$('span.result_body form').append('<input type="hidden" name="sel_pos" value="' + _gate + '">');
+
 	// add percentage to health bars
 	var _your = (1 - ($('div[style*="/guild_battle_bar_you.gif"]').width() / $('div[style*="/guild_battle_bar_you.gif"]').parent().width())) * 100;
 	var _enemy = (1 - ($('div[style*="/guild_battle_bar_enemy.gif"]').width() / $('div[style*="/guild_battle_bar_enemy.gif"]').parent().width())) * 100;
@@ -25,10 +30,6 @@ tools['Page'].runtime['guild_battle.php'] = function() {
 	// add current tokens to result
 	var _tokens = $('div.result div:contains("-1 Battle Tokens"):last');
 	_tokens.text(_tokens.text() + ' (' + $('#guild_token_current_value').text() + ' left)');
-
-	// fix gate reseting when attacking with duel button
-	var _gate = /\d/.exec($('#enemy_guild_battle_section_battle_list').attr('class'));
-	$('#results_container form').append('<input type="hidden" name="sel_pos" value="' + _gate + '">');
 
 	//gate filter
 	function filterGate() {
