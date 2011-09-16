@@ -6,9 +6,10 @@ $('#cageNewsText').text('You\'re now running CAGE and making your Castle Age lif
 _news = [
 	'FIX: Some CSS stuff due to FB changes',
 	'FIX: Gifting not working if RTF filter is empty',
+	'CHG: Some minor cosmetics'
 ];
 $.each(_news, function(_i, _e) {
-	$('#cageNewsChanges').append('<li><span>' + _e.split(':')[0] + ': </span>' + _e.split(':')[1] + '</li>');
+	$('#cageNewsChanges').append('<li><span>' + _e.split(':')[0] + ':</span>' + _e.split(':')[1] + '</li>');
 });
 /*
  '<li><span>CHG: </span>Static results turned off until settings available</li>');
