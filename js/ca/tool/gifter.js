@@ -59,8 +59,8 @@ tools['Gifter'].newRequestForm = function () {
 				filters: ['app_users', 'all', 'app_non_users']
 			};
 			console.log('CAGE Filter1');
-			console.log(JSON.parse(localStorage[FB._session.uid + '_' + 'CAGEsendGiftTo']));
 			if (localStorage[FB._session.uid + '_' + 'CAGEsendGiftTo'] !== undefined) {
+				console.log(JSON.parse(localStorage[FB._session.uid + '_' + 'CAGEsendGiftTo']));
 				_ui.filters = [{
 					name: 'Return the favour',
 					user_ids: localStorage[FB._session.uid + '_' + 'CAGEsendGiftTo']
