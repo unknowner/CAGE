@@ -4,14 +4,11 @@ $('#results_main_wrapper').prepend('<div class="results"><div class="result"><sp
 $('#cageNewsHead').text('CAGE - Castle Age Game Enhance - V 1.0.33α');
 $('#cageNewsText').text('You\'re now running CAGE and making your Castle Age life a bit easier ;)');
 _news = [
-	['FIX', 'Some CSS stuff due to FB changes'],
-	['FIX', 'Gifting not wokring if RTF filter is empty'],
-	['', ''],
-	['', ''],
-	['', '']
+	'FIX: Some CSS stuff due to FB changes',
+	'FIX: Gifting not working if RTF filter is empty',
 ];
 $.each(_news, function(_i, _e) {
-	$('#cageNewsChanges').append('<li><span>' + _e[0] + ': </span>' + _e[1] + '</li>');
+	$('#cageNewsChanges').append('<li><span>' + _e.split(':')[0] + ': </span>' + _e.split(':')[1] + '</li>');
 });
 /*
  '<li><span>CHG: </span>Static results turned off until settings available</li>');

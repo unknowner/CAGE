@@ -3,7 +3,8 @@ VER: 1.0.33
 ------------------------------------------------------------------
 2011-09-16
 	FIX: Some CSS stuff due to FB changes
-	FIX: Gifting not wokring if RTF filter is empty
+	FIX: Gifting not working if RTF filter is empty
+	CHG: Some minor cosmetics
 
 ==================================================================
 VER: 1.0.32

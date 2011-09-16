@@ -61,6 +61,8 @@ tools['Page'].runtime['allPages'] = function() {
 		 $('#results_container').css('overflowY', 'hidden !important')
 		 }*/
 
+	} else {
+		$('#results_main_wrapper').hide();
 	}
 
 };
