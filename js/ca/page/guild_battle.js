@@ -48,17 +48,17 @@ tools['Page'].runtime['guild_battle.php'] = function() {
 
 	//class filter
 	var filterClass = {
-		'All' : 'Cleric|Mage|Rogue|Warrior',
+		'All' : '\.*',
 		'Cleric' : 'Cleric',
 		'Mage' : 'Mage',
 		'Rogue' : 'Rogue',
 		'Warrior' : 'Warrior'
 	}, filterActivity = {
-		'All' : 'Battle Activity Points:',
+		'All' : '\.*',
 		'Active' : 'Battle Activity Points: [^0]',
 		'Inactive' : 'Battle Activity Points: 0'
 	}, filterStatus = {
-		'All' : 'Healthy|Stunned|Weakened|Good',
+		'All' : '\.*',
 		'Healthy' : 'Healthy',
 		'Good' : 'Good',
 		'Fair' : 'Fair',

@@ -115,8 +115,9 @@ div.game {
 	float: right;
 	position: relative;
 	cursor: pointer;
-	right: 5px;
-	top: 3px;
+	margin: 3px;
+	top: 2px;
+	right: 2px;
 	border-radius: 3px;
 }
 #MonsterResultDamage {

@@ -4,7 +4,7 @@ $('#results_main_wrapper').prepend('<div class="results"><div class="result"><sp
 $('#cageNewsHead').text('CAGE - Castle Age Game Enhance - V 1.0.35α');
 $('#cageNewsText').text('You\'re now running CAGE and making your Castle Age life a bit easier ;)');
 _news = [
-	'FIX: Missing "Fair" in guild filters'
+	'FIX: Some problems with guild battle filters'
 ];
 $.each(_news, function(_i, _e) {
 	$('#cageNewsChanges').append('<li><span>' + _e.split(':')[0] + ':</span>' + _e.split(':')[1] + '</li>');
