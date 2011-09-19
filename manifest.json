@@ -53,6 +53,7 @@
 			"js/ca/page/arena_battle.js",
 			"js/ca/page/festival_battle_monster.js",
 			"js/ca/page/generals.js",
+			"js/ca/page/battle.js",
 			
 			"js/castleage.js"
 			],

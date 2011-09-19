@@ -83,7 +83,7 @@ div.game {
 .GuildList {
 	height: 105px !important;
 	padding: 3px 0px 5px 20px !important;
-	background-image: url('http://image4.castleagegame.com/5725/graphics/guild_monster/guild_battle_bg.jpg');
+	background-image: url('http://image4.castleagegame.com/graphics/guild_monster/guild_battle_bg.jpg');
 	border-bottom: 3px groove #AAA;
 	background-repeat: no-repeat;
 	background-position: 0 -8px;
