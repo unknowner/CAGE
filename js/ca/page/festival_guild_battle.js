@@ -45,19 +45,20 @@ tools['Page'].runtime['festival_guild_battle.php'] = function() {
 
 	//class filter
 	var filterClass = {
-		'All' : 'Cleric|Mage|Rogue|Warrior',
+		'All' : '\.*',
 		'Cleric' : 'Cleric',
 		'Mage' : 'Mage',
 		'Rogue' : 'Rogue',
 		'Warrior' : 'Warrior'
 	}, filterActivity = {
-		'All' : 'Festival Activity Points:',
-		'Active' : 'Festival Activity Points: [^0]',
-		'Inactive' : 'Festival Activity Points: 0'
+		'All' : '\.*',
+		'Active' : 'Battle Activity Points: [^0]',
+		'Inactive' : 'Battle Activity Points: 0'
 	}, filterStatus = {
-		'All' : 'Healthy|Stunned|Weakened|Good',
+		'All' : '\.*',
 		'Healthy' : 'Healthy',
 		'Good' : 'Good',
+		'Fair' : 'Fair',
 		'Weakened' : 'Weakened',
 		'Stunned' : 'Stunned'
 	};
