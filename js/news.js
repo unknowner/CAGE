@@ -5,7 +5,8 @@ $('#cageNewsHead').text('CAGE - Castle Age Game Enhance - V 1.0.35α');
 $('#cageNewsText').text('You\'re now running CAGE and making your Castle Age life a bit easier ;)');
 _news = [
 	'FIX: Some problems with guild battle filters',
-	'FIX: Background image in guild battles'
+	'FIX: Background image in guild battles',
+	'CHG: Monsterlist changed a bit'
 ];
 $.each(_news, function(_i, _e) {
 	$('#cageNewsChanges').append('<li><span>' + _e.split(':')[0] + ':</span>' + _e.split(':')[1] + '</li>');
