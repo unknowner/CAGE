@@ -5,14 +5,14 @@ tools['General'].runtime = {};
 
 //get current general from CA and set it in fb ui
 tools['General'].get = function() {
-	if($('#equippedGeneralContainer div.general_name_div3').length > 0) {
-		tools['General'].current = $('#equippedGeneralContainer div.general_name_div3').text().trim();
+	if($('div[style*="general_plate.gif"] > div:first').length > 0) {
+		tools['General'].current = $('div[style*="general_plate.gif"] > div:first').text().trim();
 		tools['General'].set();
 	}
 };
 // Set general image & name in fb ui
 tools['General'].set = function() {
-	
+
 	var _g = tools['General'].runtime.general[tools['General'].current];
 	$('#cageGeneralImage').attr('src', _g.image);
 	$('#cageGeneralName').text(tools['General'].current);

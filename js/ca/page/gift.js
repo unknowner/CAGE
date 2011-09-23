@@ -5,23 +5,30 @@ tools['Page'].runtime['gift.php'] = function() {
 
 	$('div.extra_gift').removeClass('extra_gift');
 	$('div.show_extra_link').remove();
+
+	//rearrange gift buttons
+	$('#giftContainer div[id^="gift"]').each(function() {
+		var _this = $(this);
+		_this.css({
+			'width' : 50,
+			'height' : 50,
+			'padding' : '1px'
+		}).unwrap().find('img').css({
+			'width' : 50,
+			'height' : 50
+		}).attr({
+			'title' : _this.text().trim()
+		}).parent().unwrap().unwrap();
+		_this.find('div:first').remove();
+	});
+
 	$('#giftContainer').css({
-		width : 626,
-		'padding' : '9px'
-	}).find('img.imgButton, img.imgButtonReverse').css({
-		width : 50,
-		height : 50
-	}).parent().parent().css({
-		width : 50,
-		height : 50
-	}).unwrap().prev().hide().parent().css({
-		width : 50,
-		height : 50,
-		'padding' : '1px'
+		'width' : 642,
+		'marginTop' : 2,
+		'marginLeft' : 11,
+		'padding' : '3px 0 13px 2px'
 	});
-	$('#giftContainer > div').each(function() {
-		$(this).find('img').attr('title', $(this).text().trim());
-	});
+
 	var $_img = $('img[src*="invite_sendgift.gif"]');
 	var _giftNum = /(?:act=create&gift=)(\d+)/.exec($_img.attr('onclick'))[1];
 	var _giftName = /(sent you a )(.+)( in Castle Age!)/.exec($_img.attr('onclick'))[2];
