@@ -1,7 +1,14 @@
 ==================================================================
+VER: 1.0.36
+------------------------------------------------------------------
+2011-09-23
+	FIX: Gift page CSS
+	FIX: Generals selector not shown current general on start
+
+==================================================================
 VER: 1.0.35
 ------------------------------------------------------------------
-2011-09-16
+2011-09-20
 	FIX: Some problems with guild battle filters
 	FIX: Background image in guild battles
 	CHG: Monsterlist changed a bit

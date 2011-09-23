@@ -55,7 +55,6 @@ div.game {
 }
 .MonsterListButton {
 	float: left;
-	width: 200px;
 	text-align: center;
 	padding-top: 20px;
 }
@@ -65,6 +64,7 @@ div.game {
 	color: black;
 	padding-left: 35px;
 	width: 240px;
+	margin-right: 32px;
 	padding-top: 15px;
 }
 .MonsterListImage {
@@ -122,7 +122,7 @@ div.game {
 }
 #MonsterResultDamage {
 	float: left;
-	width: 350px;
+	width: 420px;
 	text-align: left;
 	font-weight: bold;
 	padding: 10px;
