@@ -52,8 +52,8 @@ tools['Page'].runtime['festival_guild_battle.php'] = function() {
 		'Warrior' : 'Warrior'
 	}, filterActivity = {
 		'All' : '\.*',
-		'Active' : 'Battle Activity Points: [^0]',
-		'Inactive' : 'Battle Activity Points: 0'
+		'Active' : 'Festival Activity Points: [^0]',
+		'Inactive' : 'Festival Activity Points: 0'
 	}, filterStatus = {
 		'All' : '\.*',
 		'Healthy' : 'Healthy',
