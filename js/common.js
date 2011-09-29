@@ -49,7 +49,11 @@ function removeDuplicates(_array) {
 	});;
 }
 
+//shortcut to jQuery get with signed request
 function get(_url, _callback) {
 	$.get(_url + (_url.indexOf('?') > -1 ? '&' : '?') + 'signed_request=' + CastleAge.signed_request, _callback);
 }
-
+//shortcut to jQuery post with signed request
+function post(_url, _callback) {
+	$.post(_url + (_url.indexOf('?') > -1 ? '&' : '?') + 'signed_request=' + CastleAge.signed_request, _callback);
+}
