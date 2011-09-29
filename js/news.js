@@ -4,7 +4,8 @@ $('#results_main_wrapper').prepend('<div class="results"><div class="result"><sp
 $('#cageNewsHead').text('CAGE - Castle Age Game Enhance - V 1.0.37α');
 $('#cageNewsText').text('You\'re now running CAGE and making your Castle Age life a bit easier ;)');
 _news = [
-	'FIX: Activity filter for Festival Guild Battle'
+	'FIX: Activity filter for Festival Guild Battle',
+	'ADD: More info when ending gifts'
 ];
 $.each(_news, function(_i, _e) {
 	$('#cageNewsChanges').append('<li><span>' + _e.split(':')[0] + ':</span>' + _e.split(':')[1] + '</li>');

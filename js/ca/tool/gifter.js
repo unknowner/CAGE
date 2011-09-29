@@ -58,7 +58,6 @@ tools['Gifter'].newRequestForm = function () {
 				title: tit,
 				filters: ['app_users', 'all', 'app_non_users']
 			};
-			console.log('CAGE Filter1');
 			if (localStorage[FB._session.uid + '_' + 'CAGEsendGiftTo'] !== undefined) {
 				console.log(JSON.parse(localStorage[FB._session.uid + '_' + 'CAGEsendGiftTo']));
 				_ui.filters = [{
@@ -70,20 +69,21 @@ tools['Gifter'].newRequestForm = function () {
           'app_non_users'
         ];
 			}
-			console.log('CAGE Filter2');
 			FB.ui(_ui, function (result) {
 				// fixes infinite looping for popup window if u close it before it is done loading
 				$('.fb_dialog_iframe').each(function () {
 					$(this).remove();
 				});
 				if (result && result.request_ids) {
+					var _resultContainer = $('#results_container');
 					var request_id_string = String(result.request_ids);
 					var request_id_array = request_id_string.split(',');
 					var request_id_count = request_id_array.length;
+					_resultContainer.html('Sending gifts...<br>').show();
 					// get all ids from sent gifts and remove them from the list
 					console.log('check for RTFs');
 					if (localStorage[FB._session.uid + '_' + 'CAGEsendGiftTo'] !== undefined) {
-						console.log('found for RTFs');
+						console.log('found RTFs');
 						var ids = result.request_ids;
 						var _batch = [];
 						for (var i = 0; i < ids.length; i++) {
@@ -101,10 +101,10 @@ tools['Gifter'].newRequestForm = function () {
 								for (var j = 0; j < res.length; j++) {
 									body = res[j].body;
 									var myObject = eval('(' + body + ')');
-									console.log(myObject);
+									_resultContainer.html(_resultContainer.html() + '<br>Sent gift to: ' + myObject.to.name + ' (' + myObject.to.id + ')'); 
 									if (_store.indexOf(myObject.to.id) > -1) {
-										console.log('found id:' + myObject.to.id);
 										_store.splice(_store.indexOf(myObject.to.id), 1);
+										_resultContainer.html(_resultContainer.html() + ' <b>Favour returned</b>');
 									}
 								}
 								if (_store.length > 0) {
@@ -118,16 +118,16 @@ tools['Gifter'].newRequestForm = function () {
 					}
 					var params = 'ajax=1';
 					params += '&signed_request=' + $('#signed_request').val();
+					$('#AjaxLoadIcon').show();
 					$.ajax({
 						url: 'request_handler.php?' + request_params + '&request_ids=' + result.request_ids,
 						context: document.body,
 						data: params,
 						type: 'POST',
 						success: function (data) {
-							var return_message = request_id_count + ' request' + (request_id_count == 1 ? '' : 's') + ' sent!';
-							document.getElementById('results_container').innerHTML = return_message;
+							$('#AjaxLoadIcon').hide();
+							document.getElementById('results_container').innerHTML = document.getElementById('results_container').innerHTML + '<br><br>' + request_id_count + ' request' + (request_id_count == 1 ? '' : 's') + ' sent!';
 							FB.XFBML.parse(document.getElementById('results_container'));
-							$('#results_container').show();
 						}
 					});
 				}
