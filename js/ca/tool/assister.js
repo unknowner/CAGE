@@ -56,7 +56,7 @@ tools['Assister'].getFriends = function() {
 
 tools['Assister'].assist = function() {
 
-	if(tools['Assister'].runtime.Stamina < 1 && tools['Assister'].runtime.CTA.length > 0) {
+	if(tools['Assister'].runtime.Stamina < 11 && tools['Assister'].runtime.CTA.length > 0) {
 		var _cta = tools['Assister'].runtime.CTA.pop();
 		if(tools['Assister'].runtime.friends.indexOf(_cta.uid) > -1) {
 			get(_cta.link, function(_monsterdata) {
