@@ -58,13 +58,14 @@ tools['Assister'].assist = function() {
 
 	if(tools['Assister'].runtime.Stamina < 11 && tools['Assister'].runtime.CTA.length > 0) {
 		var _cta = tools['Assister'].runtime.CTA.pop();
-		if(tools['Assister'].runtime.friends.indexOf(_cta.uid) > -1) {
+		if(tools['Assister'].runtime.friends.indexOf(_cta.uid) !== -1) {
+			console.log('ASSISTER: Friend: ' + _cta.uid);
 			get(_cta.link, function(_monsterdata) {
 				var _num = $('span.result_body', _monsterdata).text();
 				if(_num !== null && _cta.uid !== CastleAge.userId && _num.match(/\d+(?:st|nd|rd|th)/) !== null) {
 					tools['Assister'].runtime.Stamina += 1;
 					$('#stamina_current_value').text($('#stamina_current_value').text() - 1);
-					console.log('ASSIST FOR:');
+					console.log('ASSISTER: Asssited for:');
 					console.log(_cta);
 					tools['Assister'].runtime.Assisted.push(_cta);
 					_num = _num.match(/\d+(?:st|nd|rd|th)/)[0];
@@ -73,22 +74,14 @@ tools['Assister'].assist = function() {
 					get('party.php?casuser=' + _cta.uid, function(_guarddata) {
 						console.log('Like & Comment on FB');
 						var _postid = $('div.streamContainer:has(div.streamName > a[href*="' + _cta.link + '"]) input[name="like_recent_news_post_id"]:first', _guarddata).val();
+						console.log('ASSISTER: postid: ', _data.postid);
 						addFunction(function(_data) {
-							console.log('_postid1:', _data.postid);
-							FB.api("/" + _data.postid + "/likes", 'post', function(response) {
-								console.log(1);
-								console.log(response);
-							});
+							FB.api("/" + _data.postid + "/likes", 'post');
 						}, JSON.stringify({
 							postid : _postid
 						}), true, false);
 						addFunction(function(_data) {
-							console.log('_postid2:', _data.postid);
-							console.log('_message2:', _data.message);
-							FB.api("/" + _data.postid + "/comments", 'post', _data, function(response) {
-								console.log(2);
-								console.log(response);
-							});
+							FB.api("/" + _data.postid + "/comments", 'post', _data);
 						}, JSON.stringify({
 							postid : _postid,
 							message : _num
@@ -101,9 +94,11 @@ tools['Assister'].assist = function() {
 				}
 			});
 		} else {
-			tools['Assister'].done();
+			console.log('ASSISTER: Not a friend, no CTA: ' + _cta.uid);
+			tools['Assister'].assist();
 		}
 	} else {
+		console.log('ASSISTER: Stamina out/No more CTAs');
 		tools['Assister'].done();
 	}
 
