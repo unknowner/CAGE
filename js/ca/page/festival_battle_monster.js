@@ -36,7 +36,7 @@ tools['Page'].runtime['festival_battle_monster.php'] = function() {
 	// rearrange attack result
 	if($('div.result').length > 0) {
 		//resize Elite Guard boxes
-		$('div.result div:textEquals("Elite Guard")').parent().find('div[style*="height:84px"]').css('height', 62);
+		$('div.result div:textEquals("Elite Guard")').parent().find('div[style*="height:84px"]').css('height', 68);
 		// add monster damage/health/... to result
 		$('div.result:has(img[src*="graphics/button_monster_attack_again.gif"]) span.result_body div:last').append('<div id="MonsterResultDamage"><div>' + _monstername.text() + '</div><div>' + _defText.text() + '</div><div>Your Damage/Activity: ' + $('td.dragonContainer tr:has(a[href*="' + CastleAge.userId + '"]) > td:last').text().trim() + '</div></div>');
 	}
