@@ -257,24 +257,41 @@
 	font-size: 12px;
 	width: 100px !important;
 }
-#cageNewsHead {
-	text-align: center;
+#cageAssists {
 	font-weight: bold;
-	font-size: 16px;
+	margin-left: 10px;
 	padding: 10px;
-	border-bottom: 1px solid #701919;
-}
-#cageNewsBody {
-	padding: 5px 30px 0 40px;
-	border-bottom: 1px solid #701919;
-}
-#cageNewsFoot {
+	background-color: #C6A56F;
+	color: black;
+	cursor: pointer;
+	height: 15px;
+	width: 100px;
 	text-align: center;
-	padding: 10px;
-	padding: 5px 30px 0px 40px;
+	float: left;
+	margin-top: 10px;
 }
-#cageNewsChanges span {
-	width: 45px;
-	display: inline-block;
-	font-weight: bold;
+.cageAssisterList {
+	background-image: url(http://image4.castleagegame.com/graphics/newsfeed_back.jpg);
+	background-repeat: no-repeat;
+	margin: 0 0 13px 24px;
+	height: 174px;
+	cursor: pointer;
+}
+.cageAssisterList:hover {
+	background-image: url(http://image4.castleagegame.com/graphics/newsfeed_back_h.jpg);
+}
+.cageAssisterListImage {
+	position: relative;
+	left: 45px;
+	top: 38px;
+}
+.cageAssisterListName {
+	position: relative;
+	left: 150px;
+	top: -50px;
+}
+.cageAssisterListValues {
+	position: relative;
+	left: 150px;
+	top: -50px;
 }

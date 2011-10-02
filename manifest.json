@@ -1,6 +1,6 @@
 {
 	"name": "CAGE - Castle Age Game Enhancer [α]",
-	"version": "1.0.39",
+	"version": "1.0.41",
 	"description": "CAGE Alpha build. Only few things missing until Beta is reached.",
 	"background_page": "background.html",
 	"default_locale": "en",
@@ -18,7 +18,7 @@
 			"js/ui.selectmenu.js",
 			"js/com.js",
 			"js/common.js",
-			"js/news.js",
+			
 			
 			"js/ca/tool.js",
 			"js/ca/ca_tools.js",
@@ -55,6 +55,7 @@
 			"js/ca/page/festival_battle_monster.js",
 			"js/ca/page/generals.js",
 			"js/ca/page/battle.js",
+			"js/ca/page/army_news_feed.js",
 			
 			"js/castleage.js"
 			],
@@ -72,7 +73,8 @@
 			"js/common.js",
 			"js/fb/fb_receiver.js",
 			"js/fb/fb_start.js",
-			"js/facebook.js"
+			"js/facebook.js",
+			"js/fb/news.js"
 			]
 	}
 	],
