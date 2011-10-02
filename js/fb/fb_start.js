@@ -22,5 +22,8 @@ function startCAGE() {
 			_data = null;
 		}, "text")
 	}, 1200000);
-	
+
+	$('#cageNews').dialog('open');
+	$('#cageNews a').blur();
+
 }
