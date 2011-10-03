@@ -23,12 +23,10 @@ tools['PotionEnergy'].work = function(_pagedata) {
 	if(_pagedata == undefined) {
 		_pagedata = $('#app_body');
 	}
-
 	var _potions = /\d+/.exec($('img[alt="Energy Potion"]', _pagedata).parent().next().text());
 	if(_potions !== null) {
 		$('#cagePotionEnergy > span.cagePotionCount').text(_potions[0]);
 	}
-
 };
 tools['PotionEnergy'].done = function() {
 	$('#cagePotionEnergy').removeAttr('disabled').css('cursor', 'pointer');

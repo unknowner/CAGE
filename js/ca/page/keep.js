@@ -2,6 +2,7 @@
 tools['Page'].runtime['keep.php'] = function() {
 	// Update potions
 	tools['PotionStamina'].work();
+	tools['PotionEnergy'].work();
 	// folding units, items ...
 	$('div.statsT2:has(div.statsTTitle)').css({
 		'height' : 30,
