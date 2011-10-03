@@ -4,7 +4,9 @@ $('body').append('<div id="cageNews"><div id="cageNewsHead"></div><div id="cageN
 $('#cageNewsHead').text('CAGE - Castle Age Game Enhancer - V 1.0.41α');
 $('#cageNewsText').text('You\'re now running CAGE and making your Castle Age life a bit easier ;)');
 $('#cageNewsFoot').prepend('<p style="text-align: left;"><b>NOTICE:</b> You can find the Assists log on the live newsfeed. When the assister is finished, you can find a new tab next to Monster and Guard. The log remains until you reload the complete page.<br><br>The Assister is now available for testing. It can assist up to 10 CTAs (max. 10 Stamina) from the Live Feed and assist only friends. It likes and comments the post on the users newsfeed and on the monster. If you notice anything weird, just go to the blog and post there (no need to sign up). If you want to assist more than 10, just click again.<br>Error logs (CTRL+SHIFT+J) are always welcome ;)</p>');
-_news = ['ADD: Assist log added (per session, not saved)'];
+_news = [
+	'CHG: Stash & Heal repositioned'
+];
 $.each(_news, function(_i, _e) {
 	$('#cageNewsChanges').append('<li><span>' + _e.split(':')[0] + ':</span>' + _e.split(':')[1] + '</li>');
 });

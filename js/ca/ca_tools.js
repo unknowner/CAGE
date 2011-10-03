@@ -27,7 +27,7 @@ function customEvent(_event, _function) {
 				$('#' + _arg).val(_data);
 				//window[('set' + _arg)](_data);
 			}
-			console.log('fire val:' + $('#' + _arg).val());
+			console.log('fire val: ' , $('#' + _arg).val());
 			var customEvent = document.createEvent('Event');
 			customEvent.initEvent(_arg, true, true);
 			document.getElementById(_arg).dispatchEvent(customEvent);

@@ -1,6 +1,5 @@
 function receiver(_data) {
-	console.log('ca receiver:');
-	console.log(_data);
+	console.log('ca receiver: ', _data);
 	switch (_data.task) {
 		case com.task.signed:
 			CastleAge.signed_request = _data.data;
