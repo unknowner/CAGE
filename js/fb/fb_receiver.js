@@ -1,6 +1,5 @@
 function receiver(_data) {
-	console.log('fb receiver:');
-	console.log(_data);
+	console.log('fb receiver: ',_data);
 	switch (_data.task) {
 		case com.task.castleAgeReady:
 			if(Facebook.started == false) {

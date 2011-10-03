@@ -15,7 +15,7 @@ tools['Stash'].start = function() {
 
 };
 tools['Stash'].work = function() {
-	$.get('keep.php?do=Stash&stash_gold=' + $('#gold_current_value').text().match(/\d*/g).join('') + '&bqh=' + CastleAge.bqh + '&signed_request=' + CastleAge.signed_request, function(_data) {
+	get('keep.php?do=Stash&stash_gold=' + $('#gold_current_value').text().match(/\d*/g).join('') + '&bqh=' + CastleAge.bqh, function(_data) {
 		var _time_left = $('#gold_time_sec', _data);
 		if(_time_left) {
 			addFunction(function(gold_token_time_left_obj) {
@@ -35,11 +35,20 @@ tools['Stash'].work = function() {
 	});
 };
 tools['Stash'].done = function() {
-	tools['Stash'].fbButton.enable();
+	$('#cageStash').removeAttr('disabled').css('cursor', 'pointer');
+	//tools['Stash'].fbButton.enable();
 };
 tools['Stash'].init = function() {
-	tools['Stash'].fbButton.add(chrome.i18n.getMessage("buttonStash"), function() {
-		tools['Stash'].fbButton.disable();
-		tools['Stash'].start();
-	});
+	$('body').append($('<button id="cageStash"></button>').click(function() {
+		if($('#gold_current_value').text() !== '$0') {
+			$(this).attr('disabled', 'true').css('cursor', 'wait');
+			tools['Stash'].start();
+		}
+	}));
+	/*tools['Stash'].fbButton.add(chrome.i18n.getMessage("buttonStash"), function() {
+	 if($('#gold_current_value').text() !== '$0') {
+	 tools['Stash'].fbButton.disable();
+	 tools['Stash'].start();
+	 }
+	 });*/
 };

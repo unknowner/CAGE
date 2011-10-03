@@ -1,5 +1,7 @@
 // Keep
 tools['Page'].runtime['keep.php'] = function() {
+	// Update potions
+	tools['PotionStamina'].work();
 	// folding units, items ...
 	$('div.statsT2:has(div.statsTTitle)').css({
 		'height' : 30,
@@ -42,7 +44,6 @@ tools['Page'].runtime['keep.php'] = function() {
 		});
 	});
 	$('div.statUnit a img').addClass('ui-corner-all');
-
 	$('div.statUnit').find('div:last:contains(X)').addClass('itemNumbers');
 
 };

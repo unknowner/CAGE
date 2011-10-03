@@ -95,17 +95,12 @@ tools['Assister'].assist = function() {
 						var _percentage = _defense.style.width.substr(0, 5);
 						_monstervalues.push((_defText.text() + ' (' + _percentage + (_percentage.indexOf('%') > -1 ? ')' : '%)')).trim());
 					}
-
-					console.log('_monstervalues');
-					console.log(_monstervalues);
-					_cta.values = _monstervalues;
-					
+					_cta.values = _monstervalues;		
 					_cta.timer = $('#monsterTicker', _monsterdata).text();
 					//
 					tools['Assister'].runtime.Stamina += 1;
 					$('#stamina_current_value').text($('#stamina_current_value').text() - 1);
-					console.log('ASSISTER: Asssited for:');
-					console.log(_cta);
+					console.log('ASSISTER: Asssited for:', _cta);
 					tools['Assister'].runtime.Assisted.push(_cta);
 					_num = _num.match(/\d+(?:st|nd|rd|th)/)[0];
 					post(_cta.link.replace('doObjective', 'commentDragon') + '&text=' + _num + ' for ' + _cta.name);
