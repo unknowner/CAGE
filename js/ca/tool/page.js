@@ -101,7 +101,9 @@ tools['Page'].get_cached_ajax = function() {
 					//if(url_key !== _oldurl) {
 					$('body').animate({
 						scrollTop : 0
-					}, 'slow');
+					}, 'slow', function() {
+						centerPopups();
+					});
 					//}
 				}
 			});
@@ -132,7 +134,7 @@ tools['Page'].ajaxLinkSend = function() {
 			url_key = url.substring(0, url.indexOf('?'));
 		}
 		var _oldurl = $('#PageURL').val();
-		console.log(url_key + '-' + _oldurl);
+		console.log('Gointo from ' + _oldurl + ' to ' + url_key);
 		setPageURL(url_key);
 		$.ajax({
 			url : url,
@@ -159,13 +161,13 @@ tools['Page'].ajaxLinkSend = function() {
 				//if(url_key !== _oldurl) {
 				$('body').animate({
 					scrollTop : 0
-				}, 'slow');
+				}, 'slow', function() {
+					centerPopups();
+				});
 				//}
-				centerPopups();
+				scrollToElement('#main_anchor');
 			}
 		});
-		scrollToElement('#main_anchor');
-
 		//FB.Canvas.setAutoResize();
 	};
 };
@@ -215,9 +217,9 @@ tools['Page'].ajaxFormSend = function(div, url, formElement, anchor) {
 				//if(url_key !== _oldurl) {
 				$('body').animate({
 					scrollTop : 0
-				}, 'slow');
-				//}
-				centerPopups();
+				}, 'slow', function() {
+					centerPopups();
+				});
 			}
 		});
 		scrollToElement('#' + anchor);

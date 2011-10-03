@@ -40,7 +40,7 @@ console.log("URL:" + _startURL);
 if(tools['Page'].runtime[_startURL]) {
 	tools['Page'].runtime[_startURL]();
 }
-_startUrl = undefined;
+_startURL = undefined;
 
 CastleAge.startInterval = window.setInterval(function() {
 	if(CastleAge.started == false) {

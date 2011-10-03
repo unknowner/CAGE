@@ -212,7 +212,7 @@ tools['Nav'].start = function() {
 				tools['Nav'].start();
 			});
 		} else {
-			window.setTimeout(tools['Nav'].start, 100);
+			window.setTimeout(tools['Nav'].start, 50);
 		}
 	}
 

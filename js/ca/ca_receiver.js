@@ -1,6 +1,5 @@
 function receiver(_data) {
-	console.log('ca receiver:');
-	console.log(_data);
+	console.log('ca receiver: ', _data);
 	switch (_data.task) {
 		case com.task.signed:
 			CastleAge.signed_request = _data.data;
@@ -9,6 +8,11 @@ function receiver(_data) {
 			} else {
 				$(document.body).append('<input id="signed_request" type="hidden" name="signed_request" value="' + _data.data + '" />');
 			}
+			get('keep.php', function(_keepdata) {
+				CastleAge.bqh = $('input[name="bqh"]:first', _keepdata).val();
+				tools['PotionStamina'].work(_keepdata);
+				tools['PotionEnergy'].work(_keepdata);
+			});
 			break;
 		case com.task.userId:
 			if(!CastleAge.userId) {
