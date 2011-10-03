@@ -1,6 +1,11 @@
 // All Pages
 tools['Page'].runtime['allPages'] = function() {
 
+	// If found update bqh
+	if($('input[name="bqh"]:first').length > 0) {
+		CastleAge.bqh = $('input[name="bqh"]:first').val();
+	}
+
 	$('a[href="http://apps.facebook.com/castle_hod/?xprom=cax"]:first').parent('div:first').hide();
 	if($('#globalContainer > div:first').height() == 80) {
 		$('#globalContainer > div:first').hide();

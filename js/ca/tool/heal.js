@@ -26,7 +26,7 @@ tools['Heal'].done = function() {
 	//tools['Heal'].fbButton.enable();
 };
 tools['Heal'].init = function() {
-	$('body').append($('<button id="cageHeal" title="Heal"></button>').click(function() {
+	$('body').append($('<button id="cageHeal"></button>').click(function() {
 		$(this).attr('disabled', true).css('cursor', 'wait');
 		tools['Heal'].start();
 	}));

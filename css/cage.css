@@ -314,7 +314,7 @@
 /*
  Heal UI button
  */
-#cageHeal{
+#cageHeal {
 	background-image: url('http://image4.castleagegame.com/graphics/stat_health.gif');
 	background-repeat: no-repeat;
 	background-position: -2px -1px;
@@ -326,4 +326,46 @@
 	height: 29px;
 	border-radius: 20px;
 	cursor: pointer;
+}
+/*
+ Stamina Potion UI button
+ */
+#cagePotionStamina {
+	background-image: url('http://image4.castleagegame.com/graphics/stat_stamina.gif');
+	background-repeat: no-repeat;
+	background-position: -2px -1px;
+	position: fixed;
+	width: 29px;
+	z-index: 10;
+	left: 474px;
+	top: 15px;
+	height: 29px;
+	border-radius: 20px;
+	cursor: pointer;
+}
+/*
+ Energy Potion UI button
+ */
+#cagePotionEnergy {
+	background-image: url('http://image4.castleagegame.com/graphics/stat_energy.gif');
+	background-repeat: no-repeat;
+	background-position: -2px -1px;
+	position: fixed;
+	width: 29px;
+	z-index: 10;
+	left: 183px;
+	top: 15px;
+	height: 29px;
+	border-radius: 20px;
+	cursor: pointer;
+}
+/*
+ * Potions count
+ *
+ */
+.cagePotionCount {
+	color: white;
+	text-shadow: 0 0 3px blue;
+	font-weight: bold;
+	font-size: 13px;
 }
