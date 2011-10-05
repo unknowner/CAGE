@@ -1,16 +1,30 @@
 new tool('Assister');
 
-tools['Assister'].runtime = {};
+tools['Assister'].settings = function() {
+
+	tools['Settings'].heading('Assister');
+	tools['Settings'].textbox('Stamina usage for CTAs', tools['Assister'].runtime.Stamina, 'cageAssisterStamina');
+	tools['Settings'].text('Monster message is appended after the standard post (eg 25th for Narf).');
+	tools['Settings'].textbox('Monster message', tools['Assister'].runtime.monsterMessage, 'cageAssisterMonsterMessage');
+	tools['Settings'].text('Facebook message is appended after the standard post (eg 25th).');
+	tools['Settings'].textbox('Facebook message', tools['Assister'].runtime.facebookMessage, 'cageAssisterFacebookMessage');
+};
+
+tools['Assister'].runtimeUpdate = function() {
+	tools['Assister'].runtime = {
+		CTA : [],
+		Stamina : item.get('cageAssisterStamina', 10),
+		Used : 0,
+		friends : [],
+		Assisted : tools['Assister'].runtime == undefined ? [] : tools['Assister'].runtime.Assisted,
+		monsterMessage : item.get('cageAssisterMonsterMessage', ''),
+		facebookMessage : item.get('cageAssisterFacebookMessage', '')
+	}
+};
 
 tools['Assister'].start = function() {
 
-	tools['Assister'].runtime.CTA = [];
-	tools['Assister'].runtime.Stamina = 0;
-	tools['Assister'].runtime.friends = [];
-	if(tools['Assister'].runtime.Assisted == undefined) {
-		tools['Assister'].runtime.Assisted = [];
-	}
-
+	tools['Assister'].runtimeUpdate();
 	get('army_news_feed.php', function(_data) {
 		$('#action_logs > a[href*="action=doObjective"]', _data).each(function(i, e) {
 			tools['Assister'].runtime.CTA.push({
@@ -59,13 +73,19 @@ tools['Assister'].getFriends = function() {
 
 tools['Assister'].assist = function() {
 
-	if(tools['Assister'].runtime.Stamina < 11 && tools['Assister'].runtime.CTA.length > 0) {
+	if(tools['Assister'].runtime.Used < tools['Assister'].runtime.Stamina && tools['Assister'].runtime.CTA.length > 0) {
 		var _cta = tools['Assister'].runtime.CTA.pop();
 		if(tools['Assister'].runtime.friends.indexOf(_cta.uid) !== -1) {
 			console.log('ASSISTER: Friend: ' + _cta.uid);
 			get(_cta.link, function(_monsterdata) {
 				var _num = $('span.result_body', _monsterdata).text();
 				if(_num !== null && _cta.uid !== CastleAge.userId && _num.match(/\d+(?:st|nd|rd|th)/) !== null) {
+					tools['Assister'].runtime.Used++;
+					addFunction(function(data) {
+						cageStat['stamina'] = data.stamina;
+					}, JSON.stringify({
+						stamina : parseInt($('#stamina_current_value').text(), 10) - 1
+					}), true, true);
 					// Collect data from assisted monster for assists list
 					var _monstername, _monstervalues = [];
 					if($('#app_body div[style*="nm_bars.jpg"], #app_body div[style*="nm_bars_cross.jpg"]', _monsterdata).length > 0) {
@@ -95,15 +115,13 @@ tools['Assister'].assist = function() {
 						var _percentage = _defense.style.width.substr(0, 5);
 						_monstervalues.push((_defText.text() + ' (' + _percentage + (_percentage.indexOf('%') > -1 ? ')' : '%)')).trim());
 					}
-					_cta.values = _monstervalues;		
+					_cta.values = _monstervalues;
 					_cta.timer = $('#monsterTicker', _monsterdata).text();
 					//
-					tools['Assister'].runtime.Stamina += 1;
-					$('#stamina_current_value').text($('#stamina_current_value').text() - 1);
 					console.log('ASSISTER: Asssited for:', _cta);
 					tools['Assister'].runtime.Assisted.push(_cta);
 					_num = _num.match(/\d+(?:st|nd|rd|th)/)[0];
-					post(_cta.link.replace('doObjective', 'commentDragon') + '&text=' + _num + ' for ' + _cta.name);
+					post(_cta.link.replace('doObjective', 'commentDragon') + '&text=' + _num + ' for ' + _cta.name + ', ' + tools['Assister'].runtime.monsterMessage);
 					get('party.php?casuser=' + _cta.uid, function(_guarddata) {
 						console.log('Like & Comment on FB');
 						var _postid = $('div.streamContainer:has(div.streamName > a[href*="' + _cta.link + '"]) input[name="like_recent_news_post_id"]:first', _guarddata).val();
@@ -121,7 +139,7 @@ tools['Assister'].assist = function() {
 							});
 						}, JSON.stringify({
 							postid : _postid,
-							message : _num
+							message : _num + ' ' + tools['Assister'].runtime.facebookMessage
 						}), true, false);
 						tools['Assister'].assist();
 					});
@@ -142,9 +160,11 @@ tools['Assister'].assist = function() {
 };
 
 tools['Assister'].done = function() {
+	tools['Assister'].runtime.Used = 0;
 	tools['Assister'].fbButton.enable();
 };
 tools['Assister'].init = function() {
+	tools['Assister'].runtimeUpdate();
 	tools['Assister'].fbButton.add(chrome.i18n.getMessage("buttonAssister"), function() {
 		tools['Assister'].fbButton.disable();
 		tools['Assister'].start();

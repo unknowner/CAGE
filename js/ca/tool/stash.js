@@ -43,5 +43,5 @@ tools['Stash'].init = function() {
 			$(this).attr('disabled', 'true').css('cursor', 'wait');
 			tools['Stash'].start();
 		}
-	}));
+		}));
 };

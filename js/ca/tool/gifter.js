@@ -1,10 +1,16 @@
 new tool('Gifter');
 
 tools['Gifter'].settings = function() {
-
 	tools['Settings'].heading('Gifter');
-	tools['Settings'].textbox('Gifting friendlist', tools['Gifter'].runtime.userList, 'cageGifterUserList');
+	tools['Settings'].textbox('Gifting friendlist', tools['Gifter'].runtime.userList, 'cageGifterUserList', tools['Gifter'].newRequestForm);
+};
 
+tools['Gifter'].runtimeUpdate = function() {
+	tools['Gifter'].runtime = {
+		sendGiftTo : item.get('CAGEsendGiftTo', []),
+		requests : [],
+		userList : item.get('cageGifterUserList', '')
+	}
 };
 
 tools['Gifter'].update = function() {
@@ -22,6 +28,7 @@ tools['Gifter'].update = function() {
 				}
 			});
 			item.set('CAGEsendGiftTo', tools['Gifter'].runtime['sendGiftTo']);
+			tools['Gifter'].runtimeUpdate();
 		}
 		tools['Gifter'].work();
 	});
@@ -32,6 +39,7 @@ tools['Gifter'].update = function() {
 	}, null, true, true);
 };
 tools['Gifter'].start = function() {
+	tools['Gifter'].runtimeUpdate();
 	tools['Gifter'].update();
 };
 tools['Gifter'].work = function() {
@@ -47,13 +55,7 @@ tools['Gifter'].done = function() {
 	tools['Gifter'].fbButton.enable();
 };
 tools['Gifter'].init = function() {
-
-	tools['Gifter'].runtime = {
-		sendGiftTo : item.get('CAGEsendGiftTo', []),
-		requests : [],
-		userList : item.get('cageGifterUserList', '')
-	};
-
+	tools['Gifter'].runtimeUpdate();
 	tools['Gifter'].fbButton.add(chrome.i18n.getMessage("buttonGifter"), function() {
 		tools['Gifter'].fbButton.disable();
 		tools['Gifter'].start();
@@ -61,8 +63,9 @@ tools['Gifter'].init = function() {
 	tools['Gifter'].newRequestForm();
 };
 tools['Gifter'].newRequestForm = function() {
-	addFunction(function(_giftData) {
 
+	tools['Gifter'].runtimeUpdate();
+	addFunction(function(_giftData) {
 		var cageGiftUserList = [];
 		FB.api('me/friendlists', function(responseFriendlist) {
 			console.log('GIFTER - friendlists:', responseFriendlist.data);

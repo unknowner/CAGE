@@ -24,6 +24,7 @@
 			"js/ca/ca_tools.js",
 			"js/ca/ca_receiver.js",
 			
+			"js/ca/tool/_cage.js",
 			"js/ca/tool/functions.js",
 			"js/ca/tool/page.js",
 			"js/ca/tool/generals.js",
@@ -39,7 +40,6 @@
 			"js/ca/tool/settings.js",
 
 			"js/ca/setting/theme.js",
-			"js/ca/setting/data.js",
 			
 			"js/ca/page/allpages.js",
 			"js/ca/page/index.js",
