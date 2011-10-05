@@ -30,22 +30,14 @@ var _elm = {
 $(document.body).prepend($(_elm.cage).append(_elm.abilities).append($(_elm.general).append($(_elm.generalImageContainer).append(_elm.generalImage)).append(_elm.generalName).append(_elm.generalValues)).append(_elm.tools).append(_elm.settings)).prepend(_elm.generalSelector);
 _elm = undefined;
 
-initTools();
-tools['Page'].runtime['allPages']();
-var _startURL = $('#current_pg_url').attr('value');
-if(_startURL.indexOf('?') != -1) {
-	_startURL = _startURL.substring(0, _startURL.indexOf('?'));
-}
-console.log("URL:" + _startURL);
-if(tools['Page'].runtime[_startURL]) {
-	tools['Page'].runtime[_startURL]();
-}
-_startURL = undefined;
+/**/
 
 CastleAge.startInterval = window.setInterval(function() {
-	if(CastleAge.started == false) {
-		com.send(com.task.castleAgeReady, com.port.facebook);
-	} else {
+	if(CastleAge.signed_request !== null && CastleAge.userId !== null) {
 		window.clearInterval(CastleAge.startInterval);
+		initTools();
+		console.log('initTools');
+	} else {
+		com.send(com.task.castleAgeReady, com.port.facebook);
 	}
 }, 100);

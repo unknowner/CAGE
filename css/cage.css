@@ -369,3 +369,62 @@
 	font-weight: bold;
 	font-size: 13px;
 }
+/*
+ * Settings
+ */
+#cageSettingsTop {
+	background-image: url('http://image4.castleagegame.com/graphics/newsfeed_b_top.jpg');
+	height: 80px;
+	background-repeat: no-repeat;
+}
+#cageSettingsTop > span {
+	position: relative;
+	left: 28px;
+	top: 28px;
+	color: white;
+	font-size: 31px;
+	display: inline-block;
+	width: 332px;
+	height: 45px;
+	background: -webkit-linear-gradient(top, #A9032A 0%,#900223 25%,#6E001A 100%);
+	text-align: center;
+	text-shadow: 0 0 13px black;
+	font-weight: bold;
+}
+#cageSettingsBottom {
+	background-image: url('http://image4.castleagegame.com/graphics/newsfeed_b_bottom.jpg');
+	height: 104px;
+	background-repeat: no-repeat;
+}
+#cageSettingsMiddle {
+	background-image: url(http://image4.castleagegame.com/6187/graphics/newsfeed_b_middle.jpg);
+	background-repeat: repeat-y;
+	padding: 15px 0;
+}
+.cageSettingsHeading {
+	color: white;
+	font-size: 15px;
+	font-weight: bold;
+	padding: 10px 0 10px 30px;
+	background: rgba(40, 0, 0, 0.3);
+	margin-right: 1px;
+	box-shadow: 0 8px 11px 0 black;
+	margin-bottom: 10px;
+}
+.cageSettingsTextbox {
+	padding: 10px 0 0 30px;
+}
+.cageSettingsTextbox > span {
+	width: 200px;
+	color: white;
+	font-weight: bold;
+	width: 170px;
+	display: inline-block;
+}
+.cageSettingsTextbox > input {
+	width: 450px;
+	background-color: rgba(40, 0, 0, 0.2);
+	border-radius: 5px;
+	color: white;
+	padding-left: 5px;
+}

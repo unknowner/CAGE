@@ -1,6 +1,6 @@
 {
 	"name": "CAGE - Castle Age Game Enhancer [α]",
-	"version": "1.0.42",
+	"version": "1.0.43",
 	"description": "CAGE Alpha build. Only few things missing until Beta is reached.",
 	"background_page": "background.html",
 	"default_locale": "en",
@@ -36,6 +36,7 @@
 			"js/ca/tool/assister.js",
 			"js/ca/tool/potionStamina.js",
 			"js/ca/tool/potionEnergy.js",
+			"js/ca/tool/settings.js",
 
 			"js/ca/setting/theme.js",
 			"js/ca/setting/data.js",

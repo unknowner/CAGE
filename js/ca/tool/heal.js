@@ -23,15 +23,10 @@ tools['Heal'].start = function() {
 
 tools['Heal'].done = function() {
 	$('#cageHeal').removeAttr('disabled').css('cursor', 'pointer');
-	//tools['Heal'].fbButton.enable();
 };
 tools['Heal'].init = function() {
 	$('body').append($('<button id="cageHeal"></button>').click(function() {
 		$(this).attr('disabled', true).css('cursor', 'wait');
 		tools['Heal'].start();
 	}));
-	/*	tools['Heal'].fbButton.add(chrome.i18n.getMessage("buttonHeal"), function () {
-	 tools['Heal'].fbButton.disable();
-	 tools['Heal'].start();
-	 });*/
 };
