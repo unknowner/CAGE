@@ -9,15 +9,8 @@ tools['Settings'].start = function() {
 			_tool.settings();
 		}
 	});
-	tools['Settings'].done();
 };
-tools['Settings'].work = function() {
 
-};
-tools['Settings'].done = function() {
-	$('#cageSettings').removeAttr('disabled').css('cursor', 'pointer');
-	tools['Settings'].fbButton.enable();
-};
 tools['Settings'].init = function() {
 	$('body').append($('<button id="cageSettings"></button>').button({
 		icons : {
@@ -25,13 +18,8 @@ tools['Settings'].init = function() {
 		},
 		text : false
 	}).click(function() {
-		$(this).attr('disabled', 'true').css('cursor', 'wait');
 		tools['Settings'].start();
 	}));
-	tools['Settings'].fbButton.add('Settings', function() {
-		tools['Settings'].fbButton.disable();
-		tools['Settings'].start();
-	});
 };
 // heading text
 tools['Settings'].heading = function(_text) {
@@ -53,8 +41,9 @@ tools['Settings'].textbox = function(_text, _value, _save, _callback) {
 };
 // text, callback func
 tools['Settings'].button = function(_text, _callback) {
-	$('#cageSettingsMiddle').append('<div id="' + _save + '" class="cageSettingsButton"><button>' + _text + '</button></div>');
-	$('#' + _save + ' > button').click(function() {
+	var _id = new Date().getTime();
+	$('#cageSettingsMiddle').append('<div id="' + _id + '" class="cageSettingsButton"><span>' + _text + '</span><button></button></div>');
+	$('#' + _id + ' > button').click(function() {
 		if(_callback) {
 			_callback();
 		}

@@ -39,7 +39,7 @@ tools['Page'].runtime['battle_monster.php'] = function() {
 		$('div.result div:textEquals("Elite Guard")').parent().find('div[style*="height:84px"]').css('height', 68);
 		$('img[alt="Call to Elite Guard"]').parent().css({
 			'height' : 68,
-			'overflow' : hidden
+			'overflow' : 'hidden'
 		});
 		// add monster damage/health/... to result
 		$('div.result:has(img[src*="graphics/button_monster_attack_again.gif"]) span.result_body div:last').append('<div id="MonsterResultDamage"><div>' + _monstername.text() + '</div><div>' + _defText.text() + '</div><div>Your Damage/Activity: ' + $('td.dragonContainer tr:has(a[href*="' + CastleAge.userId + '"]) > td:last').text().trim() + '</div></div>');

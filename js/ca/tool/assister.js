@@ -4,10 +4,11 @@ tools['Assister'].settings = function() {
 
 	tools['Settings'].heading('Assister');
 	tools['Settings'].textbox('Stamina usage for CTAs', tools['Assister'].runtime.Stamina, 'cageAssisterStamina');
-	tools['Settings'].text('Monster message is appended after the standard post (eg 25th for Narf).');
+	tools['Settings'].text('Monster message is appended after the standard post (eg 25th for Narf, [MonsterMessage]).');
 	tools['Settings'].textbox('Monster message', tools['Assister'].runtime.monsterMessage, 'cageAssisterMonsterMessage');
-	tools['Settings'].text('Facebook message is appended after the standard post (eg 25th).');
+	tools['Settings'].text('Facebook message is appended after the standard post (eg 25th [FacebookMessage]).');
 	tools['Settings'].textbox('Facebook message', tools['Assister'].runtime.facebookMessage, 'cageAssisterFacebookMessage');
+
 };
 
 tools['Assister'].runtimeUpdate = function() {

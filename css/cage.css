@@ -167,7 +167,7 @@
 	line-height: 20px;
 }
 .cageQuestSwitchGeneral {
-	top: -14px;
+	top: -17px;
 	position: relative;
 	width: 78px;
 	cursor: pointer;
@@ -395,14 +395,15 @@
 	left: 28px;
 	top: 28px;
 	color: white;
-	font-size: 31px;
 	display: inline-block;
 	width: 332px;
-	height: 45px;
 	background: -webkit-linear-gradient(top, #A9032A 0%,#900223 25%,#6E001A 100%);
 	text-align: center;
 	text-shadow: 0 0 13px black;
 	font-weight: bold;
+	font-size: 25px;
+	padding-top: 6px;
+	height: 38px;
 }
 #cageSettingsBottom {
 	background-image: url('http://image4.castleagegame.com/graphics/newsfeed_b_bottom.jpg');
@@ -426,7 +427,7 @@
 	margin-top: 20px;
 }
 .cageSettingsText {
-	padding: 15px 0 0 30px;
+	padding: 15px 30px 0 30px;
 	color: white;
 }
 .cageSettingsTextbox {
@@ -460,13 +461,19 @@
 .cageSettingsButton {
 	padding: 5px 0 0 30px;
 }
+.cageSettingsButton > span {
+	color: white;
+	font-weight: bold;
+	width: 265px;
+	display: inline-block;
+}
 .cageSettingsButton > button {
 	width: 95px;
 	height: 22px;
 	top: 2px;
 	float: right;
 	position: relative;
-	right: 35px;
+	right: 351px;
 	background-image: url('http://image4.castleagegame.com/graphics/guild_button_submit.gif');
 	border-radius: 5px;
 	background-position: -15px;
