@@ -36,7 +36,6 @@ tools['Stash'].work = function() {
 };
 tools['Stash'].done = function() {
 	$('#cageStash').removeAttr('disabled').css('cursor', 'pointer');
-	//tools['Stash'].fbButton.enable();
 };
 tools['Stash'].init = function() {
 	$('body').append($('<button id="cageStash"></button>').click(function() {
@@ -44,11 +43,5 @@ tools['Stash'].init = function() {
 			$(this).attr('disabled', 'true').css('cursor', 'wait');
 			tools['Stash'].start();
 		}
-	}));
-	/*tools['Stash'].fbButton.add(chrome.i18n.getMessage("buttonStash"), function() {
-	 if($('#gold_current_value').text() !== '$0') {
-	 tools['Stash'].fbButton.disable();
-	 tools['Stash'].start();
-	 }
-	 });*/
+		}));
 };

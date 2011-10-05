@@ -4,16 +4,19 @@ function tool(_id) {
 	tools[_id] = this;
 	this.id = _id;
 	this.runtime = null;
+	// data only used during runtime
+	this.settings = null;
+	// settings
 	this.fbButton = {
-		id: 'cageToolButton' + _id,
-		add: function (_text, _call) {
+		id : 'cageToolButton' + _id,
+		add : function(_text, _call) {
 			$('#cageToolsContainer').append('<button id="' + this.id + '" class="cageToolButton">' + _text + '</button>');
 			$('#' + this.id).button().removeClass('ui-corner-all').addClass('ui-corner-right').click(_call);
 		},
-		enable: function () {
+		enable : function() {
 			$('#' + this.id).button("option", "disabled", false).removeClass('ui-state-hover');
 		},
-		disable: function () {
+		disable : function() {
 			$('#' + this.id).button("option", "disabled", true);
 		}
 	};
@@ -28,10 +31,28 @@ function tool(_id) {
 }
 
 function initTools() {
-	$.each(tools, function (_index, _tool) {
-		if (_tool.init) {
+
+	$.each(tools, function(_index, _tool) {
+		if(_tool.init) {
 			console.log('INIT@' + com.port.current.name + ':' + _tool.id);
 			_tool.init();
 		}
 	});
+	tools['Page'].runtime['allPages']();
+	var _startURL = $('#current_pg_url').attr('value');
+	if(_startURL.indexOf('?') != -1) {
+		_startURL = _startURL.substring(0, _startURL.indexOf('?'));
+	}
+	console.log("URL:" + _startURL);
+	if(tools['Page'].runtime[_startURL]) {
+		tools['Page'].runtime[_startURL]();
+	}
+	_startURL = undefined;
+	tools['Theme'].start();
+	get('keep.php', function(_keepdata) {
+		CastleAge.bqh = $('input[name="bqh"]:first', _keepdata).val();
+		tools['PotionStamina'].work(_keepdata);
+		tools['PotionEnergy'].work(_keepdata);
+	});
+	
 }

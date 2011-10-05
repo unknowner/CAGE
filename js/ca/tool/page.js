@@ -1,5 +1,4 @@
 new tool('Page');
-new tool('Page');
 tools['Page'].runtime = {};
 tools['Page'].init = function() {
 	addFunction(tools['Page'].get_cached_ajax, null, true, true);

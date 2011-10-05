@@ -23,19 +23,19 @@ tools['PotionEnergy'].work = function(_pagedata) {
 	if(_pagedata == undefined) {
 		_pagedata = $('#app_body');
 	}
-
 	var _potions = /\d+/.exec($('img[alt="Energy Potion"]', _pagedata).parent().next().text());
 	if(_potions !== null) {
 		$('#cagePotionEnergy > span.cagePotionCount').text(_potions[0]);
 	}
-
 };
 tools['PotionEnergy'].done = function() {
 	$('#cagePotionEnergy').removeAttr('disabled').css('cursor', 'pointer');
 };
 tools['PotionEnergy'].init = function() {
-	$('body').append($('<button id="cagePotionEnergy" title="Use Energy Potion"><span class="cagePotionCount"></span></button>').click(function() {
-		$(this).attr('disabled', 'true').css('cursor', 'wait');
-		tools['PotionEnergy'].start();
+	$('body').append($('<button id="cagePotionEnergy"><span class="cagePotionCount"></span></button>').click(function() {
+		if($(this).text() !== '' && $(this).text() !== '0') {
+			$(this).attr('disabled', 'true').css('cursor', 'wait');
+			tools['PotionEnergy'].start();
+		}
 	}));
 };
