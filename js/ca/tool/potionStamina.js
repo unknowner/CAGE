@@ -23,19 +23,19 @@ tools['PotionStamina'].work = function(_pagedata) {
 	if(_pagedata == undefined) {
 		_pagedata = $('#app_body');
 	}
-
 	var _potions = /\d+/.exec($('img[alt="Stamina Potion"]', _pagedata).parent().next().text());
 	if(_potions !== null) {
 		$('#cagePotionStamina > span.cagePotionCount').text(_potions[0]);
 	}
-
 };
 tools['PotionStamina'].done = function() {
 	$('#cagePotionStamina').removeAttr('disabled').css('cursor', 'pointer');
 };
 tools['PotionStamina'].init = function() {
-	$('body').append($('<button id="cagePotionStamina" title="Use Stamina Potion"><span class="cagePotionCount"></span></button>').click(function() {
-		$(this).attr('disabled', 'true').css('cursor', 'wait');
-		tools['PotionStamina'].start();
+	$('body').append($('<button id="cagePotionStamina"><span class="cagePotionCount"></span></button>').click(function() {
+		if($(this).text() !== '' && $(this).text() !== '0') {
+			$(this).attr('disabled', 'true').css('cursor', 'wait');
+			tools['PotionStamina'].start();
+		}
 	}));
 };

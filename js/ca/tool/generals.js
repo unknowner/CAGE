@@ -149,4 +149,5 @@ tools['General'].init = function() {
 		$('#cageGeneralSelector').slideToggle('slow');
 	});
 	tools['General'].update();
+	
 };
