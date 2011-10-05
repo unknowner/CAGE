@@ -2,7 +2,7 @@ new tool('Gifter');
 
 tools['Gifter'].settings = function() {
 	tools['Settings'].heading('Gifter');
-	tools['Settings'].text('Enter the name of a Facebook frienedlist you like to add as an extraf filter to the Send gift dialog.');
+	tools['Settings'].text('Enter the name of a Facebook friendlist you like to add as an extra filter to the Send gifts dialog.');
 	tools['Settings'].textbox('Gifting friendlist', tools['Gifter'].runtime.userList, 'cageGifterUserList', tools['Gifter'].newRequestForm);
 };
 
