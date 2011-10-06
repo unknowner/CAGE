@@ -8,7 +8,9 @@ var CastleAge = {
 	started : false
 };
 
-var CAGE = {};
+var CAGE = {
+	version : '1.0.44α'	
+};
 
 com.initContentScript(com.port.castleAge);
 

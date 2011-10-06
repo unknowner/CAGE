@@ -2,6 +2,7 @@ new tool('Assister');
 
 tools['Assister'].settings = function() {
 
+	tools['Assister'].runtimeUpdate();
 	tools['Settings'].heading('Assister');
 	tools['Settings'].textbox('Stamina usage for CTAs', tools['Assister'].runtime.Stamina, 'cageAssisterStamina');
 	tools['Settings'].text('Monster message is appended after the standard post (eg 25th for Narf, [MonsterMessage]).');
@@ -129,14 +130,14 @@ tools['Assister'].assist = function() {
 						console.log('ASSISTER: postid: ', _postid);
 						addFunction(function(_data) {
 							FB.api("/" + _data.postid + "/likes", 'post', function(response) {
-								console.log('Assister: FB Like done');
+								console.log('Assister: FB Like done: ', response);
 							});
 						}, JSON.stringify({
 							postid : _postid
 						}), true, false);
 						addFunction(function(_data) {
 							FB.api("/" + _data.postid + "/comments", 'post', _data, function(response) {
-								console.log('Assister: FB Comment done');
+								console.log('Assister: FB Comment done: ', response);
 							});
 						}, JSON.stringify({
 							postid : _postid,
