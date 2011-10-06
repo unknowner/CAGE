@@ -38,7 +38,7 @@ tools['Assister'].start = function() {
 				values : []
 			});
 		});
-		console.log(tools['Assister'].runtime.CTA);
+		console.log('Assister - CTAs: ', tools['Assister'].runtime.CTA);
 		tools['Assister'].getFriends();
 	});
 };
@@ -52,8 +52,9 @@ tools['Assister'].getFriends = function() {
 			});
 			tools['Assister'].assist();
 		} else {
-			console.log('ERROR: No friend data');
-			tools['Assister'].done();
+			tools['Assister'].runtime.friends = [];
+			console.log('Assister - Can\'t get friends data, assisting all.');
+			tools['Assister'].assist();
 		}
 	});
 	addFunction(function() {
@@ -62,10 +63,10 @@ tools['Assister'].getFriends = function() {
 			query : 'SELECT uid FROM user WHERE is_app_user=1 and uid IN (SELECT uid2 FROM friend WHERE uid1 = me())'
 		}, function(_response) {
 			if(_response.length > 0) {
-				console.log('Assister: got friends...');
+				console.log('Assister - got friends...');
 				$('#GetFriends').val(JSON.stringify(_response));
 			} else {
-				console.log('Assister: no friends...');
+				console.log('Assister - no friends...');
 				$('#GetFriends').val('false');
 			}
 			fireGetFriends();
@@ -78,7 +79,7 @@ tools['Assister'].assist = function() {
 	if(tools['Assister'].runtime.Used < tools['Assister'].runtime.Stamina && tools['Assister'].runtime.CTA.length > 0) {
 		var _cta = tools['Assister'].runtime.CTA.pop();
 		if(tools['Assister'].runtime.friends.indexOf(_cta.uid) !== -1) {
-			console.log('ASSISTER: Friend: ' + _cta.uid);
+			console.log('Assister - Friend: ' + _cta.uid);
 			get(_cta.link, function(_monsterdata) {
 				var _num = $('span.result_body', _monsterdata).text();
 				if(_num !== null && _cta.uid !== CastleAge.userId && _num.match(/\d+(?:st|nd|rd|th)/) !== null) {
@@ -120,24 +121,25 @@ tools['Assister'].assist = function() {
 					_cta.values = _monstervalues;
 					_cta.timer = $('#monsterTicker', _monsterdata).text();
 					//
-					console.log('ASSISTER: Asssited for:', _cta);
+					console.log('Assister - Assisted for:', _cta);
 					tools['Assister'].runtime.Assisted.push(_cta);
 					_num = _num.match(/\d+(?:st|nd|rd|th)/)[0];
 					post(_cta.link.replace('doObjective', 'commentDragon') + '&text=' + _num + ' for ' + _cta.name + ', ' + tools['Assister'].runtime.monsterMessage);
 					get('party.php?casuser=' + _cta.uid, function(_guarddata) {
-						console.log('Like & Comment on FB');
 						var _postid = $('div.streamContainer:has(div.streamName > a[href*="' + _cta.link + '"]) input[name="like_recent_news_post_id"]:first', _guarddata).val();
-						console.log('ASSISTER: postid: ', _postid);
+						console.log('Assister - Like & Comment on FB post: ', _postid);
+						var _fbpost = _postid.match(/\d+/g);
+						console.log('Assister - Post Link: http://www.facebook.com/permalink.php?story_fbid=' + _fbpost[1] + '&id=' + _fbpost[0]);
 						addFunction(function(_data) {
 							FB.api("/" + _data.postid + "/likes", 'post', function(response) {
-								console.log('Assister: FB Like done: ', response);
+								console.log('Assister - FB Like done: ', response);
 							});
 						}, JSON.stringify({
 							postid : _postid
 						}), true, false);
 						addFunction(function(_data) {
 							FB.api("/" + _data.postid + "/comments", 'post', _data, function(response) {
-								console.log('Assister: FB Comment done: ', response);
+								console.log('Assister - FB Comment done: ', response);
 							});
 						}, JSON.stringify({
 							postid : _postid,
@@ -146,16 +148,16 @@ tools['Assister'].assist = function() {
 						tools['Assister'].assist();
 					});
 				} else {
-					console.log('No CTA...')
+					console.log('Assister - No assist, maybe already assisted')
 					tools['Assister'].assist();
 				}
 			});
 		} else {
-			console.log('ASSISTER: Not a friend, no CTA: ' + _cta.uid);
+			console.log('Assister - Not a friend, no CTA for: ' + _cta.uid);
 			tools['Assister'].assist();
 		}
 	} else {
-		console.log('ASSISTER: Stamina out/No more CTAs');
+		console.log('Assister - Stamina out/No more CTAs');
 		tools['Assister'].done();
 	}
 

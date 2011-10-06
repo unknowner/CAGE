@@ -5,7 +5,9 @@ $('#cageNewsHead').text('CAGE - Castle Age Game Enhancer - V 1.0.44α');
 $('#cageNewsText').text('You\'re now running CAGE and making your Castle Age life a bit easier ;)');
 $('#cageNewsFoot').prepend('<p style="text-align: left;"><b>NOTICE:</b>Finally we have some settings for the Assister and other stuff. Just click the little gear icon on the left of the navigation. Still some functions (like themes) needs to be move to it.<br><br>Found an error? Logs (CTRL+SHIFT+J) are always welcome ;)</p>');
 _news = [
-	'FIX: Settings shows old values when changing stuff'
+	'FIX: Settings shows old values when changing stuff',
+	'FIX: Potions stay at 1 when using last one',
+	'ADD: More log messages for the assister'
 ];
 $.each(_news, function(_i, _e) {
 	$('#cageNewsChanges').append('<li><span>' + _e.split(':')[0] + ':</span>' + _e.split(':')[1] + '</li>');
