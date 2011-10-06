@@ -26,6 +26,8 @@ tools['PotionStamina'].work = function(_pagedata) {
 	var _potions = /\d+/.exec($('img[alt="Stamina Potion"]', _pagedata).parent().next().text());
 	if(_potions !== null) {
 		$('#cagePotionStamina > span.cagePotionCount').text(_potions[0]);
+	} else {
+		$('#cagePotionStamina > span.cagePotionCount').text('');
 	}
 };
 tools['PotionStamina'].done = function() {

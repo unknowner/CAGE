@@ -1,6 +1,5 @@
 var item = {
 	get : function(_name, _default) {
-		console.log(CastleAge.userId);
 		if (localStorage[CastleAge.userId + '_' + _name] !== undefined) {
 			return JSON.parse(localStorage[CastleAge.userId + '_' + _name]);
 		} else {
