@@ -26,6 +26,8 @@ tools['PotionEnergy'].work = function(_pagedata) {
 	var _potions = /\d+/.exec($('img[alt="Energy Potion"]', _pagedata).parent().next().text());
 	if(_potions !== null) {
 		$('#cagePotionEnergy > span.cagePotionCount').text(_potions[0]);
+	} else {
+		$('#cagePotionEnergy > span.cagePotionCount').text('');
 	}
 };
 tools['PotionEnergy'].done = function() {
