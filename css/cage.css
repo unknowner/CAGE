@@ -466,6 +466,7 @@
 	font-weight: bold;
 	width: 265px;
 	display: inline-block;
+	padding-top: 4px;
 }
 .cageSettingsButton > button {
 	width: 95px;
