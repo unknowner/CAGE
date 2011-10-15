@@ -4,7 +4,10 @@ tools['Assister'].settings = function() {
 
 	tools['Assister'].runtimeUpdate();
 	tools['Settings'].heading('Assister');
-	tools['Settings'].textbox('Stamina usage for CTAs', tools['Assister'].runtime.Stamina, 'cageAssisterStamina');
+	tools['Settings'].text('If you call the assister and no CTAs on your friends news feeds are commented/liked you need to give Castle Age the permisson to post in your name. Posting at monsters works all the time without this permisson. You can remove the permission anytime you like (<a href="http://www.facebook.com/settings?tab=applications&app_id=46755028429" target="_blank">Link</a>). If a window just pops up and closes you already have given the permission.');
+	tools['Settings'].button('Request permission', tools['Assister'].requestPermisson);
+	tools['Settings'].text('Enter your maximum stamina to use for answering CTAs.');
+	tools['Settings'].textbox('Stamina for CTAs', tools['Assister'].runtime.Stamina, 'cageAssisterStamina');
 	tools['Settings'].text('Monster message is appended after the standard post (eg 25th for Narf, [MonsterMessage]).');
 	tools['Settings'].textbox('Monster message', tools['Assister'].runtime.monsterMessage, 'cageAssisterMonsterMessage');
 	tools['Settings'].text('Facebook message is appended after the standard post (eg 25th [FacebookMessage]).');
@@ -12,7 +15,19 @@ tools['Assister'].settings = function() {
 
 };
 
+tools['Assister'].requestPermisson = function() {
+
+	addFunction(function() {
+		FB.login(function(response) {
+			console.log(response);
+		}, {
+			perms : 'publish_stream'
+		});
+	}, null, true, true);
+};
+
 tools['Assister'].runtimeUpdate = function() {
+
 	tools['Assister'].runtime = {
 		CTA : [],
 		Stamina : item.get('cageAssisterStamina', 10),
@@ -22,6 +37,7 @@ tools['Assister'].runtimeUpdate = function() {
 		monsterMessage : item.get('cageAssisterMonsterMessage', ''),
 		facebookMessage : item.get('cageAssisterFacebookMessage', '')
 	}
+
 };
 
 tools['Assister'].start = function() {
@@ -33,7 +49,7 @@ tools['Assister'].start = function() {
 				link : $(e).attr('href').replace(/(https|http):\/\/apps.facebook.com\/castle_age\//, ''),
 				uid : $('*[uid]:first', $(e)).attr('uid'),
 				name : /(?:[You|Your] friend )(.*)(?: has requested your help)/.exec($(e).text())[1],
-				image : $('img[src^="http://75.126.76.147/"]', e).attr('src'),
+				image : $('img[src*="twitter"],[src*="cta"]', e).attr('src'),
 				timer : '',
 				values : []
 			});
@@ -42,6 +58,7 @@ tools['Assister'].start = function() {
 		tools['Assister'].getFriends();
 	});
 };
+
 tools['Assister'].getFriends = function() {
 
 	customEvent('GetFriends', function() {
@@ -164,10 +181,14 @@ tools['Assister'].assist = function() {
 };
 
 tools['Assister'].done = function() {
+
 	tools['Assister'].runtime.Used = 0;
 	tools['Assister'].fbButton.enable();
+
 };
+
 tools['Assister'].init = function() {
+
 	tools['Assister'].runtimeUpdate();
 	tools['Assister'].fbButton.add(chrome.i18n.getMessage("buttonAssister"), function() {
 		tools['Assister'].fbButton.disable();
