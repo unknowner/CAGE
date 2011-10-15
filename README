@@ -2,6 +2,12 @@
 VER: 1.0.45
 ------------------------------------------------------------------
 2001-10-14
+	ADD: monster stats to result when healing
+
+==================================================================
+VER: 1.0.45
+------------------------------------------------------------------
+2011-10-14
 	FIX: Missing assister log images
 	FIX: Not clearing all saved data via settings
 	ADD: Ask for feed post permission
@@ -9,7 +15,7 @@ VER: 1.0.45
 ==================================================================
 VER: 1.0.44
 ------------------------------------------------------------------
-2001-10-06
+2011-10-06
 	FIX: Settings shows old values when changing stuff
 	FIX: Potions stay at 1 when using last one
 	ADD: More log messages for the assister
@@ -17,7 +23,7 @@ VER: 1.0.44
 ==================================================================
 VER: 1.0.43
 ------------------------------------------------------------------
-2001-10-05
+2011-10-05
 	FIX: Some CSS stuff on the the guild battles
 	ADD: Extra send gift filter by using friendlist
 	ADD: Settings

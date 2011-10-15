@@ -25,12 +25,13 @@ tools['Page'].runtime['allPages'] = function() {
 			'width' : 728,
 			'border' : '0'
 		});
-		$('#results_main_wrapper').addClass('resultsmainwrapper').prepend('<img id="cageCloseResult" src="http://image4.castleagegame.com/graphics/help_close_x.gif">');
+		$('#results_main_wrapper').addClass('resultsmainwrapper').prepend('<img id="cageCloseResult" src="http://image4.castleagegame.com/graphics/popup_close_button.png">');
 		$('#results_main_wrapper > br').remove();
 		$('#cageCloseResult').click(function() {
-			$(this).css({
-				'height' : 18,
-				'margin-Left' : 34
+			$(this).unbind('click').css({
+				'width' : 18,
+				'top' : 2,
+				'right' : 3
 			}).attr('src', 'http://image4.castleagegame.com/graphics/shield_wait.gif');
 			$('#results_main_wrapper').slideUp('slow', function() {
 				$(this).remove();
@@ -47,9 +48,10 @@ tools['Page'].runtime['allPages'] = function() {
 			var _close = /(?:, ')(.+?close_result=.+?)(')/.exec($_img.parent('a').attr('onclick'))[1];
 			$_img.remove();
 			$('#cageCloseResult').click(function() {
-				$(this).css({
-					'height' : 18,
-					'margin-Left' : 34
+				$(this).unbind('click').css({
+					'width' : 18,
+					'top' : 2,
+					'right' : 3
 				}).attr('src', 'http://image4.castleagegame.com/graphics/shield_wait.gif');
 				$.post(_close + '&signed_request=' + CastleAge.signed_request, function() {
 					$_element.slideUp('slow', function() {
