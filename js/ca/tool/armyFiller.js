@@ -11,6 +11,7 @@ tools['ArmyFiller'].start = function() {
 			busy : true
 		};
 
+		$('div:contains("The Following People Have Joined Your Army."):last').text('I try to add all missing friends to your army, but some might just not work. No need to try more than once.');
 		$('div:contains("Current Army Size"):last').text('Army Filler: ').css('width', 104).next().attr('id', 'cageArmyFiller').text('Searching Friends...');
 		tools['ArmyFiller'].runtime.count = /\d+/.exec($('#main_bntp a[href*="army.php"]').text());
 		if(tools['ArmyFiller'].runtime.count !== null) {
