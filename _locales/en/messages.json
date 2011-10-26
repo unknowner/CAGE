@@ -1,8 +1,4 @@
 {
-	"buttonHeal": {
-		"message": "Heal",
-		"description": "button text: Heal"
-	},
 	"buttonEliteGuard": {
 		"message": "Elite guard",
 		"description": "button text: Elite Guard"
@@ -11,14 +7,6 @@
 		"message": "Receive gifts",
 		"description": "button text: Gifter"
 	},
-	"buttonStash": {
-		"message": "Stash gold",
-		"description": "button text: Stash"
-	},
-	"buttonClearData": {
-		"message": "Clear Data",
-		"description": "button text: Setting clear data"
-	},
 	"buttonAssister": {
 		"message": "Assist",
 		"description": "button text: Assist Life feed/guild..."
@@ -26,5 +14,9 @@
 	"buttonAbilities": {
 		"message": "Abilities",
 		"description": "button text: Change class ablities"
+	},
+	"buttonArmyFiller": {
+		"message": "Army Filler",
+		"description": "button text: Fill army"
 	}
 }

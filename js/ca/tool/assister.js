@@ -8,7 +8,7 @@ tools['Assister'].settings = function() {
 	tools['Settings'].button('Request permission', tools['Assister'].requestPermisson);
 	tools['Settings'].text('Enter your maximum stamina to use for answering CTAs.');
 	tools['Settings'].textbox('Stamina for CTAs', tools['Assister'].runtime.Stamina, 'cageAssisterStamina');
-	tools['Settings'].text('Monster message is appended after the standard post (eg 25th for Narf, [MonsterMessage]).');
+	tools['Settings'].text('Monster message is appended after the standard post (eg 25th for Narf [MonsterMessage]).');
 	tools['Settings'].textbox('Monster message', tools['Assister'].runtime.monsterMessage, 'cageAssisterMonsterMessage');
 	tools['Settings'].text('Facebook message is appended after the standard post (eg 25th [FacebookMessage]).');
 	tools['Settings'].textbox('Facebook message', tools['Assister'].runtime.facebookMessage, 'cageAssisterFacebookMessage');
@@ -141,7 +141,7 @@ tools['Assister'].assist = function() {
 					console.log('Assister - Assisted for:', _cta);
 					tools['Assister'].runtime.Assisted.push(_cta);
 					_num = _num.match(/\d+(?:st|nd|rd|th)/)[0];
-					post(_cta.link.replace('doObjective', 'commentDragon') + '&text=' + _num + ' for ' + _cta.name + ', ' + tools['Assister'].runtime.monsterMessage);
+					post(_cta.link.replace('doObjective', 'commentDragon') + '&text=' + _num + ' for ' + _cta.name + ' ' + tools['Assister'].runtime.monsterMessage);
 					get('party.php?casuser=' + _cta.uid, function(_guarddata) {
 						var _postid = $('div.streamContainer:has(div.streamName > a[href*="' + _cta.link + '"]) input[name="like_recent_news_post_id"]:first', _guarddata).val();
 						console.log('Assister - Like & Comment on FB post: ', _postid);
