@@ -11,7 +11,7 @@ tools['Eliteguard'].getUserIds = function () {
 			tools['Eliteguard'].runtime['id'].push($(this).prop('value'));
 		});
 		tools['Eliteguard'].runtime['id'] = unique(tools['Eliteguard'].runtime['id']);
-		console.log('Eliteguard: Reading army...');
+		console.log('Eliteguard: Reading CA players...');
 
 		customEvent('GetArmy', function() {
 			var _army = $('#GetArmy').val();

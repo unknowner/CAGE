@@ -117,11 +117,8 @@ div.game {
 	float: right;
 	position: relative;
 	cursor: pointer;
-	margin: 3px;
-	top: 2px;
-	right: 2px;
-	border-radius: 3px;
-	margin-bottom: -20px;
+	margin-bottom: -21px;
+	width: 21px;
 }
 #MonsterResultDamage {
 	float: left;

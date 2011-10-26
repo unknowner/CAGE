@@ -35,6 +35,9 @@ tools['Page'].ajaxSkip = function() {
 };
 tools['Page'].get_cached_ajax = function() {
 	get_cached_ajax = function(url, get_type) {
+		$('body').animate({
+			scrollTop : 0
+		}, 'slow');
 		// just_body_cache
 		var url_key = url;
 		if(url.indexOf('?') != -1) {
@@ -97,13 +100,7 @@ tools['Page'].get_cached_ajax = function() {
 					startAllTimers();
 					FB.XFBML.parse(document.getElementById('globalContainer'));
 					firePageURL();
-					//if(url_key !== _oldurl) {
-					$('body').animate({
-						scrollTop : 0
-					}, 'slow', function() {
-						centerPopups();
-					});
-					//}
+					centerPopups();
 				}
 			});
 		}
@@ -157,14 +154,7 @@ tools['Page'].ajaxLinkSend = function() {
 				startAllTimers();
 				FB.XFBML.parse(document.getElementById(div));
 				firePageURL();
-				//if(url_key !== _oldurl) {
-				$('body').animate({
-					scrollTop : 0
-				}, 'slow', function() {
-					centerPopups();
-				});
-				//}
-				scrollToElement('#main_anchor');
+				centerPopups();
 			}
 		});
 		//FB.Canvas.setAutoResize();
@@ -172,6 +162,9 @@ tools['Page'].ajaxLinkSend = function() {
 };
 tools['Page'].ajaxFormSend = function(div, url, formElement, anchor) {
 	ajaxFormSend = function(div, url, formElement, anchor) {
+		$('body').animate({
+			scrollTop : 0
+		}, 'slow');
 		friend_browse_offset = 0;
 		if(!anchor) {
 			anchor = 'main_anchor';
@@ -213,12 +206,7 @@ tools['Page'].ajaxFormSend = function(div, url, formElement, anchor) {
 				startAllTimers();
 				FB.XFBML.parse(document.getElementById(div));
 				firePageURL();
-				//if(url_key !== _oldurl) {
-				$('body').animate({
-					scrollTop : 0
-				}, 'slow', function() {
-					centerPopups();
-				});
+				centerPopups();
 			}
 		});
 		scrollToElement('#' + anchor);
