@@ -5,7 +5,9 @@ $('#cageNewsHead').text('CAGE - Castle Age Game Enhancer - V 1.0.46α');
 $('#cageNewsText').text('You\'re now running CAGE and making your Castle Age life a bit easier ;)');
 $('#cageNewsFoot').prepend('<p style="text-align: left;"><b>NOTICE:</b>If the Assister does not like and comment on the fb newsfeed go to settings and request permission.<br><br>Found an error? Logs (CTRL+SHIFT+J) are always welcome ;)</p>');
 _news = [
-	'FIX: Missing assister log images'
+	'ADD: Army filler',
+	'ADD: Monster stats to result when healing/strength...',
+	'FIX: Some fb CSS stuff'
 ];
 $.each(_news, function(_i, _e) {
 	$('#cageNewsChanges').append('<li><span>' + _e.split(':')[0] + ':</span>' + _e.split(':')[1] + '</li>');

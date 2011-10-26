@@ -38,6 +38,7 @@
 			"js/ca/tool/potionStamina.js",
 			"js/ca/tool/potionEnergy.js",
 			"js/ca/tool/settings.js",
+			"js/ca/tool/armyFiller.js",
 
 			"js/ca/setting/theme.js",
 			
@@ -60,6 +61,7 @@
 			"js/ca/page/generals.js",
 			"js/ca/page/battle.js",
 			"js/ca/page/army_news_feed.js",
+			"js/ca/page/army_member.js",
 			
 			"js/castleage.js"
 			],

@@ -42,8 +42,8 @@ tools['Page'].runtime['festival_battle_monster.php'] = function() {
 			'overflow' : 'hidden'
 		});
 		// add monster damage/health/... to result
-		$('div.result:has(img[src*="graphics/button_monster_attack_again.gif"]) span.result_body div:last, div.result:contains("Heal Again!")').append('<div id="MonsterResultDamage"><div>' + _monstername.text() + '</div><div>' + _defText.text() + '</div><div>Your Damage/Activity: ' + $('td.dragonContainer tr:has(a[href*="' + CastleAge.userId + '"]) > td:last').text().trim() + '</div></div>');
-		if($('div.result:contains("Heal Again!")').length > 0){
+		$('div.result:has(img[src*="graphics/button_monster_attack_again.gif"]) span.result_body div:last, div.result:contains(" Again!")').append('<div id="MonsterResultDamage"><div>' + _monstername.text() + '</div><div>' + _defText.text() + '</div><div>Your Damage/Activity: ' + $('td.dragonContainer tr:has(a[href*="' + CastleAge.userId + '"]) > td:last').text().trim() + '</div></div>');
+		if($('div.result:contains(" Again!")').length > 0){
 			$('#MonsterResultDamage').css('float', 'none');
 		}
 	}
