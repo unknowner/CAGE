@@ -1,13 +1,11 @@
 // news
 
 $('body').append('<div id="cageNews"><div id="cageNewsHead"></div><div id="cageNewsBody"><p id="cageNewsText"></p><br><b>Changelog:</b><br><ul id="cageNewsChanges"></ul></div><div id="cageNewsFoot"><br><a href="http://cagenhancer.blogspot.com/" target="_blank">Blog</a> <a href="http://cagenhancer.blogspot.com/p/manual.html" target="_blank">Manual</a> <a href="http://caaplayer.freeforums.org/c-a-g-e-f29.html" target="_blank">Forum</a> <a href="https://github.com/unknowner/CAGE" target="_blank">GitHub</a><br><br><span style="text-align:center;">You want to say thank you? Just visit the Blog, click an Ad or donate via PayPal.</span></div></div>');
-$('#cageNewsHead').text('CAGE - Castle Age Game Enhancer - V 1.0.46α');
+$('#cageNewsHead').text('CAGE - Castle Age Game Enhancer - V 1.0.47α');
 $('#cageNewsText').text('You\'re now running CAGE and making your Castle Age life a bit easier ;)');
 $('#cageNewsFoot').prepend('<p style="text-align: left;"><b>NOTICE: </b>The Army Filler is here, just go to to your army and ask Celesta ;)<br><br>Found an error? Logs (CTRL+SHIFT+J) are always welcome ;)</p>');
 _news = [
-	'ADD: Army filler',
-	'ADD: Monster stats to result when healing/strength...',
-	'FIX: Some fb CSS stuff'
+	'ADD: Turn of all animations in settings'
 ];
 $.each(_news, function(_i, _e) {
 	$('#cageNewsChanges').append('<li><span>' + _e.split(':')[0] + ':</span>' + _e.split(':')[1] + '</li>');
