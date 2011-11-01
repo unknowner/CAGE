@@ -6,7 +6,9 @@ $('#cageNewsText').text('You\'re now running CAGE and making your Castle Age lif
 $('#cageNewsFoot').prepend('<p style="text-align: left;"><b>NOTICE: </b>The Army Filler is here, just go to to your army and ask Celesta ;)<br><br>Found an error? Logs (CTRL+SHIFT+J) are always welcome ;)</p>');
 _news = [
 	'ADD: Turn of all animations in settings',
-	'FIX: Health percentage for Defend the castle'
+	'FIX: Health percentage for Defend the castle',
+	'FIX: Possible fix for framing problem',
+	'FIX: Gifting not working'
 ];
 $.each(_news, function(_i, _e) {
 	$('#cageNewsChanges').append('<li><span>' + _e.split(':')[0] + ':</span>' + _e.split(':')[1] + '</li>');

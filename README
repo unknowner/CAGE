@@ -1,6 +1,9 @@
 ==================================================================
 VER: 1.0.47
 ------------------------------------------------------------------
+2011-11-01
+	FIX: Possible fix for framing problem
+	FIX: Gifting not working
 2011-10-31
 	FIX: Health percentage for Defend the castle
 2011-10-28
