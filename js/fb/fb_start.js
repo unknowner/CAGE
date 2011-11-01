@@ -23,6 +23,9 @@ function startCAGE() {
 		}, "text")
 	}, 1200000);
 
+	// Possible fix for framing problem
+	$('body').removeClass('center_fixed_width_app');
+	
 	$('#cageNews').dialog('open');
 	$('#cageNews a').blur();
 
