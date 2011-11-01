@@ -16,7 +16,7 @@ tools['Page'].runtime['festival_battle_monster.php'] = function() {
 		});
 	} else {
 		$('img[src*="monster_health_background.jpg"], [src*="nm_red.jpg"]').each(function(_i, _e) {
-			_monstername = $(_e).parent().parent().parent().parent().find('div:contains("\'s Life"):last, #app_body div:contains("\'s life"):last');
+			_monstername = $(_e).parent().parent().parent().parent().find('div:contains("\'s Life"):last, div:contains("\'s life"):last');
 			var _health = $(_e).parent()[0];
 			if(_health.style && _health.style.width !== "" && _monstername && _monstername.text()) {
 				var _percentage = _health.style.width.substr(0, 5);

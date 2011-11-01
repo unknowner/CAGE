@@ -98,15 +98,19 @@ tools['Gifter'].newRequestForm = function() {
 					user_ids : cageGiftUserList
 				})
 			}
-			if(localStorage[FB._session.uid + '_' + 'CAGEsendGiftTo'] !== undefined) {
+			if(localStorage[FB._session.uid + '_' + 'CAGEsendGiftTo'] !== undefined && JSON.parse(localStorage[FB._session.uid + '_' + 'CAGEsendGiftTo']).length !== 0) {
+				console.log(JSON.parse(localStorage[FB._session.uid + '_' + 'CAGEsendGiftTo']).length);
 				console.log('GIFTER - RTF list: ', JSON.parse(localStorage[FB._session.uid + '_' + 'CAGEsendGiftTo']));
 				_ui.filters.unshift({
 					name : 'Return the favour',
 					user_ids : localStorage[FB._session.uid + '_' + 'CAGEsendGiftTo']
 				})
+			} else {
+				localStorage.removeItem(FB._session.uid + '_' + 'CAGEsendGiftTo');
 			}
-
+			$('#results_container').html('Sending gifts...<br>').show();
 			FB.ui(_ui, function(result) {
+				$('#AjaxLoadIcon').show();
 				// fixes infinite looping for popup window if u close it before it is done loading
 				$('.fb_dialog_iframe').each(function() {
 					$(this).remove();
@@ -116,44 +120,45 @@ tools['Gifter'].newRequestForm = function() {
 					var request_id_string = String(result.request_ids);
 					var request_id_array = request_id_string.split(',');
 					var request_id_count = request_id_array.length;
-					_resultContainer.html('Sending gifts...<br>').show();
+					var _store = null;
+					//_resultContainer.html('Sending gifts...<br>').show();
 					// get all ids from sent gifts and remove them from the list
 					console.log('GIFTER - check for RTFs');
 					if(localStorage[FB._session.uid + '_' + 'CAGEsendGiftTo'] !== undefined) {
 						console.log('GIFTER - found open RTF');
-						var ids = result.request_ids;
-						var _batch = [];
-						for(var i = 0; i < ids.length; i++) {
-							_batch.push({
-								"method" : "get",
-								"relative_url" : ids[i]
-							});
-						}
-						if(_batch.length > 0) {
-							FB.api('/', 'POST', {
-								batch : _batch
-							}, function(res) {
-								var _store = JSON.parse(localStorage[FB._session.uid + '_' + 'CAGEsendGiftTo']);
-								for(var j = 0; j < res.length; j++) {
-									body = res[j].body;
-									var myObject = eval('(' + body + ')');
-									_resultContainer.html(_resultContainer.html() + '<br>Sent gift to: ' + myObject.to.name + ' (' + myObject.to.id + ')');
-									if(_store.indexOf(myObject.to.id) > -1) {
-										_store.splice(_store.indexOf(myObject.to.id), 1);
-										_resultContainer.html(_resultContainer.html() + ' <b>Favour returned</b>');
+						var _store = JSON.parse(localStorage[FB._session.uid + '_' + 'CAGEsendGiftTo']);
+					}
+					var ids = result.request_ids;
+					var _batch = [];
+					for(var i = 0; i < ids.length; i++) {
+						_batch.push({
+							"method" : "get",
+							"relative_url" : ids[i]
+						});
+					}
+					if(_batch.length > 0) {
+						FB.api('/', 'POST', {
+							batch : _batch
+						}, function(res) {
+							for(var j = 0; j < res.length; j++) {
+								var myObject = JSON.parse(res[j].body);
+								//eval('(' + body + ')');
+								var _sentText = 'Sent gift';
+								if(_store !== null && _store.indexOf(myObject.to.id) > -1) {
+									_store.splice(_store.indexOf(myObject.to.id), 1);
+									_sentText = '<b>Favour returned</b>';
+									if(_store.length > 0) {
+										localStorage[FB._session.uid + '_' + 'CAGEsendGiftTo'] = JSON.stringify(_store);
+									} else {
+										console.log('GIFTER - clear RTF list');
+										localStorage.removeItem(FB._session.uid + '_' + 'CAGEsendGiftTo');
 									}
 								}
-								if(_store.length > 0) {
-									localStorage[FB._session.uid + '_' + 'CAGEsendGiftTo'] = JSON.stringify(_store);
-								} else {
-									console.log('GIFTER - clear RTF list');
-									localStorage.removeItem(FB._session.uid + '_' + 'CAGEsendGiftTo');
-								}
-							});
-						}
+								_resultContainer.html(_resultContainer.html() + '<br>' + _sentText + ' to: ' + myObject.to.name + ' (' + myObject.to.id + ')');
+							}
+						});
 					}
 					var params = 'ajax=1&signed_request=' + $('#signed_request').val();
-					$('#AjaxLoadIcon').show();
 					$.ajax({
 						url : 'request_handler.php?' + request_params + '&request_ids=' + result.request_ids,
 						context : document.body,
