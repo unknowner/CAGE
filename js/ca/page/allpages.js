@@ -1,9 +1,6 @@
 // All Pages
 tools['Page'].runtime['allPages'] = function() {
 
-	// Possible fix for framing problem
-	$('body').removeClass('center_fixed_width_app');
-
 	// If found update bqh
 	if($('input[name="bqh"]:first').length > 0) {
 		CastleAge.bqh = $('input[name="bqh"]:first').val();
