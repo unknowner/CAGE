@@ -54,5 +54,4 @@ function initTools() {
 		tools['PotionStamina'].work(_keepdata);
 		tools['PotionEnergy'].work(_keepdata);
 	});
-	
 }

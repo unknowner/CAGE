@@ -49,3 +49,7 @@ tools['Settings'].button = function(_text, _callback) {
 		}
 	});
 };
+// on off switch
+tools['Settings'].onoff = function(_text) {
+	$('#cageSettingsMiddle').append('<div class="cageSettingsText">' + _text + '</div>');
+};
