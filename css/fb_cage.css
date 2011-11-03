@@ -105,3 +105,6 @@ body {
 	font-weight: bold;
 	margin-bottom: 5px;
 }
+.fbJewelFlyout {
+	top: 32px !important;
+}

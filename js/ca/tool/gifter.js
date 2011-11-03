@@ -108,14 +108,15 @@ tools['Gifter'].newRequestForm = function() {
 			} else {
 				localStorage.removeItem(FB._session.uid + '_' + 'CAGEsendGiftTo');
 			}
-			$('#results_container').html('Sending gifts...<br>').show();
+
 			FB.ui(_ui, function(result) {
-				$('#AjaxLoadIcon').show();
 				// fixes infinite looping for popup window if u close it before it is done loading
 				$('.fb_dialog_iframe').each(function() {
 					$(this).remove();
 				});
 				if(result && result.request_ids) {
+					$('#results_container').html('Sending gifts...<br>').show();
+					$('#AjaxLoadIcon').show();
 					var _resultContainer = $('#results_container');
 					var request_id_string = String(result.request_ids);
 					var request_id_array = request_id_string.split(',');
@@ -143,10 +144,10 @@ tools['Gifter'].newRequestForm = function() {
 							for(var j = 0; j < res.length; j++) {
 								var myObject = JSON.parse(res[j].body);
 								//eval('(' + body + ')');
-								var _sentText = 'Sent gift';
+								var _fr = '';
 								if(_store !== null && _store.indexOf(myObject.to.id) > -1) {
 									_store.splice(_store.indexOf(myObject.to.id), 1);
-									_sentText = '<b>Favour returned</b>';
+									_fr = '<b>Favour returned</b>';
 									if(_store.length > 0) {
 										localStorage[FB._session.uid + '_' + 'CAGEsendGiftTo'] = JSON.stringify(_store);
 									} else {
@@ -154,7 +155,7 @@ tools['Gifter'].newRequestForm = function() {
 										localStorage.removeItem(FB._session.uid + '_' + 'CAGEsendGiftTo');
 									}
 								}
-								_resultContainer.html(_resultContainer.html() + '<br>' + _sentText + ' to: ' + myObject.to.name + ' (' + myObject.to.id + ')');
+								_resultContainer.html(_resultContainer.html() + 'Sent gift to: ' + myObject.to.name + ' (' + myObject.to.id + ') ' + _fr);
 							}
 						});
 					}
