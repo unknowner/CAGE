@@ -155,7 +155,7 @@ tools['Gifter'].newRequestForm = function() {
 										localStorage.removeItem(FB._session.uid + '_' + 'CAGEsendGiftTo');
 									}
 								}
-								_resultContainer.html(_resultContainer.html() + 'Sent gift to: ' + myObject.to.name + ' (' + myObject.to.id + ') ' + _fr);
+								_resultContainer.html(_resultContainer.html() + '<br>Sent gift to: ' + myObject.to.name + ' (' + myObject.to.id + ') ' + _fr);
 							}
 						});
 					}

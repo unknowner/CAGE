@@ -3,17 +3,18 @@ $('body').append('<div id="cageNews"><div id="cageNewsHead"></div><div id="cageN
 $('#cageNewsHead').text('CAGE - Castle Age Game Enhancer - V 1.0.49α');
 $('#cageNewsText').text('You\'re now running CAGE and making your Castle Age life a bit easier ;)');
 $('#cageNewsFoot').prepend('<p style="text-align: left;"><b>NOTICE: </b>The Army Filler is here, just go to to your army and ask Celesta ;)<br><br>Found an error? Logs (CTRL+SHIFT+J) are always welcome ;)</p>');
-_news = [
-	'ADD: XP/eng ratio at quests',
-	'CHG: Updated jQuery and jQuery-UI',
-	'CHG: Gift page reworked, no reloading when changing gift',
-	'FIX: Some minor CSS stuff'
-];
-$.each(_news, function(_i, _e) {
+$.each(
+	[
+		'ADD: XP/eng ratio at quests',
+		'CHG: Updated jQuery and jQuery-UI',
+		'CHG: Gift page reworked, no reloading when changing gift',
+		'FIX: Some minor CSS stuff'
+	], function(_i, _e) {
 	$('#cageNewsChanges').append('<li><span>' + _e.split(':')[0] + ':</span>' + _e.split(':')[1] + '</li>');
 });
 $('#cageNewsFoot a').button();
 $('#cageNews').dialog({
+	title : $('#cageNewsHead').text(),
 	resizable : false,
 	width : 750,
 	height : 'auto',

@@ -38,6 +38,7 @@
 			"js/ca/tool/potionEnergy.js",
 			"js/ca/tool/settings.js",
 			"js/ca/tool/armyFiller.js",
+			"js/ca/tool/demi.js",
 
 			"js/ca/setting/theme.js",
 			
