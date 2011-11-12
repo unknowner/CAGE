@@ -12,6 +12,8 @@ body {
 #globalContainer {
 	width: 100% !important;
 	left: 0 !important;
+	padding-right: 0 !important;
+	min-width: 0 !important;
 }
 #pageLogo > a {
 	margin-top: 0 !important;
@@ -104,4 +106,7 @@ body {
 	display: inline-block;
 	font-weight: bold;
 	margin-bottom: 5px;
+}
+.fbJewelFlyout {
+	top: 32px !important;
 }
