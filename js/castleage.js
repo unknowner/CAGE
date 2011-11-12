@@ -9,7 +9,7 @@ var CastleAge = {
 };
 
 var CAGE = {
-	version : '1.0.47α',
+	version : '1.0.50β',
 	fastAnim : 200,
 	slowAnim : 600
 };
