@@ -140,12 +140,14 @@
 }
 #cageAbilitiesContainer {
 	position: fixed;
-	top: 92px;
+	top: -300px;
 	left: 78px;
 	display: block;
 	box-shadow: black 0px 10px 20px;
-	z-index: 3;
+	z-index: 2;
 	border-radius: 35px;
+	cursor: default;
+	padding-top: 40px;
 }
 .cageSelectorImage {
 	width: 50px;
@@ -479,4 +481,70 @@
 	border-radius: 5px;
 	background-position: -15px;
 	cursor: pointer;
+}
+#cageDemiContainer {
+	position: fixed;
+	top: -100px;
+	width: 592px;
+	left: 100px;
+	display: block;
+	box-shadow: black 0px 10px 20px;
+	z-index: 2;
+	border-radius: 35px;
+	cursor: default;
+	padding-top: 40px;
+	height: 128px;
+}
+#cageDemiContainer > div {
+	padding-top: 15px;
+	padding-left: 23px;
+	display: inline-block
+}
+#cageDemiContainer img {
+	height: 90px;
+	border-radius: 15px;
+}
+.cageDemiImage {
+	width: 90px;
+	height: 90px;
+	position: relative;
+	background-position-x: -38px;
+	cursor: pointer;
+	opacity: 0.7;
+	border-radius: 15px;
+}
+.cageDemiImage:hover {
+	opacity: 1;
+}
+#cageDemienergy:hover {
+	box-shadow: 0 0 20px 5px #43936e;
+}
+#cageDemistamina:hover {
+	box-shadow: 0 0 20px 5px #496a79;
+}
+#cageDemihealth:hover {
+	box-shadow: 0 0 20px 5px #1ac176;
+}
+#cageDemiattack:hover {
+	box-shadow: 0 0 20px 5px #cea640;
+}
+#cageDemidefense:hover {
+	box-shadow: 0 0 20px 5px #40a0a0;
+}
+#cageDemiContainer span {
+	display: block;
+	position: relative;
+	left: 10px;
+	top: 54px;
+	font-size: 12px;
+	font-weight: bold;
+	text-shadow: #000 0 0 5px;
+}
+.cageDemiResult {
+	font-size: 12px;
+	top: 100px;
+}
+.ui-widget {
+	font-family: Trebuchet MS, Tahoma, Verdana, Arial, sans-serif;
+	font-size: 12px !important;
 }

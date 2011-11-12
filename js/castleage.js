@@ -20,7 +20,6 @@ $('head').append('<link id="cageTheme" rel="stylesheet" type="text/css" href="' 
 
 var _elm = {
 	cage : '<div id="cageContainer"></div>',
-	abilities : '<div id="cageAbilitiesContainer" class="ui-corner-br ui-widget-content"></div>',
 	general : '<div id="cageGeneralContainer" class="ui-corner-br ui-widget-content"></div>',
 	generalImageContainer : '<div id="cageGeneralImageContainer" class="ui-state-active ui-corner-all"></div>',
 	generalImage : '<img id="cageGeneralImage" class="ui-corner-all" src="http://image4.castleagegame.com/graphics/shield_wait.gif"/>',
@@ -31,7 +30,7 @@ var _elm = {
 	settings : '<div id="cageSettingContainer" class="ui-widget-content ui-corner-right"></div>'
 };
 
-$(document.body).prepend($(_elm.cage).append(_elm.abilities).append($(_elm.general).append($(_elm.generalImageContainer).append(_elm.generalImage)).append(_elm.generalName).append(_elm.generalValues)).append(_elm.tools).append(_elm.settings)).prepend(_elm.generalSelector);
+$(document.body).prepend($(_elm.cage).append($(_elm.general).append($(_elm.generalImageContainer).append(_elm.generalImage)).append(_elm.generalName).append(_elm.generalValues)).append(_elm.tools).append(_elm.settings)).prepend(_elm.generalSelector);
 _elm = undefined;
 
 /**/
@@ -44,4 +43,4 @@ CastleAge.startInterval = window.setInterval(function() {
 	} else {
 		com.send(com.task.castleAgeReady, com.port.facebook);
 	}
-}, 100);
+}, 50);

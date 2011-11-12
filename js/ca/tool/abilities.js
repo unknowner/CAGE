@@ -1,9 +1,5 @@
 new tool('Abilities');
 
-tools['Abilities'].runtime = {};
-
-tools['Abilities'].runtime.general = null;
-
 tools['Abilities'].start = function() {
 
 	get('guild_class.php', function(_data) {
@@ -12,7 +8,7 @@ tools['Abilities'].start = function() {
 			tools['Abilities'].done();
 		});
 
-		$('#cageAbilitiesContainer').hide().html($('div[id^="expanded_power_"]', _data).html()).find('> div:last').empty().css('cursor', 'default').attr('onclick', '');
+		$('#cageAbilitiesContainer').html($('div[id^="expanded_power_"]', _data).html()).find('> div:last').empty().attr('onclick', '');
 
 		addFunction(function() {
 
@@ -21,7 +17,6 @@ tools['Abilities'].start = function() {
 				move_box(parent, elem, x_offset - 75, y_offset - 100);
 				elem.show();
 			};
-			
 			window['classPowers'] = {
 				'1' : [],
 				'2' : [],
@@ -127,7 +122,9 @@ tools['Abilities'].start = function() {
 						stopTimers = false;
 						ajaxPerforming = false;
 						$('#AjaxLoadIcon').hide();
-						$('#cageAbilitiesContainer').slideUp('slow', function() {
+						$('#cageAbilitiesContainer').show().animate({
+							'top' : -300
+						}, 'slow', function() {
 							$(this).empty();
 							fireAbilityChanged();
 						});
@@ -137,7 +134,9 @@ tools['Abilities'].start = function() {
 		}, null, true, false);
 		addFunction(function() {
 			$('img[src*="class_cancelnew.jpg"]').parent().click(function() {
-				$('#cageAbilitiesContainer').slideUp('slow', function() {
+				$('#cageAbilitiesContainer').show().animate({
+					'top' : -300
+				}, 'slow', function() {
 					$(this).empty();
 					fireAbilityChanged();
 				});
@@ -145,15 +144,17 @@ tools['Abilities'].start = function() {
 		}, null, true, true);
 
 		$('div.imgButton[id^="large_image_"]').parent().css('cssText', 'float:left;padding:8px;');
-		$('#cageAbilitiesContainer').slideDown('slow');
+		$('#cageAbilitiesContainer').animate({
+			'top' : 52
+		}, 'slow');
 	});
-	
 };
 
 tools['Abilities'].done = function() {
 	tools['Abilities'].fbButton.enable();
 };
 tools['Abilities'].init = function() {
+	$('#cageContainer').append('<div id="cageAbilitiesContainer" class="ui-corner-br ui-widget-content"></div>');
 	tools['Abilities'].fbButton.add(chrome.i18n.getMessage("buttonAbilities"), function() {
 		tools['Abilities'].fbButton.disable();
 		tools['Abilities'].start();
