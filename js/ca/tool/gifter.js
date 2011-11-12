@@ -147,7 +147,7 @@ tools['Gifter'].newRequestForm = function() {
 								var _fr = '';
 								if(_store !== null && _store.indexOf(myObject.to.id) > -1) {
 									_store.splice(_store.indexOf(myObject.to.id), 1);
-									_fr = '<b>Favour returned</b>';
+									_fr = '- <b>Favour returned</b>';
 									if(_store.length > 0) {
 										localStorage[FB._session.uid + '_' + 'CAGEsendGiftTo'] = JSON.stringify(_store);
 									} else {
