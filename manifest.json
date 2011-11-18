@@ -16,7 +16,7 @@
 			"js/jquery.js",
 			"js/jqueryui.js",
 			"js/ui.selectmenu.js",
-			"js/com.js",
+			"js/chrome_com.js",
 			"js/common.js",
 			
 			"js/ca/tool.js",
@@ -75,7 +75,7 @@
 		"js": [
 			"js/jquery.js",
 			"js/jqueryui.js",
-			"js/com.js",
+			"js/chrome_com.js",
 			"js/common.js",
 			"js/fb/fb_receiver.js",
 			"js/fb/fb_start.js",

@@ -1,5 +1,5 @@
 body {
-	overflow-y: scroll !important;
+	overflow: auto !important;
 	background: #000 !important;
 }
 body > center {
@@ -148,4 +148,7 @@ div.game {
 }
 div.connect_castlepb_bg {
 	z-index: 11 !important;
+}
+iframe.FB_UI_Dialog {
+	height: 537px !important;
 }
