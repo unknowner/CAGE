@@ -438,7 +438,8 @@
 .cageSettingsTextbox > span {
 	color: white;
 	font-weight: bold;
-	width: 265px;
+	padding-left: 10px;
+	width: 250px;
 	display: inline-block;
 }
 .cageSettingsTextbox > input {
@@ -466,7 +467,8 @@
 .cageSettingsButton > span {
 	color: white;
 	font-weight: bold;
-	width: 265px;
+	padding-left: 10px;
+	width: 250px;
 	display: inline-block;
 	padding-top: 4px;
 }
@@ -480,6 +482,28 @@
 	background-image: url('http://image4.castleagegame.com/graphics/guild_button_submit.gif');
 	border-radius: 5px;
 	background-position: -15px;
+	cursor: pointer;
+}
+.cageSettingsOnOff {
+	padding: 8px 0 0 30px;
+}
+.cageSettingsOnOff > span {
+	color: white;
+	top: 1px;
+	font-weight: bold;
+	position: relative;
+	cursor: pointer;
+}
+.cageSettingsOnOff > button {
+	height: 21px;
+	border: 0;
+	width: 29px;
+	margin-left: 10px;
+	margin-right: 5px;
+	background-repeat: no-repeat;
+	background-color: transparent;
+	position: relative;
+	background-image: url('http://image4.castleagegame.com/graphics/town_button_collapse.gif');
 	cursor: pointer;
 }
 #cageDemiContainer {
