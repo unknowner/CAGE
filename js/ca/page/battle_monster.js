@@ -48,4 +48,8 @@ tools['Page'].runtime['battle_monster.php'] = function() {
 		}
 	}
 
+	// answer CTA
+	$('#chat_log_tab').parent().append('<div id="cageCTATab" style="" class="imgButton"><div style="padding:10px 0 0 0;">Answer CTA</div></div>').click(function() {
+		tools.Page.loadPage('battle_monster.php?' + $('form:has(div.imgButton > input[alt="Ask for help"]):first').serialize() + '&action=doObjective');
+	});
 };

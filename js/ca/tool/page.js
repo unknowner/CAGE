@@ -1,17 +1,17 @@
 new tool('Page');
-tools['Page'].runtime = {};
-tools['Page'].init = function() {
-	addFunction(tools['Page'].get_cached_ajax, null, true, true);
-	addFunction(tools['Page'].ajaxLinkSend, null, true, true);
-	addFunction(tools['Page'].ajaxFormSend, null, true, true);
-	addFunction(tools['Page'].ajaxSkip, null, true, true);
+tools.Page.runtime = {};
+tools.Page.init = function() {
+	addFunction(tools.Page.get_cached_ajax, null, true, true);
+	addFunction(tools.Page.ajaxLinkSend, null, true, true);
+	addFunction(tools.Page.ajaxFormSend, null, true, true);
+	addFunction(tools.Page.ajaxSkip, null, true, true);
 	// Do stuff after page loaded
 	customEvent('PageURL', function() {
 		var _page = $('#PageURL').val();
 		tools['General'].get();
-		tools['Page'].runtime['allPages']();
-		if(tools['Page'].runtime[_page]) {
-			tools['Page'].runtime[_page]();
+		tools.Page.runtime['allPages']();
+		if(tools.Page.runtime[_page]) {
+			tools.Page.runtime[_page]();
 		}
 	});
 	// scroll to
@@ -22,18 +22,18 @@ tools['Page'].init = function() {
 		});
 	});
 };
-tools['Page'].loadPage = function(_page) {
+tools.Page.loadPage = function(_page) {
 	console.log('Loadpage:' + _page);
 	addFunction(function(_data) {
 		ajaxLinkSend('globalContainer', _data);
 	}, JSON.stringify(_page), true, true);
 };
-tools['Page'].ajaxSkip = function() {
+tools.Page.ajaxSkip = function() {
 	ajaxSkip = function(div, url) {
 		ajaxLinkSend(div, (url + (url.indexOf('?') > -1 ? '&' : '?') + 'ajax=1&skip=1'));
 	}
 };
-tools['Page'].get_cached_ajax = function() {
+tools.Page.get_cached_ajax = function() {
 	get_cached_ajax = function(url, get_type) {
 		$('body').animate({
 			scrollTop : 0
@@ -106,10 +106,10 @@ tools['Page'].get_cached_ajax = function() {
 		}
 	};
 };
-tools['Page'].done = function(_url, _div) {
+tools.Page.done = function(_url, _div) {
 	console.log('page done');
 };
-tools['Page'].ajaxLinkSend = function() {
+tools.Page.ajaxLinkSend = function() {
 	ajaxLinkSend = function(div, url) {
 		$('body').animate({
 			scrollTop : 0
@@ -160,7 +160,7 @@ tools['Page'].ajaxLinkSend = function() {
 		//FB.Canvas.setAutoResize();
 	};
 };
-tools['Page'].ajaxFormSend = function(div, url, formElement, anchor) {
+tools.Page.ajaxFormSend = function(div, url, formElement, anchor) {
 	ajaxFormSend = function(div, url, formElement, anchor) {
 		$('body').animate({
 			scrollTop : 0

@@ -1,7 +1,7 @@
 // monster stats
-tools['Page'].runtime['festival_battle_monster.php'] = function() {
+tools['Page'].runtime['battle_expansion_monster.php'] = function() {
 
-	console.log('Page: festival_battle_monster.php');
+	console.log('Page: battle_expansion_monster.php');
 
 	var _monstername = null;
 	// add percentage to top bars
@@ -47,8 +47,9 @@ tools['Page'].runtime['festival_battle_monster.php'] = function() {
 			$('#MonsterResultDamage').css('float', 'none');
 		}
 	}
+
 	// answer CTA
 	$('#chat_log_tab').parent().append('<div id="cageCTATab" style="" class="imgButton"><div style="padding:10px 0 0 0;">Answer CTA</div></div>').click(function() {
-		tools.Page.loadPage('festival_battle_monster.php?' + $('form:has(div.imgButton > input[alt="Ask for help"]):first').serialize() + '&action=doObjective');
+		tools.Page.loadPage('battle_expansion_monster.php?' + $('form:has(div.imgButton > input[alt="Ask for help"]):first').serialize() + '&action=doObjective');
 	});
 };
