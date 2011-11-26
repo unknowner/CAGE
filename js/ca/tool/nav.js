@@ -166,7 +166,7 @@ tools['Nav'].start = function() {
 	if(CastleAge.inGuild !== null) {
 		if(CastleAge.inGuild == true) {
 			tools['Nav'].runtime['menu'].Guild = {
-				url : 'guild.php',
+				url : 'guildv2_home.php',
 				items : {
 					'Manage' : {
 						url : 'guildv2_panel.php'

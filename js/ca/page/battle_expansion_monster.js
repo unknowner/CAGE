@@ -49,7 +49,11 @@ tools['Page'].runtime['battle_expansion_monster.php'] = function() {
 	}
 
 	// answer CTA
-	$('#chat_log_tab').parent().append('<div id="cageCTATab" style="" class="imgButton"><div style="padding:10px 0 0 0;">Answer CTA</div></div>').click(function() {
-		tools.Page.loadPage('battle_expansion_monster.php?' + $('form:has(div.imgButton > input[alt="Ask for help"]):first').serialize() + '&action=doObjective');
-	});
+	if($('form:has(div.imgButton > input[alt="Ask for help"]):first').length == 1) {
+		$('div > img[src*="siege"]:last').parent().append('<a href="http://apps.facebook.com/castle_age/battle_expansion_monster.php?' + $('form:has(div.imgButton > input[alt="Ask for help"]):first').serialize() + '&action=doObjective"><img id="cageSummonCTA" src="http://image4.castleagegame.com/graphics/mp_button_summon.gif"></a>').click(function() {
+			tools.Page.loadPage('battle_expansion_monster.php?' + $('form:has(div.imgButton > input[alt="Ask for help"]):first').serialize() + '&action=doObjective');
+			return false;
+		});
+	}
+	
 };

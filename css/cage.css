@@ -572,15 +572,13 @@
 	font-family: Trebuchet MS, Tahoma, Verdana, Arial, sans-serif;
 	font-size: 12px !important;
 }
-#cageCTATab {
-	font-weight: bold;
+#cageSummonCTA {
 	cursor: pointer;
-	height: 35px;
-	width: 120px;
-	text-align: center;
-	float: left;
-	margin-top: 10px;
-	background-color: #C6A56F;
-	color: black;
-	margin-left: 10px;{
+	position: relative;
+	top: -30px;
+	width: 112px;
+	left: 2px;
+}
+#cageSummonCTA:hover {
+	opacity: 0.9;
 }
