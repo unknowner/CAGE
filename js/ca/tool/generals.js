@@ -6,9 +6,9 @@ tools.General.runtime = {};
 // settings
 tools.General.settings = function() {
 	tools.General.runtimeUpdate();
-	tools['Settings'].heading('Generals');
-	tools['Settings'].text('You can hide all unused generals and only show your favourites. Might be useful when you have a lot of generals or your machine slows down.');
-	tools['Settings'].onoff('Show only favourites', tools.General.runtime.onlyFavourites, 'onlyFavouritesGenerals', tools.General.runtimeUpdate);
+	tools['Settings'].heading(language.generalsSetName);
+	tools['Settings'].text(language.generalsSetFavOnlyDesc);
+	tools['Settings'].onoff(language.generalsSetFavOnlyAction, tools.General.runtime.onlyFavourites, 'onlyFavouritesGenerals', tools.General.runtimeUpdate);
 };
 
 tools.General.runtimeUpdate = function() {
@@ -159,6 +159,15 @@ tools.General.hoverRemoveOut = function() {
 // init general tool @fb
 tools.General.init = function() {
 	tools.General.runtimeUpdate();
+	var _elm = {
+		general : '<div id="cageGeneralContainer" class="ui-corner-br ui-widget-content"></div>',
+		generalImageContainer : '<div id="cageGeneralImageContainer" class="ui-state-active ui-corner-all"></div>',
+		generalImage : '<img id="cageGeneralImage" class="ui-corner-all" src="http://image4.castleagegame.com/graphics/shield_wait.gif"/>',
+		generalName : '<span id="cageGeneralName" class="ui-state-active ui-corner-right"></span>',
+		generalValues : '<span id="cageGeneralValues" class="ui-state-active ui-corner-br"><img src="http://image4.castleagegame.com/graphics/demi_symbol_2.gif" class="cageGeneralAttDefImg" /><span id="cageGeneralAttack" class="cageGeneralAttDefText"></span><img src="http://image4.castleagegame.com/graphics/demi_symbol_3.gif" class="cageGeneralAttDefImg" /><span id="cageGeneralDefense" class="cageGeneralAttDefText"></span></span>',
+		generalSelector : '<div id="cageGeneralSelector" class="ui-widget-content ui-corner-bottom">',
+	}
+	$('#cageContainer').append($(_elm.general).prepend($(_elm.generalImageContainer).append(_elm.generalImage)).append(_elm.generalName).append(_elm.generalValues)).prepend(_elm.generalSelector);
 	$('#cageGeneralImage').click(function() {
 		if(tools.General.runtime.onlyFavourites == 'true') {
 			$('#cageAllGenerals').hide();

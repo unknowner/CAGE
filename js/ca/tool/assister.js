@@ -3,15 +3,15 @@ new tool('Assister');
 tools['Assister'].settings = function() {
 
 	tools['Assister'].runtimeUpdate();
-	tools['Settings'].heading('Assister');
-	tools['Settings'].text('If you call the assister and no CTAs on your friends news feeds are commented/liked you need to give Castle Age the permisson to post in your name. Posting at monsters works all the time without this permisson. You can remove the permission anytime you like (<a href="http://www.facebook.com/settings?tab=applications&app_id=46755028429" target="_blank">Link</a>). If a window just pops up and closes you already have given the permission.');
-	tools['Settings'].button('Request permission', tools['Assister'].requestPermisson);
-	tools['Settings'].text('Enter your maximum stamina to use for answering CTAs.');
-	tools['Settings'].textbox('Stamina for CTAs', tools['Assister'].runtime.Stamina, 'cageAssisterStamina');
-	tools['Settings'].text('Monster message is appended after the standard post (eg 25th for Narf [MonsterMessage]).');
-	tools['Settings'].textbox('Monster message', tools['Assister'].runtime.monsterMessage, 'cageAssisterMonsterMessage');
-	tools['Settings'].text('Facebook message is appended after the standard post (eg 25th [FacebookMessage]).');
-	tools['Settings'].textbox('Facebook message', tools['Assister'].runtime.facebookMessage, 'cageAssisterFacebookMessage');
+	tools['Settings'].heading(language.assisterSetName);
+	tools['Settings'].text(language.assisterSetReqPermison);
+	tools['Settings'].button(language.assisterSetReqPermAction, tools['Assister'].requestPermisson);
+	tools['Settings'].text(language.assisterSetMaxStamDesc);
+	tools['Settings'].textbox(language.assisterSetMaxStamAction, tools['Assister'].runtime.Stamina, 'cageAssisterStamina');
+	tools['Settings'].text(language.assisterSetMonMessDesc);
+	tools['Settings'].textbox(language.assisterSetMonMessAction, tools['Assister'].runtime.monsterMessage, 'cageAssisterMonsterMessage');
+	tools['Settings'].text(language.assisterSetFBMessDesc);
+	tools['Settings'].textbox(language.assisterSetFBMessAction, tools['Assister'].runtime.facebookMessage, 'cageAssisterFacebookMessage');
 
 };
 
@@ -190,7 +190,7 @@ tools['Assister'].done = function() {
 tools['Assister'].init = function() {
 
 	tools['Assister'].runtimeUpdate();
-	tools['Assister'].fbButton.add(chrome.i18n.getMessage("buttonAssister"), function() {
+	tools['Assister'].fbButton.add(language.assisterButton, function() {
 		tools['Assister'].fbButton.disable();
 		tools['Assister'].start();
 	});

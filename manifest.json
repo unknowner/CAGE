@@ -18,6 +18,7 @@
 			"js/ui.selectmenu.js",
 			"js/chrome_com.js",
 			"js/common.js",
+			"js/language.js",
 			
 			"js/ca/tool.js",
 			"js/ca/ca_tools.js",

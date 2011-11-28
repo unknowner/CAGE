@@ -17,6 +17,9 @@
 }
 #cageGeneralContainer {
 	padding: 0 0 2px 0;
+	position: absolute;
+	top: 0;
+	width: 207px;
 }
 #cageGeneralName {
 	font-weight: bold;
@@ -68,7 +71,8 @@
 	margin-right: 4px;
 }
 #cageToolsContainer {
-	margin-top: 10px;
+	position: absolute;
+	top: 80px;
 	padding: 3px 3px 3px 0;
 }
 .cageToolButton {
@@ -114,7 +118,9 @@
 	box-shadow: 0 10px 20px black;
 }
 #cageSettingContainer {
-	margin-top: 10px;
+	top: 243px;
+	position: absolute;
+	width: 204px;
 	padding: 3px 3px 3px 0;
 }
 #cageThemeSelector {
@@ -575,7 +581,7 @@
 #cageSummonCTA {
 	cursor: pointer;
 	position: relative;
-	top: -30px;
+	top: -26px;
 	width: 112px;
 	left: 2px;
 }
