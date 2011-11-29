@@ -2,9 +2,9 @@ new tool('Gifter');
 
 tools['Gifter'].settings = function() {
 	tools['Gifter'].runtimeUpdate();
-	tools['Settings'].heading('Gifter');
-	tools['Settings'].text('Enter the name of a Facebook friendlist you like to add as an extra filter to the Send gifts dialog.');
-	tools['Settings'].textbox('Gifting friendlist', tools['Gifter'].runtime.userList, 'cageGifterUserList', tools['Gifter'].newRequestForm);
+	tools['Settings'].heading(language.gifterSetName);
+	tools['Settings'].text(language.gifterSetFilterDesc);
+	tools['Settings'].textbox(language.giftersetFilterAction, tools['Gifter'].runtime.userList, 'cageGifterUserList', tools['Gifter'].newRequestForm);
 };
 
 tools['Gifter'].runtimeUpdate = function() {
@@ -55,14 +55,6 @@ tools['Gifter'].work = function() {
 };
 tools['Gifter'].done = function() {
 	tools['Gifter'].fbButton.enable();
-};
-tools['Gifter'].init = function() {
-	tools['Gifter'].runtimeUpdate();
-	tools['Gifter'].fbButton.add(chrome.i18n.getMessage("buttonGifter"), function() {
-		tools['Gifter'].fbButton.disable();
-		tools['Gifter'].start();
-	});
-	tools['Gifter'].newRequestForm();
 };
 tools['Gifter'].newRequestForm = function() {
 
@@ -177,4 +169,12 @@ tools['Gifter'].newRequestForm = function() {
 	}, JSON.stringify({
 		userList : tools['Gifter'].runtime.userList
 	}), true, true);
+};
+tools['Gifter'].init = function() {
+	tools['Gifter'].runtimeUpdate();
+	tools['Gifter'].fbButton.add(language.gifterButton, function() {
+		tools['Gifter'].fbButton.disable();
+		tools['Gifter'].start();
+	});
+	tools['Gifter'].newRequestForm();
 };

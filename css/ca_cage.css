@@ -1,6 +1,10 @@
+html {
+	overflow: hidden;
+}
 body {
 	overflow: auto !important;
 	background: #000 !important;
+	height: 100%;
 }
 body > center {
 	text-align: left !important;

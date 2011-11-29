@@ -48,7 +48,7 @@ tools['Demi'].done = function() {
 };
 tools['Demi'].init = function() {
 	$('#cageContainer').append('<div id="cageDemiContainer" class="ui-corner-br ui-widget-content"></div>');
-	tools['Demi'].fbButton.add('Demi', function() {
+	tools['Demi'].fbButton.add(language.demiButton, function() {
 		tools['Demi'].fbButton.disable();
 		tools['Demi'].start();
 	});
