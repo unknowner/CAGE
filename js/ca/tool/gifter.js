@@ -1,21 +1,21 @@
 new tool('Gifter');
 
-tools['Gifter'].settings = function() {
-	tools['Gifter'].runtimeUpdate();
+tools.Gifter.settings = function() {
+	tools.Gifter.runtimeUpdate();
 	tools['Settings'].heading(language.gifterSetName);
 	tools['Settings'].text(language.gifterSetFilterDesc);
-	tools['Settings'].textbox(language.giftersetFilterAction, tools['Gifter'].runtime.userList, 'cageGifterUserList', tools['Gifter'].newRequestForm);
+	tools['Settings'].textbox(language.giftersetFilterAction, tools.Gifter.runtime.userList, 'cageGifterUserList', tools.Gifter.newRequestForm);
 };
 
-tools['Gifter'].runtimeUpdate = function() {
-	tools['Gifter'].runtime = {
+tools.Gifter.runtimeUpdate = function() {
+	tools.Gifter.runtime = {
 		sendGiftTo : item.get('CAGEsendGiftTo', []),
-		requests : tools['Gifter'].runtime == undefined ? [] : tools['Gifter'].runtime.requests,
+		requests : tools.Gifter.runtime == undefined ? [] : tools.Gifter.runtime.requests,
 		userList : item.get('cageGifterUserList', '')
 	}
 };
 
-tools['Gifter'].update = function() {
+tools.Gifter.update = function() {
 
 	//prepare update event to receive userids and request ids
 	customEvent('GiftRequests', function() {
@@ -23,16 +23,16 @@ tools['Gifter'].update = function() {
 		if(_gifts) {
 			$.each(_gifts.data, function(_i, _e) {
 				if(_e.from !== null) {
-					if($.inArray(_e.from.id, tools['Gifter'].runtime.sendGiftTo) == -1) {
-						tools['Gifter'].runtime.sendGiftTo.push(_e.from.id);
+					if($.inArray(_e.from.id, tools.Gifter.runtime.sendGiftTo) == -1) {
+						tools.Gifter.runtime.sendGiftTo.push(_e.from.id);
 					}
-					tools['Gifter'].runtime.requests.push(_e.id);
+					tools.Gifter.runtime.requests.push(_e.id);
 				}
 			});
-			item.set('CAGEsendGiftTo', tools['Gifter'].runtime.sendGiftTo);
-			tools['Gifter'].runtimeUpdate();
+			item.set('CAGEsendGiftTo', tools.Gifter.runtime.sendGiftTo);
+			tools.Gifter.runtimeUpdate();
 		}
-		tools['Gifter'].work();
+		tools.Gifter.work();
 	});
 	addFunction(function() {
 		FB.api('/me/apprequests/', function(_response) {
@@ -40,25 +40,25 @@ tools['Gifter'].update = function() {
 		});
 	}, null, true, true);
 };
-tools['Gifter'].start = function() {
-	tools['Gifter'].runtimeUpdate();
-	tools['Gifter'].update();
+tools.Gifter.start = function() {
+	tools.Gifter.runtimeUpdate();
+	tools.Gifter.update();
 };
-tools['Gifter'].work = function() {
-	if(tools['Gifter'].runtime.requests.length > 0) {
-		$.get('index.php?request_ids=' + tools['Gifter'].runtime.requests.join(',') + '&signed_request=' + $('#signed_request').val(), function(_data) {
-			tools['Gifter'].done();
+tools.Gifter.work = function() {
+	if(tools.Gifter.runtime.requests.length > 0) {
+		$.get('index.php?request_ids=' + tools.Gifter.runtime.requests.join(',') + '&signed_request=' + $('#signed_request').val(), function(_data) {
+			tools.Gifter.done();
 		});
 	} else {
-		tools['Gifter'].done();
+		tools.Gifter.done();
 	}
 };
-tools['Gifter'].done = function() {
-	tools['Gifter'].fbButton.enable();
+tools.Gifter.done = function() {
+	tools.Gifter.fbButton.enable();
 };
-tools['Gifter'].newRequestForm = function() {
+tools.Gifter.newRequestForm = function() {
 
-	tools['Gifter'].runtimeUpdate();
+	tools.Gifter.runtimeUpdate();
 	addFunction(function(_giftData) {
 		var cageGiftUserList = [];
 		FB.api('me/friendlists', function(responseFriendlist) {
@@ -167,14 +167,14 @@ tools['Gifter'].newRequestForm = function() {
 			});
 		}
 	}, JSON.stringify({
-		userList : tools['Gifter'].runtime.userList
+		userList : tools.Gifter.runtime.userList
 	}), true, true);
 };
-tools['Gifter'].init = function() {
-	tools['Gifter'].runtimeUpdate();
-	tools['Gifter'].fbButton.add(language.gifterButton, function() {
-		tools['Gifter'].fbButton.disable();
-		tools['Gifter'].start();
+tools.Gifter.init = function() {
+	tools.Gifter.runtimeUpdate();
+	tools.Gifter.fbButton.add(language.gifterButton, function() {
+		tools.Gifter.fbButton.disable();
+		tools.Gifter.start();
 	});
-	tools['Gifter'].newRequestForm();
+	tools.Gifter.newRequestForm();
 };

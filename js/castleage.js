@@ -1,4 +1,4 @@
-// CAGE stuff working on Castle Age site
+// CAGE stuff working on Castle Age site - Firefox
 var CastleAge = {
 	bqh : null,
 	signed_request : null,
@@ -9,7 +9,7 @@ var CastleAge = {
 };
 
 var CAGE = {
-	version : '1.0.53β',
+	version : '1.0.54β',
 	fastAnim : 200,
 	slowAnim : 600
 };
@@ -37,4 +37,4 @@ CastleAge.startInterval = window.setInterval(function() {
 	} else {
 		com.send(com.task.castleAgeReady, com.port.facebook);
 	}
-}, 50);
+}, 100);
