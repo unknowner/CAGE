@@ -37,4 +37,4 @@ CastleAge.startInterval = window.setInterval(function() {
 	} else {
 		com.send(com.task.castleAgeReady, com.port.facebook);
 	}
-}, 50);
+}, 100);

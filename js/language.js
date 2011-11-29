@@ -41,7 +41,7 @@ function defaultLanguage(){
 	this.generalsSetFavOnlyAction	= 'Show only favourites';
 
 	// Gifter
-	this.gifterButton							= 'Gifter';
+	this.gifterButton							= 'Receive Gifts';
 	this.gifterSetName						= 'Gifter'
 	this.gifterSetFilterDesc			= 'Enter the name of a Facebook friendlist you like to add as an extra filter to the Send gifts dialog.'
 	this.giftersetFilterAction		= 'Gifting friendlist'

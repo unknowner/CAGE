@@ -1,21 +1,21 @@
 new tool('Assister');
 
-tools['Assister'].settings = function() {
+tools.Assister.settings = function() {
 
-	tools['Assister'].runtimeUpdate();
+	tools.Assister.runtimeUpdate();
 	tools['Settings'].heading(language.assisterSetName);
 	tools['Settings'].text(language.assisterSetReqPermDesc);
-	tools['Settings'].button(language.assisterSetReqPermAction, tools['Assister'].requestPermisson);
+	tools['Settings'].button(language.assisterSetReqPermAction, tools.Assister.requestPermisson);
 	tools['Settings'].text(language.assisterSetMaxStamDesc);
-	tools['Settings'].textbox(language.assisterSetMaxStamAction, tools['Assister'].runtime.Stamina, 'cageAssisterStamina');
+	tools['Settings'].textbox(language.assisterSetMaxStamAction, tools.Assister.runtime.Stamina, 'cageAssisterStamina');
 	tools['Settings'].text(language.assisterSetMonMessDesc);
-	tools['Settings'].textbox(language.assisterSetMonMessAction, tools['Assister'].runtime.monsterMessage, 'cageAssisterMonsterMessage');
+	tools['Settings'].textbox(language.assisterSetMonMessAction, tools.Assister.runtime.monsterMessage, 'cageAssisterMonsterMessage');
 	tools['Settings'].text(language.assisterSetFBMessDesc);
-	tools['Settings'].textbox(language.assisterSetFBMessAction, tools['Assister'].runtime.facebookMessage, 'cageAssisterFacebookMessage');
+	tools['Settings'].textbox(language.assisterSetFBMessAction, tools.Assister.runtime.facebookMessage, 'cageAssisterFacebookMessage');
 
 };
 
-tools['Assister'].requestPermisson = function() {
+tools.Assister.requestPermisson = function() {
 
 	addFunction(function() {
 		FB.login(function(response) {
@@ -26,26 +26,26 @@ tools['Assister'].requestPermisson = function() {
 	}, null, true, true);
 };
 
-tools['Assister'].runtimeUpdate = function() {
+tools.Assister.runtimeUpdate = function() {
 
-	tools['Assister'].runtime = {
+	tools.Assister.runtime = {
 		CTA : [],
 		Stamina : item.get('cageAssisterStamina', 10),
 		Used : 0,
 		friends : [],
-		Assisted : tools['Assister'].runtime == undefined ? [] : tools['Assister'].runtime.Assisted,
+		Assisted : tools.Assister.runtime == undefined ? [] : tools.Assister.runtime.Assisted,
 		monsterMessage : item.get('cageAssisterMonsterMessage', ''),
 		facebookMessage : item.get('cageAssisterFacebookMessage', '')
 	}
 
 };
 
-tools['Assister'].start = function() {
+tools.Assister.start = function() {
 
-	tools['Assister'].runtimeUpdate();
+	tools.Assister.runtimeUpdate();
 	get('army_news_feed.php', function(_data) {
 		$('#action_logs > a[href*="action=doObjective"]', _data).each(function(i, e) {
-			tools['Assister'].runtime.CTA.push({
+			tools.Assister.runtime.CTA.push({
 				link : $(e).attr('href').replace(/(https|http):\/\/apps.facebook.com\/castle_age\//, ''),
 				uid : $('*[uid]:first', $(e)).attr('uid'),
 				name : /(?:[You|Your] friend )(.*)(?: has requested your help)/.exec($(e).text())[1],
@@ -54,24 +54,24 @@ tools['Assister'].start = function() {
 				values : []
 			});
 		});
-		console.log('Assister - CTAs: ', tools['Assister'].runtime.CTA);
-		tools['Assister'].getFriends();
+		console.log('Assister - CTAs: ', tools.Assister.runtime.CTA);
+		tools.Assister.getFriends();
 	});
 };
 
-tools['Assister'].getFriends = function() {
+tools.Assister.getFriends = function() {
 
 	customEvent('GetFriends', function() {
 		var _friends = $('#GetFriends').val();
 		if(_friends !== 'false') {
 			$.each(JSON.parse(_friends), function(_i, _e) {
-				tools['Assister'].runtime.friends.push(_e['uid']);
+				tools.Assister.runtime.friends.push(_e['uid']);
 			});
-			tools['Assister'].assist();
+			tools.Assister.assist();
 		} else {
-			tools['Assister'].runtime.friends = [];
+			tools.Assister.runtime.friends = [];
 			console.log('Assister - Can\'t get friends data, assisting all.');
-			tools['Assister'].assist();
+			tools.Assister.assist();
 		}
 	});
 	addFunction(function() {
@@ -91,16 +91,16 @@ tools['Assister'].getFriends = function() {
 	}, null, true, true);
 };
 
-tools['Assister'].assist = function() {
+tools.Assister.assist = function() {
 
-	if(tools['Assister'].runtime.Used < tools['Assister'].runtime.Stamina && tools['Assister'].runtime.CTA.length > 0) {
-		var _cta = tools['Assister'].runtime.CTA.pop();
-		if(tools['Assister'].runtime.friends.indexOf(_cta.uid) !== -1) {
+	if(tools.Assister.runtime.Used < tools.Assister.runtime.Stamina && tools.Assister.runtime.CTA.length > 0) {
+		var _cta = tools.Assister.runtime.CTA.pop();
+		if(tools.Assister.runtime.friends.indexOf(_cta.uid) !== -1) {
 			console.log('Assister - Friend: ' + _cta.uid);
 			get(_cta.link, function(_monsterdata) {
 				var _num = $('span.result_body', _monsterdata).text();
 				if(_num !== null && _cta.uid !== CastleAge.userId && _num.match(/\d+(?:st|nd|rd|th)/) !== null) {
-					tools['Assister'].runtime.Used++;
+					tools.Assister.runtime.Used++;
 					addFunction(function(data) {
 						cageStat['stamina'] = data.stamina;
 					}, JSON.stringify({
@@ -139,9 +139,9 @@ tools['Assister'].assist = function() {
 					_cta.timer = $('#monsterTicker', _monsterdata).text();
 					//
 					console.log('Assister - Assisted for:', _cta);
-					tools['Assister'].runtime.Assisted.push(_cta);
+					tools.Assister.runtime.Assisted.push(_cta);
 					_num = _num.match(/\d+(?:st|nd|rd|th)/)[0];
-					post(_cta.link.replace('doObjective', 'commentDragon') + '&text=' + _num + ' for ' + _cta.name + ' ' + tools['Assister'].runtime.monsterMessage);
+					post(_cta.link.replace('doObjective', 'commentDragon') + '&text=' + _num + ' for ' + _cta.name + ' ' + tools.Assister.runtime.monsterMessage);
 					get('party.php?casuser=' + _cta.uid, function(_guarddata) {
 						var _postid = $('div.streamContainer:has(div.streamName > a[href*="' + _cta.link + '"]) input[name="like_recent_news_post_id"]:first', _guarddata).val();
 						console.log('Assister - Like & Comment on FB post: ', _postid);
@@ -160,38 +160,38 @@ tools['Assister'].assist = function() {
 							});
 						}, JSON.stringify({
 							postid : _postid,
-							message : _num + ' ' + tools['Assister'].runtime.facebookMessage
+							message : _num + ' ' + tools.Assister.runtime.facebookMessage
 						}), true, false);
-						tools['Assister'].assist();
+						tools.Assister.assist();
 					});
 				} else {
 					console.log('Assister - No assist, maybe already assisted')
-					tools['Assister'].assist();
+					tools.Assister.assist();
 				}
 			});
 		} else {
 			console.log('Assister - Not a friend, no CTA for: ' + _cta.uid);
-			tools['Assister'].assist();
+			tools.Assister.assist();
 		}
 	} else {
 		console.log('Assister - Stamina out/No more CTAs');
-		tools['Assister'].done();
+		tools.Assister.done();
 	}
 
 };
 
-tools['Assister'].done = function() {
+tools.Assister.done = function() {
 
-	tools['Assister'].runtime.Used = 0;
-	tools['Assister'].fbButton.enable();
+	tools.Assister.runtime.Used = 0;
+	tools.Assister.fbButton.enable();
 
 };
 
-tools['Assister'].init = function() {
+tools.Assister.init = function() {
 
-	tools['Assister'].runtimeUpdate();
-	tools['Assister'].fbButton.add(language.assisterButton, function() {
-		tools['Assister'].fbButton.disable();
-		tools['Assister'].start();
+	tools.Assister.runtimeUpdate();
+	tools.Assister.fbButton.add(language.assisterButton, function() {
+		tools.Assister.fbButton.disable();
+		tools.Assister.start();
 	});
 };
