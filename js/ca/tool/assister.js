@@ -4,7 +4,7 @@ tools['Assister'].settings = function() {
 
 	tools['Assister'].runtimeUpdate();
 	tools['Settings'].heading(language.assisterSetName);
-	tools['Settings'].text(language.assisterSetReqPermison);
+	tools['Settings'].text(language.assisterSetReqPermDesc);
 	tools['Settings'].button(language.assisterSetReqPermAction, tools['Assister'].requestPermisson);
 	tools['Settings'].text(language.assisterSetMaxStamDesc);
 	tools['Settings'].textbox(language.assisterSetMaxStamAction, tools['Assister'].runtime.Stamina, 'cageAssisterStamina');
