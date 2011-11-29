@@ -152,7 +152,7 @@ tools['Nav'].runtime['menu'] = {
 		}
 	},
 	'Guild' : {
-		url : 'guild.php'
+		url : 'guildv2_home.php'
 	}
 };
 tools['Nav'].init = function() {
@@ -166,22 +166,22 @@ tools['Nav'].start = function() {
 	if(CastleAge.inGuild !== null) {
 		if(CastleAge.inGuild == true) {
 			tools['Nav'].runtime['menu'].Guild = {
-				url : 'guild.php',
+				url : 'guildv2_home.php',
 				items : {
-					'Management' : {
-						url : 'guild_panel.php'
-					},
-					'Character Class' : {
-						url : 'guild_class.php'
+					'Manage' : {
+						url : 'guildv2_panel.php'
 					},
 					'Guild List' : {
-						url : 'guild.php?guild_page=1'
+						url : 'guildv2_list.php'
 					},
-					'Guild Battles' : {
-						url : 'guild_current_battles.php'
+					'Guild Battle' : {
+						url : 'guildv2_battle.php'
 					},
 					'Guild Monsters' : {
-						url : 'guild_current_monster_battles.php'
+						url : 'guildv2_current_monster_battles.php'
+					},
+					'Guild Conquest' : {
+						url : 'guildv2_conquest_command.php'
 					}
 				}
 			};

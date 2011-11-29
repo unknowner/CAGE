@@ -155,7 +155,7 @@ tools['Abilities'].done = function() {
 };
 tools['Abilities'].init = function() {
 	$('#cageContainer').append('<div id="cageAbilitiesContainer" class="ui-corner-br ui-widget-content"></div>');
-	tools['Abilities'].fbButton.add(chrome.i18n.getMessage("buttonAbilities"), function() {
+	tools['Abilities'].fbButton.add(language.abilitiesButton, function() {
 		tools['Abilities'].fbButton.disable();
 		tools['Abilities'].start();
 	});
