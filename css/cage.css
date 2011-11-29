@@ -538,7 +538,7 @@
 	width: 90px;
 	height: 90px;
 	position: relative;
-	background-position-x: -38px;
+	background-position: -48px 0;
 	cursor: pointer;
 	opacity: 0.7;
 	border-radius: 15px;

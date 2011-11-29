@@ -118,7 +118,7 @@ tools.General.parsePage = function(_data) {
 			$('#cageAllGenerals span:last').append('<div class="cageCharge" style="height:' + (50 * _e.charge / 100) + 'px;' + (_e.charge < 100 ? '' : 'background-color:#4F4;') + '"></div>');
 		}
 	}
-	if(tools.General.runtime.favourites.length > 0) {
+	if(tools.General.runtime.favourites && tools.General.runtime.favourites.length > 0) {
 		var _tempFav = tools.General.runtime.favourites;
 		tools.General.runtime.favourites = [];
 		for(var i = 0, len = _tempFav.length; i < len; i++) {

@@ -5,6 +5,7 @@ $('#cageNewsText').text('You\'re now running CAGE and making your Castle Age lif
 $('#cageNewsFoot').prepend('<p style="text-align: left;"><b>NOTICE: </b>CAGE is now in beta stage. No new features added for now, going to fix bugs and trying to increase performance. If you find bugs just go to the blog an post them there (no signup required).<br><br>Found an error? Logs (CTRL+SHIFT+J) are always welcome ;)</p>');
 $.each(
 	[
+		'CHG: Language handling reworked',
 		'ADD: Self assist and easy way to copy assist link',
 		'ADD: Percentage to new guild monsters'
 	], function(_i, _e) {
