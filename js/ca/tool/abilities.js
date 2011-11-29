@@ -1,11 +1,11 @@
 new tool('Abilities');
 
-tools['Abilities'].start = function() {
+tools.Abilities.start = function() {
 
 	get('guild_class.php', function(_data) {
 
 		customEvent('AbilityChanged', function() {
-			tools['Abilities'].done();
+			tools.Abilities.done();
 		});
 
 		$('#cageAbilitiesContainer').html($('div[id^="expanded_power_"]', _data).html()).find('> div:last').empty().attr('onclick', '');
@@ -150,13 +150,13 @@ tools['Abilities'].start = function() {
 	});
 };
 
-tools['Abilities'].done = function() {
-	tools['Abilities'].fbButton.enable();
+tools.Abilities.done = function() {
+	tools.Abilities.fbButton.enable();
 };
-tools['Abilities'].init = function() {
+tools.Abilities.init = function() {
 	$('#cageContainer').append('<div id="cageAbilitiesContainer" class="ui-corner-br ui-widget-content"></div>');
-	tools['Abilities'].fbButton.add(language.abilitiesButton, function() {
-		tools['Abilities'].fbButton.disable();
-		tools['Abilities'].start();
+	tools.Abilities.fbButton.add(language.abilitiesButton, function() {
+		tools.Abilities.fbButton.disable();
+		tools.Abilities.start();
 	});
 };

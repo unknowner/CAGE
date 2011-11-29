@@ -1,13 +1,10 @@
-html {
-	overflow: hidden;
-}
+/* Chrome */
 body {
 	overflow: auto !important;
-	background: #000 !important;
-	height: 100%;
+	background-attachment: fixed;
 }
+/* Chrome */
 body > center {
-	text-align: left !important;
 	width: 778px !important;
 }
 #main_bntp {

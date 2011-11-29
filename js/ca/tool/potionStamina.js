@@ -1,6 +1,6 @@
 new tool('PotionStamina');
 
-tools['PotionStamina'].start = function() {
+tools.PotionStamina.start = function() {
 	$.post('keep.php', {
 		'consume' : true,
 		'item' : 2,
@@ -14,12 +14,12 @@ tools['PotionStamina'].start = function() {
 				stamina : parseInt($('#stamina_current_value').text(), 10) + 10
 			}), true, true);
 		}
-		tools['PotionStamina'].work(_data);
-		tools['PotionStamina'].done();
+		tools.PotionStamina.work(_data);
+		tools.PotionStamina.done();
 	});
 };
 // Parse keep for stamina potions
-tools['PotionStamina'].work = function(_pagedata) {
+tools.PotionStamina.work = function(_pagedata) {
 	if(_pagedata == undefined) {
 		_pagedata = $('#app_body');
 	}
@@ -30,14 +30,14 @@ tools['PotionStamina'].work = function(_pagedata) {
 		$('#cagePotionStamina > span.cagePotionCount').text('');
 	}
 };
-tools['PotionStamina'].done = function() {
+tools.PotionStamina.done = function() {
 	$('#cagePotionStamina').removeAttr('disabled').css('cursor', 'pointer');
 };
-tools['PotionStamina'].init = function() {
+tools.PotionStamina.init = function() {
 	$('body').append($('<button id="cagePotionStamina"><span class="cagePotionCount"></span></button>').click(function() {
 		if($(this).text() !== '' && $(this).text() !== '0') {
 			$(this).attr('disabled', 'true').css('cursor', 'wait');
-			tools['PotionStamina'].start();
+			tools.PotionStamina.start();
 		}
 	}));
 };

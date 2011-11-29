@@ -1,6 +1,6 @@
 new tool('Demi');
 
-tools['Demi'].start = function() {
+tools.Demi.start = function() {
 
 	var _demi = $('#cageDemiContainer');
 	$('body').append('<div id="cageDemiResult">');
@@ -38,18 +38,18 @@ tools['Demi'].start = function() {
 			}, 'slow', function() {
 				_demi.empty();
 			});
-			tools['Demi'].done();
+			tools.Demi.done();
 		})
 	})
 };
 
-tools['Demi'].done = function() {
-	tools['Demi'].fbButton.enable();
+tools.Demi.done = function() {
+	tools.Demi.fbButton.enable();
 };
-tools['Demi'].init = function() {
+tools.Demi.init = function() {
 	$('#cageContainer').append('<div id="cageDemiContainer" class="ui-corner-br ui-widget-content"></div>');
-	tools['Demi'].fbButton.add(language.demiButton, function() {
-		tools['Demi'].fbButton.disable();
-		tools['Demi'].start();
+	tools.Demi.fbButton.add(language.demiButton, function() {
+		tools.Demi.fbButton.disable();
+		tools.Demi.start();
 	});
 };

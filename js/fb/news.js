@@ -1,13 +1,11 @@
 // news
 $('body').append('<div id="cageNews"><div id="cageNewsHead"></div><div id="cageNewsBody"><p id="cageNewsText"></p><br><b>Changelog:</b><br><ul id="cageNewsChanges"></ul></div><div id="cageNewsFoot"><br><a href="http://cagenhancer.blogspot.com/" target="_blank">Blog</a> <a href="http://cagenhancer.blogspot.com/p/manual.html" target="_blank">Manual</a> <a href="http://caaplayer.freeforums.org/c-a-g-e-f29.html" target="_blank">Forum</a> <a href="https://github.com/unknowner/CAGE" target="_blank">GitHub</a><br><br><span style="text-align:center;">You want to say thank you? Just visit the Blog, click an Ad or donate via PayPal.</span></div></div>');
-$('#cageNewsHead').text('CAGE - Castle Age Game Enhancer - V 1.0.53β');
+$('#cageNewsHead').text('CAGE - Castle Age Game Enhancer - V 1.0.54β');
 $('#cageNewsText').text('You\'re now running CAGE and making your Castle Age life a bit easier ;)');
 $('#cageNewsFoot').prepend('<p style="text-align: left;"><b>NOTICE: </b>CAGE is now in beta stage. No new features added for now, going to fix bugs and trying to increase performance. If you find bugs just go to the blog an post them there (no signup required).<br><br>Found an error? Logs (CTRL+SHIFT+J) are always welcome ;)</p>');
 $.each(
 	[
-		'CHG: Language handling reworked',
-		'ADD: Self assist and easy way to copy assist link',
-		'ADD: Percentage to new guild monsters'
+		'FIX: Some CSS stuff'
 	], function(_i, _e) {
 	$('#cageNewsChanges').append('<li><span>' + _e.split(':')[0] + ':</span>' + _e.split(':')[1] + '</li>');
 });
