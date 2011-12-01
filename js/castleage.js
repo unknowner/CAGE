@@ -16,8 +16,12 @@ var CAGE = {
 
 com.initContentScript(com.port.castleAge);
 
-$('head').append('<link id="cageTheme" rel="stylesheet" type="text/css" href="' + chrome.extension.getURL('css/dark-hive/') + 'jquery-ui.css">');
-
+$('head')
+	.append('<link id="cageTheme" rel="stylesheet" type="text/css" href="' + getPath('css/dark-hive/jquery-ui.css') + '">')
+	.append('<link rel="stylesheet" type="text/css" href="' + getPath('css/cage.css') + '">')
+	.append('<link rel="stylesheet" type="text/css" href="' + getPath('css/ca_cage.css') + '">')
+	.append('<link rel="stylesheet" type="text/css" href="' + getPath('css/ui.selectmenu.css') + '">');
+	
 var _elm = {
 	cage : '<div id="cageContainer"></div>',
 	tools : '<div id="cageToolsContainer" class="ui-widget-content ui-corner-right"></div>',

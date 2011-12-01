@@ -113,7 +113,7 @@ tools.General.parsePage = function(_data) {
 		}, function() {
 			$(this).removeClass('cageSelectorGeneralHover');
 			$('#cageSelectorInfo').html('');
-		})).append($('<img class="cageAddFavourite" src="' + chrome.extension.getURL('img/fav.png') + '" alt="' + _e.name + '" />').hover(tools.General.hoverAddIn, tools.General.hoverAddOut).click(tools.General.clickAdd)));
+		})).append($('<img class="cageAddFavourite" src="' + getPath('img/fav.png') + '" alt="' + _e.name + '" />').hover(tools.General.hoverAddIn, tools.General.hoverAddOut).click(tools.General.clickAdd)));
 		if(_e.charge) {
 			$('#cageAllGenerals span:last').append('<div class="cageCharge" style="height:' + (50 * _e.charge / 100) + 'px;' + (_e.charge < 100 ? '' : 'background-color:#4F4;') + '"></div>');
 		}
@@ -142,19 +142,19 @@ tools.General.clickRemove = function() {
 };
 tools.General.hoverAddIn = function() {
 	$('#cageSelectorInfo').html('Add ' + $(this).attr('alt') + ' to favourites');
-	$(this).attr('src', chrome.extension.getURL('img/favadd.png'));
+	$(this).attr('src', getPath('img/favadd.png'));
 };
 tools.General.hoverAddOut = function() {
 	$('#cageSelectorInfo').html('');
-	$(this).attr('src', chrome.extension.getURL('img/fav.png'));
+	$(this).attr('src', getPath('img/fav.png'));
 };
 tools.General.hoverRemoveIn = function() {
 	$('#cageSelectorInfo').html('Remove ' + $(this).attr('alt') + ' from favourites');
-	$(this).attr('src', chrome.extension.getURL('img/favdel.png'));
+	$(this).attr('src', getPath('img/favdel.png'));
 };
 tools.General.hoverRemoveOut = function() {
 	$('#cageSelectorInfo').html('');
-	$(this).attr('src', chrome.extension.getURL('img/fav.png'));
+	$(this).attr('src', getPath('img/fav.png'));
 };
 // init general tool @fb
 tools.General.init = function() {

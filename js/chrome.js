@@ -1,4 +1,9 @@
-// Chrome
+// Chrome get path to internals
+function getPath(_file){
+	return chrome.extension.getURL(_file);
+}
+
+// Chrome communication
 var com = {
 	// Port names
 	port: {
