@@ -64,6 +64,7 @@
 			"js/ca/page/army_member.js",
 			"js/ca/page/battle_expansion_monster.js",
 			"js/ca/page/guildv2_battle_monster.js",
+			"js/ca/page/treasure_chest.js",
 			
 			"js/castleage.js"
 			],
