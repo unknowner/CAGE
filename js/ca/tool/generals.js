@@ -21,7 +21,7 @@ tools.General.runtimeUpdate = function() {
 		tools.General.runtime.general = {};
 	}
 };
-//get current general from CA and set it in fb ui
+//get current general from CA
 tools.General.get = function() {
 	if($('div[style*="general_plate.gif"] > div:first').length > 0) {
 		tools.General.current = $('div[style*="general_plate.gif"] > div:first').text().trim();
@@ -102,18 +102,16 @@ tools.General.parsePage = function(_data) {
 	_names.sort();
 	for(var i = 0, len = _names.length; i < len; i++) {
 		var _e = tools.General.runtime.general[_names[i]];
-		$('#cageAllGenerals').append($('<span>').append($('<img class="cageSelectorImage ui-corner-all cageSelectorGeneral" src="' + _e.image + '" alt="' + _e.name + '" />').click(function() {
+		$('#cageAllGenerals').append($('<div>').append($('<img src="' + _e.image + '" alt="' + _e.name + '" />').click(function() {
 			console.log($(this).attr('alt'));
 			tools.General.setByName($(this).attr('alt'));
 			$('#cageGeneralSelector').slideToggle('slow');
 		}).hover(function() {
 			var _general = tools.General.runtime.general[$(this).attr('alt')];
-			$(this).addClass('cageSelectorGeneralHover');
 			$('#cageSelectorInfo').html(_general.name + ' (' + _general.level + ') <img src="http://image4.castleagegame.com/graphics/demi_symbol_2.gif" style="height:12px;"/> ' + _general.attack + ' <img src="http://image4.castleagegame.com/graphics/demi_symbol_3.gif" style="height:12px;"/> ' + _general.defense + ' - ' + _general.text);
 		}, function() {
-			$(this).removeClass('cageSelectorGeneralHover');
 			$('#cageSelectorInfo').html('');
-		})).append($('<img class="cageAddFavourite" src="' + getPath('img/fav.png') + '" alt="' + _e.name + '" />').hover(tools.General.hoverAddIn, tools.General.hoverAddOut).click(tools.General.clickAdd)));
+		})).append($('<img src="' + getPath('img/fav.png') + '" alt="' + _e.name + '" />').hover(tools.General.hoverAddIn, tools.General.hoverAddOut).click(tools.General.clickAdd)));
 		if(_e.charge) {
 			$('#cageAllGenerals span:last').append('<div class="cageCharge" style="height:' + (50 * _e.charge / 100) + 'px;' + (_e.charge < 100 ? '' : 'background-color:#4F4;') + '"></div>');
 		}
@@ -122,7 +120,7 @@ tools.General.parsePage = function(_data) {
 		var _tempFav = tools.General.runtime.favourites;
 		tools.General.runtime.favourites = [];
 		for(var i = 0, len = _tempFav.length; i < len; i++) {
-			$('#cageAllGenerals > span > img.cageAddFavourite[alt="' + _tempFav[i] + '"]:first').click();
+			$('#cageAllGenerals > div > img:last[alt="' + _tempFav[i] + '"]:first').click();
 		}
 	}
 	tools.General.get();
@@ -131,7 +129,7 @@ tools.General.parsePage = function(_data) {
 tools.General.clickAdd = function() {
 	tools.General.runtime.favourites.push($(this).attr('alt'));
 	item.set('favouriteGenerals', tools.General.runtime.favourites.sort());
-	$(this).mouseleave().parent().hide().clone(true, true).appendTo('#cageFavouriteGenerals').show().find('img.cageAddFavourite').unbind('click').click(tools.General.clickRemove).hover(tools.General.hoverRemoveIn, tools.General.hoverRemoveOut);
+	$(this).mouseleave().parent().hide().clone(true, true).appendTo('#cageFavouriteGenerals').show().find('img:last').unbind('click').click(tools.General.clickRemove).hover(tools.General.hoverRemoveIn, tools.General.hoverRemoveOut);
 };
 tools.General.clickRemove = function() {
 	var _name = $(this).attr('alt');
@@ -169,12 +167,14 @@ tools.General.init = function() {
 	}
 	$('#cageContainer').append($(_elm.general).prepend($(_elm.generalImageContainer).append(_elm.generalImage)).append(_elm.generalName).append(_elm.generalValues)).prepend(_elm.generalSelector);
 	$('#cageGeneralImage').click(function() {
+		var _speed = 'slow';
 		if(tools.General.runtime.onlyFavourites == 'true') {
 			$('#cageAllGenerals').hide();
+			_speed = 'fast';
 		} else {
 			$('#cageAllGenerals').show();
 		}
-		$('#cageGeneralSelector').slideToggle('slow');
+		$('#cageGeneralSelector').slideToggle(_speed);
 	});
 	tools.General.update();
 

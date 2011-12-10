@@ -1,4 +1,4 @@
-// CAGE stuff working on Castle Age site - Firefox
+// CAGE stuff working on Castle Age site
 var CastleAge = {
 	bqh : null,
 	signed_request : null,
@@ -21,18 +21,11 @@ $('head')
 	.append('<link rel="stylesheet" type="text/css" href="' + getPath('css/cage.css') + '">')
 	.append('<link rel="stylesheet" type="text/css" href="' + getPath('css/ca_cage.css') + '">')
 	.append('<link rel="stylesheet" type="text/css" href="' + getPath('css/ui.selectmenu.css') + '">');
-	
-var _elm = {
-	cage : '<div id="cageContainer"></div>',
-	tools : '<div id="cageToolsContainer" class="ui-widget-content ui-corner-right"></div>',
-	settings : '<div id="cageSettingContainer" class="ui-widget-content ui-corner-right"></div>'
-};
 
-$(document.body).prepend($(_elm.cage).append(_elm.tools).append(_elm.settings));
-_elm = undefined;
+$('center:first').prepend('<div id="cageContainer"><div id="cageToolsContainer" class="ui-widget-content"></div></div>');
 
 /**/
-
+			
 CastleAge.startInterval = window.setInterval(function() {
 	if(CastleAge.signed_request !== null && CastleAge.userId !== null) {
 		window.clearInterval(CastleAge.startInterval);

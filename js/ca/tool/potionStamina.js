@@ -34,7 +34,7 @@ tools.PotionStamina.done = function() {
 	$('#cagePotionStamina').removeAttr('disabled').css('cursor', 'pointer');
 };
 tools.PotionStamina.init = function() {
-	$('body').append($('<button id="cagePotionStamina"><span class="cagePotionCount"></span></button>').click(function() {
+	$('#main_sts_container').append($('<button id="cagePotionStamina"><span class="cagePotionCount"></span></button>').click(function() {
 		if($(this).text() !== '' && $(this).text() !== '0') {
 			$(this).attr('disabled', 'true').css('cursor', 'wait');
 			tools.PotionStamina.start();

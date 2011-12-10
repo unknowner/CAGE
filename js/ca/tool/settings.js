@@ -12,7 +12,7 @@ tools.Settings.start = function() {
 };
 
 tools.Settings.init = function() {
-	$('body').append($('<button id="cageSettings"></button>').button({
+	$('#cageMenu').prepend($('<button id="cageSettings"></button>').button({
 		icons : {
 			primary : 'ui-icon-gear'
 		},

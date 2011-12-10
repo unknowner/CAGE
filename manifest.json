@@ -19,6 +19,7 @@
 			"js/ca/ca_receiver.js",
 			
 			"js/ca/tool/cage.js",
+			"js/ca/tool/theme.js",
 			"js/ca/tool/assister.js",
 			"js/ca/tool/gifter.js",
 			"js/ca/tool/functions.js",
@@ -34,8 +35,6 @@
 			"js/ca/tool/settings.js",
 			"js/ca/tool/armyFiller.js",
 			"js/ca/tool/demi.js",
-
-			"js/ca/setting/theme.js",
 			
 			"js/ca/page/allpages.js",
 			"js/ca/page/index.js",

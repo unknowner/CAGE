@@ -1,11 +1,10 @@
-/* Chrome */
+html {
+	overflow: auto;
+}
 body {
+	height: 100%;
 	overflow: auto !important;
 	background-attachment: fixed;
-}
-/* Chrome */
-body > center {
-	width: 778px !important;
 }
 #main_bntp {
 	display: none !important;
@@ -17,29 +16,33 @@ body > center {
 	display: none !important;
 }
 #main_sts_container {
-	height: 70px !important;
 	position: fixed !important;
 	z-index: 2
 }
+#main_sts {
+	background-position: -5px 3px !important;
+	width: 750px !important;
+	padding-top: 3px;
+}
 div.game {
-	width: 779px !important;
+	width: 770px !important;
 }
 #globalcss {
 	padding-left: 10px !important;
 }
 #app_body {
-	width: 740px !important;
+	padding: 25px 0 0 0 !important;
+	width: 750px !important;
 	margin-top: 8px !important;
-	box-shadow: inset 0 0 5px 5px rgba(0,0,0,0.5)
 }
 #nvbar {
 	display: none !important;
 }
 #app_body_container {
-	padding-top: 70px !important;
+	padding-top: 100px !important;
 }
 #globalContainer {
-	width: 778px !important;
+	width: 770px !important;
 }
 #AjaxLoadIcon {
 	width: 80px !important;
@@ -152,4 +155,10 @@ div.connect_castlepb_bg {
 }
 iframe.FB_UI_Dialog {
 	height: 537px !important;
+}
+.cageQuestSwitchGeneral {
+	top: -14px;
+	position: relative;
+	width: 78px;
+	cursor: pointer;
 }

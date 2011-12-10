@@ -38,7 +38,7 @@ tools.Stash.done = function() {
 	$('#cageStash').removeAttr('disabled').css('cursor', 'pointer');
 };
 tools.Stash.init = function() {
-	$('body').append($('<button id="cageStash"></button>').click(function() {
+	$('#main_sts_container').append($('<button id="cageStash"></button>').click(function() {
 		if($('#gold_current_value').text() !== '$0') {
 			$(this).attr('disabled', 'true').css('cursor', 'wait');
 			tools.Stash.start();
