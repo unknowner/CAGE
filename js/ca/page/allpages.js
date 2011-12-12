@@ -7,11 +7,12 @@ tools['Page'].runtime['allPages'] = function() {
 	}
 
 	// remove CA:HOD ad, etc...
-	$('a[href="http://apps.facebook.com/castle_hod/?xprom=cax"]:first').parent('div:first').hide();
+	$('a[href="http://apps.facebook.com/castle_hod/?xprom=cax"]:first').parent('div:first').remove();
 	if($('#globalContainer > div:first').height() == 80) {
 		$('#globalContainer > div:first').hide();
 	}
 	$('#nvbar_div_end').remove();
+	$('#hinvite_help').remove();
 
 	// xp to next lvl
 	$('#main_ststb > div:first').css({

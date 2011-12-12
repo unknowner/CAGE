@@ -1,8 +1,4 @@
-html {
-	overflow: auto;
-}
 body {
-	height: 100%;
 	overflow: auto !important;
 	background-attachment: fixed;
 }
@@ -31,8 +27,8 @@ div.game {
 	padding-left: 10px !important;
 }
 #app_body {
-	padding: 25px 0 0 0 !important;
-	width: 750px !important;
+	width: 740px !important;
+	padding: 25px 5px 5px 5px !important;
 	margin-top: 8px !important;
 }
 #nvbar {

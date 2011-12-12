@@ -3,15 +3,13 @@ new tool('Assister');
 tools.Assister.settings = function() {
 
 	tools.Assister.runtimeUpdate();
-	tools['Settings'].heading(language.assisterSetName);
-	tools['Settings'].text(language.assisterSetReqPermDesc);
-	tools['Settings'].button(language.assisterSetReqPermAction, tools.Assister.requestPermisson);
-	tools['Settings'].text(language.assisterSetMaxStamDesc);
-	tools['Settings'].textbox(language.assisterSetMaxStamAction, tools.Assister.runtime.Stamina, 'cageAssisterStamina');
-	tools['Settings'].text(language.assisterSetMonMessDesc);
-	tools['Settings'].textbox(language.assisterSetMonMessAction, tools.Assister.runtime.monsterMessage, 'cageAssisterMonsterMessage');
-	tools['Settings'].text(language.assisterSetFBMessDesc);
-	tools['Settings'].textbox(language.assisterSetFBMessAction, tools.Assister.runtime.facebookMessage, 'cageAssisterFacebookMessage');
+	tools.Settings.heading(language.assisterSetName);
+	tools.Settings.text(language.assisterSetReqPermDesc);
+	tools.Settings.button(language.assisterSetReqPermAction, tools.Assister.requestPermisson);
+	tools.Settings.textbox(language.assisterSetMaxStamAction, tools.Assister.runtime.Stamina, 'cageAssisterStamina');
+	tools.Settings.text(language.assisterSetMessDesc);
+	tools.Settings.textbox(language.assisterSetMonMessAction, tools.Assister.runtime.monsterMessage, 'cageAssisterMonsterMessage');
+	tools.Settings.textbox(language.assisterSetFBMessAction, tools.Assister.runtime.facebookMessage, 'cageAssisterFacebookMessage');
 
 };
 

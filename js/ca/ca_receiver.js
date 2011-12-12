@@ -20,6 +20,12 @@ function receiver(_data) {
 		case com.task.resize:
 			$('#globalContainer').height(_data.data.height);
 			break;
+		case com.task.showAllGenerals:
+			tools.General.showAll();
+			break;
+		case com.task.showSettings:
+			tools.Settings.start();
+			break;
 		default:
 			console.log(_data.task + ' unknown!');
 	}

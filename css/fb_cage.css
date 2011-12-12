@@ -8,6 +8,7 @@ body {
 #blueBar {
 	display: block !important;
 	height: 34px !important;
+	min-width: 0 !important;
 }
 #globalContainer {
 	width: 100% !important;
@@ -24,10 +25,8 @@ body {
 #pageNav {
 	padding-top: 1px !important;
 }
-#navSearch {
-	margin-top: 4px !important;
-}
 #pageHead {
+	min-width: 0 !important;
 	height: 33px !important;
 	padding: 0 0 0 5px !important;
 	background-color: #3B5998 !important;
@@ -38,10 +37,7 @@ body {
 }
 #headNav {
 	margin-top: 2px !important;
-}
-#headNav .rfloat {
-	float: none !important;
-	display: inline-block !important;
+	min-width: 600px;
 }
 #fbDockChat {
 	margin-right: 3px !important;
@@ -57,22 +53,6 @@ body {
 	width: 100% !important;
 	padding-left: 0 !important;
 	margin-left: 0 !important;
-}
-.fbChatSidebar {
-	margin-right: 19px;
-	bottom: 0 !important;
-	top: auto !important;
-	margin-bottom: -34px;
-}
-.fbChatOrderedList .item a .pic {
-	height: 26px !important;
-	width: 26px ! important;
-}
-.fbChatOrderedList .item a .name {
-	line-height: 26px !important;
-}
-.fbChatSidebarFooter {
-	margin-bottom: 34px;
 }
 #pagelet_canvas_footer_content {
 	display: none !important;
@@ -109,4 +89,58 @@ body {
 }
 .fbJewelFlyout {
 	top: 32px !important;
+}
+/*
+ * General in FB UI
+ */
+#cageFacebook {
+	margin-right: 20px;
+	margin-left: 20px;
+}
+#cageFacebook li {
+	display: inline-block;
+}
+#cageFacebook a {
+	height: 31px;
+	line-height: 29px;
+	padding: 0;
+	vertical-align: top;
+	display: inline-block;
+	margin-top: 1px;
+	text-decoration: none;
+}
+#cageFacebook a:hover {
+	background-color: #4B67A1;
+	color: #000;
+}
+#cageFacebook span {
+	padding-right: 8px;
+	vertical-align: top;
+	color: #D8DFEA;
+	font-weight: bold;
+	padding-left: 5px;
+}
+#cageGeneralImage {
+	border: solid 1px #294A8F;
+	border-top: solid 1px #123682;
+	-webkit-border-radius: 2px;
+	height: 23px;
+	margin: 3px 5px 3px 3px;
+	width: 23px;
+}
+#cageGeneralName {
+	display: inline-block;
+	max-width: 175px;
+	overflow: hidden;
+	padding-right: 8px;
+	text-overflow: ellipsis;
+	vertical-align: top;
+	white-space: nowrap;
+	color: #D8DFEA;
+	font-weight: bold;
+}
+.cageGeneralAttDefImg {
+	height: 23px;
+	position: relative;
+	top: -4px;
 }

@@ -34,7 +34,7 @@ tools.PotionEnergy.done = function() {
 	$('#cagePotionEnergy').removeAttr('disabled').css('cursor', 'pointer');
 };
 tools.PotionEnergy.init = function() {
-	$('#main_sts_container').append($('<button id="cagePotionEnergy"><span class="cagePotionCount"></span></button>').click(function() {
+	$('#cageStatsContainer').append($('<button id="cagePotionEnergy"><span class="cagePotionCount"></span></button>').click(function() {
 		if($(this).text() !== '' && $(this).text() !== '0') {
 			$(this).attr('disabled', 'true').css('cursor', 'wait');
 			tools.PotionEnergy.start();

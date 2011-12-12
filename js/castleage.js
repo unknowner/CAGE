@@ -9,7 +9,7 @@ var CastleAge = {
 };
 
 var CAGE = {
-	version : '1.0.56β',
+	version : '1.1.0β',
 	fastAnim : 200,
 	slowAnim : 600
 };
@@ -20,9 +20,10 @@ $('head')
 	.append('<link id="cageTheme" rel="stylesheet" type="text/css" href="' + getPath('css/dark-hive/jquery-ui.css') + '">')
 	.append('<link rel="stylesheet" type="text/css" href="' + getPath('css/cage.css') + '">')
 	.append('<link rel="stylesheet" type="text/css" href="' + getPath('css/ca_cage.css') + '">')
-	.append('<link rel="stylesheet" type="text/css" href="' + getPath('css/ui.selectmenu.css') + '">');
+	.append('<link rel="stylesheet" type="text/css" href="' + getPath('css/ui.selectmenu.css') + '">')
+	.append('<link rel="stylesheet" type="text/css" href="' + getPath('css/settings.css') + '">');
 
-$('center:first').prepend('<div id="cageContainer"><div id="cageToolsContainer" class="ui-widget-content"></div></div>');
+$('center:first').prepend('<div id="cageContainer"><div id="cageStatsContainer"></div><div id="cageToolsContainer" class="ui-widget-content ui-corner-bottom"></div></div>');
 
 /**/
 			

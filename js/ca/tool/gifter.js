@@ -2,9 +2,9 @@ new tool('Gifter');
 
 tools.Gifter.settings = function() {
 	tools.Gifter.runtimeUpdate();
-	tools['Settings'].heading(language.gifterSetName);
-	tools['Settings'].text(language.gifterSetFilterDesc);
-	tools['Settings'].textbox(language.giftersetFilterAction, tools.Gifter.runtime.userList, 'cageGifterUserList', tools.Gifter.newRequestForm);
+	tools.Settings.heading(language.gifterSetName);
+	tools.Settings.text(language.gifterSetFilterDesc);
+	tools.Settings.textbox(language.giftersetFilterAction, tools.Gifter.runtime.userList, 'cageGifterUserList', tools.Gifter.newRequestForm);
 };
 
 tools.Gifter.runtimeUpdate = function() {
@@ -62,7 +62,7 @@ tools.Gifter.newRequestForm = function() {
 	addFunction(function(_giftData) {
 		var cageGiftUserList = [];
 		FB.api('me/friendlists', function(responseFriendlist) {
-			console.log('GIFTER - friendlists:', responseFriendlist.data);
+			//console.log('GIFTER - friendlists:', responseFriendlist.data);
 			$.each(responseFriendlist.data, function(_i, _e) {
 				if(_e.name == _giftData.userList) {
 					FB.api('/' + _e.id + '/members', function(responseListID) {

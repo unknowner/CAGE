@@ -21,6 +21,7 @@ var com = {
 		general: 'TASK_GENERAL',
 		updateGenerals: 'TASK_UPDATEGENERALS',
 		castleAgeReady: 'TASK_CAREADY',
+		showAllGenerals: 'TASK_SHOWALLGENERALS',
 		heal: 'TASK_HEAL',
 		signed: 'TASK_SIGNED',
 		userId: 'TASK_USERID',
@@ -31,7 +32,8 @@ var com = {
 		updateGifter: 'TASK_UPDATEGIFTER',
 		startGifter: 'TASK_STARTGIFTER',
 		startStash: 'TASK_STASH',
-		resize: 'TASK_RESIZE'
+		resize: 'TASK_RESIZE',
+		showSettings: 'TASK_SETTINGS'
 	},
 	// Called in content script to setup port
 	initContentScript: function (_port) {

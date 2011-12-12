@@ -12,6 +12,11 @@
 	font-size: 11px;
 	font-family: arial;
 }
+#cageStatsContainer {
+	width: 770px;
+	z-index: 3;
+	position: fixed;
+}
 #cageGeneralContainer {
 	padding: 0 0 2px 0;
 	position: fixed;
@@ -71,21 +76,18 @@
 }
 #cageToolsContainer {
 	position: fixed;
-	top: 91px;
+	top: 89px;
 	padding: 0;
 	width: 753px;
 	margin-left: 8px;
 	z-index: 1;
 	box-shadow: 0 10px 20px black;
 }
-.cageToolButton {
-
-}
 #cageMenu {
 	position: fixed;
 	height: 28px;
 	z-index: 4;
-	box-shadow: 0 10px 20px black;
+	box-shadow: 0 10px 55px black;
 	top: 61px;
 	width: 751px;
 	font-size: 12px;
@@ -327,13 +329,13 @@
 #cageStash {
 	background-image: url('http://image4.castleagegame.com/graphics/stat_gold.gif');
 	background-position: -2px -1px;
-	position: absolute;
+	position: fixed;
 	width: 29px;
-	left: 7px;
 	top: 18px;
 	height: 29px;
 	border-radius: 20px;
 	cursor: pointer;
+	margin-left: -353px;
 }
 /*
  Heal UI button
@@ -341,9 +343,9 @@
 #cageHeal {
 	background-image: url('http://image4.castleagegame.com/graphics/stat_health.gif');
 	background-position: -2px -1px;
-	position: absolute;
+	position: fixed;
 	width: 29px;
-	left: 312px;
+	margin-left: -47px;
 	top: 18px;
 	height: 29px;
 	border-radius: 20px;
@@ -355,9 +357,9 @@
 #cagePotionStamina {
 	background-image: url('http://image4.castleagegame.com/graphics/stat_stamina.gif');
 	background-position: -2px -1px;
-	position: absolute;
+	position: fixed;
 	width: 29px;
-	left: 459px;
+	margin-left: 99px;
 	top: 18px;
 	height: 29px;
 	border-radius: 20px;
@@ -369,9 +371,9 @@
 #cagePotionEnergy {
 	background-image: url('http://image4.castleagegame.com/graphics/stat_energy.gif');
 	background-position: -2px -1px;
-	position: absolute;
+	position: fixed;
 	width: 29px;
-	left: 168px;
+	margin-left: -192px;
 	top: 18px;
 	height: 29px;
 	border-radius: 20px;
@@ -386,140 +388,6 @@
 	text-shadow: 0 0 3px blue;
 	font-weight: bold;
 	font-size: 13px;
-}
-/*
- * Settings
- */
-#cageSettings {
-	position: absolute;
-	left: 0;
-	top: -1px;
-	z-index: 4;
-	width: 14px;
-	border-radius: 0 !important;
-	cursor: pointer;
-}
-#cageSettings > span.ui-icon-gear {
-	left: 5px !important;
-}
-#cageSettingsTop {
-	background-image: url('http://image4.castleagegame.com/graphics/newsfeed_b_top.jpg');
-	height: 80px;
-	background-repeat: no-repeat;
-}
-#cageSettingsTop > span {
-	position: relative;
-	left: 28px;
-	top: 28px;
-	color: white;
-	display: inline-block;
-	width: 332px;
-	background: -webkit-linear-gradient(top, #A9032A 0%,#900223 25%,#6E001A 100%);
-	text-align: center;
-	text-shadow: 0 0 13px black;
-	font-weight: bold;
-	font-size: 25px;
-	padding-top: 6px;
-	height: 38px;
-}
-#cageSettingsBottom {
-	background-image: url('http://image4.castleagegame.com/graphics/newsfeed_b_bottom.jpg');
-	height: 104px;
-	background-repeat: no-repeat;
-}
-#cageSettingsMiddle {
-	background-image: url('http://image4.castleagegame.com/graphics/newsfeed_b_middle.jpg');
-	background-repeat: repeat-y;
-	padding-top: 5px;
-}
-.cageSettingsHeading {
-	color: white;
-	font-size: 15px;
-	font-weight: bold;
-	padding: 10px 0 10px 30px;
-	background: rgba(40, 0, 0, 0.3);
-	margin-right: 1px;
-	box-shadow: 0 8px 11px 0 black;
-	margin-bottom: 10px;
-	margin-top: 20px;
-}
-.cageSettingsText {
-	padding: 15px 30px 0 30px;
-	color: white;
-}
-.cageSettingsTextbox {
-	padding: 5px 0 0 30px;
-}
-.cageSettingsTextbox > span {
-	color: white;
-	font-weight: bold;
-	padding-left: 10px;
-	width: 250px;
-	display: inline-block;
-}
-.cageSettingsTextbox > input {
-	width: 300px;
-	background-color: rgba(40, 0, 0, 0.2);
-	border-radius: 5px;
-	color: white;
-	padding-left: 5px;
-}
-.cageSettingsTextbox > button {
-	width: 95px;
-	height: 22px;
-	top: 2px;
-	float: right;
-	position: relative;
-	right: 35px;
-	background-image: url('http://image4.castleagegame.com/graphics/guild_button_submit.gif');
-	border-radius: 5px;
-	background-position: -15px;
-	cursor: pointer;
-}
-.cageSettingsButton {
-	padding: 5px 0 0 30px;
-}
-.cageSettingsButton > span {
-	color: white;
-	font-weight: bold;
-	padding-left: 10px;
-	width: 250px;
-	display: inline-block;
-	padding-top: 4px;
-}
-.cageSettingsButton > button {
-	width: 95px;
-	height: 22px;
-	top: 2px;
-	float: right;
-	position: relative;
-	right: 351px;
-	background-image: url('http://image4.castleagegame.com/graphics/guild_button_submit.gif');
-	border-radius: 5px;
-	background-position: -15px;
-	cursor: pointer;
-}
-.cageSettingsOnOff {
-	padding: 8px 0 0 30px;
-}
-.cageSettingsOnOff > span {
-	color: white;
-	top: 1px;
-	font-weight: bold;
-	position: relative;
-	cursor: pointer;
-}
-.cageSettingsOnOff > button {
-	height: 21px;
-	border: 0;
-	width: 29px;
-	margin-left: 10px;
-	margin-right: 5px;
-	background-repeat: no-repeat;
-	background-color: transparent;
-	position: relative;
-	background-image: url('http://image4.castleagegame.com/graphics/town_button_collapse.gif');
-	cursor: pointer;
 }
 #cageDemiContainer {
 	position: fixed;
