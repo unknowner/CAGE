@@ -11,7 +11,7 @@ function tool(_id) {
 		id : 'cageToolButton' + _id,
 		add : function(_text, _call) {
 			$('#cageToolsContainer').append('<button id="' + this.id + '" class="cageToolButton">' + _text + '</button>');
-			$('#' + this.id).button().removeClass('ui-corner-all').addClass('ui-corner-right').click(_call);
+			$('#' + this.id).button().click(_call).removeClass('ui-corner-all').addClass('ui-corner-bottom');
 		},
 		enable : function() {
 			$('#' + this.id).button("option", "disabled", false).removeClass('ui-state-hover');
@@ -48,7 +48,7 @@ function initTools() {
 		tools['Page'].runtime[_startURL]();
 	}
 	_startURL = undefined;
-	tools['Theme'].start();
+	//tools.Theme.start();
 	get('keep.php', function(_keepdata) {
 		CastleAge.bqh = $('input[name="bqh"]:first', _keepdata).val();
 		tools['PotionStamina'].work(_keepdata);

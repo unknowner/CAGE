@@ -23,7 +23,7 @@ tools['Page'].runtime['guild_battle.php'] = function() {
 	}
 
 	// resize top image
-	$('#guild_battle_banner_section').css('height', 190).find('div').eq(5).css('marginTop', 0);
+	$('#guild_battle_banner_section').css('height', 190).find('div:contains("VICTOR")').next().next().css('marginTop', 10);
 	$('div:contains("The Battle Between"):last').parent().css('marginTop', 20);
 	$('input[src*="collect_reward_button2.jpg"]').parents('div:eq(2)').css('marginTop', 0);
 

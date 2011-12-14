@@ -1,21 +1,16 @@
 {
 	"name": "CAGE - Castle Age Game Enhancer [β]",
-	"version": "1.0.55",
+	"version": "1.1.0",
 	"description": "CAGE makes playing Castle Age on Facebook a bit easier and a lot more fun ;)",
 	"background_page": "background.html",
 	"content_scripts": [
 		{
 		"matches": ["*://web.castleagegame.com/castle/*"],
-		"css": [
-					"css/cage.css",
-					"css/ca_cage.css",
-					"css/ui.selectmenu.css"
-			],
 		"js": [
 			"js/jquery.js",
 			"js/jqueryui.js",
 			"js/ui.selectmenu.js",
-			"js/chrome_com.js",
+			"js/chrome.js",
 			"js/common.js",
 			"js/language.js",
 			
@@ -23,24 +18,23 @@
 			"js/ca/ca_tools.js",
 			"js/ca/ca_receiver.js",
 			
-			"js/ca/tool/cage.js",
-			"js/ca/tool/assister.js",
-			"js/ca/tool/gifter.js",
 			"js/ca/tool/functions.js",
-			"js/ca/tool/page.js",
-			"js/ca/tool/generals.js",
-			"js/ca/tool/eliteguard.js",
-			"js/ca/tool/heal.js",
-			"js/ca/tool/stash.js",
+			"js/ca/tool/cage.js",
 			"js/ca/tool/nav.js",
-			"js/ca/tool/abilities.js",
-			"js/ca/tool/potionStamina.js",
-			"js/ca/tool/potionEnergy.js",
 			"js/ca/tool/settings.js",
+			
+			"js/ca/tool/abilities.js",
 			"js/ca/tool/armyFiller.js",
+			"js/ca/tool/assister.js",
 			"js/ca/tool/demi.js",
-
-			"js/ca/setting/theme.js",
+			"js/ca/tool/eliteguard.js",
+			"js/ca/tool/generals.js",
+			"js/ca/tool/gifter.js",
+			"js/ca/tool/heal.js",
+			"js/ca/tool/page.js",
+			"js/ca/tool/potionEnergy.js",
+			"js/ca/tool/potionStamina.js",
+			"js/ca/tool/stash.js",
 			
 			"js/ca/page/allpages.js",
 			"js/ca/page/index.js",
@@ -64,6 +58,7 @@
 			"js/ca/page/army_member.js",
 			"js/ca/page/battle_expansion_monster.js",
 			"js/ca/page/guildv2_battle_monster.js",
+			"js/ca/page/treasure_chest.js",
 			
 			"js/castleage.js"
 			],
@@ -71,13 +66,10 @@
 	},
 		{
 		"matches": ["*://apps.facebook.com/castle_age/*"],
-		"css": [
-					"css/fb_cage.css"
-			],
 		"js": [
 			"js/jquery.js",
 			"js/jqueryui.js",
-			"js/chrome_com.js",
+			"js/chrome.js",
 			"js/common.js",
 			"js/fb/fb_receiver.js",
 			"js/fb/fb_start.js",

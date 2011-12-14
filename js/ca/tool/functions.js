@@ -69,3 +69,5 @@ tools['Functions'].init = function() {
 	addFunction(tools['Functions'].stat_increase_ticker, null, true, false);
 
 };
+
+

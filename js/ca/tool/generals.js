@@ -6,9 +6,8 @@ tools.General.runtime = {};
 // settings
 tools.General.settings = function() {
 	tools.General.runtimeUpdate();
-	tools['Settings'].heading(language.generalsSetName);
-	tools['Settings'].text(language.generalsSetFavOnlyDesc);
-	tools['Settings'].onoff(language.generalsSetFavOnlyAction, tools.General.runtime.onlyFavourites, 'onlyFavouritesGenerals', tools.General.runtimeUpdate);
+	tools.Settings.heading(language.generalsSetName);
+	tools.Settings.onoff(language.generalsSetFavOnlyAction, tools.General.runtime.onlyFavourites, 'onlyFavouritesGenerals', tools.General.runtimeUpdate);
 };
 
 tools.General.runtimeUpdate = function() {
@@ -21,7 +20,7 @@ tools.General.runtimeUpdate = function() {
 		tools.General.runtime.general = {};
 	}
 };
-//get current general from CA and set it in fb ui
+//get current general from CA
 tools.General.get = function() {
 	if($('div[style*="general_plate.gif"] > div:first').length > 0) {
 		tools.General.current = $('div[style*="general_plate.gif"] > div:first').text().trim();
@@ -30,10 +29,10 @@ tools.General.get = function() {
 };
 // Set general image & name in fb ui
 tools.General.set = function() {
-
 	var _g = tools.General.runtime.general[tools.General.current];
+	com.send(com.task.general, com.port.facebook, _g);
 	$('#cageGeneralImage').attr('src', _g.image);
-	$('#cageGeneralName').text(tools.General.current);
+	$('#cageGeneralName').text(_g.name);
 	$('#cageGeneralAttack').text(_g.attack);
 	$('#cageGeneralDefense').text(_g.defense);
 };
@@ -102,18 +101,16 @@ tools.General.parsePage = function(_data) {
 	_names.sort();
 	for(var i = 0, len = _names.length; i < len; i++) {
 		var _e = tools.General.runtime.general[_names[i]];
-		$('#cageAllGenerals').append($('<span>').append($('<img class="cageSelectorImage ui-corner-all cageSelectorGeneral" src="' + _e.image + '" alt="' + _e.name + '" />').click(function() {
+		$('#cageAllGenerals').append($('<div>').append($('<img src="' + _e.image + '" alt="' + _e.name + '" />').click(function() {
 			console.log($(this).attr('alt'));
 			tools.General.setByName($(this).attr('alt'));
 			$('#cageGeneralSelector').slideToggle('slow');
 		}).hover(function() {
 			var _general = tools.General.runtime.general[$(this).attr('alt')];
-			$(this).addClass('cageSelectorGeneralHover');
 			$('#cageSelectorInfo').html(_general.name + ' (' + _general.level + ') <img src="http://image4.castleagegame.com/graphics/demi_symbol_2.gif" style="height:12px;"/> ' + _general.attack + ' <img src="http://image4.castleagegame.com/graphics/demi_symbol_3.gif" style="height:12px;"/> ' + _general.defense + ' - ' + _general.text);
 		}, function() {
-			$(this).removeClass('cageSelectorGeneralHover');
 			$('#cageSelectorInfo').html('');
-		})).append($('<img class="cageAddFavourite" src="' + chrome.extension.getURL('img/fav.png') + '" alt="' + _e.name + '" />').hover(tools.General.hoverAddIn, tools.General.hoverAddOut).click(tools.General.clickAdd)));
+		})).append($('<img src="' + getPath('img/fav.png') + '" alt="' + _e.name + '" />').hover(tools.General.hoverAddIn, tools.General.hoverAddOut).click(tools.General.clickAdd)));
 		if(_e.charge) {
 			$('#cageAllGenerals span:last').append('<div class="cageCharge" style="height:' + (50 * _e.charge / 100) + 'px;' + (_e.charge < 100 ? '' : 'background-color:#4F4;') + '"></div>');
 		}
@@ -122,7 +119,7 @@ tools.General.parsePage = function(_data) {
 		var _tempFav = tools.General.runtime.favourites;
 		tools.General.runtime.favourites = [];
 		for(var i = 0, len = _tempFav.length; i < len; i++) {
-			$('#cageAllGenerals > span > img.cageAddFavourite[alt="' + _tempFav[i] + '"]:first').click();
+			$('#cageAllGenerals > div > img:last[alt="' + _tempFav[i] + '"]:first').click();
 		}
 	}
 	tools.General.get();
@@ -131,7 +128,7 @@ tools.General.parsePage = function(_data) {
 tools.General.clickAdd = function() {
 	tools.General.runtime.favourites.push($(this).attr('alt'));
 	item.set('favouriteGenerals', tools.General.runtime.favourites.sort());
-	$(this).mouseleave().parent().hide().clone(true, true).appendTo('#cageFavouriteGenerals').show().find('img.cageAddFavourite').unbind('click').click(tools.General.clickRemove).hover(tools.General.hoverRemoveIn, tools.General.hoverRemoveOut);
+	$(this).mouseleave().parent().hide().clone(true, true).appendTo('#cageFavouriteGenerals').show().find('img:last').unbind('click').click(tools.General.clickRemove).hover(tools.General.hoverRemoveIn, tools.General.hoverRemoveOut);
 };
 tools.General.clickRemove = function() {
 	var _name = $(this).attr('alt');
@@ -142,40 +139,45 @@ tools.General.clickRemove = function() {
 };
 tools.General.hoverAddIn = function() {
 	$('#cageSelectorInfo').html('Add ' + $(this).attr('alt') + ' to favourites');
-	$(this).attr('src', chrome.extension.getURL('img/favadd.png'));
+	$(this).attr('src', getPath('img/favadd.png'));
 };
 tools.General.hoverAddOut = function() {
 	$('#cageSelectorInfo').html('');
-	$(this).attr('src', chrome.extension.getURL('img/fav.png'));
+	$(this).attr('src', getPath('img/fav.png'));
 };
 tools.General.hoverRemoveIn = function() {
 	$('#cageSelectorInfo').html('Remove ' + $(this).attr('alt') + ' from favourites');
-	$(this).attr('src', chrome.extension.getURL('img/favdel.png'));
+	$(this).attr('src', getPath('img/favdel.png'));
 };
 tools.General.hoverRemoveOut = function() {
 	$('#cageSelectorInfo').html('');
-	$(this).attr('src', chrome.extension.getURL('img/fav.png'));
+	$(this).attr('src', getPath('img/fav.png'));
 };
+// show/hide generals
+tools.General.showAll = function() {
+	var _speed = 'slow';
+	if(tools.General.runtime.onlyFavourites == 'true') {
+		$('#cageAllGenerals').hide();
+		_speed = 'fast';
+	} else {
+		$('#cageAllGenerals').show();
+	}
+	$('#cageGeneralSelector').slideToggle(_speed);
+}
 // init general tool @fb
 tools.General.init = function() {
 	tools.General.runtimeUpdate();
-	var _elm = {
-		general : '<div id="cageGeneralContainer" class="ui-corner-br ui-widget-content"></div>',
-		generalImageContainer : '<div id="cageGeneralImageContainer" class="ui-state-active ui-corner-all"></div>',
-		generalImage : '<img id="cageGeneralImage" class="ui-corner-all" src="http://image4.castleagegame.com/graphics/shield_wait.gif"/>',
-		generalName : '<span id="cageGeneralName" class="ui-state-active ui-corner-right"></span>',
-		generalValues : '<span id="cageGeneralValues" class="ui-state-active ui-corner-br"><img src="http://image4.castleagegame.com/graphics/demi_symbol_2.gif" class="cageGeneralAttDefImg" /><span id="cageGeneralAttack" class="cageGeneralAttDefText"></span><img src="http://image4.castleagegame.com/graphics/demi_symbol_3.gif" class="cageGeneralAttDefImg" /><span id="cageGeneralDefense" class="cageGeneralAttDefText"></span></span>',
-		generalSelector : '<div id="cageGeneralSelector" class="ui-widget-content ui-corner-bottom">',
-	}
-	$('#cageContainer').append($(_elm.general).prepend($(_elm.generalImageContainer).append(_elm.generalImage)).append(_elm.generalName).append(_elm.generalValues)).prepend(_elm.generalSelector);
-	$('#cageGeneralImage').click(function() {
-		if(tools.General.runtime.onlyFavourites == 'true') {
-			$('#cageAllGenerals').hide();
-		} else {
-			$('#cageAllGenerals').show();
-		}
-		$('#cageGeneralSelector').slideToggle('slow');
-	});
+	/*var _elm = {
+	 general : '<div id="cageGeneralContainer" class="ui-corner-br ui-widget-content"></div>',
+	 generalImageContainer : '<div id="cageGeneralImageContainer" class="ui-state-active ui-corner-all"></div>',
+	 generalImage : '<img id="cageGeneralImage" class="ui-corner-all" src="http://image4.castleagegame.com/graphics/shield_wait.gif"/>',
+	 generalName : '<span id="cageGeneralName" class="ui-state-active ui-corner-right"></span>',
+	 generalValues : '<span id="cageGeneralValues" class="ui-state-active ui-corner-br"></span>',
+	 generalSelector : '<div id="cageGeneralSelector" class="ui-widget-content ui-corner-bottom">',
+	 }
+	 $('#cageContainer').append($(_elm.general).prepend($(_elm.generalImageContainer).append(_elm.generalImage)).append(_elm.generalName).append(_elm.generalValues)).prepend(_elm.generalSelector);
+	 $('#cageGeneralImage').click(tools.General.showAll);*/
+	$('#cageContainer').append('<div id="cageGeneralSelector" class="ui-widget-content ui-corner-bottom">');
 	tools.General.update();
 
 };

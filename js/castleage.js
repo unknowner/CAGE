@@ -1,4 +1,4 @@
-// CAGE stuff working on Castle Age site - Firefox
+// CAGE stuff working on Castle Age site
 var CastleAge = {
 	bqh : null,
 	signed_request : null,
@@ -9,26 +9,23 @@ var CastleAge = {
 };
 
 var CAGE = {
-	version : '1.0.55β',
+	version : '1.1.0β',
 	fastAnim : 200,
 	slowAnim : 600
 };
 
 com.initContentScript(com.port.castleAge);
+$('head')
+	.append('<link id="cageTheme" rel="stylesheet" type="text/css" href="' + getPath('css/dark-hive/jquery-ui.css') + '">')
+	.append('<link rel="stylesheet" type="text/css" href="' + getPath('css/cage.css') + '">')
+	.append('<link rel="stylesheet" type="text/css" href="' + getPath('css/ca_cage.css') + '">')
+	.append('<link rel="stylesheet" type="text/css" href="' + getPath('css/ui.selectmenu.css') + '">')
+	.append('<link rel="stylesheet" type="text/css" href="' + getPath('css/settings.css') + '">');
 
-$('head').append('<link id="cageTheme" rel="stylesheet" type="text/css" href="' + chrome.extension.getURL('css/dark-hive/') + 'jquery-ui.css">');
-
-var _elm = {
-	cage : '<div id="cageContainer"></div>',
-	tools : '<div id="cageToolsContainer" class="ui-widget-content ui-corner-right"></div>',
-	settings : '<div id="cageSettingContainer" class="ui-widget-content ui-corner-right"></div>'
-};
-
-$(document.body).prepend($(_elm.cage).append(_elm.tools).append(_elm.settings));
-_elm = undefined;
+$('center:first').prepend('<div id="cageContainer"><div id="cageStatsContainer"></div><div id="cageToolsContainer" class="ui-widget-content ui-corner-bottom"></div></div>');
 
 /**/
-
+			
 CastleAge.startInterval = window.setInterval(function() {
 	if(CastleAge.signed_request !== null && CastleAge.userId !== null) {
 		window.clearInterval(CastleAge.startInterval);
