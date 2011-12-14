@@ -1,13 +1,16 @@
 new tool('cage');
 
 tools.cage.settings = function() {
-	tools['Settings'].heading('CAGE - V' + CAGE.version);
-	tools['Settings'].text(language.cageSetClearDataDesc);
-	tools['Settings'].button(language.cageSetClearDataAction, tools.cage.clearSavedData);
-	tools['Settings'].text(language.cageSetAnimationDesc);
-	tools['Settings'].onoff(language.cageSetAnimationAction, tools.cage.runtime.fxOn, 'fxOn', function() {
+	tools.Settings.heading('CAGE - V' + CAGE.version);
+	tools.Settings.text(language.cageSetClearDataDesc);
+	tools.Settings.button(language.cageSetClearDataAction, tools.cage.clearSavedData);
+	tools.Settings.onoff(language.cageSetAnimationAction, tools.cage.runtime.fxOn, 'cageFXOnOff', function() {
 		tools.cage.runtimeUpdate();
 		tools.cage.toggleFx();
+	});
+	//tools.Settings.text(language.cageSetThemeDesc);
+	tools.Settings.dropdown(language.cageSetThemeAction, tools.cage.runtime.themes, tools.cage.runtime.theme, 'cageTheme', function(_value) {
+		$('#cageTheme').attr('href', tools.cage.runtime.themes[_value] + 'jquery-ui.css');
 	});
 };
 
@@ -15,7 +18,32 @@ tools.cage.runtimeUpdate = function() {
 	if(!tools.cage.runtime) {
 		tools.cage.runtime = {};
 	}
-	tools.cage.runtime.fxOn = item.get('fxOn', 'true');
+	tools.cage.runtime.fxOn = item.get('cageFXOnOff', 'true');
+	tools.cage.runtime.theme = item.get('cageTheme', 'true');
+	tools.cage.runtime.themes = {
+		'Dark Hive (default)' : getPath('css/dark-hive/'),
+		'Base' : 'http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/',
+		'Black tie' : 'http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/black-tie/',
+		'Blitzer' : 'http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/blitzer/',
+		'Darkness' : 'http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/ui-darkness/',
+		'Dot Luv' : 'http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/dot-luv/',
+		'Excite Bike' : 'http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/excite-bike/',
+		'Flick' : 'http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/flick/',
+		'Hot Sneaks' : 'http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/hot-sneaks/',
+		'Humanity' : 'http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/humanity/',
+		'Le Frog' : 'http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/le-frog/',
+		'Lightness' : 'http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/ui-lightness/',
+		'Mint Choc' : 'http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/mint-choc/',
+		'Overcast' : 'http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/overcast/',
+		'Pepper-Grinder' : 'http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/pepper-grinder/',
+		'Smoothness' : 'http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/smoothness/',
+		'South Street' : 'http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/south-street/',
+		'Start' : 'http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/start/',
+		'Sunny' : 'http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/sunny/',
+		'Trontastic' : 'http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/trontastic/',
+		'Vader' : 'http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/vader/'
+	};
+	$('#cageTheme').attr('href', tools.cage.runtime.themes[tools.cage.runtime.theme] + 'jquery-ui.css');
 };
 
 tools.cage.clearSavedData = function() {
@@ -31,10 +59,8 @@ tools.cage.clearSavedData = function() {
 };
 tools.cage.toggleFx = function() {
 	var _fx = tools.cage.runtime.fxOn == 'true' ? false : true;
-	console.log(_fx);
 	$.fx.off = _fx;
 	addFunction(function(_cafx) {
-		console.log(_cafx);
 		$.fx.off = _cafx;
 	}, _fx, true, true);
 };

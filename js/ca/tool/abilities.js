@@ -145,7 +145,7 @@ tools.Abilities.start = function() {
 
 		$('div.imgButton[id^="large_image_"]').parent().css('cssText', 'float:left;padding:8px;');
 		$('#cageAbilitiesContainer').animate({
-			'top' : 52
+			'top' : 92
 		}, 'slow');
 	});
 };
@@ -154,7 +154,7 @@ tools.Abilities.done = function() {
 	tools.Abilities.fbButton.enable();
 };
 tools.Abilities.init = function() {
-	$('#cageContainer').append('<div id="cageAbilitiesContainer" class="ui-corner-br ui-widget-content"></div>');
+	$('#cageContainer').append('<div id="cageAbilitiesContainer" class="ui-widget-content"></div>');
 	tools.Abilities.fbButton.add(language.abilitiesButton, function() {
 		tools.Abilities.fbButton.disable();
 		tools.Abilities.start();

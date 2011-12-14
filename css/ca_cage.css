@@ -1,11 +1,9 @@
-/* Chrome */
+html {
+	overflow: auto;
+}
 body {
 	overflow: auto !important;
 	background-attachment: fixed;
-}
-/* Chrome */
-body > center {
-	width: 778px !important;
 }
 #main_bntp {
 	display: none !important;
@@ -17,38 +15,43 @@ body > center {
 	display: none !important;
 }
 #main_sts_container {
-	height: 70px !important;
 	position: fixed !important;
 	z-index: 2
 }
+#main_sts {
+	background-position: -5px 3px !important;
+	width: 750px !important;
+	padding-top: 3px;
+}
 div.game {
-	width: 779px !important;
+	width: 770px !important;
 }
 #globalcss {
 	padding-left: 10px !important;
 }
 #app_body {
 	width: 740px !important;
+	padding: 25px 5px 5px 5px !important;
 	margin-top: 8px !important;
-	box-shadow: inset 0 0 5px 5px rgba(0,0,0,0.5)
 }
 #nvbar {
 	display: none !important;
 }
 #app_body_container {
-	padding-top: 70px !important;
+	padding-top: 100px !important;
 }
 #globalContainer {
-	width: 778px !important;
+	width: 770px !important;
 }
 #AjaxLoadIcon {
-	width: 80px !important;
-	position: fixed !important;
-	height: 80px !important;
-	left: 350px !important;
 	top: 150px !important;
+	width: 80px !important;
+	position: fixed;
+	margin-left: 50%;
+	left: -40px;
 	box-shadow: 0 5px 21px 10px black, 0 0 4px 4px black inset;
 	border-radius: 50%;
+	display: none;
 }
 .MonsterListBackground {
 	background-image: url('http://image4.castleagegame.com/graphics/monsterlist_container.gif');
@@ -152,4 +155,10 @@ div.connect_castlepb_bg {
 }
 iframe.FB_UI_Dialog {
 	height: 537px !important;
+}
+.cageQuestSwitchGeneral {
+	top: -14px;
+	position: relative;
+	width: 78px;
+	cursor: pointer;
 }

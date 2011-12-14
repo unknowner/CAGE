@@ -6,18 +6,25 @@ tools['Page'].runtime['allPages'] = function() {
 		CastleAge.bqh = $('input[name="bqh"]:first').val();
 	}
 
-	// remove CA:HOD ad
-	$('a[href="http://apps.facebook.com/castle_hod/?xprom=cax"]:first').parent('div:first').hide();
+	// remove CA:HOD ad, etc...
+	$('a[href="http://apps.facebook.com/castle_hod/?xprom=cax"]:first').parent('div:first').remove();
 	if($('#globalContainer > div:first').height() == 80) {
 		$('#globalContainer > div:first').hide();
 	}
+	$('#nvbar_div_end').remove();
+	$('#hinvite_help').remove();
+
 	// xp to next lvl
 	$('#main_ststb > div:first').css({
 		'height' : 16,
 		'marginBottom' : -2
 	});
+	$('#st_5').css('margin', '4px 0 0 10px');
 	$('div.st_row_2').css('marginTop', 2);
-	$('#st_5 div.lvlBr div').css('height', 13).addClass('ui-corner-all');
+	$('#st_5 div.lvlBr div').css({
+		'height' : 12,
+		'borderRadius' : 3
+	});
 	$('#st_2_5 strong').text(/\d+/.exec($('#st_5').attr('title'))[0] + ' to ' + /\d+\/(\d+)/.exec($('#st_2_5 strong').text())[1]);
 
 	// reworkin results
@@ -65,5 +72,8 @@ tools['Page'].runtime['allPages'] = function() {
 	} else {
 		$('#results_main_wrapper').css('border', 0);
 	}
+
+	// fix loader
+	$('#AjaxLoadIcon').removeClass('shield_wait');
 
 };

@@ -37,7 +37,7 @@ tools.Page.get_cached_ajax = function() {
 	get_cached_ajax = function(url, get_type) {
 		$('body').animate({
 			scrollTop : 0
-		}, 'slow');'fast'
+		}, 'slow');
 		// just_body_cache
 		var url_key = url;
 		if(url.indexOf('?') != -1) {

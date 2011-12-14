@@ -2,9 +2,9 @@ new tool('Gifter');
 
 tools.Gifter.settings = function() {
 	tools.Gifter.runtimeUpdate();
-	tools['Settings'].heading(language.gifterSetName);
-	tools['Settings'].text(language.gifterSetFilterDesc);
-	tools['Settings'].textbox(language.giftersetFilterAction, tools.Gifter.runtime.userList, 'cageGifterUserList', tools.Gifter.newRequestForm);
+	tools.Settings.heading(language.gifterSetName);
+	tools.Settings.text(language.gifterSetFilterDesc);
+	tools.Settings.textbox(language.giftersetFilterAction, tools.Gifter.runtime.userList, 'cageGifterUserList', tools.Gifter.newRequestForm);
 };
 
 tools.Gifter.runtimeUpdate = function() {
@@ -62,7 +62,7 @@ tools.Gifter.newRequestForm = function() {
 	addFunction(function(_giftData) {
 		var cageGiftUserList = [];
 		FB.api('me/friendlists', function(responseFriendlist) {
-			console.log('GIFTER - friendlists:', responseFriendlist.data);
+			//console.log('GIFTER - friendlists:', responseFriendlist.data);
 			$.each(responseFriendlist.data, function(_i, _e) {
 				if(_e.name == _giftData.userList) {
 					FB.api('/' + _e.id + '/members', function(responseListID) {
@@ -90,15 +90,15 @@ tools.Gifter.newRequestForm = function() {
 					user_ids : cageGiftUserList
 				})
 			}
-			if(localStorage[FB._session.uid + '_' + 'CAGEsendGiftTo'] !== undefined && JSON.parse(localStorage[FB._session.uid + '_' + 'CAGEsendGiftTo']).length !== 0) {
-				console.log(JSON.parse(localStorage[FB._session.uid + '_' + 'CAGEsendGiftTo']).length);
-				console.log('GIFTER - RTF list: ', JSON.parse(localStorage[FB._session.uid + '_' + 'CAGEsendGiftTo']));
+			if(localStorage[FB.getAuthResponse().userID + '_' + 'CAGEsendGiftTo'] !== undefined && JSON.parse(localStorage[FB.getAuthResponse().userID + '_' + 'CAGEsendGiftTo']).length !== 0) {
+				console.log(JSON.parse(localStorage[FB.getAuthResponse().userID + '_' + 'CAGEsendGiftTo']).length);
+				console.log('GIFTER - RTF list: ', JSON.parse(localStorage[FB.getAuthResponse().userID + '_' + 'CAGEsendGiftTo']));
 				_ui.filters.unshift({
 					name : 'Return the favour',
-					user_ids : localStorage[FB._session.uid + '_' + 'CAGEsendGiftTo']
+					user_ids : localStorage[FB.getAuthResponse().userID + '_' + 'CAGEsendGiftTo']
 				})
 			} else {
-				localStorage.removeItem(FB._session.uid + '_' + 'CAGEsendGiftTo');
+				localStorage.removeItem(FB.getAuthResponse().userID + '_' + 'CAGEsendGiftTo');
 			}
 
 			FB.ui(_ui, function(result) {
@@ -117,9 +117,9 @@ tools.Gifter.newRequestForm = function() {
 					//_resultContainer.html('Sending gifts...<br>').show();
 					// get all ids from sent gifts and remove them from the list
 					console.log('GIFTER - check for RTFs');
-					if(localStorage[FB._session.uid + '_' + 'CAGEsendGiftTo'] !== undefined) {
+					if(localStorage[FB.getAuthResponse().userID + '_' + 'CAGEsendGiftTo'] !== undefined) {
 						console.log('GIFTER - found open RTF');
-						var _store = JSON.parse(localStorage[FB._session.uid + '_' + 'CAGEsendGiftTo']);
+						var _store = JSON.parse(localStorage[FB.getAuthResponse().userID + '_' + 'CAGEsendGiftTo']);
 					}
 					var ids = result.request_ids;
 					var _batch = [];
@@ -141,10 +141,10 @@ tools.Gifter.newRequestForm = function() {
 									_store.splice(_store.indexOf(myObject.to.id), 1);
 									_fr = '- <b>Favour returned</b>';
 									if(_store.length > 0) {
-										localStorage[FB._session.uid + '_' + 'CAGEsendGiftTo'] = JSON.stringify(_store);
+										localStorage[FB.getAuthResponse().userID + '_' + 'CAGEsendGiftTo'] = JSON.stringify(_store);
 									} else {
 										console.log('GIFTER - clear RTF list');
-										localStorage.removeItem(FB._session.uid + '_' + 'CAGEsendGiftTo');
+										localStorage.removeItem(FB.getAuthResponse().userID + '_' + 'CAGEsendGiftTo');
 									}
 								}
 								_resultContainer.html(_resultContainer.html() + '<br>Sent gift to: ' + myObject.to.name + ' (' + myObject.to.id + ') ' + _fr);

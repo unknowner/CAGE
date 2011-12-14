@@ -3,7 +3,7 @@ new tool('Demi');
 tools.Demi.start = function() {
 
 	var _demi = $('#cageDemiContainer');
-	$('body').append('<div id="cageDemiResult">');
+	$('body > center').append('<div id="cageDemiResult">');
 	get('symbols.php', function(_demipage) {
 		$('div[id^="symbol_displaysymbols"]', _demipage).each(function(_i, _e) {
 			var _text = $(_e).text(),
@@ -11,8 +11,8 @@ tools.Demi.start = function() {
 					_points = /You have (\d+)/.exec(_text)[1]
 			_demi.append('<div><div id="cageDemi' + _deity + '" class="cageDemiImage" style="background-image:url(http://image4.castleagegame.com/graphics/deity_' + _deity + '.jpg);" symbol="' + (_i + 1) + '"><span>' + _points + '<br>' + _deity.substr(0, 1).toUpperCase() + _deity.substr(1) + '</span></div></div>');
 		})
-		_demi.animate({
-			'top' : 52
+		_demi.show().animate({
+			'top' : 80
 		}, 'slow');
 		$('div.cageDemiImage').click(function() {
 			console.log($(this).attr('symbol'));
@@ -23,7 +23,7 @@ tools.Demi.start = function() {
 					zIndex : 3999,
 					width : 440,
 					minHeight : 0, 
-					position : [180, 20],
+					position : ['center', 50],
 					draggable : false,
 					buttons : {
 						"Ok" : function() {
@@ -36,7 +36,7 @@ tools.Demi.start = function() {
 			_demi.animate({
 				'top' : -100
 			}, 'slow', function() {
-				_demi.empty();
+				_demi.hide().empty();
 			});
 			tools.Demi.done();
 		})
@@ -47,7 +47,7 @@ tools.Demi.done = function() {
 	tools.Demi.fbButton.enable();
 };
 tools.Demi.init = function() {
-	$('#cageContainer').append('<div id="cageDemiContainer" class="ui-corner-br ui-widget-content"></div>');
+	$('#cageContainer').append('<div id="cageDemiContainer" class="ui-corner-bottom ui-widget-content"></div>');
 	tools.Demi.fbButton.add(language.demiButton, function() {
 		tools.Demi.fbButton.disable();
 		tools.Demi.start();
