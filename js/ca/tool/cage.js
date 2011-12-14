@@ -4,7 +4,6 @@ tools.cage.settings = function() {
 	tools.Settings.heading('CAGE - V' + CAGE.version);
 	tools.Settings.text(language.cageSetClearDataDesc);
 	tools.Settings.button(language.cageSetClearDataAction, tools.cage.clearSavedData);
-	//tools.Settings.text(language.cageSetAnimationDesc);
 	tools.Settings.onoff(language.cageSetAnimationAction, tools.cage.runtime.fxOn, 'cageFXOnOff', function() {
 		tools.cage.runtimeUpdate();
 		tools.cage.toggleFx();

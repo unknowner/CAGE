@@ -15,6 +15,7 @@
 #cageStatsContainer {
 	width: 770px;
 	z-index: 3;
+	height: 0;
 	position: fixed;
 }
 #cageGeneralContainer {
@@ -329,41 +330,44 @@
 #cageStash {
 	background-image: url('http://image4.castleagegame.com/graphics/stat_gold.gif');
 	background-position: -2px -1px;
-	position: fixed;
+	position: absolute;
 	width: 29px;
 	top: 18px;
 	height: 29px;
 	border-radius: 20px;
 	cursor: pointer;
-	margin-left: -353px;
+	float: left;
+	left: 17px;
 }
 /*
  Heal UI button
  */
 #cageHeal {
-	background-image: url('http://image4.castleagegame.com/graphics/stat_health.gif');
-	background-position: -2px -1px;
-	position: fixed;
-	width: 29px;
-	margin-left: -47px;
-	top: 18px;
-	height: 29px;
-	border-radius: 20px;
-	cursor: pointer;
+background-image: url('http://image4.castleagegame.com/graphics/stat_health.gif');
+background-position: -2px -1px;
+position: absolute;
+width: 29px;
+top: 18px;
+height: 29px;
+border-radius: 20px;
+cursor: pointer;
+float: left;
+left: 323px;
 }
 /*
  Stamina Potion UI button
  */
 #cagePotionStamina {
-	background-image: url('http://image4.castleagegame.com/graphics/stat_stamina.gif');
-	background-position: -2px -1px;
-	position: fixed;
-	width: 29px;
-	margin-left: 99px;
-	top: 18px;
-	height: 29px;
-	border-radius: 20px;
-	cursor: pointer;
+background-image: url('http://image4.castleagegame.com/graphics/stat_stamina.gif');
+background-position: -2px -1px;
+width: 29px;
+top: 18px;
+height: 29px;
+border-radius: 20px;
+cursor: pointer;
+float: left;
+left: 469px;
+position: absolute;
 }
 /*
  Energy Potion UI button
@@ -371,13 +375,14 @@
 #cagePotionEnergy {
 	background-image: url('http://image4.castleagegame.com/graphics/stat_energy.gif');
 	background-position: -2px -1px;
-	position: fixed;
+	position: absolute;
 	width: 29px;
-	margin-left: -192px;
 	top: 18px;
 	height: 29px;
 	border-radius: 20px;
 	cursor: pointer;
+	float: left;
+	left: 178px;
 }
 /*
  * Potions count

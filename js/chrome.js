@@ -1,3 +1,7 @@
+/*
+ * CHROME only
+ */
+
 // Chrome get path to internals
 function getPath(_file){
 	return chrome.extension.getURL(_file);

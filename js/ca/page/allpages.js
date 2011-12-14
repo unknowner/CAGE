@@ -73,4 +73,7 @@ tools['Page'].runtime['allPages'] = function() {
 		$('#results_main_wrapper').css('border', 0);
 	}
 
+	// fix loader
+	$('#AjaxLoadIcon').removeClass('shield_wait');
+
 };

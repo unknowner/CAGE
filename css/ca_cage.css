@@ -1,3 +1,6 @@
+html {
+	overflow: auto;
+}
 body {
 	overflow: auto !important;
 	background-attachment: fixed;
@@ -41,13 +44,14 @@ div.game {
 	width: 770px !important;
 }
 #AjaxLoadIcon {
-	width: 80px !important;
-	position: fixed !important;
-	height: 80px !important;
-	left: 350px !important;
 	top: 150px !important;
+	width: 80px !important;
+	position: fixed;
+	margin-left: 50%;
+	left: -40px;
 	box-shadow: 0 5px 21px 10px black, 0 0 4px 4px black inset;
 	border-radius: 50%;
+	display: none;
 }
 .MonsterListBackground {
 	background-image: url('http://image4.castleagegame.com/graphics/monsterlist_container.gif');

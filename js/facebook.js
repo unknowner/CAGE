@@ -10,11 +10,12 @@ $('head')
 	.append('<link id="cageTheme" rel="stylesheet" type="text/css" href="' + getPath('css/dark-hive/') + 'jquery-ui.css">')
 	.append('<link rel="stylesheet" type="text/css" href="' + getPath('css/fb_cage.css') + '">');
 
-window.onresize = function(evt) {
+var _window = (this.unsafeWindow) ? this.unsafeWindow : window;
+_window.onresize = function(evt) {
 
-	$('#cageIFrame').html('.cageIFrame {height:' + (window.innerHeight - 34) + 'px !important;}');
+	$('#cageIFrame').html('.cageIFrame {height:' + (_window.innerHeight - 34) + 'px !important;}');
 
 };
 
-$('#cageIFrame').html('.cageIFrame {height:' + (window.innerHeight - 34) + 'px !important;}');
+$('#cageIFrame').html('.cageIFrame {height:' + (_window.innerHeight - 34) + 'px !important;}');
 $('#iframe_canvas').addClass('cageIFrame').attr('scrolling', 'yes');

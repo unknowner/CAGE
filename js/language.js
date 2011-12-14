@@ -42,7 +42,7 @@ function defaultLanguage(){
 
 	// Gifter
 	this.gifterButton							= 'Receive Gifts';
-	this.gifterSetName						= 'Gifter'
+	this.gifterSetName						= 'Gifts'
 	this.gifterSetFilterDesc			= 'Enter the name of a Facebook friendlist you like to add as an extra filter to the Send gifts dialog.'
 	this.giftersetFilterAction		= 'Gifting friendlist'
 	
