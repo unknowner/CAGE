@@ -9,32 +9,23 @@ var CastleAge = {
 };
 
 var CAGE = {
-	version : '1.0.47α',
+	version : '1.1.0β',
 	fastAnim : 200,
 	slowAnim : 600
 };
 
 com.initContentScript(com.port.castleAge);
+$('head')
+	.append('<link id="cageTheme" rel="stylesheet" type="text/css" href="' + getPath('css/dark-hive/jquery-ui.css') + '">')
+	.append('<link rel="stylesheet" type="text/css" href="' + getPath('css/cage.css') + '">')
+	.append('<link rel="stylesheet" type="text/css" href="' + getPath('css/ca_cage.css') + '">')
+	.append('<link rel="stylesheet" type="text/css" href="' + getPath('css/ui.selectmenu.css') + '">')
+	.append('<link rel="stylesheet" type="text/css" href="' + getPath('css/settings.css') + '">');
 
-$('head').append('<link id="cageTheme" rel="stylesheet" type="text/css" href="' + chrome.extension.getURL('css/dark-hive/') + 'jquery-ui.css">');
-
-var _elm = {
-	cage : '<div id="cageContainer"></div>',
-	general : '<div id="cageGeneralContainer" class="ui-corner-br ui-widget-content"></div>',
-	generalImageContainer : '<div id="cageGeneralImageContainer" class="ui-state-active ui-corner-all"></div>',
-	generalImage : '<img id="cageGeneralImage" class="ui-corner-all" src="http://image4.castleagegame.com/graphics/shield_wait.gif"/>',
-	generalName : '<span id="cageGeneralName" class="ui-state-active ui-corner-right"></span>',
-	generalValues : '<span id="cageGeneralValues" class="ui-state-active ui-corner-br"><img src="http://image4.castleagegame.com/graphics/demi_symbol_2.gif" class="cageGeneralAttDefImg" /><span id="cageGeneralAttack" class="cageGeneralAttDefText"></span><img src="http://image4.castleagegame.com/graphics/demi_symbol_3.gif" class="cageGeneralAttDefImg" /><span id="cageGeneralDefense" class="cageGeneralAttDefText"></span></span>',
-	generalSelector : '<div id="cageGeneralSelector" class="ui-widget-content ui-corner-bottom">',
-	tools : '<div id="cageToolsContainer" class="ui-widget-content ui-corner-right"></div>',
-	settings : '<div id="cageSettingContainer" class="ui-widget-content ui-corner-right"></div>'
-};
-
-$(document.body).prepend($(_elm.cage).append($(_elm.general).append($(_elm.generalImageContainer).append(_elm.generalImage)).append(_elm.generalName).append(_elm.generalValues)).append(_elm.tools).append(_elm.settings)).prepend(_elm.generalSelector);
-_elm = undefined;
+$('center:first').prepend('<div id="cageContainer"><div id="cageStatsContainer"></div><div id="cageToolsContainer" class="ui-widget-content ui-corner-bottom"></div></div>');
 
 /**/
-
+			
 CastleAge.startInterval = window.setInterval(function() {
 	if(CastleAge.signed_request !== null && CastleAge.userId !== null) {
 		window.clearInterval(CastleAge.startInterval);
@@ -43,4 +34,4 @@ CastleAge.startInterval = window.setInterval(function() {
 	} else {
 		com.send(com.task.castleAgeReady, com.port.facebook);
 	}
-}, 50);
+}, 100);

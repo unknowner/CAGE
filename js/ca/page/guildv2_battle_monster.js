@@ -1,7 +1,7 @@
 // monster stats
-tools['Page'].runtime['festival_battle_monster.php'] = function() {
+tools['Page'].runtime['guildv2_battle_monster.php'] = function() {
 
-	console.log('Page: festival_battle_monster.php');
+	console.log('Page: guildv2_battle_monster.php');
 
 	var _monstername = null;
 	// add percentage to top bars
@@ -36,6 +36,7 @@ tools['Page'].runtime['festival_battle_monster.php'] = function() {
 				'^Party Health.Strength$'
 			], 
 			_defText = $('#app_body div:containsRegex(/' + _defRegs.join('|') + '/):first');
+	console.log(_defText);
 	if(_defense && _defense.style && _defense.style.width !== "" && _defText && _defText.text()) {
 		var _percentage = _defense.style.width.substr(0, 5);
 		_defText.css('left', 51).text(_defText.text() + ' (' + _percentage + (_percentage.indexOf('%') > -1 ? ')' : '%)'));
@@ -55,13 +56,12 @@ tools['Page'].runtime['festival_battle_monster.php'] = function() {
 			$('#MonsterResultDamage').css('float', 'none');
 		}
 	}
-	
+
 	// answer CTA
 	if($('form:has(div.imgButton > input[alt="Ask for help"]):first').length == 1) {
-		$('div > img[src*="siege"]:last').parent().append('<a href="http://apps.facebook.com/castle_age/festival_battle_monster.php?' + $('form:has(div.imgButton > input[alt="Ask for help"]):first').serialize() + '&action=doObjective"><img id="cageSummonCTA" src="http://image4.castleagegame.com/graphics/mp_button_summon.gif"></a>').unbind('click').click(function() {
-			tools.Page.loadPage('festival_battle_monster.php?' + $('form:has(div.imgButton > input[alt="Ask for help"]):first').serialize() + '&action=doObjective');
+		$('div > img[src*="siege"]:last').parent().append('<a href="http://apps.facebook.com/castle_age/guildv2_battle_monster.php?' + $('form:has(div.imgButton > input[alt="Ask for help"]):first').serialize() + '&action=doObjective"><img id="cageSummonCTA" src="http://image4.castleagegame.com/graphics/mp_button_summon.gif"></a>').unbind('click').click(function() {
+			tools.Page.loadPage('guildv2_battle_monster.php?' + $('form:has(div.imgButton > input[alt="Ask for help"]):first').serialize() + '&action=doObjective');
 			return false;
 		});
 	}
-	
 };

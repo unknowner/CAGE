@@ -26,8 +26,16 @@ tools['Page'].runtime['battle_monster.php'] = function() {
 	}
 
 	// add percentage to defense/forcefield/..
-	var _defense = $('img[src*="bar_dispel.gif"],[src*="nm_green.jpg"],[src*="seamonster_ship_health.jpg"]').parent()[0];
-	var _defText = $('#app_body div:textEquals("Ragnarok\'s Glacial Armor "):first, div:contains("Party Health/Strength"):last, #app_body div:textEquals("Skaar\'s Mana Forcefield "):first, #app_body div:textEquals("Illvasa, Plateau City\'s Defense "):first, #app_body div:textEquals("Castle Defense"):first, #app_body div:textEquals("Your Ship\'s Defense"):first');
+	var _defense = $('img[src*="bar_dispel.gif"],[src*="nm_green.jpg"],[src*="seamonster_ship_health.jpg"]').parent()[0],
+			_defRegs = [
+				'^Castle Defense$',
+				'^Ragnarok\'s Glacial Armor$',
+				'^Your Ship\'s Defense$',
+				'^Illvasa, Plateau City\'s Defense$',
+				'^Skaar\'s Mana Forcefield$',
+				'^Party Health.Strength$'
+			], 
+			_defText = $('#app_body div:containsRegex(/' + _defRegs.join('|') + '/):first');
 	if(_defense && _defense.style && _defense.style.width !== "" && _defText && _defText.text()) {
 		var _percentage = _defense.style.width.substr(0, 5);
 		_defText.css('left', 51).text(_defText.text() + ' (' + _percentage + (_percentage.indexOf('%') > -1 ? ')' : '%)'));
@@ -48,4 +56,12 @@ tools['Page'].runtime['battle_monster.php'] = function() {
 		}
 	}
 
+	// answer CTA
+	if($('form:has(div.imgButton > input[alt="Ask for help"]):first').length == 1) {
+		$('div > img[src*="siege"]:last').parent().append('<a href="http://apps.facebook.com/castle_age/battle_monster.php?' + $('form:has(div.imgButton > input[alt="Ask for help"]):first').serialize() + '&action=doObjective"><img id="cageSummonCTA" src="http://image4.castleagegame.com/graphics/mp_button_summon.gif"></a>').unbind('click').click(function() {
+			tools.Page.loadPage('battle_monster.php?' + $('form:has(div.imgButton > input[alt="Ask for help"]):first').serialize() + '&action=doObjective');
+			return false;
+		});
+	}
+	
 };

@@ -12,27 +12,19 @@ function receiver(_data) {
 		case com.task.userId:
 			if(!CastleAge.userId) {
 				CastleAge.userId = _data.data;
-				//tools['Theme'].start();
 			}
 			break;
 		case com.task.fbReady:
 			CastleAge.started = true;
 			break;
-		// start stuff that requires user id here
-		case com.task.heal:
-			tools['Heal'].start[com.port.castleAge]();
-			break;
-		case com.task.updateGifter:
-			tools['Gifter'].update();
-			break;
-		case com.task.startGifter:
-			tools['Gifter'].start[com.port.castleAge]();
-			break;
-		case com.task.startStash:
-			tools['Stash'].start[com.port.castleAge]();
-			break;
 		case com.task.resize:
 			$('#globalContainer').height(_data.data.height);
+			break;
+		case com.task.showAllGenerals:
+			tools.General.showAll();
+			break;
+		case com.task.showSettings:
+			tools.Settings.start();
 			break;
 		default:
 			console.log(_data.task + ' unknown!');

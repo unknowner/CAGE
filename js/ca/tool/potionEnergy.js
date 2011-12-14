@@ -1,6 +1,6 @@
 new tool('PotionEnergy');
 
-tools['PotionEnergy'].start = function() {
+tools.PotionEnergy.start = function() {
 	$.post('keep.php', {
 		'consume' : true,
 		'item' : 1,
@@ -14,12 +14,12 @@ tools['PotionEnergy'].start = function() {
 				energy : parseInt($('#energy_current_value').text(), 10) + 10
 			}), true, true);
 		}
-		tools['PotionEnergy'].work(_data);
-		tools['PotionEnergy'].done();
+		tools.PotionEnergy.work(_data);
+		tools.PotionEnergy.done();
 	});
 };
 // Parse keep for Energy potions
-tools['PotionEnergy'].work = function(_pagedata) {
+tools.PotionEnergy.work = function(_pagedata) {
 	if(_pagedata == undefined) {
 		_pagedata = $('#app_body');
 	}
@@ -30,14 +30,14 @@ tools['PotionEnergy'].work = function(_pagedata) {
 		$('#cagePotionEnergy > span.cagePotionCount').text('');
 	}
 };
-tools['PotionEnergy'].done = function() {
+tools.PotionEnergy.done = function() {
 	$('#cagePotionEnergy').removeAttr('disabled').css('cursor', 'pointer');
 };
-tools['PotionEnergy'].init = function() {
-	$('body').append($('<button id="cagePotionEnergy"><span class="cagePotionCount"></span></button>').click(function() {
+tools.PotionEnergy.init = function() {
+	$('#cageStatsContainer').append($('<button id="cagePotionEnergy"><span class="cagePotionCount"></span></button>').click(function() {
 		if($(this).text() !== '' && $(this).text() !== '0') {
 			$(this).attr('disabled', 'true').css('cursor', 'wait');
-			tools['PotionEnergy'].start();
+			tools.PotionEnergy.start();
 		}
 	}));
 };
