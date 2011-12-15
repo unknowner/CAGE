@@ -5,7 +5,6 @@ tools['Page'].runtime['guild_battle.php'] = function() {
 
 	// fix gate reseting when attacking with duel button
 	var _gate = /\d/.exec($('#enemy_guild_battle_section_battle_list').attr('class'));
-	console.log('gate:' + _gate);
 	$('span.result_body form').append('<input type="hidden" name="sel_pos" value="' + _gate + '">');
 
 	// add percentage to health bars
@@ -23,7 +22,12 @@ tools['Page'].runtime['guild_battle.php'] = function() {
 	}
 
 	// resize top image
-	$('#guild_battle_banner_section').css('height', 190).find('div:contains("VICTOR")').next().next().css('marginTop', 10);
+	$('input[value="enter_battle"]').parents('form:first').css({
+		'top' : -194,
+		'position' : 'relative'
+	});
+	$('#guild_battle_banner_section').css('height', 190).find('div:contains("VICTOR")').next().next().css('marginTop', 10).end();
+	$('#guild_battle_banner_section > div:eq(2)').css('marginTop', 0);
 	$('div:contains("The Battle Between"):last').parent().css('marginTop', 20);
 	$('input[src*="collect_reward_button2.jpg"]').parents('div:eq(2)').css('marginTop', 0);
 
@@ -90,9 +94,6 @@ tools['Page'].runtime['guild_battle.php'] = function() {
 
 	//reduce gate size and add number
 	$('#enemy_guild_member_list > div > div, #your_guild_member_list > div > div').each(function(_i, _e) {
-		$(_e).find('img[src*="guild_class_upgrades"]').each(function(_i, _e) {
-
-		});
 		$(_e).addClass('GuildList').append('<span class="GuildNum">' + (_i + 1) + '<span>')
 	});
 };
