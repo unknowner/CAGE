@@ -69,7 +69,7 @@ tools.Gifter.newRequestForm = function() {
 						$.each(responseListID.data, function(_i, _e) {
 							cageGiftUserList.push(_e.id);
 						});
-						console.log('GIFTER - userList:', cageGiftUserList);
+						//console.log('GIFTER - userList:', cageGiftUserList);
 					});
 					return false;
 				}

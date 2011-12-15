@@ -7,6 +7,7 @@
 		{
 		"matches": ["*://web.castleagegame.com/castle/*"],
 		"js": [
+			"js/version.js",
 			"js/jquery.js",
 			"js/jqueryui.js",
 			"js/ui.selectmenu.js",
@@ -67,6 +68,7 @@
 		{
 		"matches": ["*://apps.facebook.com/castle_age/*"],
 		"js": [
+			"js/version.js",
 			"js/jquery.js",
 			"js/jqueryui.js",
 			"js/chrome.js",
