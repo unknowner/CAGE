@@ -175,6 +175,7 @@
 	display: inline-block;
 	border-radius: 5px;
 	border: 1px solid transparent;
+	height: 50px;
 }
 #cageAllGenerals > div:hover {
 	border: 1px solid #26B3F7 !important;
@@ -184,7 +185,7 @@
 	cursor: pointer;
 	border-radius: 4px;
 }
-#cageAllGenerals > div > img:last-child {
+#cageAllGenerals > div > img:last-of-type {
 	position: relative;
 	margin-left: -10px;
 	left: -3px;
@@ -200,6 +201,7 @@
 	display: inline-block;
 	box-shadow: 0 0 5px 2px #1482D2;
 	border-radius: 5px;
+	height: 70px;
 }
 #cageFavouriteGenerals > div:hover {
 	box-shadow: 0 0 10px 2px #26b3f7;
@@ -212,7 +214,7 @@
 	cursor: pointer;
 	border-radius: 4px;
 }
-#cageFavouriteGenerals > div > img:last-child {
+#cageFavouriteGenerals > div > img:last-of-type {
 	position: relative;
 	margin-left: -12px;
 	left: -3px;
@@ -222,14 +224,13 @@
 }
 .cageCharge {
 	position: relative;
-	left: -52px;
-	bottom: 2px;
-	display: inline-block;
 	border-radius: 6px;
 	width: 6px;
 	opacity: .8;
 	background-color: #26B3F7;
-	margin-right: -7px;
+	display: inline-block;
+	left: -100%;
+	margin-right: -6px;
 }
 /* Guild */
 .cageGateFilterTitle {
@@ -343,31 +344,31 @@
  Heal UI button
  */
 #cageHeal {
-background-image: url('http://image4.castleagegame.com/graphics/stat_health.gif');
-background-position: -2px -1px;
-position: absolute;
-width: 29px;
-top: 18px;
-height: 29px;
-border-radius: 20px;
-cursor: pointer;
-float: left;
-left: 323px;
+	background-image: url('http://image4.castleagegame.com/graphics/stat_health.gif');
+	background-position: -2px -1px;
+	position: absolute;
+	width: 29px;
+	top: 18px;
+	height: 29px;
+	border-radius: 20px;
+	cursor: pointer;
+	float: left;
+	left: 323px;
 }
 /*
  Stamina Potion UI button
  */
 #cagePotionStamina {
-background-image: url('http://image4.castleagegame.com/graphics/stat_stamina.gif');
-background-position: -2px -1px;
-width: 29px;
-top: 18px;
-height: 29px;
-border-radius: 20px;
-cursor: pointer;
-float: left;
-left: 469px;
-position: absolute;
+	background-image: url('http://image4.castleagegame.com/graphics/stat_stamina.gif');
+	background-position: -2px -1px;
+	width: 29px;
+	top: 18px;
+	height: 29px;
+	border-radius: 20px;
+	cursor: pointer;
+	float: left;
+	left: 469px;
+	position: absolute;
 }
 /*
  Energy Potion UI button

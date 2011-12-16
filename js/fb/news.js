@@ -5,6 +5,7 @@ $('#cageNewsText').text('You\'re now running CAGE and making your Castle Age lif
 $('#cageNewsFoot').prepend('<p style="text-align: left;"><b>NOTICE: </b>Redesigned some stuff so CAGE uses more existing space. Don\'t like it? Let me know!.<br><br>If you find bugs just go to the blog an post them there (no signup required).<br><br>Found an error? Logs (CTRL+SHIFT+J) are always welcome ;)</p>');
 $.each(
 	[
+		'FIX: Charge info for generals missing',
 		'FIX: Problems with on/off buttons in settings',
 		'FIX: Broken guild battle page',
 		'ADD: Align CA left/centered via settings'

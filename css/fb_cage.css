@@ -128,11 +128,10 @@ body {
 	border-top: solid 1px #123682;
 	-webkit-border-radius: 2px;
 	height: 23px;
-	margin: 3px 5px 3px 3px;
+	margin: 3px 8px 3px 3px;
 	width: 23px;
 }
 .cageGeneralAttDefImg {
-	height: 23px;
 	position: relative;
-	top: -4px;
+	top: -9px;
 }

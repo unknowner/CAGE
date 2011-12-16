@@ -14,7 +14,7 @@ function startCAGE() {
 	$('#iframe_canvas').addClass('cageIFrame').attr('scrolling', 'yes');
 	
 	// Replace Search with general
-	$('#navSearch').html('<ul id="cageFacebook"><li><a id="cageSettings"><span>CAGE</span></a></li><li><a id="cageGenerals"><img id="cageGeneralImage"><img src="http://image4.castleagegame.com/graphics/demi_symbol_2.gif" class="cageGeneralAttDefImg" /><span id="cageGeneralAttack"></span><img src="http://image4.castleagegame.com/graphics/demi_symbol_3.gif" class="cageGeneralAttDefImg" /><span id="cageGeneralDefense"></span><span id="cageGeneralName"></span></a></li></ul>');
+	$('#navSearch').html('<ul id="cageFacebook"><li><a id="cageSettings"><span>CAGE</span></a></li><li><a id="cageGenerals"><img id="cageGeneralImage"><img src="http://image4.castleagegame.com/graphics/sword_stat.gif" class="cageGeneralAttDefImg" /><span id="cageGeneralAttack"></span><img src="http://image4.castleagegame.com/graphics/shield_stat.gif" class="cageGeneralAttDefImg" /><span id="cageGeneralDefense"></span><span id="cageGeneralName"></span></a></li></ul>');
 	$('#cageFacebook').unwrap();
 	$('#cageGenerals').click(function(){
 		com.send(com.task.showAllGenerals, com.port.castleAge, null);

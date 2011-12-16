@@ -1,6 +1,7 @@
 ==================================================================
 VER: 1.1.1β
 ------------------------------------------------------------------
+	FIX: Charge info for generals missing
 	FIX: Problems with on/off buttons in settings
 	ADD: Align CA left/centered via settings
 	FIX: Broken guild battle page
