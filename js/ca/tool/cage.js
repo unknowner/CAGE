@@ -48,6 +48,10 @@ tools.cage.runtimeUpdate = function() {
 		'Trontastic' : 'http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/trontastic/',
 		'Vader' : 'http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/vader/'
 	};
+	if(!tools.cage.runtime.themes[tools.cage.runtime.theme]) {
+		tools.cage.runtime.theme = 'Dark Hive (default)';
+		item.set('cageTheme', 'Dark Hive (default)');
+	}
 	$('#cageTheme').attr('href', tools.cage.runtime.themes[tools.cage.runtime.theme] + 'jquery-ui.css');
 };
 

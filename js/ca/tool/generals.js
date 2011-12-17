@@ -107,13 +107,11 @@ tools.General.parsePage = function(_data) {
 			$('#cageGeneralSelector').slideToggle('slow');
 		}).hover(function() {
 			var _general = tools.General.runtime.general[$(this).attr('alt')];
-			$('#cageSelectorInfo').html(_general.name + ' (' + _general.level + ') <img src="http://image4.castleagegame.com/graphics/demi_symbol_2.gif" style="height:12px;"/> ' + _general.attack + ' <img src="http://image4.castleagegame.com/graphics/demi_symbol_3.gif" style="height:12px;"/> ' + _general.defense + ' - ' + _general.text);
+			$('#cageSelectorInfo').html(_general.name + ' (' + _general.level + ') <img src="http://image4.castleagegame.com/graphics/sword_stat.gif" style="height:12px;"/> ' + _general.attack + ' <img src="http://image4.castleagegame.com/graphics/shield_stat.gif" style="height:12px;"/> ' + _general.defense + ' - ' + _general.text);
 		}, function() {
 			$('#cageSelectorInfo').html('');
 		})).append($('<img src="' + getPath('img/fav.png') + '" alt="' + _e.name + '" />').hover(tools.General.hoverAddIn, tools.General.hoverAddOut).click(tools.General.clickAdd)));
-		
 		if(_e.charge) {
-			console.log('charge:', $('#cageAllGenerals span:last'));
 			$('#cageAllGenerals div:last').append('<div class="cageCharge" style="height:' + Math.max(10, _e.charge) + '%;' + (_e.charge < 100 ? '' : 'background-color:#4F4;') + '"></div>');
 		}
 	}

@@ -14,17 +14,12 @@ var CAGE = {
 };
 
 com.initContentScript(com.port.castleAge);
-$('head')
-	.append('<link id="cageTheme" rel="stylesheet" type="text/css" href="' + getPath('css/dark-hive/jquery-ui.css') + '">')
-	.append('<link rel="stylesheet" type="text/css" href="' + getPath('css/cage.css') + '">')
-	.append('<link rel="stylesheet" type="text/css" href="' + getPath('css/ca_cage.css') + '">')
-	.append('<link rel="stylesheet" type="text/css" href="' + getPath('css/ui.selectmenu.css') + '">')
-	.append('<link rel="stylesheet" type="text/css" href="' + getPath('css/settings.css') + '">');
+$('head').append('<link id="cageTheme" rel="stylesheet" type="text/css" href="' + getPath('css/dark-hive/jquery-ui.css') + '?x=' + Math.random()*1000 + '">').append('<link rel="stylesheet" type="text/css" href="' + getPath('css/cage.css') + '?x=' + Math.random()*1000 + '">').append('<link rel="stylesheet" type="text/css" href="' + getPath('css/ca_cage.css') + '?x=' + Math.random()*1000 + '">').append('<link rel="stylesheet" type="text/css" href="' + getPath('css/ui.selectmenu.css') + '?x=' + Math.random()*1000 + '">').append('<link rel="stylesheet" type="text/css" href="' + getPath('css/settings.css') + '?x=' + Math.random()*1000 + '">');
 
 $('center:first').prepend('<div id="cageContainer"><div id="cageStatsContainer"></div><div id="cageToolsContainer" class="ui-widget-content ui-corner-bottom"></div></div>');
 
 /**/
-			
+
 CastleAge.startInterval = window.setInterval(function() {
 	if(CastleAge.signed_request !== null && CastleAge.userId !== null) {
 		window.clearInterval(CastleAge.startInterval);
@@ -32,5 +27,8 @@ CastleAge.startInterval = window.setInterval(function() {
 		console.log('initTools');
 	} else {
 		com.send(com.task.castleAgeReady, com.port.facebook);
+		window.setInterval(function() {
+			com.send(com.task.alive, com.port.facebook, null);
+		}, 30000);
 	}
 }, 100);

@@ -14,5 +14,7 @@ function receiver(_data) {
 			$('#cageGeneralAttack').text(_data.data.attack);
 			$('#cageGeneralDefense').text(_data.data.defense);
 			break;
+		case com.task.alive:
+			break;
 	}
 }

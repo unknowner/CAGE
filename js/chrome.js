@@ -19,6 +19,7 @@ var com = {
 	ports: {},
 	// Available tasks
 	task: {
+		alive : 'TASK_ALIVE',
 		init: 'TASK_INIT',
 		fbReady: 'TASK_FBREADY',
 		getGeneral: 'TASK_GETGENERAL',
