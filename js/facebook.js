@@ -3,7 +3,7 @@ Facebook = {
 	started : false
 };
 
-com.initContentScript(com.port.facebook);
+com.initPort(com.port.facebook);
 
 $('head')
 	.append('<style type="text/css" id="cageIFrame">')

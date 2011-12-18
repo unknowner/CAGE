@@ -13,6 +13,9 @@ tools['Page'].runtime['player_monster_list.php'] = function() {
 	get('festival_tower.php?tab=monster', function(_festMonster) {
 		$('#cageTempLoaderImg1').remove();
 		$('#listDiv > div', _festMonster).not(':last').each(function(_i, _e) {
+			if(_i == 0) {
+				$_list.append('<div style="text-align:center;"><img src="http://image4.castleagegame.com/graphics/festival_monster_towerbutton.jpg" class="cageTowerImage"></div>');
+			}
 			$(_e).attr('style', '').addClass('MonsterListBackground');
 			$(_e).find('> div:eq(1)').attr('style', '').addClass('MonsterListImage').append('<span class="MonsterListText">Festival Tower I</div>');
 			$(_e).find('> div:eq(2)').attr('style', '').addClass('MonsterListName');
@@ -22,6 +25,10 @@ tools['Page'].runtime['player_monster_list.php'] = function() {
 		get('festival_tower2.php?tab=monster', function(_festMonster) {
 			$('#cageTempLoaderImg2').remove();
 			$('#listDiv > div', _festMonster).not(':last').each(function(_i, _e) {
+				console.log(_i);
+				if(_i == 0) {
+					$_list.append('<div style="text-align:center;"><img src="http://image4.castleagegame.com/graphics/festival_monster2_towerbutton.jpg" class="cageTowerImage"></div>');
+				}
 				$(_e).attr('style', '').addClass('MonsterListBackground');
 				$(_e).find('> div:eq(1)').attr('style', '').addClass('MonsterListImage').append('<span class="MonsterListText">Festival Tower II</span>');
 				$(_e).find('> div:eq(2)').attr('style', '').addClass('MonsterListName');

@@ -483,3 +483,25 @@
 #cageSummonCTA:hover {
 	opacity: 0.9;
 }
+/*
+ * Player monster list
+ */
+.cageTowerImage {
+	position: relative;
+	margin: 20px;
+	border-radius: 6px;
+	top: 10px;
+	box-shadow: 0 3px 5px #000;
+}
+/*
+ *
+ */
+#cageInfos {
+	position: fixed;
+	bottom: 15px;
+	left: 15px;
+	width: 200px;
+}
+.cageInfo {
+	
+}

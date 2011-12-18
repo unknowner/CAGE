@@ -35,7 +35,7 @@ function startCAGE() {
 
 	window.setInterval(function() {
 		com.send(com.task.alive, com.port.castleAge, null);
-	}, 30000);
+	}, 600000);
 	// Possible fix for framing problem
 	$('body').removeClass('center_fixed_width_app');
 
