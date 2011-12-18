@@ -186,9 +186,8 @@ iframe.FB_UI_Dialog {
 	position: fixed;
 	top: 140px;
 	display: block;
-	margin-left: 50%;
-	width: 500px;
-	left: -250px;
+	width: 100%;
+	left: 0
 }
 #result_popup_message {
 	overflow-x: hidden;

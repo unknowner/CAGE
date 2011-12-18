@@ -13,17 +13,21 @@ tools['Functions'].hidePositionBox = function(evt) {
 tools['Functions'].PopupAtMousePosition = function() {
 	window['PopupAtMousePosition'] = function(event, fb_js_var) {
 		$('#single_popup_background').removeClass('connect_castlepb_bg').fadeTo('slow', 0.75);
-		$('#single_popup').html($('#' + fb_js_var).html()).find('> div > div > div:first').unwrap().unwrap();
-		$('#single_popup').wrapInner('<center>').fadeTo('slow', 1);
+		$('#single_popup').html($('#' + fb_js_var).html()).find('> div:first').attr('style', '').find('> div:first').css('float', '');
+		$('#single_popup').wrapInner('<center style="width:100%;cursor:pointer;" onclick="hidePositionBox(); return false;">').fadeTo('slow', 1);
 	};
+};
+tools['Functions'].PositionAndDisplayPopupAutoCenter = function() {
+	window['PositionAndDisplayPopupAutoCenter'] = function(event, fb_js_var) {
+		$('#single_popup_background').removeClass('connect_castlepb_bg').fadeTo('slow', 0.75);
+		$('#single_popup').html($('#' + fb_js_var).html());
+		$('#single_popup').wrapInner('<center style="width:100%;cursor:pointer;" onclick="hidePositionBox(); return false;">').fadeTo('slow', 1);
+	}
 };
 // Stats Ticker + CAGE calls
 tools['Functions'].stat_increase_ticker = function() {
-
 	// set new value via cageStat
-	console.log('stat_increase_ticker');
 	window['stat_increase_ticker'] = function(ticks_left, stat_current, stat_max, tick_time, increase_value, stat_type, first_call) {
-
 		if(cageStat[stat_type] && cageStat[stat_type] !== null) {
 			stat_current = cageStat[stat_type];
 			$('#' + stat_type + '_current_value').text(stat_current);
@@ -79,10 +83,12 @@ tools['Functions'].stat_increase_ticker = function() {
 tools['Functions'].init = function() {
 	// add global cageStat
 	addFunction(function() {
-		cageStat = {};
+		cageStat = {}
 	}, null, true, true);
 	// replace CA funtions
 	addFunction(tools['Functions'].stat_increase_ticker, null, true, false);
 	addFunction(tools['Functions'].PopupAtMousePosition, null, true, false);
 	addFunction(tools['Functions'].hidePositionBox, null, true, false);
+	addFunction(tools['Functions'].PositionAndDisplayPopupAutoCenter, null, true, false);
+
 };
