@@ -6,7 +6,7 @@ $('#cageNewsFoot').prepend('<p style="text-align: left;"><b>NOTICE: </b>Redesign
 $.each(
 	[
 		'ADD: Notificatons for some actions (eg assists)',
-		'FIX: Popup position'
+		'FIX: Popup positions'
 	], function(_i, _e) {
 	$('#cageNewsChanges').append('<li><span>' + _e.split(':')[0] + ':</span>' + _e.split(':')[1] + '</li>');
 });

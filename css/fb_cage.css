@@ -90,48 +90,6 @@ body {
 .fbJewelFlyout {
 	top: 32px !important;
 }
-/*
- * General in FB UI
- */
-#cageFacebook {
-	margin-right: 20px;
-	margin-left: 20px;
-}
-#cageFacebook li {
-	display: inline-block;
-}
-#cageFacebook a {
-	height: 31px;
-	line-height: 29px;
-	padding: 0;
-	vertical-align: top;
-	display: inline-block;
-	margin-top: 1px;
-	text-decoration: none;
-	padding-left: 4px;
-}
-#cageFacebook a {
-	color: #D8DFEA;
-}
-#cageFacebook a:hover {
-	background-color: #4B67A1 !important;
-	color: #fff !important;
-}
-#cageFacebook span {
-	padding-right: 8px;
-	vertical-align: top;
-	font-weight: bold;
-	padding-left: 5px;
-}
-#cageGeneralImage {
-	border: solid 1px #294A8F;
-	border-top: solid 1px #123682;
-	-webkit-border-radius: 2px;
-	height: 23px;
-	margin: 3px 8px 3px 3px;
-	width: 23px;
-}
-.cageGeneralAttDefImg {
-	position: relative;
-	top: -9px;
+#navSearch {
+	margin-top: 5px !important;
 }

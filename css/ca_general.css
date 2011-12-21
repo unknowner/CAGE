@@ -1,0 +1,151 @@
+#cageGeneralContainer {
+	position: fixed;
+	width: 770px;
+}
+#cageGeneralName {
+	font-weight: bold;
+	height: 18px;
+	padding: 7px 0 0 5px;
+	position: absolute;
+	text-shadow: 1px 1px black;
+	top: 9px;
+	left: 70px;
+	border-left: 0;
+	width: 123px;
+}
+#cageGeneralImageContainer {
+	height: 107px;
+	width: 107px;
+	position: absolute;
+	right: 16px;
+	z-index: 3;
+	top: 8px;
+	border: 2px inset #66401B;
+	overflow: hidden;
+	background-image: url('http://image4.castleagegame.com/graphics/marble.jpg');
+}
+#cageGeneralImageContainer:hover {
+	box-shadow: 0 0 10px #fff;
+}
+#cageGeneralImage {
+	height: 107px;
+	cursor: pointer;
+}
+#cageGeneralValues {
+	position: absolute;
+	left: 70px;
+	top: 35px;
+	width: 85px;
+	height: 12px;
+	text-shadow: 1px 1px black;
+	height: 28px;
+	width: 104px;
+	opacity: 0.8;
+}
+#cageGeneralAttack {
+	width: 10px;
+	display: inline-block;
+}
+.cageGeneralAttDefText {
+	top: -5px;
+	position: relative;
+	font-weight: bold;
+	margin-right: 5px;
+}
+.cageGeneralAttDefImg {
+	height: 20px;
+	margin-top: 4px;
+	margin-left: 8px;
+	margin-right: 4px;
+}
+#cageGeneralSelector {
+	position: fixed;
+	box-shadow: 0 10px 20px black;
+	z-index: 3;
+	width: 702px;
+	margin-left: 10px;
+	padding: 40px 25px 5px 22px;
+	top: 130px;
+	display: none;
+}
+#cageSelectorInfo {
+	width: 100%;
+	height: 20px;
+	bottom: 0;
+	left: 0;
+	display: block;
+	text-align: center;
+	margin: -10px 0 5px 0;
+	line-height: 20px;
+}
+#cageAllGenerals {
+	padding-bottom: 10px;
+}
+#cageAllGenerals > div {
+	margin: 1px;
+	display: inline-block;
+	border-radius: 5px;
+	border: 1px solid transparent;
+	height: 50px;
+}
+#cageAllGenerals > div:hover {
+	border: 1px solid #26B3F7 !important;
+}
+#cageAllGenerals > div > img:first-child {
+	width: 50px;
+	cursor: pointer;
+	border-radius: 4px;
+}
+#cageAllGenerals > div > img:last-of-type {
+	position: relative;
+	margin-left: -16px;
+	width: 10px;
+	cursor: pointer;
+	background-color: black;
+	padding: 3px;
+	border-top-left-radius: 4px;
+	border-bottom-right-radius: 4px;
+	opacity: 0.7;
+}
+#cageFavouriteGenerals {
+	padding: 4px 0 2px;
+}
+#cageFavouriteGenerals > div {
+	margin: 4px;
+	display: inline-block;
+	box-shadow: 0 0 5px 2px #1482D2;
+	border-radius: 5px;
+	height: 70px;
+}
+#cageFavouriteGenerals > div:hover {
+	box-shadow: 0 0 10px 2px #26b3f7;
+}
+#cageFavouriteGenerals > div > img:first-child:hover {
+	box-shadow: 0 0 10px 2px #26b3f7;
+}
+#cageFavouriteGenerals > div > img:first-child {
+	width: 70px;
+	cursor: pointer;
+	border-radius: 4px;
+}
+#cageFavouriteGenerals > div > img:last-of-type {
+	position: relative;
+	margin-left: -16px;
+	width: 10px;
+	cursor: pointer;
+	background-color: black;
+	padding: 3px;
+	border-top-left-radius: 4px;
+	border-bottom-right-radius: 4px;
+	opacity: 0.7;
+}
+.cageCharge {
+	position: relative;
+	border-radius: 6px;
+	width: 6px;
+	opacity: .8;
+	background-color: #26B3F7;
+	display: inline-block;
+	left: -100%;
+	margin-right: -6px;
+}

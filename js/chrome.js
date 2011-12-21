@@ -3,7 +3,7 @@
 */
 // Chrome Desktop notifications
 function note(_data) {
-	var _note = webkitNotifications.createNotification('img/icon16.png', _data.t, _data.m);
+	var _note = webkitNotifications.createNotification('img/icon64.png', _data.t, _data.m);
 	_note.show();
 	setTimeout(function() {
 		_note.cancel();

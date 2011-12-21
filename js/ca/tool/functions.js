@@ -13,15 +13,16 @@ tools['Functions'].hidePositionBox = function(evt) {
 tools['Functions'].PopupAtMousePosition = function() {
 	window['PopupAtMousePosition'] = function(event, fb_js_var) {
 		$('#single_popup_background').removeClass('connect_castlepb_bg').fadeTo('slow', 0.75);
-		$('#single_popup').html($('#' + fb_js_var).html()).find('> div:first').attr('style', '').find('> div:first').css('float', '');
-		$('#single_popup').wrapInner('<center style="width:100%;cursor:pointer;" onclick="hidePositionBox(); return false;">').fadeTo('slow', 1);
+		var _sp = $('#single_popup');
+		_sp.html($('#' + fb_js_var).html()).css('marginLeft', (770 - _sp.width())).find('> div:first').attr('style', '').find('> div:first').css('float', '');
+		_sp.fadeTo('slow', 1);
 	};
 };
 tools['Functions'].PositionAndDisplayPopupAutoCenter = function() {
 	window['PositionAndDisplayPopupAutoCenter'] = function(event, fb_js_var) {
 		$('#single_popup_background').removeClass('connect_castlepb_bg').fadeTo('slow', 0.75);
-		$('#single_popup').html($('#' + fb_js_var).html());
-		$('#single_popup').wrapInner('<center style="width:100%;cursor:pointer;" onclick="hidePositionBox(); return false;">').fadeTo('slow', 1);
+		var _sp = $('#single_popup');
+		_sp.html($('#' + fb_js_var).html()).css('marginLeft', (770 - _sp.width()) / 2).fadeTo('slow', 1);
 	}
 };
 // Stats Ticker + CAGE calls

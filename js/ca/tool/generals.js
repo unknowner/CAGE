@@ -31,7 +31,10 @@ tools.General.get = function() {
 tools.General.set = function() {
 	var _g = tools.General.runtime.general[tools.General.current];
 	com.send(com.task.general, com.port.facebook, _g);
-	$('#cageGeneralImage').attr('src', _g.image);
+	$('#cageGeneralImage').attr('src', _g.image).css({
+		'height' : 107,
+		'padding' : 0
+	});
 	$('#cageGeneralName').text(_g.name);
 	$('#cageGeneralAttack').text(_g.attack);
 	$('#cageGeneralDefense').text(_g.defense);
@@ -41,7 +44,10 @@ tools.General.setByName = function(_name, _callback) {
 	if(_name !== tools.General.current) {
 		var _g = tools.General.runtime.general[_name];
 		if(_g !== null) {
-			$('#cageGeneralImage').attr('src', 'http://image4.castleagegame.com/graphics/shield_wait.gif');
+			$('#cageGeneralImage').attr('src', 'http://image4.castleagegame.com/graphics/shield_wait.gif').css({
+				'height' : 50,
+				'padding' : 27
+			});
 			$.get('generals.php?item=' + _g.item + '&itype=' + _g.itype + '&bqh=' + CastleAge.bqh + '&signed_request=' + CastleAge.signed_request, function(_data) {
 				tools.General.parsePage(_data);
 				tools.General.current = _name;
@@ -167,7 +173,24 @@ tools.General.showAll = function() {
 // init general tool @fb
 tools.General.init = function() {
 	tools.General.runtimeUpdate();
-	$('#cageContainer').append('<div id="cageGeneralSelector" class="ui-widget-content ui-corner-bottom">');
+	var _elm = {
+		general : '<div id="cageGeneralContainer"></div>',
+		generalImageContainer : '<div id="cageGeneralImageContainer" class="ui-corner-all"></div>',
+		generalImage : '<img id="cageGeneralImage" src="http://image4.castleagegame.com/graphics/shield_wait.gif"/>',
+		generalName : '<span id="cageGeneralName" class="ui-state-active ui-corner-right"></span>',
+		generalValues : '<span id="cageGeneralValues" class="ui-state-active ui-corner-br"><img src="http://image4.castleagegame.com/graphics/demi_symbol_2.gif" class="cageGeneralAttDefImg" /><span id="cageGeneralAttack" class="cageGeneralAttDefText"></span><img src="http://image4.castleagegame.com/graphics/demi_symbol_3.gif" class="cageGeneralAttDefImg" /><span id="cageGeneralDefense" class="cageGeneralAttDefText"></span></span>',
+		generalSelector : '<div id="cageGeneralSelector" class="ui-widget-content ui-corner-bottom">',
+	}
+	$('#cageContainer').append($(_elm.general).prepend($(_elm.generalImageContainer).append(_elm.generalImage)).append(_elm.generalName).append(_elm.generalValues)).prepend(_elm.generalSelector);
+	$('#cageGeneralImage').click(function() {
+		if(tools.General.runtime.onlyFavourites == 'true') {
+			$('#cageAllGenerals').hide();
+		} else {
+			$('#cageAllGenerals').show();
+		}
+		$('#cageGeneralSelector').slideToggle('slow');
+	});
+	//$('#cageContainer').append('<div id="cageGeneralSelector" class="ui-widget-content ui-corner-bottom">');
 	tools.General.update();
 
 };
