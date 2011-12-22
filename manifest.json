@@ -20,8 +20,8 @@
 			"js/ca/ca_receiver.js",
 			
 			"js/ca/tool/functions.js",
-			"js/ca/tool/cage.js",
 			"js/ca/tool/nav.js",
+			"js/ca/tool/cage.js",
 			"js/ca/tool/settings.js",
 			
 			"js/ca/tool/abilities.js",
@@ -36,6 +36,7 @@
 			"js/ca/tool/potionEnergy.js",
 			"js/ca/tool/potionStamina.js",
 			"js/ca/tool/stash.js",
+			"js/ca/tool/stats.js",
 			
 			"js/ca/page/allpages.js",
 			"js/ca/page/index.js",

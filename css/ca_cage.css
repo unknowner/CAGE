@@ -29,12 +29,13 @@ div.game {
 	display: none !important;
 }
 #app_body_container {
-	padding-top: 175px !important;
+	padding-top: 135px !important;
 }
 #globalContainer {
 	width: 770px !important;
 }
 #AjaxLoadIcon {
+	margin-top: 56px;
 	top: 150px !important;
 	width: 80px !important;
 	position: fixed;

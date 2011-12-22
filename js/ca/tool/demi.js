@@ -12,7 +12,7 @@ tools.Demi.start = function() {
 			_demi.append('<div><div id="cageDemi' + _deity + '" class="cageDemiImage" style="background-image:url(http://image4.castleagegame.com/graphics/deity_' + _deity + '.jpg);" symbol="' + (_i + 1) + '"><span>' + _points + '<br>' + _deity.substr(0, 1).toUpperCase() + _deity.substr(1) + '</span></div></div>');
 		})
 		_demi.show().animate({
-			'top' : 80
+			'top' : 110
 		}, 'slow');
 		$('div.cageDemiImage').click(function() {
 			console.log($(this).attr('symbol'));

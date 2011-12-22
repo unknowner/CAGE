@@ -35,7 +35,7 @@ tools['Page'].runtime['player_monster_list.php'] = function() {
 				$(_e).find('> div:eq(3)').attr('style', '').addClass('MonsterListButton');
 				$('#cageMonsterTower2').append(_e);
 			});
-			if($('span.MonsterListText').length == 0) {
+			if($('img.cagetowerimage').length == 0) {
 				_none.fadeIn('slow');
 			}
 		});

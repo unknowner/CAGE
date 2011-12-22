@@ -8,12 +8,8 @@ var CastleAge = {
 	started : false
 };
 
-var CAGE = {
-	fastAnim : 200,
-	slowAnim : 600
-};
-
 com.initPort(com.port.castleAge);
+
 $('head')
 	.append('<link id="cageTheme" rel="stylesheet" type="text/css" href="' + getPath('css/dark-hive/jquery-ui.css') + '?x=' + Math.random()*1000 + '">')
 	.append('<link rel="stylesheet" type="text/css" href="' + getPath('css/cage.css') + '?x=' + Math.random()*1000 + '">')
@@ -24,8 +20,6 @@ $('head')
 	.append('<link rel="stylesheet" type="text/css" href="' + getPath('css/settings.css') + '?x=' + Math.random()*1000 + '">');
 	
 $('center:first').prepend('<div id="cageContainer"><div id="cageStatsContainer"></div><div id="cageToolsContainer" class="ui-widget-content ui-corner-bottom"></div></div>');
-
-/**/
 
 CastleAge.startInterval = window.setInterval(function() {
 	if(CastleAge.signed_request !== null && CastleAge.userId !== null) {
@@ -38,4 +32,4 @@ CastleAge.startInterval = window.setInterval(function() {
 			com.send(com.task.alive, com.port.facebook, null);
 		}, 600000);
 	}
-}, 100);
+}, 125);

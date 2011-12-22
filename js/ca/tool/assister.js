@@ -181,7 +181,7 @@ tools.Assister.assist = function() {
 
 tools.Assister.done = function() {
 
-	com.note('Assister', 'You have just assisted ' + tools.Assister.runtime.Assisted.length + ' CTAs.');
+	com.note('Assister', 'You assisted ' + tools.Assister.runtime.Assisted.length + ' friends.');
 	tools.Assister.runtime.Used = 0;
 	tools.Assister.fbButton.enable();
 
