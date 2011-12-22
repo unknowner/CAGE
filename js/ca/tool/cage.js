@@ -1,14 +1,18 @@
 new tool('cage');
 
 tools.cage.settings = function() {
-	tools.Settings.heading('CAGE - V' + CAGE.version);
+	tools.cage.runtimeUpdate();
+	tools.Settings.heading('CAGE - V' + version.string());
 	tools.Settings.text(language.cageSetClearDataDesc);
 	tools.Settings.button(language.cageSetClearDataAction, tools.cage.clearSavedData);
 	tools.Settings.onoff(language.cageSetAnimationAction, tools.cage.runtime.fxOn, 'cageFXOnOff', function() {
-		tools.cage.runtimeUpdate();
+		tools.cage.runtime.fxOn = !tools.cage.runtime.fxOn;
 		tools.cage.toggleFx();
 	});
-	//tools.Settings.text(language.cageSetThemeDesc);
+	tools.Settings.onoff(language.cageSetAlignCenter, tools.cage.runtime.centered, 'cageCentered', function() {
+		tools.cage.runtime.centered = !tools.cage.runtime.centered;
+		tools.cage.centered();
+	});
 	tools.Settings.dropdown(language.cageSetThemeAction, tools.cage.runtime.themes, tools.cage.runtime.theme, 'cageTheme', function(_value) {
 		$('#cageTheme').attr('href', tools.cage.runtime.themes[_value] + 'jquery-ui.css');
 	});
@@ -18,6 +22,7 @@ tools.cage.runtimeUpdate = function() {
 	if(!tools.cage.runtime) {
 		tools.cage.runtime = {};
 	}
+	tools.cage.runtime.centered = item.get('cageCentered', 'true');
 	tools.cage.runtime.fxOn = item.get('cageFXOnOff', 'true');
 	tools.cage.runtime.theme = item.get('cageTheme', 'true');
 	tools.cage.runtime.themes = {
@@ -43,6 +48,10 @@ tools.cage.runtimeUpdate = function() {
 		'Trontastic' : 'http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/trontastic/',
 		'Vader' : 'http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/vader/'
 	};
+	if(!tools.cage.runtime.themes[tools.cage.runtime.theme]) {
+		tools.cage.runtime.theme = 'Dark Hive (default)';
+		item.set('cageTheme', 'Dark Hive (default)');
+	}
 	$('#cageTheme').attr('href', tools.cage.runtime.themes[tools.cage.runtime.theme] + 'jquery-ui.css');
 };
 
@@ -57,8 +66,15 @@ tools.cage.clearSavedData = function() {
 	console.log('localStorage:', localStorage);
 
 };
+tools.cage.centered = function() {
+	$('#cageContainer').hide();
+	$('body > center').css('position', (tools.cage.runtime.centered ? 'relative' : 'absolute'));
+	window.setTimeout(function() {
+		$('#cageContainer').show()
+	}, 10);
+};
 tools.cage.toggleFx = function() {
-	var _fx = tools.cage.runtime.fxOn == 'true' ? false : true;
+	var _fx = !tools.cage.runtime.fxOn;
 	$.fx.off = _fx;
 	addFunction(function(_cafx) {
 		$.fx.off = _cafx;

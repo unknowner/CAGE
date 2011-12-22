@@ -14,15 +14,6 @@ body {
 #main_bn_container {
 	display: none !important;
 }
-#main_sts_container {
-	position: fixed !important;
-	z-index: 2
-}
-#main_sts {
-	background-position: -5px 3px !important;
-	width: 750px !important;
-	padding-top: 3px;
-}
 div.game {
 	width: 770px !important;
 }
@@ -38,12 +29,13 @@ div.game {
 	display: none !important;
 }
 #app_body_container {
-	padding-top: 100px !important;
+	padding-top: 135px !important;
 }
 #globalContainer {
 	width: 770px !important;
 }
 #AjaxLoadIcon {
+	margin-top: 56px;
 	top: 150px !important;
 	width: 80px !important;
 	position: fixed;
@@ -79,12 +71,16 @@ div.game {
 	overflow: hidden;
 }
 .MonsterListText {
+	background-color: black;
+	padding: 1px 4px;
+	left: 0;
+	font-size: 12px;
+	top: -15px;
+	border-top-right-radius: 4px;
+	opacity: 0.7;
 	position: relative;
-	top: -18px;
 	color: white;
 	font-weight: bold;
-	text-shadow: 0 0 2px black;
-	left: 5px;
 }
 .GuildList {
 	height: 105px !important;
@@ -144,6 +140,7 @@ div.game {
 	background-image: url('http://image4.castleagegame.com/graphics/bg_main_middle.jpg');
 	border-radius: 6px;
 	border: 1px solid #701919;
+	width: 738px;
 }
 .results {
 	background-image: url('') !important;
@@ -161,4 +158,32 @@ iframe.FB_UI_Dialog {
 	position: relative;
 	width: 78px;
 	cursor: pointer;
+}
+/*
+ * Popups
+ */
+#single_popup_background {
+	cursor: pointer;
+	display: block;
+	height: 100%;
+	position: fixed;
+	width: 100%;
+	background-color: black;
+	top: 0;
+	left: 0;
+	opacity: 0;
+	z-index: 10;
+}
+#single_popup {
+	opacity: 0;
+	position: fixed;
+	top: 140px;
+	display: block;
+}
+#result_popup_message {
+	overflow-x: hidden;
+	overflow-y: hidden;
+	z-index: 100;
+	position: fixed;
+	top: 120px;
 }

@@ -1,0 +1,239 @@
+#cageStatsContainer {
+	width: 770px;
+	z-index: 3;
+	height: 0;
+	position: fixed;
+}
+#main_sts_container {
+	position: fixed !important;
+	z-index: 2
+}
+#main_ststb {
+	padding: 0;
+	font-family: Trebuchet MS, Tahoma, Verdana, Arial, sans-serif !important;
+}
+#main_ststb > div:first-child {
+	height: auto !important;
+}
+#main_sts {
+	height: 95px !important;
+	width: 750px !important;
+	background-repeat: repeat !important;
+	border-bottom: 1px solid black;
+	background-size: 658px;
+}
+/*
+ * Gold
+ */
+#cageStash {
+	background-image: url('http://image4.castleagegame.com/graphics/stat_gold.gif');
+	background-position: -2px -1px;
+	position: absolute;
+	width: 29px;
+	height: 29px;
+	border-radius: 20px;
+	cursor: pointer;
+	top: 53px;
+	left: 20px;
+}
+#st_1 {
+	position: absolute;
+	left: 22px;
+	top: 50px;
+	height: 33px !important;
+	width: 142px !important;
+	background-position: -25px -13px !important;
+	background: url('http://image4.castleagegame.com/graphics/statsbar.jpg');
+	margin: 0 !important;
+	border-radius: 7px;
+	border: 1px ridge #66401B;
+}
+#st_2_1 {
+	margin: 0 !important;
+	position: absolute;
+	top: 68px;
+	right: 590px;
+	width: 130px !important;
+	text-align: right !important;
+}
+#st_1 > div:first-child {
+	left: 10px;
+	position: relative;
+}
+#gold_time_value {
+	position: relative;
+	float: right;
+	right: 16px;
+}
+/*
+ * Energy
+ */
+#cagePotionEnergy {
+	background-image: url('http://image4.castleagegame.com/graphics/stat_energy.gif');
+	background-position: -2px -1px;
+	position: absolute;
+	width: 29px;
+	height: 29px;
+	border-radius: 20px;
+	cursor: pointer;
+	top: 54px;
+	left: 187px;
+}
+#st_2 {
+	position: absolute;
+	left: 188px;
+	top: 51px;
+	height: 33px !important;
+	width: 127px !important;
+	background-position: -185px -13px !important;
+	background: url('http://image4.castleagegame.com/graphics/statsbar.jpg');
+	margin: 0 !important;
+	border-radius: 7px;
+	border: 1px ridge #66401B;
+}
+#st_2_2 {
+	margin: 0 !important;
+	position: absolute;
+	top: 69px;
+	right: 440px;
+	text-align: right !Important;
+}
+#energy_time_container {
+	position: relative;
+	float: right;
+	right: 6px;
+}
+/*
+ * Health
+ */
+#cageHeal {
+	background-image: url('http://image4.castleagegame.com/graphics/stat_health.gif');
+	background-position: -2px -1px;
+	position: absolute;
+	width: 29px;
+	top: 54px;
+	left: 337px;
+	height: 29px;
+	border-radius: 20px;
+	cursor: pointer;
+}
+#st_3 {
+	position: absolute;
+	left: 340px;
+	top: 51px;
+	height: 33px !important;
+	width: 126px !important;
+	background-position: -331px -13px !important;
+	background: url('http://image4.castleagegame.com/graphics/statsbar.jpg');
+	margin: 0 !important;
+	border-radius: 7px;
+	border: 1px ridge #66401B;
+}
+#st_2_3 {
+	margin: 0 !important;
+	position: absolute;
+	top: 69px;
+	right: 288px;
+	text-align: right !Important;
+}
+#health_time_container {
+	position: relative;
+	float: right;
+	right: 6px;
+}
+/*
+ * Stamaina
+ */
+#cagePotionStamina {
+	background-image: url('http://image4.castleagegame.com/graphics/stat_stamina.gif');
+	background-position: -2px -1px;
+	width: 29px;
+	top: 53px;
+	left: 489px;
+	height: 29px;
+	border-radius: 20px;
+	cursor: pointer;
+	position: absolute;
+}
+#st_4 {
+	position: absolute;
+	left: 491px;
+	top: 50px;
+	height: 33px !important;
+	width: 126px !important;
+	background-position: -476px -13px !important;
+	background: url('http://image4.castleagegame.com/graphics/statsbar.jpg');
+	margin: 0 !important;
+	border-radius: 7px;
+	border: 1px ridge #66401B;
+}
+#st_2_4 {
+	margin: 0 !important;
+	position: absolute;
+	top: 68px;
+	right: 138px;
+	text-align: right !important;
+}
+#stamina_time_container {
+	position: relative;
+	float: right;
+	right: 6px;
+}
+/*
+ * Level / XP
+ */
+#st_5 {
+	position: absolute;
+	left: 21px;
+	top: 8px;
+	height: 33px !important;
+	width: 135px !important;
+	background-position: -611px -13px !important;
+	background: url('http://image4.castleagegame.com/graphics/statsbar.jpg');
+	margin: 0 !important;
+	border-radius: 7px;
+	border: 1px ridge #66401B;
+}
+#st_5 > div:first-child {
+	position: relative;
+	top: 4px;
+	left: 6px;
+}
+#st_5 > div:last-child {
+	top: -12px !important;
+}
+#st_2_5 {
+	text-align: right !important;
+	top: 26px;
+	left: 7px;
+	position: absolute;
+}
+/*
+ * Potions count
+ */
+.cagePotionCount {
+	color: white;
+	text-shadow: 0 0 3px blue;
+	font-weight: bold;
+	font-size: 13px;
+}
+#cageFavorPoints {
+	position: absolute;
+	top: 11px;
+	left: 19px;
+}
+#cageFavorPoints > img {
+	border-radius: 50px;
+	height: 29px;
+}
+#cageFavorPoints > span {
+	position: absolute;
+	width: 30px;
+	display: inline-block;
+	top: 6px;
+	color: white;
+	text-shadow: 0 0 4px black;
+	font-weight: bold;
+	font-size: 14px;
+	left: 0;
+}

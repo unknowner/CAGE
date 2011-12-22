@@ -145,7 +145,7 @@ tools.Abilities.start = function() {
 
 		$('div.imgButton[id^="large_image_"]').parent().css('cssText', 'float:left;padding:8px;');
 		$('#cageAbilitiesContainer').animate({
-			'top' : 92
+			'top' : 127
 		}, 'slow');
 	});
 };

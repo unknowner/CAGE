@@ -3,12 +3,12 @@ Facebook = {
 	started : false
 };
 
-com.initContentScript(com.port.facebook);
+com.initPort(com.port.facebook);
 
 $('head')
 	.append('<style type="text/css" id="cageIFrame">')
 	.append('<link id="cageTheme" rel="stylesheet" type="text/css" href="' + getPath('css/dark-hive/') + 'jquery-ui.css">')
-	.append('<link rel="stylesheet" type="text/css" href="' + getPath('css/fb_cage.css') + '">');
+	.append('<link rel="stylesheet" type="text/css" href="' + getPath('css/fb_cage.css?x=' + Math.random()*1000) + '">');
 
 var _window = (this.unsafeWindow) ? this.unsafeWindow : window;
 _window.onresize = function(evt) {

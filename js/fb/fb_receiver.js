@@ -8,11 +8,7 @@ function receiver(_data) {
 				startCAGE();
 			}
 			break;
-		case com.task.general:
-			$('#cageGeneralImage').attr('src', _data.data.image);
-			$('#cageGeneralName').text(_data.data.name);
-			$('#cageGeneralAttack').text(_data.data.attack);
-			$('#cageGeneralDefense').text(_data.data.defense);
+		case com.task.alive:
 			break;
 	}
 }
