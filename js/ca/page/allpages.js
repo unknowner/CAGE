@@ -76,4 +76,10 @@ tools['Page'].runtime['allPages'] = function() {
 	// fix loader
 	$('#AjaxLoadIcon').removeClass('shield_wait');
 
+	//Stats background
+	$('#main_sts').css('backgroundImage', $('#main_bn').css('backgroundImage'));
+
+	// Favour points
+	$('#cageFavorPoints > span').text($('#main_bn div[style*="persistent_bar_oracle.gif"]').text().trim());
+
 };

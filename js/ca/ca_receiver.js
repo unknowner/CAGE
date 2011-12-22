@@ -26,6 +26,8 @@ function receiver(_data) {
 		case com.task.showSettings:
 			tools.Settings.start();
 			break;
+		case com.task.alive:
+			break;
 		default:
 			console.log(_data.task + ' unknown!');
 	}

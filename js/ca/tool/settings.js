@@ -33,7 +33,7 @@ tools.Settings.textbox = function(_text, _value, _save, _callback) {
 };
 // text, callback func
 tools.Settings.button = function(_text, _callback) {
-	var _id = new Date().getTime();
+	var _id = Math.floor(Math.random() * Math.random() * 100000000);
 	$('#cageSettingsMiddle').append('<div id="cageSettingsButton' + _id + '" class="cageSettingsButton"><span>' + _text + '</span><button></button></div>');
 	$('#cageSettingsButton' + _id + ' > button').click(function() {
 		if(_callback) {
@@ -43,12 +43,12 @@ tools.Settings.button = function(_text, _callback) {
 };
 // on off switch
 tools.Settings.onoff = function(_text, _value, _save, _callback) {
-	var _id = new Date().getTime();
+	var _id = Math.floor(Math.random() * Math.random() * 100000000);
 	$('#cageSettingsMiddle').append('<div id="cageSettingsOnOff' + _id + '" class="cageSettingsOnOff" onoff="' + _value + '"><span>' + _text + '</span><button></button></div>');
 	if(_value == 'true') {
 		$('#cageSettingsOnOff' + _id + ' > button').css('backgroundImage', 'url("http://image4.castleagegame.com/graphics/town_button_expand.gif")');
 	}
-	$('#cageSettingsOnOff' + _id).click(function() {
+	$('#cageSettingsOnOff' + _id + ' > *').click(function() {
 		var _onoff = $('#cageSettingsOnOff' + _id), _newvalue = _onoff.attr('onoff') == 'true' ? 'false' : 'true', _button = $('#cageSettingsOnOff' + _id + ' > button');
 		_onoff.attr('onoff', _newvalue);
 		if(_newvalue == 'true') {
@@ -64,7 +64,8 @@ tools.Settings.onoff = function(_text, _value, _save, _callback) {
 };
 // dropdown
 tools.Settings.dropdown = function(_text, _values, _value, _save, _callback) {
-	var _id = new Date().getTime();
+
+	var _id = Math.floor(Math.random() * Math.random() * 100000000);
 	$('#cageSettingsMiddle').append('<div id="cageSettingsDropdown' + _id + '" class="cageSettingsDropdown"><span>' + _text + '</span><select></div');
 	var _sel = $('#cageSettingsDropdown' + _id + ' select');
 	$.each(_values, function(_i, _e) {
@@ -77,3 +78,7 @@ tools.Settings.dropdown = function(_text, _values, _value, _save, _callback) {
 		}
 	});
 };
+
+tools.Settings.init = function() {
+	tools.Settings.fbButton.add('Settings', tools.Settings.start);
+}

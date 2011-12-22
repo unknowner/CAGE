@@ -10,89 +10,26 @@
 #cageContainer {
 	width: 770px;
 	font-size: 11px;
-	font-family: arial;
-}
-#cageStatsContainer {
-	width: 770px;
-	z-index: 3;
-	height: 0;
-	position: fixed;
-}
-#cageGeneralContainer {
-	padding: 0 0 2px 0;
-	position: fixed;
-	top: 0;
-	left: 0;
-	width: 207px;
-}
-#cageGeneralName {
-	font-weight: bold;
-	height: 18px;
-	padding: 7px 0 0 5px;
-	position: absolute;
-	text-shadow: 1px 1px black;
-	top: 9px;
-	left: 70px;
-	border-left: 0;
-	width: 123px;
-}
-#cageGeneralImageContainer {
-	margin: 3px 0px 1px 3px;
-	height: 65px;
-	width: 65px;
-	float: left;
-}
-#cageGeneralImage {
-	height: 59px;
-	padding: 0px;
-	margin: 3px 0px 2px 3px;
-	cursor: pointer;
-}
-#cageGeneralValues {
-	position: absolute;
-	left: 70px;
-	top: 35px;
-	width: 85px;
-	height: 12px;
-	text-shadow: 1px 1px black;
-	height: 28px;
-	width: 104px;
-	opacity: 0.8;
-}
-#cageGeneralAttack {
-	width: 10px;
-	display: inline-block;
-}
-.cageGeneralAttDefText {
-	top: -5px;
-	position: relative;
-	font-weight: bold;
-	margin-right: 5px;
-}
-.cageGeneralAttDefImg {
-	height: 20px;
-	margin-top: 4px;
-	margin-left: 8px;
-	margin-right: 4px;
+	font-family: Trebuchet MS, Tahoma, Verdana, Arial, sans-serif;
 }
 #cageToolsContainer {
-	position: fixed;
-	top: 89px;
-	padding: 0;
-	width: 753px;
-	margin-left: 8px;
-	z-index: 1;
-	box-shadow: 0 10px 20px black;
+position: fixed;
+top: 122px;
+padding: 0;
+width: 753px;
+margin-left: 8px;
+z-index: 1;
+box-shadow: 0 10px 20px black;
 }
 #cageMenu {
-	position: fixed;
-	height: 28px;
-	z-index: 4;
-	box-shadow: 0 10px 55px black;
-	top: 61px;
-	width: 751px;
-	font-size: 12px;
-	margin-left: 9px;
+position: fixed;
+height: 28px;
+z-index: 4;
+box-shadow: 0 10px 55px black;
+top: 96px;
+width: 751px;
+font-size: 12px;
+margin-left: 9px;
 }
 #cageMenu ul, #cageMenu ul li {
 	list-style: none;
@@ -145,91 +82,6 @@
 	cursor: default;
 	margin-left: 65px;
 	border-radius: 35px;
-}
-/* Generals */
-#cageGeneralSelector {
-	position: fixed;
-	box-shadow: 0 10px 20px black;
-	z-index: 3;
-	width: 702px;
-	margin-left: 10px;
-	padding: 40px 25px 5px 22px;
-	top: 75px;
-	display: none;
-}
-#cageSelectorInfo {
-	width: 100%;
-	height: 20px;
-	bottom: 0;
-	left: 0;
-	display: block;
-	text-align: center;
-	margin: -10px 0 5px 0;
-	line-height: 20px;
-}
-#cageAllGenerals {
-	padding-bottom: 10px;
-}
-#cageAllGenerals > div {
-	margin: 1px;
-	display: inline-block;
-	border-radius: 5px;
-	border: 1px solid transparent;
-}
-#cageAllGenerals > div:hover {
-	border: 1px solid #26B3F7 !important;
-}
-#cageAllGenerals > div > img:first-child {
-	width: 50px;
-	cursor: pointer;
-	border-radius: 4px;
-}
-#cageAllGenerals > div > img:last-child {
-	position: relative;
-	margin-left: -10px;
-	left: -3px;
-	bottom: 3px;
-	width: 10px;
-	cursor: pointer;
-}
-#cageFavouriteGenerals {
-	padding: 4px 0 2px;
-}
-#cageFavouriteGenerals > div {
-	margin: 4px;
-	display: inline-block;
-	box-shadow: 0 0 5px 2px #1482D2;
-	border-radius: 5px;
-}
-#cageFavouriteGenerals > div:hover {
-	box-shadow: 0 0 10px 2px #26b3f7;
-}
-#cageFavouriteGenerals > div > img:first-child:hover {
-	box-shadow: 0 0 10px 2px #26b3f7;
-}
-#cageFavouriteGenerals > div > img:first-child {
-	width: 70px;
-	cursor: pointer;
-	border-radius: 4px;
-}
-#cageFavouriteGenerals > div > img:last-child {
-	position: relative;
-	margin-left: -12px;
-	left: -3px;
-	bottom: 3px;
-	width: 12px;
-	cursor: pointer;
-}
-.cageCharge {
-	position: relative;
-	left: -52px;
-	bottom: 2px;
-	display: inline-block;
-	border-radius: 6px;
-	width: 6px;
-	opacity: .8;
-	background-color: #26B3F7;
-	margin-right: -7px;
 }
 /* Guild */
 .cageGateFilterTitle {
@@ -324,76 +176,6 @@
 	left: 150px;
 	top: -50px;
 }
-/*
- Stash UI button
- */
-#cageStash {
-	background-image: url('http://image4.castleagegame.com/graphics/stat_gold.gif');
-	background-position: -2px -1px;
-	position: absolute;
-	width: 29px;
-	top: 18px;
-	height: 29px;
-	border-radius: 20px;
-	cursor: pointer;
-	float: left;
-	left: 17px;
-}
-/*
- Heal UI button
- */
-#cageHeal {
-background-image: url('http://image4.castleagegame.com/graphics/stat_health.gif');
-background-position: -2px -1px;
-position: absolute;
-width: 29px;
-top: 18px;
-height: 29px;
-border-radius: 20px;
-cursor: pointer;
-float: left;
-left: 323px;
-}
-/*
- Stamina Potion UI button
- */
-#cagePotionStamina {
-background-image: url('http://image4.castleagegame.com/graphics/stat_stamina.gif');
-background-position: -2px -1px;
-width: 29px;
-top: 18px;
-height: 29px;
-border-radius: 20px;
-cursor: pointer;
-float: left;
-left: 469px;
-position: absolute;
-}
-/*
- Energy Potion UI button
- */
-#cagePotionEnergy {
-	background-image: url('http://image4.castleagegame.com/graphics/stat_energy.gif');
-	background-position: -2px -1px;
-	position: absolute;
-	width: 29px;
-	top: 18px;
-	height: 29px;
-	border-radius: 20px;
-	cursor: pointer;
-	float: left;
-	left: 178px;
-}
-/*
- * Potions count
- *
- */
-.cagePotionCount {
-	color: white;
-	text-shadow: 0 0 3px blue;
-	font-weight: bold;
-	font-size: 13px;
-}
 #cageDemiContainer {
 	position: fixed;
 	width: 540px;
@@ -446,11 +228,17 @@ position: absolute;
 #cageDemiContainer span {
 	display: block;
 	position: relative;
-	left: 10px;
-	top: 54px;
+	left: 13px;
+	top: 56px;
 	font-size: 12px;
 	font-weight: bold;
-	text-shadow: #000 0 0 5px;
+	color: white;
+	background-color: black;
+	width: 60px;
+	opacity: 0.8;
+	border-bottom-right-radius: 10px;
+	padding: 2px;
+	border-top-left-radius: 10px;
 }
 .cageDemiResult {
 	font-size: 12px;
@@ -469,4 +257,26 @@ position: absolute;
 }
 #cageSummonCTA:hover {
 	opacity: 0.9;
+}
+/*
+ * Player monster list
+ */
+.cageTowerImage {
+	position: relative;
+	margin: 20px;
+	border-radius: 6px;
+	top: 10px;
+	box-shadow: 0 3px 5px #000;
+	margin-left: 105px;
+}
+/*
+ *
+ */
+#cageInfos {
+	position: fixed;
+	bottom: 15px;
+	left: 15px;
+	width: 200px;
+}
+.cageInfo {
 }

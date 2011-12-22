@@ -4,8 +4,9 @@ function defaultLanguage(){
 	//CAGE
 	this.cageSetClearDataDesc			= 'If you have problems with gifting, cages or anything else, its the best to clear all saved data and reload Castle Age. You will loose all settings for your current user id!';
 	this.cageSetClearDataAction		= 'Clear saved data';
-	this.cageSetAnimationAction		= 'Turn off/on animations';
+	this.cageSetAnimationAction		= 'Animations';
 	this.cageSetThemeAction				= 'Choose theme';
+	this.cageSetAlignCenter				= 'Castle Age centered';
 	
 	// Settings
 	this.settingsButton						= 'Settings';
