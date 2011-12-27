@@ -19,7 +19,7 @@ tools.Assister.requestPermisson = function() {
 		FB.login(function(response) {
 			console.log(response);
 		}, {
-			perms : 'publish_stream'
+			scope : 'publish_stream'
 		});
 	}, null, true, true);
 };

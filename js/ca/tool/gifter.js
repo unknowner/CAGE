@@ -13,6 +13,9 @@ tools.Gifter.runtimeUpdate = function() {
 		requests : tools.Gifter.runtime == undefined ? [] : tools.Gifter.runtime.requests,
 		userList : item.get('cageGifterUserList', '')
 	}
+	if(tools.Gifter.runtime.sendGiftTo == null) {
+		tools.Gifter.runtime.sendGiftTo = [];
+	}
 	console.log('tools.Gifter.runtime.userList:', tools.Gifter.runtime.userList);
 };
 

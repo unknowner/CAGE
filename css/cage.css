@@ -13,23 +13,24 @@
 	font-family: Trebuchet MS, Tahoma, Verdana, Arial, sans-serif;
 }
 #cageToolsContainer {
-position: fixed;
-top: 122px;
-padding: 0;
-width: 753px;
-margin-left: 8px;
-z-index: 1;
-box-shadow: 0 10px 20px black;
+	position: fixed;
+	top: 122px;
+	padding: 0;
+	height: 33px;
+	width: 753px;
+	margin-left: 8px;
+	z-index: 1;
+	box-shadow: 0 10px 20px black;
 }
 #cageMenu {
-position: fixed;
-height: 28px;
-z-index: 4;
-box-shadow: 0 10px 55px black;
-top: 96px;
-width: 751px;
-font-size: 12px;
-margin-left: 9px;
+	position: fixed;
+	height: 28px;
+	z-index: 4;
+	box-shadow: 0 10px 55px black;
+	top: 96px;
+	width: 751px;
+	font-size: 12px;
+	margin-left: 9px;
 }
 #cageMenu ul, #cageMenu ul li {
 	list-style: none;
