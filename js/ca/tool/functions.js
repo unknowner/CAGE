@@ -3,6 +3,23 @@ new tool('Functions');
 tools.Functions.runtime = {};
 
 // Fixed Popups
+tools.Functions.cageRePos = function() {
+	window['cageRePos'] = function(fb_js_var, top) {
+		$('#single_popup_background').removeClass('connect_castlepb_bg').fadeTo('slow', 0.75);
+		var _sp = $('#single_popup');
+		_sp.html($('#' + fb_js_var).html());
+		_sp.find('>div:first').css('padding', 0);
+		var _width = (770 - _sp.width()) / 2;
+		_sp.css({
+			'marginLeft' : (_width),
+			'width' : _sp.width()
+		});
+		if(top) {
+			_sp.css('top', top);
+		}
+		_sp.fadeTo('slow', 1);
+	};
+}
 tools.Functions.hidePositionBox = function(evt) {
 	window['hidePositionBox'] = function(event, fb_js_var) {
 		$('#single_popup_background').fadeOut('slow');
@@ -10,35 +27,26 @@ tools.Functions.hidePositionBox = function(evt) {
 	};
 };
 
-tools.Functions.PositionAndDisplayPopupAtTop = function(fb_js_var, anchor, posX, posY, classname) {
+tools.Functions.PositionAndDisplayPopupBox = function() {
+	window['PositionAndDisplayPopupBox'] = function(fb_js_var, anchor, classname) {
+		cageRePos(fb_js_var, $(anchor).offset().top);
+	};
+};
+
+tools.Functions.PositionAndDisplayPopupAtTop = function() {
 	window['PositionAndDisplayPopupAtTop'] = function(fb_js_var, anchor, posX, posY, classname) {
-		$('#single_popup_background').removeClass('connect_castlepb_bg').fadeTo('slow', 0.75);
-		var _sp = $('#single_popup');
-		_sp.html($('#' + fb_js_var).html());
-		var _width = (770 - _sp.width()) / 2;
-		_sp.css({
-			'marginLeft' : (_width),
-			'width' : _sp.width()
-		});
-		_sp.find('> div:first').attr('style', '').find('> div:first').css('float', '');
-		_sp.fadeTo('slow', 1);
+		cageRePos(fb_js_var);
 	};
 };
 
 tools.Functions.PopupAtMousePosition = function() {
 	window['PopupAtMousePosition'] = function(event, fb_js_var) {
-		$('#single_popup_background').removeClass('connect_castlepb_bg').fadeTo('slow', 0.75);
-		var _sp = $('#single_popup');
-		_sp.html($('#' + fb_js_var).html());
-		_sp.css('marginLeft', (770 - _sp.width())).find('> div:first').attr('style', '').find('> div:first').css('float', '');
-		_sp.fadeTo('slow', 1);
+		cageRePos(fb_js_var);
 	};
 };
 tools.Functions.PositionAndDisplayPopupAutoCenter = function() {
 	window['PositionAndDisplayPopupAutoCenter'] = function(event, fb_js_var) {
-		$('#single_popup_background').removeClass('connect_castlepb_bg').fadeTo('slow', 0.75);
-		var _sp = $('#single_popup');
-		_sp.html($('#' + fb_js_var).html()).css('marginLeft', (770 - _sp.width()) / 2).fadeTo('slow', 1);
+		cageRePos(fb_js_var);
 	}
 };
 // Stats Ticker + CAGE calls
@@ -109,5 +117,6 @@ tools.Functions.init = function() {
 	addFunction(tools.Functions.hidePositionBox, null, true, false);
 	addFunction(tools.Functions.PositionAndDisplayPopupAutoCenter, null, true, false);
 	addFunction(tools.Functions.PositionAndDisplayPopupAtTop, null, true, false);
-
+	addFunction(tools.Functions.PositionAndDisplayPopupBox, null, true, false);
+	addFunction(tools.Functions.cageRePos, null, true, false);
 };
