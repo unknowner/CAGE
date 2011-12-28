@@ -281,3 +281,54 @@
 }
 .cageInfo {
 }
+/*
+ * Abilities
+ */
+#cageClassCleric {
+	display: none;
+	border-radius: 50px;
+	padding: 0;
+	position: absolute;
+	left: 23px;
+	top: 13px;
+	cursor: pointer;
+}
+#cageClassCleric img {
+	height: 30px;
+}
+#cageClassWarrior {
+	display: none;
+	border-radius: 50px;
+	padding: 0;
+	position: absolute;
+	left: 70px;
+	top: 13px;
+	cursor: pointer;
+}
+#cageClassWarrior img {
+	height: 30px;
+}
+#cageClassMage {
+	display: none;
+	border-radius: 50px;
+	padding: 0;
+	position: absolute;
+	right: 23px;
+	top: 13px;
+	cursor: pointer;
+}
+#cageClassMage img {
+	height: 30px;
+}
+#cageClassRogue {
+	display: none;
+	border-radius: 50px;
+	padding: 0;
+	position: absolute;
+	right: 70px;
+	top: 13px;
+	cursor: pointer;
+}
+#cageClassRogue img {
+	height: 30px;
+}	
