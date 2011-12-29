@@ -25,6 +25,9 @@
 /*
  * Gold
  */
+#gold_current_value {
+	color: #4B3715 !important;
+}
 #cageStash {
 	background-image: url('http://image4.castleagegame.com/graphics/stat_gold.gif');
 	background-position: -2px -1px;
@@ -217,6 +220,9 @@
 	font-weight: bold;
 	font-size: 13px;
 }
+/*
+ * Favour Points
+ */
 #cageFavorPoints {
 	position: absolute;
 	top: 11px;
@@ -236,4 +242,47 @@
 	font-weight: bold;
 	font-size: 14px;
 	left: 0;
+}
+/*
+ * Demi Timer
+ */
+#cageNextDemi {
+	position: absolute;
+	left: 198px;
+	top: 8px;
+	height: 33px;
+	width: 126px;
+	background: #D0B683;
+	margin: 0;
+	border-radius: 7px;
+	border: 1px ridge #66401B;
+}
+#cageNextDemi > div {
+	position: absolute;
+	background: #796646;
+	width: 116px;
+	height: 12px;
+	top: 4px;
+	left: 5px;
+	border-radius: 3px;
+}
+#cageNextDemi > div > div {
+	height: 12px;
+	width: 1%;
+	background-color: #1A7A30;
+	position: absolute;
+	border-radius: 3px;
+}
+#cageNextDemi > span {
+	position: absolute;
+	top: 17px;
+	font-size: 14px;
+	font-weight: bolder;
+	color: #4B3715;
+}
+#cageNextDemi > span:first-of-type {
+	left: 6px;
+}
+#cageNextDemi > span:last-of-type {
+	right: 5px;
 }

@@ -30,17 +30,20 @@ tools.Demi.start = function() {
 					},
 					autoOpen : true
 				});
-				if($('#cageDemiResult').text().indexOf('Your demi points for') > 0) {
-					var _wait = 24;
-					if(/Your demi points for (\w+)/.exec($('#cageDemiResult').text())[1] == 'Azeron') {
-						_wait = 48;
-					}
-					item.set('CAGEdemiLast', (new Date()).toISOString());
-					item.set('CAGEdemiNext', _wait);
-				} else {
-					console.log(/(\d+)(?= hours)/.exec($('#cageDemiResult').text()));
-					console.log(/(\d+)(?= minutes)/.exec($('#cageDemiResult').text()));
+				// Set/check demi timer
+				var _wait = $('#cageDemiResult').text().indexOf('Azeron') > 0 ? 48 : 24;
+				var _hour = _wait;
+				var _minute = 0;
+				var _demi = new Date();
+				if($('#cageDemiResult').text().indexOf('You cannot pay another tribute so soon') == 0) {
+					_hour = parseInt(/(\d+)(?= hours)/.exec($('#cageDemiResult').text())[0], 10);
+					_minute = parseInt(/(\d+)(?= minutes)/.exec($('#cageDemiResult').text())[0], 10);
+					_demi.setHours(_demi.getHours() + _hour - _wait, _demi.getMinutes() + _minute);
 				}
+				item.set('cageDemiLast', Date.parse(_demi));
+				item.set('cageDemiTime', _wait);
+				$('#cageNextDemi span:last').text(_hour + ':' + ('0' + _minute).slice(-2));
+				$('#cageNextDemi > div > div').css('width', (100 - (_hour * 60 + _minute) * 100 / (_wait * 60)) + '%');
 			});
 			_demi.animate({
 				'top' : -100
@@ -51,14 +54,32 @@ tools.Demi.start = function() {
 		})
 	})
 };
-
+tools.Demi.timer = function() {
+	var _last = item.get('cageDemiLast', null);
+	if(_last !== null) {
+		var _date = new Date(_last);
+		var _wait = item.get('cageDemiTime', 24);
+		_date.setHours(_date.getHours() + _wait);
+		var _ms = Date.parse(_date) - Date.parse((new Date()));
+		var _sec = _ms / 1000;
+		var _min = Math.floor(_sec % 3600 / 60);
+		var _hr = Math.floor(_sec / 3600);
+		$('#cageNextDemi span:last').text(_hr + ':' + ('0' + _min).slice(-2));
+		$('#cageNextDemi > div > div').css('width', (100 - (_hr * 60 + _min) * 100 / (_wait * 60)) + '%');
+	}
+};
 tools.Demi.done = function() {
 	tools.Demi.fbButton.enable();
 };
 tools.Demi.init = function() {
 	$('#cageContainer').append('<div id="cageDemiContainer" class="ui-corner-bottom ui-widget-content"></div>');
+	$('#cageStatsContainer').append('<div id="cageNextDemi"><div><div></div></div><span>Next Demi:</span><span></span></div>');
 	tools.Demi.fbButton.add(language.demiButton, function() {
 		tools.Demi.fbButton.disable();
 		tools.Demi.start();
 	});
+	tools.Demi.timer();
+	window.setInterval(function() {
+		tools.Demi.timer();
+	}, 60000);
 };
