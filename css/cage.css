@@ -13,23 +13,24 @@
 	font-family: Trebuchet MS, Tahoma, Verdana, Arial, sans-serif;
 }
 #cageToolsContainer {
-position: fixed;
-top: 122px;
-padding: 0;
-width: 753px;
-margin-left: 8px;
-z-index: 1;
-box-shadow: 0 10px 20px black;
+	position: fixed;
+	top: 122px;
+	padding: 0;
+	height: 33px;
+	width: 753px;
+	margin-left: 8px;
+	z-index: 1;
+	box-shadow: 0 10px 20px black;
 }
 #cageMenu {
-position: fixed;
-height: 28px;
-z-index: 4;
-box-shadow: 0 10px 55px black;
-top: 96px;
-width: 751px;
-font-size: 12px;
-margin-left: 9px;
+	position: fixed;
+	height: 28px;
+	z-index: 4;
+	box-shadow: 0 10px 55px black;
+	top: 96px;
+	width: 751px;
+	font-size: 12px;
+	margin-left: 9px;
 }
 #cageMenu ul, #cageMenu ul li {
 	list-style: none;
@@ -229,7 +230,7 @@ margin-left: 9px;
 	display: block;
 	position: relative;
 	left: 13px;
-	top: 56px;
+	top: 50px;
 	font-size: 12px;
 	font-weight: bold;
 	color: white;
@@ -280,3 +281,54 @@ margin-left: 9px;
 }
 .cageInfo {
 }
+/*
+ * Abilities
+ */
+#cageClassCleric {
+	display: none;
+	border-radius: 50px;
+	padding: 0;
+	position: absolute;
+	left: 23px;
+	top: 13px;
+	cursor: pointer;
+}
+#cageClassCleric img {
+	height: 30px;
+}
+#cageClassWarrior {
+	display: none;
+	border-radius: 50px;
+	padding: 0;
+	position: absolute;
+	left: 70px;
+	top: 13px;
+	cursor: pointer;
+}
+#cageClassWarrior img {
+	height: 30px;
+}
+#cageClassMage {
+	display: none;
+	border-radius: 50px;
+	padding: 0;
+	position: absolute;
+	right: 23px;
+	top: 13px;
+	cursor: pointer;
+}
+#cageClassMage img {
+	height: 30px;
+}
+#cageClassRogue {
+	display: none;
+	border-radius: 50px;
+	padding: 0;
+	position: absolute;
+	right: 70px;
+	top: 13px;
+	cursor: pointer;
+}
+#cageClassRogue img {
+	height: 30px;
+}	

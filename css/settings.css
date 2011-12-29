@@ -26,6 +26,7 @@
 	display: inline-block;
 	width: 332px;
 	background: -webkit-linear-gradient(top, #A9032A 0%,#900223 25%,#6E001A 100%);
+	background-color: #900;
 	text-align: center;
 	text-shadow: 0 0 13px black;
 	font-weight: bold;

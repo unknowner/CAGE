@@ -1,32 +1,56 @@
 new tool('Functions');
 
-tools['Functions'].runtime = {};
+tools.Functions.runtime = {};
 
 // Fixed Popups
-tools['Functions'].hidePositionBox = function(evt) {
+tools.Functions.cageRePos = function() {
+	window['cageRePos'] = function(fb_js_var, top) {
+		$('#single_popup_background').removeClass('connect_castlepb_bg').fadeTo('slow', 0.75);
+		var _sp = $('#single_popup');
+		_sp.html($('#' + fb_js_var).html());
+		_sp.find('>div:first').css('padding', 0);
+		var _width = (770 - _sp.width()) / 2;
+		_sp.css({
+			'marginLeft' : (_width),
+			'width' : _sp.width()
+		});
+		if(top) {
+			_sp.css('top', top);
+		}
+		_sp.fadeTo('slow', 1);
+	};
+}
+tools.Functions.hidePositionBox = function(evt) {
 	window['hidePositionBox'] = function(event, fb_js_var) {
 		$('#single_popup_background').fadeOut('slow');
 		$('#single_popup').fadeOut('slow');
 	};
 };
 
-tools['Functions'].PopupAtMousePosition = function() {
-	window['PopupAtMousePosition'] = function(event, fb_js_var) {
-		$('#single_popup_background').removeClass('connect_castlepb_bg').fadeTo('slow', 0.75);
-		var _sp = $('#single_popup');
-		_sp.html($('#' + fb_js_var).html()).css('marginLeft', (770 - _sp.width())).find('> div:first').attr('style', '').find('> div:first').css('float', '');
-		_sp.fadeTo('slow', 1);
+tools.Functions.PositionAndDisplayPopupBox = function() {
+	window['PositionAndDisplayPopupBox'] = function(fb_js_var, anchor, classname) {
+		cageRePos(fb_js_var, $(anchor).offset().top);
 	};
 };
-tools['Functions'].PositionAndDisplayPopupAutoCenter = function() {
+
+tools.Functions.PositionAndDisplayPopupAtTop = function() {
+	window['PositionAndDisplayPopupAtTop'] = function(fb_js_var, anchor, posX, posY, classname) {
+		cageRePos(fb_js_var);
+	};
+};
+
+tools.Functions.PopupAtMousePosition = function() {
+	window['PopupAtMousePosition'] = function(event, fb_js_var) {
+		cageRePos(fb_js_var);
+	};
+};
+tools.Functions.PositionAndDisplayPopupAutoCenter = function() {
 	window['PositionAndDisplayPopupAutoCenter'] = function(event, fb_js_var) {
-		$('#single_popup_background').removeClass('connect_castlepb_bg').fadeTo('slow', 0.75);
-		var _sp = $('#single_popup');
-		_sp.html($('#' + fb_js_var).html()).css('marginLeft', (770 - _sp.width()) / 2).fadeTo('slow', 1);
+		cageRePos(fb_js_var);
 	}
 };
 // Stats Ticker + CAGE calls
-tools['Functions'].stat_increase_ticker = function() {
+tools.Functions.stat_increase_ticker = function() {
 	// set new value via cageStat
 	window['stat_increase_ticker'] = function(ticks_left, stat_current, stat_max, tick_time, increase_value, stat_type, first_call) {
 		if(cageStat[stat_type] && cageStat[stat_type] !== null) {
@@ -76,20 +100,23 @@ tools['Functions'].stat_increase_ticker = function() {
 		var mins = parseInt(ticks_left / 60);
 		var secs = ticks_left % 60;
 		time_value.html(mins + ':' + ((secs > 9) ? secs : '0' + secs ));
-		timedStats[stat_type] = setTimeout(function() {stat_increase_ticker(ticks_left, stat_current, stat_max, tick_time, increase_value, stat_type, false);
+		timedStats[stat_type] = setTimeout(function() {
+			stat_increase_ticker(ticks_left, stat_current, stat_max, tick_time, increase_value, stat_type, false);
 		}, 1000);
 	};
 };
 
-tools['Functions'].init = function() {
+tools.Functions.init = function() {
 	// add global cageStat
 	addFunction(function() {
 		cageStat = {}
 	}, null, true, true);
 	// replace CA funtions
-	addFunction(tools['Functions'].stat_increase_ticker, null, true, false);
-	addFunction(tools['Functions'].PopupAtMousePosition, null, true, false);
-	addFunction(tools['Functions'].hidePositionBox, null, true, false);
-	addFunction(tools['Functions'].PositionAndDisplayPopupAutoCenter, null, true, false);
-
+	addFunction(tools.Functions.stat_increase_ticker, null, true, false);
+	addFunction(tools.Functions.PopupAtMousePosition, null, true, false);
+	addFunction(tools.Functions.hidePositionBox, null, true, false);
+	addFunction(tools.Functions.PositionAndDisplayPopupAutoCenter, null, true, false);
+	addFunction(tools.Functions.PositionAndDisplayPopupAtTop, null, true, false);
+	addFunction(tools.Functions.PositionAndDisplayPopupBox, null, true, false);
+	addFunction(tools.Functions.cageRePos, null, true, false);
 };

@@ -176,7 +176,7 @@ iframe.FB_UI_Dialog {
 }
 #single_popup {
 	opacity: 0;
-	position: fixed;
+	position: absolute;
 	top: 140px;
 	display: block;
 }
@@ -186,4 +186,9 @@ iframe.FB_UI_Dialog {
 	z-index: 100;
 	position: fixed;
 	top: 120px;
+}
+div.demipb_button {
+	position: absolute !important;
+	left: 456px !important;
+	top: 3px !important;
 }

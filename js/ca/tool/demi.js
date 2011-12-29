@@ -6,9 +6,7 @@ tools.Demi.start = function() {
 	$('body > center').append('<div id="cageDemiResult">');
 	get('symbols.php', function(_demipage) {
 		$('div[id^="symbol_displaysymbols"]', _demipage).each(function(_i, _e) {
-			var _text = $(_e).text(),
-					_deity = /\+1 max (\w+)/.exec(_text)[1],
-					_points = /You have (\d+)/.exec(_text)[1]
+			var _text = $(_e).text(), _deity = /\+1 max (\w+)/.exec(_text)[1], _points = /You have (\d+)/.exec(_text)[1]
 			_demi.append('<div><div id="cageDemi' + _deity + '" class="cageDemiImage" style="background-image:url(http://image4.castleagegame.com/graphics/deity_' + _deity + '.jpg);" symbol="' + (_i + 1) + '"><span>' + _points + '<br>' + _deity.substr(0, 1).toUpperCase() + _deity.substr(1) + '</span></div></div>');
 		})
 		_demi.show().animate({
@@ -22,7 +20,7 @@ tools.Demi.start = function() {
 					resizable : false,
 					zIndex : 3999,
 					width : 440,
-					minHeight : 0, 
+					minHeight : 0,
 					position : ['center', 50],
 					draggable : false,
 					buttons : {
@@ -32,6 +30,20 @@ tools.Demi.start = function() {
 					},
 					autoOpen : true
 				});
+				// Set/check demi timer
+				var _wait = $('#cageDemiResult').text().indexOf('Azeron') > 0 ? 48 : 24;
+				var _hour = _wait;
+				var _minute = 0;
+				var _demi = new Date();
+				if($('#cageDemiResult').text().indexOf('You cannot pay another tribute so soon') == 0) {
+					_hour = parseInt(/(\d+)(?= hours)/.exec($('#cageDemiResult').text())[0], 10);
+					_minute = parseInt(/(\d+)(?= minutes)/.exec($('#cageDemiResult').text())[0], 10);
+					_demi.setHours(_demi.getHours() + _hour - _wait, _demi.getMinutes() + _minute);
+				}
+				item.set('cageDemiLast', Date.parse(_demi));
+				item.set('cageDemiTime', _wait);
+				$('#cageNextDemi span:last').text(_hour + ':' + ('0' + _minute).slice(-2));
+				$('#cageNextDemi > div > div').css('width', (100 - (_hour * 60 + _minute) * 100 / (_wait * 60)) + '%');
 			});
 			_demi.animate({
 				'top' : -100
@@ -42,14 +54,32 @@ tools.Demi.start = function() {
 		})
 	})
 };
-
+tools.Demi.timer = function() {
+	var _last = item.get('cageDemiLast', null);
+	if(_last !== null) {
+		var _date = new Date(_last);
+		var _wait = item.get('cageDemiTime', 24);
+		_date.setHours(_date.getHours() + _wait);
+		var _ms = Date.parse(_date) - Date.parse((new Date()));
+		var _sec = _ms / 1000;
+		var _min = Math.floor(_sec % 3600 / 60);
+		var _hr = Math.floor(_sec / 3600);
+		$('#cageNextDemi span:last').text(_hr + ':' + ('0' + _min).slice(-2));
+		$('#cageNextDemi > div > div').css('width', (100 - (_hr * 60 + _min) * 100 / (_wait * 60)) + '%');
+	}
+};
 tools.Demi.done = function() {
 	tools.Demi.fbButton.enable();
 };
 tools.Demi.init = function() {
 	$('#cageContainer').append('<div id="cageDemiContainer" class="ui-corner-bottom ui-widget-content"></div>');
+	$('#cageStatsContainer').append('<div id="cageNextDemi"><div><div></div></div><span>Next Demi:</span><span></span></div>');
 	tools.Demi.fbButton.add(language.demiButton, function() {
 		tools.Demi.fbButton.disable();
 		tools.Demi.start();
 	});
+	tools.Demi.timer();
+	window.setInterval(function() {
+		tools.Demi.timer();
+	}, 60000);
 };

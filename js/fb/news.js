@@ -5,10 +5,10 @@ $('#cageNewsText').text('You\'re now running CAGE and making your Castle Age lif
 $('#cageNewsFoot').prepend('<p style="text-align: left;"><b>NOTICE: </b>Redesigned some stuff so CAGE uses more existing space. Don\'t like it? Let me know!.<br><br>If you find bugs just go to the blog an post them there (no signup required).<br><br>Found an error? Logs (CTRL+SHIFT+J) are always welcome ;)</p>');
 $.each(
 	[
-	'CHG: Generals reworked once more',
-	'ADD: Stats reworked',
-	'FIX: Popup positions',
-	'ADD: Notificatons for some actions (assists, eliteguard)'
+		'FIX: Permission request for assister',
+		'ADD: Guild Class switcher',
+		'FIX: Monster/Quest pop ups',
+		'ADD: Demi Timer'
 	], function(_i, _e) {
 	$('#cageNewsChanges').append('<li><span>' + _e.split(':')[0] + ':</span>' + _e.split(':')[1] + '</li>');
 });
