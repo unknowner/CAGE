@@ -27,7 +27,7 @@ tools.Gifter.update = function() {
 		if(_gifts) {
 			$.each(_gifts.data, function(_i, _e) {
 				if(_e.from !== null) {
-					com.note('Gifter', 'You accepted a gift from ' + _e.from.name);
+					note('Gifter', 'You accepted a gift from ' + _e.from.name);
 					if($.inArray(_e.from.id, tools.Gifter.runtime.sendGiftTo) == -1) {
 						tools.Gifter.runtime.sendGiftTo.push(_e.from.id);
 					}

@@ -7,6 +7,7 @@ function defaultLanguage(){
 	this.cageSetAnimationAction		= 'Animations';
 	this.cageSetThemeAction				= 'Choose theme';
 	this.cageSetAlignCenter				= 'Castle Age centered';
+	this.cageNotifications				= 'Show notifications';
 	
 	// Settings
 	this.settingsButton						= 'Settings';

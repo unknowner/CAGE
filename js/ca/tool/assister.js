@@ -98,7 +98,7 @@ tools.Assister.assist = function() {
 			get(_cta.link, function(_monsterdata) {
 				var _num = $('span.result_body', _monsterdata).text();
 				if(_num !== null && _cta.uid !== CastleAge.userId && _num.match(/\d+(?:st|nd|rd|th)/) !== null) {
-					com.note('Assister', 'You\'ve assisted ' + _cta.name + '.');
+					note('Assister', 'You\'ve assisted ' + _cta.name + '.');
 					tools.Assister.runtime.Used++;
 					addFunction(function(data) {
 						cageStat['stamina'] = data.stamina;
@@ -181,7 +181,7 @@ tools.Assister.assist = function() {
 
 tools.Assister.done = function() {
 
-	com.note('Assister', 'You assisted ' + tools.Assister.runtime.Assisted.length + ' friends.');
+	note('Assister', 'You assisted ' + tools.Assister.runtime.Assisted.length + ' friends.');
 	tools.Assister.runtime.Used = 0;
 	tools.Assister.fbButton.enable();
 

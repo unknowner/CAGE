@@ -45,13 +45,15 @@ tools.Settings.button = function(_text, _callback) {
 tools.Settings.onoff = function(_text, _value, _save, _callback) {
 	var _id = Math.floor(Math.random() * Math.random() * 100000000);
 	$('#cageSettingsMiddle').append('<div id="cageSettingsOnOff' + _id + '" class="cageSettingsOnOff" onoff="' + _value + '"><span>' + _text + '</span><button></button></div>');
-	if(_value == 'true') {
+	if(_value == true) {
 		$('#cageSettingsOnOff' + _id + ' > button').css('backgroundImage', 'url("http://image4.castleagegame.com/graphics/town_button_expand.gif")');
 	}
-	$('#cageSettingsOnOff' + _id + ' > *').click(function() {
-		var _onoff = $('#cageSettingsOnOff' + _id), _newvalue = _onoff.attr('onoff') == 'true' ? 'false' : 'true', _button = $('#cageSettingsOnOff' + _id + ' > button');
+	$('#cageSettingsOnOff' + _id + ' > button').click(function() {
+		console.log($('#cageSettingsOnOff' + _id).attr('onoff'));
+		var _onoff = $('#cageSettingsOnOff' + _id), _newvalue = _onoff.attr('onoff') == 'true' ? false : true, _button = $('#cageSettingsOnOff' + _id + ' > button');
+		console.log('_newvalue', _newvalue);
 		_onoff.attr('onoff', _newvalue);
-		if(_newvalue == 'true') {
+		if(_newvalue == true) {
 			_button.css('backgroundImage', 'url("http://image4.castleagegame.com/graphics/town_button_expand.gif")');
 		} else {
 			_button.css('backgroundImage', 'url("http://image4.castleagegame.com/graphics/town_button_collapse.gif")');

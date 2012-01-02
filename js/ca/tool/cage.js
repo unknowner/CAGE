@@ -16,15 +16,20 @@ tools.cage.settings = function() {
 	tools.Settings.dropdown(language.cageSetThemeAction, tools.cage.runtime.themes, tools.cage.runtime.theme, 'cageTheme', function(_value) {
 		$('#cageTheme').attr('href', tools.cage.runtime.themes[_value] + 'jquery-ui.css');
 	});
+	tools.Settings.onoff(language.cageNotifications, tools.cage.runtime.showNotes, 'cageShowNotes', function() {
+		tools.cage.runtime.showNotes = !tools.cage.runtime.showNotes;
+	});
 };
 
 tools.cage.runtimeUpdate = function() {
 	if(!tools.cage.runtime) {
 		tools.cage.runtime = {};
 	}
-	tools.cage.runtime.centered = item.get('cageCentered', 'true');
-	tools.cage.runtime.fxOn = item.get('cageFXOnOff', 'true');
-	tools.cage.runtime.theme = item.get('cageTheme', 'true');
+	tools.cage.runtime.centered = item.get('cageCentered', true);
+	tools.cage.runtime.fxOn = item.get('cageFXOnOff', true);
+	tools.cage.toggleFx();
+	tools.cage.runtime.showNotes = item.get('cageShowNotes', true);
+	tools.cage.runtime.theme = item.get('cageTheme', 'Dark Hive (default)');
 	tools.cage.runtime.themes = {
 		'Dark Hive (default)' : getPath('css/dark-hive/'),
 		'Base' : 'http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/',
@@ -74,13 +79,14 @@ tools.cage.centered = function() {
 	}, 10);
 };
 tools.cage.toggleFx = function() {
+	console.log(tools.cage.runtime.fxOn);
 	var _fx = !tools.cage.runtime.fxOn;
+	console.log(_fx);
 	$.fx.off = _fx;
 	addFunction(function(_cafx) {
 		$.fx.off = _cafx;
 	}, _fx, true, true);
 };
-
 tools.cage.init = function() {
 	tools.cage.runtimeUpdate();
 }
