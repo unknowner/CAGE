@@ -65,10 +65,16 @@ tools.Demi.timer = function() {
 		var _hr = Math.floor(_sec / 3600);
 		if(_hr < 0 || _min < 0) {
 			$('#cageNextDemi span:last').text('Now');
-			$('#cageNextDemi > div > div').css('width', '100%');
+			$('#cageNextDemi > div > div').css({
+				'width' : '100%',
+				'backgroundColor' : '#c00'
+			});
 		} else {
 			$('#cageNextDemi span:last').text(_hr + ':' + ('0' + _min).slice(-2));
-			$('#cageNextDemi > div > div').css('width', (100 - (_hr * 60 + _min) * 100 / (_wait * 60)) + '%');
+			$('#cageNextDemi > div > div').css({
+				'width' : (100 - (_hr * 60 + _min) * 100 / (_wait * 60)) + '%',
+				'backgroundColor' : '#1A7A30'
+			});
 		}
 	}
 };
