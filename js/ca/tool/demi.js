@@ -83,7 +83,7 @@ tools.Demi.done = function() {
 };
 tools.Demi.init = function() {
 	$('#cageContainer').append('<div id="cageDemiContainer" class="ui-corner-bottom ui-widget-content"></div>');
-	$('#cageStatsContainer').append('<div id="cageNextDemi"><div><div></div></div><span>Next Demi:</span><span></span></div>');
+	$('#cageStatsContainer').append('<div id="cageNextDemi"><div><div></div></div><span>Demi:</span><span></span></div>');
 	tools.Demi.fbButton.add(language.demiButton, function() {
 		tools.Demi.fbButton.disable();
 		tools.Demi.start();
