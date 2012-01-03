@@ -2,7 +2,7 @@
 VER: 1.1.5β
 ------------------------------------------------------------------
 	FIX: Demi timer showing negativ timer
-	FIX: Guild members not showing
+	FIX: Not showing all popups
 	ADD: Notification setting (and internals)
 	ADD: Stat Points display
 
