@@ -45,9 +45,11 @@ function defaultLanguage(){
 	// Gifter
 	this.gifterButton							= 'Receive Gifts';
 	this.gifterSetName						= 'Gifts'
-	this.gifterSetFilterDesc			= 'Enter the name of a Facebook friendlist you like to add as an extra filter to the Send gifts dialog.'
-	this.giftersetFilterAction		= 'Gifting friendlist'
+	this.gifterSetFilterDesc			= 'Enter the name of a Facebook friendlist you like to add as an extra filter to the Send gifts dialog.';
+	this.giftersetFilterAction		= 'Gifting friendlist';
 	
+	// MOnster
+	this.MonsterButton						= 'Monsters';
 }
 
 language = new defaultLanguage;

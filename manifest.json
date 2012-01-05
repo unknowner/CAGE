@@ -1,6 +1,6 @@
 {
 	"name": "CAGE - Castle Age Game Enhancer [β]",
-	"version": "1.1.5",
+	"version": "1.1.6",
 	"description": "CAGE makes playing Castle Age on Facebook a bit easier and a lot more fun ;)",
 	"background_page": "background.html",
 	"content_scripts": [
@@ -32,6 +32,7 @@
 			"js/ca/tool/generals.js",
 			"js/ca/tool/gifter.js",
 			"js/ca/tool/heal.js",
+			"js/ca/tool/monster.js",
 			"js/ca/tool/page.js",
 			"js/ca/tool/potionEnergy.js",
 			"js/ca/tool/potionStamina.js",
@@ -61,6 +62,7 @@
 			"js/ca/page/battle_expansion_monster.js",
 			"js/ca/page/guildv2_battle_monster.js",
 			"js/ca/page/treasure_chest.js",
+			"js/ca/page/alchemy.js",
 			
 			"js/castleage.js"
 			],

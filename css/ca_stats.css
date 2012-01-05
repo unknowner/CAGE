@@ -6,11 +6,14 @@
 }
 #main_sts_container {
 	position: fixed !important;
-	z-index: 2
+	z-index: 2;
 }
 #main_ststb {
 	padding: 0;
 	font-family: Trebuchet MS, Tahoma, Verdana, Arial, sans-serif !important;
+}
+#main_ststb * {
+	font-size: 12px !important;
 }
 #main_ststb > div:first-child {
 	height: auto !important;
@@ -202,10 +205,10 @@
 #st_2_5 {
 	text-align: right !important;
 	top: 26px;
-	left: 14px;
+	left: 12px;
 	position: absolute;
 }
-div.lvlbr {
+.lvlbr {
 	position: absolute;
 	background: #796646;
 	width: 125px;
@@ -230,12 +233,12 @@ div.lvlbr {
 	position: absolute;
 	top: 11px;
 	left: 187px;
-	border-radius: 50%;
+	border-radius: 50px;
 	border: 2px outset;
 	background: #000;
 }
 #cageFavorPoints > img {
-	border-radius: 50%;
+	border-radius: 50px;
 	height: 25px;
 }
 #cageFavorPoints > span {
@@ -256,12 +259,12 @@ div.lvlbr {
 	position: absolute;
 	top: 11px;
 	left: 18px;
-	border-radius: 50%;
+	border-radius: 50px;
 	border: 2px outset;
 	background: #000;
 }
 #cageStatPoints > img {
-	border-radius: 50%;
+	border-radius: 50px;
 	height: 25px;
 }
 #cageStatPoints > span {
@@ -272,7 +275,7 @@ div.lvlbr {
 	color: white;
 	text-shadow: 0 0 5px black;
 	font-weight: bold;
-	font-size: 14px;
+	font-size: 12px;
 	left: 0;
 }
 /*
@@ -306,8 +309,8 @@ div.lvlbr {
 }
 #cageNextDemi > span {
 	position: absolute;
-	top: 17px;
-	font-size: 14px;
+	top: 16px;
+	font-size: 12px;
 	font-weight: bolder;
 	color: #4B3715;
 }
