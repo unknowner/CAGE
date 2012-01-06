@@ -400,8 +400,11 @@
 #cageHideReceipe {
 	position:absolute;
 	top:375px;
-	margin-left:25px;
+	margin-left:21px;
 	cursor:pointer;
+}
+#cageHideReceipe> img {
+	border-radius:4px;
 }
 #cageHideReceipe> span {
 	top:-6px;
