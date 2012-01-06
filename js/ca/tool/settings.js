@@ -46,7 +46,7 @@ tools.Settings.onoff = function(_text, _value, _save, _callback) {
 	var _id = Math.floor(Math.random() * Math.random() * 100000000);
 	$('#cageSettingsMiddle').append('<div id="cageSettingsOnOff' + _id + '" class="cageSettingsOnOff" onoff="' + _value + '"><span>' + _text + '</span><button></button></div>');
 	if(_value == true) {
-		$('#cageSettingsOnOff' + _id + ' > button').css('backgroundImage', 'url("http://image4.castleagegame.com/graphics/town_button_expand.gif")');
+		$('#cageSettingsOnOff' + _id + ' > button').css('backgroundImage', 'url("http://image4.castleagegame.com/graphics/class_button_plus.jpg")');
 	}
 	$('#cageSettingsOnOff' + _id + ' > button').click(function() {
 		console.log($('#cageSettingsOnOff' + _id).attr('onoff'));
@@ -54,9 +54,9 @@ tools.Settings.onoff = function(_text, _value, _save, _callback) {
 		console.log('_newvalue', _newvalue);
 		_onoff.attr('onoff', _newvalue);
 		if(_newvalue == true) {
-			_button.css('backgroundImage', 'url("http://image4.castleagegame.com/graphics/town_button_expand.gif")');
+			_button.css('backgroundImage', 'url("http://image4.castleagegame.com/graphics/class_button_plus.jpg")');
 		} else {
-			_button.css('backgroundImage', 'url("http://image4.castleagegame.com/graphics/town_button_collapse.gif")');
+			_button.css('backgroundImage', 'url("http://image4.castleagegame.com/graphics/class_button_minus.jpg")');
 		}
 		item.set(_save, _newvalue);
 		if(_callback) {

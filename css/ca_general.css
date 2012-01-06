@@ -82,7 +82,7 @@
 #cageFavouriteGenerals > div > img:first-child:hover {
 	box-shadow: 0 0 10px 2px #26b3f7
 }
-#cageFavouriteGenerals > div > img: first-child {
+#cageFavouriteGenerals > div > img:first-child {
 	width: 70px;
 	cursor: pointer;
 	border-radius: 4px;
