@@ -26,6 +26,7 @@ tools.cage.runtimeUpdate = function() {
 		tools.cage.runtime = {};
 	}
 	tools.cage.runtime.centered = item.get('cageCentered', true);
+	tools.cage.centered();
 	tools.cage.runtime.fxOn = item.get('cageFXOnOff', true);
 	tools.cage.toggleFx();
 	tools.cage.runtime.showNotes = item.get('cageShowNotes', true);
