@@ -67,10 +67,10 @@
 	border-bottom-left-radius: 5px;
 }
 .cageMonsterTag {
-	position: absolute;
-	width: 111px;
-	float: left;
+	position: relative;
+	width: 125px;
 	border-radius: 5px;
-	margin-left: -20px;
 	margin-top: -3px;
+	left: 5px;
+	float: left;
 }
