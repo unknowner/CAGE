@@ -1,0 +1,76 @@
+/*
+ * Monsters
+ */
+#cageMonsterContainer {
+	position: fixed;
+	width: 710px;
+	box-shadow: black 0px 10px 20px;
+	z-index: 2;
+	cursor: default;
+	padding-top: 8px;
+	margin-left: 14px;
+	top: -100px;
+	padding: 30px 15px 15px 15px;
+	display: none;
+}
+#cageMonsterClose {
+	position: absolute;
+	right: 5px;
+	cursor: pointer;
+	margin-top: -10px;
+}
+#cageMonsterReload {
+	position: absolute;
+	right: 28px;
+	margin-top: -10px;
+	cursor: pointer;
+}
+.cageMonsterListItem {
+	width: 223px;
+	height: 61px;
+	position: relative;
+	opacity: 1 !important;
+	overflow: hidden;
+	margin: 6px;
+	float: left;
+}
+.cageMonsterImage {
+	float: left;
+	width: 100%;
+}
+.cageMonsterName {
+	float: right;
+	position: relative;
+	padding: 2px 7px;
+	background: black;
+	border-top-left-radius: 5px;
+	border-bottom-right-radius: 5px;
+	opacity: 0.8;
+	margin-top: 41px;
+	right: 0;
+}
+.cageMonsterButton {
+	position: absolute;
+	float: left;
+	border-top-right-radius: 5px;
+	border-bottom-left-radius: 5px;
+	margin-top: 42px;
+}
+.cageMonsterButton img {
+	height: 19px;
+	border-top-right-radius: 5px;
+	border-bottom-left-radius: 5px;
+}
+.cageMonsterButton input {
+	height: 19px;
+	border-top-right-radius: 5px;
+	border-bottom-left-radius: 5px;
+}
+.cageMonsterTag {
+	position: absolute;
+	width: 111px;
+	float: left;
+	border-radius: 5px;
+	margin-left: -20px;
+	margin-top: -3px;
+}

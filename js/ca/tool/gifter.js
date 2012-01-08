@@ -35,7 +35,9 @@ tools.Gifter.update = function() {
 					_giftsCount = _i;
 				}
 			});
-			note('Gifter', 'You accepted ' + _giftsCount + ' gift(s).');
+			if(_gifts > 0) {
+				note('Gifter', 'You accepted ' + (_giftsCount + 1) + ' gift(s).');
+			}
 			item.set('CAGEsendGiftTo', tools.Gifter.runtime.sendGiftTo);
 			tools.Gifter.runtimeUpdate();
 		}

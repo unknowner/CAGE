@@ -60,7 +60,7 @@ tools.Functions.PopupAtMousePosition = function() {
 };
 tools.Functions.PositionAndDisplayPopupAutoCenter = function() {
 	window['PositionAndDisplayPopupAutoCenter'] = function(event, fb_js_var) {
-		cageRePos(fb_js_var);
+		cageRePos(fb_js_var, window.pageYOffset + 150);
 	}
 };
 // Stats Ticker + CAGE calls
