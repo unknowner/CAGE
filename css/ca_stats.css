@@ -208,7 +208,7 @@
 	left: 12px;
 	position: absolute;
 }
-.lvlbr {
+div.lvlBr {
 	position: absolute;
 	background: #796646;
 	width: 125px;
@@ -230,6 +230,7 @@
  * Favour Points
  */
 #cageFavorPoints {
+	height: 25px;
 	position: absolute;
 	top: 11px;
 	left: 187px;
@@ -256,6 +257,7 @@
  * Stat Points
  */
 #cageStatPoints {
+	height: 25px;
 	position: absolute;
 	top: 11px;
 	left: 18px;

@@ -10,7 +10,7 @@ var CastleAge = {
 
 com.initPort(com.port.castleAge);
 
-$('head')
+$('body')
 	.append('<link id="cageTheme" rel="stylesheet" type="text/css" href="' + getPath('css/dark-hive/jquery-ui.css') + '?x=' + Math.random() + '">')
 	.append('<link rel="stylesheet" type="text/css" href="' + getPath('css/cage.css') + '?x=' + Math.random() + '">')
 	.append('<link rel="stylesheet" type="text/css" href="' + getPath('css/ca_cage.css') + '?x=' + Math.random() + '">')
@@ -19,6 +19,7 @@ $('head')
 	.append('<link rel="stylesheet" type="text/css" href="' + getPath('css/ca_monster.css') + '?x=' + Math.random() + '">')
 	.append('<link rel="stylesheet" type="text/css" href="' + getPath('css/ui.selectmenu.css') + '?x=' + Math.random() + '">')
 	.append('<link rel="stylesheet" type="text/css" href="' + getPath('css/settings.css') + '?x=' + Math.random() + '">');
+$('body').append('<script type="text/javascript" language="javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>');
 	
 $('center:first').prepend('<div id="cageContainer"><div id="cageStatsContainer"></div><div id="cageToolsContainer" class="ui-widget-content ui-corner-bottom"></div></div>');
 

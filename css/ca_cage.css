@@ -143,7 +143,7 @@ div.game {
 	width: 738px;
 }
 .results {
-	background-image: url('') !important;
+	background-image: url() !important;
 	border: 0 !important;
 	padding: 5px !important;
 }
