@@ -1,12 +1,3 @@
-.itemNumbers {
-	position: relative;
-	top: -25px;
-	text-shadow: 0 0 2px #000;
-	text-align: left;
-	left: 8px;
-	font-weight: bold;
-	color: #fff;
-}
 #cageContainer {
 	width: 770px;
 	font-size: 11px;
@@ -28,9 +19,9 @@
 	z-index: 4;
 	box-shadow: 0 10px 55px black;
 	top: 96px;
-	width: 751px;
+	width: 753px;
 	font-size: 12px;
-	margin-left: 9px;
+	margin-left: 8px;
 }
 #cageMenu ul, #cageMenu ul li {
 	list-style: none;
@@ -331,4 +322,78 @@
 }
 #cageClassRogue img {
 	height: 30px;
-}	
+}
+.itemNumbers {
+	position: relative;
+	top: -19px;
+	text-align: right;
+	color: white;
+	background-color: black;
+	border-top-left-radius: 6px;
+	border-bottom-right-radius: 6px;
+	opacity: 0.7;
+	padding: 1px 5px;
+	font-size: 12px;
+	float: right;
+}
+/*
+ *  Alchemy.php
+ */
+.alchemyItemNum {
+	position: relative;
+	top: -16px;
+	text-align: right;
+	color: white;
+	background-color: black;
+	border-top-left-radius: 6px;
+	border-bottom-right-radius: 6px;
+	opacity: 0.7;
+	padding: 1px 5px;
+	font-size: 12px;
+	float: right;
+	right: 5px;
+}
+.alchemyRecipeBackMonster {
+	height: auto !important;
+	margin-bottom: 10px;
+}
+.alchemyRecipeBackMonster_inc {
+	padding: 1px 6px 6px 20px !important;
+}
+.alchemyRecipeBack {
+	height: auto !important;
+	margin-bottom: 10px;
+}
+.alchemyRecipeBack_inc {
+	padding: 1px 6px 6px 20px !important;
+}
+.alchemyRecipeBackClass {
+	height: auto !important;
+	margin-bottom: 10px;
+}
+.alchemyRecipeBackClass_inc {
+	padding: 1px 6px 6px 20px !important;
+}
+.alchemyQuestBack {
+	height: auto !important;
+	margin-bottom: 10px;
+}
+.alchemyQuestBack_inc {
+	padding: 1px 6px 6px 20px !important;
+}
+#cageHideReceipe {
+	position: relative;
+	top: 164px;
+	margin-left: 21px;
+	cursor: pointer;
+}
+#cageHideReceipe > img {
+	border-radius: 4px;
+}
+#cageHideReceipe > span {
+	top: -6px;
+	position: relative;
+	font-weight: bold;
+	left: 4px;
+	text-shadow: 1px 1px 1px white;
+}

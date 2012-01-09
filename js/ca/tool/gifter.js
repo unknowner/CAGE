@@ -25,15 +25,19 @@ tools.Gifter.update = function() {
 	customEvent('GiftRequests', function() {
 		var _gifts = JSON.parse($('#GiftRequests').val());
 		if(_gifts) {
+			var _giftsCount = 0;
 			$.each(_gifts.data, function(_i, _e) {
 				if(_e.from !== null) {
-					com.note('Gifter', 'You accepted a gift from ' + _e.from.name);
 					if($.inArray(_e.from.id, tools.Gifter.runtime.sendGiftTo) == -1) {
 						tools.Gifter.runtime.sendGiftTo.push(_e.from.id);
 					}
 					tools.Gifter.runtime.requests.push(_e.id);
+					_giftsCount = _i;
 				}
 			});
+			if(_gifts > 0) {
+				note('Gifter', 'You accepted ' + (_giftsCount + 1) + ' gift(s).');
+			}
 			item.set('CAGEsendGiftTo', tools.Gifter.runtime.sendGiftTo);
 			tools.Gifter.runtimeUpdate();
 		}

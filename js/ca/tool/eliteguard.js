@@ -66,7 +66,7 @@ tools.Eliteguard.work = function () {
 	}
 };
 tools.Eliteguard.done = function () {
-	com.note('Eliteguard', 'Your elite guard is full.');
+	note('Eliteguard', 'Your elite guard is full.');
 	$('#GetArmy').val('');
 	tools.Eliteguard.fbButton.enable();
 };
