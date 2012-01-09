@@ -42,8 +42,7 @@ tools.Demi.start = function() {
 				}
 				item.set('cageDemiLast', Date.parse(_demi));
 				item.set('cageDemiTime', _wait);
-				$('#cageNextDemi span:last').text(_hour + ':' + ('0' + _minute).slice(-2));
-				$('#cageNextDemi > div > div').css('width', (100 - (_hour * 60 + _minute) * 100 / (_wait * 60)) + '%');
+				tools.Demi.timer();
 			});
 			_demi.animate({
 				'top' : -100
@@ -64,8 +63,19 @@ tools.Demi.timer = function() {
 		var _sec = _ms / 1000;
 		var _min = Math.floor(_sec % 3600 / 60);
 		var _hr = Math.floor(_sec / 3600);
-		$('#cageNextDemi span:last').text(_hr + ':' + ('0' + _min).slice(-2));
-		$('#cageNextDemi > div > div').css('width', (100 - (_hr * 60 + _min) * 100 / (_wait * 60)) + '%');
+		if(_hr < 0 || _min < 0) {
+			$('#cageNextDemi span:last').text('Now');
+			$('#cageNextDemi > div > div').css({
+				'width' : '100%',
+				'backgroundColor' : '#c00'
+			});
+		} else {
+			$('#cageNextDemi span:last').text(_hr + ':' + ('0' + _min).slice(-2));
+			$('#cageNextDemi > div > div').css({
+				'width' : (100 - (_hr * 60 + _min) * 100 / (_wait * 60)) + '%',
+				'backgroundColor' : '#1A7A30'
+			});
+		}
 	}
 };
 tools.Demi.done = function() {

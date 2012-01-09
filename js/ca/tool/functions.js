@@ -5,10 +5,13 @@ tools.Functions.runtime = {};
 // Fixed Popups
 tools.Functions.cageRePos = function() {
 	window['cageRePos'] = function(fb_js_var, top) {
-		$('#single_popup_background').removeClass('connect_castlepb_bg').fadeTo('slow', 0.75);
+		$('#single_popup_background').css('opacity', 0).removeClass('connect_castlepb_bg').fadeTo('slow', 0.75);
 		var _sp = $('#single_popup');
 		_sp.html($('#' + fb_js_var).html());
-		_sp.find('>div:first').css('padding', 0);
+		_sp.find('>div:first').css({
+			'margin' : 0,
+			'padding' : 0
+		});
 		var _width = (770 - _sp.width()) / 2;
 		_sp.css({
 			'marginLeft' : (_width),
@@ -17,13 +20,24 @@ tools.Functions.cageRePos = function() {
 		if(top) {
 			_sp.css('top', top);
 		}
-		_sp.fadeTo('slow', 1);
+		_sp.css('opacity', 0).fadeTo('slow', 1);
 	};
 }
+
+tools.Functions.generateAtPageTop = function() {
+	window['generateAtPageTop'] = function(fb_js_var) {
+		cageRePos(fb_js_var);
+	};
+};
+
 tools.Functions.hidePositionBox = function(evt) {
 	window['hidePositionBox'] = function(event, fb_js_var) {
-		$('#single_popup_background').fadeOut('slow');
-		$('#single_popup').fadeOut('slow');
+		$('#single_popup_background').fadeOut('slow', function() {
+			$(this).hide().css('opacity', 1);
+		});
+		$('#single_popup').fadeOut('slow', function() {
+			$(this).hide().css('opacity', 1);
+		});
 	};
 };
 
@@ -46,7 +60,7 @@ tools.Functions.PopupAtMousePosition = function() {
 };
 tools.Functions.PositionAndDisplayPopupAutoCenter = function() {
 	window['PositionAndDisplayPopupAutoCenter'] = function(event, fb_js_var) {
-		cageRePos(fb_js_var);
+		cageRePos(fb_js_var, window.pageYOffset + 150);
 	}
 };
 // Stats Ticker + CAGE calls
@@ -118,5 +132,6 @@ tools.Functions.init = function() {
 	addFunction(tools.Functions.PositionAndDisplayPopupAutoCenter, null, true, false);
 	addFunction(tools.Functions.PositionAndDisplayPopupAtTop, null, true, false);
 	addFunction(tools.Functions.PositionAndDisplayPopupBox, null, true, false);
+	addFunction(tools.Functions.generateAtPageTop, null, true, false);
 	addFunction(tools.Functions.cageRePos, null, true, false);
 };

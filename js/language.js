@@ -7,6 +7,7 @@ function defaultLanguage(){
 	this.cageSetAnimationAction		= 'Animations';
 	this.cageSetThemeAction				= 'Choose theme';
 	this.cageSetAlignCenter				= 'Castle Age centered';
+	this.cageNotifications				= 'Show notifications';
 	
 	// Settings
 	this.settingsButton						= 'Settings';
@@ -44,9 +45,11 @@ function defaultLanguage(){
 	// Gifter
 	this.gifterButton							= 'Receive Gifts';
 	this.gifterSetName						= 'Gifts'
-	this.gifterSetFilterDesc			= 'Enter the name of a Facebook friendlist you like to add as an extra filter to the Send gifts dialog.'
-	this.giftersetFilterAction		= 'Gifting friendlist'
+	this.gifterSetFilterDesc			= 'Enter the name of a Facebook friendlist you like to add as an extra filter to the Send gifts dialog.';
+	this.giftersetFilterAction		= 'Gifting friendlist';
 	
+	// MOnster
+	this.MonsterButton						= 'Monsters';
 }
 
 language = new defaultLanguage;

@@ -1,4 +1,12 @@
 ==================================================================
+VER: 1.1.5β
+------------------------------------------------------------------
+	FIX: Demi timer showing negativ timer
+	FIX: Not showing all popups
+	ADD: Notification setting (and internals)
+	ADD: Stat Points display
+
+==================================================================
 VER: 1.1.4β
 ------------------------------------------------------------------
 	FIX: Permission request for assister

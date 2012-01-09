@@ -14,7 +14,7 @@ tools.General.runtimeUpdate = function() {
 	if(!tools.General.runtime) {
 		tools.General.runtime = {};
 	}
-	tools.General.runtime.onlyFavourites = item.get('onlyFavouritesGenerals', 'false');
+	tools.General.runtime.onlyFavourites = item.get('onlyFavouritesGenerals', false);
 	tools.General.runtime.favourites = item.get('favouriteGenerals', []);
 	if(!tools.General.runtime.general) {
 		tools.General.runtime.general = {};
@@ -27,10 +27,9 @@ tools.General.get = function() {
 		tools.General.set();
 	}
 };
-// Set general image & name in fb ui
+// Set general image & name
 tools.General.set = function() {
 	var _g = tools.General.runtime.general[tools.General.current];
-	com.send(com.task.general, com.port.facebook, _g);
 	$('#cageGeneralImage').attr('src', _g.image).css({
 		'height' : 92,
 		'padding' : 0
@@ -162,7 +161,7 @@ tools.General.hoverRemoveOut = function() {
 // show/hide generals
 tools.General.showAll = function() {
 	var _speed = 'slow';
-	if(tools.General.runtime.onlyFavourites == 'true') {
+	if(tools.General.runtime.onlyFavourites == true) {
 		$('#cageAllGenerals').hide();
 		_speed = 'fast';
 	} else {
@@ -183,7 +182,7 @@ tools.General.init = function() {
 	}
 	$('#cageContainer').append($(_elm.general).prepend($(_elm.generalImageContainer).append(_elm.generalImage)).append(_elm.generalName).append(_elm.generalValues)).prepend(_elm.generalSelector);
 	$('#cageGeneralImage').click(function() {
-		if(tools.General.runtime.onlyFavourites == 'true') {
+		if(tools.General.runtime.onlyFavourites == true) {
 			$('#cageAllGenerals').hide();
 		} else {
 			$('#cageAllGenerals').show();

@@ -16,6 +16,7 @@ $('head')
 	.append('<link rel="stylesheet" type="text/css" href="' + getPath('css/ca_cage.css') + '?x=' + Math.random() + '">')
 	.append('<link rel="stylesheet" type="text/css" href="' + getPath('css/ca_stats.css') + '?x=' + Math.random() + '">')
 	.append('<link rel="stylesheet" type="text/css" href="' + getPath('css/ca_general.css') + '?x=' + Math.random() + '">')
+	.append('<link rel="stylesheet" type="text/css" href="' + getPath('css/ca_monster.css') + '?x=' + Math.random() + '">')
 	.append('<link rel="stylesheet" type="text/css" href="' + getPath('css/ui.selectmenu.css') + '?x=' + Math.random() + '">')
 	.append('<link rel="stylesheet" type="text/css" href="' + getPath('css/settings.css') + '?x=' + Math.random() + '">');
 	
