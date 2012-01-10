@@ -397,3 +397,41 @@
 	left: 4px;
 	text-shadow: 1px 1px 1px white;
 }
+/*
+ * News
+ */
+#cageNews {
+}
+#cageNewsHead {
+	font-weight: bold;
+	font-size: 16px;
+	padding: 10px;
+}
+#cageNewsSubHead {
+	padding-bottom: 15px;
+	border-bottom: 1px solid #701919;
+}
+#cageNewsBody {
+	padding: 0 0 0 100px;
+	border-bottom: 1px solid #701919;
+}
+#cageNewsFoot {
+	text-align: center;
+	padding: 10px;
+	padding: 5px 30px 0px 40px;
+}
+#cageNewsChanges {
+	left: 65px;
+	margin-top: -17px;
+	position: relative;
+}
+#cageNewsChanges span {
+	width: 45px;
+	display: inline-block;
+	font-weight: bold;
+	margin-bottom: 2px;
+}
+#cageNewsChanges li {
+	list-style: none;
+}
+

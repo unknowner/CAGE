@@ -43,6 +43,7 @@ div.game {
 	left: -40px;
 	box-shadow: 0 5px 21px 10px black, 0 0 4px 4px black inset;
 	border-radius: 50%;
+	z-index: 99;
 	display: none;
 }
 .MonsterListBackground {

@@ -14,7 +14,7 @@ tools['Page'].runtime['festival_duel_battle.php'] = function() {
 			_battles[_rank] = _e;
 			_sortOrder.push(_rank);
 		});
-		if($('#cageBattleListSort span').text() == 'ascending') {
+		if($('#cageBattleListSort span:first').text() == 'ascending') {
 			_sortOrder.sort();
 		} else {
 			_sortOrder.sort().reverse()
@@ -26,14 +26,17 @@ tools['Page'].runtime['festival_duel_battle.php'] = function() {
 	}
 
 	// Sorting
-	$('#festival_menu').append('<div id="cageBattleListSort" style="color:white;position:absolute;margin-top:105px;font-size:16px;font-weight:bold;width:640px;text-align:center;">Sort by <span style="cursor:pointer;text-decoration:underline;">descending</span> rank</div>');
+	$('#festival_menu').append('<div id="cageBattleListSort" style="color:white;position:absolute;margin-top:105px;font-size:16px;font-weight:bold;width:640px;text-align:center;">Sort by <span style="cursor:pointer;text-decoration:underline;">descending</span> rank / <span style="cursor:pointer;text-decoration:underline;">Reload</span></div>');
 
-	$('#cageBattleListSort span').toggle(function() {
+	$('#cageBattleListSort span:first').toggle(function() {
 		$(this).text('ascending');
 		sortFestivalRank();
 	}, function() {
 		$(this).text('descending');
 		sortFestivalRank();
+	});
+	$('#cageBattleListSort span:last').click(function() {
+		tools.Page.loadPage('festival_duel_battle.php');
 	});
 	sortFestivalRank();
 

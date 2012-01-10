@@ -5,12 +5,17 @@ tools.Settings.runtime = {};
 tools.Settings.start = function() {
 	$('body').animate({
 		scrollTop : 0
-	}, 'slow');
-	$('#app_body').html('<div id="cageSettingsTop"><span>CAGE Settings<span></div><div id="cageSettingsMiddle"></div><div id="cageSettingsBottom"><a href="http://cagenhancer.blogspot.com/" target="_blank">Blog</a> <a href="http://cagenhancer.blogspot.com/p/manual.html" target="_blank">Manual</a> <a href="http://caaplayer.freeforums.org/c-a-g-e-f29.html" target="_blank">Forum</a> <a href="https://github.com/unknowner/CAGE" target="_blank">GitHub</a><br><br><span style="text-align:center;">You want to say thank you? Just visit the Blog, click an Ad or donate via PayPal.</span></div>');
-	$.each(tools, function(_index, _tool) {
-		if(_tool.settings) {
-			_tool.settings();
-		}
+	}, 'slow', function() {
+		$('#app_body').html('<div id="results_main_wrapper" class="resultsmainwrapper" style="height:0;"><div class="results"><div class="result"><span class="result_body"></div></span></div></div></div><div id="cageSettingsTop"><span style="cursor:pointer;" id="cageShowNews">CAGE Settings<span></div><div id="cageSettingsMiddle"></div><div id="cageSettingsBottom"><a href="http://cagenhancer.blogspot.com/" target="_blank">Blog</a> <a href="http://cagenhancer.blogspot.com/p/manual.html" target="_blank">Manual</a> <a href="http://caaplayer.freeforums.org/c-a-g-e-f29.html" target="_blank">Forum</a> <a href="https://github.com/unknowner/CAGE" target="_blank">GitHub</a><br><br><span style="text-align:center;">You want to say thank you? Just visit the Blog, click an Ad or donate via PayPal.</span></div>');
+		$.each(tools, function(_index, _tool) {
+			if(_tool.settings) {
+				_tool.settings();
+			}
+		});
+		$('#cageShowNews').click(function() {
+			$('#results_main_wrapper').css('height', 'auto');
+			cageNews(true);
+		});
 	});
 };
 // heading text

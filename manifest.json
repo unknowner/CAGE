@@ -18,6 +18,7 @@
 			"js/ca/tool.js",
 			"js/ca/ca_tools.js",
 			"js/ca/ca_receiver.js",
+			"js/ca/news.js",
 			
 			"js/ca/tool/functions.js",
 			"js/ca/tool/nav.js",
@@ -79,8 +80,7 @@
 			"js/common.js",
 			"js/fb/fb_receiver.js",
 			"js/fb/fb_start.js",
-			"js/facebook.js",
-			"js/fb/news.js"
+			"js/facebook.js"
 			]
 	}
 	],

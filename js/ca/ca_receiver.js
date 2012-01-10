@@ -12,6 +12,7 @@ function receiver(_data) {
 		case com.task.userId:
 			if(!CastleAge.userId) {
 				CastleAge.userId = _data.data;
+				cageNews();
 			}
 			break;
 		case com.task.fbReady:
