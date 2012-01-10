@@ -24,16 +24,18 @@ tools.Gifter.update = function() {
 	//prepare update event to receive userids and request ids
 	customEvent('GiftRequests', function() {
 		var _gifts = JSON.parse($('#GiftRequests').val());
+		var _received = 0;
 		if(_gifts) {
 			$.each(_gifts.data, function(_i, _e) {
 				if(_e.from !== null) {
+					_received++;
 					if($.inArray(_e.from.id, tools.Gifter.runtime.sendGiftTo) == -1) {
 						tools.Gifter.runtime.sendGiftTo.push(_e.from.id);
 					}
 					tools.Gifter.runtime.requests.push(_e.id);
 				}
 			});
-			if(tools.Gifter.runtime.requests.length == 0) {
+			if(_received == 0) {
 				note('Gifter', 'No gifts to accept.');
 			} else {
 				note('Gifter', 'You accepted ' + tools.Gifter.runtime.requests.length + ' gift(s).');
