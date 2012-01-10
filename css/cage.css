@@ -1,12 +1,3 @@
-/*
- * Fix for entering via CTA links
- */
-div.imgButton {
-	height: 0;
-}
-/*
- * 
- */
 #cageContainer {
 	width: 770px;
 	font-size: 11px;
