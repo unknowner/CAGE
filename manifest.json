@@ -63,6 +63,7 @@
 			"js/ca/page/guildv2_battle_monster.js",
 			"js/ca/page/treasure_chest.js",
 			"js/ca/page/alchemy.js",
+			"js/ca/page/festival_duel_battle.js",
 			
 			"js/castleage.js"
 			],
