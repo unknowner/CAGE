@@ -5,8 +5,9 @@ function cageNews(_full) {
 	$('#results_main_wrapper').prepend('<div class="results"><div class="result"><span class="result_body"></div></span></div></div>');
 	if(version.string() !== item.get('cageLocalVersion', '')) {
 		item.set('cageLocalVersion', version.string());
+		_full = true;
 	}
-	if(_full == true) {
+	if(_full == false) {
 		$('#results_main_wrapper div.result:first').css({
 			'height' : 65,
 			'overflow' : 'hidden'
