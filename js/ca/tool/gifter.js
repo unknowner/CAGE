@@ -101,7 +101,7 @@ tools.Gifter.newRequestForm = function() {
 					user_ids : cageGiftUserList
 				})
 			}
-			if(localStorage[FB.getAuthResponse().userID + '_' + 'CAGEsendGiftTo'] !== undefined && JSON.parse(localStorage[FB.getAuthResponse().userID + '_' + 'CAGEsendGiftTo']).length !== 0) {
+			if(localStorage[FB.getAuthResponse().userID + '_' + 'CAGEsendGiftTo'] !== undefined && localStorage[FB.getAuthResponse().userID + '_' + 'CAGEsendGiftTo'] !== null && JSON.parse(localStorage[FB.getAuthResponse().userID + '_' + 'CAGEsendGiftTo']).length !== 0) {
 				console.log(JSON.parse(localStorage[FB.getAuthResponse().userID + '_' + 'CAGEsendGiftTo']).length);
 				console.log('GIFTER - RTF list: ', JSON.parse(localStorage[FB.getAuthResponse().userID + '_' + 'CAGEsendGiftTo']));
 				_ui.filters.unshift({
