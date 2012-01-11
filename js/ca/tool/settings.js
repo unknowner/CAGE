@@ -15,6 +15,7 @@ tools.Settings.start = function() {
 		$('#cageShowNews').click(function() {
 			$('#results_main_wrapper').css('height', 'auto');
 			cageNews(true);
+			$('#cageShowNews').unbind('click');
 		});
 	});
 };
