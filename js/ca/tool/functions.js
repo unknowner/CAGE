@@ -23,10 +23,33 @@ tools.Functions.cageRePos = function() {
 		_sp.css('opacity', 0).fadeTo('slow', 1);
 	};
 }
+tools.Functions.centerPopups = function() {
+	window['centerPopups'] = function() {
+		$('.result_popup_message').each(function() {
+			var _popup = $(this);
+			_popup.css({
+				'top' : 60,
+				'marginLeft' : (770 - $(this).width) / 2
+			});
+			_popup.css('opacity', 0).fadeTo('fast', 1);
+		});
+	}
+};
 
 tools.Functions.generateAtPageTop = function() {
 	window['generateAtPageTop'] = function(fb_js_var) {
 		cageRePos(fb_js_var);
+	};
+};
+
+tools.Functions.hideFeedbackPositionBox = function(evt) {
+	window['hideFeedbackPositionBox'] = function(event, fb_js_var) {
+		$('#single_popup_background_feedback').fadeOut('slow', function() {
+			$(this).hide().css('opacity', 1);
+		});
+		$('#single_popup_feedback').fadeOut('slow', function() {
+			$(this).hide().css('opacity', 1);
+		});
 	};
 };
 
@@ -133,5 +156,8 @@ tools.Functions.init = function() {
 	addFunction(tools.Functions.PositionAndDisplayPopupAtTop, null, true, false);
 	addFunction(tools.Functions.PositionAndDisplayPopupBox, null, true, false);
 	addFunction(tools.Functions.generateAtPageTop, null, true, false);
+	addFunction(tools.Functions.centerPopups, null, true, false);
+	addFunction(tools.Functions.hideFeedbackPositionBox, null, true, false);
 	addFunction(tools.Functions.cageRePos, null, true, false);
+
 };

@@ -92,4 +92,10 @@ tools['Page'].runtime['allPages'] = function() {
 		$('#cageStatPoints > img').attr('src', 'http://image4.castleagegame.com/graphics/keep_upgrade_green.gif');
 	}
 
+	// Random popups (quests etc.)
+	$('div.result_popup_message').css({
+		'left' : '',
+		'marginLeft' : 15
+	});
+
 };

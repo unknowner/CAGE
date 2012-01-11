@@ -1,4 +1,9 @@
 ==================================================================
+VER: 1.1.8β
+------------------------------------------------------------------
+	FIX: Quest/Level-up popup centered
+
+==================================================================
 VER: 1.1.7β
 ------------------------------------------------------------------
 	ADD: Festival duel sorting
@@ -7,6 +12,7 @@ VER: 1.1.7β
 	FIX: Display errors when entering CA via CTA
 	FIX: Gifter not showing notification
 	FIX: Sending gifts on Firefox
+	FIX: Assister showing wrong number of assists
 	FIX: Another minor display fix when receiving gifts
 	
 ==================================================================
