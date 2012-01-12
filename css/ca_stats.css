@@ -322,3 +322,27 @@ div.lvlBr {
 #cageNextDemi > span:last-of-type {
 	right: 5px;
 }
+/*
+ * Keep
+ */
+#cageArmyKeep {
+	background: #886547;
+	padding: 1px;
+	width: 88px;
+	position: relative;
+	left: 1px;
+}
+#cageArmyKeep button {
+	cursor: pointer;
+	width: 86px;
+	height: 24px;
+	font-size: 12px;
+	color: #ccc;
+	background: #8b2c1a;
+	border-color: #8F331C;
+	border-radius: 5px;
+	font-family: serif;
+}
+#cageArmyKeep button:hover {
+	opacity: 0.85;
+}

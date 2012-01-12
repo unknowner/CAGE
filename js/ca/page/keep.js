@@ -11,9 +11,9 @@ tools['Page'].runtime['keep.php'] = function() {
 	});
 	// Some more stats, like BSI, LSI... keep_attribute_section
 	var _lvl = $('#st_5 div:contains("Level"):last').text();
-	if(_lvl) {
+	var _stats = $('div.keep_attribute_section');
+	if(_lvl && _stats.length > 0) {
 		_lvl = parseInt(_lvl.match(/\d+/)[0], 10);
-		var _stats = $('div.keep_attribute_section');
 		//stats
 		var _eng = parseInt($('div.attribute_stat_container:eq(0)', _stats).text(), 10);
 		var _sta = parseInt($('div.attribute_stat_container:eq(1)', _stats).text(), 10);
@@ -38,13 +38,24 @@ tools['Page'].runtime['keep.php'] = function() {
 			'padding' : 10,
 			'height' : 204,
 			'width' : 180
-		})
-			.append('<div>eAtt: ' + _eAt.toFixed(2) + '</div><div style="font-size:9px;">Effective Attack</div>')
-			.append('<div>eDef: ' + _eDe.toFixed(2) + '</div><div style="font-size:9px;">Effective Defense</div>')
-			.append('<div>BSI: ' + _bsi.toFixed(2) + '</div><div style="font-size:9px;">Battle Strength Index</div>')
-			.append('<div>LSI: ' + _lsi.toFixed(2) + '</div><div style="font-size:9px;">Levelling Speed Index</div>')
-			.append('<div>TSI: ' + _tsi.toFixed(2) + '</div><div style="font-size:9px;">Total Skillpoints per Level</div>')
-		);
+		}).append('<div>eAtt: ' + _eAt.toFixed(2) + '</div><div style="font-size:9px;">Effective Attack</div>').append('<div>eDef: ' + _eDe.toFixed(2) + '</div><div style="font-size:9px;">Effective Defense</div>').append('<div>BSI: ' + _bsi.toFixed(2) + '</div><div style="font-size:9px;">Battle Strength Index</div>').append('<div>LSI: ' + _lsi.toFixed(2) + '</div><div style="font-size:9px;">Levelling Speed Index</div>').append('<div>TSI: ' + _tsi.toFixed(2) + '</div><div style="font-size:9px;">Total Skillpoints per Level</div>'));
+	}
+
+	// Add stuff on others keep
+	if($('#keep_battle_frm1').length == 0) {
+		var _uid = $('td.statsTB > div *[uid]').attr('uid');
+		$('td.statsTB > div:eq(1)').append($('<div id="cageArmyKeep"><button>DISMISS</button></div>').click(function() {
+			get('army_member.php?action=delete&player_id=' + _uid, function() {
+				tools.Page.loadPage('keep.php?user=' + _uid);
+			});
+		}));
+	} else {
+		var _uid = $('td.statsTB > div *[uid]').attr('uid');
+		$('td.statsTB > div:eq(1)').append($('<div id="cageArmyKeep"><button>JOIN ARMY</button></div>').click(function() {
+			get('party.php?twt=jneg&jneg=true&user=' + _uid + '&lka=' + _uid + '&etw=9&ref=nf', function() {
+				tools.Page.loadPage('keep.php?user=' + _uid);
+			});
+		}));
 	}
 
 	$('div.statsTTitle').toggle(function() {
