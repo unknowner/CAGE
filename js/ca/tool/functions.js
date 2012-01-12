@@ -29,7 +29,7 @@ tools.Functions.centerPopups = function() {
 			var _popup = $(this);
 			_popup.css({
 				'top' : 60,
-				'marginLeft' : (770 - $(this).width) / 2
+				'marginLeft' : (770 - _popup.width()) / 2
 			});
 			_popup.css('opacity', 0).fadeTo('fast', 1);
 		});
