@@ -72,22 +72,32 @@ tools.Gifter.newRequestForm = function() {
 
 	tools.Gifter.runtimeUpdate();
 	addFunction(function(_giftData) {
+
 		var cageGiftUserList = [];
-		FB.api('me/friendlists', function(responseFriendlist) {
-			console.log('Gifter - FBresponse: ', responseFriendlist);
-			console.log('GIFTER - friendlists:', responseFriendlist.data);
-			$.each(responseFriendlist.data, function(_i, _e) {
-				if(_e.name == _giftData.userList) {
-					FB.api('/' + _e.id + '/members', function(responseListID) {
-						$.each(responseListID.data, function(_i, _e) {
-							cageGiftUserList.push(_e.id);
-						});
-						console.log('GIFTER - userList:', cageGiftUserList);
+
+		function getCageFriendList() {
+			FB.api('me/friendlists', function(responseFriendlist) {
+				console.log('Gifter - FBresponse: ', responseFriendlist);
+				if(responseFriendlist !== undefined) {
+					//console.log('GIFTER - friendlists:', responseFriendlist.data);
+					$.each(responseFriendlist.data, function(_i, _e) {
+						if(_e.name == _giftData.userList) {
+							FB.api('/' + _e.id + '/members', function(responseListID) {
+								$.each(responseListID.data, function(_i, _e) {
+									cageGiftUserList.push(_e.id);
+								});
+								//console.log('GIFTER - userList:', cageGiftUserList);
+							});
+							return false;
+						}
 					});
-					return false;
+				} else {
+					window.setTimeout(getCageFriendList, 100);
 				}
 			});
-		});
+		}
+		getCageFriendList();
+		
 		window['showRequestForm'] = function(tit, msg, track, request_params, filt_ids) {
 			var _ui = {
 				method : 'apprequests',

@@ -48,7 +48,6 @@ function initTools() {
 		tools['Page'].runtime[_startURL]();
 	}
 	_startURL = undefined;
-	//tools.Theme.start();
 	get('keep.php', function(_keepdata) {
 		CastleAge.bqh = $('input[name="bqh"]:first', _keepdata).val();
 		tools['PotionStamina'].work(_keepdata);

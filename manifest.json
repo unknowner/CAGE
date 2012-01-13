@@ -30,6 +30,7 @@
 			"js/ca/tool/assister.js",
 			"js/ca/tool/demi.js",
 			"js/ca/tool/eliteguard.js",
+			"js/ca/tool/facebook.js",
 			"js/ca/tool/generals.js",
 			"js/ca/tool/gifter.js",
 			"js/ca/tool/heal.js",
