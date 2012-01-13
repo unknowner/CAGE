@@ -45,6 +45,7 @@ tools['Page'].runtime['keep.php'] = function() {
 	if($('#keep_battle_frm1').length == 0) {
 		var _uid = $('td.statsTB > div *[uid]').attr('uid');
 		$('td.statsTB > div:eq(1)').append($('<div id="cageArmyKeep"><button>DISMISS</button></div>').click(function() {
+			$('#AjaxLoadIcon').show();
 			get('army_member.php?action=delete&player_id=' + _uid, function() {
 				tools.Page.loadPage('keep.php?user=' + _uid);
 			});
@@ -52,6 +53,7 @@ tools['Page'].runtime['keep.php'] = function() {
 	} else {
 		var _uid = $('td.statsTB > div *[uid]').attr('uid');
 		$('td.statsTB > div:eq(1)').append($('<div id="cageArmyKeep"><button>JOIN ARMY</button></div>').click(function() {
+			$('#AjaxLoadIcon').show();
 			get('party.php?twt=jneg&jneg=true&user=' + _uid + '&lka=' + _uid + '&etw=9&ref=nf', function() {
 				tools.Page.loadPage('keep.php?user=' + _uid);
 			});
