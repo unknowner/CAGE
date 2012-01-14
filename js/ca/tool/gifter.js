@@ -16,7 +16,6 @@ tools.Gifter.runtimeUpdate = function() {
 	if(tools.Gifter.runtime.sendGiftTo == null) {
 		tools.Gifter.runtime.sendGiftTo = [];
 	}
-	console.log('tools.Gifter.runtime.userList:', tools.Gifter.runtime.userList);
 };
 
 tools.Gifter.update = function() {
@@ -96,8 +95,9 @@ tools.Gifter.newRequestForm = function() {
 				}
 			});
 		}
+
 		getCageFriendList();
-		
+
 		window['showRequestForm'] = function(tit, msg, track, request_params, filt_ids) {
 			var _ui = {
 				method : 'apprequests',

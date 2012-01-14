@@ -28,6 +28,7 @@ tools.Page.loadPage = function(_page) {
 		ajaxLinkSend('globalContainer', _data);
 	}, JSON.stringify(_page), true, true);
 };
+
 tools.Page.ajaxSkip = function() {
 	ajaxSkip = function(div, url) {
 		ajaxLinkSend(div, (url + (url.indexOf('?') > -1 ? '&' : '?') + 'ajax=1&skip=1'));
@@ -162,9 +163,9 @@ tools.Page.ajaxLinkSend = function() {
 };
 tools.Page.ajaxFormSend = function(div, url, formElement, anchor) {
 	ajaxFormSend = function(div, url, formElement, anchor) {
-		$('body').animate({
-			scrollTop : 0
-		}, 'slow');
+		/*$('body').animate({
+		 scrollTop : 0
+		 }, 'slow');*/
 		friend_browse_offset = 0;
 		if(!anchor) {
 			anchor = 'main_anchor';

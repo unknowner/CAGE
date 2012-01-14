@@ -18,7 +18,10 @@ function cageNews(_full) {
 	$.each([
 			'ADD: Dismiss/Join army members from their keeps',
 			'FIX: Quest/Level-up popup centered',
-			'FIX: Stats in Keep now includes modifiers'
+			'FIX: Stats in Keep now includes modifiers',
+			'FIX: Gifting list not always filled',
+			'FIX: Scroll to top when posting in monster chat',
+			'CHG: Get CA Player for EG and Army Filler only once'	
 		], function(_i, _e) {
 			$('#cageNewsChanges').append('<li><span>' + _e.split(':')[0] + '</span>' + _e.split(':')[1] + '</li>');
 		});
