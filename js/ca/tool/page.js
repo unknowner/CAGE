@@ -163,12 +163,11 @@ tools.Page.ajaxLinkSend = function() {
 };
 tools.Page.ajaxFormSend = function(div, url, formElement, anchor) {
 	ajaxFormSend = function(div, url, formElement, anchor) {
-		/*$('body').animate({
-		 scrollTop : 0
-		 }, 'slow');*/
 		friend_browse_offset = 0;
 		if(!anchor) {
-			anchor = 'main_anchor';
+			$('body').animate({
+				scrollTop : 0
+			}, 'slow');
 		}
 		stopTimers = true;
 		params = $(formElement).serialize();
@@ -204,6 +203,9 @@ tools.Page.ajaxFormSend = function(div, url, formElement, anchor) {
 				ajaxPerforming = false;
 				$('#AjaxLoadIcon').hide('fast');
 				$('#' + div).html(data);
+				$('#' + anchor).animate({
+					scrollTop : 0
+				}, 'slow');
 				startAllTimers();
 				FB.XFBML.parse(document.getElementById(div));
 				firePageURL();

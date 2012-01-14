@@ -17,6 +17,7 @@ function cageNews(_full) {
 	$('#cageNewsFoot').prepend('<center>If you find bugs, just go to the blog and post them there (no signup required).<br>Logs (CTRL+SHIFT+J) are always welcome!</center>');
 	$.each([
 			'ADD: Dismiss/Join army members from their keeps',
+			'ADD: Close pop ups with X key',
 			'FIX: Quest/Level-up popup centered',
 			'FIX: Stats in Keep now includes modifiers',
 			'FIX: Gifting list not always filled',

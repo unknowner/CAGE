@@ -13,14 +13,21 @@ tools.Functions.cageRePos = function() {
 			'padding' : 0
 		});
 		var _width = (770 - _sp.width()) / 2;
-		_sp.css({
-			'marginLeft' : (_width),
-			'width' : _sp.width()
-		});
 		if(top) {
 			_sp.css('top', top);
 		}
-		_sp.css('opacity', 0).fadeTo('slow', 1);
+		_sp.css({
+			'marginLeft' : (_width),
+			'width' : _sp.width(),
+			'opacity' : 0
+		}).fadeTo('slow', 1);
+		$(document).keypress(function(_key) {
+			console.log(_key.charCode);
+			if(_key.charCode == 120) {
+				$(document).unbind('keypress');
+				hidePositionBox();
+			}
+		});
 	};
 }
 tools.Functions.centerPopups = function() {
@@ -29,9 +36,15 @@ tools.Functions.centerPopups = function() {
 			var _popup = $(this);
 			_popup.css({
 				'top' : 60,
-				'marginLeft' : (770 - _popup.width()) / 2
+				'marginLeft' : (770 - _popup.width()) / 2,
+				'opacity' : 0
+			}).fadeTo('fast', 1);
+			$(document).keypress(function(_key) {
+				if(_key.charCode == 120) {
+					$(document).unbind('keypress');
+					hideFeedbackPositionBox();
+				}
 			});
-			_popup.css('opacity', 0).fadeTo('fast', 1);
 		});
 	}
 };
@@ -42,18 +55,19 @@ tools.Functions.generateAtPageTop = function() {
 	};
 };
 
-tools.Functions.hideFeedbackPositionBox = function(evt) {
-	window['hideFeedbackPositionBox'] = function(event, fb_js_var) {
+tools.Functions.hideFeedbackPositionBox = function() {
+	window['hideFeedbackPositionBox'] = function() {
+		$(document).unbind('keypress');
 		$('#single_popup_background_feedback').fadeOut('slow', function() {
-			$(this).hide().css('opacity', 1);
+			$(this).hide().css('opacity', 1).unbind('keypress');
 		});
 		$('#single_popup_feedback').fadeOut('slow', function() {
-			$(this).hide().css('opacity', 1);
+			$(this).hide().css('opacity', 1).unbind('keypress');
 		});
 	};
 };
 
-tools.Functions.hidePositionBox = function(evt) {
+tools.Functions.hidePositionBox = function() {
 	window['hidePositionBox'] = function(event, fb_js_var) {
 		$('#single_popup_background').fadeOut('slow', function() {
 			$(this).hide().css('opacity', 1);

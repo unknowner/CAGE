@@ -2,6 +2,7 @@
 VER: 1.1.8β
 ------------------------------------------------------------------
 	ADD: Dismiss/Join army members from their keeps
+	ADD: Close pop ups with X key
 	FIX: Quest/Level-up popup centered
 	FIX: Stats in Keep now includes modifiers
 	FIX: Gifting list not always filled
