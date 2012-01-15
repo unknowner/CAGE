@@ -25,21 +25,19 @@ function customEvent(_event, _function) {
 
 	addFunction(function() {
 		var _arg = arguments[0].event;
-
 		// fire the event opt. with data
 		window[('fire' + _arg)] = function(_data) {
 			if(_data !== undefined) {
 				$('#' + _arg).val(_data);
-				//window[('set' + _arg)](_data);
 			}
-			console.log('fire val: ', $('#' + _arg).val());
+			console.log('fire customEvent: ', _arg);
 			var customEvent = document.createEvent('Event');
 			customEvent.initEvent(_arg, true, true);
 			document.getElementById(_arg).dispatchEvent(customEvent);
 		};
 		// set data for the event
 		window[('set' + _arg)] = function(_data) {
-			console.log('set:' + _arg + ' > ' + _data);
+			console.log('set customEvent:' + _arg + ' > ' + _data);
 			$('#' + _arg).val(_data);
 		};
 		// remove the event and the div

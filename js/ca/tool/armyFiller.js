@@ -16,30 +16,10 @@ tools.ArmyFiller.start = function() {
 		tools.ArmyFiller.runtime.count = /\d+/.exec($('#main_bntp a[href*="army.php"]').text());
 		if(tools.ArmyFiller.runtime.count !== null) {
 			tools.ArmyFiller.runtime.count = tools.ArmyFiller.runtime.count[0];
-			customEvent('GetPlayers', function() {
-				var _army = $('#GetPlayers').val();
-				if(_army !== 'false') {
-					$.each(JSON.parse(_army), function(_i, _e) {
-						tools.ArmyFiller.runtime.cafriends.push(_e['uid']);
-					});
-					tools.ArmyFiller.readCAArmy();
-				} else {
-					tools.ArmyFiller.done();
-				}
+			tools.Facebook.CAPlayers(function(_ids) {
+				tools.ArmyFiller.runtime.cafriends = _ids;
+				tools.ArmyFiller.readCAArmy();
 			});
-			addFunction(function() {
-				FB.api({
-					method : 'fql.query',
-					query : 'SELECT uid FROM user WHERE is_app_user=1 and uid IN (SELECT uid2 FROM friend WHERE uid1 = me())'
-				}, function(_response) {
-					if(_response.length > 0) {
-						$('#GetPlayers').val(JSON.stringify(_response));
-					} else {
-						$('#GetPlayers').val('false');
-					}
-					fireGetPlayers();
-				});
-			}, null, true, true);
 		}
 	}
 };
@@ -79,10 +59,8 @@ tools.ArmyFiller.addMissing = function(_start) {
 				return false;
 			}
 		}
-		tools.ArmyFiller.done();
-	} else {
-		tools.ArmyFiller.done();
 	}
+	tools.ArmyFiller.done();
 };
 
 tools.ArmyFiller.done = function() {
@@ -93,7 +71,6 @@ tools.ArmyFiller.done = function() {
 };
 
 tools.ArmyFiller.init = function() {
-
 	customEvent('StartFillArmy', function() {
 		tools.ArmyFiller.start();
 	});

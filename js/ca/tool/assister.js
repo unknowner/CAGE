@@ -181,7 +181,7 @@ tools.Assister.assist = function() {
 
 tools.Assister.done = function() {
 
-	note('Assister', 'You assisted ' + tools.Assister.runtime.Assisted.length + ' friends.');
+	note('Assister', 'You assisted ' + tools.Assister.runtime.Used + ' friends.');
 	tools.Assister.runtime.Used = 0;
 	tools.Assister.fbButton.enable();
 

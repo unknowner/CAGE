@@ -208,7 +208,7 @@
 	left: 12px;
 	position: absolute;
 }
-.lvlbr {
+div.lvlBr {
 	position: absolute;
 	background: #796646;
 	width: 125px;
@@ -230,6 +230,7 @@
  * Favour Points
  */
 #cageFavorPoints {
+	height: 25px;
 	position: absolute;
 	top: 11px;
 	left: 187px;
@@ -256,9 +257,10 @@
  * Stat Points
  */
 #cageStatPoints {
+	height: 25px;
 	position: absolute;
 	top: 11px;
-	left: 18px;
+	left: 19px;
 	border-radius: 50px;
 	border: 2px outset;
 	background: #000;
@@ -275,7 +277,7 @@
 	color: white;
 	text-shadow: 0 0 5px black;
 	font-weight: bold;
-	font-size: 12px;
+	font-size: 14px;
 	left: 0;
 }
 /*
@@ -319,4 +321,28 @@
 }
 #cageNextDemi > span:last-of-type {
 	right: 5px;
+}
+/*
+ * Keep
+ */
+#cageArmyKeep {
+	background: #886547;
+	padding: 1px;
+	width: 88px;
+	position: relative;
+	left: 1px;
+}
+#cageArmyKeep button {
+	cursor: pointer;
+	width: 86px;
+	height: 24px;
+	font-size: 10px;
+	color: #ccc;
+	background: #8b2c1a;
+	border-color: #8F331C;
+	border-radius: 5px;
+	font-family: serif;
+}
+#cageArmyKeep button:hover {
+	opacity: 0.85;
 }
