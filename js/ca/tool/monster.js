@@ -14,7 +14,7 @@ tools.Monster.runtimeUpdate = function() {
 	tools.Monster.runtime = {
 		listFilled : false,
 		closeInstant : item.get('cageMonsterCloseInstant', false),
-		transparent : item.get('cageMonsterCloseInstant', false),
+		transparent : item.get('cageMonsterTransparent', false),
 	};
 	$('#cageMonsterContainer').css('opacity', tools.Monster.runtime.transparent ? 0.7 : 1);
 };

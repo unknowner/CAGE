@@ -43,22 +43,27 @@ tools['Page'].runtime['keep.php'] = function() {
 	}
 
 	// Add stuff on others keep
-	if($('#keep_battle_frm1').length == 0) {
+	if($('div.keep_main_section').length == 0) {
 		var _uid = $('td.statsTB > div *[uid]').attr('uid');
-		$('td.statsTB > div:eq(1)').append($('<div id="cageArmyKeep"><button>DISMISS</button></div>').click(function() {
-			$('#AjaxLoadIcon').show();
-			get('army_member.php?action=delete&player_id=' + _uid, function() {
-				tools.Page.loadPage('keep.php?user=' + _uid);
+		if($('#keep_battle_frm1').length == 0) {
+			$('td.statsTB > div:eq(1)').append($('<div id="cageArmyKeep"><button>DISMISS</button></div>').click(function() {
+				$('#AjaxLoadIcon').show();
+				get('army_member.php?action=delete&player_id=' + _uid, function() {
+					tools.Page.loadPage('keep.php?user=' + _uid);
+				});
+			}));
+		} else {
+			tools.Facebook.CAPlayers(function(_ids) {
+				if(_ids.indexOf(_uid) !== -1) {
+					$('td.statsTB > div:eq(1)').append($('<div id="cageArmyKeep"><button>JOIN ARMY</button></div>').click(function() {
+						$('#AjaxLoadIcon').show();
+						get('party.php?twt=jneg&jneg=true&user=' + _uid + '&lka=' + _uid + '&etw=9&ref=nf', function() {
+							tools.Page.loadPage('keep.php?user=' + _uid);
+						});
+					}));
+				}
 			});
-		}));
-	} else {
-		var _uid = $('td.statsTB > div *[uid]').attr('uid');
-		$('td.statsTB > div:eq(1)').append($('<div id="cageArmyKeep"><button>JOIN ARMY</button></div>').click(function() {
-			$('#AjaxLoadIcon').show();
-			get('party.php?twt=jneg&jneg=true&user=' + _uid + '&lka=' + _uid + '&etw=9&ref=nf', function() {
-				tools.Page.loadPage('keep.php?user=' + _uid);
-			});
-		}));
+		}
 	}
 
 	$('div.statsTTitle').toggle(function() {

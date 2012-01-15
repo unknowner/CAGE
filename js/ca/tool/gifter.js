@@ -77,7 +77,9 @@ tools.Gifter.newRequestForm = function() {
 		function getCageFriendList() {
 			FB.api('me/friendlists', function(responseFriendlist) {
 				console.log('Gifter - FBresponse: ', responseFriendlist);
-				if(responseFriendlist !== undefined) {
+				if(responseFriendlist.error) {
+					window.setTimeout(getCageFriendList, 100);
+				} else {
 					//console.log('GIFTER - friendlists:', responseFriendlist.data);
 					$.each(responseFriendlist.data, function(_i, _e) {
 						if(_e.name == _giftData.userList) {
@@ -90,8 +92,6 @@ tools.Gifter.newRequestForm = function() {
 							return false;
 						}
 					});
-				} else {
-					window.setTimeout(getCageFriendList, 100);
 				}
 			});
 		}
