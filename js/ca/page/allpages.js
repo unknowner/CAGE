@@ -25,7 +25,10 @@ tools['Page'].runtime['allPages'] = function() {
 		'height' : 12,
 		'borderRadius' : 3
 	});
-	$('#st_2_5 strong').text(/\d+/.exec($('#st_5').attr('title'))[0] + ' to ' + /\d+\/(\d+)/.exec($('#st_2_5 strong').text())[1]);
+
+	if($('#st_2_5 strong:contains("to")').length == 0) {
+		$('#st_2_5 strong').text(/\d+/.exec($('#st_5').attr('title'))[0] + ' to ' + /\d+\/(\d+)/.exec($('#st_2_5 strong').text())[1]);
+	}
 
 	// reworkin results
 	if($('div.results').length > 0) {
@@ -91,5 +94,11 @@ tools['Page'].runtime['allPages'] = function() {
 		$('#cageStatPoints > span').text('');
 		$('#cageStatPoints > img').attr('src', 'http://image4.castleagegame.com/graphics/keep_upgrade_green.gif');
 	}
+
+	// Random popups (quests etc.)
+	$('div.result_popup_message').css({
+		'left' : '',
+		'marginLeft' : 15
+	});
 
 };

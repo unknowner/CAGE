@@ -49,7 +49,10 @@ function defaultLanguage(){
 	this.giftersetFilterAction		= 'Gifting friendlist';
 	
 	// MOnster
-	this.MonsterButton						= 'Monsters';
+	this.monsterButton						= 'Monsters';
+	this.monsterSetName						= 'Monsters';
+	this.monsterSetCloseInstant		= 'Close after Monster choosen';
+	this.monsterSetTransparent		= 'List is semitransparent';
 }
 
 language = new defaultLanguage;
