@@ -3,10 +3,10 @@ tools['Page'].runtime['gift.php'] = function() {
 
 	console.log('Page: gift.php');
 
+	tools.Gifter.newRequestForm();
+	//rearrange gift buttons and make reloading obsolete
 	$('div.extra_gift').removeClass('extra_gift');
 	$('div.show_extra_link').remove();
-
-	//rearrange gift buttons and make reloading obsolete
 	$('#giftContainer div[id^="gift"]').each(function() {
 		var _this = $(this), _num = /\d+/.exec(_this.attr('id'))[0], _nam = $(this).text().trim();
 		if(_this.find('img.imgButton').length > 0) {

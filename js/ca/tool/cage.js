@@ -5,6 +5,10 @@ tools.cage.settings = function() {
 	tools.Settings.heading('CAGE - V' + version.string());
 	tools.Settings.text(language.cageSetClearDataDesc);
 	tools.Settings.button(language.cageSetClearDataAction, tools.cage.clearSavedData);
+	tools.Settings.text('');
+	tools.Settings.dropdown(language.cageSetThemeAction, tools.cage.runtime.themes, tools.cage.runtime.theme, 'cageTheme', function(_value) {
+		$('#cageTheme').attr('href', tools.cage.runtime.themes[_value] + 'jquery-ui.css');
+	});
 	tools.Settings.onoff(language.cageSetAnimationAction, tools.cage.runtime.fxOn, 'cageFXOnOff', function() {
 		tools.cage.runtime.fxOn = !tools.cage.runtime.fxOn;
 		tools.cage.toggleFx();
@@ -12,9 +16,6 @@ tools.cage.settings = function() {
 	tools.Settings.onoff(language.cageSetAlignCenter, tools.cage.runtime.centered, 'cageCentered', function() {
 		tools.cage.runtime.centered = !tools.cage.runtime.centered;
 		tools.cage.centered();
-	});
-	tools.Settings.dropdown(language.cageSetThemeAction, tools.cage.runtime.themes, tools.cage.runtime.theme, 'cageTheme', function(_value) {
-		$('#cageTheme').attr('href', tools.cage.runtime.themes[_value] + 'jquery-ui.css');
 	});
 	tools.Settings.onoff(language.cageNotifications, tools.cage.runtime.showNotes, 'cageShowNotes', function() {
 		tools.cage.runtime.showNotes = !tools.cage.runtime.showNotes;
@@ -80,9 +81,7 @@ tools.cage.centered = function() {
 	}, 10);
 };
 tools.cage.toggleFx = function() {
-	console.log(tools.cage.runtime.fxOn);
 	var _fx = !tools.cage.runtime.fxOn;
-	console.log(_fx);
 	$.fx.off = _fx;
 	addFunction(function(_cafx) {
 		$.fx.off = _cafx;

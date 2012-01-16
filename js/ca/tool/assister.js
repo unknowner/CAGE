@@ -2,28 +2,22 @@ new tool('Assister');
 
 tools.Assister.settings = function() {
 
-	tools.Assister.runtimeUpdate();
+	//tools.Assister.runtimeUpdate();
 	tools.Settings.heading(language.assisterSetName);
 	tools.Settings.text(language.assisterSetReqPermDesc);
 	tools.Settings.button(language.assisterSetReqPermAction, tools.Assister.requestPermisson);
+	tools.Settings.text('');
 	tools.Settings.textbox(language.assisterSetMaxStamAction, tools.Assister.runtime.Stamina, 'cageAssisterStamina');
 	tools.Settings.text(language.assisterSetMessDesc);
 	tools.Settings.textbox(language.assisterSetMonMessAction, tools.Assister.runtime.monsterMessage, 'cageAssisterMonsterMessage');
 	tools.Settings.textbox(language.assisterSetFBMessAction, tools.Assister.runtime.facebookMessage, 'cageAssisterFacebookMessage');
+	tools.Settings.text(language.assisterSetFriendLstDesc);
+	tools.Settings.dropdown(language.assisterSetFriendList, tools.Assister.runtime.assisterLists, tools.cage.runtime.assisterList, 'cageAssisterList', function(_value) {
+		tools.cage.runtime.assisterList = _value;
+	});
+	tools.Settings.onoff(language.assisterSetFriendsOnly, tools.Assister.runtime.friendsOnly, 'cageAssisterFriendsOnly', tools.Assister.runtimeUpdate);
 
 };
-
-tools.Assister.requestPermisson = function() {
-
-	addFunction(function() {
-		FB.login(function(response) {
-			console.log(response);
-		}, {
-			scope : 'publish_stream'
-		});
-	}, null, true, true);
-};
-
 tools.Assister.runtimeUpdate = function() {
 
 	tools.Assister.runtime = {
@@ -33,13 +27,35 @@ tools.Assister.runtimeUpdate = function() {
 		friends : [],
 		Assisted : tools.Assister.runtime == undefined ? [] : tools.Assister.runtime.Assisted,
 		monsterMessage : item.get('cageAssisterMonsterMessage', ''),
-		facebookMessage : item.get('cageAssisterFacebookMessage', '')
+		facebookMessage : item.get('cageAssisterFacebookMessage', ''),
+		friendsOnly : item.get('cageAssisterFriendsOnly', true),
+		assisterList : item.get('cageAssisterFriendsOnly', 'Castle Age players'),
+		assisterLists : {
+			'Castle Age players' : 'Castle Age players'
+		}
 	}
-
+	tools.Facebook.getFriendlists(function(_names) {
+		$.each(_names, function(_i, _e) {
+			tools.Assister.runtime.assisterLists[_e] = _e;
+		});
+	});
 };
-
+/*
+ * Request permisson to let CA post for user
+ */
+tools.Assister.requestPermisson = function() {
+	addFunction(function() {
+		FB.login(function(response) {
+			console.log(response);
+		}, {
+			scope : 'publish_stream'
+		});
+	}, null, true, true);
+};
+/*
+ * Get CTAs from Livefeed
+ */
 tools.Assister.start = function() {
-
 	tools.Assister.runtimeUpdate();
 	get('army_news_feed.php', function(_data) {
 		$('#action_logs > a[href*="action=doObjective"]', _data).each(function(i, e) {
@@ -53,47 +69,20 @@ tools.Assister.start = function() {
 			});
 		});
 		console.log('Assister - CTAs: ', tools.Assister.runtime.CTA);
-		tools.Assister.getFriends();
-	});
-};
-
-tools.Assister.getFriends = function() {
-
-	customEvent('GetFriends', function() {
-		var _friends = $('#GetFriends').val();
-		if(_friends !== 'false') {
-			$.each(JSON.parse(_friends), function(_i, _e) {
-				tools.Assister.runtime.friends.push(_e['uid']);
-			});
+		tools.Facebook.CAPlayers(function(_ids) {
+			tools.Assister.runtime.friends = _ids;
 			tools.Assister.assist();
-		} else {
-			tools.Assister.runtime.friends = [];
-			console.log('Assister - Can\'t get friends data, assisting all.');
-			tools.Assister.assist();
-		}
-	});
-	addFunction(function() {
-		FB.api({
-			method : 'fql.query',
-			query : 'SELECT uid FROM user WHERE is_app_user=1 and uid IN (SELECT uid2 FROM friend WHERE uid1 = me())'
-		}, function(_response) {
-			if(_response.length > 0) {
-				console.log('Assister - got friends...');
-				$('#GetFriends').val(JSON.stringify(_response));
-			} else {
-				console.log('Assister - no friends...');
-				$('#GetFriends').val('false');
-			}
-			fireGetFriends();
 		});
-	}, null, true, true);
+	});
 };
-
+/*
+ * Assist/Comment/...
+ */
 tools.Assister.assist = function() {
 
 	if(tools.Assister.runtime.Used < tools.Assister.runtime.Stamina && tools.Assister.runtime.CTA.length > 0) {
 		var _cta = tools.Assister.runtime.CTA.pop();
-		if(tools.Assister.runtime.friends.indexOf(_cta.uid) !== -1) {
+		if(tools.Assister.runtime.friends.indexOf(_cta.uid) !== -1 || tools.Assister.runtime.friendsOnly == false) {
 			console.log('Assister - Friend: ' + _cta.uid);
 			get(_cta.link, function(_monsterdata) {
 				var _num = $('span.result_body', _monsterdata).text();
@@ -180,15 +169,12 @@ tools.Assister.assist = function() {
 };
 
 tools.Assister.done = function() {
-
 	note('Assister', 'You assisted ' + tools.Assister.runtime.Used + ' friends.');
 	tools.Assister.runtime.Used = 0;
 	tools.Assister.fbButton.enable();
-
 };
 
 tools.Assister.init = function() {
-
 	tools.Assister.runtimeUpdate();
 	tools.Assister.fbButton.add(language.assisterButton, function() {
 		tools.Assister.fbButton.disable();

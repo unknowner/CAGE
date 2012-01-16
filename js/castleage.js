@@ -10,6 +10,8 @@ var CastleAge = {
 
 com.initPort(com.port.castleAge);
 
+tools.Page.runtime['allPages']();
+
 $('body')
 	.append('<link id="cageTheme" rel="stylesheet" type="text/css" href="' + getPath('css/dark-hive/jquery-ui.css') + '?x=' + Math.random() + '">')
 	.append('<link rel="stylesheet" type="text/css" href="' + getPath('css/cage.css') + '?x=' + Math.random() + '">')

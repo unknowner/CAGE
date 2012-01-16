@@ -1,21 +1,31 @@
 new tool('Gifter');
 
 tools.Gifter.settings = function() {
-	tools.Gifter.runtimeUpdate();
+	//tools.Gifter.runtimeUpdate();
 	tools.Settings.heading(language.gifterSetName);
 	tools.Settings.text(language.gifterSetFilterDesc);
-	tools.Settings.textbox(language.giftersetFilterAction, tools.Gifter.runtime.userList, 'cageGifterUserList', tools.Gifter.newRequestForm);
+	tools.Settings.dropdown(language.giftersetFilterAction, tools.Gifter.runtime.userLists, tools.Gifter.runtime.userList, 'cageGifterUserList', function(_value) {
+		tools.Gifter.runtime.userList = _value;
+		tools.Gifter.newRequestForm();
+	});
 };
 
 tools.Gifter.runtimeUpdate = function() {
 	tools.Gifter.runtime = {
 		sendGiftTo : item.get('CAGEsendGiftTo', []),
 		requests : tools.Gifter.runtime == undefined ? [] : tools.Gifter.runtime.requests,
+		userLists : {},
 		userList : item.get('cageGifterUserList', '')
 	}
 	if(tools.Gifter.runtime.sendGiftTo == null) {
 		tools.Gifter.runtime.sendGiftTo = [];
 	}
+	tools.Facebook.getFriendlists(function(_names) {
+		$.each(_names, function(_i, _e) {
+			tools.Gifter.runtime.userLists[_e] = _e;
+		});
+		//tools.Gifter.newRequestForm();
+	});
 };
 
 tools.Gifter.update = function() {
@@ -69,33 +79,23 @@ tools.Gifter.done = function() {
 };
 tools.Gifter.newRequestForm = function() {
 
-	tools.Gifter.runtimeUpdate();
 	addFunction(function(_giftData) {
 
 		var cageGiftUserList = [];
 
 		function getCageFriendList() {
-			FB.api('me/friendlists', function(responseFriendlist) {
-				console.log('Gifter - FBresponse: ', responseFriendlist);
-				if(responseFriendlist.error) {
+			FB.api(_giftData.flid + '/members', function(_members) {
+				if(_members.error) {
 					window.setTimeout(getCageFriendList, 100);
 				} else {
 					//console.log('GIFTER - friendlists:', responseFriendlist.data);
-					$.each(responseFriendlist.data, function(_i, _e) {
-						if(_e.name == _giftData.userList) {
-							FB.api('/' + _e.id + '/members', function(responseListID) {
-								$.each(responseListID.data, function(_i, _e) {
-									cageGiftUserList.push(_e.id);
-								});
-								//console.log('GIFTER - userList:', cageGiftUserList);
-							});
-							return false;
-						}
+					$.each(_members.data, function(_i, _e) {
+						cageGiftUserList.push(_e.id);
 					});
+					return false;
 				}
 			});
 		}
-
 		getCageFriendList();
 
 		window['showRequestForm'] = function(tit, msg, track, request_params, filt_ids) {
@@ -190,11 +190,12 @@ tools.Gifter.newRequestForm = function() {
 			});
 		}
 	}, JSON.stringify({
-		userList : tools.Gifter.runtime.userList
+		userList : tools.Gifter.runtime.userList,
+		flid : tools.Facebook.runtime.friendlistId[tools.Gifter.runtime.userList]
 	}), true, true);
 };
 tools.Gifter.init = function() {
-	tools.Gifter.newRequestForm();
+	tools.Gifter.runtimeUpdate();
 	tools.Gifter.fbButton.add(language.gifterButton, function() {
 		tools.Gifter.fbButton.disable();
 		tools.Gifter.start();
