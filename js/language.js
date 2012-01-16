@@ -31,7 +31,7 @@ function defaultLanguage(){
 	this.assisterSetMessDesc			= 'Append your personal messages to the monster chat and your Facebook posts.';
 	this.assisterSetMonMessAction	= 'Monster';
 	this.assisterSetFBMessAction	= 'Facebook';
-	this.assisterSetFriendLstDesc = 'Only CTAs from the the choosen list will be answered. When list "Castle Age players" is selected all CTAs will be answered.';
+	this.assisterSetFriendLstDesc = 'Only CTAs from the selected list will be answered. When list "Castle Age players" is selected all CTAs will be answered.';
 	this.assisterSetFriendList		= 'Assister friend list';
 	this.assisterSetFriendsOnly		= 'Friends only';
 

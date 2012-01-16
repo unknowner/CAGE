@@ -7,9 +7,62 @@ tools.Facebook.runtime = {
 	idWait : false,
 	idCallbacks : [],
 	id : [],
-	friendlistId : {}
+	friendlistId : {},
+	listMembersWait : false,
+	listMembersNext : []
 };
+/*
+ * Get friendlist members
+ */
+tools.Facebook.GetListMembers = function(_friendlist, _callback) {
 
+	if(tools.Facebook.runtime.listMembersWait == false) {
+		console.log('tools.Facebook.GetListMembers: Reading members of ', _friendlist);
+		tools.Facebook.runtime.listMembersWait = true;
+		var _listmembers = [];
+		customEvent('GetFLMembers', function() {
+			var _members = $('#GetFLMembers').val();
+			if(_members !== 'false') {
+				_members = JSON.parse(_members);
+				$.each(_members, function(_i, _e) {
+					_listmembers.push(_e.id);
+				});
+			}
+			tools.Facebook.runtime.listMembersWait = false
+			if(_callback) {
+				_callback(_listmembers);
+			}
+			while( _call = tools.Facebook.runtime.listMembersNext.shift()) {
+				console.log('unparked...');
+				_call();
+			}
+			$('#GetFLMembers').val('');
+		});
+		addFunction(function(_list) {
+			function cageGetFLM() {
+				FB.api(_list.flid + '/members', function(_members) {
+					if(_members.error) {
+						window.setTimeout(function() {
+							cageGetFLM(_list);
+						}, 100);
+					} else {
+						$('#GetFLMembers').val(JSON.stringify(_members.data));
+						fireGetFLMembers();
+					}
+				});
+			}
+
+			cageGetFLM(_list);
+		}, JSON.stringify({
+			flid : tools.Facebook.runtime.friendlistId[_friendlist]
+		}), true, true);
+	} else {
+		console.log('parked...');
+		tools.Facebook.runtime.listMembersNext.push(function() {
+			tools.Facebook.GetListMembers(_friendlist, _callback);
+		})
+	}
+};
 /*
  * Get Friend list names from FB
  */
