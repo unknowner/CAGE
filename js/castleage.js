@@ -25,6 +25,7 @@ $('body')
 	
 $('center:first').prepend('<div id="cageContainer"><div id="cageStatsContainer"></div><div id="cageToolsContainer" class="ui-widget-content ui-corner-bottom"></div></div>');
 
+
 CastleAge.startInterval = window.setInterval(function() {
 	if(CastleAge.signed_request !== null && CastleAge.userId !== null) {
 		window.clearInterval(CastleAge.startInterval);
@@ -37,3 +38,10 @@ CastleAge.startInterval = window.setInterval(function() {
 		}, 600000);
 	}
 }, 125);
+
+
+
+
+
+
+  

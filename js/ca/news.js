@@ -17,6 +17,7 @@ function cageNews(_full) {
 	$('#cageNewsFoot').prepend('<center>If you find bugs, just go to the blog and post them there (no signup required).<br>Logs (CTRL+SHIFT+J) are always welcome!</center>');
 	$.each([
 			'ADD: Assist for friend list',
+			'FIX: Gift sending (2nd try)',
 			'CHG: Internals, making start up a bit faster'	
 		], function(_i, _e) {
 			$('#cageNewsChanges').append('<li><span>' + _e.split(':')[0] + '</span>' + _e.split(':')[1] + '</li>');

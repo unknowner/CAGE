@@ -58,6 +58,7 @@ tools.Gifter.update = function() {
 	addFunction(function() {
 		FB.api('/me/apprequests/', function(_response) {
 			fireGiftRequests(JSON.stringify(_response));
+			console.log('giftrewp:', _response);
 		});
 	}, null, true, true);
 };
@@ -134,10 +135,7 @@ tools.Gifter.newRequestForm = function() {
 				});
 				if(result && result.to) {
 					$('#results_container').html('Sending gifts...<br>').show();
-					//$('#AjaxLoadIcon').show();
 					var _resultContainer = $('#results_container');
-					var request_id_array = result.to;
-					var request_id_count = result.to.length;
 					var _store = null;
 					_resultContainer.html('Sending to: ...<br>').show();
 					// get all ids from sent gifts and remove them from the list
@@ -151,11 +149,12 @@ tools.Gifter.newRequestForm = function() {
 						fields : 'name'
 					}, function(response) {
 						var _friends = {};
+						var _requestids = [];
 						$.each(response.data, function(_i, _e) {
 							_friends[_e.id] = _e.name;
 						});
-						console.log('_friends:', _friends);
 						$.each(result.to, function(_i, _e) {
+							_requestids.push(result.request + '_' + _e);
 							var _fr = '';
 							if(_store !== null && _store.indexOf(_e) > -1) {
 								_store.splice(_store.indexOf(_e), 1);
@@ -170,13 +169,14 @@ tools.Gifter.newRequestForm = function() {
 							_resultContainer.append('<br>...' + _friends[_e] + ' (' + _e + ')' + _fr);
 						});
 						var params = 'ajax=1&signed_request=' + $('#signed_request').val();
+						console.log(_requestids);
 						$.ajax({
-							url : 'request_handler.php?' + request_params + '&request_ids=' + result.to,
+							url : 'request_handler.php?' + request_params + '&request_ids=' + _requestids,
 							context : document.body,
 							data : params,
 							type : 'POST',
 							success : function(data) {
-								$('#results_container').html($('#results_container').html() + '<br><br>' + request_id_count + ' request' + (request_id_count == 1 ? '' : 's') + ' sent!');
+								$('#results_container').html($('#results_container').html() + '<br><br>' + result.to.length + ' request' + (result.to.length == 1 ? '' : 's') + ' sent!');
 								FB.XFBML.parse(document.getElementById('results_container'));
 								$('#AjaxLoadIcon').hide();
 							}

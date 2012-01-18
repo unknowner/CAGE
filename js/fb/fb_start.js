@@ -16,9 +16,17 @@ function startCAGE() {
 	com.send(com.task.userId, com.port.castleAge, $('#EnvUser').val());
 
 	// renews signed_request every 10 minutes
+	$.get('http://apps.facebook.com/castle_age/index.php', function(_data) {
+		console.log(_data.match(/<input.*signed_request.*\/>/));
+		_data = null;
+	})
+	$.get('http://apps.facebook.com/castle_age/index.php', function(_data) {
+		console.log(_data.match(/<input.*signed_request.*\/>/));
+		_data = null;
+	})
 	window.setInterval(function() {
 		$.get('http://apps.facebook.com/castle_age/index.php', function(_data) {
-			com.send(com.task.signed, com.port.castleAge, /signed_request\\" value=\\"(.+?)\\"/.exec(_data)[1]);
+			com.send(com.task.signed, com.port.castleAge, $('input[name="signed_request"]', _data).val());
 			_data = null;
 		}, "text")
 	}, 1200000);
@@ -28,8 +36,5 @@ function startCAGE() {
 	}, 600000);
 	// Possible fix for framing problem
 	$('body').removeClass('center_fixed_width_app');
-
-	//$('#cageNews').dialog('open');
-	//$('#cageNews a').blur();
 
 }

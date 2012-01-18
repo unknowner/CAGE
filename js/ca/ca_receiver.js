@@ -2,6 +2,7 @@ function receiver(_data) {
 	console.log('ca receiver: ', _data);
 	switch (_data.task) {
 		case com.task.signed:
+			console.log('sr data:', _data);
 			CastleAge.signed_request = _data.data;
 			if($('#signed_request').length > 0) {
 				$('#signed_request').val(_data.data);
@@ -23,9 +24,6 @@ function receiver(_data) {
 			break;
 		case com.task.showAllGenerals:
 			tools.General.showAll();
-			break;
-		case com.task.showSettings:
-			tools.Settings.start();
 			break;
 		case com.task.alive:
 			break;
