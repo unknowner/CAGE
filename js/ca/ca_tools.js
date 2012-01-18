@@ -37,7 +37,7 @@ function customEvent(_event, _function) {
 		};
 		// set data for the event
 		window[('set' + _arg)] = function(_data) {
-			console.log('set customEvent:' + _arg + ' > ' + _data);
+			console.log('set customEvent:' + _arg + ' > ', _data);
 			$('#' + _arg).val(_data);
 		};
 		// remove the event and the div
