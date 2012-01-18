@@ -23,8 +23,10 @@ $('body')
 	
 $('center:first').prepend('<div id="cageContainer"><div id="cageStatsContainer"></div><div id="cageToolsContainer" class="ui-widget-content ui-corner-bottom"></div></div>');
 
+
 CastleAge.startInterval = window.setInterval(function() {
 	if(CastleAge.signed_request !== null && CastleAge.userId !== null) {
+		tools.Page.runtime['allPages']();
 		window.clearInterval(CastleAge.startInterval);
 		initTools();
 		console.log('initTools');
@@ -35,3 +37,10 @@ CastleAge.startInterval = window.setInterval(function() {
 		}, 600000);
 	}
 }, 125);
+
+
+
+
+
+
+  

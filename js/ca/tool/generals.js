@@ -169,13 +169,13 @@ tools.General.showAll = function() {
 	}
 	$('#cageGeneralSelector').slideToggle(_speed);
 }
-// init general tool @fb
+// init general tool
 tools.General.init = function() {
 	tools.General.runtimeUpdate();
 	var _elm = {
 		general : '<div id="cageGeneralContainer"></div>',
 		generalImageContainer : '<div id="cageGeneralImageContainer"></div>',
-		generalImage : '<img id="cageGeneralImage"/>',
+		generalImage : '<img id="cageGeneralImage" src="http://image4.castleagegame.com/graphics/shield_wait.gif" style="height:30px;padding:31px;"/>',
 		generalName : '<span id="cageGeneralName"></span>',
 		generalValues : '<img src="http://image4.castleagegame.com/graphics/demi_symbol_2.gif" id="cageGeneralAttImg" /><span id="cageGeneralAttack"></span><img src="http://image4.castleagegame.com/graphics/demi_symbol_3.gif" id="cageGeneralDefImg" /><span id="cageGeneralDefense"></span>',
 		generalSelector : '<div id="cageGeneralSelector" class="ui-widget-content ui-corner-bottom">',
@@ -189,7 +189,5 @@ tools.General.init = function() {
 		}
 		$('#cageGeneralSelector').slideToggle('slow');
 	});
-	//$('#cageContainer').append('<div id="cageGeneralSelector" class="ui-widget-content ui-corner-bottom">');
 	tools.General.update();
-
 };

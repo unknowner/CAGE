@@ -1,21 +1,31 @@
 new tool('Gifter');
 
 tools.Gifter.settings = function() {
-	tools.Gifter.runtimeUpdate();
+	//tools.Gifter.runtimeUpdate();
 	tools.Settings.heading(language.gifterSetName);
 	tools.Settings.text(language.gifterSetFilterDesc);
-	tools.Settings.textbox(language.giftersetFilterAction, tools.Gifter.runtime.userList, 'cageGifterUserList', tools.Gifter.newRequestForm);
+	tools.Settings.dropdown(language.giftersetFilterAction, tools.Gifter.runtime.userLists, tools.Gifter.runtime.userList, 'cageGifterUserList', function(_value) {
+		tools.Gifter.runtime.userList = _value;
+		tools.Gifter.newRequestForm();
+	});
 };
 
 tools.Gifter.runtimeUpdate = function() {
 	tools.Gifter.runtime = {
 		sendGiftTo : item.get('CAGEsendGiftTo', []),
 		requests : tools.Gifter.runtime == undefined ? [] : tools.Gifter.runtime.requests,
+		userLists : {},
 		userList : item.get('cageGifterUserList', '')
 	}
 	if(tools.Gifter.runtime.sendGiftTo == null) {
 		tools.Gifter.runtime.sendGiftTo = [];
 	}
+	tools.Facebook.getFriendlists(function(_names) {
+		$.each(_names, function(_i, _e) {
+			tools.Gifter.runtime.userLists[_e] = _e;
+		});
+		//tools.Gifter.newRequestForm();
+	});
 };
 
 tools.Gifter.update = function() {
@@ -48,6 +58,7 @@ tools.Gifter.update = function() {
 	addFunction(function() {
 		FB.api('/me/apprequests/', function(_response) {
 			fireGiftRequests(JSON.stringify(_response));
+			console.log('giftrewp:', _response);
 		});
 	}, null, true, true);
 };
@@ -69,29 +80,20 @@ tools.Gifter.done = function() {
 };
 tools.Gifter.newRequestForm = function() {
 
-	tools.Gifter.runtimeUpdate();
 	addFunction(function(_giftData) {
 
 		var cageGiftUserList = [];
 
 		function getCageFriendList() {
-			FB.api('me/friendlists', function(responseFriendlist) {
-				console.log('Gifter - FBresponse: ', responseFriendlist);
-				if(responseFriendlist.error) {
+			FB.api(_giftData.flid + '/members', function(_members) {
+				if(_members.error) {
 					window.setTimeout(getCageFriendList, 100);
 				} else {
-					//console.log('GIFTER - friendlists:', responseFriendlist.data);
-					$.each(responseFriendlist.data, function(_i, _e) {
-						if(_e.name == _giftData.userList) {
-							FB.api('/' + _e.id + '/members', function(responseListID) {
-								$.each(responseListID.data, function(_i, _e) {
-									cageGiftUserList.push(_e.id);
-								});
-								//console.log('GIFTER - userList:', cageGiftUserList);
-							});
-							return false;
-						}
+					console.log('GIFTER - friendlists:', _members);
+					$.each(_members.data, function(_i, _e) {
+						cageGiftUserList.push(_e.id);
 					});
+					return false;
 				}
 			});
 		}
@@ -125,76 +127,73 @@ tools.Gifter.newRequestForm = function() {
 			}
 
 			FB.ui(_ui, function(result) {
+				console.log('result:', result);
+				$('#AjaxLoadIcon').show();
 				// fixes infinite looping for popup window if u close it before it is done loading
 				$('.fb_dialog_iframe').each(function() {
 					$(this).remove();
 				});
-				if(result && result.request_ids) {
+				if(result && result.to) {
 					$('#results_container').html('Sending gifts...<br>').show();
-					$('#AjaxLoadIcon').show();
 					var _resultContainer = $('#results_container');
-					var request_id_string = String(result.request_ids);
-					var request_id_array = request_id_string.split(',');
-					var request_id_count = request_id_array.length;
 					var _store = null;
-					//_resultContainer.html('Sending gifts...<br>').show();
+					_resultContainer.html('Sending to: ...<br>').show();
 					// get all ids from sent gifts and remove them from the list
 					console.log('GIFTER - check for RTFs');
 					if(localStorage[FB.getAuthResponse().userID + '_' + 'CAGEsendGiftTo'] !== undefined) {
 						console.log('GIFTER - found open RTF');
 						var _store = JSON.parse(localStorage[FB.getAuthResponse().userID + '_' + 'CAGEsendGiftTo']);
+						console.log('store:', _store);
 					}
-					var ids = result.request_ids;
-					var _batch = [];
-					for(var i = 0; i < ids.length; i++) {
-						_batch.push({
-							"method" : "get",
-							"relative_url" : ids[i]
+					FB.api('/me/friends', {
+						fields : 'name'
+					}, function(response) {
+						var _friends = {};
+						var _requestids = [];
+						$.each(response.data, function(_i, _e) {
+							_friends[_e.id] = _e.name;
 						});
-					}
-					if(_batch.length > 0) {
-						FB.api('/', 'POST', {
-							batch : _batch
-						}, function(res) {
-							for(var j = 0; j < res.length; j++) {
-								var myObject = JSON.parse(res[j].body);
-								//eval('(' + body + ')');
-								var _fr = '';
-								if(_store !== null && _store.indexOf(myObject.to.id) > -1) {
-									_store.splice(_store.indexOf(myObject.to.id), 1);
-									_fr = '- <b>Favour returned</b>';
-									if(_store.length > 0) {
-										localStorage[FB.getAuthResponse().userID + '_' + 'CAGEsendGiftTo'] = JSON.stringify(_store);
-									} else {
-										console.log('GIFTER - clear RTF list');
-										localStorage.removeItem(FB.getAuthResponse().userID + '_' + 'CAGEsendGiftTo');
-									}
+						$.each(result.to, function(_i, _e) {
+							_requestids.push(result.request + '_' + _e);
+							var _fr = '';
+							if(_store !== null && _store.indexOf(_e) > -1) {
+								_store.splice(_store.indexOf(_e), 1);
+								_fr = ' - <b>Favour returned</b>';
+								if(_store.length > 0) {
+									localStorage[FB.getAuthResponse().userID + '_' + 'CAGEsendGiftTo'] = JSON.stringify(_store);
+								} else {
+									console.log('GIFTER - clear RTF list');
+									localStorage.removeItem(FB.getAuthResponse().userID + '_' + 'CAGEsendGiftTo');
 								}
-								_resultContainer.html(_resultContainer.html() + '<br>Sent gift to: ' + myObject.to.name + ' (' + myObject.to.id + ') ' + _fr);
+							}
+							_resultContainer.append('<br>...' + _friends[_e] + ' (' + _e + ')' + _fr);
+						});
+						var params = 'ajax=1&signed_request=' + $('#signed_request').val();
+						console.log(_requestids);
+						$.ajax({
+							url : 'request_handler.php?' + request_params + '&request_ids=' + _requestids,
+							context : document.body,
+							data : params,
+							type : 'POST',
+							success : function(data) {
+								$('#results_container').html($('#results_container').html() + '<br><br>' + result.to.length + ' request' + (result.to.length == 1 ? '' : 's') + ' sent!');
+								FB.XFBML.parse(document.getElementById('results_container'));
+								$('#AjaxLoadIcon').hide();
 							}
 						});
-					}
-					var params = 'ajax=1&signed_request=' + $('#signed_request').val();
-					$.ajax({
-						url : 'request_handler.php?' + request_params + '&request_ids=' + result.request_ids,
-						context : document.body,
-						data : params,
-						type : 'POST',
-						success : function(data) {
-							$('#AjaxLoadIcon').hide();
-							document.getElementById('results_container').innerHTML = document.getElementById('results_container').innerHTML + '<br><br>' + request_id_count + ' request' + (request_id_count == 1 ? '' : 's') + ' sent!';
-							FB.XFBML.parse(document.getElementById('results_container'));
-						}
 					});
+				} else {
+					$('#AjaxLoadIcon').hide();
 				}
 			});
 		}
 	}, JSON.stringify({
-		userList : tools.Gifter.runtime.userList
+		userList : tools.Gifter.runtime.userList,
+		flid : tools.Facebook.runtime.friendlistId[tools.Gifter.runtime.userList]
 	}), true, true);
 };
 tools.Gifter.init = function() {
-	tools.Gifter.newRequestForm();
+	tools.Gifter.runtimeUpdate();
 	tools.Gifter.fbButton.add(language.gifterButton, function() {
 		tools.Gifter.fbButton.disable();
 		tools.Gifter.start();
