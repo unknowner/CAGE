@@ -3,12 +3,11 @@ function receiver(_data) {
 	switch (_data.task) {
 		case com.task.signed:
 			console.log('sr data:', _data);
-			CastleAge.signed_request = _data.data;
-			if($('#signed_request').length > 0) {
-				$('#signed_request').val(_data.data);
-			} else {
-				$(document.body).append('<input id="signed_request" type="hidden" name="signed_request" value="' + _data.data + '" />');
-			}
+			//$(document.body).append('<input id="signed_request" type="hidden" name="signed_request" value="' + _data.data + '" />');
+			$('#signed_request').remove();
+			$(document.body).append(_data.data);
+			$('input[name="signed_request"]').attr('id', 'signed_request');
+			CastleAge.signed_request = $('#signed_request').val();
 			break;
 		case com.task.userId:
 			if(!CastleAge.userId) {
