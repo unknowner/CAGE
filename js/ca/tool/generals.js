@@ -169,7 +169,7 @@ tools.General.showAll = function() {
 	}
 	$('#cageGeneralSelector').slideToggle(_speed);
 }
-// init general tool @fb
+// init general tool
 tools.General.init = function() {
 	tools.General.runtimeUpdate();
 	var _elm = {
@@ -189,7 +189,5 @@ tools.General.init = function() {
 		}
 		$('#cageGeneralSelector').slideToggle('slow');
 	});
-	//$('#cageContainer').append('<div id="cageGeneralSelector" class="ui-widget-content ui-corner-bottom">');
 	tools.General.update();
-
 };

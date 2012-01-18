@@ -2,7 +2,8 @@
 VER: 1.1.9β
 ------------------------------------------------------------------
 	ADD: Assist for friend list
-	CHG: Internals, making start up faster
+	FIX: Gift sending
+	CHG: Internals, making start up a bit faster
 
 ==================================================================
 VER: 1.1.8β
