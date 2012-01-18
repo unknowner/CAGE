@@ -9,6 +9,7 @@ var CastleAge = {
 };
 
 com.initPort(com.port.castleAge);
+tools.Page.runtime['allPages']();
 
 $('body')
 	.append('<link id="cageTheme" rel="stylesheet" type="text/css" href="' + getPath('css/dark-hive/jquery-ui.css') + '?x=' + Math.random() + '">')
@@ -24,23 +25,17 @@ $('body')
 $('center:first').prepend('<div id="cageContainer"><div id="cageStatsContainer"></div><div id="cageToolsContainer" class="ui-widget-content ui-corner-bottom"></div></div>');
 
 
+
 CastleAge.startInterval = window.setInterval(function() {
 	if(CastleAge.signed_request !== null && CastleAge.userId !== null) {
-		tools.Page.runtime['allPages']();
 		window.clearInterval(CastleAge.startInterval);
+		window.setInterval(function() {
+			com.send(com.task.alive, com.port.facebook, null);
+		}, 600000);
 		initTools();
 		console.log('initTools');
 	} else {
 		com.send(com.task.castleAgeReady, com.port.facebook);
-		window.setInterval(function() {
-			com.send(com.task.alive, com.port.facebook, null);
-		}, 600000);
 	}
 }, 125);
-
-
-
-
-
-
   

@@ -1,7 +1,27 @@
 new tool('Functions');
 
 tools.Functions.runtime = {};
+/*
+ * Reassign CA Function
+ */
+tools.Functions.init = function() {
+	// add global cageStat
+	addFunction(function() {
+		cageStat = {}
+	}, null, true, true);
+	// replace CA funtions
+	addFunction(tools.Functions.stat_increase_ticker, null, true, false);
+	addFunction(tools.Functions.PopupAtMousePosition, null, true, false);
+	addFunction(tools.Functions.hidePositionBox, null, true, false);
+	addFunction(tools.Functions.PositionAndDisplayPopupAutoCenter, null, true, false);
+	addFunction(tools.Functions.PositionAndDisplayPopupAtTop, null, true, false);
+	addFunction(tools.Functions.PositionAndDisplayPopupBox, null, true, false);
+	addFunction(tools.Functions.generateAtPageTop, null, true, false);
+	addFunction(tools.Functions.centerPopups, null, true, false);
+	addFunction(tools.Functions.hideFeedbackPositionBox, null, true, false);
+	addFunction(tools.Functions.cageRePos, null, true, false);
 
+};
 // Fixed Popups
 tools.Functions.cageRePos = function() {
 	window['cageRePos'] = function(fb_js_var, top) {
@@ -155,23 +175,4 @@ tools.Functions.stat_increase_ticker = function() {
 			stat_increase_ticker(ticks_left, stat_current, stat_max, tick_time, increase_value, stat_type, false);
 		}, 1000);
 	};
-};
-
-tools.Functions.init = function() {
-	// add global cageStat
-	addFunction(function() {
-		cageStat = {}
-	}, null, true, true);
-	// replace CA funtions
-	addFunction(tools.Functions.stat_increase_ticker, null, true, false);
-	addFunction(tools.Functions.PopupAtMousePosition, null, true, false);
-	addFunction(tools.Functions.hidePositionBox, null, true, false);
-	addFunction(tools.Functions.PositionAndDisplayPopupAutoCenter, null, true, false);
-	addFunction(tools.Functions.PositionAndDisplayPopupAtTop, null, true, false);
-	addFunction(tools.Functions.PositionAndDisplayPopupBox, null, true, false);
-	addFunction(tools.Functions.generateAtPageTop, null, true, false);
-	addFunction(tools.Functions.centerPopups, null, true, false);
-	addFunction(tools.Functions.hideFeedbackPositionBox, null, true, false);
-	addFunction(tools.Functions.cageRePos, null, true, false);
-
 };

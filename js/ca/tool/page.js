@@ -22,6 +22,7 @@ tools.Page.init = function() {
 		});
 	});
 };
+
 tools.Page.loadPage = function(_page) {
 	console.log('Loadpage:' + _page);
 	addFunction(function(_data) {
