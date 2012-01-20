@@ -23,7 +23,6 @@ tools['Page'].runtime['guild_battle.php'] = function() {
 
 	// resize top image
 	$('input[value="enter_battle"]').parents('form:first').css({
-		'top' : -194,
 		'position' : 'relative'
 	});
 	$('#guild_battle_banner_section').css('height', 190).find('div:contains("VICTOR")').next().next().css('marginTop', 10).end();
@@ -93,7 +92,9 @@ tools['Page'].runtime['guild_battle.php'] = function() {
 	_sel.change(filterGate).selectmenu();
 
 	//reduce gate size and add number
-	$('#enemy_guild_member_list > div > div, #your_guild_member_list > div > div').each(function(_i, _e) {
-		$(_e).addClass('GuildList').append('<span class="GuildNum">' + (_i + 1) + '<span>')
-	});
+	if($('#enemy_guild_member_list:contains("No Soldiers Posted In This Position!")').length == 0) {
+		$('#enemy_guild_member_list > div > div, #your_guild_member_list > div > div').each(function(_i, _e) {
+			$(_e).addClass('GuildList').append('<span class="GuildNum">' + (_i + 1) + '<span>')
+		});
+	}
 };
