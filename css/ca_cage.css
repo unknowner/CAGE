@@ -144,8 +144,7 @@ div.game {
 	width: 738px;
 }
 .results {
-	background-image: url() !important;
-	border: 0 !important;
+	border-radius: 6px;
 	padding: 5px !important;
 }
 div.connect_castlepb_bg {

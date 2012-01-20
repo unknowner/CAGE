@@ -9,7 +9,8 @@ function cageNews(_full) {
 			'FIX: Assister',
 			'FIX: Some guild battle stuff',
 			'FIX: Broken page when using Goblin Emporium',
-			'FIX: Exp to next level'
+			'FIX: Exp to next level',
+			'FIX: Possible fix for FF start problems'
 		], function(_i, _e) {
 			$('#cageNewsChanges').append('<li><span>' + _e.split(':')[0] + '</span>' + _e.split(':')[1] + '</li>');
 	});
