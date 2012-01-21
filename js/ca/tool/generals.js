@@ -30,7 +30,6 @@ tools.General.get = function() {
 // Set general image & name
 tools.General.set = function() {
 	var _g = tools.General.runtime.general[tools.General.current];
-	console.log(_g);
 	$('#cageGeneralImage').attr('src', _g.image).css({
 		'height' : 92,
 		'padding' : 0
@@ -129,7 +128,6 @@ tools.General.parsePage = function(_data) {
 		}
 	}
 	tools.General.get();
-	console.log(tools.General.runtime);
 };
 
 tools.General.clickAdd = function() {

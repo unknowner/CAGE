@@ -13,7 +13,6 @@ tools.Demi.start = function() {
 			'top' : 110
 		}, 'slow');
 		$('div.cageDemiImage').click(function() {
-			console.log($(this).attr('symbol'));
 			get('symbols.php?action=tribute&symbol=' + $(this).attr('symbol'), function(_blessed) {
 				$('#cageDemiResult').text($('div.result[contains("You cannot pay another tribute so soon"])', _blessed).text().trim()).dialog({
 					title : 'Demi Power',
@@ -30,19 +29,7 @@ tools.Demi.start = function() {
 					},
 					autoOpen : true
 				});
-				// Set/check demi timer
-				var _wait = $('#cageDemiResult').text().indexOf('Azeron') > 0 ? 48 : 24;
-				var _hour = _wait;
-				var _minute = 0;
-				var _demi = new Date();
-				if($('#cageDemiResult').text().indexOf('You cannot pay another tribute so soon') == 0) {
-					_hour = parseInt(/(\d+)(?= hours)/.exec($('#cageDemiResult').text())[0], 10);
-					_minute = parseInt(/(\d+)(?= minutes)/.exec($('#cageDemiResult').text())[0], 10);
-					_demi.setHours(_demi.getHours() + _hour - _wait, _demi.getMinutes() + _minute);
-				}
-				item.set('cageDemiLast', Date.parse(_demi));
-				item.set('cageDemiTime', _wait);
-				tools.Demi.timer();
+				tools.Demi.parse($('#cageDemiResult'));
 			});
 			_demi.animate({
 				'top' : -100
@@ -76,6 +63,24 @@ tools.Demi.timer = function() {
 				'backgroundColor' : '#1A7A30'
 			});
 		}
+	}
+};
+tools.Demi.parse = function(_pagedata) {
+	// Set/check demi timer
+	var _pagedata = $(_pagedata).text();
+	if(_pagedata.indexOf('You cannot pay another tribute so soon') !== -1 || _pagedata.indexOf('You have paid tribute to')) {
+		var _wait = _pagedata.indexOf('Azeron') > 0 ? 48 : 24;
+		var _hour = _wait;
+		var _minute = 0;
+		var _demi = new Date();
+		if(_pagedata.indexOf('You cannot pay another tribute so soon') !== -1) {
+			_hour = parseInt(/(\d+)(?= hours)/.exec(_pagedata)[0], 10);
+			_minute = parseInt(/(\d+)(?= minutes)/.exec(_pagedata)[0], 10);
+			_demi.setHours(_demi.getHours() + _hour - _wait, _demi.getMinutes() + _minute);
+		}
+		item.set('cageDemiLast', Date.parse(_demi));
+		item.set('cageDemiTime', _wait);
+		tools.Demi.timer();
 	}
 };
 tools.Demi.done = function() {
