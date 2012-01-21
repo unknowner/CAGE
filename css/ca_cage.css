@@ -120,6 +120,7 @@ div.game {
 	cursor: pointer;
 	margin-bottom: -21px;
 	width: 21px;
+	right: -2px;
 }
 #MonsterResultDamage {
 	float: left;
@@ -144,6 +145,7 @@ div.game {
 	width: 738px;
 }
 .results {
+	border: 0 !important;
 	border-radius: 6px;
 	padding: 5px !important;
 }

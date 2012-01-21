@@ -2,9 +2,8 @@ function receiver(_data) {
 	//console.log('ca receiver: ', _data);
 	switch (_data.task) {
 		case com.task.signed:
-			$('#signed_request').remove();
-			$(document.body).append(_data.data.replace('autocomplete="off"', 'id="signed_request"'));
-			CastleAge.signed_request = $('#signed_request').val();
+			$('#signed_request').val(_data.data);
+			CastleAge.signed_request = _data.data;
 			break;
 		case com.task.userId:
 			if(!CastleAge.userId) {

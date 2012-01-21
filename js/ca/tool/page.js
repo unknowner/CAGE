@@ -116,7 +116,7 @@ tools.Page.ajaxLinkSend = function() {
 		$('body').animate({
 			scrollTop : 0
 		}, 'slow');
-		console.log(div);
+		console.log('ajaxLinkSend div:', div, ' - url:', url);
 		friend_browse_offset = 0;
 		reset_raid_lst();
 		pageCache = {};

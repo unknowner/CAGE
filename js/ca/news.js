@@ -21,7 +21,7 @@ function cageNews(_full) {
 	}
 	if(_full == false) {
 		$('#results_main_wrapper div.result:first').css({
-			'height' : 70,
+			'height' : 75,
 			'overflow' : 'hidden'
 		})
 		$('#cageNewsSubHead').append($('<div>[View More]</div>').css({

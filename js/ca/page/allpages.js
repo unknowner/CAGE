@@ -33,8 +33,7 @@ tools['Page'].runtime['allPages'] = function() {
 	// reworkin results
 	if($('div.results').length > 0) {
 		$('div.results').attr('style', '').css({
-			'width' : 728,
-			'border' : '0'
+			'width' : 728
 		});
 		$('#results_main_wrapper').addClass('resultsmainwrapper').prepend('<img id="cageCloseResult" src="http://image4.castleagegame.com/graphics/popup_close_button.png">');
 		$('#results_main_wrapper > br').remove();
