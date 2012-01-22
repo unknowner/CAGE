@@ -68,7 +68,7 @@ tools.Demi.timer = function() {
 tools.Demi.parse = function(_pagedata) {
 	// Set/check demi timer
 	var _pagedata = $(_pagedata).text();
-	if(_pagedata.indexOf('You cannot pay another tribute so soon') !== -1 || _pagedata.indexOf('You have paid tribute to')) {
+	if(_pagedata.indexOf('You cannot pay another tribute so soon') !== -1 || _pagedata.indexOf('You have paid tribute to') !== -1) {
 		var _wait = _pagedata.indexOf('Azeron') > 0 ? 48 : 24;
 		var _hour = _wait;
 		var _minute = 0;

@@ -22,6 +22,7 @@ tools['Page'].runtime['battle.php'] = function() {
 			_battles[('0' + /Battle.*?(\d+)/.exec($('td.bluelink div:eq(1)', _e).text())[1]).slice(-2) + ('0' + _i).slice(-2)] = _e;
 			_sortOrder.push(('0' + /Battle.*?(\d+)/.exec($('td.bluelink div:eq(1)', _e).text())[1]).slice(-2) + ('0' + _i).slice(-2));
 		});
+		item.set('cagePageBattleSortOrder', $('#cageBattleListSort span:last').text());
 		if($('#cageBattleListSort span:last').text() == 'ascending') {
 			_sortOrder.sort();
 		} else {

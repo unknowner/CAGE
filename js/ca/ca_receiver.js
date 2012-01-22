@@ -1,5 +1,5 @@
 function receiver(_data) {
-	console.log('ca receiver: ', _data);
+	//console.log('ca receiver: ', _data);
 	switch (_data.task) {
 		case com.task.signed:
 			$('#signed_request').val(_data.data);
