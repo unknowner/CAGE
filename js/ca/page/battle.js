@@ -20,9 +20,9 @@ tools['Page'].runtime['battle.php'] = function() {
 
 	function chooseRank() {
 		if(_sortType == 'Battle Rank') {
-			sortWarRank();
-		} else {
 			sortBattleRank();
+		} else {
+			sortWarRank();
 		}
 	}
 
@@ -33,10 +33,9 @@ tools['Page'].runtime['battle.php'] = function() {
 			_battlesSorted.push(('0' + /Battle.*?(\d+)/.exec($('td.bluelink div:eq(1)', _e).text())[1]).slice(-2) + ('0' + _i).slice(-2));
 		});
 		item.set('cagePageBattleSortOrder', $('#cageBattleListSort span:last').text());
-		if($('#cageBattleListSort span:last').text() == 'ascending') {
-			_battlesSorted.sort();
-		} else {
-			_battlesSorted.sort().reverse()
+		_battlesSorted.sort();
+		if($('#cageBattleListSort span:last').text() == 'descending') {
+			_battlesSorted.reverse()
 		}
 		renderBattles();
 	}
@@ -71,10 +70,6 @@ tools['Page'].runtime['battle.php'] = function() {
 		$(this).text(_sortOrder);
 		chooseRank()
 	});
-	if( _sortType = 'Battle Rank') {
-		sortBattleRank();
-	} else {
-		sortWarRank();
-	}
-	
+	chooseRank();
+
 };

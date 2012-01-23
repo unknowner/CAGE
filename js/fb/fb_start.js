@@ -24,7 +24,6 @@ function startCAGE() {
 			$('#signed_request').remove();
 			$(document.body).append($(_sr));
 			com.send(com.task.signed, com.port.castleAge, $('#signed_request').val());
-			//com.send(com.task.signed, com.port.castleAge, $(_data.match(/<input.+?"signed_request".+?>/)[0]).val());
 			_data = null;
 		}, 'text')
 	}, 1200000);

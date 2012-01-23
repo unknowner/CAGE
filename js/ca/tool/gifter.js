@@ -171,7 +171,7 @@ tools.Gifter.newRequestForm = function() {
 						var params = 'ajax=1&signed_request=' + $('#signed_request').val();
 						console.log(_requestids);
 						$.ajax({
-							url : 'request_handler.php?' + request_params + '&request_ids=' + _requestids.join(','),
+							url : 'request_handler.php?' + request_params + '&request_ids=' + result.to.join(','), // _requestids.join(',')
 							context : document.body,
 							data : params,
 							type : 'POST',
