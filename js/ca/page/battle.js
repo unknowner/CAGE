@@ -76,4 +76,5 @@ tools['Page'].runtime['battle.php'] = function() {
 	} else {
 		sortWarRank();
 	}
+	
 };

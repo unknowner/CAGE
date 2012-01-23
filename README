@@ -1,4 +1,11 @@
 ==================================================================
+VER: 1.1.13β
+------------------------------------------------------------------
+	ADD: Save festival duel sorting settings
+	ADD: Save battle page sorting settings
+	CHG: Demi timer now works from demi tool and demi page
+	
+==================================================================
 VER: 1.1.12β
 ------------------------------------------------------------------
 	CHG: Demi timer now works from demi tool and demi page
