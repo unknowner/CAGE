@@ -1,6 +1,7 @@
 ==================================================================
 VER: 1.1.13β
 ------------------------------------------------------------------
+	FIX: Gifter sending wrong ids
 	ADD: Save alchemy hide receipt settings
 	ADD: Save festival duel sorting settings
 	ADD: Save battle page sorting settings

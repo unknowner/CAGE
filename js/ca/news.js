@@ -6,8 +6,11 @@ function cageNews(_full) {
 	$('#results_main_wrapper span.result_body:first').append('<div id="cageNews"><center id="cageNewsHead">' + _hed + '</center><center id="cageNewsSubHead">' + _sub + '</center><div id="cageNewsBody"><br><b>Changelog:</b><ul id="cageNewsChanges"></ul></div><div id="cageNewsFoot"><br><a href="http://cagenhancer.blogspot.com/" target="_blank">Blog</a> <a href="http://cagenhancer.blogspot.com/p/manual.html" target="_blank">Manual</a> <a href="http://caaplayer.freeforums.org/c-a-g-e-f29.html" target="_blank">Forum</a> <a href="https://github.com/unknowner/CAGE" target="_blank">GitHub</a><br><br><span style="font-size:12px;text-align:center;">You want to say thank you? Just visit the Blog, click an Ad or donate via PayPal.</span></div></div>');
 	$('#cageNewsFoot').prepend('<center>If you find bugs, just go to the blog and post them there (no signup required).<br>Logs (CTRL+SHIFT+J) are always welcome!</center>');
 	$.each([
-			'CHG: Demi timer now works from demi tool and demi page',
-			'FIX: Facebook starting errors'
+			'FIX: Gifter sending wrong ids',
+			'ADD: Save alchemy hide receipt settings',
+			'ADD: Save festival duel sorting settings',
+			'ADD: Save battle page sorting settings',
+			'CHG: Demi timer now works from demi tool and demi page'
 		], function(_i, _e) {
 			$('#cageNewsChanges').append('<li><span>' + _e.split(':')[0] + '</span>' + _e.split(':')[1] + '</li>');
 	});
