@@ -48,11 +48,17 @@ tools['Page'].runtime['alchemy.php'] = function() {
 	$('div.recipeImgContainer.missing').parent().find('> strong:contains(" of ")').addClass('alchemyItemNum');
 
 	//Hide incomplete recipes
-	$('div.statsT1:first').css('overflow', 'visible').append($('<div id="cageHideReceipe"><img src="http://image4.castleagegame.com/graphics/class_button_minus.jpg"><span>Hide incomplete receipts</span></div>').toggle(function() {
+	$('div.statsT1:first').css('overflow', 'visible').append($('<div id="cageHideRecipe"><img src="http://image4.castleagegame.com/graphics/class_button_minus.jpg"><span>Hide incomplete recipes</span></div>').toggle(function() {
 		$('div.alchemyRecipeBackMonster:has(div.missing), div.alchemyQuestBack:has(div.missing), div.alchemyRecipeBackClass:has(div.missing), div.alchemyRecipeBack:has(div.missing)').hide();
 		$('#cageHideReceipe > img').attr('src', 'http://image4.castleagegame.com/graphics/class_button_plus.jpg');
+		item.set('cagePageAlchemyHideIncomplete', true)
 	}, function() {
 		$('div.alchemyRecipeBackMonster:has(div.missing), div.alchemyQuestBack:has(div.missing), div.alchemyRecipeBackClass:has(div.missing), div.alchemyRecipeBack:has(div.missing)').css('display', '');
 		$('#cageHideReceipe > img').attr('src', 'http://image4.castleagegame.com/graphics/class_button_minus.jpg');
+		item.set('cagePageAlchemyHideIncomplete', false)
 	}));
+	if(item.get('cagePageAlchemyHideIncomplete', true) == true) {
+		$('#cageHideRecipe').click();
+	}
+
 };

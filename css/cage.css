@@ -381,16 +381,16 @@
 .alchemyQuestBack_inc {
 	padding: 1px 6px 6px 20px !important;
 }
-#cageHideReceipe {
+#cageHideRecipe {
 	position: relative;
 	top: 164px;
 	margin-left: 21px;
 	cursor: pointer;
 }
-#cageHideReceipe > img {
+#cageHideRecipe > img {
 	border-radius: 4px;
 }
-#cageHideReceipe > span {
+#cageHideRecipe > span {
 	top: -6px;
 	position: relative;
 	font-weight: bold;
