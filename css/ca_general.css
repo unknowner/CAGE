@@ -3,18 +3,17 @@
 	width: 770px;
 }
 #cageGeneralImageContainer {
-	height: 92px;
-	width: 92px;
+	height: 93px;
+	width: 93px;
 	position: absolute;
 	right: 8px;
 	z-index: 3;
-	top: 2px;
 	border: 1px solid black;
 	overflow: hidden;
 	background-image: url('http://image4.castleagegame.com/graphics/marble.jpg');
 }
 #cageGeneralImage {
-	height: 92px;
+	height: 93px;
 	cursor: pointer;
 }
 #cageGeneralSelector {
@@ -112,7 +111,7 @@
 	width: 107px;
 	position: absolute;
 	z-index: 3;
-	top: 3px;
+	top: 1px;
 	right: 103px;
 	color: white;
 	background: black;
@@ -136,11 +135,11 @@
 	width: 24px;
 	position: absolute;
 	z-index: 3;
-	top: 21px;
+	top: 19px;
 	right: 103px;
 	color: white;
 	background: black;
-	height: 19px;
+	height: 21px;
 	opacity: 0.75;
 	text-align: center;
 	padding-bottom: 18px;

@@ -1,24 +1,49 @@
 new tool('Functions');
 
 tools.Functions.runtime = {};
+/*
+ * Reassign CA Function
+ */
+tools.Functions.init = function() {
+	// add global cageStat
+	addFunction(function() {
+		cageStat = {}
+	}, null, true, true);
+	// replace CA funtions
+	addFunction(tools.Functions.stat_increase_ticker, null, true, false);
+	addFunction(tools.Functions.PopupAtMousePosition, null, true, false);
+	addFunction(tools.Functions.hidePositionBox, null, true, false);
+	addFunction(tools.Functions.PositionAndDisplayPopupAutoCenter, null, true, false);
+	addFunction(tools.Functions.PositionAndDisplayPopupAtTop, null, true, false);
+	addFunction(tools.Functions.PositionAndDisplayPopupBox, null, true, false);
+	addFunction(tools.Functions.generateAtPageTop, null, true, false);
+	addFunction(tools.Functions.centerPopups, null, true, false);
+	addFunction(tools.Functions.hideFeedbackPositionBox, null, true, false);
+	addFunction(tools.Functions.cageRePos, null, true, false);
 
+};
 // Fixed Popups
 tools.Functions.cageRePos = function() {
 	window['cageRePos'] = function(fb_js_var, top) {
 		$('#single_popup_background').css('opacity', 0).removeClass('connect_castlepb_bg').fadeTo('slow', 0.75);
 		var _sp = $('#single_popup');
-		_sp.html($('#' + fb_js_var).html());
+		if(fb_js_var.indexOf('<div') !== -1) {
+			_sp.html(fb_js_var);
+		} else {
+			_sp.html($('#' + fb_js_var).html());
+		}
 		_sp.find('>div:first').css({
 			'margin' : 0,
 			'padding' : 0
 		});
-		var _width = (770 - _sp.width()) / 2;
+		var _width = _sp.width() == 0 ? _sp.find('>div:first').width() : _sp.width();
+		var _margin = (770 - _width) / 2;
+		console.log(_width);
 		if(top) {
 			_sp.css('top', top);
 		}
 		_sp.css({
-			'marginLeft' : (_width),
-			'width' : _sp.width(),
+			'marginLeft' : (_margin),
 			'opacity' : 0
 		}).fadeTo('slow', 1);
 		$(document).keypress(function(_key) {
@@ -155,23 +180,4 @@ tools.Functions.stat_increase_ticker = function() {
 			stat_increase_ticker(ticks_left, stat_current, stat_max, tick_time, increase_value, stat_type, false);
 		}, 1000);
 	};
-};
-
-tools.Functions.init = function() {
-	// add global cageStat
-	addFunction(function() {
-		cageStat = {}
-	}, null, true, true);
-	// replace CA funtions
-	addFunction(tools.Functions.stat_increase_ticker, null, true, false);
-	addFunction(tools.Functions.PopupAtMousePosition, null, true, false);
-	addFunction(tools.Functions.hidePositionBox, null, true, false);
-	addFunction(tools.Functions.PositionAndDisplayPopupAutoCenter, null, true, false);
-	addFunction(tools.Functions.PositionAndDisplayPopupAtTop, null, true, false);
-	addFunction(tools.Functions.PositionAndDisplayPopupBox, null, true, false);
-	addFunction(tools.Functions.generateAtPageTop, null, true, false);
-	addFunction(tools.Functions.centerPopups, null, true, false);
-	addFunction(tools.Functions.hideFeedbackPositionBox, null, true, false);
-	addFunction(tools.Functions.cageRePos, null, true, false);
-
 };

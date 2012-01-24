@@ -1,4 +1,28 @@
 ==================================================================
+VER: 1.1.13β
+------------------------------------------------------------------
+	FIX: Gifter sending wrong ids
+	ADD: Save alchemy hide receipt settings
+	ADD: Save festival duel sorting settings
+	ADD: Save battle page sorting settings
+	CHG: Demi timer now works from demi tool and demi page
+	
+==================================================================
+VER: 1.1.12β
+------------------------------------------------------------------
+	CHG: Demi timer now works from demi tool and demi page
+	FIX: Facebook starting errors
+
+==================================================================
+VER: 1.1.11β
+------------------------------------------------------------------
+	FIX: Assister
+	FIX: Some guild battle stuff
+	FIX: Broken page when using Goblin Emporium
+	FIX: Exp to next level
+	FIX: Possible fix for FF start problems
+	
+==================================================================
 VER: 1.1.10β
 ------------------------------------------------------------------
 	FIX: Gift sending 

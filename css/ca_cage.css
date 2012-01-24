@@ -144,12 +144,13 @@ div.game {
 	width: 738px;
 }
 .results {
-	background-image: url() !important;
 	border: 0 !important;
+	border-radius: 6px;
 	padding: 5px !important;
 }
 div.connect_castlepb_bg {
 	z-index: 11 !important;
+	height: 100% !important;
 }
 iframe.FB_UI_Dialog {
 	height: 537px !important;

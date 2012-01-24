@@ -12,19 +12,20 @@ function startCAGE() {
 	$('#cageIFrame').html('.cageIFrame {height:' + (window.innerHeight - 34) + 'px !important;}');
 	$('#iframe_canvas').addClass('cageIFrame').attr('scrolling', 'yes');
 
-	//com.send(com.task.signed, com.port.castleAge, $('input[name="signed_request"]').val());
-	$.get('http://apps.facebook.com/castle_age/index.php', function(_data) {
-		com.send(com.task.signed, com.port.castleAge, _data.match(/<input.*signed_request.*\/>/)[0]);
-		_data = null;
-	})
+	var _sr = $(document.body).html().match(/<input.+?"signed_request".+?>/)[0].replace('input', 'input id="signed_request"');
+	$(document.body).append($(_sr));
+	com.send(com.task.signed, com.port.castleAge, $('#signed_request').val());
 	com.send(com.task.userId, com.port.castleAge, $('#EnvUser').val());
 
 	// renews signed_request every 10 minutes
 	window.setInterval(function() {
 		$.get('http://apps.facebook.com/castle_age/index.php', function(_data) {
-			com.send(com.task.signed, com.port.castleAge, _data.match(/<input.*signed_request.*\/>/)[0]);
+			var _sr = _data.match(/<input.+?"signed_request".+?>/)[0].replace('input', 'input id="signed_request"');
+			$('#signed_request').remove();
+			$(document.body).append($(_sr));
+			com.send(com.task.signed, com.port.castleAge, $('#signed_request').val());
 			_data = null;
-		})
+		}, 'text')
 	}, 1200000);
 
 	window.setInterval(function() {
