@@ -49,7 +49,6 @@ tools.Gifter.update = function() {
 			} else {
 				note('Gifter', 'You accepted ' + tools.Gifter.runtime.requests.length + ' gift(s).');
 			}
-
 			item.set('CAGEsendGiftTo', tools.Gifter.runtime.sendGiftTo);
 			tools.Gifter.runtimeUpdate();
 		}
@@ -100,15 +99,14 @@ tools.Gifter.newRequestForm = function() {
 
 		getCageFriendList();
 
-		window['showRequestForm'] = function(tit, msg, track, request_params, filt_ids) {
+		window['showRequestForm'] = function(tit, msg, track, request_params, filt_ids, rtf) {
 			var _ui = {
 				method : 'apprequests',
 				message : msg,
 				data : track,
 				title : tit,
-				filters : ['app_users', 'all', 'app_non_users']
+				filters : ['app_users', 'all', 'app_non_users'],
 			};
-
 			if(cageGiftUserList.length > 0) {
 				_ui.filters.unshift({
 					name : _giftData.userList,
@@ -118,10 +116,14 @@ tools.Gifter.newRequestForm = function() {
 			if(localStorage[FB.getAuthResponse().userID + '_' + 'CAGEsendGiftTo'] !== undefined && localStorage[FB.getAuthResponse().userID + '_' + 'CAGEsendGiftTo'] !== null && JSON.parse(localStorage[FB.getAuthResponse().userID + '_' + 'CAGEsendGiftTo']).length !== 0) {
 				console.log(JSON.parse(localStorage[FB.getAuthResponse().userID + '_' + 'CAGEsendGiftTo']).length);
 				console.log('GIFTER - RTF list: ', JSON.parse(localStorage[FB.getAuthResponse().userID + '_' + 'CAGEsendGiftTo']));
-				_ui.filters.unshift({
-					name : 'Return the favour',
-					user_ids : localStorage[FB.getAuthResponse().userID + '_' + 'CAGEsendGiftTo']
-				})
+				if(rtf) {
+					_ui.to = localStorage[FB.getAuthResponse().userID + '_' + 'CAGEsendGiftTo']
+				} else {
+					_ui.filters.unshift({
+						name : 'Return the favour',
+						user_ids : localStorage[FB.getAuthResponse().userID + '_' + 'CAGEsendGiftTo']
+					})
+				}
 			} else {
 				localStorage.removeItem(FB.getAuthResponse().userID + '_' + 'CAGEsendGiftTo');
 			}
@@ -189,7 +191,7 @@ tools.Gifter.newRequestForm = function() {
 		}
 	}, JSON.stringify({
 		userList : tools.Gifter.runtime.userList,
-		flid : tools.Facebook.runtime.friendlistId[tools.Gifter.runtime.userList]
+		flid : tools.Facebook.runtime.friendlistId[tools.Gifter.runtime.userList],
 	}), true, true);
 };
 tools.Gifter.init = function() {

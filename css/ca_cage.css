@@ -152,9 +152,6 @@ div.connect_castlepb_bg {
 	z-index: 11 !important;
 	height: 100% !important;
 }
-iframe.FB_UI_Dialog {
-	height: 537px !important;
-}
 .cageQuestSwitchGeneral {
 	top: -14px;
 	position: relative;
