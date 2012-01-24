@@ -325,7 +325,7 @@
 }
 .itemNumbers {
 	position: relative;
-	top: -19px;
+	top: -16px;
 	text-align: right;
 	color: white;
 	background-color: black;
@@ -335,6 +335,7 @@
 	padding: 1px 5px;
 	font-size: 12px;
 	float: right;
+	margin-bottom: -16px;
 }
 /*
  *  Alchemy.php

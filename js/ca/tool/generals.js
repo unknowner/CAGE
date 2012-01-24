@@ -31,7 +31,7 @@ tools.General.get = function() {
 tools.General.set = function() {
 	var _g = tools.General.runtime.general[tools.General.current];
 	$('#cageGeneralImage').attr('src', _g.image).css({
-		'height' : 92,
+		'height' : 93,
 		'padding' : 0
 	});
 	$('#cageGeneralName').text(_g.name);
