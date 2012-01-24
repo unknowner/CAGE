@@ -14,7 +14,7 @@ tools.Assister.settings = function() {
 	tools.Settings.text(language.assisterSetFriendLstDesc);
 	tools.Settings.dropdown(language.assisterSetFriendList, tools.Assister.runtime.assisterLists, tools.Assister.runtime.assisterList, 'cageAssisterList', function(_value) {
 		console.log(_value);
-		tools.cage.runtime.assisterList = _value;
+		tools.Assister.runtime.assisterList = _value;
 	});
 	tools.Settings.onoff(language.assisterSetFriendsOnly, tools.Assister.runtime.friendsOnly, 'cageAssisterFriendsOnly', tools.Assister.runtimeUpdate);
 
@@ -57,7 +57,7 @@ tools.Assister.requestPermisson = function() {
  * Get CTAs from Livefeed
  */
 tools.Assister.start = function() {
-	console.log('Assister - CTAs: ', tools.Assister.runtime.CTA, tools.cage.runtime.assisterList);
+	console.log('Assister - CTAs: ', tools.Assister.runtime.CTA, tools.Assister.runtime.assisterList);
 	if(tools.Assister.runtime.assisterList == 'Castle Age players') {
 		tools.Facebook.CAPlayers(function(_ids) {
 			tools.Assister.getCTA(_ids);
@@ -73,12 +73,9 @@ tools.Assister.getCTA = function(_ids) {
 	get('army_news_feed.php', function(_data) {
 		$('#action_logs > a[href*="action=doObjective"]', _data).each(function(i, e) {
 			var _uid = $('*[uid]:first', $(e)).attr('uid');
-			console.log('uid:', _uid);
-			if((tools.cage.runtime.assisterList !== 'Castle Age players' || tools.Assister.runtime.friendsOnly == true) && _ids.indexOf(_uid) !== -1) {
-				console.log('drop uid');
+			if(tools.Assister.runtime.friendsOnly == true && _ids.indexOf(_uid) == -1) {
 				return true;
 			}
-			console.log('add uid');
 			tools.Assister.runtime.CTA.push({
 				link : $(e).attr('href').replace(/(https|http):\/\/apps.facebook.com\/castle_age\//, ''),
 				uid : _uid,

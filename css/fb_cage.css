@@ -7,8 +7,14 @@ body {
 }
 #blueBar {
 	display: block !important;
-	height: 34px !important;
+	height: 2px !important;
 	min-width: 0 !important;
+}
+a.jewelButton {
+	height: 30px !important;
+}
+li.topNavLink, li.topNavLink a {
+	height: 30px !important;
 }
 #globalContainer {
 	width: 100% !important;
@@ -27,7 +33,7 @@ body {
 }
 #pageHead {
 	min-width: 0 !important;
-	height: 33px !important;
+	height: 31px !important;
 	padding: 0 0 0 5px !important;
 	background-color: #3B5998 !important;
 	border-bottom: black solid 1px !important;
@@ -43,7 +49,7 @@ body {
 	margin-right: 3px !important;
 }
 #contentCol {
-	margin-top: 33px !important;
+	margin-top: 34px !important;
 	padding: 0 !important;
 }
 #rightCol {
@@ -62,4 +68,11 @@ body {
 }
 #navSearch {
 	margin-top: 5px !important;
+}
+#fbDockChat {
+	margin-left: -20px;
+	left: 19px;
+}
+.fbDockWrapperRight {
+	right: 20px;
 }

@@ -3,8 +3,9 @@ tools['Page'].runtime['festival_duel_battle.php'] = function() {
 
 	console.log('Page: festival_duel_battle.php');
 
-	function sortFestivalRank() {
+	var _sortOrder = item.get('cagePageFestivalDuelOrder', 'descending');
 
+	function sortFestivalRank() {
 		var _battles = {};
 		var _sortOrder = [];
 		var _divs = $('table.layout div[style*="/graphics/festival_duelchampion/festival_duelchamp_line.jpg"]');
@@ -14,7 +15,7 @@ tools['Page'].runtime['festival_duel_battle.php'] = function() {
 			_battles[_rank] = _e;
 			_sortOrder.push(_rank);
 		});
-		if($('#cageBattleListSort span:first').text() == 'ascending') {
+		if(_sortOrder == 'ascending') {
 			_sortOrder.sort();
 		} else {
 			_sortOrder.sort().reverse()
@@ -26,15 +27,15 @@ tools['Page'].runtime['festival_duel_battle.php'] = function() {
 	}
 
 	// Sorting
-	$('#festival_menu').append('<div id="cageBattleListSort" style="color:white;position:absolute;margin-top:105px;font-size:16px;font-weight:bold;width:640px;text-align:center;">Sort by <span style="cursor:pointer;text-decoration:underline;">descending</span> rank / <span style="cursor:pointer;text-decoration:underline;">Reload</span></div>');
+	$('#festival_menu').append('<div id="cageBattleListSort" style="color:white;position:absolute;margin-top:105px;font-size:16px;font-weight:bold;width:640px;text-align:center;">Sort by <span style="cursor:pointer;text-decoration:underline;">' + _sortOrder + '</span> rank / <span style="cursor:pointer;text-decoration:underline;">Reload</span></div>');
 
-	$('#cageBattleListSort span:first').toggle(function() {
-		$(this).text('ascending');
-		sortFestivalRank();
-	}, function() {
-		$(this).text('descending');
+	$('#cageBattleListSort span:first').click(function() {
+		_sortOrder = _sortOrder == 'descending' ? 'ascending' : 'descending';
+		$(this).text(_sortOrder);
+		item.set('cagePageFestivalDuelOrder', _sortOrder);
 		sortFestivalRank();
 	});
+
 	$('#cageBattleListSort span:last').click(function() {
 		tools.Page.loadPage('festival_duel_battle.php');
 	});
