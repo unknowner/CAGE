@@ -38,16 +38,6 @@ function initTools() {
 			_tool.init();
 		}
 	});
-	tools['Page'].runtime['allPages']();
-	var _startURL = $('#current_pg_url').attr('value');
-	if(_startURL.indexOf('?') != -1) {
-		_startURL = _startURL.substring(0, _startURL.indexOf('?'));
-	}
-	console.log("URL:" + _startURL);
-	if(tools['Page'].runtime[_startURL]) {
-		tools['Page'].runtime[_startURL]();
-	}
-	_startURL = undefined;
 	get('keep.php', function(_keepdata) {
 		CastleAge.bqh = $('input[name="bqh"]:first', _keepdata).val();
 		tools['PotionStamina'].work(_keepdata);
