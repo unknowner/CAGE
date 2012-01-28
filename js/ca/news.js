@@ -9,7 +9,8 @@ function cageNews(_full) {
 			'FIX: Public monster popup',
 			'FIX: Festival duel sorting',
 			'ADD: Quick RTF gifting',
-			'ADD: Festival/Guild battles now saves filter settings'
+			'ADD: Festival/Guild battle now saves filter settings',
+			'ADD: Save/load settings'
 		], function(_i, _e) {
 			$('#cageNewsChanges').append('<li><span>' + _e.split(':')[0] + '</span>' + _e.split(':')[1] + '</li>');
 	});

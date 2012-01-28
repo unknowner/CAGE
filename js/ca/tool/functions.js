@@ -86,7 +86,7 @@ tools.Functions.hideFeedbackPositionBox = function() {
 		$('#single_popup_background_feedback').fadeOut('slow', function() {
 			$(this).hide().css('opacity', 1).unbind('keypress');
 		});
-		$('#single_popup_feedback').fadeOut('slow', function() {
+		$('#single_popup_feedback').fadeOut('fast', function() {
 			$(this).hide().css('opacity', 1).unbind('keypress');
 		});
 	};
@@ -97,7 +97,7 @@ tools.Functions.hidePositionBox = function() {
 		$('#single_popup_background').fadeOut('slow', function() {
 			$(this).hide().css('opacity', 1);
 		});
-		$('#single_popup').fadeOut('slow', function() {
+		$('#single_popup').fadeOut('fast', function() {
 			$(this).hide().css('opacity', 1);
 		});
 	};
