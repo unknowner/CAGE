@@ -31,9 +31,11 @@ tools.Settings.text = function(_text) {
 tools.Settings.textbox = function(_text, _value, _save, _callback) {
 	$('#cageSettingsMiddle').append('<div id="cageSettingsTextBox' + _save + '" class="cageSettingsTextbox"><span>' + _text + '</span><input type="text" value="' + _value + '"><button></button></div>');
 	$('#cageSettingsTextBox' + _save + ' > button').click(function() {
-		item.set(_save, $('#cageSettingsTextBox' + _save + ' > input').val());
+		if(_save) {
+			item.set(_save, $('#cageSettingsTextBox' + _save + ' > input').val());
+		}
 		if(_callback) {
-			_callback();
+			_callback($('#cageSettingsTextBox' + _save + ' > input').val());
 		}
 	});
 };

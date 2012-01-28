@@ -7,21 +7,20 @@ tools['Page'].runtime['festival_duel_battle.php'] = function() {
 
 	function sortFestivalRank() {
 		var _battles = {};
-		var _sortOrder = [];
+		var _battleSorted = [];
 		var _divs = $('table.layout div[style*="/graphics/festival_duelchampion/festival_duelchamp_line.jpg"]');
 		var _parent = _divs.parent();
 		_divs.each(function(_i, _e) {
 			var _rank = ('0' + /Rank.*?(\d+)/.exec($(_e).text())[1]).slice(-2) + ('0' + _i).slice(-2);
 			_battles[_rank] = _e;
-			_sortOrder.push(_rank);
+			_battleSorted.push(_rank);
 		});
-		if(_sortOrder == 'ascending') {
-			_sortOrder.sort();
-		} else {
-			_sortOrder.sort().reverse()
+		_battleSorted.sort();
+		if(_sortOrder == 'descending') {
+			_battleSorted.reverse()
 		}
 		_divs.remove();
-		$.each(_sortOrder, function(_i, _e) {
+		$.each(_battleSorted, function(_i, _e) {
 			_parent.append(_battles[_e]);
 		});
 	}

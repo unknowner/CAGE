@@ -9,21 +9,22 @@ var CastleAge = {
 };
 
 com.initPort(com.port.castleAge);
-tools.Page.runtime['allPages']();
 
-$(document.body)
-	.append('<link id="cageTheme" rel="stylesheet" type="text/css" href="' + getPath('css/dark-hive/jquery-ui.css') + '?x=' + Math.random() + '">')
-	.append('<link rel="stylesheet" type="text/css" href="' + getPath('css/cage.css') + '?x=' + Math.random() + '">')
-	.append('<link rel="stylesheet" type="text/css" href="' + getPath('css/ca_cage.css') + '?x=' + Math.random() + '">')
-	.append('<link rel="stylesheet" type="text/css" href="' + getPath('css/ca_stats.css') + '?x=' + Math.random() + '">')
-	.append('<link rel="stylesheet" type="text/css" href="' + getPath('css/ca_general.css') + '?x=' + Math.random() + '">')
-	.append('<link rel="stylesheet" type="text/css" href="' + getPath('css/ca_monster.css') + '?x=' + Math.random() + '">')
-	.append('<link rel="stylesheet" type="text/css" href="' + getPath('css/ui.selectmenu.css') + '?x=' + Math.random() + '">')
-	.append('<link rel="stylesheet" type="text/css" href="' + getPath('css/settings.css') + '?x=' + Math.random() + '">')
-	.append('<script type="text/javascript" language="javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.js"></script>')
-	.append($('<input>').attr({'id':'signed_request','type':'hidden'}));
-	
+var _append = '';
+$.each(['css/cage.css', 'css/ca_cage.css', 'css/ca_stats.css', 'css/ca_general.css', 'css/ca_monster.css', 'css/ui.selectmenu.css', 'css/settings.css'], function(_i, _e) {
+	_append += '<link rel="stylesheet" type="text/css" href="' + getPath(_e) + '" >'
+});
+_append += '<link id="cageTheme" rel="stylesheet" type="text/css" href="' + getPath('css/dark-hive/jquery-ui.css') + '" >';
+_append += '<script type="text/javascript" language="javascript" src="' + getPath('js/jquery.js') + '"></script>';
+$(document.body).append($('<input>').attr({
+	'id' : 'signed_request',
+	'type' : 'hidden'
+})).append(_append);
+_css = undefined;
+
 $('center:first').prepend('<div id="cageContainer"><div id="cageStatsContainer"></div><div id="cageToolsContainer" class="ui-widget-content ui-corner-bottom"></div></div>');
+
+tools['Page'].runtime['allPages']();
 
 CastleAge.startInterval = window.setInterval(function() {
 	if(CastleAge.signed_request !== null && CastleAge.userId !== null) {
@@ -32,9 +33,16 @@ CastleAge.startInterval = window.setInterval(function() {
 			com.send(com.task.alive, com.port.facebook, null);
 		}, 600000);
 		initTools();
-		console.log('initTools');
+		var _startURL = $('#current_pg_url').attr('value');
+		if(_startURL.indexOf('?') != -1) {
+			_startURL = _startURL.substring(0, _startURL.indexOf('?'));
+		}
+		console.log("URL:" + _startURL);
+		if(tools['Page'].runtime[_startURL]) {
+			tools['Page'].runtime[_startURL]();
+		}
+		_startURL = undefined;
 	} else {
 		com.send(com.task.castleAgeReady, com.port.facebook);
 	}
 }, 100);
-  

@@ -435,4 +435,24 @@
 #cageNewsChanges li {
 	list-style: none;
 }
-
+/*
+ * Gifter
+ */
+.cageGifterButton {
+	position: absolute;
+	margin-left: 15px;
+	border-radius: 5px;
+	color: #FBFBF1;
+	font-weight: bold;
+	width: 200px;
+	height: 35px;
+	font-size: 18px;
+	cursor: pointer;
+	font-family: 'Times New Roman', Times, serif;
+	background-image: url('http://image4.castleagegame.com/graphics/invite_page_03.jpg');
+	text-shadow: 2px 2px black;
+	border-color: #DFCB96;
+}
+.cageGifterButton > span {
+	font-size: 15px;
+}
