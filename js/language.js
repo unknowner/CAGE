@@ -8,6 +8,8 @@ function defaultLanguage(){
 	this.cageSetThemeAction				= 'Choose theme';
 	this.cageSetAlignCenter				= 'Castle Age centered';
 	this.cageNotifications				= 'Show notifications';
+	this.cageSaveSettings					= 'Save settings';
+	this.cageLoadSettings					= 'Load settings';
 	
 	// Settings
 	this.settingsButton						= 'Settings';

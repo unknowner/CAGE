@@ -6,7 +6,7 @@ tools['Page'].runtime['festival_guild_battle.php'] = function() {
 	// fix gate reseting when attacking with duel button
 	var _gate = /\d/.exec($('#enemy_guild_battle_section_battle_list').attr('class'));
 	$('span.result_body form').append('<input type="hidden" name="attacking_position" value="' + _gate + '">');
-	
+
 	// add percentage to health bars
 	var _your = (1 - ($('div[style*="/guild_battle_bar_you.gif"]').width() / $('div[style*="/guild_battle_bar_you.gif"]').parent().width())) * 100;
 	var _enemy = (1 - ($('div[style*="/guild_battle_bar_enemy.gif"]').width() / $('div[style*="/guild_battle_bar_enemy.gif"]').parent().width())) * 100;
@@ -26,7 +26,19 @@ tools['Page'].runtime['festival_guild_battle.php'] = function() {
 	// add current tokens to result
 	var _tokens = $('div.result div:contains("-1 Battle Tokens"):last');
 	_tokens.text(_tokens.text() + ' (' + $('#guild_token_current_value').text() + ' left)');
-	
+
+	//reduce gate size and add number
+	if($('#enemy_guild_member_list:contains("No Soldiers Posted In This Position!")').length == 0) {
+		$('#enemy_guild_member_list > div > div, #your_guild_member_list > div > div').each(function(_i, _e) {
+			$(_e).addClass('GuildList').append('<span class="GuildNum">' + (_i + 1) + '<span>')
+		});
+	}
+
+	//Saved filter settings
+	var _storedClass = item.get('cagePageFestGuildBattleClass', 'All');
+	var _storedActivity = item.get('cagePageFestGuildBattleActivity', 'All');
+	var _storedStatus = item.get('cagePageFestGuildBattleStatus', 'All')
+
 	//gate filter
 	function filterGate() {
 		var _class = new RegExp($('#cageGateClassFilter').val());
@@ -52,42 +64,70 @@ tools['Page'].runtime['festival_guild_battle.php'] = function() {
 		'Warrior' : 'Warrior'
 	}, filterActivity = {
 		'All' : '\.*',
-		'Active' : 'Festival Activity Points: [^0]',
-		'Inactive' : 'Festival Activity Points: 0'
+		'Active' : 'Battle Activity Points: [^0]',
+		'Inactive' : 'Battle Activity Points: 0'
 	}, filterStatus = {
 		'All' : '\.*',
+		'Got health' : 'Health: [^0]',
+		'No health' : 'Health: 0/',
 		'Healthy' : 'Healthy',
 		'Good' : 'Good',
 		'Fair' : 'Fair',
 		'Weakened' : 'Weakened',
 		'Stunned' : 'Stunned'
 	};
-	// Class filter
 	$('body > ul.ui-selectmenu-menu').remove();
+	$('#guild_battle_health').append($('<button>Clear filters</button>').button().css({
+		'position' : 'relative !important',
+		'left' : 9,
+		'top' : 3,
+		'float' : 'left',
+		'fontSize' : 12,
+		'height' : 25,
+		'borderRadius' : 0
+	}).click(function() {
+		$('span.ui-selectmenu-status').text('All');
+		$('#cageGateClassFilter, #cageGateActivityFilter, #cageGateStatusFilter').val('All');
+		_storedClass = 'All';
+		item.set('cagePageFestGuildBattleClass', _storedClass);
+		_storedActivity = 'All';
+		item.set('cagePageFestGuildBattleActivity', _storedActivity);
+		_storedStatus = 'All';
+		item.set('cagePageFestGuildBattleStatus', _storedStatus);
+		filterGate();
+	}));
 	$('#guild_battle_health').append('<span class="cageGateFilterTitle ui-state-default"> Class </span><select id="cageGateClassFilter">');
 	_sel = $('#cageGateClassFilter');
 	$.each(filterClass, function(_i, _e) {
-		_sel.append('<option value="' + _e + '">' + _i + '</option>');
+		_sel.append('<option value="' + _e + '" ' + (_storedClass == _i ? 'selected = "selected"' : '') + ' >' + _i + '</option>');
 	});
-	_sel.change(filterGate).selectmenu();
+	_sel.change(function() {
+		_storedClass = $(this).find("option:selected").text();
+		item.set('cagePageFestGuildBattleClass', _storedClass);
+		filterGate();
+	}).selectmenu();
 	// Activity filter
 	$('#guild_battle_health').append('<span class="cageGateFilterTitle ui-state-default"> Activity </span><select id="cageGateActivityFilter">');
 	_sel = $('#cageGateActivityFilter');
 	$.each(filterActivity, function(_i, _e) {
-		_sel.append('<option value="' + _e + '">' + _i + '</option>');
+		_sel.append('<option value="' + _e + '" ' + (_storedActivity == _i ? 'selected = "selected"' : '') + ' >' + _i + '</option>');
 	});
-	_sel.change(filterGate).selectmenu();
+	_sel.change(function() {
+		_storedActivity = $(this).find("option:selected").text();
+		item.set('cagePageFestGuildBattleActivity', _storedActivity);
+		filterGate();
+	}).selectmenu();
 	// status filter
 	$('#guild_battle_health').append('<span class="cageGateFilterTitle ui-state-default"> Status </span><select id="cageGateStatusFilter">');
 	_sel = $('#cageGateStatusFilter');
 	$.each(filterStatus, function(_i, _e) {
-		_sel.append('<option value="' + _e + '">' + _i + '</option>');
+		_sel.append('<option value="' + _e + '" ' + (_storedStatus == _i ? 'selected = "selected"' : '') + ' >' + _i + '</option>');
 	});
-	_sel.change(filterGate).selectmenu();
+	_sel.change(function() {
+		_storedStatus = $(this).find("option:selected").text();
+		item.set('cagePageFestGuildBattleStatus', _storedStatus);
+		filterGate();
+	}).selectmenu();
+	filterGate();
 
-	//reduce gate size and add number
-	$('#enemy_guild_member_list > div > div, #your_guild_member_list > div > div').each(function(_i, _e) {
-		//$(_e).find('img[src*="guild_class_upgrades"]').each(function(_i, _e) {});
-		$(_e).addClass('GuildList').append('<span class="GuildNum">' + (_i + 1) + '<span>')
-	});
 };

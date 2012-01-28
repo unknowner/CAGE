@@ -65,7 +65,7 @@ tools.General.update = function() {
 			tools.General.parsePage(_data);
 		})
 	} else {
-		window.setTimeout(tools.General.update, 50);
+		window.setTimeout(tools.General.update, 200);
 	}
 };
 tools.General.parsePage = function(_data) {

@@ -2,6 +2,9 @@ body {
 	overflow: hidden !important;
 	background-color: #000 !important;
 }
+#pagelet_bluebar {
+	height: 34px;
+}
 #blueBarHolder {
 	height: 0 !important;
 }
@@ -49,7 +52,6 @@ li.topNavLink, li.topNavLink a {
 	margin-right: 3px !important;
 }
 #contentCol {
-	margin-top: 34px !important;
 	padding: 0 !important;
 }
 #rightCol {

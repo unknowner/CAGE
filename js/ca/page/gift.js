@@ -45,7 +45,7 @@ tools['Page'].runtime['gift.php'] = function() {
 	var $_img = $('img[src*="invite_sendgift.gif"]');
 	var _giftNum = /(?:act=create&gift=)(\d+)/.exec($_img.attr('onclick'))[1];
 	var _giftName = /(sent you a )(.+)( in Castle Age!)/.exec($_img.attr('onclick'))[2];
-	$_img.attr('onclick', '').click(function() {//
+	$_img.attr('onclick', '').click(function() {
 		addFunction(function(_gift) {
 			FB.api('/me', function(response) {
 				showRequestForm('Castle Age', encodeURI(response.first_name) + ' ' + encodeURI(response.last_name) + ' has sent you a ' + $('#giftContainer').attr('CAGEGiftName') + ' in Castle Age! Click to accept gift.', 'abc=123', 'act=create&gift=' + $('#giftContainer').attr('CAGEGiftNum'));
@@ -55,4 +55,18 @@ tools['Page'].runtime['gift.php'] = function() {
 			name : _giftName
 		}), true, true);
 	});
+	var _div = $('#giftContainer').next('div');
+	_div.find('div:first').remove();
+	_div.find('div:first').css('paddingTop', 22);
+	_div.prepend($('<button class="cageGifterButton">R<span>ECEIVE</span> G<span>IFTS</span></button>').css('marginTop', 14).click(tools.Gifter.start));
+	_div.prepend($('<button class="cageGifterButton">R<span>ETURN</span> <span>THE</span> F<span>AVOR</span></button>').css('marginTop', 55).click(function() {
+		addFunction(function(_gift) {
+			FB.api('/me', function(response) {
+				showRequestForm('Castle Age', encodeURI(response.first_name) + ' ' + encodeURI(response.last_name) + ' has sent you a ' + $('#giftContainer').attr('CAGEGiftName') + ' in Castle Age! Click to accept gift.', 'abc=123', 'act=create&gift=' + $('#giftContainer').attr('CAGEGiftNum'), null, true);
+			});
+		}, JSON.stringify({
+			num : _giftNum,
+			name : _giftName
+		}), true, true);
+	}));
 };
