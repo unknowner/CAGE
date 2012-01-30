@@ -21,15 +21,20 @@ tools.Settings.start = function() {
 };
 // heading text
 tools.Settings.heading = function(_text) {
-	$('#cageSettingsMiddle').append('<div class="cageSettingsHeading">' + _text + '</div>');
+	$('#cageSettingsMiddle').append('<div style="height:20px;"><div class="cageSettingsHeading" style="cursor:pointer">' + _text + '</div></div>');
+	$('#cageSettingsMiddle > div:last > div:first').toggle(function() {
+		$(this).parent().css('height', '');
+	}, function() {
+		$(this).parent().css('height', 20);
+	})
 };
 // simple text
 tools.Settings.text = function(_text) {
-	$('#cageSettingsMiddle').append('<div class="cageSettingsText">' + _text + '</div>');
+	$('#cageSettingsMiddle > div:last').append('<div class="cageSettingsText">' + _text + '</div>');
 };
 // text, currentvalue, savename, callback func
 tools.Settings.textbox = function(_text, _value, _save, _callback) {
-	$('#cageSettingsMiddle').append('<div id="cageSettingsTextBox' + _save + '" class="cageSettingsTextbox"><span>' + _text + '</span><input type="text" value="' + _value + '"><button></button></div>');
+	$('#cageSettingsMiddle > div:last').append('<div id="cageSettingsTextBox' + _save + '" class="cageSettingsTextbox"><span>' + _text + '</span><input type="text" value="' + _value + '"><button></button></div>');
 	$('#cageSettingsTextBox' + _save + ' > button').click(function() {
 		if(_save) {
 			item.set(_save, $('#cageSettingsTextBox' + _save + ' > input').val());
@@ -42,7 +47,7 @@ tools.Settings.textbox = function(_text, _value, _save, _callback) {
 // text, callback func
 tools.Settings.button = function(_text, _callback) {
 	var _id = Math.floor(Math.random() * Math.random() * 100000000);
-	$('#cageSettingsMiddle').append('<div id="cageSettingsButton' + _id + '" class="cageSettingsButton"><span>' + _text + '</span><button></button></div>');
+	$('#cageSettingsMiddle > div:last').append('<div id="cageSettingsButton' + _id + '" class="cageSettingsButton"><span>' + _text + '</span><button></button></div>');
 	$('#cageSettingsButton' + _id + ' > button').click(function() {
 		if(_callback) {
 			_callback();
@@ -52,7 +57,7 @@ tools.Settings.button = function(_text, _callback) {
 // on off switch
 tools.Settings.onoff = function(_text, _value, _save, _callback) {
 	var _id = Math.floor(Math.random() * Math.random() * 100000000);
-	$('#cageSettingsMiddle').append('<div id="cageSettingsOnOff' + _id + '" class="cageSettingsOnOff" onoff="' + _value + '"><span>' + _text + '</span><button></button></div>');
+	$('#cageSettingsMiddle > div:last').append('<div id="cageSettingsOnOff' + _id + '" class="cageSettingsOnOff" onoff="' + _value + '"><span>' + _text + '</span><button></button></div>');
 	if(_value == true) {
 		$('#cageSettingsOnOff' + _id + ' > button').css('backgroundImage', 'url("http://image4.castleagegame.com/graphics/class_button_plus.jpg")');
 	}
@@ -76,7 +81,7 @@ tools.Settings.onoff = function(_text, _value, _save, _callback) {
 tools.Settings.dropdown = function(_text, _values, _value, _save, _callback) {
 
 	var _id = Math.floor(Math.random() * Math.random() * 100000000);
-	$('#cageSettingsMiddle').append('<div id="cageSettingsDropdown' + _id + '" class="cageSettingsDropdown"><span>' + _text + '</span><select></div');
+	$('#cageSettingsMiddle > div:last').append('<div id="cageSettingsDropdown' + _id + '" class="cageSettingsDropdown"><span>' + _text + '</span><select></div');
 	var _sel = $('#cageSettingsDropdown' + _id + ' select');
 	$.each(_values, function(_i, _e) {
 		_sel.append('<option value="' + _i + '" ' + (_i == _value ? 'selected' : '') + ' >' + _i + '</option>');

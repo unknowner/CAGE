@@ -174,18 +174,21 @@ tools.Nav.start = function() {
 					'Manage' : {
 						url : 'guildv2_panel.php'
 					},
-					'Guild List' : {
+					'List' : {
 						url : 'guildv2_list.php'
 					},
-					'Guild Battle' : {
+					'Battle' : {
 						url : 'guildv2_battle.php'
 					},
-					'Guild Monsters' : {
+					'Monsters' : {
 						url : 'guildv2_current_monster_battles.php'
 					},
-					'Guild Conquest' : {
+					'Conquest' : {
 						url : 'guildv2_conquest_command.php'
-					}
+					},
+					'Achievements' : {
+					url:'guild_achievements.php'
+				}
 				}
 			};
 		}
