@@ -164,13 +164,13 @@ tools.Abilities.done = function() {
 };
 tools.Abilities.init = function() {
 	$('#cageContainer').append('<div id="cageAbilitiesContainer" class="ui-widget-content"><div></div></div>');
-	$('#cageAbilitiesContainer').append($('<button id="cageClassCleric"><img src="http://image4.castleagegame.com/graphics/guild_battle_icon_cleric.gif"></button>').click(function() {
+	$('#cageAbilitiesContainer').append($('<button id="cageClassCleric">').click(function() {
 		tools.Abilities.changeClass('cleric');
-	})).append($('<button id="cageClassWarrior"><img src="http://image4.castleagegame.com/graphics/guild_battle_icon_warrior.gif"></button>').click(function() {
+	})).append($('<button id="cageClassWarrior">').click(function() {
 		tools.Abilities.changeClass('warrior');
-	})).append($('<button id="cageClassMage"><img src="http://image4.castleagegame.com/graphics/guild_battle_icon_mage.gif"></button>').click(function() {
+	})).append($('<button id="cageClassMage">').click(function() {
 		tools.Abilities.changeClass('mage');
-	})).append($('<button id="cageClassRogue"><img src="http://image4.castleagegame.com/graphics/guild_battle_icon_rogue.gif"></button>').click(function() {
+	})).append($('<button id="cageClassRogue">').click(function() {
 		tools.Abilities.changeClass('rogue');
 	}));
 	tools.Abilities.fbButton.add(language.abilitiesButton, function() {

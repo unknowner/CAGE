@@ -277,51 +277,71 @@
  */
 #cageClassCleric {
 	display: none;
-	border-radius: 50px;
+	border-radius: 5px;
 	padding: 0;
 	position: absolute;
 	left: 23px;
 	top: 13px;
 	cursor: pointer;
+	height: 36px;
+	width: 83px;
+	background-image: url('http://image4.castleagegame.com/graphics/g_char_selectcleric_off.jpg');
+	background-size: 83px 36px;
+	border: 0;
 }
-#cageClassCleric img {
-	height: 30px;
+#cageClassCleric:hover {
+	background-image: url('http://image4.castleagegame.com/graphics/g_char_selectcleric.jpg');
 }
 #cageClassWarrior {
 	display: none;
-	border-radius: 50px;
+	border-radius: 5px;
 	padding: 0;
 	position: absolute;
-	left: 70px;
-	top: 13px;
+	left: 23px;
+	top: 63px;
 	cursor: pointer;
+	height: 36px;
+	width: 83px;
+	background-image: url('http://image4.castleagegame.com/graphics/g_char_selectwarrior_off.jpg');
+	background-size: 83px 36px;
+	border: 0;
 }
-#cageClassWarrior img {
-	height: 30px;
+#cageClassWarrior:hover {
+	background-image: url('http://image4.castleagegame.com/graphics/g_char_selectwarrior.jpg');
 }
 #cageClassMage {
 	display: none;
-	border-radius: 50px;
+	border-radius: 5px;
 	padding: 0;
 	position: absolute;
 	right: 23px;
 	top: 13px;
 	cursor: pointer;
+	height: 36px;
+	width: 83px;
+	background-image: url('http://image4.castleagegame.com/graphics/g_char_selectmage_off.jpg');
+	background-size: 83px 36px;
+	border: 0;
 }
-#cageClassMage img {
-	height: 30px;
+#cageClassMage:hover {
+	background-image: url('http://image4.castleagegame.com/graphics/g_char_selectmage.jpg');
 }
 #cageClassRogue {
 	display: none;
-	border-radius: 50px;
+	border-radius: 5px;
 	padding: 0;
 	position: absolute;
-	right: 70px;
-	top: 13px;
+	right: 23px;
+	top: 63px;
 	cursor: pointer;
+	height: 36px;
+	width: 83px;
+	background-image: url('http://image4.castleagegame.com/graphics/g_char_selectrogue_off.jpg');
+	background-size: 83px 36px;
+	border: 0;
 }
-#cageClassRogue img {
-	height: 30px;
+#cageClassRogue:hover {
+	background-image: url('http://image4.castleagegame.com/graphics/g_char_selectrogue.jpg');
 }
 .itemNumbers {
 	position: relative;

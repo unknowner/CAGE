@@ -2,9 +2,10 @@
 tools['Page'].runtime['guild_battle.php'] = function() {
 
 	console.log('Page: guild_battle.php');
+	
 	// fix gate reseting when attacking with duel button
-	var _gate = /\d/.exec($('#enemy_guild_battle_section_battle_list').attr('class'));
-	$('span.result_body form').append('<input type="hidden" name="sel_pos" value="' + _gate + '">');
+	var _gate = /\d/.exec($('#enemy_guild_battle_section_battle_list, #your_guild_battle_section_battle_list').attr('class'));
+	$('#results_main_wrapper form, #enemy_guild_member_list form, #your_guild_member_list form').append('<input type="hidden" name="sel_pos" value="' + _gate + '">');
 
 	// add percentage to health bars
 	var _your = (1 - ($('div[style*="/guild_battle_bar_you.gif"]').width() / $('div[style*="/guild_battle_bar_you.gif"]').parent().width())) * 100;
@@ -16,8 +17,10 @@ tools['Page'].runtime['guild_battle.php'] = function() {
 	$_enemy = $('span.result_body div[style*="width: 285px;"]:last');
 	if($_enemy.length > 0) {
 		var _target = $('span.result_body input[name="target_id"]').attr('value');
-		var _health = /Health:\s*(\d+)\/\d+/.exec($('#enemy_guild_battle_section_battle_list  *[uid="' + _target + '"]').parents().eq(3).text())[1];
-		$_enemy.html($_enemy.html() + ' (' + _health + ')');
+		var _health = /Health:\s*(\d+)\/\d+/.exec($('#enemy_guild_battle_section_battle_list  *[uid="' + _target + '"]').parents().eq(3).text());
+		if(_health !== null) {
+			$_enemy.html($_enemy.html() + ' (' + _health[1] + ')');
+		}
 	}
 
 	// resize top image
