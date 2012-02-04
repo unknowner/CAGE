@@ -44,15 +44,19 @@ tools['Page'].runtime['festival_guild_battle.php'] = function() {
 		var _class = new RegExp($('#cageGateClassFilter').val());
 		var _activ = new RegExp($('#cageGateActivityFilter').val());
 		var _state = new RegExp($('#cageGateStatusFilter').val());
+		var _count = 0;
 		$('#your_guild_member_list > div > div, #enemy_guild_member_list > div > div').each(function(_i, _e) {
 			var _text = $(_e).text();
-			console.log(_class.exec(_text) + '-' + _activ.exec(_text) + '-' + _state.exec(_text));
 			if(_text.match(_class) && _text.match(_activ) && _text.match(_state)) {
 				$(_e).show();
+				_count += 1;
 			} else {
 				$(_e).hide();
 			}
 		});
+		var _gateNum = $('#enemy_guild_battle_section_battle_list, #your_guild_battle_section_battle_list').attr('class').match(/\d/)[0];
+		var _gate = $('#enemy_arena_tab_' + _gateNum + ' > div, #your_arena_tab_' + _gateNum + ' > div');
+		_gate.html(_gate.html().replace(/\).*/, ')').replace(')', ')<br/><span style="font-size:11px;font-weight:bold;">Filtered: ' + _count + '</span>'));
 	}
 
 	//class filter

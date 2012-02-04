@@ -1,22 +1,22 @@
 {
 	"name": "CAGE - Castle Age Game Enhancer [β]",
-	"version": "1.1.15",
+	"version": "1.1.16",
 	"description": "CAGE makes playing Castle Age on Facebook a bit easier and a lot more fun ;)",
 	"background_page": "background.html",
 	"content_scripts": [
 		{
 		"matches": ["*://web.castleagegame.com/castle/*"],
 		"js": [
-			"js/version.js",
 			"js/jquery.js",
 			"js/jqueryui.js",
 			"js/ui.selectmenu.js",
 			"js/chrome.js",
 			"js/common.js",
 			"js/language.js",
+			"js/version.js",
 			
 			"js/ca/tool.js",
-			"js/ca/ca_tools.js",
+			"js/ca/utilities.js",
 			"js/ca/ca_receiver.js",
 			"js/ca/news.js",
 			
