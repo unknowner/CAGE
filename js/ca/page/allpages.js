@@ -1,6 +1,14 @@
 // All Pages
-tools['Page'].runtime['allPages'] = function() {
+tools.Page.runtime.allPages = function() {
 
+	//Execute add ons from tools
+	console.log('allPagesAddOn:');
+	$.each(tools, function(_i, _e) {
+		if(_e.allPagesAddOn) {
+			console.log('allPagesAddOn:', _e.id);
+			_e.allPagesAddOn();
+		}
+	})
 	// If found update bqh
 	if($('input[name="bqh"]:first').length > 0) {
 		CastleAge.bqh = $('input[name="bqh"]:first').val();

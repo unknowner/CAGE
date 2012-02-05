@@ -1,4 +1,4 @@
-// Festival duel
+// Army Filler
 tools['Page'].runtime['army.php'] = function () {
 
 	console.log('Page: army.php');
@@ -18,4 +18,5 @@ tools['Page'].runtime['army.php'] = function () {
 			'onclick': _ignore.attr('onclick').replace('ignore','acpt')
 		}).text('Accept').after(' | ');
 	});
+	
 };

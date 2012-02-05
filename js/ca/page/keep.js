@@ -76,7 +76,7 @@ tools['Page'].runtime['keep.php'] = function() {
 			'height' : 30
 		});
 	});
-	$('div.statUnit a img').addClass('ui-corner-all');
+	$('div.statUnit a img').unwrap().unwrap().addClass('ui-corner-all');
 	$('div.statUnit').find('div:last:contains(X)').addClass('itemNumbers');
 
 };

@@ -11,6 +11,10 @@ function defaultLanguage(){
 	this.cageSaveSettings					= 'Save settings';
 	this.cageLoadSettings					= 'Load settings';
 	
+	//Castle Age
+	this.cAgeheadText							= 'A few settings to hide some information you don\'t care about.';
+	this.cAgeNoResults						= 'Hide battles won message';
+	this.cageNoHourly							= 'Hide hourly info messages';
 	// Settings
 	this.settingsButton						= 'Settings';
 	
