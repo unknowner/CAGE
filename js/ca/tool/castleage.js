@@ -35,7 +35,7 @@ tools.castleage.results = function() {
 				_re.push('You have now won a total');
 			}
 			if(tools.castleage.runtime.hourly) {
-				_re.push('Dwarven Miner - Sorry Boss|Dwarven Miner - I found a nice|Your treasury is flourishing in Castle Age');
+				_re.push('Dwarven Miner - |Your treasury is flourishing in Castle Age');
 			}
 			var _reg = new RegExp(_re.join('|'), "g");
 			$('#results_main_wrapper div.results').each(function() {
@@ -45,7 +45,7 @@ tools.castleage.results = function() {
 				}
 			});
 			if($('#results_main_wrapper div.results').length == 0) {
-				$('#results_main_wrapper').hide();
+				$('#results_main_wrapper div.results').hide();
 			}
 		}
 	} else {

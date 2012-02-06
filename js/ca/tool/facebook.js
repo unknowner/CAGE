@@ -135,7 +135,9 @@ tools.Facebook.CAPlayers = function(_callback) {
 				if(_army !== 'false') {
 					_army = JSON.parse(_army);
 					$.each(_army, function(_i, _e) {
-						tools.Facebook.runtime.id.push(_e.id);
+						if(_e.installed == true) {
+							tools.Facebook.runtime.id.push(_e.id);
+						}
 					});
 				}
 				tools.Facebook.runtime.idWait = false

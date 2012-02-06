@@ -22,10 +22,15 @@ function defaultLanguage(){
 	this.abilitiesButton					= 'Abilities';
 	
 	// Army Filler
-	this.armyFillerAddDone				= 'I try to add all missing friends to your army, but some might just not work. No need to try more than once.';
-	this.armyFillerSearching			= 'Searching Friends...';
-	this.armyFillerGetArmy				= 'Getting army (Page: ';
-	this.armyFillerAddMissing			=	'Adding missing...';
+	this.armyFillerGetArmy				= 'Getting army members...';
+	this.armyFillerAddMissing			=	'Adding missing friends to army...';
+	this.armyFillerReloading			= 'Done, reloading...';
+	
+	// Army Cleaner
+	this.armyFillerSetDesc				= 'The Army Cleaner removes all army members that are no longer friend with you.'
+	this.armyFillerSetMinArmy			= 'Minimum army members';
+	this.armyFillerGetArmy				= 'Getting army members...';
+	this.armyFillerRemoveMissing	=	'Removing none-friends from army...';
 	this.armyFillerReloading			= 'Done, reloading...';
 	
 	//Assister

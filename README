@@ -1,9 +1,12 @@
 ==================================================================
 VER: 1.1.16β
 ------------------------------------------------------------------
+	ADD: Stop messengers (open gifts/invites)
+	ADD: Army Cleaner, removes none-friends from army
 	FIX: Sometimes broken list in raids
 	FIX: Filters in festival battle
 	FIX: Stay on gate in guild/festival battles
+	CHG: Army filler reworked
 
 ==================================================================
 VER: 1.1.15β

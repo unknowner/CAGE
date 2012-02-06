@@ -27,6 +27,7 @@
 			"js/ca/tool/settings.js",
 			
 			"js/ca/tool/abilities.js",
+			"js/ca/tool/armyCleaner.js",
 			"js/ca/tool/armyFiller.js",
 			"js/ca/tool/assister.js",
 			"js/ca/tool/demi.js",
