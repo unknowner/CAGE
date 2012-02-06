@@ -32,7 +32,7 @@ tools.ArmyFiller.start = function() {
 
 tools.ArmyFiller.readCAArmy = function(_page) {
 	_page = _page ? _page : 1;
-	console.log('ArmyFiller - readCAArmy: ', _page);
+	//console.log('ArmyFiller - readCAArmy: ', _page);
 	get('army_member.php?page=' + _page, function(_armydata) {
 		$('#app_body table.layout table:eq(1)').html($('#app_body table.layout table:eq(1)', _armydata).html());
 		$('#app_body table.layout table:eq(1) div:contains("Displaying"):last').css({
@@ -69,7 +69,7 @@ tools.ArmyFiller.readCAArmy = function(_page) {
 
 tools.ArmyFiller.addMissing = function(_start) {
 
-	console.log('ArmyFiller - addMissing');
+	//console.log('ArmyFiller - addMissing');
 	if(tools.ArmyFiller.runtime.cafriends.length > 0) {
 		var _id = tools.ArmyFiller.runtime.cafriends.pop();
 		tools.ArmyFiller.runtime.text.text('Adding ' + tools.ArmyFiller.runtime.cafriends.length + ' member(s)...');

@@ -27,11 +27,11 @@ function defaultLanguage(){
 	this.armyFillerReloading			= 'Done, reloading...';
 	
 	// Army Cleaner
-	this.armyFillerSetDesc				= 'The Army Cleaner removes all army members that are no longer friend with you.'
-	this.armyFillerSetMinArmy			= 'Minimum army members';
-	this.armyFillerGetArmy				= 'Getting army members...';
-	this.armyFillerRemoveMissing	=	'Removing none-friends from army...';
-	this.armyFillerReloading			= 'Done, reloading...';
+	this.armyCleanerSetDesc				= 'The Army Cleaner removes all army members that are no longer friend with you.'
+	this.armyCleanerSetMinArmy			= 'Minimum army members';
+	this.armyCleanerGetArmy				= 'Getting army members...';
+	this.armyCleanerRemoveMissing	=	'Removing none-friends from army...';
+	this.armyCleanerReloading			= 'Done, reloading...';
 	
 	//Assister
 	this.assisterButton						= 'Assister';

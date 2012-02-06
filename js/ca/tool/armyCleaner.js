@@ -36,7 +36,7 @@ tools.ArmyCleaner.start = function() {
 		tools.Facebook.CAPlayers(function(_ids) {
 			tools.ArmyCleaner.runtime.cafriends = _ids;
 			tools.ArmyCleaner.runtime.text = $('div:contains("The Following People Have Joined Your Army."):last');
-			tools.ArmyCleaner.runtime.text.css('marginTop', 28).text(language.ArmyCleanerGetArmy);
+			tools.ArmyCleaner.runtime.text.css('marginTop', 28).text(language.armyCleanerGetArmy);
 			tools.ArmyCleaner.readCAArmy();
 		});
 	}
@@ -44,7 +44,7 @@ tools.ArmyCleaner.start = function() {
 
 tools.ArmyCleaner.readCAArmy = function(_page) {
 	_page = _page ? _page : 1;
-	console.log('ArmyCleaner - readCAArmy: ', _page);
+	//console.log('ArmyCleaner - readCAArmy: ', _page);
 	get('army_member.php?page=' + _page, function(_armydata) {
 		$('#app_body table.layout table:eq(1)').html($('#app_body table.layout table:eq(1)', _armydata).html());
 		$('#app_body table.layout table:eq(1) div:contains("Displaying"):last').css({
@@ -81,12 +81,10 @@ tools.ArmyCleaner.readCAArmy = function(_page) {
 
 tools.ArmyCleaner.removeMember = function(_start) {
 
-	console.log('ArmyCleaner - removeMissing');
-	var _count = tools.ArmyCleaner.runtime.cafriends.length + tools.ArmyCleaner.runtime.army.length;
-	console.log(_count);
-	if(tools.ArmyCleaner.runtime.army.length > 0 && tools.ArmyCleaner.runtime.keepArmy < _count) {
+	var _count = tools.ArmyCleaner.runtime.cafriends.length + tools.ArmyCleaner.runtime.army.length - tools.ArmyCleaner.runtime.keepArmy;
+	if(tools.ArmyCleaner.runtime.army.length > 0 && _count > 0) {
 		var _id = tools.ArmyCleaner.runtime.army.pop();
-		tools.ArmyCleaner.runtime.text.text('Removing ' + tools.ArmyCleaner.runtime.army.length + ' member(s)...');
+		tools.ArmyCleaner.runtime.text.text('Removing ' + _count + ' member(s)...');
 		get('army_member.php?action=delete&player_id=' + _id, function() {
 			tools.ArmyCleaner.removeMember();
 		});
@@ -98,7 +96,7 @@ tools.ArmyCleaner.removeMember = function(_start) {
 
 tools.ArmyCleaner.done = function() {
 	console.log('ArmyCleaner - done');
-	tools.ArmyCleaner.runtime.text.text(language.ArmyCleanerReloading);
+	tools.ArmyCleaner.runtime.text.text(language.armyCleanerReloading);
 	tools.ArmyCleaner.runtime = null;
 	tools['Page'].loadPage('army_member.php');
 };
