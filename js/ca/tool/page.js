@@ -143,12 +143,8 @@ tools.Page.ajaxLinkSend = function() {
 				FB.init({
 					appId : '46755028429',
 					status : true,
-					// check login status
 					cookie : true,
-					// enable cookies to allow the server to access the
-					// session
 					xfbml : true
-					// parse XFBML
 				});
 				ajaxPerforming = false;
 				$('#AjaxLoadIcon').hide('fast');
@@ -159,7 +155,6 @@ tools.Page.ajaxLinkSend = function() {
 				centerPopups();
 			}
 		});
-		//FB.Canvas.setAutoResize();
 	};
 };
 tools.Page.ajaxFormSend = function(div, url, formElement, anchor) {
@@ -193,13 +188,6 @@ tools.Page.ajaxFormSend = function(div, url, formElement, anchor) {
 			data : params,
 			type : 'POST',
 			success : function(data) {
-				/*
-				 * if (cageCAGE.cache.UseImageServer &&
-				 * cageCAGE.cache.ImageServer.length > 0) { data = data
-				 * .replace(
-				 * /(http:\/\/image4\.castleagegame\.com\/graphics.*?)(?=\/\w*?\.\w{3})/g,
-				 * cageCAGE.cache.ImageServer); }
-				 */
 				stopTimers = false;
 				ajaxPerforming = false;
 				$('#AjaxLoadIcon').hide('fast');
