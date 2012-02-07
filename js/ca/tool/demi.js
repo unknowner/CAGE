@@ -9,6 +9,14 @@ tools.Demi.start = function() {
 			var _text = $(_e).text(), _deity = /\+1 max (\w+)/.exec(_text)[1], _points = /You have (\d+)/.exec(_text)[1]
 			_demi.append('<div><div id="cageDemi' + _deity + '" class="cageDemiImage" style="background-image:url(http://image4.castleagegame.com/graphics/deity_' + _deity + '.jpg);" symbol="' + (_i + 1) + '"><span>' + _points + '<br>' + _deity.substr(0, 1).toUpperCase() + _deity.substr(1) + '</span></div></div>');
 		})
+		_demi.append($('<img style="position: absolute;right: 1px;cursor: pointer;margin-top: 8px;height: 18px;" src="http://image4.castleagegame.com/graphics/popup_close_button.png">').click(function() {
+			_demi.animate({
+				'top' : -100
+			}, 'slow', function() {
+				_demi.hide().empty();
+			});
+			tools.Demi.done();
+		}));
 		_demi.show().animate({
 			'top' : 110
 		}, 'slow');
@@ -31,12 +39,6 @@ tools.Demi.start = function() {
 				});
 				tools.Demi.parse($('#cageDemiResult'));
 			});
-			_demi.animate({
-				'top' : -100
-			}, 'slow', function() {
-				_demi.hide().empty();
-			});
-			tools.Demi.done();
 		})
 	})
 };

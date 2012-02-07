@@ -1,6 +1,8 @@
 // Alchemy
 tools['Page'].runtime['alchemy.php'] = function() {
 
+	var _ingredients = {};
+
 	// remove some stuff
 	$('div.alchemySpaceRecipe, div.alchemySpaceClass, div.alchemySpaceMonster, div.alchemySpaceQuest').remove();
 
@@ -28,25 +30,35 @@ tools['Page'].runtime['alchemy.php'] = function() {
 			'display' : 'none'
 		});
 	});
-	$('div.ingredientUnit').css({
-		'height' : 60,
-		'width' : 60,
-		'padding' : 2
-	}).find('img').addClass('ui-corner-all');
-	$('div.ingredientUnit').find('> div:first').attr('style', '').end().find('> div:last').addClass('itemNumbers');
-
+	$('div.ingredientUnit').each(function(_i, _e) {
+		$(_e).css({
+			'height' : 60,
+			'width' : 60,
+			'padding' : 2
+		}).find('>div:first').attr('style', '');
+		var _img = $('img', _e);
+		_img.addClass('ui-corner-all');
+		var _count = $('div:eq(1)', _e);
+		_count.text(_count.text().replace('x', '')).addClass('itemNumbers');
+		_ingredients[_img.attr('src')] = parseInt(_count.text(), 10);
+	});
 	//Receipts
 	$('td.statsTMainback').width(686);
-	$('div.recipeImgContainer').parent().css('height', 80);
-	$('div.recipeImgContainer').find('img').addClass('ui-corner-all');
-	$('div.recipeImgContainer').parent().find('> div:contains(x)').addClass('alchemyItemNum');
-	$('div.recipeImgContainer.missing').addClass('ui-corner-all').find('img').addClass('ui-corner-all');
-	$('div.recipeImgContainer.missing').parent().find('> div:contains(x)').addClass('alchemyItemNum');
-	// Quest recipe
-	$('div.recipeImgContainer').parent().find('> strong:contains(" of ")').addClass('alchemyItemNum');
-	$('div.recipeImgContainer.missing').addClass('ui-corner-all').find('img').addClass('ui-corner-all');
-	$('div.recipeImgContainer.missing').parent().find('> strong:contains(" of ")').addClass('alchemyItemNum');
-
+	$('div.recipeImgContainer').each(function(_i, _e) {
+		$(_e).addClass('ui-corner-all').find('img').addClass('ui-corner-all').end().parent().css('height', 80);
+		var _count = $(_e).parent().find('> div:contains(x)');
+		if(_count.length == 0) {
+			$(_e).parent().find('> strong:contains(" of ")').addClass('alchemyItemNum');
+		} else {
+			var _need = parseInt(_count.text().replace('x', ''), 10);
+			var _have = 0;
+			if(_ingredients[$('>img', _e).attr('src')]) {
+				_have = _ingredients[$('>img', _e).attr('src')];
+				_have = _have > _need ? _need : _have;
+			}
+			_count.text(_have + '/' + _need).addClass('alchemyItemNum');
+		}
+	});
 	//Hide incomplete recipes
 	$('div.statsT1:first').css('overflow', 'visible').append($('<div id="cageHideRecipe"><img src="http://image4.castleagegame.com/graphics/class_button_minus.jpg"><span>Hide incomplete recipes</span></div>').toggle(function() {
 		$('div.alchemyRecipeBackMonster:has(div.missing), div.alchemyQuestBack:has(div.missing), div.alchemyRecipeBackClass:has(div.missing), div.alchemyRecipeBack:has(div.missing)').hide();
