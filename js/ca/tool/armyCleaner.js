@@ -3,8 +3,8 @@ new tool('ArmyCleaner');
 tools.ArmyCleaner.settings = function() {
 	tools.ArmyCleaner.runtimeUpdate();
 	tools.Settings.heading('Army Cleaner');
-	tools.Settings.text(language.armyFillerSetDesc);
-	tools.Settings.textbox(language.armyFillerSetMinArmy, tools.ArmyCleaner.runtime.keepArmy, 'armyCleanerKeepArmy');
+	tools.Settings.text(language.armyCleanerSetDesc);
+	tools.Settings.textbox(language.armyCleanerSetMinArmy, tools.ArmyCleaner.runtime.keepArmy, 'armyCleanerKeepArmy');
 };
 
 tools.ArmyCleaner.runtimeUpdate = function() {

@@ -28,7 +28,7 @@ function defaultLanguage(){
 	
 	// Army Cleaner
 	this.armyCleanerSetDesc				= 'The Army Cleaner removes all army members that are no longer friend with you.'
-	this.armyCleanerSetMinArmy			= 'Minimum army members';
+	this.armyCleanerSetMinArmy		= 'Minimum army members';
 	this.armyCleanerGetArmy				= 'Getting army members...';
 	this.armyCleanerRemoveMissing	=	'Removing none-friends from army...';
 	this.armyCleanerReloading			= 'Done, reloading...';
