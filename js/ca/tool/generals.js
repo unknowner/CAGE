@@ -8,12 +8,29 @@ tools.General.settings = function() {
 	tools.General.runtimeUpdate();
 	tools.Settings.heading(language.generalsSetName);
 	tools.Settings.onoff(language.generalsSetFavOnlyAction, tools.General.runtime.onlyFavourites, 'onlyFavouritesGenerals', tools.General.runtimeUpdate);
+	tools.Settings.onoff(language.generalsSetFixHeight, tools.General.runtime.generalsSetFixHeight, 'generalsSetFixHeight', tools.General.runtimeUpdate);
 };
-
+tools.General.generalsSetFixHeight = function() {
+	if(tools.General.runtime.generalsSetFixHeight) {
+		$('#cageAllGenerals').css({
+			'overflow' : 'auto',
+			'maxHeight' : 208,
+			'width' : 719
+		});
+	} else {
+		$('#cageAllGenerals').css({
+			'overflow' : '',
+			'maxHeight' : '',
+			'width' : ''
+		});
+	}
+};
 tools.General.runtimeUpdate = function() {
 	if(!tools.General.runtime) {
 		tools.General.runtime = {};
 	}
+	tools.General.runtime.generalsSetFixHeight = item.get('generalsSetFixHeight', false);
+	tools.General.generalsSetFixHeight();
 	tools.General.runtime.onlyFavourites = item.get('onlyFavouritesGenerals', false);
 	tools.General.runtime.favourites = item.get('favouriteGenerals', []);
 	if(!tools.General.runtime.general) {
@@ -128,6 +145,7 @@ tools.General.parsePage = function(_data) {
 		}
 	}
 	tools.General.get();
+	tools.General.generalsSetFixHeight();
 };
 
 tools.General.clickAdd = function() {

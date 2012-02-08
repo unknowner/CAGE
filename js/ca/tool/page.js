@@ -14,13 +14,6 @@ tools.Page.init = function() {
 			tools.Page.runtime[_page]();
 		}
 	});
-	// scroll to
-	customEvent('Scroll', function() {
-		var _value = $('#Scroll').val();
-		com.send(com.task.scroll, com.port.facebook, {
-			to : _value
-		});
-	});
 };
 
 tools.Page.loadPage = function(_page) {
@@ -132,7 +125,6 @@ tools.Page.ajaxLinkSend = function() {
 			url_key = url.substring(0, url.indexOf('?'));
 		}
 		var _oldurl = $('#PageURL').val();
-		console.log('Gointo from ' + _oldurl + ' to ' + url_key);
 		setPageURL(url_key);
 		$.ajax({
 			url : url,

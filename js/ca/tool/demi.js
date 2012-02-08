@@ -39,6 +39,12 @@ tools.Demi.start = function() {
 				});
 				tools.Demi.parse($('#cageDemiResult'));
 			});
+			_demi.animate({
+				'top' : -100
+			}, 'slow', function() {
+				_demi.hide().empty();
+			});
+			tools.Demi.done();
 		})
 	})
 };

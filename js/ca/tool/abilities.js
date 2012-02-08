@@ -41,9 +41,9 @@ tools.Abilities.setCAFunctions = function() {
 			'4' : []
 		};
 
-		window['pickPower'] = function(class_id, cat, id, js_string_var) {
+		window['pickPower'] = function(class_id, cat, id) {
 
-			console.log(class_id + '-' + cat + '-' + id + '-' + js_string_var);
+			console.log(class_id + '-' + cat + '-' + id);
 
 			var max_class_slots = $('div[id^="free_slot_"]').length;
 			var class_power_elem = $('#class_power_' + class_id + '_' + cat + '_' + id);

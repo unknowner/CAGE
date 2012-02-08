@@ -62,9 +62,7 @@ tools.Settings.onoff = function(_text, _value, _save, _callback) {
 		$('#cageSettingsOnOff' + _id + ' > button').css('backgroundImage', 'url("http://image4.castleagegame.com/graphics/class_button_plus.jpg")');
 	}
 	$('#cageSettingsOnOff' + _id + ' > button').click(function() {
-		console.log($('#cageSettingsOnOff' + _id).attr('onoff'));
 		var _onoff = $('#cageSettingsOnOff' + _id), _newvalue = _onoff.attr('onoff') == 'true' ? false : true, _button = $('#cageSettingsOnOff' + _id + ' > button');
-		console.log('_newvalue', _newvalue);
 		_onoff.attr('onoff', _newvalue);
 		if(_newvalue == true) {
 			_button.css('backgroundImage', 'url("http://image4.castleagegame.com/graphics/class_button_plus.jpg")');

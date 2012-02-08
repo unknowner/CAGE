@@ -55,7 +55,8 @@ function defaultLanguage(){
 	// Generals
 	this.generalsSetName					= 'Generals';
 	this.generalsSetFavOnlyAction	= 'Show only favourites';
-
+	this.generalsSetFixHeight			= 'Fixed height';
+	
 	// Gifter
 	this.gifterButton							= 'Receive Gifts';
 	this.gifterSetName						= 'Gifts'

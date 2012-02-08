@@ -15,7 +15,6 @@ tools['Page'].runtime['raid.php'] = function() {
 			if(next_lst !== cur_raid_lst && $('#raid_atk_lst' + next_lst).text().length !== 0) {
 				$('#raid_atk_lst' + cur_raid_lst).fadeOut();
 				$('#raid_atk_lst' + next_lst).fadeIn();
-				console.log(cur_raid_lst, next_lst);
 				cur_raid_lst = next_lst;
 			}
 		}
