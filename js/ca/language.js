@@ -12,9 +12,11 @@ function defaultLanguage(){
 	this.cageLoadSettings					= 'Load settings';
 	
 	//Castle Age
-	this.cAgeheadText							= 'A few settings to hide some information you don\'t care about.';
+	this.cAgeheadText							= 'Just a few settings to change some CA stuff.';
 	this.cAgeNoResults						= 'Hide battles won message';
 	this.cageNoHourly							= 'Hide hourly info messages';
+	this.cageScrollGuildChat			= 'Autoscroll guild chat';
+	
 	// Settings
 	this.settingsButton						= 'Settings';
 	

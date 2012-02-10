@@ -2,7 +2,10 @@
 VER: 1.1.17β
 ------------------------------------------------------------------
 	ADD: Numbers have/need in alchemy recipes
+	ADD: Fixed height for generals selector
+	ADD: Autoscroll in new guild chat
 	FIX: Missing text in army cleaner settings
+	FIX: Demi-tool not closing automatic
 
 ==================================================================
 VER: 1.1.16β

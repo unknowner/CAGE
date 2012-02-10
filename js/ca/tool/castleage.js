@@ -12,6 +12,10 @@ tools.castleage.settings = function() {
 		tools.castleage.runtime.hourly = !tools.castleage.runtime.hourly;
 		tools.castleage.results();
 	});
+	tools.Settings.onoff(language.cageScrollGuildChat, tools.castleage.runtime.scrollGuildChat, 'scrollGuildChat', function() {
+		tools.castleage.runtime.scrollGuildChat = !tools.castleage.runtime.scrollGuildChat;
+		tools.castleage.scrollGuildChat();
+	});
 };
 
 tools.castleage.runtimeUpdate = function() {
@@ -21,12 +25,22 @@ tools.castleage.runtimeUpdate = function() {
 	tools.castleage.runtime.battleResults = item.get('castleageBattleResults', false);
 	tools.castleage.runtime.hourly = item.get('castleageHourly', false);
 	tools.castleage.results();
+	tools.castleage.runtime.scrollGuildChat = item.get('scrollGuildChat', true);
+	tools.castleage.scrollGuildChat();
 };
 
 tools.castleage.init = function() {
 	tools.castleage.runtimeUpdate();
 }
-
+tools.castleage.scrollGuildChat = function() {
+	if(tools.castleage.runtime.scrollGuildChat) {
+		$('#chatGuildChat').bind('DOMNodeInserted', function() {
+			$('#chatGuildChat').scrollTop($('#chatGuildChat div').length * 20);
+		});
+	} else {
+		$('#chatGuildChat').unbind('DOMNodeInserted');
+	}
+}
 tools.castleage.results = function() {
 	if(tools.castleage.runtime.battleResults || tools.castleage.runtime.hourly) {
 		tools.castleage.allPagesAddOn = function() {

@@ -191,3 +191,6 @@ div.demipb_button {
 	left: 456px !important;
 	top: 3px !important;
 }
+#expandedGuildChat, #collapsedGuildChat {
+	position: fixed !important;
+}

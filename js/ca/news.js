@@ -7,7 +7,10 @@ function cageNews(_full) {
 	$('#cageNewsFoot').prepend('<center>If you find bugs, just go to the blog and post them there (no signup required).<br>Logs (CTRL+SHIFT+J) are always welcome!</center>');
 	$.each([
 			'ADD: Numbers have/need in alchemy recipes',
-			'FIX: Missing text in army cleaner settings'
+			'ADD: Fixed height for generals selector',
+			'ADD: Autoscroll in new guild chat',
+			'FIX: Missing text in army cleaner settings',
+			'FIX: Demi-tool not closing automatic'
 		], function(_i, _e) {
 			$('#cageNewsChanges').append('<li><span>' + _e.split(':')[0] + '</span>' + _e.split(':')[1] + '</li>');
 	});
