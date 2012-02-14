@@ -6,6 +6,9 @@
 }
 #main_sts_container {
 	position: fixed !important;
+	height: 94px;
+	width: 750px;
+	background-size: 658px;
 	z-index: 2;
 }
 #main_ststb {
@@ -21,10 +24,8 @@
 #main_sts {
 	height: 95px !important;
 	width: 750px !important;
-	background-repeat: repeat !important;
 	border-bottom: 1px solid black;
 	background-size: 658px;
-	background: #000;
 }
 /*
  * Keep
@@ -63,12 +64,12 @@
 	top: 50px;
 	height: 33px !important;
 	width: 142px !important;
-	background-position: -25px -13px !important;
-	background: url('http://image4.castleagegame.com/graphics/statsbar.jpg');
 	margin: 0 !important;
 	border-radius: 7px;
-	border: 1px ridge #66401B;
+	background: #D0B683;
+	border: 1px inset #66401B;
 	z-index: 0;
+	box-shadow: 2px 1px 4px #000 inset;
 }
 #st_2_1 {
 	margin: 0 !important;
@@ -104,15 +105,15 @@
 #st_2 {
 	position: absolute;
 	left: 188px;
-	top: 51px;
+	top: 50px;
 	height: 33px !important;
 	width: 127px !important;
-	background-position: -185px -13px !important;
-	background: url('http://image4.castleagegame.com/graphics/statsbar.jpg');
 	margin: 0 !important;
 	border-radius: 7px;
-	border: 1px ridge #66401B;
+	background: #D0B683;
+	border: 1px inset #66401B;
 	z-index: 0;
+	box-shadow: 2px 1px 4px #000 inset;
 }
 #st_2_2 {
 	margin: 0 !important;
@@ -143,15 +144,15 @@
 #st_3 {
 	position: absolute;
 	left: 340px;
-	top: 51px;
+	top: 50px;
 	height: 33px !important;
 	width: 126px !important;
-	background-position: -331px -13px !important;
-	background: url('http://image4.castleagegame.com/graphics/statsbar.jpg');
 	margin: 0 !important;
 	border-radius: 7px;
-	border: 1px ridge #66401B;
+	background: #D0B683;
+	border: 1px inset #66401B;
 	z-index: 0;
+	box-shadow: 2px 1px 4px #000 inset;
 }
 #st_2_3 {
 	margin: 0 !important;
@@ -185,12 +186,12 @@
 	top: 50px;
 	height: 33px !important;
 	width: 126px !important;
-	background-position: -476px -13px !important;
-	background: url('http://image4.castleagegame.com/graphics/statsbar.jpg');
 	margin: 0 !important;
 	border-radius: 7px;
-	border: 1px ridge #66401B;
+	background: #D0B683;
+	border: 1px inset #66401B;
 	z-index: 0;
+	box-shadow: 2px 1px 4px #000 inset;
 }
 #st_2_4 {
 	margin: 0 !important;
@@ -216,7 +217,9 @@
 	width: 141px !important;
 	background: #D0B683;
 	border-radius: 7px;
-	border: 1px ridge #66401B;
+	border: 1px inset #66401B;
+	z-index: 0;
+	box-shadow: 2px 1px 4px #000 inset;
 }
 #st_5 > div:last-child {
 	top: 1px !important;
@@ -311,7 +314,9 @@ div.lvlBr {
 	background: #D0B683;
 	margin: 0;
 	border-radius: 7px;
-	border: 1px ridge #66401B;
+	border: 1px inset #66401B;
+	z-index: 0;
+	box-shadow: 2px 1px 4px #000 inset;
 }
 #cageNextDemi > div {
 	position: absolute;

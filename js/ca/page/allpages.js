@@ -11,13 +11,17 @@ tools.Page.runtime.allPages = function() {
 	if($('form input[name="bqh"]:first').length > 0) {
 		CastleAge.bqh = $('form input[name="bqh"]:first').val();
 	}
-	
+
 	//Stats background
 	$('#main_sts').css({
 		'background' : '',
 		'backgroundImage' : $('#main_bn').css('backgroundImage')
 	});
-	
+	window.setTimeout(function() {
+		$('#main_sts_container').css({
+			'backgroundImage' : $('#main_sts').css('backgroundImage')
+		});
+	}, 500);
 	// remove CA:HOD ad, etc...
 	$('a[href="http://apps.facebook.com/castle_hod/?xprom=cax"]:first').parent('div:first').remove();
 	if($('#globalContainer > div:first').height() == 80) {

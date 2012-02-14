@@ -1,11 +1,11 @@
 tool('Page');
-console.log(tools.Page);
 tools.Page.runtime = {};
 tools.Page.init = function() {
 	addFunction(tools.Page.get_cached_ajax, null, true, true);
 	addFunction(tools.Page.ajaxLinkSend, null, true, true);
 	addFunction(tools.Page.ajaxFormSend, null, true, true);
 	addFunction(tools.Page.ajaxSkip, null, true, true);
+	addFunction(tools.Page.ajaxPageDone, null, true, true);
 	// Do stuff after page loaded
 	customEvent('PageURL', function(_evt) {
 		var _page = $('#PageURL').val();
@@ -93,8 +93,31 @@ tools.Page.get_cached_ajax = function() {
 		}
 	};
 };
-tools.Page.done = function(_url, _div) {
-	console.log('page done');
+tools.Page.ajaxPageDone = function() {
+	ajaxPageDone = function(div, data, anchor) {
+		stopTimers = false;
+		ajaxPerforming = false;
+		$('#main_bntp, #nvbar_div_end, #hinvite_help', data).remove();
+		$('#nvbar_table', data).empty();
+		$('#main_bntp, #nvbar, #nvbar_div_end, #hinvite_help', data).remove();
+		if(div === 'globalContainer') {
+			$('#main_sts').html($('#main_sts', data).html());
+			$('#app_body_container').html($('#app_body_container', data).html());
+		} else {
+			$('#' + div).html(data);
+		}
+		firePageURL();
+		centerPopups();
+		$('#AjaxLoadIcon').hide('fast');
+		if(anchor) {
+			$('#' + anchor).animate({
+				scrollTop : 0
+			}, 'slow');
+		}
+		startAllTimers();
+		FB.XFBML.parse(document.getElementById(div));
+		data = null;
+	};
 };
 tools.Page.ajaxLinkSend = function() {
 	ajaxLinkSend = function(div, url) {
@@ -127,25 +150,13 @@ tools.Page.ajaxLinkSend = function() {
 					cookie : true,
 					xfbml : true
 				});
-				ajaxPerforming = false;
-				$('#main_bntp, #nvbar, #nvbar_div_end, #hinvite_help', data).remove();
-				if(div === 'globalContainer') {
-					$('#main_sts').html($('#main_sts', data).html());
-					$('#app_body_container').html($('#app_body_container', data).html());
-				} else {
-					$('#' + div).html(data);
-				}
-				firePageURL();
-				FB.XFBML.parse(document.getElementById(div));
-				centerPopups();
-				$('#AjaxLoadIcon').hide('fast');
-				startAllTimers();
+				ajaxPageDone(div, data);
 				data = undefined;
 			}
 		});
 	};
 };
-tools.Page.ajaxFormSend = function(div, url, formElement, anchor) {
+tools.Page.ajaxFormSend = function() {
 	ajaxFormSend = function(div, url, formElement, anchor) {
 		friend_browse_offset = 0;
 		if(!anchor) {
@@ -175,23 +186,7 @@ tools.Page.ajaxFormSend = function(div, url, formElement, anchor) {
 			data : params,
 			type : 'POST',
 			success : function(data) {
-				stopTimers = false;
-				ajaxPerforming = false;	
-				$('#main_bntp, #nvbar, #nvbar_div_end, #hinvite_help', data).remove();
-				if(div === 'globalContainer') {
-					$('#main_sts').html($('#main_sts', data).html());
-					$('#app_body_container').html($('#app_body_container', data).html());
-				} else {
-					$('#' + div).html(data);
-				}
-				firePageURL();
-				FB.XFBML.parse(document.getElementById(div));
-				centerPopups();
-				$('#AjaxLoadIcon').hide('fast');
-				$('#' + anchor).animate({
-					scrollTop : 0
-				}, 'slow');
-				startAllTimers();
+				ajaxPageDone(div, data, anchor);
 				data = undefined;
 			}
 		});

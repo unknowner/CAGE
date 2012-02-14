@@ -25,7 +25,12 @@ _append = _css = undefined;
 
 // Add CAGE container
 $('center:first').prepend('<div id="cageContainer"><div id="cageStatsContainer"></div><div id="cageToolsContainer" class="ui-widget-content ui-corner-bottom"></div></div>');
-$('#main_bntp, #nvbar, #nvbar_div_end, #hinvite_help').remove();
+$('#main_bntp, #nvbar_div_end, #hinvite_help').remove();
+$('#nvbar_table').empty();
+
+//rework stats
+$('#cageStatsContainer').append('<div style="border-bottom: 1px solid #CAA47F;width: 126px;top: 52px;z-index: 1;left: 49px;position: absolute;"><strong style="display: inline-block;float: left;font-family: serif;font-style: italic;font-size: 12px;color: #4B3715;">Gold</strong></div>').append('<div style="border-bottom: 1px solid #CAA47F;width: 110px;top: 52px;z-index: 1;left: 216px;position: absolute;"><strong style="display: inline-block;float: left;font-family: serif;font-style: italic;font-size: 12px;color: #4B3715;">Energy</strong></div>').append('<div style="border-bottom: 1px solid #CAA47F;width: 111px;top: 52px;z-index: 1;left: 366px;position: absolute;"><strong style="display: inline-block;float: left;font-family: serif;font-style: italic;font-size: 12px;color: #4B3715;">Health</strong></div>').append('<div style="border-bottom: 1px solid #CAA47F;width: 110px;top: 52px;z-index: 1;left: 518px;position: absolute;"><strong style="display: inline-block;float: left;font-family: serif;font-style: italic;font-size: 12px;color: #4B3715;">Stamina</strong></div>')
+
 tools.Page.runtime.allPages();
 
 CastleAge.startInterval = window.setInterval(function() {
