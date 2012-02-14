@@ -1,4 +1,4 @@
-new tool('Monster');
+tool('Monster');
 
 tools.Monster.settings = function() {
 

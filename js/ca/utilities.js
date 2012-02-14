@@ -34,6 +34,7 @@ function customEvent(_event, _function) {
 			var customEvent = document.createEvent('Event');
 			customEvent.initEvent(_arg, true, true);
 			document.getElementById(_arg).dispatchEvent(customEvent);
+			customEvent = null;
 		};
 		// set data for the event
 		window[('set' + _arg)] = function(_data) {

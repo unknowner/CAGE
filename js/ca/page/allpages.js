@@ -11,7 +11,13 @@ tools.Page.runtime.allPages = function() {
 	if($('form input[name="bqh"]:first').length > 0) {
 		CastleAge.bqh = $('form input[name="bqh"]:first').val();
 	}
-
+	
+	//Stats background
+	$('#main_sts').css({
+		'background' : '',
+		'backgroundImage' : $('#main_bn').css('backgroundImage')
+	});
+	
 	// remove CA:HOD ad, etc...
 	$('a[href="http://apps.facebook.com/castle_hod/?xprom=cax"]:first').parent('div:first').remove();
 	if($('#globalContainer > div:first').height() == 80) {
@@ -83,9 +89,6 @@ tools.Page.runtime.allPages = function() {
 
 	// fix loader
 	$('#AjaxLoadIcon').removeClass('shield_wait');
-
-	//Stats background
-	$('#main_sts').css('backgroundImage', $('#main_bn').css('backgroundImage'));
 
 	// Favour points
 	$('#cageFavorPoints > span').text($('#main_bn div[style*="persistent_bar_oracle.gif"]').text().trim());

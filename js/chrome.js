@@ -63,7 +63,7 @@ var com = {
 			com.ports[_port.name] = _port;
 			_port.onMessage.addListener(function(_message) {
 				console.log('onMessage:', _message);
-				if(_message.port == com.port.background) {
+				if(_message.port === com.port.background) {
 					note(_message.data);
 				} else {
 					com.ports[_message.port].postMessage(_message);

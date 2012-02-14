@@ -1,4 +1,4 @@
-new tool('PotionStamina');
+tool('PotionStamina');
 
 tools.PotionStamina.start = function() {
 	$.post('keep.php', {
@@ -9,7 +9,7 @@ tools.PotionStamina.start = function() {
 	}, function(_data) {
 		if($('span.result_body:contains("You consumed")', _data).length > 0) {
 			addFunction(function(data) {
-				cageStat['stamina'] = data.stamina;
+				cageStat.stamina = data.stamina;
 			}, JSON.stringify({
 				stamina : parseInt($('#stamina_current_value').text(), 10) + 10
 			}), true, true);
@@ -20,7 +20,7 @@ tools.PotionStamina.start = function() {
 };
 // Parse keep for stamina potions
 tools.PotionStamina.work = function(_pagedata) {
-	if(_pagedata == undefined) {
+	if(_pagedata == null) {
 		_pagedata = $('#app_body');
 	}
 	var _potions = /\d+/.exec($('img[alt="Stamina Potion"]', _pagedata).parent().next().text());

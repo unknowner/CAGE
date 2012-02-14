@@ -1,4 +1,4 @@
-new tool('Gifter');
+tool('Gifter');
 
 tools.Gifter.settings = function() {
 	//tools.Gifter.runtimeUpdate();

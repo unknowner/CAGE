@@ -1,4 +1,5 @@
-new tool('Page');
+tool('Page');
+console.log(tools.Page);
 tools.Page.runtime = {};
 tools.Page.init = function() {
 	addFunction(tools.Page.get_cached_ajax, null, true, true);
@@ -6,13 +7,13 @@ tools.Page.init = function() {
 	addFunction(tools.Page.ajaxFormSend, null, true, true);
 	addFunction(tools.Page.ajaxSkip, null, true, true);
 	// Do stuff after page loaded
-	customEvent('PageURL', function() {
+	customEvent('PageURL', function(_evt) {
 		var _page = $('#PageURL').val();
-		tools['General'].get();
-		tools.Page.runtime['allPages']();
 		if(tools.Page.runtime[_page]) {
 			tools.Page.runtime[_page]();
 		}
+		tools.Page.runtime.allPages();
+		tools.General.get();
 	});
 };
 
@@ -26,7 +27,7 @@ tools.Page.loadPage = function(_page) {
 tools.Page.ajaxSkip = function() {
 	ajaxSkip = function(div, url) {
 		ajaxLinkSend(div, (url + (url.indexOf('?') > -1 ? '&' : '?') + 'ajax=1&skip=1'));
-	}
+	};
 };
 tools.Page.get_cached_ajax = function() {
 	get_cached_ajax = function(url, get_type) {
@@ -34,15 +35,14 @@ tools.Page.get_cached_ajax = function() {
 			scrollTop : 0
 		}, 'slow');
 		// just_body_cache
-		var url_key = url;
-		if(url.indexOf('?') != -1) {
+		var url_key = url, _oldurl = $('#PageURL').val();
+		if(url.indexOf('?') !== -1) {
 			url_key = url.substring(0, url.indexOf('?'));
 		}
-		var _oldurl = $('#PageURL').val();
 		console.log(url_key + '-' + _oldurl);
 		setPageURL(url_key);
-		if(get_type == 'cache_body' && pageCache[url_key]) {
-			if(pageCache[url_key].lastIndexOf('<fb:') == -1) {
+		if(get_type === 'cache_body' && pageCache[url_key]) {
+			if(pageCache[url_key].lastIndexOf('<fb:') === -1) {
 				$('#app_body_container').html(pageCache[url_key]);
 			} else {
 				$('#app_body_container').html(data);
@@ -57,16 +57,15 @@ tools.Page.get_cached_ajax = function() {
 				}, 'slow');
 			}
 		} else {
-			if(get_type == 'get_page') {
+			if(get_type === 'get_page') {
 				stopTimers = true;
 				pageCache[url_key] = null;
-			} else if(get_type == 'destroy_all_get_page') {
+			} else if(get_type === 'destroy_all_get_page') {
 				stopTimers = true;
 				pageCache = {};
 			}
-			var params = 'ajax=1';
-			params += '&signed_request=' + $('#signed_request').attr('value');
-			if((get_type == 'cache_body') || (get_type == 'get_body')) {
+			var params = 'ajax=1&signed_request=' + $('#signed_request').attr('value');
+			if((get_type === 'cache_body') || (get_type === 'get_body')) {
 				params += '&get_type=body';
 			}
 			ajaxPerforming = true;
@@ -77,17 +76,10 @@ tools.Page.get_cached_ajax = function() {
 				data : params,
 				type : 'POST',
 				success : function(data) {
-					/*
-					 * if (cageCAGE.cache.UseImageServer &&
-					 * cageCAGE.cache.ImageServer.length > 0) { data =
-					 * data .replace(
-					 * /(http:\/\/image4\.castleagegame\.com\/graphics.*?)(?=\/\w*?\.\w{3})/g,
-					 * cageCAGE.cache.ImageServer); }
-					 */
 					stopTimers = false;
 					ajaxPerforming = false;
 					$('#AjaxLoadIcon').hide();
-					if((get_type == 'cache_body') || (get_type == 'get_body')) {
+					if((get_type === 'cache_body') || (get_type === 'get_body')) {
 						$('#app_body_container').html(data);
 					} else {
 						$('#globalContainer').html(data);
@@ -115,16 +107,13 @@ tools.Page.ajaxLinkSend = function() {
 		pageCache = {};
 		ajaxPerforming = true;
 		showLoaderIfAjax();
-		var params = 'ajax=1';
-		params += '&signed_request=' + $('#signed_request').attr('value');
 		if(!url) {
 			url = 'index.php?adkx=2';
 		}
-		var url_key = url;
-		if(url.indexOf('?') != -1) {
+		var params = 'ajax=1&signed_request=' + $('#signed_request').attr('value'), url_key = url, _oldurl = $('#PageURL').val();
+		if(url.indexOf('?') !== -1) {
 			url_key = url.substring(0, url.indexOf('?'));
 		}
-		var _oldurl = $('#PageURL').val();
 		setPageURL(url_key);
 		$.ajax({
 			url : url,
@@ -139,12 +128,19 @@ tools.Page.ajaxLinkSend = function() {
 					xfbml : true
 				});
 				ajaxPerforming = false;
-				$('#AjaxLoadIcon').hide('fast');
-				$('#' + div).html(data);
-				startAllTimers();
-				FB.XFBML.parse(document.getElementById(div));
+				$('#main_bntp, #nvbar, #nvbar_div_end, #hinvite_help', data).remove();
+				if(div === 'globalContainer') {
+					$('#main_sts').html($('#main_sts', data).html());
+					$('#app_body_container').html($('#app_body_container', data).html());
+				} else {
+					$('#' + div).html(data);
+				}
 				firePageURL();
+				FB.XFBML.parse(document.getElementById(div));
 				centerPopups();
+				$('#AjaxLoadIcon').hide('fast');
+				startAllTimers();
+				data = undefined;
 			}
 		});
 	};
@@ -165,11 +161,10 @@ tools.Page.ajaxFormSend = function(div, url, formElement, anchor) {
 		if(!url) {
 			url = 'index.php?adkx=7';
 		}
-		var url_key = url;
-		if(url.indexOf('?') != -1) {
+		var url_key = url, _oldurl = $('#PageURL').val();
+		if(url.indexOf('?') !== -1) {
 			url_key = url.substring(0, url.indexOf('?'));
 		}
-		var _oldurl = $('#PageURL').val();
 		console.log(url_key + '-' + _oldurl);
 		setPageURL(url_key);
 		ajaxPerforming = true;
@@ -181,16 +176,23 @@ tools.Page.ajaxFormSend = function(div, url, formElement, anchor) {
 			type : 'POST',
 			success : function(data) {
 				stopTimers = false;
-				ajaxPerforming = false;
+				ajaxPerforming = false;	
+				$('#main_bntp, #nvbar, #nvbar_div_end, #hinvite_help', data).remove();
+				if(div === 'globalContainer') {
+					$('#main_sts').html($('#main_sts', data).html());
+					$('#app_body_container').html($('#app_body_container', data).html());
+				} else {
+					$('#' + div).html(data);
+				}
+				firePageURL();
+				FB.XFBML.parse(document.getElementById(div));
+				centerPopups();
 				$('#AjaxLoadIcon').hide('fast');
-				$('#' + div).html(data);
 				$('#' + anchor).animate({
 					scrollTop : 0
 				}, 'slow');
 				startAllTimers();
-				FB.XFBML.parse(document.getElementById(div));
-				firePageURL();
-				centerPopups();
+				data = undefined;
 			}
 		});
 		scrollToElement('#' + anchor);

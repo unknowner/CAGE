@@ -1,4 +1,4 @@
-new tool('Functions');
+tool('Functions');
 
 tools.Functions.runtime = {};
 /*
@@ -57,7 +57,7 @@ tools.Functions.cageRePos = function() {
 }
 tools.Functions.centerPopups = function() {
 	window['centerPopups'] = function() {
-		$('.result_popup_message').each(function() {
+		$('div.result_popup_message').each(function() {
 			var _popup = $(this);
 			_popup.css({
 				'top' : 60,

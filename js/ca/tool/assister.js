@@ -1,4 +1,4 @@
-new tool('Assister');
+tool('Assister');
 
 tools.Assister.settings = function() {
 

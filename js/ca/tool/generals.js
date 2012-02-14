@@ -1,4 +1,4 @@
-new tool('General');
+tool('General');
 
 tools.General.current = null;
 tools.General.runtime = {};

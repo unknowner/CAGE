@@ -10,7 +10,7 @@ $('head')
 	.append('<link id="cageTheme" rel="stylesheet" type="text/css" href="' + getPath('css/dark-hive/') + 'jquery-ui.css">')
 	.append('<link rel="stylesheet" type="text/css" href="' + getPath('css/fb_cage.css?x=' + Math.random()*1000) + '">');
 
-var _window = (this.unsafeWindow) ? this.unsafeWindow : window;
+var _window = window || this.unsafeWindow;
 _window.onresize = function(evt) {
 
 	$('#cageIFrame').html('.cageIFrame {height:' + (_window.innerHeight - 34) + 'px !important;}');

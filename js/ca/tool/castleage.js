@@ -49,7 +49,7 @@ tools.castleage.results = function() {
 				_re.push('You have now won a total');
 			}
 			if(tools.castleage.runtime.hourly) {
-				_re.push('Dwarven Miner - |Your treasury is flourishing in Castle Age');
+				_re.push('Dwarven Miner - |Your treasury is flourishing in Castle Age|Your potion is not ready yet');
 			}
 			var _reg = new RegExp(_re.join('|'), "g");
 			$('#results_main_wrapper div.results').each(function() {

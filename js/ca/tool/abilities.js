@@ -1,4 +1,4 @@
-new tool('Abilities');
+tool('Abilities');
 
 tools.Abilities.start = function() {
 

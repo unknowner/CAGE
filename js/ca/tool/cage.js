@@ -1,4 +1,4 @@
-new tool('cage');
+tool('cage');
 
 tools.cage.settings = function() {
 	tools.cage.runtimeUpdate();

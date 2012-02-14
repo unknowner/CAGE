@@ -45,9 +45,8 @@ function unique(_array, _tostring) {
 
 // removes all items that are listed more than once
 function removeDuplicates(_array) {
-	var _uniques = [];
-	var _dupl = [];
-	for(var i = 0; i <= _array.length; i++) {
+	var _uniques = [], _dupl = [], _i = 0;
+	for(i; i <= _array.length; i++) {
 		var v = _array[i];
 		console.log(i + '-' + v);
 		if(_array.lastIndexOf(v) > i || _dupl.indexOf(v) > -1) {
@@ -60,7 +59,6 @@ function removeDuplicates(_array) {
 	return $.grep(_uniques, function(n, i) {
 		return (n);
 	});
-	;
 }
 
 //shortcut to jQuery get with signed request

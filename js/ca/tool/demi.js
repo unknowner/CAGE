@@ -1,4 +1,4 @@
-new tool('Demi');
+tool('Demi');
 
 tools.Demi.start = function() {
 

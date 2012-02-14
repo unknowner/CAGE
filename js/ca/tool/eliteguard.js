@@ -1,4 +1,4 @@
-new tool('Eliteguard');
+tool('Eliteguard');
 
 tools.Eliteguard.runtime = {};
 

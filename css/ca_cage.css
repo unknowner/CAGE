@@ -5,13 +5,7 @@ body {
 	overflow: auto !important;
 	background-attachment: fixed;
 }
-#main_bntp {
-	display: none !important;
-}
 #main_bn {
-	display: none !important;
-}
-#main_bn_container {
 	display: none !important;
 }
 div.game {
@@ -84,12 +78,8 @@ div.game {
 	font-weight: bold;
 }
 .GuildList {
-	height: 105px !important;
+	height: 102px !important;
 	padding: 3px 0px 5px 20px !important;
-	background-image: url('http://image4.castleagegame.com/graphics/guild_monster/guild_battle_bg.jpg');
-	border-bottom: 3px groove #AAA;
-	background-repeat: no-repeat;
-	background-position: 0 -8px;
 	font-size: 13px;
 }
 .GuildNum {
@@ -193,4 +183,6 @@ div.demipb_button {
 }
 #expandedGuildChat, #collapsedGuildChat {
 	position: fixed !important;
+	top: 5px !important;
+	left: 5px !important;
 }

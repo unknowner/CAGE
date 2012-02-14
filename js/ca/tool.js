@@ -1,13 +1,13 @@
 var tools = {};
 
 function tool(_id) {
-	tools[_id] = this;
-	this.id = _id;
-	this.runtime = null;
+	tools[_id] = {
+	id : _id,
+	runtime : null,
 	// data only used during runtime
-	this.settings = null;
+	settings : null,
 	// settings
-	this.fbButton = {
+	fbButton : {
 		id : 'cageToolButton' + _id,
 		add : function(_text, _call) {
 			$('#cageToolsContainer').append('<button id="' + this.id + '" class="cageToolButton">' + _text + '</button>');
@@ -19,15 +19,16 @@ function tool(_id) {
 		disable : function() {
 			$('#' + this.id).button("option", "disabled", true);
 		}
-	};
+	},
 	// prepare tool e.g add button to fb gui etc.
-	this.init = null;
+	init : null,
 	// start tool on click/task
-	this.start = null;
+	start : null,
 	// work it
-	this.work = null;
+	work : null,
 	// clean up
-	this.done = null;
+	done : null
+	};
 }
 
 function initTools() {
@@ -40,7 +41,7 @@ function initTools() {
 	});
 	get('keep.php', function(_keepdata) {
 		CastleAge.bqh = $('input[name="bqh"]:first', _keepdata).val();
-		tools['PotionStamina'].work(_keepdata);
-		tools['PotionEnergy'].work(_keepdata);
+		tools.PotionStamina.work(_keepdata);
+		tools.PotionEnergy.work(_keepdata);
 	});
 }

@@ -1,5 +1,5 @@
 // Keep
-tools['Page'].runtime['keep.php'] = function() {
+tools.Page.runtime['keep.php'] = function() {
 
 	// Update potions
 	tools.PotionStamina.work();
@@ -10,42 +10,50 @@ tools['Page'].runtime['keep.php'] = function() {
 		'overflow' : 'hidden',
 		'cursor' : 'pointer'
 	});
-	// Some more stats, like BSI, LSI... keep_attribute_section
-	var _lvl = $('#st_5 div:contains("Level"):last').text();
-	var _stats = $('div.keep_attribute_section');
-	if(_lvl && _stats.length > 0) {
-		_lvl = parseInt(_lvl.match(/\d+/)[0], 10);
+	// rearrange Items
+	$('div.statUnit a img').unwrap().unwrap().addClass('ui-corner-all');
+	$('div.statUnit').find('div:last:contains(X)').addClass('itemNumbers');
+	// Collapsed items/untits ...
+	$('div.statsTTitle').toggle(function() {
+		$(this).parents('div.statsT2:first').css({
+			'height' : '100%'
+		});
+	}, function() {
+		$(this).parents('div.statsT2:first').css({
+			'height' : 30
+		});
+	});
+	// Some more stats, like BSI, LSI... keep_data.attribute_section
+	var _data = {};
+	_data.lvl = $('#st_5 div:contains("Level"):last').text();
+	_data.stats = $('div.keep_attribute_section');
+	if(_data.lvl && _data.stats.length > 0) {
+		_data.lvl = parseInt(_data.lvl.match(/\d+/)[0], 10);
 		//stats
-		var _eng = parseInt($('div.attribute_stat_container:eq(0)', _stats).text(), 10);
-		var _sta = parseInt($('div.attribute_stat_container:eq(1)', _stats).text(), 10);
-		var _att = /(\d+)(?:\s\((.\d+)?\))?/.exec($('div.attribute_stat_container:eq(2)', _stats).text());
-		_att = parseInt(_att[1], 10) + (_att[2] == undefined ? 0 : parseInt(_att[2], 10));
-		var _def = parseInt($('div.attribute_stat_container:eq(3)', _stats).text(), 10);
-		var _def = /(\d+)(?:\s\((.\d+)?\))?/.exec($('div.attribute_stat_container:eq(3)', _stats).text());
-		_def = parseInt(_def[1], 10) + (_def[2] == undefined ? 0 : parseInt(_def[2], 10));
+		_data.stats = $('div.attribute_stat_container', _data.stats);
+		_data.eng = parseInt(_data.stats.eq(0).text(), 10);
+		_data.sta = parseInt(_data.stats.eq(1).text(), 10);
+		_data.att = /(\d+)(?:\s\((.\d+)?\))?/.exec(_data.stats.eq(2).text());
+		_data.att = parseInt(_data.att[1], 10) + (_data.att[2] == null ? 0 : parseInt(_data.att[2], 10));
+		//_data.def = parseInt(_data.stats.eq(3).text(), 10);
+		_data.def = /(\d+)(?:\s\((.\d+)?\))?/.exec(_data.stats.eq(3).text());
+		_data.def = parseInt(_data.def[1], 10) + (_data.def[2] == null ? 0 : parseInt(_data.def[2], 10));
 		//calculated stats
-		var _eAt = _att + _def * 0.7;
-		var _eDe = _def + _att * 0.7;
-		var _bsi = Math.round((_att + _def) / _lvl * 100) / 100;
-		var _lsi = Math.round((_eng + _sta * 2) / _lvl * 100) / 100;
-		var _tsi = _bsi + _lsi;
-		$('div.keep_healer_section').prepend($('<div id="cageKeepStats">').css({
-			'backgroundColor' : '#000',
-			'marginLeft' : 26,
-			'marginTop' : -232,
-			'opacity' : 0.8,
-			'color' : 'white',
-			'textAlign' : 'left',
-			'padding' : 10,
-			'height' : 204,
-			'width' : 180
-		}).append('<div>eAtt: ' + _eAt.toFixed(2) + '</div><div style="font-size:9px;">Effective Attack</div>').append('<div>eDef: ' + _eDe.toFixed(2) + '</div><div style="font-size:9px;">Effective Defense</div>').append('<div>BSI: ' + _bsi.toFixed(2) + '</div><div style="font-size:9px;">Battle Strength Index</div>').append('<div>LSI: ' + _lsi.toFixed(2) + '</div><div style="font-size:9px;">Levelling Speed Index</div>').append('<div>TSI: ' + _tsi.toFixed(2) + '</div><div style="font-size:9px;">Total Skillpoints per Level</div>'));
+		_data.eAt = _data.att + _data.def * 0.7;
+		_data.eDe = _data.def + _data.att * 0.7;
+		_data.bsi = Math.round((_data.att + _data.def) / _data.lvl * 100) / 100;
+		_data.lsi = Math.round((_data.eng + _data.sta * 2) / _data.lvl * 100) / 100;
+		_data.tsi = _data.bsi + _data.lsi;
+		$('div.keep_healer_section').prepend($('<div id="cageKeepStats">').append('<div>eAtt: ' + _data.eAt.toFixed(2) + '</div><div style="font-size:9px;">Effective Attack</div>').append('<div>eDef: ' + _data.eDe.toFixed(2) + '</div><div style="font-size:9px;">Effective Defense</div>').append('<div>BSI: ' + _data.bsi.toFixed(2) + '</div><div style="font-size:9px;">Battle Strength Index</div>').append('<div>LSI: ' + _data.lsi.toFixed(2) + '</div><div style="font-size:9px;">Levelling Speed Index</div>').append('<div>TSI: ' + _data.tsi.toFixed(2) + '</div><div style="font-size:9px;">Total Skillpoints per Level</div>'));
+		_data = null;
+	} else {
+		_data = null;
 	}
 
 	// Add stuff on others keep
-	if($('div.keep_main_section').length == 0) {
+	if($('div.keep_main_section').length === 0) {
 		var _uid = $('td.statsTB > div *[uid]').attr('uid');
-		if($('#keep_battle_frm1').length == 0) {
+		if($('#keep_battle_frm1').length === 0) {
 			$('td.statsTB > div:eq(1)').append($('<div id="cageArmyKeep"><button>DISMISS</button></div>').click(function() {
 				$('#AjaxLoadIcon').show();
 				get('army_member.php?action=delete&player_id=' + _uid, function() {
@@ -65,18 +73,5 @@ tools['Page'].runtime['keep.php'] = function() {
 			});
 		}
 	}
-
-	$('div.statsTTitle').toggle(function() {
-		var _this = this;
-		$(this).parents('div.statsT2:first').css({
-			'height' : '100%'
-		});
-	}, function() {
-		$(this).parents('div.statsT2:first').css({
-			'height' : 30
-		});
-	});
-	$('div.statUnit a img').unwrap().unwrap().addClass('ui-corner-all');
-	$('div.statUnit').find('div:last:contains(X)').addClass('itemNumbers');
 
 };

@@ -1,4 +1,4 @@
-new tool('Facebook');
+tool('Facebook');
 
 tools.Facebook.runtime = {
 	friendListWait : false,

@@ -24,6 +24,21 @@
 	background-repeat: repeat !important;
 	border-bottom: 1px solid black;
 	background-size: 658px;
+	background: #000;
+}
+/*
+ * Keep
+ */
+#cageKeepStats {
+	background-color: #000;
+	margin-left: 26px;
+	margin-top: -232px;
+	opacity: 0.8;
+	color: #fff;
+	text-align: left;
+	padding: 10px;
+	height: 204px;
+	width: 180px
 }
 /*
  * Gold
@@ -53,6 +68,7 @@
 	margin: 0 !important;
 	border-radius: 7px;
 	border: 1px ridge #66401B;
+	z-index: 0;
 }
 #st_2_1 {
 	margin: 0 !important;
@@ -96,6 +112,7 @@
 	margin: 0 !important;
 	border-radius: 7px;
 	border: 1px ridge #66401B;
+	z-index: 0;
 }
 #st_2_2 {
 	margin: 0 !important;
@@ -134,6 +151,7 @@
 	margin: 0 !important;
 	border-radius: 7px;
 	border: 1px ridge #66401B;
+	z-index: 0;
 }
 #st_2_3 {
 	margin: 0 !important;
@@ -172,6 +190,7 @@
 	margin: 0 !important;
 	border-radius: 7px;
 	border: 1px ridge #66401B;
+	z-index: 0;
 }
 #st_2_4 {
 	margin: 0 !important;

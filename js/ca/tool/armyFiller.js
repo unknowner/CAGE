@@ -1,4 +1,4 @@
-new tool('ArmyFiller');
+tool('ArmyFiller');
 
 tools.ArmyFiller.start = function() {
 

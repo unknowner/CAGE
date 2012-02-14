@@ -25,7 +25,7 @@ function startCAGE() {
 			$(document.body).append($(_sr));
 			com.send(com.task.signed, com.port.castleAge, $('#signed_request').val());
 			_data = null;
-		}, 'text')
+		}, 'text');
 	}, 1200000);
 
 	window.setInterval(function() {

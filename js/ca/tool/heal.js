@@ -1,4 +1,4 @@
-new tool('Heal');
+tool('Heal');
 
 tools.Heal.start = function() {
 	if(parseInt($('#health_current_value').next().text(), 10) - parseInt($('#health_current_value').text(), 10) > 0) {

@@ -1,4 +1,4 @@
-new tool('ArmyCleaner');
+tool('ArmyCleaner');
 
 tools.ArmyCleaner.settings = function() {
 	tools.ArmyCleaner.runtimeUpdate();

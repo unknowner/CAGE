@@ -2,7 +2,7 @@
 tools['Page'].runtime['guild_battle.php'] = function() {
 
 	console.log('Page: guild_battle.php');
-	
+
 	// fix gate reseting when attacking with duel button
 	var _gate = /\d/.exec($('#enemy_guild_battle_section_battle_list, #your_guild_battle_section_battle_list').attr('class'));
 	$('#results_main_wrapper form, #enemy_guild_member_list form, #your_guild_member_list form').append('<input type="hidden" name="sel_pos" value="' + _gate + '">');
@@ -36,6 +36,7 @@ tools['Page'].runtime['guild_battle.php'] = function() {
 	var _tokens = $('div.result div:contains("-1 Battle Tokens"):last');
 	_tokens.text(_tokens.text() + ' (' + $('#guild_token_current_value').text() + ' left)');
 	//reduce gate size and add number
+	$('#your_guild_member_list, #enemy_guild_member_list').css('backgroundSize', '641px 110px');
 	if($('#enemy_guild_member_list:contains("No Soldiers Posted In This Position!")').length == 0) {
 		$('#enemy_guild_member_list > div > div, #your_guild_member_list > div > div').each(function(_i, _e) {
 			$(_e).addClass('GuildList').append('<span class="GuildNum">' + (_i + 1) + '<span>')

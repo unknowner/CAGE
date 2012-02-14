@@ -1,4 +1,4 @@
-new tool('PotionEnergy');
+tool('PotionEnergy');
 
 tools.PotionEnergy.start = function() {
 	$.post('keep.php', {
@@ -9,7 +9,7 @@ tools.PotionEnergy.start = function() {
 	}, function(_data) {
 		if($('span.result_body:contains("You consumed")', _data).length > 0) {
 			addFunction(function(data) {
-				cageStat['energy'] = data.energy;
+				cageStat.energy = data.energy;
 			}, JSON.stringify({
 				energy : parseInt($('#energy_current_value').text(), 10) + 10
 			}), true, true);
@@ -20,7 +20,7 @@ tools.PotionEnergy.start = function() {
 };
 // Parse keep for Energy potions
 tools.PotionEnergy.work = function(_pagedata) {
-	if(_pagedata == undefined) {
+	if(_pagedata == null) {
 		_pagedata = $('#app_body');
 	}
 	var _potions = /\d+/.exec($('img[alt="Energy Potion"]', _pagedata).parent().next().text());
