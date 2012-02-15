@@ -36,10 +36,10 @@ tools['Page'].runtime['guild_battle.php'] = function() {
 	var _tokens = $('div.result div:contains("-1 Battle Tokens"):last');
 	_tokens.text(_tokens.text() + ' (' + $('#guild_token_current_value').text() + ' left)');
 	//reduce gate size and add number
-	$('#your_guild_member_list, #enemy_guild_member_list').css('backgroundSize', '641px 110px');
-	if($('#enemy_guild_member_list:contains("No Soldiers Posted In This Position!")').length == 0) {
+	//$('#your_guild_member_list, #enemy_guild_member_list').css('backgroundSize', '641px 110px');
+	if($('#your_guild_member_list:contains("No Soldiers Posted In This Position!"), #enemy_guild_member_list:contains("No Soldiers Posted In This Position!")').length === 0) {
 		$('#enemy_guild_member_list > div > div, #your_guild_member_list > div > div').each(function(_i, _e) {
-			$(_e).addClass('GuildList').append('<span class="GuildNum">' + (_i + 1) + '<span>')
+			$(_e).append('<span class="GuildNum">' + (_i + 1) + '<span>')
 		});
 	}
 

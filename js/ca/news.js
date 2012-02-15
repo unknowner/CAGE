@@ -40,5 +40,7 @@ function cageNews(_full) {
 			'borderBottom' : '1px solid #701919',
 			'paddingBottom' : 10
 		});
+	} else {
+		$('#results_main_wrapper').css('marginBottom', 10)
 	}
 }

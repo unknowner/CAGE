@@ -134,7 +134,7 @@ div.game {
 	width: 738px;
 }
 .results {
-	border: 0 !important;
+	border: 0;
 	border-radius: 6px;
 	padding: 5px !important;
 }

@@ -1,11 +1,10 @@
 // All Pages
+tools.Page.runtime.addOn = {}
 tools.Page.runtime.allPages = function() {
 
 	//Execute add ons from tools
-	$.each(tools, function(_i, _e) {
-		if(_e.allPagesAddOn) {
-			_e.allPagesAddOn();
-		}
+	$.each(tools.Page.runtime.addOn, function(_i, _e) {
+		_e();
 	})
 	// If found update bqh
 	if($('form input[name="bqh"]:first').length > 0) {

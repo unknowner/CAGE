@@ -23,6 +23,74 @@ tools.Page.runtime['keep.php'] = function() {
 			'height' : 30
 		});
 	});
+	// Calulate devine power
+	//$('div.statsTMain:eq(0) img')
+	var _devPow = 0, _devItems = [], _devine = {
+		'general' : {
+			'Axxon' : 45,
+			'Aegea' : 45,
+			'Dexter the Drunk' : 15,
+			'Isidra' : 45,
+			'Amon' : 45,
+			'Esmeralda' : 30,
+			'Kotahs' : 30,
+			'Tyrant' : 30,
+			'Jaelle' : 20,
+			'Agamemnon' : 20,
+			'Aurelius' : 20,
+			'Jahanna' : 20,
+			'Alyzia' : 5
+		},
+		'weapon' : {
+			'Heart of the Woods' : 120,
+			'Hammer of Storms' : 40
+		},
+		'offhand' : {
+			'Warrior Unbound' : 180,
+			'Aegis of Kings' : 120,
+			'Aegis of Stone' : 40
+		},
+		'helmet' : {
+			'Helm of the Deep' : 180,
+			'Helm of Arcane Energies' : 120
+		},
+		'armor' : {
+			'Retribution Armor' : 10,
+			'Armor of Redemption' : 180,
+			'Trisoul Plate' : 160,
+			'Glacial Plate' : 40,
+			'Krakenhide Armor' : 40,
+			'Tempest Plate' : 10,
+			'Moonfall Battlegear' : 10
+		},
+		'amulet' : {
+			'Keeper of Chaos' : 180,
+			'Force of Nature' : 80,
+			'Juggernaut Medallion' : 10,
+			'Lionheart Seal' : 10
+		},
+		'magic' : {
+			'Molten Core' : 70,
+			'Lava Inferno' : 40
+		},
+		'glove' : {
+			'Dragonform Claw' : 100
+		}
+	};
+	$('div.statsTMain:eq(0) img').each(function(_i, _e) {
+		_devItems.push(/(.+), Divine Power/.exec($(_e).attr('title'))[1]);
+	});
+	$.each(_devine, function(_i, _type) {
+		var _temp = 0;
+		$.each(_type, function(_item, _val) {
+			if(_devItems.indexOf(_item) !== -1) {
+				_temp = _temp > _val ? _temp : _val;
+			}
+		});
+		_devPow += _temp
+	});
+	_devItems = _devine = undefined;
+
 	// Some more stats, like BSI, LSI... keep_data.attribute_section
 	var _data = {};
 	_data.lvl = $('#st_5 div:contains("Level"):last').text();
@@ -44,7 +112,12 @@ tools.Page.runtime['keep.php'] = function() {
 		_data.bsi = Math.round((_data.att + _data.def) / _data.lvl * 100) / 100;
 		_data.lsi = Math.round((_data.eng + _data.sta * 2) / _data.lvl * 100) / 100;
 		_data.tsi = _data.bsi + _data.lsi;
-		$('div.keep_healer_section').prepend($('<div id="cageKeepStats">').append('<div>eAtt: ' + _data.eAt.toFixed(2) + '</div><div style="font-size:9px;">Effective Attack</div>').append('<div>eDef: ' + _data.eDe.toFixed(2) + '</div><div style="font-size:9px;">Effective Defense</div>').append('<div>BSI: ' + _data.bsi.toFixed(2) + '</div><div style="font-size:9px;">Battle Strength Index</div>').append('<div>LSI: ' + _data.lsi.toFixed(2) + '</div><div style="font-size:9px;">Levelling Speed Index</div>').append('<div>TSI: ' + _data.tsi.toFixed(2) + '</div><div style="font-size:9px;">Total Skillpoints per Level</div>'));
+		$('div.keep_healer_section').prepend($('<div id="cageKeepStats">').append('<div>eAtt: ' + _data.eAt.toFixed(2) + '</div><div style="font-size:9px;">Effective Attack</div>')
+		.append('<div>eDef: ' + _data.eDe.toFixed(2) + '</div><div style="font-size:9px;">Effective Defense</div>')
+		.append('<div>BSI: ' + _data.bsi.toFixed(2) + '</div><div style="font-size:9px;">Battle Strength Index</div>')
+		.append('<div>LSI: ' + _data.lsi.toFixed(2) + '</div><div style="font-size:9px;">Levelling Speed Index</div>')
+		.append('<div>TSI: ' + _data.tsi.toFixed(2) + '</div><div style="font-size:9px;">Total Skillpoints per Level</div>')
+		.append('<div>Devine: ' + _devPow + '</div><div style="font-size:9px;">Calculated Devine Power</div>'));
 		_data = null;
 	} else {
 		_data = null;

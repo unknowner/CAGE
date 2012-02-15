@@ -16,6 +16,10 @@ tools.castleage.settings = function() {
 		tools.castleage.runtime.scrollGuildChat = !tools.castleage.runtime.scrollGuildChat;
 		tools.castleage.scrollGuildChat();
 	});
+	tools.Settings.onoff('Mac background hack', tools.castleage.runtime.macBGFix, 'macBGFix', function() {
+		tools.castleage.runtime.macBGFix = !tools.castleage.runtime.macBGFix;
+		tools.castleage.macBGFix();
+	});
 };
 
 tools.castleage.runtimeUpdate = function() {
@@ -27,10 +31,30 @@ tools.castleage.runtimeUpdate = function() {
 	tools.castleage.results();
 	tools.castleage.runtime.scrollGuildChat = item.get('scrollGuildChat', true);
 	tools.castleage.scrollGuildChat();
+	tools.castleage.runtime.macBGFix = item.get('macBGFix', false);
+	tools.castleage.macBGFix();
 };
 
 tools.castleage.init = function() {
 	tools.castleage.runtimeUpdate();
+}
+tools.castleage.macBGFix = function() {
+	if(tools.castleage.runtime.macBGFix) {
+		tools.Page.runtime.addOn['tools.castleage.macBGFix'] = function() {
+			window.setTimeout(function() {
+				$('div').each(function(_i, _e) {
+					if($(this).css('backgroundImage') !== "none") {
+						$(this).css('backgroundImage', $(this).css('backgroundImage'))
+					};
+				});
+			}, 200);
+		}
+	} else {
+		if(tools.Page.runtime.addOn['tools.castleage.macBGFix']) {
+			delete tools.Page.runtime.addOn['tools.castleage.macBGFix'];
+		}
+	}
+
 }
 tools.castleage.scrollGuildChat = function() {
 	if(tools.castleage.runtime.scrollGuildChat) {
@@ -43,7 +67,7 @@ tools.castleage.scrollGuildChat = function() {
 }
 tools.castleage.results = function() {
 	if(tools.castleage.runtime.battleResults || tools.castleage.runtime.hourly) {
-		tools.castleage.allPagesAddOn = function() {
+		tools.Page.runtime.addOn['tools.castleage.results'] = function() {
 			var _re = [];
 			if(tools.castleage.runtime.battleResults) {
 				_re.push('You have now won a total');
@@ -63,6 +87,8 @@ tools.castleage.results = function() {
 			}
 		}
 	} else {
-		tools.castleage.allPagesAddOn = null;
+		if(tools.Page.runtime.addOn['tools.castleage.results']) {
+			delete tools.Page.runtime.addOn['tools.castleage.results'];
+		}
 	}
 };

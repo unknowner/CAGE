@@ -115,7 +115,14 @@ tools.General.parsePage = function(_data) {
 			charge : _charge
 		};
 	});
-	$('#cageGeneralSelector').empty().append('<span id="cageSelectorInfo" class="ui-state-active ui-corner-all"></span><div id="cageFavouriteGenerals"></div><div id="cageAllGenerals"></div>');
+	$('#cageGeneralSelector').empty().append('<span id="cageSelectorInfo" class="ui-state-active ui-corner-all"></span><div id="cageFavouriteGenerals"></div><div id="cageAllGenerals"></div>').prepend($('<img style="position: absolute;left:3px;cursor:pointer;margin-top:-9px;height:18px;" src="http://image4.castleagegame.com/graphics/popup_close_button.png">').click(function() {
+		if(tools.General.runtime.onlyFavourites == true) {
+			$('#cageAllGenerals').hide();
+		} else {
+			$('#cageAllGenerals').show();
+		}
+		$('#cageGeneralSelector').slideToggle('slow');
+	}));
 	var _names = [];
 	$.each(tools.General.runtime.general, function(_i, _e) {
 		_names.push(_e.name);

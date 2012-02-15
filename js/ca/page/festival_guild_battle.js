@@ -30,7 +30,7 @@ tools['Page'].runtime['festival_guild_battle.php'] = function() {
 	//reduce gate size and add number
 	if($('#enemy_guild_member_list:contains("No Soldiers Posted In This Position!")').length == 0) {
 		$('#enemy_guild_member_list > div > div, #your_guild_member_list > div > div').each(function(_i, _e) {
-			$(_e).addClass('GuildList').append('<span class="GuildNum">' + (_i + 1) + '<span>')
+			$(_e).append('<span class="GuildNum">' + (_i + 1) + '<span>')
 		});
 	}
 
