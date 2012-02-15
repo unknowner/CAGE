@@ -42,12 +42,12 @@ tools.castleage.macBGFix = function() {
 	if(tools.castleage.runtime.macBGFix) {
 		tools.Page.runtime.addOn['tools.castleage.macBGFix'] = function() {
 			window.setTimeout(function() {
-				$('div').each(function(_i, _e) {
+				$('#app_body div').each(function(_i, _e) {
 					if($(this).css('backgroundImage') !== "none") {
 						$(this).css('backgroundImage', $(this).css('backgroundImage'))
 					};
 				});
-			}, 200);
+			}, 100);
 		}
 	} else {
 		if(tools.Page.runtime.addOn['tools.castleage.macBGFix']) {

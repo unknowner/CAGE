@@ -1,26 +1,30 @@
 // Alchemy
 tools.Page.runtime['alchemy.php'] = function() {
 
+	var start = new Date();
 	//Ingredients & Recipes
 	var _ingredients = {};
 	$('div.ingredientUnit').each(function(_i, _e) {
-		$(_e).css({
+		_e = $(_e);
+		_e.css({
 			'height' : 60,
 			'width' : 60,
 			'padding' : 2
 		}).find('>div:first').attr('style', '');
-		var _img = $('img', _e), _count = $('div:eq(1)', _e);
-		_img.addClass('ui-corner-all');
+		//var _img = $('img', _e),
+		var _count = $('div:eq(1)', _e);
+		//_img.addClass('ui-corner-all');
 		_count.text(_count.text().replace('x', '')).addClass('itemNumbers');
-		_ingredients[_img.attr('src')] = parseInt(_count.text(), 10);
+		_ingredients[$('img', _e).addClass('ui-corner-all').attr('src')] = parseInt(_count.text(), 10);
 	});
 	//Recipes
 	$('td.statsTMainback').width(686);
 	$('div.recipeImgContainer').each(function(_i, _e) {
-		$(_e).addClass('ui-corner-all').find('img').addClass('ui-corner-all').end().parent().css('height', 80);
+		_e = $(_e);
+		_e.addClass('ui-corner-all').find('img').addClass('ui-corner-all').end().parent().css('height', 80);
 		var _count = $(_e).parent().find('> div:contains(x)');
 		if(_count.length === 0) {
-			$(_e).parent().find('> strong:contains(" of ")').addClass('alchemyItemNum');
+			_e.parent().find('> strong:contains(" of ")').addClass('alchemyItemNum');
 		} else {
 			var _need = parseInt(_count.text().replace('x', ''), 10), _have = 0;
 			if(_ingredients[$('>img', _e).attr('src')]) {
@@ -71,5 +75,5 @@ tools.Page.runtime['alchemy.php'] = function() {
 	});
 	// remove some stuff
 	$('div.alchemySpaceRecipe, div.alchemySpaceClass, div.alchemySpaceMonster, div.alchemySpaceQuest').remove();
-
+	console.log((new Date() - start));
 };

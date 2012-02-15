@@ -4,7 +4,7 @@ tools.Heal.start = function() {
 	if(parseInt($('#health_current_value').next().text(), 10) - parseInt($('#health_current_value').text(), 10) > 0) {
 		$.get('keep.php?signed_request=' + CastleAge.signed_request, function(_data) {
 			CastleAge.bqh = $('input[name="bqh"]:first', _data).attr('value');
-			$.get('keep.php?action=heal_avatar&do=heal wounds&bqh=' + CastleAge.bqh + '&signed_request=' + CastleAge.signed_request, function() {
+			post('keep.php?action=heal_avatar&bqh=' + CastleAge.bqh, function() {
 				addFunction(function() {
 					clearTimeout(timedStats['health']);
 					stat_increase_ticker(0, $('#health_current_value').next().text(), $('#health_current_value').next().text(), 0, 0, 'health', false);

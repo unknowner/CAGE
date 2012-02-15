@@ -9,10 +9,10 @@ tools.Page.init = function() {
 	// Do stuff after page loaded
 	customEvent('PageURL', function(_evt) {
 		var _page = $('#PageURL').val();
+		window.setTimeout(tools.Page.runtime.allPages, 1);
 		if(tools.Page.runtime[_page]) {
 			tools.Page.runtime[_page]();
 		}
-		tools.Page.runtime.allPages();
 		tools.General.get();
 	});
 };
@@ -94,28 +94,27 @@ tools.Page.get_cached_ajax = function() {
 	};
 };
 tools.Page.ajaxPageDone = function() {
-	ajaxPageDone = function(div, data, anchor) {
+	ajaxPageDone = function(data, div, anchor) {
 		stopTimers = false;
 		ajaxPerforming = false;
-		$('#main_bntp, #nvbar_div_end, #hinvite_help', data).remove();
-		$('#nvbar_table', data).empty();
-		$('#main_bntp, #nvbar, #nvbar_div_end, #hinvite_help', data).remove();
+		data = $(data);
+		data.find('#main_bntp, #nvbar_div_end, #hinvite_help').remove().end().find('#nvbar_table').empty();
 		if(div === 'globalContainer') {
 			$('#main_sts').html($('#main_sts', data).html());
 			$('#app_body_container').html($('#app_body_container', data).html());
 		} else {
 			$('#' + div).html(data);
 		}
-		firePageURL();
+		window.setTimeout(firePageURL, 1);
+		$('#AjaxLoadIcon').fadeOut('slow');
 		centerPopups();
-		$('#AjaxLoadIcon').hide('fast');
-		if(anchor) {
+		if(data.anchor) {
 			$('#' + anchor).animate({
 				scrollTop : 0
 			}, 'slow');
 		}
 		startAllTimers();
-		FB.XFBML.parse(document.getElementById(div));
+		FB.XFBML.parse(document.getElementById(data.div));
 		data = null;
 	};
 };
@@ -129,7 +128,7 @@ tools.Page.ajaxLinkSend = function() {
 		reset_raid_lst();
 		pageCache = {};
 		ajaxPerforming = true;
-		showLoaderIfAjax();
+		$('#AjaxLoadIcon').fadeIn('fast');
 		if(!url) {
 			url = 'index.php?adkx=2';
 		}
@@ -142,16 +141,18 @@ tools.Page.ajaxLinkSend = function() {
 			url : url,
 			context : document.body,
 			data : params,
+			dataType : 'html',
 			type : 'POST',
-			success : function(data) {
+			success : function(data, textStatus, jqXHR) {
 				FB.init({
 					appId : '46755028429',
 					status : true,
 					cookie : true,
 					xfbml : true
 				});
-				ajaxPageDone(div, data);
-				data = undefined;
+				ajaxPageDone(data, div);
+				$('#app_body_container').append($(jqXHR.responseText).filter('script'));
+				jqXHR = data = undefined;
 			}
 		});
 	};
@@ -179,17 +180,21 @@ tools.Page.ajaxFormSend = function() {
 		console.log(url_key + '-' + _oldurl);
 		setPageURL(url_key);
 		ajaxPerforming = true;
-		showLoaderIfAjax();
+		$('#AjaxLoadIcon').fadeIn('fast');
 		$.ajax({
 			url : url,
 			context : document.body,
 			data : params,
+			dataType : 'html',
 			type : 'POST',
-			success : function(data) {
-				ajaxPageDone(div, data, anchor);
-				data = undefined;
+			success : function(data, textStatus, jqXHR) {
+				var _scripts = $(jqXHR.responseText)
+				_scripts = _scripts.filter('script');
+				ajaxPageDone(data, div, anchor);
+				$('#app_body_container').append(_scripts);
+				$('#app_body_container').append($(jqXHR.responseText).filter('script'));
+				jqXHR = data = undefined;
 			}
 		});
-		scrollToElement('#' + anchor);
 	};
 };

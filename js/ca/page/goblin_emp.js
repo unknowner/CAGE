@@ -29,11 +29,8 @@ tools['Page'].runtime['goblin_emp.php'] = function() {
 				data : 'ajax=1&signed_request=' + $('#signed_request').attr('value') + '&g_item_mix=' + _items.join(','),
 				type : 'POST',
 				success : function(data) {
-					ajaxPerforming = false;
-					$('#AjaxLoadIcon').hide();
-					$('#globalContainer').html(data);
-					firePageURL();
-					centerPopups();
+					ajaxPageDone(data, 'globalContainer');
+					data = undefined;
 				}
 			});
 			$('#main_anchor').focus();

@@ -25,7 +25,7 @@ tools.Page.runtime['keep.php'] = function() {
 	});
 	// Calulate devine power
 	//$('div.statsTMain:eq(0) img')
-	var _devPow = 0, _devItems = [], _devine = {
+	var _divPow = 0, _divItems = [], _divine = {
 		'general' : {
 			'Axxon' : 45,
 			'Aegea' : 45,
@@ -33,7 +33,7 @@ tools.Page.runtime['keep.php'] = function() {
 			'Isidra' : 45,
 			'Amon' : 45,
 			'Esmeralda' : 30,
-			'Kotahs' : 30,
+			'Kothas' : 30,
 			'Tyrant' : 30,
 			'Jaelle' : 20,
 			'Agamemnon' : 20,
@@ -78,18 +78,18 @@ tools.Page.runtime['keep.php'] = function() {
 		}
 	};
 	$('div.statsTMain:eq(0) img').each(function(_i, _e) {
-		_devItems.push(/(.+), Divine Power/.exec($(_e).attr('title'))[1]);
+		_divItems.push(/(.+), Divine Power/.exec($(_e).attr('title'))[1]);
 	});
-	$.each(_devine, function(_i, _type) {
+	$.each(_divine, function(_i, _type) {
 		var _temp = 0;
 		$.each(_type, function(_item, _val) {
-			if(_devItems.indexOf(_item) !== -1) {
+			if(_divItems.indexOf(_item) !== -1) {
 				_temp = _temp > _val ? _temp : _val;
 			}
 		});
-		_devPow += _temp
+		_divPow += _temp
 	});
-	_devItems = _devine = undefined;
+	_divItems = _divine = undefined;
 
 	// Some more stats, like BSI, LSI... keep_data.attribute_section
 	var _data = {};
@@ -117,7 +117,7 @@ tools.Page.runtime['keep.php'] = function() {
 		.append('<div>BSI: ' + _data.bsi.toFixed(2) + '</div><div style="font-size:9px;">Battle Strength Index</div>')
 		.append('<div>LSI: ' + _data.lsi.toFixed(2) + '</div><div style="font-size:9px;">Levelling Speed Index</div>')
 		.append('<div>TSI: ' + _data.tsi.toFixed(2) + '</div><div style="font-size:9px;">Total Skillpoints per Level</div>')
-		.append('<div>Devine: ' + _devPow + '</div><div style="font-size:9px;">Calculated Devine Power</div>'));
+		.append('<div>Divine: ' + _divPow + '</div><div style="font-size:9px;">Calculated Divine Power</div>'));
 		_data = null;
 	} else {
 		_data = null;

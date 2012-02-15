@@ -42,6 +42,28 @@
 	width: 180px
 }
 /*
+ * All Stats
+ */
+/* stats boxes */
+#st_1, #st_2, #st_3, #st_4, #st_5, #cageNextDemi {
+	position: absolute;
+	margin: 0 !important;
+	border-radius: 7px;
+	background: #D0B683;
+	border: 1px inset #66401B;
+	z-index: 0;
+	box-shadow: 1px 1px 3px #000 inset;
+}
+/* stats buttons */
+#cageStash, #cagePotionEnergy, #cageHeal, #cagePotionStamina {
+	background-position: -2px -1px;
+	position: absolute;
+	width: 29px;
+	height: 29px;
+	border-radius: 20px;
+	cursor: pointer;
+}
+/*
  * Gold
  */
 #gold_current_value {
@@ -49,27 +71,14 @@
 }
 #cageStash {
 	background-image: url('http://image4.castleagegame.com/graphics/stat_gold.gif');
-	background-position: -2px -1px;
-	position: absolute;
-	width: 29px;
-	height: 29px;
-	border-radius: 20px;
-	cursor: pointer;
 	top: 53px;
 	left: 20px;
 }
 #st_1 {
-	position: absolute;
 	left: 22px;
 	top: 50px;
 	height: 33px !important;
 	width: 142px !important;
-	margin: 0 !important;
-	border-radius: 7px;
-	background: #D0B683;
-	border: 1px inset #66401B;
-	z-index: 0;
-	box-shadow: 2px 1px 4px #000 inset;
 }
 #st_2_1 {
 	margin: 0 !important;
@@ -80,6 +89,7 @@
 	text-align: right !important;
 }
 #st_1 > div:first-child {
+	padding-left: 40px;
 	left: 10px;
 	position: relative;
 }
@@ -93,12 +103,6 @@
  */
 #cagePotionEnergy {
 	background-image: url('http://image4.castleagegame.com/graphics/stat_energy.gif');
-	background-position: -2px -1px;
-	position: absolute;
-	width: 29px;
-	height: 29px;
-	border-radius: 20px;
-	cursor: pointer;
 	top: 54px;
 	left: 187px;
 }
@@ -108,12 +112,6 @@
 	top: 50px;
 	height: 33px !important;
 	width: 127px !important;
-	margin: 0 !important;
-	border-radius: 7px;
-	background: #D0B683;
-	border: 1px inset #66401B;
-	z-index: 0;
-	box-shadow: 2px 1px 4px #000 inset;
 }
 #st_2_2 {
 	margin: 0 !important;
@@ -132,27 +130,14 @@
  */
 #cageHeal {
 	background-image: url('http://image4.castleagegame.com/graphics/stat_health.gif');
-	background-position: -2px -1px;
-	position: absolute;
-	width: 29px;
 	top: 54px;
 	left: 337px;
-	height: 29px;
-	border-radius: 20px;
-	cursor: pointer;
 }
 #st_3 {
-	position: absolute;
 	left: 340px;
 	top: 50px;
 	height: 33px !important;
 	width: 126px !important;
-	margin: 0 !important;
-	border-radius: 7px;
-	background: #D0B683;
-	border: 1px inset #66401B;
-	z-index: 0;
-	box-shadow: 2px 1px 4px #000 inset;
 }
 #st_2_3 {
 	margin: 0 !important;
@@ -171,27 +156,14 @@
  */
 #cagePotionStamina {
 	background-image: url('http://image4.castleagegame.com/graphics/stat_stamina.gif');
-	background-position: -2px -1px;
-	width: 29px;
 	top: 53px;
 	left: 489px;
-	height: 29px;
-	border-radius: 20px;
-	cursor: pointer;
-	position: absolute;
 }
 #st_4 {
-	position: absolute;
 	left: 491px;
 	top: 50px;
 	height: 33px !important;
 	width: 126px !important;
-	margin: 0 !important;
-	border-radius: 7px;
-	background: #D0B683;
-	border: 1px inset #66401B;
-	z-index: 0;
-	box-shadow: 2px 1px 4px #000 inset;
 }
 #st_2_4 {
 	margin: 0 !important;
@@ -209,17 +181,10 @@
  * Level / XP
  */
 #st_5 {
-	position: absolute;
-	margin: 0 !important;
 	left: 22px;
 	top: 8px;
 	height: 33px !important;
 	width: 141px !important;
-	background: #D0B683;
-	border-radius: 7px;
-	border: 1px inset #66401B;
-	z-index: 0;
-	box-shadow: 2px 1px 4px #000 inset;
 }
 #st_5 > div:last-child {
 	top: 1px !important;
@@ -306,17 +271,10 @@ div.lvlBr {
  * Demi Timer
  */
 #cageNextDemi {
-	position: absolute;
 	left: 198px;
 	top: 8px;
 	height: 33px;
 	width: 126px;
-	background: #D0B683;
-	margin: 0;
-	border-radius: 7px;
-	border: 1px inset #66401B;
-	z-index: 0;
-	box-shadow: 2px 1px 4px #000 inset;
 }
 #cageNextDemi > div {
 	position: absolute;
