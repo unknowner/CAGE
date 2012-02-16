@@ -26,8 +26,6 @@ tools.Page.runtime.allPages = function() {
 	if($('#globalContainer > div:first').height() == 80) {
 		$('#globalContainer > div:first').hide();
 	}
-	$('#nvbar_div_end').remove();
-	$('#hinvite_help').remove();
 
 	// xp to next lvl
 	$('#main_ststb > div:first').css({
@@ -63,7 +61,7 @@ tools.Page.runtime.allPages = function() {
 			});
 		});
 		// remove some stuff
-		$('span.result_body > div:last:contains("Increase quest efficiency and battle prowess by growing your army")').prev().remove().end().prev().remove().end().remove();
+		$('#hinvite_help, #nvbar_table').empty();
 		//fix some results eg out of stamina general image
 		$('span.result_body:contains("Allocate skill points to Max") img:first').css('width', 160);
 		// closing results

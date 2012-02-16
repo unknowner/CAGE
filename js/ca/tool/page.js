@@ -15,15 +15,15 @@ tools.Page.init = function() {
 		}
 		tools.General.get();
 	});
+	// Container for msg ect.
+	$('#globalContainer').append('<div id="cageTemp" style="display:none;">');
 };
-
 tools.Page.loadPage = function(_page) {
 	console.log('Loadpage:' + _page);
 	addFunction(function(_data) {
 		ajaxLinkSend('globalContainer', _data);
 	}, JSON.stringify(_page), true, true);
 };
-
 tools.Page.ajaxSkip = function() {
 	ajaxSkip = function(div, url) {
 		ajaxLinkSend(div, (url + (url.indexOf('?') > -1 ? '&' : '?') + 'ajax=1&skip=1'));
@@ -95,18 +95,19 @@ tools.Page.get_cached_ajax = function() {
 };
 tools.Page.ajaxPageDone = function() {
 	ajaxPageDone = function(data, div, anchor) {
+		console.log('YYYY:', div, anchor);
 		stopTimers = false;
 		ajaxPerforming = false;
 		data = $(data);
-		data.find('#main_bntp, #nvbar_div_end, #hinvite_help').remove().end().find('#nvbar_table').empty();
 		if(div === 'globalContainer') {
+			$('#cageTemp').empty().append(data.filter('div[id]:not(.game)'));
 			$('#main_sts').html($('#main_sts', data).html());
 			$('#app_body_container').html($('#app_body_container', data).html());
 		} else {
 			$('#' + div).html(data);
 		}
-		window.setTimeout(firePageURL, 1);
-		$('#AjaxLoadIcon').fadeOut('slow');
+		firePageURL();
+		$('#AjaxLoadIcon').hide();
 		centerPopups();
 		if(data.anchor) {
 			$('#' + anchor).animate({
@@ -128,7 +129,7 @@ tools.Page.ajaxLinkSend = function() {
 		reset_raid_lst();
 		pageCache = {};
 		ajaxPerforming = true;
-		$('#AjaxLoadIcon').fadeIn('fast');
+		$('#AjaxLoadIcon').show();
 		if(!url) {
 			url = 'index.php?adkx=2';
 		}
@@ -139,9 +140,7 @@ tools.Page.ajaxLinkSend = function() {
 		setPageURL(url_key);
 		$.ajax({
 			url : url,
-			context : document.body,
 			data : params,
-			dataType : 'html',
 			type : 'POST',
 			success : function(data, textStatus, jqXHR) {
 				FB.init({
@@ -150,8 +149,8 @@ tools.Page.ajaxLinkSend = function() {
 					cookie : true,
 					xfbml : true
 				});
-				ajaxPageDone(data, div);
 				$('#app_body_container').append($(jqXHR.responseText).filter('script'));
+				ajaxPageDone(data, div);
 				jqXHR = data = undefined;
 			}
 		});
@@ -180,19 +179,14 @@ tools.Page.ajaxFormSend = function() {
 		console.log(url_key + '-' + _oldurl);
 		setPageURL(url_key);
 		ajaxPerforming = true;
-		$('#AjaxLoadIcon').fadeIn('fast');
+		$('#AjaxLoadIcon').show();
 		$.ajax({
 			url : url,
-			context : document.body,
 			data : params,
-			dataType : 'html',
 			type : 'POST',
 			success : function(data, textStatus, jqXHR) {
-				var _scripts = $(jqXHR.responseText)
-				_scripts = _scripts.filter('script');
-				ajaxPageDone(data, div, anchor);
-				$('#app_body_container').append(_scripts);
 				$('#app_body_container').append($(jqXHR.responseText).filter('script'));
+				ajaxPageDone(data, div, anchor);
 				jqXHR = data = undefined;
 			}
 		});
