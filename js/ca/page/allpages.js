@@ -28,26 +28,13 @@ tools.Page.runtime.allPages = function() {
 	}
 
 	// xp to next lvl
-	$('#main_ststb > div:first').css({
-		'height' : 16,
-		'marginBottom' : -2
-	});
-	$('#st_5').css('margin', '4px 0 0 10px');
-	$('div.st_row_2').css('marginTop', 2);
-	$('#st_5 div.lvlBr div').css({
-		'height' : 12,
-		'borderRadius' : 3
-	});
-
 	if($('#st_2_5 strong:contains("to")').length == 0 && /\d+\/(\d+)/.exec($('#st_2_5 strong').text()) !== null) {
 		$('#st_2_5 strong').text(/\d+/.exec($('#st_5').attr('title'))[0] + ' to ' + /\d+\/(\d+)/.exec($('#st_2_5 strong').text())[1]);
 	}
 
 	// reworkin results
 	if($('div.results').length > 0) {
-		$('div.results').attr('style', '').css({
-			'width' : 728
-		});
+		$('div.results').attr('style', '');
 		$('#results_main_wrapper').addClass('resultsmainwrapper').prepend('<img id="cageCloseResult" src="http://image4.castleagegame.com/graphics/popup_close_button.png">');
 		$('#results_main_wrapper > br').remove();
 		$('#cageCloseResult').click(function() {
@@ -109,5 +96,4 @@ tools.Page.runtime.allPages = function() {
 		'left' : '',
 		'marginLeft' : 15
 	});
-
 };

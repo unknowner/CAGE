@@ -29,11 +29,7 @@ $('#main_bntp, #nvbar_div_end, #hinvite_help').remove();
 $('#nvbar_table').empty();
 
 //rework stats
-$('#cageStatsContainer')
-	.append('<div style="border-bottom: 1px solid #CAA47F;width: 126px;top: 52px;z-index: 1;left: 49px;position: absolute;"><strong style="display: inline-block;float: left;font-family: serif;font-style: italic;font-size: 13px;color: #4B3715;">Gold</strong></div>')
-	.append('<div style="border-bottom: 1px solid #CAA47F;width: 110px;top: 52px;z-index: 1;left: 216px;position: absolute;"><strong style="display: inline-block;float: left;font-family: serif;font-style: italic;font-size: 13px;color: #4B3715;">Energy</strong></div>')
-	.append('<div style="border-bottom: 1px solid #CAA47F;width: 111px;top: 52px;z-index: 1;left: 366px;position: absolute;"><strong style="display: inline-block;float: left;font-family: serif;font-style: italic;font-size: 13px;color: #4B3715;">Health</strong></div>')
-	.append('<div style="border-bottom: 1px solid #CAA47F;width: 110px;top: 52px;z-index: 1;left: 518px;position: absolute;"><strong style="display: inline-block;float: left;font-family: serif;font-style: italic;font-size: 13px;color: #4B3715;">Stamina</strong></div>')
+$('#cageStatsContainer').append('<div class="cageStatsTextPos" style="width: 126px;left: 50px;"><strong class="cageStatsText">Gold</strong></div>').append('<div class="cageStatsTextPos" style="width: 110px;left: 217px;"><strong class="cageStatsText">Energy</strong></div>').append('<div class="cageStatsTextPos" style="width: 111px;left: 369px;"><strong class="cageStatsText">Health</strong></div>').append('<div class="cageStatsTextPos" style="width: 110px;left: 520px;"><strong class="cageStatsText">Stamina</strong></div>')
 
 tools.Page.runtime.allPages();
 

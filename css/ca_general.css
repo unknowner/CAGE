@@ -7,14 +7,13 @@
 	width:93px;
 	position:absolute;
 	right:8px;
-	z-index:3;
-	border:1px solid black;
-	overflow:hidden;
-	background-image:url('http://image4.castleagegame.com/graphics/marble.jpg');
+	z-index:4;
+	margin:1px;
 }
 #cageGeneralImage {
-	height:93px;
+	height:94px;
 	cursor:pointer;
+	box-shadow:-3px 0px 5px #000;
 }
 #cageGeneralSelector {
 	position:fixed;
@@ -107,61 +106,63 @@
 	left:-100%;
 	margin-right:-6px;
 }
-#cageGeneralName {
-	width:107px;
+#cageGeneralStats {
 	position:absolute;
-	z-index:3;
+	right:93px;
+	height:94px;
+	top:0;
+	opacity:0;
+}
+#cageGeneralStats> * {
+	box-shadow:-10px 0px 20px #000
+}
+#cageGeneralName {
+	position:relative;
 	top:1px;
-	right:103px;
 	color:white;
 	background:black;
 	height:16px;
-	padding:1px;
-	opacity:0.8;
+	padding:1px 10px;
 	white-space:nowrap;
 	text-align:center;
-	border-bottom-left-radius:4px;
+	border-bottom-left-radius:5px
 }
 #cageGeneralAttImg {
-	z-index:9;
-	height:16px;
-	position:absolute;
-	top:36px;
-	right:107px;
 	z-index:4;
-	width:16px;
+	height:18px;
+	top:34px;
+	width:18px;
+	position:absolute;
+	right:3px;
 }
 #cageGeneralAttack {
-	width:24px;
 	position:absolute;
+	width:24px;
 	z-index:3;
-	top:19px;
-	right:103px;
+	top:18px;
 	color:white;
 	background:black;
 	height:21px;
-	opacity:0.75;
 	text-align:center;
 	padding-bottom:18px;
+	right:0;
 }
 #cageGeneralDefImg {
-	z-index:9;
-	height:16px;
+	z-index:4;
+	height:18px;
+	top:57px;
+	width:18px;
 	position:absolute;
-	top:59px;
-	right:107px;
-	width:16px;
+	right:3px;
 }
 #cageGeneralDefense {
 	width:24px;
 	position:absolute;
-	z-index:3;
-	top:58px;
-	right:103px;
+	top:57px;
 	color:white;
 	background:black;
 	height:19px;
-	opacity:0.75;
 	text-align:center;
 	padding-top:18px;
+	right:0;
 }

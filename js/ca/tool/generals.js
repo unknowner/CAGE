@@ -48,9 +48,9 @@ tools.General.get = function() {
 tools.General.set = function() {
 	var _g = tools.General.runtime.general[tools.General.current];
 	$('#cageGeneralImage').attr('src', _g.image).css({
-		'height' : 93,
+		'height' : 94,
 		'padding' : 0
-	});
+	}).fadeIn('slow');
 	$('#cageGeneralName').text(_g.name);
 	$('#cageGeneralAttack').text(_g.attack);
 	$('#cageGeneralDefense').text(_g.defense);
@@ -60,10 +60,7 @@ tools.General.setByName = function(_name, _callback) {
 	if(_name !== tools.General.current) {
 		var _g = tools.General.runtime.general[_name];
 		if(_g !== null) {
-			$('#cageGeneralImage').attr('src', 'http://image4.castleagegame.com/graphics/shield_wait.gif').css({
-				'height' : 30,
-				'padding' : 31
-			});
+			$('#cageGeneralImage').fadeOut('slow');
 			$.get('generals.php?item=' + _g.item + '&itype=' + _g.itype + '&bqh=' + CastleAge.bqh + '&signed_request=' + CastleAge.signed_request, function(_data) {
 				tools.General.parsePage(_data);
 				tools.General.current = _name;
@@ -200,12 +197,13 @@ tools.General.init = function() {
 	var _elm = {
 		general : '<div id="cageGeneralContainer"></div>',
 		generalImageContainer : '<div id="cageGeneralImageContainer"></div>',
+		generalStatsDiv : '<div id="cageGeneralStats">',
 		generalImage : '<img id="cageGeneralImage" src="http://image4.castleagegame.com/graphics/shield_wait.gif" style="height:30px;padding:31px;"/>',
 		generalName : '<span id="cageGeneralName"></span>',
 		generalValues : '<img src="http://image4.castleagegame.com/graphics/demi_symbol_2.gif" id="cageGeneralAttImg" /><span id="cageGeneralAttack"></span><img src="http://image4.castleagegame.com/graphics/demi_symbol_3.gif" id="cageGeneralDefImg" /><span id="cageGeneralDefense"></span>',
 		generalSelector : '<div id="cageGeneralSelector" class="ui-widget-content ui-corner-bottom">',
 	}
-	$('#cageContainer').append($(_elm.general).prepend($(_elm.generalImageContainer).append(_elm.generalImage)).append(_elm.generalName).append(_elm.generalValues)).prepend(_elm.generalSelector);
+	$('#cageContainer').append($(_elm.general).prepend($(_elm.generalImageContainer).append(_elm.generalImage).append($(_elm.generalStatsDiv).append(_elm.generalName).append(_elm.generalValues))).prepend(_elm.generalSelector));
 	$('#cageGeneralImage').click(function() {
 		if(tools.General.runtime.onlyFavourites == true) {
 			$('#cageAllGenerals').hide();
@@ -213,6 +211,10 @@ tools.General.init = function() {
 			$('#cageAllGenerals').show();
 		}
 		$('#cageGeneralSelector').slideToggle('slow');
+	}).hover(function() {
+		$('#cageGeneralStats').stop().fadeTo('slow', 0.8);
+	}, function() {
+		$('#cageGeneralStats').stop().fadeTo('slow', 0);
 	});
 	tools.General.update();
 };
