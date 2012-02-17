@@ -9,9 +9,11 @@ tools.Page.init = function() {
 	// Do stuff after page loaded
 	customEvent('PageURL', function(_evt) {
 		var _page = $('#PageURL').val();
-		window.setTimeout(tools.Page.runtime.allPages, 1);
+		tools.Page.runtime.allPages();
 		if(tools.Page.runtime[_page]) {
+			var start = new Date();
 			tools.Page.runtime[_page]();
+			console.log('Time to mod', _page, ':', (new Date() - start));
 		}
 		tools.General.get();
 	});
@@ -95,7 +97,6 @@ tools.Page.get_cached_ajax = function() {
 };
 tools.Page.ajaxPageDone = function() {
 	ajaxPageDone = function(data, div, anchor) {
-		console.log('YYYY:', div, anchor);
 		stopTimers = false;
 		ajaxPerforming = false;
 		data = $(data);

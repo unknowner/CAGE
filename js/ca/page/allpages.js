@@ -12,15 +12,10 @@ tools.Page.runtime.allPages = function() {
 	}
 
 	//Stats background
-	$('#main_sts').css({
-		'background' : '',
-		'backgroundImage' : $('#main_bn').css('backgroundImage')
-	});
+	$('#main_sts').css('background', $('#main_bn').css('backgroundImage'));
 	window.setTimeout(function() {
-		$('#main_sts_container').css({
-			'backgroundImage' : $('#main_sts').css('backgroundImage')
-		});
-	}, 500);
+		$('#main_sts_container').css('background', $('#main_sts').css('backgroundImage'));
+	}, 1000);
 	// remove CA:HOD ad, etc...
 	$('a[href="http://apps.facebook.com/castle_hod/?xprom=cax"]:first').parent('div:first').remove();
 	if($('#globalContainer > div:first').height() == 80) {
@@ -63,7 +58,7 @@ tools.Page.runtime.allPages = function() {
 					'top' : 2,
 					'right' : 3
 				}).attr('src', 'http://image4.castleagegame.com/graphics/shield_wait.gif');
-				$.post(_close + '&signed_request=' + CastleAge.signed_request, function() {
+				post(_close, function() {
 					$_element.slideUp('slow', function() {
 						$_element.remove();
 						$('#results_main_wrapper').hide();
@@ -71,8 +66,6 @@ tools.Page.runtime.allPages = function() {
 				});
 			}).css('cursor', 'pointer');
 		});
-	} else {
-		$('#results_main_wrapper').css('border', 0);
 	}
 
 	// fix loader
@@ -82,8 +75,7 @@ tools.Page.runtime.allPages = function() {
 	$('#cageFavorPoints > span').text($('#main_bn div[style*="persistent_bar_oracle.gif"]').text().trim());
 
 	// Stat Points
-	var _sp = $('#main_bntp a:contains("My Stats")').text().match(/\d+/g);
-	if(_sp !== null) {
+	if($('#main_bntp a:contains("My Stats")').text().match(/\d+/g) !== null) {
 		$('#cageStatPoints > span').text(_sp[0]);
 		$('#cageStatPoints > img').attr('src', 'http://image4.castleagegame.com/graphics/keep_upgrade_orange.gif');
 	} else {

@@ -2,6 +2,7 @@
 VER: 1.1.19β
 ------------------------------------------------------------------
 	FIX: Page loader (Summon monster/guild/etc.)
+	FIX: Some internals
 	CHG: jQuery UI updated to 1.8.17
 	CHG: Stats and generals display reworked
 	

@@ -12,7 +12,7 @@ com.initPort(com.port.castleAge);
 
 var _append = '';
 $.each(['css/cage.css', 'css/ca_cage.css', 'css/ca_stats.css', 'css/ca_general.css', 'css/ca_monster.css', 'css/ui.selectmenu.css', 'css/settings.css'], function(_i, _e) {
-	_append += '<link rel="stylesheet" type="text/css" href="' + getPath(_e) + '" >';
+	_append += '<link rel="stylesheet" type="text/css" href="' + getPath(_e) + '?_=' + Math.random() + '" >';
 });
 _append += '<link id="cageTheme" rel="stylesheet" type="text/css" href="' + getPath('css/dark-hive/jquery-ui.css') + '" >';
 _append += '<script type="text/javascript" language="javascript" src="' + getPath('js/jquery.js') + '"></script>';
@@ -29,7 +29,7 @@ $('#main_bntp, #nvbar_div_end, #hinvite_help').remove();
 $('#nvbar_table').empty();
 
 //rework stats
-$('#cageStatsContainer').append('<div class="cageStatsTextPos" style="width: 126px;left: 50px;"><strong class="cageStatsText">Gold</strong></div>').append('<div class="cageStatsTextPos" style="width: 110px;left: 217px;"><strong class="cageStatsText">Energy</strong></div>').append('<div class="cageStatsTextPos" style="width: 111px;left: 369px;"><strong class="cageStatsText">Health</strong></div>').append('<div class="cageStatsTextPos" style="width: 110px;left: 520px;"><strong class="cageStatsText">Stamina</strong></div>')
+$('#cageStatsContainer').append('<div class="cageStatsTextPos" style="width: 125px;left: 50px;"><strong class="cageStatsText">Gold</strong></div>').append('<div class="cageStatsTextPos" style="width: 109px;left: 225px;"><strong class="cageStatsText">Energy</strong></div>').append('<div class="cageStatsTextPos" style="width: 109px;left: 382px;"><strong class="cageStatsText">Health</strong></div>').append('<div class="cageStatsTextPos" style="width: 109px;left: 542px;"><strong class="cageStatsText">Stamina</strong></div>')
 
 tools.Page.runtime.allPages();
 

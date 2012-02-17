@@ -1,7 +1,6 @@
 // Alchemy
 tools.Page.runtime['alchemy.php'] = function() {
 
-	var start = new Date();
 	//Ingredients & Recipes
 	var _ingredients = {};
 	$('div.ingredientUnit').each(function(_i, _e) {
@@ -19,23 +18,24 @@ tools.Page.runtime['alchemy.php'] = function() {
 	});
 	//Recipes
 	$('td.statsTMainback').width(686);
-	$('div.recipeImgContainer').each(function(_i, _e) {
-		_e = $(_e);
-		_e.addClass('ui-corner-all').find('img').addClass('ui-corner-all').end().parent().css('height', 80);
-		var _count = $(_e).parent().find('> div:contains(x)');
-		if(_count.length === 0) {
-			_e.parent().find('> strong:contains(" of ")').addClass('alchemyItemNum');
-		} else {
-			var _need = parseInt(_count.text().replace('x', ''), 10), _have = 0;
-			if(_ingredients[$('>img', _e).attr('src')]) {
-				_have = _ingredients[$('>img', _e).attr('src')];
-				_have = _have > _need ? _need : _have;
+	window.setTimeout(function() {
+		$('div.recipeImgContainer').each(function(_i, _e) {
+			_e = $(_e);
+			_e.addClass('ui-corner-all').find('img').addClass('ui-corner-all').end().parent().css('height', 80);
+			var _count = $(_e).parent().find('> div:contains(x)');
+			if(_count.length === 0) {
+				_e.parent().find('> strong:contains(" of ")').addClass('alchemyItemNum');
+			} else {
+				var _need = parseInt(_count.text().replace('x', ''), 10), _have = 0;
+				if(_ingredients[$('>img', _e).attr('src')]) {
+					_have = _ingredients[$('>img', _e).attr('src')];
+					_have = _have > _need ? _need : _have;
+				}
+				_count.text(_have + '/' + _need).addClass('alchemyItemNum');
 			}
-			_count.text(_have + '/' + _need).addClass('alchemyItemNum');
-		}
-	});
-	_ingredients = null;
-
+		});
+		_ingredients = null;
+	}, 10);
 	//Hide incomplete recipes
 	$('div.statsT1:first').css('overflow', 'visible').append($('<div id="cageHideRecipe"><img src="http://image4.castleagegame.com/graphics/class_button_minus.jpg"><span>Hide incomplete recipes</span></div>').toggle(function() {
 		$('div.alchemyRecipeBackMonster:has(div.missing), div.alchemyQuestBack:has(div.missing), div.alchemyRecipeBackClass:has(div.missing), div.alchemyRecipeBack:has(div.missing)').hide();
@@ -75,5 +75,5 @@ tools.Page.runtime['alchemy.php'] = function() {
 	});
 	// remove some stuff
 	$('div.alchemySpaceRecipe, div.alchemySpaceClass, div.alchemySpaceMonster, div.alchemySpaceQuest').remove();
-	console.log((new Date() - start));
+
 };

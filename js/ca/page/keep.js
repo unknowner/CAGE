@@ -10,9 +10,6 @@ tools.Page.runtime['keep.php'] = function() {
 		'overflow' : 'hidden',
 		'cursor' : 'pointer'
 	});
-	// rearrange Items
-	$('div.statUnit a img').unwrap().unwrap().addClass('ui-corner-all');
-	$('div.statUnit').find('div:last:contains(X)').addClass('itemNumbers');
 	// Collapsed items/untits ...
 	$('div.statsTTitle').toggle(function() {
 		$(this).parents('div.statsT2:first').css({
@@ -112,17 +109,16 @@ tools.Page.runtime['keep.php'] = function() {
 		_data.bsi = Math.round((_data.att + _data.def) / _data.lvl * 100) / 100;
 		_data.lsi = Math.round((_data.eng + _data.sta * 2) / _data.lvl * 100) / 100;
 		_data.tsi = _data.bsi + _data.lsi;
-		$('div.keep_healer_section').prepend($('<div id="cageKeepStats">').append('<div>eAtt: ' + _data.eAt.toFixed(2) + '</div><div style="font-size:9px;">Effective Attack</div>')
-		.append('<div>eDef: ' + _data.eDe.toFixed(2) + '</div><div style="font-size:9px;">Effective Defense</div>')
-		.append('<div>BSI: ' + _data.bsi.toFixed(2) + '</div><div style="font-size:9px;">Battle Strength Index</div>')
-		.append('<div>LSI: ' + _data.lsi.toFixed(2) + '</div><div style="font-size:9px;">Levelling Speed Index</div>')
-		.append('<div>TSI: ' + _data.tsi.toFixed(2) + '</div><div style="font-size:9px;">Total Skillpoints per Level</div>')
-		.append('<div>Divine: ' + _divPow + '</div><div style="font-size:9px;">Calculated Divine Power</div>'));
+		$('div.keep_healer_section').prepend($('<div id="cageKeepStats">').append('<div>eAtt: ' + _data.eAt.toFixed(2) + '</div><div style="font-size:9px;">Effective Attack</div>').append('<div>eDef: ' + _data.eDe.toFixed(2) + '</div><div style="font-size:9px;">Effective Defense</div>').append('<div>BSI: ' + _data.bsi.toFixed(2) + '</div><div style="font-size:9px;">Battle Strength Index</div>').append('<div>LSI: ' + _data.lsi.toFixed(2) + '</div><div style="font-size:9px;">Levelling Speed Index</div>').append('<div>TSI: ' + _data.tsi.toFixed(2) + '</div><div style="font-size:9px;">Total Skillpoints per Level</div>').append('<div>Divine: ' + _divPow + '</div><div style="font-size:9px;">Calculated Divine Power</div>'));
 		_data = null;
 	} else {
 		_data = null;
 	}
-
+	// rearrange Items
+	window.setTimeout(function() {
+		$('div.statUnit a img').unwrap().unwrap().addClass('ui-corner-all');
+		$('div.statUnit').find('div:last:contains(X)').addClass('itemNumbers');
+	}, 10);
 	// Add stuff on others keep
 	if($('div.keep_main_section').length === 0) {
 		var _uid = $('td.statsTB > div *[uid]').attr('uid');
