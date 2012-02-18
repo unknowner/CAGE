@@ -171,10 +171,10 @@
 }
 #cageGeneralImageCharge {
 	width: 100%;
-	background-color: #4F4;
+	background-color: #26B3F7;
 	height: 5px;
 	left: 0;
 	position: absolute;
-	border-radius: 0;
 	display: inline-block;
+	opacity: 0.8;
 }

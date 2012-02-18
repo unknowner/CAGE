@@ -2,7 +2,7 @@
 version = {
 	major : 1,
 	minor : 1,
-	revision : 18,
+	revision : 20,
 	state : 'b',
 	string : function() {
 		return version.major + '.' + version.minor + '.' + version.revision + version.state;

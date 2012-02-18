@@ -24,15 +24,14 @@ tools.ArmyCleaner.start = function() {
 
 	console.log('ArmyCleaner - start');
 	tools.ArmyCleaner.runtimeUpdate();
-	tools.ArmyCleaner.runtime.count = /\d+/.exec($('#main_bntp a[href*="army.php"]').text());
-	if(tools.ArmyCleaner.runtime.count !== null) {
+	tools.ArmyCleaner.runtime.count = parseInt($('div:contains("Current Army Size"):last').next().text(), 10);
+	if(tools.ArmyCleaner.runtime.count >0) {
 		$('#AjaxLoadIcon').show();
 		$('#app_body table.layout table:eq(1)').parent('div:first').css({
 			'height' : 28,
 			'overflow' : 'hidden',
 			'display' : 'block'
 		});
-		tools.ArmyCleaner.runtime.count = tools.ArmyCleaner.runtime.count[0];
 		tools.Facebook.CAPlayers(function(_ids) {
 			tools.ArmyCleaner.runtime.cafriends = _ids;
 			tools.ArmyCleaner.runtime.text = $('div:contains("The Following People Have Joined Your Army."):last');

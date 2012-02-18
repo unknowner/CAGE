@@ -40,8 +40,12 @@ tools.General.runtimeUpdate = function() {
 //get current general from CA
 tools.General.get = function() {
 	if($('div[style*="general_plate.gif"] > div:first').length > 0) {
+		var _old = tools.General.current;
 		tools.General.current = $('div[style*="general_plate.gif"] > div:first').text().trim();
-		tools.General.set();
+		if(_old !== tools.General.current){
+			$('#cageGeneralImageCharge').remove();
+			$('#cageGeneralImage').fadeOut('fast',tools.General.set)
+		}
 	}
 };
 // Set general image & name
@@ -51,26 +55,26 @@ tools.General.set = function() {
 	$('#cageGeneralAttack').text(_g.attack);
 	$('#cageGeneralDefense').text(_g.defense);
 	$('#cageGeneralText').text(_g.text);
-	if(_g.charge) {
-		$('#cageGeneralImageContainer').append('<div id="cageGeneralImageCharge" style="width:' + Math.max(94, _g.charge) + '%;' + (_g.charge < 100 ? '' : 'background-color:#4F4;') + '"></div>')
-	} else {
-		$('#cageGeneralImageCharge').remove();
+	if(_g.charge){
+		$('#cageGeneralImageContainer').append('<div id="cageGeneralImageCharge" style="width:' + Math.max(5, _g.charge) + '%;' + (_g.charge < 100 ? '' : 'background-color:#4F4;') + '"></div>')
 	}
 	$('#cageGeneralImage').attr('src', _g.image).fadeIn('slow');
 };
 // Set General by name
 tools.General.setByName = function(_name, _callback) {
 	if(_name !== tools.General.current) {
+		$('#cageGeneralImageCharge').remove();
 		var _g = tools.General.runtime.general[_name];
 		if(_g !== null) {
-			$('#cageGeneralImage').fadeOut('slow');
-			get('generals.php?item=' + _g.item + '&itype=' + _g.itype + '&bqh=' + CastleAge.bqh, function(_data) {
-				tools.General.parsePage(_data);
-				tools.General.current = _name;
-				tools.General.set();
-				if(_callback !== undefined) {
-					_callback();
-				}
+			$('#cageGeneralImage').fadeOut('fast', function(){
+				get('generals.php?item=' + _g.item + '&itype=' + _g.itype + '&bqh=' + CastleAge.bqh, function(_data) {
+					tools.General.parsePage(_data);
+					tools.General.current = _name;
+					tools.General.set();
+					if(_callback !== undefined) {
+						_callback();
+					}
+				});
 			});
 		}
 	}
@@ -87,33 +91,22 @@ tools.General.update = function() {
 };
 tools.General.parsePage = function(_data) {
 	console.log('parse General page');
-	_data = _data ? _data : $('#app_body');
+	_data = _data ? $(_data) : $('#app_body');
 	$('div.generalSmallContainer2 div.general_pic_div3', _data).each(function(i, e) {
-		var $_this = $(this);
-		var $_image = $('form:has(input[name="item"]) input.imgButton', e);
-		var $_general = $_image.parents('div.generalSmallContainer2:first');
-		var _image = $_image.attr('src');
-		var _name = $_general.children('div.general_name_div3:first').text().trim();
-		var _item = $_this.parent().find('input[name="item"]').attr('value');
-		var _itype = $_this.parent().find('input[name="itype"]').attr('value');
-		var _text = $_general.children('div:last').children('div').html().trim().replace(/<br>/g, ' ');
-		var _stats = $_general.find('div.generals_indv_stats_padding');
-		var _att = _stats.children('div:eq(0)').text().trim();
-		var _def = _stats.children('div:eq(1)').text().trim();
-		var _lvl = $_general.find('div:contains("Level"):last').text().trim();
-		var _charge = $_general.find('div:contains("Charged"):last').text().trim();
-		_charge = _charge.length > 0 ? /\d+/.exec(_charge)[0] : null;
+		var $_this = $(this), $_image = $('form:has(input[name="item"]) input.imgButton', e), $_general = $_image.parents('div.generalSmallContainer2:first'), _name = $_general.children('div.general_name_div3:first').text().trim(), _stats = $_general.find('div.generals_indv_stats_padding'), _charge = $_general.find('div:contains("Charged"):last').text().trim();
 		tools.General.runtime.general[_name] = {
 			name : _name,
-			image : _image,
-			item : _item,
-			itype : _itype,
-			attack : _att,
-			defense : _def,
-			text : _text,
-			level : _lvl,
-			charge : _charge
+			image : $_image.attr('src'),
+			item : $_this.parent().find('input[name="item"]').attr('value'),
+			itype : $_this.parent().find('input[name="itype"]').attr('value'),
+			attack : _stats.children('div:eq(0)').text().trim(),
+			defense : _stats.children('div:eq(1)').text().trim(),
+			text : $_general.children('div:last').children('div').html().trim().replace(/<br>/g, ' '),
+			level : $_general.find('div:contains("Level"):last').text().trim()
 		};
+		if(_charge.length > 0) {
+			tools.General.runtime.general[_name].charge = /\d+/.exec(_charge)[0];
+		}
 	});
 	$('#cageGeneralSelector').empty().append('<span id="cageSelectorInfo" class="ui-state-active ui-corner-all"></span><div id="cageFavouriteGenerals"></div><div id="cageAllGenerals"></div>').prepend($('<img style="position: absolute;left:3px;cursor:pointer;margin-top:-9px;height:18px;" src="http://image4.castleagegame.com/graphics/popup_close_button.png">').click(function() {
 		if(tools.General.runtime.onlyFavourites == true) {
@@ -131,7 +124,6 @@ tools.General.parsePage = function(_data) {
 	for(var i = 0, len = _names.length; i < len; i++) {
 		var _e = tools.General.runtime.general[_names[i]];
 		$('#cageAllGenerals').append($('<div>').append($('<img src="' + _e.image + '" alt="' + _e.name + '" />').click(function() {
-			console.log($(this).attr('alt'));
 			tools.General.setByName($(this).attr('alt'));
 			$('#cageGeneralSelector').slideToggle('slow');
 		}).hover(function() {

@@ -27,6 +27,8 @@ tools.Stash.work = function() {
 			$('b.money').text($('b.money').text());
 		}
 		$('#gold_current_value').text('$0');
+		console.log(tools.Stash.runtime.general);
+		console.log(tools.General.current);
 		if(tools.Stash.runtime.general !== tools.General.current) {
 			tools.General.setByName(tools.Stash.runtime.general, tools.Stash.done);
 		} else {
@@ -43,5 +45,5 @@ tools.Stash.init = function() {
 			$(this).attr('disabled', 'true').css('cursor', 'wait');
 			tools.Stash.start();
 		}
-		}));
+	}));
 };
