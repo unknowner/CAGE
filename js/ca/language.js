@@ -37,7 +37,7 @@ var language = {
 	//Assister
 	assisterButton : 'Assister',
 	assisterSetName : 'Assister',
-	assisterSetReqPermDesc : 'If you call the assister and no CTAs on your friends news feeds are commented/liked you need to give Castle Age the permisson to post in your name. Posting at monsters works all the time without this permisson. You can remove the permission anytime you like (<a href:"http://www.facebook.com/settings?tab:applications&app_id:46755028429" target:"_blank">Link</a>). If a window just pops up and closes you already have given the permission.',
+	assisterSetReqPermDesc : 'If you call the assister and no CTAs on your friends news feeds are commented/liked you need to give Castle Age the permisson to post in your name. Posting at monsters works all the time without this permisson. You can remove the permission anytime you like (<a href="http://www.facebook.com/settings?tab=applications&app_id=46755028429" target:"_blank">Link</a>). If a window just pops up and closes you already have given the permission.',
 	assisterSetReqPermAction : 'Request permission',
 	assisterSetMaxStamAction : 'Maximun stamina for CTAs',
 	assisterSetMessDesc : 'Append your personal messages to the monster chat and your Facebook posts.',

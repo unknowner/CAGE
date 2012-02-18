@@ -21,7 +21,7 @@ tools.Heal.done = function() {
 	$('#cageHeal').removeAttr('disabled').css('cursor', 'pointer');
 };
 tools.Heal.init = function() {
-	$('#cageStatsContainer').append($('<button id="cageHeal"></button>').click(function() {
+	$('#cageStatsContainer').append($('<button id="cageHeal" title="Heal to full health"></button>').click(function() {
 		$(this).attr('disabled', true).css('cursor', 'wait');
 		tools.Heal.start();
 	}));

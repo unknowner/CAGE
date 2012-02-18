@@ -3,7 +3,6 @@ tools['Page'].runtime['goblin_emp.php'] = function() {
 
 	console.log('Page: goblin_emp.php');
 	addFunction(function() {
-
 		gob_mix = function() {
 			$('body').animate({
 				scrollTop : 0
@@ -25,8 +24,7 @@ tools['Page'].runtime['goblin_emp.php'] = function() {
 				data : 'ajax=1&signed_request=' + $('#signed_request').attr('value') + '&g_item_mix=' + _items.join(','),
 				type : 'POST',
 				success : function(data, textStatus, jqXHR) {
-					$('#app_body_container').append($(jqXHR.responseText).filter('script'));
-					ajaxPageDone(data, 'globalContainer');
+					ajaxPageDone(jqXHR.responseText, 'globalContainer');
 					jqXHR = data = undefined;
 				}
 			});

@@ -17,8 +17,6 @@ tools.Page.init = function() {
 		}
 		tools.General.get();
 	});
-	// Container for msg ect.
-	$('#globalContainer').append('<div id="cageTemp" style="display:none;">');
 };
 tools.Page.loadPage = function(_page) {
 	console.log('Loadpage:' + _page);
@@ -99,25 +97,28 @@ tools.Page.ajaxPageDone = function() {
 	ajaxPageDone = function(data, div, anchor) {
 		stopTimers = false;
 		ajaxPerforming = false;
-		data = $(data);
+		$data = $(data);
 		if(div === 'globalContainer') {
-			$('#cageTemp').empty().append(data.filter('div[id]:not(.game)'));
-			$('#main_sts').html($('#main_sts', data).html());
-			$('#app_body_container').html($('#app_body_container', data).html());
+			$('#main_sts').html($('#main_sts', $data).html());
+			$('#app_body_container').html($('#app_body_container', $data).html()).append($data.filter('div[id]:not(.game)'));
 		} else {
 			$('#' + div).html(data);
 		}
+		var script = document.createElement("script");
+		script.type = "text/javascript";
+		script.text = $(data).filter('script').text();
+		$('#app_body_container')[0].appendChild(script);
 		firePageURL();
 		$('#AjaxLoadIcon').hide();
 		centerPopups();
-		if(data.anchor) {
+		if(anchor) {
 			$('#' + anchor).animate({
 				scrollTop : 0
 			}, 'slow');
 		}
 		startAllTimers();
-		FB.XFBML.parse(document.getElementById(data.div));
-		data = null;
+		FB.XFBML.parse(document.getElementById(div));
+		delete script, $data, data, div, anchor;
 	};
 };
 tools.Page.ajaxLinkSend = function() {
@@ -150,8 +151,11 @@ tools.Page.ajaxLinkSend = function() {
 					cookie : true,
 					xfbml : true
 				});
-				$('#app_body_container').append($(jqXHR.responseText).filter('script'));
-				ajaxPageDone(data, div);
+				/*var _s = $(jqXHR.responseText).filter('script');
+				 $('#cageTemp').empty().append(_s);
+				 console.log($(jqXHR.responseText).filter('script').text());
+				 $('#app_body_container').append($(jqXHR.responseText).filter('script'));*/
+				ajaxPageDone(jqXHR.responseText, div);
 				jqXHR = data = undefined;
 			}
 		});
@@ -186,8 +190,10 @@ tools.Page.ajaxFormSend = function() {
 			data : params,
 			type : 'POST',
 			success : function(data, textStatus, jqXHR) {
-				$('#app_body_container').append($(jqXHR.responseText).filter('script'));
-				ajaxPageDone(data, div, anchor);
+				/*$('#cageTemp').empty().append($(jqXHR.responseText).filter('script'));
+				 console.log($(jqXHR.responseText).filter('script').text());
+				 //$('#app_body_container').append($(jqXHR.responseText).filter('script'));*/
+				ajaxPageDone(jqXHR.responseText, div, anchor);
 				jqXHR = data = undefined;
 			}
 		});
