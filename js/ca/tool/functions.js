@@ -38,7 +38,6 @@ tools.Functions.cageRePos = function() {
 		});
 		var _width = _sp.width() == 0 ? _sp.find('>div:first').width() : _sp.width();
 		var _margin = (770 - _width) / 2;
-		console.log(_width);
 		if(top) {
 			_sp.css('top', top);
 		}
@@ -117,7 +116,7 @@ tools.Functions.PositionAndDisplayPopupAtTop = function() {
 
 tools.Functions.PopupAtMousePosition = function() {
 	window['PopupAtMousePosition'] = function(event, fb_js_var) {
-		cageRePos(fb_js_var);
+		cageRePos(fb_js_var, event.pageY + document.body.scrollTop - 326);
 	};
 };
 tools.Functions.PositionAndDisplayPopupAutoCenter = function() {
