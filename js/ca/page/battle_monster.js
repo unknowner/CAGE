@@ -66,4 +66,60 @@ tools['Page'].runtime['battle_monster.php'] = function() {
 		});
 	}
 	
+	// monster stats
+	var _bossReg = new RegExp([
+		'monster_\\w+_large.jpg',
+		'boss_\\w+_large.jpg',
+		'boss_\\w+_big.jpg',
+		'nm_\\w+_large.jpg',
+		'nm_\\w+_large2.jpg',
+		'monster_\\w+_large_ca.jpg',
+		'seamonster_(?!ship_health)\\w*.jpg',
+		'seamonster_dead.jpg',
+		'dragon_monster_\\w+.jpg',
+		'boss_\\w+.jpg',
+		'\\w+_large.jpg',
+	].join('|')), _img = false;
+	$('#app_body div > img:first-child').each(function(){
+		if(_bossReg.exec($(this).attr('src')) !== null){
+			_img = $(this);
+			return false;
+		}
+	});
+	if(_img !== false){
+		_img.parent('div:first').css('position', 'relative').append('<div id="cageMonsterStats">');
+		var $this, _attackers = 0, _temp = '', _max, _levels, _hod, $stats = $('#cageMonsterStats');
+		$('td.dragonContainer table tr td:eq(1) table tr').each(function(){
+			$this = $(this);
+			if($this.text() !== ''){
+				if(/Levels|Heart of Darkness/.test($this.text()) === true){
+					if(_temp !== ''){
+						$stats.append(_temp + _attackers + '</span>' + _max +'</div>');
+						_attackers = 0;
+						_temp = '';
+						_max = '';
+					}
+					_attackers = 0;
+					_hod = 'Levels ';
+					if(/Levels/.test($this.text()) === true){
+						_max = '/' + /\[(\d+)\s+max\]/.exec($this.text())[1];
+						_levels = $this.text().match(/\d+-\d+|\d+\+|\d+/);
+					} else {
+						_hod = 'Heart of Darkness ';
+						_levels = '';
+						_max = '';
+					}
+					_temp = '<div><span style="display:inline-block;font-weight:bold;width:125px;">'+ _hod + _levels + '</span><span style="display:inline-block;width:25px;text-align:right;">';
+					
+				} else {
+					_attackers += 1;
+				}
+			}
+		});
+		if(_temp !== ''){
+			$stats.append(_temp + _attackers + '</span>' + _max +'</div>');
+		} else {
+			$stats.append('<div><span style="display:inline-block;font-weight:bold;width:125px;">Attackers: </span><span style="display:inline-block;width:25px;text-align:right;">' + _attackers + '</span></div>')
+		}
+	}
 };
