@@ -1,7 +1,9 @@
 ==================================================================
-VER: 1.1.21β
+VER: 1.1.22β
 ------------------------------------------------------------------
 	ADD: Health per action for conquest battles
+	ADD: More stats for some monster
+	FIX: Navigation broken when zoom in/out to much
 
 ==================================================================
 VER: 1.1.21β

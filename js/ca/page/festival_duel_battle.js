@@ -6,10 +6,7 @@ tools['Page'].runtime['festival_duel_battle.php'] = function() {
 	var _sortOrder = item.get('cagePageFestivalDuelOrder', 'descending');
 
 	function sortFestivalRank() {
-		var _battles = {};
-		var _battleSorted = [];
-		var _divs = $('table.layout div[style*="/graphics/festival_duelchampion/festival_duelchamp_line.jpg"]');
-		var _parent = _divs.parent();
+		var _battles = {}, _battleSorted = [], _divs = $('table.layout div[style*="/graphics/festival_duelchampion/festival_duelchamp_line.jpg"]'), _parent = _divs.parent();
 		_divs.each(function(_i, _e) {
 			var _rank = ('0' + /Rank.*?(\d+)/.exec($(_e).text())[1]).slice(-2) + ('0' + _i).slice(-2);
 			_battles[_rank] = _e;

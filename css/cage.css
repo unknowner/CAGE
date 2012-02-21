@@ -4,6 +4,7 @@
 	font-family: Trebuchet MS, Tahoma, Verdana, Arial, sans-serif;
 }
 #cageToolsContainer {
+	white-space: nowrap;
 	position: fixed;
 	top: 122px;
 	padding: 0;
@@ -14,6 +15,7 @@
 	box-shadow: 0 10px 20px black;
 }
 #cageMenu {
+	white-space: nowrap;
 	position: fixed;
 	height: 28px;
 	z-index: 4;
@@ -31,7 +33,7 @@
 	position: relative;
 	top: -13px;
 }
-#cageMenu ul li {
+#cageMenu > ul > li {
 	display: inline-block;
 }
 #cageMenu button {
@@ -41,10 +43,11 @@
 .cageSubMenu {
 	display: none;
 	position: absolute;
-	width: 160px;
+	text-align: left;
 }
 .cageSubMenu button {
-	width: 160px;
+	width: 100%;
+	min-width: 100px;
 	text-align: left;
 	box-shadow: 0 10px 20px black;
 }

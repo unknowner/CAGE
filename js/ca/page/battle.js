@@ -10,12 +10,13 @@ tools['Page'].runtime['battle.php'] = function() {
 	var _sortType = item.get('cagePageBattleType', 'Battle Rank');
 
 	function renderBattles() {
-		$('table.layout table:last').hide().empty();
+		var _table = $('table.layout table:last');
+		_table.hide().empty();
 		$.each(_battlesSorted, function(_i, _e) {
-			$('table.layout table:last').append(_battles[_e]);
-			$('table.layout table:last tbody').append('<tr><td colspan="5"><div style="background: #000;height: 1px;margin: 0 5px;"></td></tr>');
+			_table.append(_battles[_e]);
+			_table.append('<tr><td colspan="5"><div style="background: #000;height: 1px;margin: 0 5px;"></td></tr>');
 		});
-		$('table.layout table:last').prepend('<tr><td colspan="5"><div style="background: #000;height: 1px;margin: 0 5px;"></td></tr>').prepend(_heading).show();
+		_table.prepend('<tr><td colspan="5"><div style="background: #000;height: 1px;margin: 0 5px;"></td></tr>').prepend(_heading).show();
 	}
 
 	function chooseRank() {

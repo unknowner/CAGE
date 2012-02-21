@@ -25,7 +25,8 @@ tools['Page'].runtime['battle_monster.php'] = function() {
 		});
 	}
 
-
+	var _defense = tools['Page'].runtime['defense'](),
+		_stun = tools['Page'].runtime['stun_bar']().replace('Need ', '');
 
 	// rearrange attack result
 	if($('div.result').length > 0) {
@@ -36,7 +37,7 @@ tools['Page'].runtime['battle_monster.php'] = function() {
 			'overflow' : 'hidden'
 		});
 		// add monster damage/health/... to result
-		$('div.result:has(img[src*="graphics/button_monster_attack_again.gif"]) span.result_body div:last, div.result:contains(" Again!")').append('<div id="MonsterResultDamage"><div>' + _monstername.text() + '</div><div>' + tools['Page'].runtime['defense']() + '</div><div>Your Damage/Activity: ' + $('td.dragonContainer tr:has(a[href*="' + CastleAge.userId + '"]) > td:last').text().trim() + '</div></div>');
+		$('div.result:has(img[src*="graphics/button_monster_attack_again.gif"]) span.result_body div:last, div.result:contains(" Again!")').append('<div id="MonsterResultDamage"><div>' + _monstername.text() + '</div><div>' + _defense + '</div><div>' + _stun + '</div><div>Your Damage/Activity: ' + $('td.dragonContainer tr:has(a[href*="' + CastleAge.userId + '"]) > td:last').text().trim() + '</div></div>');
 		if($('div.result:contains(" Again!")').length > 0) {
 			$('#MonsterResultDamage').css('float', 'none');
 		}
@@ -52,8 +53,6 @@ tools['Page'].runtime['battle_monster.php'] = function() {
 		});
 	}
 	
-	
-	tools['Page'].runtime['stun_bar']();
 	tools['Page'].runtime['battleStats']();
 	
 };
@@ -89,7 +88,9 @@ tools['Page'].runtime['stun_bar'] = function() {
 		var _text = _stun.parent().next().children('div:first');
 		_stun = _stun[0].style.width.substr(0, 5);
 		_text.text(_text.text() + ' ' + _stun + (_stun.indexOf('%') > -1 ? '' : '%'));
+		return _text.text();
 	}
+	return '';
 }
 
 tools['Page'].runtime['battleStats'] = function(){
