@@ -24,8 +24,12 @@ tools.cage.settings = function() {
 	tools.Settings.text('You should reload Castle Age after loading settings.');
 	tools.Settings.button(language.cageSaveSettings, tools.cage.saveData);
 	tools.Settings.textbox(language.cageLoadSettings, '', null, tools.cage.loadData);
+	
+	tools.Settings.text('');
+	tools.Settings.text(language.cageSetReqPermDesc);
+	tools.Settings.button(language.cageSetReqPermAction, tools.cage.requestPermisson);
+	
 };
-
 tools.cage.runtimeUpdate = function() {
 	if(!tools.cage.runtime) {
 		tools.cage.runtime = {};
@@ -65,7 +69,20 @@ tools.cage.runtimeUpdate = function() {
 	}
 	$('#cageTheme').attr('href', tools.cage.runtime.themes[tools.cage.runtime.theme] + 'jquery-ui.css');
 };
-
+/*
+ * Request permisson to let CA post for user
+ */
+tools.cage.requestPermisson = function() {
+	addFunction(function() {
+		FB.login(function(response) {
+			if(response.status === 'connected'){
+				localStorage[FB.getAuthResponse().userID + '_' + 'permissions'] = '"1.1.21"';
+			}
+		}, {
+			scope : 'publish_stream, read_friendlists'
+		});
+	}, null, true, true);
+};
 tools.cage.clearSavedData = function() {
 
 	Object.keys(localStorage).forEach(function(key) {

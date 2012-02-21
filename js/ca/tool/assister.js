@@ -4,9 +4,6 @@ tools.Assister.settings = function() {
 
 	//tools.Assister.runtimeUpdate();
 	tools.Settings.heading(language.assisterSetName);
-	tools.Settings.text(language.assisterSetReqPermDesc);
-	tools.Settings.button(language.assisterSetReqPermAction, tools.Assister.requestPermisson);
-	tools.Settings.text('');
 	tools.Settings.textbox(language.assisterSetMaxStamAction, tools.Assister.runtime.Stamina, 'cageAssisterStamina');
 	tools.Settings.text(language.assisterSetMessDesc);
 	tools.Settings.textbox(language.assisterSetMonMessAction, tools.Assister.runtime.monsterMessage, 'cageAssisterMonsterMessage');
@@ -40,18 +37,6 @@ tools.Assister.runtimeUpdate = function() {
 			tools.Assister.runtime.assisterLists[_e] = _e;
 		});
 	});
-};
-/*
- * Request permisson to let CA post for user
- */
-tools.Assister.requestPermisson = function() {
-	addFunction(function() {
-		FB.login(function(response) {
-			console.log(response);
-		}, {
-			scope : 'publish_stream'
-		});
-	}, null, true, true);
 };
 /*
  * Get CTAs from Livefeed

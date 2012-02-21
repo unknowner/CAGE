@@ -56,9 +56,10 @@ tools.General.set = function() {
 	$('#cageGeneralDefense').text(_g.defense);
 	$('#cageGeneralText').text(_g.text);
 	if(_g.charge){
-		$('#cageGeneralImageContainer').append('<div id="cageGeneralImageCharge" style="width:' + Math.max(5, _g.charge) + '%;' + (_g.charge < 100 ? '' : 'background-color:#4F4;') + '"></div>')
+		$('#cageGeneralImageContainer').css('opacity', 0).append('<div id="cageGeneralImageCharge" style="width:' + Math.max(5, _g.charge) + '%;' + (_g.charge < 100 ? '' : 'background-color:#4F4;') + '"></div>')
 	}
-	$('#cageGeneralImage').attr('src', _g.image).fadeIn('slow');
+	$('#cageGeneralImage').attr('src', _g.image).show();
+	$('#cageGeneralImageContainer').show().fadeIn('slow');
 };
 // Set General by name
 tools.General.setByName = function(_name, _callback) {
@@ -67,6 +68,7 @@ tools.General.setByName = function(_name, _callback) {
 		var _g = tools.General.runtime.general[_name];
 		if(_g !== null) {
 			$('#cageGeneralImage').fadeOut('fast', function(){
+				$('#cageGeneralImageContainer').hide();
 				get('generals.php?item=' + _g.item + '&itype=' + _g.itype + '&bqh=' + CastleAge.bqh, function(_data) {
 					tools.General.parsePage(_data);
 					tools.General.current = _name;

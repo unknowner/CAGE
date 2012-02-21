@@ -116,7 +116,7 @@ tools.Functions.PositionAndDisplayPopupAtTop = function() {
 
 tools.Functions.PopupAtMousePosition = function() {
 	window['PopupAtMousePosition'] = function(event, fb_js_var) {
-		cageRePos(fb_js_var, event.pageY + document.body.scrollTop - 326);
+		cageRePos(fb_js_var, Math.max(event.pageY + document.body.scrollTop - 326, 90 + document.body.scrollTop));
 	};
 };
 tools.Functions.PositionAndDisplayPopupAutoCenter = function() {

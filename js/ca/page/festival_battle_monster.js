@@ -25,22 +25,6 @@ tools['Page'].runtime['festival_battle_monster.php'] = function() {
 		});
 	}
 
-	// add percentage to defense/forcefield/..
-	var _defense = $('img[src*="bar_dispel.gif"],[src*="nm_green.jpg"],[src*="seamonster_ship_health.jpg"]').parent()[0],
-			_defRegs = [
-				'^Castle Defense$',
-				'^Ragnarok\'s Glacial Armor$',
-				'^Your Ship\'s Defense$',
-				'^Illvasa, Plateau City\'s Defense$',
-				'^Skaar\'s Mana Forcefield$',
-				'^Party Health.Strength$'
-			], 
-			_defText = $('#app_body div:containsRegex(/' + _defRegs.join('|') + '/):first');
-	if(_defense && _defense.style && _defense.style.width !== "" && _defText && _defText.text()) {
-		var _percentage = _defense.style.width.substr(0, 5);
-		_defText.css('left', 51).text(_defText.text() + ' (' + _percentage + (_percentage.indexOf('%') > -1 ? ')' : '%)'));
-	}
-
 	// rearrange attack result
 	if($('div.result').length > 0) {
 		//resize Elite Guard boxes
@@ -50,7 +34,7 @@ tools['Page'].runtime['festival_battle_monster.php'] = function() {
 			'overflow' : 'hidden'
 		});
 		// add monster damage/health/... to result
-		$('div.result:has(img[src*="graphics/button_monster_attack_again.gif"]) span.result_body div:last, div.result:contains(" Again!")').append('<div id="MonsterResultDamage"><div>' + _monstername.text() + '</div><div>' + _defText.text() + '</div><div>Your Damage/Activity: ' + $('td.dragonContainer tr:has(a[href*="' + CastleAge.userId + '"]) > td:last').text().trim() + '</div></div>');
+		$('div.result:has(img[src*="graphics/button_monster_attack_again.gif"]) span.result_body div:last, div.result:contains(" Again!")').append('<div id="MonsterResultDamage"><div>' + _monstername.text() + '</div><div>' + tools['Page'].runtime['defense']() + '</div><div>Your Damage/Activity: ' + $('td.dragonContainer tr:has(a[href*="' + CastleAge.userId + '"]) > td:last').text().trim() + '</div></div>');
 		if($('div.result:contains(" Again!")').length > 0) {
 			$('#MonsterResultDamage').css('float', 'none');
 		}
@@ -66,60 +50,7 @@ tools['Page'].runtime['festival_battle_monster.php'] = function() {
 		});
 	}
 	
-	// monster stats
-	var _bossReg = new RegExp([
-		'monster_\\w+_large.jpg',
-		'boss_\\w+_large.jpg',
-		'boss_\\w+_big.jpg',
-		'nm_\\w+_large.jpg',
-		'nm_\\w+_large2.jpg',
-		'monster_\\w+_large_ca.jpg',
-		'seamonster_(?!ship_health)\\w*.jpg',
-		'seamonster_dead.jpg',
-		'dragon_monster_\\w+.jpg',
-		'boss_\\w+.jpg',
-		'\\w+_large.jpg',
-	].join('|')), _img = false;
-	$('#app_body div > img:first-child').each(function(){
-		if(_bossReg.exec($(this).attr('src')) !== null){
-			_img = $(this);
-			return false;
-		}
-	});
-	if(_img !== false){
-		_img.parent('div:first').css('position', 'relative').append('<div id="cageMonsterStats">');
-		var $this, _attackers = 0, _temp = '', _max, _levels, _hod, $stats = $('#cageMonsterStats');
-		$('td.dragonContainer table tr td:eq(1) table tr').each(function(){
-			$this = $(this);
-			if($this.text() !== ''){
-				if(/Levels|Heart of Darkness/.test($this.text()) === true){
-					if(_temp !== ''){
-						$stats.append(_temp + _attackers + '</span>' + _max +'</div>');
-						_attackers = 0;
-						_temp = '';
-						_max = '';
-					}
-					_attackers = 0;
-					_hod = 'Levels ';
-					if(/Levels/.test($this.text()) === true){
-						_max = '/' + /\[(\d+)\s+max\]/.exec($this.text())[1];
-						_levels = $this.text().match(/\d+-\d+|\d+\+|\d+/);
-					} else {
-						_hod = 'Heart of Darkness ';
-						_levels = '';
-						_max = '';
-					}
-					_temp = '<div><span style="display:inline-block;font-weight:bold;width:125px;">'+ _hod + _levels + '</span><span style="display:inline-block;width:25px;text-align:right;">';
-					
-				} else {
-					_attackers += 1;
-				}
-			}
-		});
-		if(_temp !== ''){
-			$stats.append(_temp + _attackers + '</span>' + _max +'</div>');
-		} else {
-			$stats.append('<div><span style="display:inline-block;font-weight:bold;width:125px;">Attackers: </span><span style="display:inline-block;width:25px;text-align:right;">' + _attackers + '</span></div>')
-		}
-	}
+	tools['Page'].runtime['stun_bar']();
+	tools['Page'].runtime['battleStats']();
+
 };
