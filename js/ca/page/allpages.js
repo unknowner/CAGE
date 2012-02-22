@@ -11,6 +11,22 @@ tools.Page.runtime.allPages = function() {
 		CastleAge.bqh = $('form input[name="bqh"]:first').val();
 	}
 
+	// remove 'more' from stats
+	$('#main_ststb div:last-child::contains("more")').each(function() {
+		$(this).html($(this).html().replace('more', ''));
+	});
+	// Favour points
+	$('#cageFavorPoints > span').text($('#main_bn div[style*="persistent_bar_oracle.gif"]').text().trim());
+
+	// Stat Points
+	if($('#main_bntp a:contains("My Stats")').text().match(/\d+/g) !== null) {
+		$('#cageStatPoints > span').text(_sp[0]);
+		$('#cageStatPoints > img').attr('src', 'http://image4.castleagegame.com/graphics/keep_upgrade_orange.gif');
+	} else {
+		$('#cageStatPoints > span').text('');
+		$('#cageStatPoints > img').attr('src', 'http://image4.castleagegame.com/graphics/keep_upgrade_green.gif');
+	}
+
 	//Stats background
 	$('#main_sts').css('background', $('#main_bn').css('backgroundImage'));
 	window.setTimeout(function() {
@@ -70,18 +86,6 @@ tools.Page.runtime.allPages = function() {
 
 	// fix loader
 	$('#AjaxLoadIcon').removeClass('shield_wait');
-
-	// Favour points
-	$('#cageFavorPoints > span').text($('#main_bn div[style*="persistent_bar_oracle.gif"]').text().trim());
-
-	// Stat Points
-	if($('#main_bntp a:contains("My Stats")').text().match(/\d+/g) !== null) {
-		$('#cageStatPoints > span').text(_sp[0]);
-		$('#cageStatPoints > img').attr('src', 'http://image4.castleagegame.com/graphics/keep_upgrade_orange.gif');
-	} else {
-		$('#cageStatPoints > span').text('');
-		$('#cageStatPoints > img').attr('src', 'http://image4.castleagegame.com/graphics/keep_upgrade_green.gif');
-	}
 
 	// Random popups (quests etc.)
 	$('div.result_popup_message').css({

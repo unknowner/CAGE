@@ -28,9 +28,6 @@ $('center:first').prepend('<div id="cageContainer"><div id="cageStatsContainer">
 $('#main_bntp, #nvbar_div_end, #hinvite_help').remove();
 $('#nvbar_table').empty();
 
-//rework stats
-$('#cageStatsContainer').append('<div class="cageStatsTextPos" style="width: 125px;left: 50px;"><strong class="cageStatsText">Gold</strong></div>').append('<div class="cageStatsTextPos" style="width: 109px;left: 225px;"><strong class="cageStatsText">Energy</strong></div>').append('<div class="cageStatsTextPos" style="width: 109px;left: 382px;"><strong class="cageStatsText">Health</strong></div>').append('<div class="cageStatsTextPos" style="width: 109px;left: 542px;"><strong class="cageStatsText">Stamina</strong></div>')
-
 tools.Page.runtime.allPages();
 
 CastleAge.startInterval = window.setInterval(function() {
