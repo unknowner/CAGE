@@ -22,7 +22,7 @@ var language = {
 	settingsButton : 'Settings',
 
 	// Guild abilities
-	abilitiesButton : 'Abilities',
+	abilitiesButton : 'Guild Class',
 
 	// Army Filler
 	armyFillerGetArmy : 'Getting army members...',
@@ -68,5 +68,10 @@ var language = {
 	monsterButton : 'Monsters',
 	monsterSetName : 'Monsters',
 	monsterSetCloseInstant : 'Close after Monster choosen',
-	monsterSetTransparent : 'List is semitransparent'
+	monsterSetTransparent : 'List is semitransparent',
+	monsterSetDescMonster : 'Choose where CAGE should look for Monsters.',
+	monsterSetMonster : 'Monsters',
+	monsterSetFestival1 : 'Tower of Transcendence I',
+	monsterSetFestival2 : 'Tower of Transcendence II',
+	monsterSetRaid : 'Raids'
 };

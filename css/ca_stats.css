@@ -247,10 +247,10 @@ div.st_row_2 {
 div.lvlBr {
 	position: absolute;
 	background: #555;
-	width: 124px;
+	width: 127px;
 	height: 11px !important;
 	top: 4px;
-	left: 26px;
+	left: 23px;
 	border-radius: 3px;
 	border: 1px inset;
 }

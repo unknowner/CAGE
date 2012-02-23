@@ -377,6 +377,9 @@
 	float: right;
 	right: 5px;
 }
+.recipetitle {
+	margin: 1px;
+}
 .alchemyRecipeBackMonster {
 	height: auto !important;
 	margin-bottom: 10px;

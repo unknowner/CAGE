@@ -26,7 +26,6 @@
 			"js/ca/tool/castleage.js",
 			"js/ca/tool/settings.js",
 			
-			"js/ca/tool/abilities.js",
 			"js/ca/tool/armyCleaner.js",
 			"js/ca/tool/armyFiller.js",
 			"js/ca/tool/assister.js",
@@ -35,6 +34,7 @@
 			"js/ca/tool/facebook.js",
 			"js/ca/tool/generals.js",
 			"js/ca/tool/gifter.js",
+			"js/ca/tool/abilities.js",
 			"js/ca/tool/heal.js",
 			"js/ca/tool/monster.js",
 			"js/ca/tool/page.js",
