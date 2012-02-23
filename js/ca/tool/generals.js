@@ -32,19 +32,32 @@ tools.General.runtimeUpdate = function() {
 	tools.General.runtime.generalsSetFixHeight = item.get('generalsSetFixHeight', false);
 	tools.General.generalsSetFixHeight();
 	tools.General.runtime.onlyFavourites = item.get('onlyFavouritesGenerals', false);
-	tools.General.runtime.favourites = item.get('favouriteGenerals', []);
+
+	tools.General.runtime.favList = item.get('favList', 'Favorites');
+	tools.General.runtime.favList = tools.General.runtime.favList == 'undefined' ? 'Favorites' : tools.General.runtime.favList;
+	tools.General.runtime.favLists = item.get('favLists', false);
+	tools.General.runtime.favorites = item.get('favFavorites', {
+		'Favorites' : []
+	});
 	if(!tools.General.runtime.general) {
 		tools.General.runtime.general = {};
 	}
+	if(tools.General.runtime.favLists == false) {
+		tools.General.runtime.favLists = ['Favorites'];
+		if(item.get('favouriteGenerals', false) !== false) {
+			tools.General.runtime.favorites.Favorites = item.get('favouriteGenerals', [false]);
+		}
+	}
+
 };
 //get current general from CA
 tools.General.get = function() {
 	if($('div[style*="general_plate.gif"] > div:first').length > 0) {
 		var _old = tools.General.current;
 		tools.General.current = $('div[style*="general_plate.gif"] > div:first').text().trim();
-		if(_old !== tools.General.current){
+		if(_old !== tools.General.current) {
 			$('#cageGeneralImageCharge').remove();
-			$('#cageGeneralImage').fadeOut('fast',tools.General.set)
+			$('#cageGeneralImage').fadeOut('fast', tools.General.set)
 		}
 	}
 };
@@ -55,7 +68,7 @@ tools.General.set = function() {
 	$('#cageGeneralAttack').text(_g.attack);
 	$('#cageGeneralDefense').text(_g.defense);
 	$('#cageGeneralText').text(_g.text);
-	if(_g.charge){
+	if(_g.charge) {
 		$('#cageGeneralImageContainer').css('opacity', 0).append('<div id="cageGeneralImageCharge" style="width:' + Math.max(5, _g.charge) + '%;' + (_g.charge < 100 ? '' : 'background-color:#4F4;') + '"></div>')
 	}
 	$('#cageGeneralImage').attr('src', _g.image).show();
@@ -67,7 +80,7 @@ tools.General.setByName = function(_name, _callback) {
 		$('#cageGeneralImageCharge').remove();
 		var _g = tools.General.runtime.general[_name];
 		if(_g !== null) {
-			$('#cageGeneralImage').fadeOut('fast', function(){
+			$('#cageGeneralImage').fadeOut('fast', function() {
 				$('#cageGeneralImageContainer').hide();
 				get('generals.php?item=' + _g.item + '&itype=' + _g.itype + '&bqh=' + CastleAge.bqh, function(_data) {
 					tools.General.parsePage(_data);
@@ -110,7 +123,7 @@ tools.General.parsePage = function(_data) {
 			tools.General.runtime.general[_name].charge = /\d+/.exec(_charge)[0];
 		}
 	});
-	$('#cageGeneralSelector').empty().append('<span id="cageSelectorInfo" class="ui-state-active ui-corner-all"></span><div id="cageFavouriteGenerals"></div><div id="cageAllGenerals"></div>').prepend($('<img style="position: absolute;left:3px;cursor:pointer;margin-top:-9px;height:18px;" src="http://image4.castleagegame.com/graphics/popup_close_button.png">').click(function() {
+	$('#cageGeneralSelector').empty().append('<span id="cageSelectorInfo" class="ui-state-active ui-corner-all"></span><div id="cagefavoriteGenerals"></div><div id="cageAllGenerals"></div>').prepend($('<img style="position: absolute;left:3px;cursor:pointer;margin-top:-9px;height:18px;" src="http://image4.castleagegame.com/graphics/popup_close_button.png">').click(function() {
 		if(tools.General.runtime.onlyFavourites == true) {
 			$('#cageAllGenerals').hide();
 		} else {
@@ -138,26 +151,32 @@ tools.General.parsePage = function(_data) {
 			$('#cageAllGenerals div:last').append('<div class="cageCharge" style="height:' + Math.max(10, _e.charge) + '%;' + (_e.charge < 100 ? '' : 'background-color:#4F4;') + '"></div>');
 		}
 	}
-	if(tools.General.runtime.favourites && tools.General.runtime.favourites.length > 0) {
-		var _tempFav = tools.General.runtime.favourites;
-		tools.General.runtime.favourites = [];
-		for(var i = 0, len = _tempFav.length; i < len; i++) {
-			$('#cageAllGenerals > div > img:last[alt="' + _tempFav[i] + '"]').click();
-		}
-	}
+	tools.General.renderFavs();
 	tools.General.get();
 	tools.General.generalsSetFixHeight();
 };
-
+tools.General.renderFavs = function() {
+	$('#cageAllGenerals > div').show();
+	if(tools.General.runtime.favorites[tools.General.runtime.favList] && tools.General.runtime.favorites[tools.General.runtime.favList].length > 0) {
+		var _tempFav = tools.General.runtime.favorites[tools.General.runtime.favList];
+		tools.General.runtime.favorites[tools.General.runtime.favList] = [];
+		$('#cagefavoriteGenerals').html('');
+		for(var i = 0, len = _tempFav.length; i < len; i++) {
+			$('#cageAllGenerals > div > img:last[alt="' + _tempFav[i] + '"]').click();
+		}
+	} else {
+		$('#cagefavoriteGenerals').html('');
+	}
+}
 tools.General.clickAdd = function() {
-	tools.General.runtime.favourites.push($(this).attr('alt'));
-	item.set('favouriteGenerals', tools.General.runtime.favourites.sort());
-	$(this).mouseleave().parent().hide().clone(true, true).appendTo('#cageFavouriteGenerals').show().find('img:last').unbind('click').click(tools.General.clickRemove).hover(tools.General.hoverRemoveIn, tools.General.hoverRemoveOut);
+	tools.General.runtime.favorites[tools.General.runtime.favList].push($(this).attr('alt'));
+	item.set('favFavorites', tools.General.runtime.favorites);
+	$(this).mouseleave().parent().hide().clone(true, true).appendTo('#cagefavoriteGenerals').show().find('img:last').unbind('click hover').click(tools.General.clickRemove).hover(tools.General.hoverRemoveIn, tools.General.hoverRemoveOut);
 };
 tools.General.clickRemove = function() {
 	var _name = $(this).attr('alt');
-	tools.General.runtime.favourites.splice(tools.General.runtime.favourites.indexOf(_name), 1);
-	item.set('favouriteGenerals', tools.General.runtime.favourites);
+	tools.General.runtime.favorites[tools.General.runtime.favList].splice(tools.General.runtime.favorites[tools.General.runtime.favList].indexOf(_name), 1);
+	item.set('favFavorites', tools.General.runtime.favorites);
 	$(this).parent().hide().remove();
 	$('#cageAllGenerals img[alt="' + _name + '"]:first').parent().show();
 };
