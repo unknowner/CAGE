@@ -153,10 +153,6 @@ tools.Page.ajaxLinkSend = function() {
 					cookie : true,
 					xfbml : true
 				});
-				/*var _s = $(jqXHR.responseText).filter('script');
-				 $('#cageTemp').empty().append(_s);
-				 console.log($(jqXHR.responseText).filter('script').text());
-				 $('#app_body_container').append($(jqXHR.responseText).filter('script'));*/
 				ajaxPageDone(jqXHR.responseText, div);
 				jqXHR = data = undefined;
 			}
@@ -192,9 +188,6 @@ tools.Page.ajaxFormSend = function() {
 			data : params,
 			type : 'POST',
 			success : function(data, textStatus, jqXHR) {
-				/*$('#cageTemp').empty().append($(jqXHR.responseText).filter('script'));
-				 console.log($(jqXHR.responseText).filter('script').text());
-				 //$('#app_body_container').append($(jqXHR.responseText).filter('script'));*/
 				ajaxPageDone(jqXHR.responseText, div, anchor);
 				jqXHR = data = undefined;
 			}

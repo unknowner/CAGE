@@ -4,7 +4,6 @@ html {
 body {
 	overflow: auto !important;
 	background-attachment: fixed;
-	height: 100%;
 }
 div.game {
 	width: 770px !important;
@@ -183,4 +182,9 @@ div.demipb_button {
 #expandedGuildChat, #collapsedGuildChat {
 	top: 0 !important;
 	left: -2px !important;
+}
+div.mainMenu a {
+	font-size: 12px !important;
+	color: #55c4f2 !important;
+	font-family: Arial, Helvetica, sans-serif;
 }

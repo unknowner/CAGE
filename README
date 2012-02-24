@@ -1,9 +1,10 @@
 ==================================================================
 VER: 1.1.22β
 ------------------------------------------------------------------
+	ADD: Multiple general lists
 	ADD: Health per action for conquest battles
 	ADD: More stats for some monster
-	FIX: Navigation broken when zoom in/out to much
+	CHG: Remove CAGE nav and repositioned CA's new nav
 
 ==================================================================
 VER: 1.1.21β
