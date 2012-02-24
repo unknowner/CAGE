@@ -13,7 +13,7 @@ tools.Abilities.start = function() {
 		tools.Abilities.setCAFunctions();
 		$('#cageAbilitiesContainer > button').show();
 		$('#cageAbilitiesContainer').animate({
-			'top' : 127
+			'top' : 139
 		}, 'slow');
 
 	});

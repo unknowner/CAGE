@@ -23,12 +23,17 @@ $(document.body).append($('<input>').attr({
 })).append(_append);
 _append = _css = undefined;
 
-// Add CAGE container
+// Add CAGE container / repos menu
 $('center:first').prepend('<div id="cageContainer"><div id="cageStatsContainer"></div><div id="cageToolsContainer" class="ui-widget-content ui-corner-bottom"></div></div>');
-$('#main_bntp, #nvbar_div_end, #hinvite_help').remove();
-$('#nvbar_table').empty();
-
-tools.Page.runtime.allPages();
+$('<li style="width: 53px;">').append($('#expandedGuildChat, #collapsedGuildChat').detach()).prependTo('div.mainMenu > ul');
+$('div.mainMenu').unwrap().unwrap().parent().css({
+	'width' : 746,
+	'height' : 44,
+	'position' : 'fixed',
+	'zIndex' : 4,
+	'top' : 96,
+	'paddingLeft' : 5
+});
 
 CastleAge.startInterval = window.setInterval(function() {
 	if(CastleAge.signed_request !== null && CastleAge.userId !== null) {
@@ -42,6 +47,7 @@ CastleAge.startInterval = window.setInterval(function() {
 			_startURL = _startURL.substring(0, _startURL.indexOf('?'));
 		}
 		console.log("URL:" + _startURL);
+		tools.Page.runtime.allPages();
 		if(tools.Page.runtime[_startURL]) {
 			tools.Page.runtime[_startURL]();
 		}

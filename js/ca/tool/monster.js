@@ -43,7 +43,7 @@ tools.Monster.start = function() {
 		tools.Monster.checkFor();
 	}
 	$('#cageMonsterContainer').show().animate({
-		'top' : 110
+		'top' : 119
 	}, 'slow');
 
 };
@@ -156,7 +156,7 @@ tools.Monster.closeInstant = function() {
 tools.Monster.done = function() {
 	console.log('done:', $('#cageMonsterContainer').height());
 	$('#cageMonsterContainer').animate({
-		'top' : -110 - $('#cageMonsterContainer').height() + 10,
+		'top' : -119 - $('#cageMonsterContainer').height() + 10,
 	}, 'slow');
 	tools.Monster.fbButton.enable();
 

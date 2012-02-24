@@ -18,7 +18,7 @@ tools.Demi.start = function() {
 			tools.Demi.done();
 		}));
 		_demi.show().animate({
-			'top' : 110
+			'top' : 124
 		}, 'slow');
 		$('div.cageDemiImage').click(function() {
 			get('symbols.php?action=tribute&symbol=' + $(this).attr('symbol'), function(_blessed) {

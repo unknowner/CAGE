@@ -68,8 +68,9 @@ tools.General.set = function() {
 	$('#cageGeneralAttack').text(_g.attack);
 	$('#cageGeneralDefense').text(_g.defense);
 	$('#cageGeneralText').text(_g.text);
+	$('#cageGeneralImageCharge').remove();
 	if(_g.charge) {
-		$('#cageGeneralImageContainer').css('opacity', 0).append('<div id="cageGeneralImageCharge" style="width:' + Math.max(5, _g.charge) + '%;' + (_g.charge < 100 ? '' : 'background-color:#4F4;') + '"></div>')
+		$('#cageGeneralImageContainer').append('<div id="cageGeneralImageCharge" style="width:' + Math.max(5, _g.charge) + '%;' + (_g.charge < 100 ? '' : 'background-color:#4F4;') + '"></div>')
 	}
 	$('#cageGeneralImage').attr('src', _g.image).show();
 	$('#cageGeneralImageContainer').show().fadeIn('slow');
@@ -104,6 +105,25 @@ tools.General.update = function() {
 		window.setTimeout(tools.General.update, 200);
 	}
 };
+tools.General.lists = function() {
+	var _list = $('#cageSelectorList');
+	$.each(tools.General.runtime.favLists, function(_i, _e) {
+		console.log(_i, _e);
+		var _attr = {
+			value : _i
+		}
+		if(_e === tools.General.runtime.favList) {
+			_attr.selected = "selected"
+		}
+		_list.append($('<option>', _attr).text(_e));
+	});
+	_list.change(function() {
+		console.log('selected...', $('option:selected', this).text());
+		tools.General.runtime.favList = $('option:selected', this).text();
+		item.set('favList', tools.General.runtime.favList);
+		tools.General.renderFavs();
+	}).change();
+};
 tools.General.parsePage = function(_data) {
 	console.log('parse General page');
 	_data = _data ? $(_data) : $('#app_body');
@@ -123,14 +143,7 @@ tools.General.parsePage = function(_data) {
 			tools.General.runtime.general[_name].charge = /\d+/.exec(_charge)[0];
 		}
 	});
-	$('#cageGeneralSelector').empty().append('<span id="cageSelectorInfo" class="ui-state-active ui-corner-all"></span><div id="cagefavoriteGenerals"></div><div id="cageAllGenerals"></div>').prepend($('<img style="position: absolute;left:3px;cursor:pointer;margin-top:-9px;height:18px;" src="http://image4.castleagegame.com/graphics/popup_close_button.png">').click(function() {
-		if(tools.General.runtime.onlyFavourites == true) {
-			$('#cageAllGenerals').hide();
-		} else {
-			$('#cageAllGenerals').show();
-		}
-		$('#cageGeneralSelector').slideToggle('slow');
-	}));
+	$('#cageGeneralSelector').empty().append('<span id="cageSelectorInfo" class="ui-state-active ui-corner-all"></span><select id="cageSelectorList"></select><div id="cagefavoriteGenerals"></div><div id="cageAllGenerals"></div>');
 	var _names = [];
 	$.each(tools.General.runtime.general, function(_i, _e) {
 		_names.push(_e.name);
@@ -151,6 +164,7 @@ tools.General.parsePage = function(_data) {
 			$('#cageAllGenerals div:last').append('<div class="cageCharge" style="height:' + Math.max(10, _e.charge) + '%;' + (_e.charge < 100 ? '' : 'background-color:#4F4;') + '"></div>');
 		}
 	}
+	tools.General.lists();
 	tools.General.renderFavs();
 	tools.General.get();
 	tools.General.generalsSetFixHeight();
@@ -159,10 +173,11 @@ tools.General.renderFavs = function() {
 	$('#cageAllGenerals > div').show();
 	if(tools.General.runtime.favorites[tools.General.runtime.favList] && tools.General.runtime.favorites[tools.General.runtime.favList].length > 0) {
 		var _tempFav = tools.General.runtime.favorites[tools.General.runtime.favList];
-		tools.General.runtime.favorites[tools.General.runtime.favList] = [];
+		//tools.General.runtime.favorites[tools.General.runtime.favList] = [];
 		$('#cagefavoriteGenerals').html('');
 		for(var i = 0, len = _tempFav.length; i < len; i++) {
-			$('#cageAllGenerals > div > img:last[alt="' + _tempFav[i] + '"]').click();
+			//$('#cageAllGenerals > div > img:last[alt="' + _tempFav[i] + '"]').click();
+			$('#cageAllGenerals > div > img[alt="' + _tempFav[i] + '"]').parent().hide().clone(true, true).appendTo('#cagefavoriteGenerals').show().find('img:last').unbind('click hover').click(tools.General.clickRemove).hover(tools.General.hoverRemoveIn, tools.General.hoverRemoveOut);
 		}
 	} else {
 		$('#cagefavoriteGenerals').html('');
@@ -170,6 +185,7 @@ tools.General.renderFavs = function() {
 }
 tools.General.clickAdd = function() {
 	tools.General.runtime.favorites[tools.General.runtime.favList].push($(this).attr('alt'));
+	console.log('clickAdd:', tools.General.runtime.favorites);
 	item.set('favFavorites', tools.General.runtime.favorites);
 	$(this).mouseleave().parent().hide().clone(true, true).appendTo('#cagefavoriteGenerals').show().find('img:last').unbind('click hover').click(tools.General.clickRemove).hover(tools.General.hoverRemoveIn, tools.General.hoverRemoveOut);
 };

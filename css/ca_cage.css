@@ -4,6 +4,7 @@ html {
 body {
 	overflow: auto !important;
 	background-attachment: fixed;
+	height: 100%;
 }
 div.game {
 	width: 770px !important;
@@ -180,7 +181,6 @@ div.demipb_button {
 	top: 3px !important;
 }
 #expandedGuildChat, #collapsedGuildChat {
-	position: fixed !important;
-	top: 5px !important;
-	left: 5px !important;
+	top: 0 !important;
+	left: -2px !important;
 }

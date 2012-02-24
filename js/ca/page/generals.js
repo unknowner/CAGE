@@ -33,14 +33,17 @@ tools['Page'].runtime['generals.php'] = function() {
 			_displ.append('<div><img src="' + tools.General.runtime.general[this].image + '"><img src="' + getPath('img/favdel.png') + '" alt="' + tools.General.runtime.general[this].name + '"/></div>');
 		});
 		$('div > img:last-child', _displ).each(function() {
-			console.log(this);
 			$(this).click(function() {
+				tools.General.runtime.favorites[tools.General.runtime.favList].splice(tools.General.runtime.favorites[tools.General.runtime.favList].indexOf($(this).attr('alt')), 1);
+				item.set('favLists', tools.General.runtime.favLists);
 				console.log($(this).attr('alt'));
+				$('#cageFavsList').change();
+				tools.General.renderFavs();
 			});
 		});
 		tools.General.renderFavs();
 	}).change();
-
+	// Add fav list
 	$('#cageEditAddFav').click(function() {
 		var _name = $('#cageEditFavName').val();
 		if(_name !== 'Favorites' && _name !== undefined && _name.length !== 0 && tools.General.runtime.favorites[_name] === undefined) {
@@ -57,6 +60,7 @@ tools['Page'].runtime['generals.php'] = function() {
 			tools.General.renderFavs();
 		}
 	});
+	// remove fav list
 	$('#cageEditDelFav').click(function() {
 		var _name = $('#cageEditFavName').val();
 		console.log(_name);
@@ -68,6 +72,29 @@ tools['Page'].runtime['generals.php'] = function() {
 			tools.General.runtime.favList = $('option:selected', this).text();
 			item.set('favList', tools.General.runtime.favList);
 			$("#cageFavsList").prop("selectedIndex", 0).change();
+			tools.General.renderFavs();
 		}
+	});
+	// add to favs from generals page
+	$('div.generalSmallContainer2').each(function() {
+		$('div.general_name_div3', this).prepend($('<img style="cursor:pointer;position:absolute;padding:1px;" src="' + getPath('img/favadd.png') + '" alt="' + $('div.general_name_div3_padding', this).text().trim() + '"/>').click(function() {
+			if(tools.General.runtime.favorites[tools.General.runtime.favList].indexOf($(this).attr('alt')) == -1) {
+				tools.General.runtime.favorites[tools.General.runtime.favList].push($(this).attr('alt'));
+				item.set('favFavorites', tools.General.runtime.favorites);
+				var _displ = $('#cageFavsDisplay');
+				_displ.empty();
+				$.each(tools.General.runtime.favorites[tools.General.runtime.favList], function() {
+					_displ.append('<div><img title="' + this + '" src="' + tools.General.runtime.general[this].image + '">');
+					$('div:last', _displ).append('<img src="' + getPath('img/favdel.png') + '" alt="' + tools.General.runtime.general[this].name + '"/></div>').click(function() {
+						tools.General.runtime.favorites[tools.General.runtime.favList].splice(tools.General.runtime.favorites[tools.General.runtime.favList].indexOf($(this).attr('alt')), 1);
+						item.set('favLists', tools.General.runtime.favLists);
+						console.log($(this).attr('alt'));
+						$('#cageFavsList').change();
+						tools.General.renderFavs();
+					});
+				});
+				tools.General.renderFavs();
+			}
+		}));
 	});
 };

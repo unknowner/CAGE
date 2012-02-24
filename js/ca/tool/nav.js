@@ -158,11 +158,11 @@ tools.Nav.runtime = {
 };
 tools.Nav.init = function() {
 
-	$('#cageContainer').append($('<div id="cageMenu"><ul></ul></div>').addClass('ui-widget ui-state-default'));
-	get('guildv2_home.php', function(data) {
-		CastleAge.inGuild = data.search(/Invite Members and Blast your guild!/) === -1 ? false : true;
-		tools.Nav.start();
-	});
+	/*$('#cageContainer').append($('<div id="cageMenu"><ul></ul></div>').addClass('ui-widget ui-state-default'));
+	 get('guildv2_home.php', function(data) {
+	 CastleAge.inGuild = data.search(/Invite Members and Blast your guild!/) === -1 ? false : true;
+	 tools.Nav.start();
+	 });*/
 };
 tools.Nav.start = function() {
 

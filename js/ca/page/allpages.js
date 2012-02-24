@@ -20,7 +20,7 @@ tools.Page.runtime.allPages = function() {
 
 	// Stat Points
 	if($('#main_bntp a:contains("My Stats")').text().match(/\d+/g) !== null) {
-		$('#cageStatPoints > span').text(_sp[0]);
+		$('#cageStatPoints > span').text($('#main_bntp a:contains("My Stats")').text().match(/\d+/g)[0]);
 		$('#cageStatPoints > img').attr('src', 'http://image4.castleagegame.com/graphics/keep_upgrade_orange.gif');
 	} else {
 		$('#cageStatPoints > span').text('');
