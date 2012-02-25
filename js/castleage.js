@@ -25,15 +25,6 @@ _append = _css = undefined;
 
 // Add CAGE container / repos menu
 $('center:first').prepend('<div id="cageContainer"><div id="cageStatsContainer"></div><div id="cageToolsContainer" class="ui-widget-content ui-corner-bottom"></div></div>');
-$('<li style="width: 53px;">').append($('#expandedGuildChat, #collapsedGuildChat').detach()).prependTo('div.mainMenu > ul');
-$('div.mainMenu').unwrap().unwrap().parent().css({
-	'width' : 746,
-	'height' : 44,
-	'position' : 'fixed',
-	'zIndex' : 4,
-	'top' : 96,
-	'paddingLeft' : 5
-});
 
 CastleAge.startInterval = window.setInterval(function() {
 	if(CastleAge.signed_request !== null && CastleAge.userId !== null) {

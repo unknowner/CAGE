@@ -150,7 +150,7 @@ tools['Page'].runtime['battleStats'] = function(){
 		if(_temp !== '') {
 			$stats.append(_temp + _attackers + '</span>' + _max + '</div>');
 		} else {
-			$stats.append('<div><span style="display:inline-block;font-weight:bold;width:125px;">Attackers: </span><span style="display:inline-block;width:25px;text-align:right;">' + _attackers + '</span></div>')
+			$stats.append('<div><span style="display:inline-block;font-weight:bold;width:125px;">Attackers: </span><span style="display:inline-block;width:25px;text-align:right;">' + _attackers + '</span></div>');
 		}
 	}
 

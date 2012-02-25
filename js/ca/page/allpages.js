@@ -6,6 +6,10 @@ tools.Page.runtime.allPages = function() {
 	$.each(tools.Page.runtime.addOn, function(_i, _e) {
 		_e();
 	})
+	//repos CA menu & add stuff
+	$('div.mainMenu').unwrap().unwrap().parent().addClass('cageCAMenu');
+	tools.Functions.addToCaNav('mainMenu_keep', 'alchemy', 'goblin_emp', 'Goblin')
+
 	// If found update bqh
 	if($('form input[name="bqh"]:first').length > 0) {
 		CastleAge.bqh = $('form input[name="bqh"]:first').val();

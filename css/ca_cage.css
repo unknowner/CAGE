@@ -180,8 +180,18 @@ div.demipb_button {
 	top: 3px !important;
 }
 #expandedGuildChat, #collapsedGuildChat {
-	top: 0 !important;
-	left: -2px !important;
+	left: 50% !important;
+	z-index: 5;
+	top: 101px !important;
+	margin-left: -373px;
+	position: fixed !important;
+}
+.cageCAMenu {
+	width: 693px !important;
+	position: fixed;
+	z-index: 4;
+	top: 96px;
+	padding-left: 57px;
 }
 div.mainMenu a {
 	font-size: 12px !important;

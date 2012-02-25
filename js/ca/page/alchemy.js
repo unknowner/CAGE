@@ -81,13 +81,3 @@ tools.Page.runtime['alchemy.php'] = function() {
 	$('div.alchemySpaceRecipe, div.alchemySpaceClass, div.alchemySpaceMonster, div.alchemySpaceQuest').remove();
 
 };
-
-
-
-$('div[id^="monster_attack_section_"]:not(:has(form))').remove();
-$('div[id*="monster_attack_section_"]').each(function() {
-	$(this).css('padding', '').find('form > div.imgButton, div+img').empty().append($('div:first > img', this).remove()).end().find('div:first').remove().end().show();
-})
-
-
-

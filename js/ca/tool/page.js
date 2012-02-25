@@ -100,9 +100,7 @@ tools.Page.ajaxPageDone = function() {
 		$data = $(data);
 		if(div === 'globalContainer') {
 			$('#main_sts').html($('#main_sts', $data).html());
-			//$('#app_body_container').html($('#app_body_container', $data).html()).append($data.filter('div[id]:not(.game)'));
-			$('#main_bn_container').html($('#main_bn_container', $data).html());
-			$('#app_body').html($('#app_body', $data).html());
+			$('#app_body_container').html($('#app_body_container', $data).html()).append($data.filter('div[id]:not(.game)'));
 		} else {
 			$('#' + div).html(data);
 		}
