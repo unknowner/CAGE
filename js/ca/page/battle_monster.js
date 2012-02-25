@@ -74,8 +74,10 @@ tools['Page'].runtime['defense'] = function() {
 		var _maxHealth = false;
 		if(/^Party Health\/Strength$/.test(_defText.text())) {
 			_maxHealth = _defText.parent().prev().find('div:first')[0].style.width.substr(0, 5);
+			_defText.css('left', 51).text('Party Health ' + _percentage + (_percentage.indexOf('%') > -1 ? '' : '%') + ' / Strength ' + _maxHealth + (_maxHealth.indexOf('%') > -1 ? '' : '%'));
+		} else {
+			_defText.css('left', 51).text(_defText.text() + '(' + _percentage + (_percentage.indexOf('%') > -1 ? ')' : '%)'));
 		}
-		_defText.css('left', 51).text('Party Health ' + _percentage + (_percentage.indexOf('%') > -1 ? '' : '%') + ' / Strength ' + _maxHealth + (_maxHealth.indexOf('%') > -1 ? '' : '%'));
 		return _defText.text();
 	}
 	return '';
