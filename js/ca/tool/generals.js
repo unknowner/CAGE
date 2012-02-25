@@ -143,7 +143,7 @@ tools.General.parsePage = function(_data) {
 			tools.General.runtime.general[_name].charge = /\d+/.exec(_charge)[0];
 		}
 	});
-	$('#cageGeneralSelector').empty().append('<span id="cageSelectorInfo" class="ui-state-active ui-corner-all"></span><select id="cageSelectorList"></select><div id="cagefavoriteGenerals"></div><div id="cageAllGenerals"></div>');
+	$('#cageGeneralSelector').empty().append('<span id="cageSelectorInfo" class="ui-state-active ui-corner-all"></span><select id="cageSelectorList"></select><div id="cageFavoriteGenerals"></div><div id="cageAllGenerals"></div>');
 	var _names = [];
 	$.each(tools.General.runtime.general, function(_i, _e) {
 		_names.push(_e.name);
@@ -174,20 +174,20 @@ tools.General.renderFavs = function() {
 	if(tools.General.runtime.favorites[tools.General.runtime.favList] && tools.General.runtime.favorites[tools.General.runtime.favList].length > 0) {
 		var _tempFav = tools.General.runtime.favorites[tools.General.runtime.favList];
 		//tools.General.runtime.favorites[tools.General.runtime.favList] = [];
-		$('#cagefavoriteGenerals').html('');
+		$('#cageFavoriteGenerals').html('');
 		for(var i = 0, len = _tempFav.length; i < len; i++) {
 			//$('#cageAllGenerals > div > img:last[alt="' + _tempFav[i] + '"]').click();
-			$('#cageAllGenerals > div > img[alt="' + _tempFav[i] + '"]').parent().hide().clone(true, true).appendTo('#cagefavoriteGenerals').show().find('img:last').unbind('click hover').click(tools.General.clickRemove).hover(tools.General.hoverRemoveIn, tools.General.hoverRemoveOut);
+			$('#cageAllGenerals > div > img[alt="' + _tempFav[i] + '"]').parent().hide().clone(true, true).appendTo('#cageFavoriteGenerals').show().find('img:last').unbind('click hover').click(tools.General.clickRemove).hover(tools.General.hoverRemoveIn, tools.General.hoverRemoveOut);
 		}
 	} else {
-		$('#cagefavoriteGenerals').html('');
+		$('#cageFavoriteGenerals').html('');
 	}
 }
 tools.General.clickAdd = function() {
 	tools.General.runtime.favorites[tools.General.runtime.favList].push($(this).attr('alt'));
 	console.log('clickAdd:', tools.General.runtime.favorites);
 	item.set('favFavorites', tools.General.runtime.favorites);
-	$(this).mouseleave().parent().hide().clone(true, true).appendTo('#cagefavoriteGenerals').show().find('img:last').unbind('click hover').click(tools.General.clickRemove).hover(tools.General.hoverRemoveIn, tools.General.hoverRemoveOut);
+	$(this).mouseleave().parent().hide().clone(true, true).appendTo('#cageFavoriteGenerals').show().find('img:last').unbind('click hover').click(tools.General.clickRemove).hover(tools.General.hoverRemoveIn, tools.General.hoverRemoveOut);
 };
 tools.General.clickRemove = function() {
 	var _name = $(this).attr('alt');
