@@ -20,24 +20,9 @@ tools.Functions.init = function() {
 	addFunction(tools.Functions.centerPopups, null, true, false);
 	addFunction(tools.Functions.hideFeedbackPositionBox, null, true, false);
 	addFunction(tools.Functions.cageRePos, null, true, false);
-
 };
 tools.Functions.addToCaNav = function(_ul, _after, _href, _text) {
-	$('#' + _ul + ' li:has(a[href="' + _after + '.php"])').after('<li><a href="' + _href + '.php" onclick="ajaxLinkSend(\'globalContainer\', \'' + _href + '.php\'); return false;" style="color:#00fafd">' + _text + '</a></li>');
-};
-tools.Functions.showList = function() {
-
-	window['showList'] = function(list_id) {
-		var elem = $('#' + list_id);
-		elem.css('display', 'block');
-	}
-};
-tools.Functions.hideList = function() {
-
-	window['hideList'] = function(list_id) {
-		var elem = $('#' + list_id);
-		elem.css('display', 'none');
-	}
+	$('#' + _ul + ' li:has(a[href="' + _after + '"])').after('<li><a href="' + _href + '.php" onclick="ajaxLinkSend(\'globalContainer\', \'' + _href + '\'); return false;" style="color:#00fafd">' + _text + '</a></li>');
 };
 // Fixed Popups
 tools.Functions.cageRePos = function() {

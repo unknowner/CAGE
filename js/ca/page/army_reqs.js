@@ -5,15 +5,11 @@ tools['Page'].runtime['army_reqs.php'] = function() {
 
 	function deleteRequest() {
 		$('#AjaxLoadIcon').show();
-		$('#app_body table.layout table:eq(1)').css({
-			'height' : 28,
-			'overflow' : 'hidden',
-			'display' : 'block'
-		})
+		$('#app_body table.layout table:eq(1) table td').hide();
 		if($('#app_body table.layout table table td.action').length > 0) {
 			get('army_reqs.php?action=delete&player_id=' + $('#app_body table table table *[uid]:first').attr('uid'), function(_reqpage) {
 				$('#app_body table.layout table:eq(1)').hide().html($('#app_body table.layout table:eq(1)', _reqpage).html()).show();
-				window.setTimeout(deleteRequest, 1000);
+				deleteRequest();
 			});
 		} else {
 			tools.Page.loadPage('army_reqs.php');

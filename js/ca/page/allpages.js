@@ -8,7 +8,8 @@ tools.Page.runtime.allPages = function() {
 	})
 	//repos CA menu & add stuff
 	$('div.mainMenu').unwrap().unwrap().parent().addClass('cageCAMenu');
-	tools.Functions.addToCaNav('mainMenu_keep', 'alchemy', 'goblin_emp', 'Goblin')
+	tools.Functions.addToCaNav('mainMenu_keep', 'alchemy.php', 'goblin_emp.php', 'Goblin')
+	tools.Functions.addToCaNav('mainMenu_monster', 'public_monster_list.php?monster_tier=3', 'army_news_feed.php', 'Live feed')
 
 	// If found update bqh
 	if($('form input[name="bqh"]:first').length > 0) {
