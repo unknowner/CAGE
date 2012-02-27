@@ -98,17 +98,20 @@ tools.Page.ajaxPageDone = function() {
 		stopTimers = false;
 		ajaxPerforming = false;
 		$data = $(data);
+		console.log('ajaxPageDone:', div);
 		if(div === 'globalContainer') {
 			$('#main_sts').html($('#main_sts', $data).html());
 			$('#app_body_container').html($('#app_body_container', $data).html()).append($data.filter('div[id]:not(.game)'));
+			var script = document.createElement("script");
+			script.type = "text/javascript";
+			script.text = $(data).filter('script').text();
+			$('#app_body_container')[0].appendChild(script);
+			firePageURL();
+			centerPopups();
+			delete script;
 		} else {
 			$('#' + div).html(data);
 		}
-		var script = document.createElement("script");
-		script.type = "text/javascript";
-		script.text = $(data).filter('script').text();
-		$('#app_body_container')[0].appendChild(script);
-		firePageURL();
 		$('#AjaxLoadIcon').hide();
 		centerPopups();
 		if(anchor) {
@@ -118,7 +121,7 @@ tools.Page.ajaxPageDone = function() {
 		}
 		startAllTimers();
 		FB.XFBML.parse(document.getElementById(div));
-		delete script, $data, data, div, anchor;
+		delete $data, data, div, anchor;
 	};
 };
 tools.Page.ajaxLinkSend = function() {

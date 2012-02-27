@@ -21,7 +21,6 @@
 			"js/ca/news.js",
 			
 			"js/ca/tool/functions.js",
-			"js/ca/tool/nav.js",
 			"js/ca/tool/cage.js",
 			"js/ca/tool/castleage.js",
 			"js/ca/tool/settings.js",
