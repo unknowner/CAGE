@@ -21,7 +21,9 @@ tools.Functions.init = function() {
 	addFunction(tools.Functions.hideFeedbackPositionBox, null, true, false);
 	addFunction(tools.Functions.cageRePos, null, true, false);
 };
-
+tools.Functions.addCAGEToCANav = function(_ul, _after, _callback, _text) {
+	$('#' + _ul + ' li:has(a[href="' + _after + '"])').after($('<li><a style="color:#00fafd;cursor:pointer;">' + _text + '</a></li>').click(_callback));
+};
 tools.Functions.addToCANav = function(_ul, _after, _href, _text) {
 	$('#' + _ul + ' li:has(a[href="' + _after + '"])').after('<li><a href="' + _href + '.php" onclick="ajaxLinkSend(\'globalContainer\', \'' + _href + '\'); return false;" style="color:#00fafd">' + _text + '</a></li>');
 };

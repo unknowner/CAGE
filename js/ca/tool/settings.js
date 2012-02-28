@@ -93,5 +93,7 @@ tools.Settings.dropdown = function(_text, _values, _value, _save, _callback) {
 };
 
 tools.Settings.init = function() {
-	tools.Settings.fbButton.add('Settings', tools.Settings.start);
+	tools.Page.runtime.addOn['tools.Settings.menu'] = function() {
+		tools.Functions.addCAGEToCANav('mainMenu_home', 'index.php', tools.Settings.start, 'Settings');
+	}
 };

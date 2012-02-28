@@ -24,7 +24,6 @@ tools.Gifter.runtimeUpdate = function() {
 		$.each(_names, function(_i, _e) {
 			tools.Gifter.runtime.userLists[_e] = _e;
 		});
-		//tools.Gifter.newRequestForm();
 	});
 };
 
