@@ -16,7 +16,6 @@ $.each(['css/cage.css', 'css/ca_cage.css', 'css/ca_stats.css', 'css/ca_general.c
 });
 _append += '<link id="cageTheme" rel="stylesheet" type="text/css" href="' + getPath('css/dark-hive/jquery-ui.css') + '" >';
 _append += '<script type="text/javascript" language="javascript" src="' + getPath('js/jquery.js') + '"></script>';
-
 $(document.body).append($('<input>').attr({
 	'id' : 'signed_request',
 	'type' : 'hidden'

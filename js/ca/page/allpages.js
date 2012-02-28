@@ -7,10 +7,11 @@ tools.Page.runtime.allPages = function() {
 		_e();
 	})
 	//repos CA menu & add stuff
-	$('div.mainMenu').unwrap().unwrap().parent().addClass('cageCAMenu');
-	tools.Functions.addToCaNav('mainMenu_keep', 'alchemy.php', 'goblin_emp.php', 'Goblin')
-	tools.Functions.addToCaNav('mainMenu_monster', 'public_monster_list.php?monster_tier=3', 'army_news_feed.php', 'Live feed')
-
+	tools.Functions.addToCANav('mainMenu_keep', 'alchemy.php', 'goblin_emp.php', 'Goblin');
+	tools.Functions.addToCANav('mainMenu_monster', 'public_monster_list.php?monster_tier=3', 'army_news_feed.php', 'Live feed');
+	$('div.mainMenu').unwrap().unwrap().parent().addClass('cageCAMenu').find('ul > li > ul').each(function() {
+		$(this).attr('cage', $(this).height()).css('height', 0);
+	});
 	// If found update bqh
 	if($('form input[name="bqh"]:first').length > 0) {
 		CastleAge.bqh = $('form input[name="bqh"]:first').val();

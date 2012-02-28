@@ -47,7 +47,9 @@ var com = {
 		startGifter : 'TASK_STARTGIFTER',
 		startStash : 'TASK_STASH',
 		resize : 'TASK_RESIZE',
-		showSettings : 'TASK_SETTINGS'
+		showSettings : 'TASK_SETTINGS',
+		hideBluebar : 'TASK_HIDEBAR',
+		showBluebar : 'TASK_SHOWBAR'
 	},
 	// Called in content script to setup port
 	initPort : function(_port) {

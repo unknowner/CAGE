@@ -3,15 +3,14 @@
 	width: 770px;
 }
 #cageGeneralImageContainer {
-	height: 94px;
-	width: 94px;
+	height: 95px;
+	width: 95px;
 	position: absolute;
 	right: 9px;
 	z-index: 4;
-	margin: 1px;
 }
 #cageGeneralImage {
-	height: 94px;
+	height: 95px;
 	cursor: pointer;
 	box-shadow: -3px 0px 5px #000;
 	z-index: 2;
@@ -179,7 +178,7 @@
 	position: relative;
 	color: white;
 	width: 134px;
-	padding: 5px;
+	padding: 0 4px 4px 4px;
 }
 #cageGeneralImageCharge {
 	width: 100%;

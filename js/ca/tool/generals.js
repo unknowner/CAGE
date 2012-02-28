@@ -57,7 +57,7 @@ tools.General.get = function() {
 		tools.General.current = $('div[style*="general_plate.gif"] > div:first').text().trim();
 		if(_old !== tools.General.current) {
 			$('#cageGeneralImageCharge').remove();
-			$('#cageGeneralImage').fadeOut('fast', tools.General.set)
+			$('#cageGeneralImageContainer').fadeOut('slow', function(){$(this).hide();tools.General.set();});
 		}
 	}
 };
@@ -72,8 +72,8 @@ tools.General.set = function() {
 	if(_g.charge) {
 		$('#cageGeneralImageContainer').append('<div id="cageGeneralImageCharge" style="width:' + Math.max(5, _g.charge) + '%;' + (_g.charge < 100 ? '' : 'background-color:#4F4;') + '"></div>')
 	}
-	$('#cageGeneralImage').attr('src', _g.image).show();
-	$('#cageGeneralImageContainer').show().fadeIn('slow');
+	$('#cageGeneralImage').attr('src', _g.image);
+	$('#cageGeneralImageContainer').fadeIn('slow');
 };
 // Set General by name
 tools.General.setByName = function(_name, _callback) {
@@ -81,8 +81,8 @@ tools.General.setByName = function(_name, _callback) {
 		$('#cageGeneralImageCharge').remove();
 		var _g = tools.General.runtime.general[_name];
 		if(_g !== null) {
-			$('#cageGeneralImage').fadeOut('fast', function() {
-				$('#cageGeneralImageContainer').hide();
+			$('#cageGeneralImageContainer').fadeOut('slow', function() {
+				$(this).hide();
 				get('generals.php?item=' + _g.item + '&itype=' + _g.itype + '&bqh=' + CastleAge.bqh, function(_data) {
 					tools.General.parsePage(_data);
 					tools.General.current = _name;

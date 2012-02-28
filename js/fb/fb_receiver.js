@@ -10,5 +10,17 @@ function receiver(_data) {
 			break;
 		case com.task.alive:
 			break;
+		case com.task.hideBluebar:
+			$('#pagelet_bluebar').css({
+				'overflow' : 'hidden',
+				'height' : 1
+			})
+			break;
+		case com.task.showBluebar:
+			$('#pagelet_bluebar').css({
+				'overflow' : '',
+				'height' : 32
+			})
+			break;
 	}
 }
