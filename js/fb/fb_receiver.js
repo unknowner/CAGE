@@ -15,14 +15,14 @@ function receiver(_data) {
 				'overflow' : 'hidden',
 				'height' : 1
 			});
-			$("body").trigger("resize");
+			$(document).trigger("resize");
 			break;
 		case com.task.showBluebar:
 			$('#pagelet_bluebar').css({
 				'overflow' : '',
 				'height' : 32
 			});
-			$("body").trigger("resize");
+			$(document).trigger("resize");
 			break;
 	}
 }

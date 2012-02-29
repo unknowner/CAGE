@@ -11,6 +11,9 @@ tools.Abilities.start = function() {
 		$('#cageAbilitiesContainer > div').html($('div[id^="expanded_power_"]', _data).html()).find('> div:last').empty().attr('onclick', '');
 		$('div.imgButton[id^="large_image_"]').parent().css('cssText', 'float:left;padding:8px;');
 		tools.Abilities.setCAFunctions();
+		$('#cageAbilitiesContainer').find('img[onmouseover]').each(function() {
+			$(this).attr('onmouseover', $(this).attr('onmouseover').replace(/75, 100/, '0, 0'))
+		});
 		$('#cageAbilitiesContainer > button').show();
 		$('#cageAbilitiesContainer').animate({
 			'top' : 139
@@ -23,17 +26,19 @@ tools.Abilities.changeClass = function(_class) {
 	get('guildv2_class.php?action=chooseClass&' + _class + '=' + _class + '&bqh=' + CastleAge.bqh, function(_data) {
 		$('#cageAbilitiesContainer > div').html($('div[id^="expanded_power_"]', _data).html()).find('> div:last').empty().attr('onclick', '');
 		$('div.imgButton[id^="large_image_"]').parent().css('cssText', 'float:left;padding:8px;');
-		tools.Abilities.setCAFunctions();
+		$('#cageAbilitiesContainer').find('img[onmouseover]').each(function() {
+			$(this).attr('onmouseover', $(this).attr('onmouseover').replace(/75, 100/, '0, 0'))
+		});
 	});
 };
 tools.Abilities.setCAFunctions = function() {
 	addFunction(function() {
 
-		window['showItemPopup'] = function(button_id, parent, x_offset, y_offset) {
-			var elem = $('#' + button_id);
-			move_box(parent, elem, x_offset - 75, y_offset - 100);
-			elem.show();
-		};
+		/*window['showItemPopup'] = function(button_id, parent, x_offset, y_offset) {
+		 var elem = $('#' + button_id);
+		 move_box(parent, elem, x_offset - 75, y_offset - 100);
+		 elem.show();
+		 };*/
 		window['classPowers'] = {
 			'1' : [],
 			'2' : [],

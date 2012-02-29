@@ -7,7 +7,7 @@ tools.Stash.runtime.general = null;
 tools.Stash.start = function() {
 
 	tools.Stash.runtime.general = tools.General.current;
-	if(tools.General.runtime.general.Aeris !== null && tools.General.current !== "Aeris") {
+	if(tools.General.runtime.general.Aeris !== undefined && tools.General.current !== "Aeris") {
 		tools.General.setByName('Aeris', tools.Stash.work);
 	} else {
 		tools.Stash.work();
