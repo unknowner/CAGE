@@ -22,6 +22,10 @@ tools.Facebook.runtimeUpdate = function() {
 		listMembersNext : [],
 		hideBluebar : item.get('cage.Facebook.Bluebar', false)
 	};
+	$('#cageHideFBBluebar').data('hidden', tools.Facebook.runtime.hideBluebar);
+	if(tools.Facebook.runtime.hideBluebar === true) {
+		$('#cageHideFBBluebar').data('hidden', !tools.Facebook.runtime.hideBluebar).click();
+	}
 }
 /*
  * Get friendlist members
@@ -179,7 +183,7 @@ tools.Facebook.CAPlayers = function(_callback) {
 };
 
 tools.Facebook.init = function() {
-	$(document.body).append($('<img id="cageHideFBBluebar" src="http://www.facebook.com/favicon.ico" style="cursor:pointer;position:fixed;top:1px;left:2px;">').data('hidden', false).click(function() {
+	$(document.body).append($('<img id="cageHideFBBluebar" src="http://www.facebook.com/favicon.ico" style="z-index:2;cursor:pointer;position:fixed;top:1px;left:2px;">').data('hidden', false).click(function() {
 		if($(this).data('hidden') === false) {
 			$(this).data('hidden', true);
 			com.send(com.task.hideBluebar, com.port.facebook);
@@ -189,7 +193,4 @@ tools.Facebook.init = function() {
 		}
 	}));
 	tools.Facebook.runtimeUpdate();
-	if(tools.Facebook.runtime.hideBluebar === true) {
-		$('#cageHideFBBluebar').click();
-	}
 };

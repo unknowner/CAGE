@@ -84,6 +84,7 @@ tools.General.setByName = function(_name, _callback) {
 			$('#cageGeneralImageContainer').fadeOut('slow', function() {
 				$(this).hide();
 				get('generals.php?item=' + _g.item + '&itype=' + _g.itype + '&bqh=' + CastleAge.bqh, function(_data) {
+					tools.Stats.update($('#main_sts', _data));
 					tools.General.parsePage(_data);
 					tools.General.current = _name;
 					tools.General.set();

@@ -1,7 +1,19 @@
 tool('Stats');
 
-tools.Stats.start = function() {
+tools.Stats.update = function(_data) {
+	console.log($('#gold_current_value_amount', _data).val());
+	
+	$('gold_current_value').text($('#gold_current_value_amount', _data).val());
 
+	$('#stamina_current_value').text($('#stamina_current_value_amount', _data).val());
+	$('#stamina_current_value').next('span').text($('#stamina_current_max', _data).val());
+
+	$('#energy_current_value').text($('#energy_current_value_amount', _data).val());
+	$('#energy_current_value').next('span').text($('#energy_current_max', _data).val());
+
+	$('#energy_current_value').text($('#health_current_value_amount', _data).val());
+	$('#energy_current_value').next('span').text($('#health_current_max', _data).val());
+	
 };
 tools.Stats.init = function() {
 

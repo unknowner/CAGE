@@ -9,6 +9,7 @@ tools.Page.runtime.allPages = function() {
 	//repos CA menu & add stuff
 	tools.Functions.addToCANav('mainMenu_keep', 'alchemy.php', 'goblin_emp.php', 'Goblin');
 	tools.Functions.addToCANav('mainMenu_monster', 'public_monster_list.php?monster_tier=3', 'army_news_feed.php', 'Live feed');
+	tools.Functions.addToCANav('mainMenu_battle', 'war_rank.php', 'raid.php', 'Raid');
 	$('div.mainMenu').unwrap().unwrap().parent().addClass('cageCAMenu').find('ul > li > ul').each(function() {
 		$(this).attr('cage', $(this).height()).css('height', 0);
 	});

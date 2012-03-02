@@ -24,11 +24,11 @@ tools.cage.settings = function() {
 	tools.Settings.text('You should reload Castle Age after loading settings.');
 	tools.Settings.button(language.cageSaveSettings, tools.cage.saveData);
 	tools.Settings.textbox(language.cageLoadSettings, '', null, tools.cage.loadData);
-	
+
 	tools.Settings.text('');
 	tools.Settings.text(language.cageSetReqPermDesc);
 	tools.Settings.button(language.cageSetReqPermAction, tools.cage.requestPermisson);
-	
+
 };
 tools.cage.runtimeUpdate = function() {
 	if(!tools.cage.runtime) {
@@ -75,7 +75,7 @@ tools.cage.runtimeUpdate = function() {
 tools.cage.requestPermisson = function() {
 	addFunction(function() {
 		FB.login(function(response) {
-			if(response.status === 'connected'){
+			if(response.status === 'connected') {
 				localStorage[FB.getAuthResponse().userID + '_' + 'permissions'] = '"1.1.21"';
 			}
 		}, {
@@ -116,10 +116,18 @@ tools.cage.saveData = function() {
 	}), true, true);
 };
 tools.cage.centered = function() {
-	$('#cageContainer').hide();
+	$(document.body).hide();
 	$('body > center').css('position', (tools.cage.runtime.centered ? 'relative' : 'absolute'));
+	var _chat = tools.cage.runtime.centered ? {
+		'left' : '50% !important',
+		'marginLeft' : -373
+	} : {
+		'left' : '5px !important',
+		'marginLeft' : 7
+	};
+	$('#expandedguildchat, #collapsedguildchat').css(_chat);
 	window.setTimeout(function() {
-		$('#cageContainer').show()
+		$(document.body).show();
 	}, 10);
 };
 tools.cage.toggleFx = function() {
