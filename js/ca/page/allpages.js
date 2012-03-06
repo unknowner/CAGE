@@ -34,7 +34,7 @@ tools.Page.runtime.allPages = function() {
 		$('#cageStatPoints > img').attr('src', 'http://image4.castleagegame.com/graphics/keep_upgrade_green.gif');
 	}
 
-	//Stats background
+	//Stats
 	$('#main_sts').css('background', $('#main_bn').css('backgroundImage'));
 	window.setTimeout(function() {
 		$('#main_sts_container').css('background', $('#main_sts').css('backgroundImage'));

@@ -47,6 +47,9 @@ tools.General.runtimeUpdate = function() {
 		if(item.get('favouriteGenerals', false) !== false) {
 			tools.General.runtime.favorites.Favorites = item.get('favouriteGenerals', []);
 		}
+		item.set('favList', 'Favorites');
+		item.set('favLists', ['Favorites']);
+		item.set('favFavorites', tools.General.runtime.favorites);
 	}
 
 };

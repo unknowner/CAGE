@@ -527,3 +527,68 @@
     margin-top: 120px;
     opacity: 0.75;
 }
+/*
+ * Guild class (new)
+ */
+#cageClassContainer {
+    position: fixed;
+    box-shadow: black 0px 10px 20px;
+    z-index: 2;
+    cursor: default;
+    margin-left: 65px;
+    border-bottom-left-radius: 15px;
+    top: -500px;
+    width: 640px;
+    border-bottom-right-radius: 15px;
+}
+#cageClassPower {
+    padding: 10px;
+}
+div.cageClassPowerSlots {
+    height: 61px;
+    width: 525px;
+    background-repeat: no-repeat;
+    background-position: 0 0;
+    background-image: url('http://image4.castleagegame.com/graphics/g_char_power_blank.gif');
+}
+div.cageClassPowerSlot {
+    height: 61px;
+    cursor: pointer;
+    float: left;
+}
+div.cageClassPowerText {
+    text-align: left;
+    padding: 10px 0 0 70px;
+    font-size: 14px;
+}
+#cageClassSave {
+    padding: 10px;
+}
+#cageClassImgcleric {
+    position: absolute;
+    top: 1px;
+    left: 190px;
+    opacity: 0;
+    cursor: pointer;
+}
+#cageClassImgmage {
+    position: absolute;
+    top: 1px;
+    left: 480px;
+    opacity: 0;
+    cursor: pointer;
+}
+#cageClassImgrogue {
+    left: 335px;
+    top: 1px;
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+#cageClassImgwarrior {
+    position: absolute;
+    top: 1px;
+    left: 45px;
+    opacity: 0;
+    cursor: pointer;
+}

@@ -1,200 +1,204 @@
 html {
-	overflow: auto;
+    overflow: auto;
 }
 body {
-	overflow: auto !important;
-	background-attachment: fixed;
+    overflow: auto !important;
+    background-attachment: fixed;
 }
 div.game {
-	width: 770px !important;
+    width: 770px !important;
 }
 #globalcss {
-	padding-left: 10px !important;
+    padding-left: 10px !important;
+    background-image: url(http://image4.castleagegame.com/graphics/ws_middle.jpg);
+    background-attachment: fixed;
+    background-repeat: repeat-y;
+    background-position-x: 62px;
 }
 #app_body {
-	width: 740px !important;
-	padding: 25px 5px 5px 5px !important;
-	margin-top: 8px !important;
+    width: 740px !important;
+    padding: 25px 5px 5px 5px !important;
+    margin-top: 8px !important;
 }
 #nvbar, #nvbar_div_end, #main_bn, #main_bn_container, #main_bntp {
-	display: none !important;
+    display: none !important;
 }
 #app_body_container {
-	padding-top: 135px !important;
+    padding-top: 135px !important;
 }
 #globalContainer {
-	width: 770px !important;
+    width: 770px !important;
 }
 #AjaxLoadIcon {
-	margin-top: 56px;
-	top: 150px !important;
-	width: 80px !important;
-	position: fixed;
-	margin-left: 50%;
-	left: -40px;
-	box-shadow: 0 5px 21px 10px black, 0 0 4px 4px black inset;
-	border-radius: 50%;
-	z-index: 99;
-	display: none;
+    margin-top: 56px;
+    top: 150px !important;
+    width: 80px !important;
+    position: fixed;
+    margin-left: 50%;
+    left: -40px;
+    box-shadow: 0 5px 21px 10px black, 0 0 4px 4px black inset;
+    border-radius: 50%;
+    z-index: 99;
+    display: none;
 }
 .MonsterListBackground {
-	background-image: url('http://image4.castleagegame.com/graphics/monsterlist_container.gif');
-	background-repeat: no-repeat;
-	height: 90px;
-	padding-bottom: 15px;
+    background-image: url('http://image4.castleagegame.com/graphics/monsterlist_container.gif');
+    background-repeat: no-repeat;
+    height: 90px;
+    padding-bottom: 15px;
 }
 .MonsterListButton {
-	float: left;
-	text-align: center;
-	padding-top: 20px;
+    float: left;
+    text-align: center;
+    padding-top: 20px;
 }
 .MonsterListName {
-	float: left;
-	text-align: center;
-	color: black;
-	padding-left: 35px;
-	width: 240px;
-	margin-right: 32px;
-	padding-top: 15px;
+    float: left;
+    text-align: center;
+    color: black;
+    padding-left: 35px;
+    width: 240px;
+    margin-right: 32px;
+    padding-top: 15px;
 }
 .MonsterListImage {
-	float: left;
-	padding: 15px 0 0 33px;
-	overflow: hidden;
+    float: left;
+    padding: 15px 0 0 33px;
+    overflow: hidden;
 }
 .MonsterListText {
-	background-color: black;
-	padding: 1px 4px;
-	left: 0;
-	font-size: 12px;
-	top: -15px;
-	border-top-right-radius: 4px;
-	opacity: 0.7;
-	position: relative;
-	color: white;
-	font-weight: bold;
+    background-color: black;
+    padding: 1px 4px;
+    left: 0;
+    font-size: 12px;
+    top: -15px;
+    border-top-right-radius: 4px;
+    opacity: 0.7;
+    position: relative;
+    color: white;
+    font-weight: bold;
 }
 .GuildList {
-	height: 102px !important;
-	padding: 3px 0px 5px 20px !important;
-	font-size: 13px;
+    height: 102px !important;
+    padding: 3px 0px 5px 20px !important;
+    font-size: 13px;
 }
 .GuildNum {
-	color: white;
-	position: relative;
-	top: -100px;
-	left: 6px;
-	text-shadow: 0 0 1px black, 0 0 4px black;
-	font-weight: bold;
+    color: white;
+    position: relative;
+    top: -100px;
+    left: 6px;
+    text-shadow: 0 0 1px black, 0 0 4px black;
+    font-weight: bold;
 }
 .cageResults {
-	position: fixed;
-	top: 100px;
-	box-shadow: 0 0 3px 1px #800, 0 5px 20px black;
-	z-index: 2;
-	border-radius: 6px;
-	padding: 5px;
-	background-image: url('http://image4.castleagegame.com/graphics/bg_main_middle.jpg');
-	overflow-x: hidden;
-	overflow-y: auto;
-	max-height: 700px;
-	left: 10px;
-	width: 750px;
+    position: fixed;
+    top: 100px;
+    box-shadow: 0 0 3px 1px #800, 0 5px 20px black;
+    z-index: 2;
+    border-radius: 6px;
+    padding: 5px;
+    background-image: url('http://image4.castleagegame.com/graphics/bg_main_middle.jpg');
+    overflow-x: hidden;
+    overflow-y: auto;
+    max-height: 700px;
+    left: 10px;
+    width: 750px;
 }
 #cageCloseResult {
-	float: right;
-	position: relative;
-	cursor: pointer;
-	margin-bottom: -21px;
-	width: 21px;
+    float: right;
+    position: relative;
+    cursor: pointer;
+    margin-bottom: -21px;
+    width: 21px;
 }
 #MonsterResultDamage {
-	float: left;
-	width: 420px;
-	text-align: left;
-	font-weight: bold;
-	padding: 10px;
+    float: left;
+    width: 420px;
+    text-align: left;
+    font-weight: bold;
+    padding: 10px;
 }
 div.resultsTop {
-	border-top-left-radius: 6px;
-	border-top-right-radius: 6px;
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
 }
 div.resultsBottom {
-	border-bottom-left-radius: 6px;
-	border-bottom-right-radius: 6px;
+    border-bottom-left-radius: 6px;
+    border-bottom-right-radius: 6px;
 }
 div.resultsmainwrapper {
-	margin-bottom: 10px;
-	background-image: url('http://image4.castleagegame.com/graphics/bg_main_middle.jpg');
-	border-radius: 6px;
-	border: 1px solid #701919;
-	width: 738px;
+    margin-bottom: 10px;
+    background-image: url('http://image4.castleagegame.com/graphics/bg_main_middle.jpg');
+    border-radius: 6px;
+    border: 1px solid #701919;
+    width: 738px;
 }
 div.results {
-	border: 0;
-	width: 728px;
-	border-radius: 6px;
-	padding: 5px !important;
+    border: 0;
+    width: 728px;
+    border-radius: 6px;
+    padding: 5px !important;
 }
 div.connect_castlepb_bg {
-	z-index: 11 !important;
-	height: 100% !important;
+    z-index: 11 !important;
+    height: 100% !important;
 }
 .cageQuestSwitchGeneral {
-	top: -14px;
-	position: relative;
-	width: 78px;
-	cursor: pointer;
+    top: -14px;
+    position: relative;
+    width: 78px;
+    cursor: pointer;
 }
 /*
  * Popups
  */
 #single_popup_background {
-	cursor: pointer;
-	display: block;
-	height: 100%;
-	position: fixed;
-	width: 100%;
-	background-color: black;
-	top: 0;
-	left: 0;
-	opacity: 0;
-	z-index: 10;
+    cursor: pointer;
+    display: block;
+    height: 100%;
+    position: fixed;
+    width: 100%;
+    background-color: black;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    z-index: 10;
 }
 #single_popup {
-	opacity: 0;
-	position: absolute;
-	top: 140px;
-	display: block;
+    opacity: 0;
+    position: absolute;
+    top: 140px;
+    display: block;
 }
 #result_popup_message {
-	overflow-x: hidden;
-	overflow-y: hidden;
-	z-index: 100;
-	position: fixed;
-	top: 120px;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    z-index: 100;
+    position: fixed;
+    top: 120px;
 }
 div.demipb_button {
-	position: absolute !important;
-	left: 456px !important;
-	top: 3px !important;
+    position: absolute !important;
+    left: 456px !important;
+    top: 3px !important;
 }
 #expandedGuildChat, #collapsedGuildChat {
-	left: 50% !important;
-	z-index: 5;
-	top: 101px !important;
-	margin-left: -373px;
-	position: fixed !important;
+    left: 50% !important;
+    z-index: 5;
+    top: 101px !important;
+    margin-left: -373px;
+    position: fixed !important;
 }
 .cageCAMenu {
-	width: 693px !important;
-	position: fixed;
-	z-index: 4;
-	top: 96px;
-	padding-left: 57px;
+    width: 693px !important;
+    position: fixed;
+    z-index: 4;
+    top: 96px;
+    padding-left: 57px;
 }
 div.mainMenu a {
-	font-size: 12px !important;
-	color: #55c4f2 !important;
-	font-family: Arial, Helvetica, sans-serif;
+    font-size: 12px !important;
+    color: #55c4f2 !important;
+    font-family: Arial, Helvetica, sans-serif;
 }

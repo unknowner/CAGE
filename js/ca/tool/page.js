@@ -112,6 +112,15 @@ tools.Page.ajaxPageDone = function() {
 		} else {
 			$('#' + div).html(data);
 		}
+		// update stats
+		var _stats = $('#main_sts');
+		$('#gold_current_value').text('$' + $('#gold_current_value_amount', _stats).val().replace(/(\d)(?=(\d{3})+\b)/g, '$1,'));
+		$('#stamina_current_value').text($('#stamina_current_value_amount', _stats).val());
+		$('#stamina_current_value').next('span').text($('#stamina_current_max', _stats).val());
+		$('#energy_current_value').text($('#energy_current_value_amount', _stats).val());
+		$('#energy_current_value').next('span').text($('#energy_current_max', _stats).val());
+		$('#health_current_value').text($('#health_current_value_amount', _stats).val());
+		$('#health_current_value').next('span').text($('#health_current_max', _stats).val());
 		$('#AjaxLoadIcon').hide();
 		centerPopups();
 		if(anchor) {
