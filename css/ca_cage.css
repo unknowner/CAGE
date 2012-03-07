@@ -10,10 +10,6 @@ div.game {
 }
 #globalcss {
     padding-left: 10px !important;
-    background-image: url(http://image4.castleagegame.com/graphics/ws_middle.jpg);
-    background-attachment: fixed;
-    background-repeat: repeat-y;
-    background-position-x: 62px;
 }
 #app_body {
     width: 740px !important;

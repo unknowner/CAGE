@@ -131,13 +131,13 @@ tools.General.lists = function() {
 tools.General.parsePage = function(_data) {
 	console.log('parse General page');
 	_data = _data ? $(_data) : $('#app_body');
-	$('div.generalSmallContainer2 div.general_pic_div3', _data).each(function(i, e) {
-		var $_this = $(this), $_image = $('form:has(input[name="item"]) input.imgButton', e), $_general = $_image.parents('div.generalSmallContainer2:first'), _name = $_general.children('div.general_name_div3:first').text().trim(), _stats = $_general.find('div.generals_indv_stats_padding'), _charge = $_general.find('div:contains("Charged"):last').text().trim();
+	$('table.layout div.general_pic_div3', _data).each(function(i, e) {
+		var $_this = $(this), $_image = $('form:has(input[name="item"]) input.imgButton', e), $_general = $_this.parent(), _name = $_general.children('div.general_name_div3:first').text().trim(), _stats = $_general.find('div.generals_indv_stats_padding'), _charge = $_general.find('div:contains("Charged"):last').text().trim();
 		tools.General.runtime.general[_name] = {
 			name : _name,
 			image : $_image.attr('src'),
-			item : $_this.parent().find('input[name="item"]').attr('value'),
-			itype : $_this.parent().find('input[name="itype"]').attr('value'),
+			item : $_this.find('input[name="item"]').attr('value'),
+			itype : $_this.find('input[name="itype"]').attr('value'),
 			attack : _stats.children('div:eq(0)').text().trim(),
 			defense : _stats.children('div:eq(1)').text().trim(),
 			text : $_general.children('div:last').children('div').html().trim().replace(/<br>/g, ' '),

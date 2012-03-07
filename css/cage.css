@@ -553,13 +553,25 @@ div.cageClassPowerSlots {
 }
 div.cageClassPowerSlot {
     height: 61px;
+    float: left;
+}
+div.cageClassPowerSlot > img {
     cursor: pointer;
     float: left;
+    opacity: 0;
 }
 div.cageClassPowerText {
     text-align: left;
-    padding: 10px 0 0 70px;
-    font-size: 14px;
+    padding: 5px 5px 5px 11px;
+    font-size: 12px;
+    margin-left: 121px;
+    margin-top: 6px;
+    height: 38px;
+    width: 442px;
+}
+#cageClassPowerSelector {
+    padding: 10px;
+    display: none;
 }
 #cageClassSave {
     padding: 10px;

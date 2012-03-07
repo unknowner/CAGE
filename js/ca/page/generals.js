@@ -76,7 +76,7 @@ tools['Page'].runtime['generals.php'] = function() {
 		}
 	});
 	// add to favs from generals page
-	$('div.generalSmallContainer2').each(function() {
+	$('div.generalSmallContainer1').each(function() {
 		$('div.general_name_div3', this).prepend($('<img style="cursor:pointer;position:absolute;padding:1px;" src="' + getPath('img/favadd.png') + '" alt="' + $('div.general_name_div3_padding', this).text().trim() + '"/>').click(function() {
 			if(tools.General.runtime.favorites[tools.General.runtime.favList].indexOf($(this).attr('alt')) == -1) {
 				tools.General.runtime.favorites[tools.General.runtime.favList].push($(this).attr('alt'));
