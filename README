@@ -1,8 +1,16 @@
 ==================================================================
+VER: 1.1.26β
+------------------------------------------------------------------
+	FIX: Popup boxes sometimes placed out of sight
+	
+==================================================================
 VER: 1.1.25β
 ------------------------------------------------------------------
 	ADD: Hide Facebook bluebar
-	CHG: Moved Settings to CA's Home menu
+	FIX: Generals not working
+	FIX: Stats update when changing generals
+	FIX: Stash without having Aeris
+	FIX: Chat alignment
 
 ==================================================================
 VER: 1.1.24β

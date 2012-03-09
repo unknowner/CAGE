@@ -44,8 +44,12 @@ tools.Functions.cageRePos = function() {
 		var _width = _sp.width() == 0 ? _sp.find('>div:first').width() : _sp.width();
 		var _margin = (770 - _width) / 2;
 		if(top) {
+			if(_sp.height() + (top - $(window).scrollTop() - $(window).height()) > 0) {
+				top -= _sp.height() + (top - $(window).scrollTop() - $(window).height());
+			}
 			_sp.css('top', top);
 		}
+
 		_sp.css({
 			'marginLeft' : (_margin),
 			'opacity' : 0

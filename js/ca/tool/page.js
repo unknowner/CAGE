@@ -101,6 +101,8 @@ tools.Page.ajaxPageDone = function() {
 		console.log('ajaxPageDone:', div);
 		if(div === 'globalContainer') {
 			$('#main_sts').html($('#main_sts', $data).html());
+			$('#main_bntp').html($('#main_bntp', $data).html());
+			$('#main_bn').html($('#main_bn', $data).html());
 			$('#app_body_container').html($('#app_body_container', $data).html()).append($data.filter('div[id]:not(.game)'));
 			var script = document.createElement("script");
 			script.type = "text/javascript";
