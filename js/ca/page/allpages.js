@@ -40,6 +40,7 @@ tools.Page.runtime.allPages = function() {
 		$('#main_sts_container').css('background', $('#main_sts').css('backgroundImage'));
 	}, 1000);
 	// remove CA:HOD ad, etc...
+	$('img.imgButton[src*="/graphics/iphone_cross_promo.jpg"]:first').parents('div:first').remove();
 	$('a[href="http://apps.facebook.com/castle_hod/?xprom=cax"]:first').parent('div:first').remove();
 	if($('#globalContainer > div:first').height() == 80) {
 		$('#globalContainer > div:first').hide();

@@ -10,16 +10,16 @@ tools.Functions.init = function() {
 		cageStat = {}
 	}, null, true, true);
 	// replace CA funtions
-	addFunction(tools.Functions.stat_increase_ticker, null, true, false);
-	addFunction(tools.Functions.PopupAtMousePosition, null, true, false);
-	addFunction(tools.Functions.hidePositionBox, null, true, false);
-	addFunction(tools.Functions.PositionAndDisplayPopupAutoCenter, null, true, false);
-	addFunction(tools.Functions.PositionAndDisplayPopupAtTop, null, true, false);
-	addFunction(tools.Functions.PositionAndDisplayPopupBox, null, true, false);
-	addFunction(tools.Functions.generateAtPageTop, null, true, false);
-	addFunction(tools.Functions.centerPopups, null, true, false);
-	addFunction(tools.Functions.hideFeedbackPositionBox, null, true, false);
-	addFunction(tools.Functions.cageRePos, null, true, false);
+	addFunction(tools.Functions.stat_increase_ticker, null, true, true);
+	addFunction(tools.Functions.PopupAtMousePosition, null, true, true);
+	addFunction(tools.Functions.hidePositionBox, null, true, true);
+	addFunction(tools.Functions.PositionAndDisplayPopupAutoCenter, null, true, true);
+	addFunction(tools.Functions.PositionAndDisplayPopupAtTop, null, true, true);
+	addFunction(tools.Functions.PositionAndDisplayPopupBox, null, true, true);
+	addFunction(tools.Functions.generateAtPageTop, null, true, true);
+	addFunction(tools.Functions.centerPopups, null, true, true);
+	addFunction(tools.Functions.hideFeedbackPositionBox, null, true, true);
+	addFunction(tools.Functions.cageRePos, null, true, true);
 };
 tools.Functions.addCAGEToCANav = function(_ul, _after, _callback, _text) {
 	$('#' + _ul + ' li:has(a[href="' + _after + '"])').after($('<li><a href="#" style="color:#00fafd;cursor:pointer;">' + _text + '</a></li>').click(_callback));

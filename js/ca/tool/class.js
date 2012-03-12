@@ -42,7 +42,7 @@ tools.Class.showClass = function(_data) {
 			_img.click(function() {
 				$('div.cageClassPowerSlot *, #cageClasses > img, #cageClassPowerSelector').fadeOut('slow');
 				$('#cageClassPower').show('slow');
-				$('#cageClassSelected').text('Loading...');
+				$('#cageClassSelected').text('Changing...');
 				tools.Class.changeClass(_set);
 			}).hover(function() {
 				$(this).stop().animate({
@@ -116,7 +116,7 @@ tools.Class.showClass = function(_data) {
 	});
 	// save
 	$('#cageClassSave').append($('<div style="cursor:pointer;display:inline-block;width:125px;overflow:hidden;background-image:url(http://image4.castleagegame.com/graphics/class_savenew.jpg);"><img style="opacity:0" src="http://image4.castleagegame.com/graphics/class_savenew_rollover.jpg"></div>').click(function() {
-		$('#cageClassSelected').text('Saveing...');
+		$('#cageClassSelected').text('Saving...');
 		get('guild_class_power_equipment.php?action=class_power_equipment&class_id=' + tools.Class.runtime.classId + '&equipment=' + tools.Class.runtime.powersEquip.filter(function(e) {
 			return e
 		}).join(';'), function() {

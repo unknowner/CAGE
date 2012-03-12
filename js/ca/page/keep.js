@@ -24,19 +24,20 @@ tools.Page.runtime['keep.php'] = function() {
 	//$('div.statsTMain:eq(0) img')
 	var _divPow = 0, _divItems = [], _divine = {
 		'general' : {
-			'Axxon' : 45,
 			'Aegea' : 45,
-			'Dexter the Drunk' : 15,
-			'Isidra' : 45,
-			'Amon' : 45,
-			'Esmeralda' : 30,
-			'Kothas' : 30,
-			'Tyrant' : 30,
-			'Jaelle' : 20,
 			'Agamemnon' : 20,
+			'Alyzia' : 5,
+			'Amon' : 45,
 			'Aurelius' : 20,
+			'Axxon' : 45,
+			'Dexter the Drunk' : 15,
+			'Ender' : 50,
+			'Esmeralda' : 30,
+			'Isidra' : 45,
+			'Jaelle' : 20,
 			'Jahanna' : 20,
-			'Alyzia' : 5
+			'Kothas' : 30,
+			'Tyrant' : 30
 		},
 		'weapon' : {
 			'Heart of the Woods' : 120,
