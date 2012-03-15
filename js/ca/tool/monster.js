@@ -33,7 +33,7 @@ tools.Monster.runtimeUpdate = function() {
 tools.Monster.start = function() {
 	if(!tools.Monster.runtime.listFilled) {
 		tools.Monster.runtime.listFilled = true;
-		$('#cageMonsterContainer').empty().append($('<img id="cageMonsterClose" src="http://image4.castleagegame.com/graphics/popup_close_button.png">').click(tools.Monster.done));
+		$('#cageMonsterContainer').empty().append('<span id="cageMonsterReload">Loading...</span>').append($('<img id="cageMonsterClose" src="http://image4.castleagegame.com/graphics/popup_close_button.png">').click(tools.Monster.done));
 		tools.Monster.runtime.checkFor = [];
 		$.each(tools.Monster.runtime.toCheck, function(_i, _e) {
 			if(_e === true) {
@@ -51,10 +51,10 @@ tools.Monster.checkFor = function() {
 	if(tools.Monster.runtime.checkFor !== undefined && tools.Monster.runtime.checkFor.length > 0) {
 		tools.Monster[tools.Monster.runtime.checkFor.shift()]();
 	} else {
-		$('#cageMonsterContainer').append($('<span id="cageMonsterReload">Reload</span>').click(function() {
+		$('#cageMonsterReload').text('Reload').click(function() {
 			tools.Monster.runtime.listFilled = false;
 			tools.Monster.start();
-		}));
+		});
 	}
 };
 tools.Monster.monster = function() {

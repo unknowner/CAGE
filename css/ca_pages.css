@@ -8,17 +8,17 @@
     cursor: pointer;
     background-image: url('http://image4.castleagegame.com/graphics/map_monster_back.jpg');
     height: 98px;
-    width: 368px;
-    background-size: 368px;
+    width: 281px;
+    background-size: 281px 98px;
     padding: 0px;
     border-radius: 4px;
 }
 #cagePageKeepNemesisImg > div:first-child {
-    margin: 8px 0 0 13px;
-    width: 125px;
-    height: 82px;
+    margin: 8px 0 0 10px;
+    width: 96px;
+    height: 81px;
     background-position: 50%;
-    border-radius: 1px;
+    border-radius: 2px;
     box-shadow: 0 0 10px #f00 inset;
 }
 #cagePageKeepNemesisImg > div:last-child {

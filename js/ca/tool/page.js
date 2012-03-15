@@ -95,44 +95,53 @@ tools.Page.get_cached_ajax = function() {
 };
 tools.Page.ajaxPageDone = function() {
 	ajaxPageDone = function(data, div, anchor) {
+		console.log('pagedata:', data.length);
 		stopTimers = false;
 		ajaxPerforming = false;
-		$data = $(data);
-		console.log('ajaxPageDone:', div);
-		if(div === 'globalContainer') {
-			$('#main_sts').html($('#main_sts', $data).html());
-			$('#main_bntp').html($('#main_bntp', $data).html());
-			$('#main_bn').html($('#main_bn', $data).html());
-			$('#app_body_container').html($('#app_body_container', $data).html()).append($data.filter('div[id]:not(.game)'));
-			var script = document.createElement("script");
-			script.type = "text/javascript";
-			script.text = $(data).filter('script').text();
-			$('#app_body_container')[0].appendChild(script);
-			firePageURL();
+		if(data.length > 100) {
+			$data = $(data);
+			console.log('ajaxPageDone:', div);
+
+			if(div === 'globalContainer') {
+				$('#main_sts').html($('#main_sts', $data).html());
+				$('#main_bntp').html($('#main_bntp', $data).html());
+				$('#main_bn').html($('#main_bn', $data).html());
+				$('#app_body_container').html($('#app_body_container', $data).html()).append($data.filter('div[id]:not(.game)'));
+				var script = document.createElement("script");
+				script.type = "text/javascript";
+				script.text = $(data).filter('script').text();
+				$('#app_body_container')[0].appendChild(script);
+				firePageURL();
+				centerPopups();
+				delete script;
+			} else {
+				$('#' + div).html(data);
+			}
+			// update stats
+			var _stats = $('#main_sts');
+			$('#gold_current_value').text('$' + $('#gold_current_value_amount', _stats).val().replace(/(\d)(?=(\d{3})+\b)/g, '$1,'));
+			$('#stamina_current_value').text($('#stamina_current_value_amount', _stats).val());
+			$('#stamina_current_value').next('span').text($('#stamina_current_max', _stats).val());
+			$('#energy_current_value').text($('#energy_current_value_amount', _stats).val());
+			$('#energy_current_value').next('span').text($('#energy_current_max', _stats).val());
+			$('#health_current_value').text($('#health_current_value_amount', _stats).val());
+			$('#health_current_value').next('span').text($('#health_current_max', _stats).val());
 			centerPopups();
-			delete script;
+			if(anchor) {
+				$('#' + anchor).animate({
+					scrollTop : 0
+				}, 'slow');
+			}
+			startAllTimers();
+			FB.XFBML.parse(document.getElementById(div));
+			delete $data, data, div, anchor;
+			$('#AjaxLoadIcon').fadeOut();
 		} else {
-			$('#' + div).html(data);
+			$('#AjaxLoadIcon').append('<div id="cageLoadError">ERROR LOADING DATA</div>').delay(2000).fadeOut(function() {
+				$('#cageLoadError').remove();
+			});
 		}
-		// update stats
-		var _stats = $('#main_sts');
-		$('#gold_current_value').text('$' + $('#gold_current_value_amount', _stats).val().replace(/(\d)(?=(\d{3})+\b)/g, '$1,'));
-		$('#stamina_current_value').text($('#stamina_current_value_amount', _stats).val());
-		$('#stamina_current_value').next('span').text($('#stamina_current_max', _stats).val());
-		$('#energy_current_value').text($('#energy_current_value_amount', _stats).val());
-		$('#energy_current_value').next('span').text($('#energy_current_max', _stats).val());
-		$('#health_current_value').text($('#health_current_value_amount', _stats).val());
-		$('#health_current_value').next('span').text($('#health_current_max', _stats).val());
-		$('#AjaxLoadIcon').hide();
-		centerPopups();
-		if(anchor) {
-			$('#' + anchor).animate({
-				scrollTop : 0
-			}, 'slow');
-		}
-		startAllTimers();
-		FB.XFBML.parse(document.getElementById(div));
-		delete $data, data, div, anchor;
+
 	};
 };
 tools.Page.ajaxLinkSend = function() {
@@ -145,7 +154,7 @@ tools.Page.ajaxLinkSend = function() {
 		reset_raid_lst();
 		pageCache = {};
 		ajaxPerforming = true;
-		$('#AjaxLoadIcon').show();
+		$('#AjaxLoadIcon').fadeIn();
 		if(!url) {
 			url = 'index.php?adkx=2';
 		}
@@ -194,7 +203,7 @@ tools.Page.ajaxFormSend = function() {
 		console.log(url_key + '-' + _oldurl);
 		setPageURL(url_key);
 		ajaxPerforming = true;
-		$('#AjaxLoadIcon').show();
+		$('#AjaxLoadIcon').fadeIn();
 		$.ajax({
 			url : url,
 			data : params,
