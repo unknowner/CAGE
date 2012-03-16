@@ -16,6 +16,7 @@ var language = {
 	cAgeheadText : 'Just a few settings to change some CA stuff.',
 	cAgeNoResults : 'Hide battles won message',
 	cageNoHourly : 'Hide hourly info messages',
+	cageNoUpgrade : 'Hide upgrade messages',
 	cageScrollGuildChat : 'Autoscroll guild chat',
 
 	// Settings

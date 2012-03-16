@@ -183,7 +183,7 @@ tools.Facebook.CAPlayers = function(_callback) {
 };
 
 tools.Facebook.init = function() {
-	$(document.body).append($('<img id="cageHideFBBluebar" src="http://www.facebook.com/favicon.ico" style="z-index:2;cursor:pointer;position:fixed;top:1px;left:2px;">').data('hidden', false).click(function() {
+	$(document.body).append($('<img id="cageHideFBBluebar" src="http://www.facebook.com/favicon.ico" style="z-index:2;cursor:pointer;position:fixed;bottom:1px;left:2px;">').data('hidden', false).click(function() {
 		if($(this).data('hidden') === false) {
 			$(this).data('hidden', true);
 			com.send(com.task.hideBluebar, com.port.facebook);

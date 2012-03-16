@@ -12,6 +12,10 @@ tools.castleage.settings = function() {
 		tools.castleage.runtime.hourly = !tools.castleage.runtime.hourly;
 		tools.castleage.results();
 	});
+	tools.Settings.onoff(language.cageNoUpgrade, tools.castleage.runtime.upgrade, 'castleageUpgrade', function() {
+		tools.castleage.runtime.upgrade = !tools.castleage.runtime.upgrade;
+		tools.castleage.results();
+	});
 	tools.Settings.onoff(language.cageScrollGuildChat, tools.castleage.runtime.scrollGuildChat, 'scrollGuildChat', function() {
 		tools.castleage.runtime.scrollGuildChat = !tools.castleage.runtime.scrollGuildChat;
 		tools.castleage.scrollGuildChat();
@@ -28,6 +32,7 @@ tools.castleage.runtimeUpdate = function() {
 	}
 	tools.castleage.runtime.battleResults = item.get('castleageBattleResults', false);
 	tools.castleage.runtime.hourly = item.get('castleageHourly', false);
+	tools.castleage.runtime.upgrade = item.get('castleageUpgrade', false);
 	tools.castleage.results();
 	tools.castleage.runtime.scrollGuildChat = item.get('scrollGuildChat', true);
 	tools.castleage.scrollGuildChat();
@@ -75,6 +80,10 @@ tools.castleage.results = function() {
 			if(tools.castleage.runtime.hourly) {
 				_re.push('Dwarven Miner - |Your treasury is flourishing in Castle Age|Your potion is not ready yet');
 			}
+			if(tools.castleage.runtime.upgrade) {
+				_re.push('You just upgraded your');
+			}
+
 			var _reg = new RegExp(_re.join('|'), "g");
 			$('#results_main_wrapper div.results').each(function() {
 				if($(this).text().match(_reg) !== null) {

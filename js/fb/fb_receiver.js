@@ -15,6 +15,7 @@ function receiver(_data) {
 				'overflow' : 'hidden',
 				'height' : 1
 			});
+			$('#jewelContainer').addClass('cageJewels');
 			$('#cageIFrame').html('.cageIFrame {height:' + (_window.innerHeight - ($('#pagelet_bluebar').css('overflow') === 'hidden' ? 1 : 34)) + 'px !important;}');
 			break;
 		case com.task.showBluebar:
@@ -22,6 +23,7 @@ function receiver(_data) {
 				'overflow' : '',
 				'height' : 32
 			});
+			$('#jewelContainer').removeClass('cageJewels');
 			$('#cageIFrame').html('.cageIFrame {height:' + (_window.innerHeight - ($('#pagelet_bluebar').css('overflow') === 'hidden' ? 1 : 34)) + 'px !important;}');
 			break;
 	}

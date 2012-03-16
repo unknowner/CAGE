@@ -33,6 +33,7 @@ tools.Gifter.update = function() {
 	customEvent('GiftRequests', function() {
 		var _gifts = JSON.parse($('#GiftRequests').val());
 		var _received = 0;
+
 		if(_gifts) {
 			$.each(_gifts.data, function(_i, _e) {
 				if(_e.from !== null) {
@@ -81,7 +82,6 @@ tools.Gifter.newRequestForm = function() {
 	addFunction(function(_giftData) {
 
 		var cageGiftUserList = [];
-
 		function getCageFriendList() {
 			FB.api(_giftData.flid + '/members', function(_members) {
 				if(_members.error) {
@@ -96,7 +96,9 @@ tools.Gifter.newRequestForm = function() {
 			});
 		}
 
-		getCageFriendList();
+		if(_giftData.flid) {
+			getCageFriendList();
+		}
 
 		window['showRequestForm'] = function(tit, msg, track, request_params, filt_ids, rtf) {
 			var _ui = {
