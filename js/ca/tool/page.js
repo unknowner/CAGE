@@ -98,10 +98,9 @@ tools.Page.ajaxPageDone = function() {
 		console.log('pagedata:', data.length);
 		stopTimers = false;
 		ajaxPerforming = false;
-		if(data.length > 100) {
+		if(data.length < 200 || /<script type="text\/javascript">\stop.location.href = "http:\/\/apps.facebook.com\/castle_age\/.*.php";\s<\/script>/.test(data.substr(data.length < 200 ? 0 : data.length - 300)) === false) {
 			$data = $(data);
 			console.log('ajaxPageDone:', div);
-
 			if(div === 'globalContainer') {
 				$('#main_sts').html($('#main_sts', $data).html());
 				$('#main_bntp').html($('#main_bntp', $data).html());

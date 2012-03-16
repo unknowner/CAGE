@@ -52,24 +52,26 @@ tools['Page'].runtime['index.php'] = function() {
 			cash += parseInt( typeof my_cash == 'object' && my_cash !== null ? my_cash[1] : 0, 10) * result;
 		}
 	});
-	console.log('nemesis:', nemesis);
-	list.push('You were challenged <strong>' + (win + lose) + '</strong> times, winning <strong>' + win + '</strong> and losing <strong>' + lose + '</strong>.');
-	list.push('You ' + (xp >= 0 ? 'gained <span class="positive">' : 'lost <span class="negative">') + xp + '</span> experience points.');
-	list.push('You ' + (cash >= 0 ? 'gained <span class="positive">' : 'lost <span class="negative">') + '<b class="gold">$' + cash.toString().replace(/(\d)(?=(\d{3})+\b)/g, '$1,') + '</b></span>.');
-	list.push('You ' + (bp >= 0 ? 'gained <span class="positive">' : 'lost <span class="negative">') + bp + '</span> Battle Points.');
-	list.push('You ' + (wp >= 0 ? 'gained <span class="positive">' : 'lost <span class="negative">') + wp + '</span> War Points.');
-	list.push('You ' + (cp >= 0 ? 'gained <span class="positive">' : 'lost <span class="negative">') + cp + '</span> Champion Points.');
-	list.push('<br>Last attack: ' + last.replace(':', ''));
-	list.push('Oldest attack: ' + oldest.replace(':', ''));
-	if(deaths) {
-		list.push('You died ' + (deaths > 1 ? deaths + ' times' : 'once') + '!');
-	}
+	if(last !== null) {
+		console.log('nemesis:', nemesis);
+		list.push('You were challenged <strong>' + (win + lose) + '</strong> times, winning <strong>' + win + '</strong> and losing <strong>' + lose + '</strong>.');
+		list.push('You ' + (xp >= 0 ? 'gained <span class="positive">' : 'lost <span class="negative">') + xp + '</span> experience points.');
+		list.push('You ' + (cash >= 0 ? 'gained <span class="positive">' : 'lost <span class="negative">') + '<b class="gold">$' + cash.toString().replace(/(\d)(?=(\d{3})+\b)/g, '$1,') + '</b></span>.');
+		list.push('You ' + (bp >= 0 ? 'gained <span class="positive">' : 'lost <span class="negative">') + bp + '</span> Battle Points.');
+		list.push('You ' + (wp >= 0 ? 'gained <span class="positive">' : 'lost <span class="negative">') + wp + '</span> War Points.');
+		list.push('You ' + (cp >= 0 ? 'gained <span class="positive">' : 'lost <span class="negative">') + cp + '</span> Champion Points.');
+		list.push('<br>Last attack: ' + last.replace(':', ''));
+		list.push('Oldest attack: ' + oldest.replace(':', ''));
+		if(deaths) {
+			list.push('You died ' + (deaths > 1 ? deaths + ' times' : 'once') + '!');
+		}
 
-	$('#cageBattleNews').html(list.join('<br>'));
-	if(nemesis.user !== null) {
-		$('#cageBattleNews').append($('<div id="cagePageKeepNemesisImg"><div style="background-image:url(\'http://graph.facebook.com/' + nemesis.user + '/picture?type=large\');"></div><div><strong style="width:150px;padding:0 0 3px 0;">Your Nemesis</strong><br><strong>Won</strong>' + nemesis.win + '<br><strong>Lost</strong>' + nemesis.lose + '<br></div></div>').click(function() {
-			tools.Page.loadPage('keep.php?user=' + nemesis.user);
-		}))
+		$('#cageBattleNews').html(list.join('<br>'));
+		if(nemesis.user !== null) {
+			$('#cageBattleNews').append($('<div id="cagePageKeepNemesisImg"><div style="background-image:url(\'http://graph.facebook.com/' + nemesis.user + '/picture?type=large\');"></div><div><strong style="width:150px;padding:0 0 3px 0;">Your Nemesis</strong><br><strong>Won</strong>' + nemesis.win + '<br><strong>Lost</strong>' + nemesis.lose + '<br></div></div>').click(function() {
+				tools.Page.loadPage('keep.php?user=' + nemesis.user);
+			}))
+		}
 	}
 
 	$('div.indexRightCol:has(img[src*="/newiphone_ad_facebook.jpg"])').remove();
