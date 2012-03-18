@@ -86,4 +86,5 @@ li.topNavLink, li.topNavLink a {
     background: #3b5998;
     border-bottom-right-radius: 10px;
     box-shadow: 2px 2px 9px #000;
+    height: 31px;
 }

@@ -1,4 +1,22 @@
 ==================================================================
+VER: 1.1.28β
+------------------------------------------------------------------
+	ADD: Hide upgrade messages (Settings)
+	ADD: Conquest monster added to list
+	FIX: Page loader once more
+	FIX: Constant loading when entering gift page
+	FIX: Conquest defensive victories show as losses
+	CHG: Show FB Messages/Notifications when hiding bluebar
+
+==================================================================
+VER: 1.1.27β
+------------------------------------------------------------------
+	FIX: Asking for extra permissions (1.1.27.1)
+	ADD: Even better handling for broken pages (1.1.27.1)
+	ADD: Battle news summary
+	FIX: Sure i'd fixed something...
+
+==================================================================
 VER: 1.1.26β
 ------------------------------------------------------------------
 	FIX: Popup boxes sometimes placed out of sight

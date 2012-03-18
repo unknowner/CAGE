@@ -25,7 +25,7 @@ tools['Page'].runtime['index.php'] = function() {
 					lose : 0
 				}
 			}
-			if(txt.match(/Victory!/i)) {
+			if(txt.match(/Victory!|VICTORIOUS/i)) {
 				win++;
 				users[_uid].win++;
 			} else {

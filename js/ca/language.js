@@ -77,5 +77,6 @@ var language = {
 	monsterSetMonster : 'Monsters',
 	monsterSetFestival1 : 'Tower of Transcendence I',
 	monsterSetFestival2 : 'Tower of Transcendence II',
-	monsterSetRaid : 'Raids'
+	monsterSetRaid : 'Raids',
+	monsterSetConquest : 'Conquest'
 };
