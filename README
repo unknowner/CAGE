@@ -4,6 +4,7 @@ VER: 1.1.28β
 	ADD: Hide upgrade messages (Settings)
 	ADD: Conquest monster added to monster list
 	ADD: Pics in Guild battles link to keep
+	ADD: Quickswitch to Sano on quests
 	FIX: Page loader once more
 	FIX: Constant loading when entering gift page
 	FIX: Conquest defensive victories show as losses

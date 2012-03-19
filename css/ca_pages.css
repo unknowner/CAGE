@@ -48,3 +48,30 @@
     opacity: 0.7;
     font-weight: bold;
 }
+/*
+ * Quests
+ */
+img.cageQuestSanoSwitch {
+    position: absolute;
+    cursor: pointer;
+    height: 40px;
+    border-radius: 5px;
+    margin-left: -49px;
+    border: 2px outset;
+    opacity: 0.8;
+    margin-top: 22px;
+}
+img.cageQuestSanoSwitch:hover {
+    border: 2px inset;
+    opacity: 1;
+}
+/*
+ * Guild profile pics link
+ */
+.cageGuildProfileLink {
+    cursor: pointer;
+    opacity: 0.8;
+}
+.cageGuildProfileLink:hover {
+    opacity: 1;
+}

@@ -653,13 +653,3 @@ div.cageClassPowerText {
     padding: 10px;
     border-radius: 30px;
 }
-/*
- * Guild profile pics link
- */
-.cageGuildProfileLink {
-    cursor: pointer;
-    opacity: 0.9;
-}
-.cageGuildProfileLink:hover {
-    opacity: 1;
-}

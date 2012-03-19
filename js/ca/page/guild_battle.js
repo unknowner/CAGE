@@ -4,8 +4,7 @@ tools['Page'].runtime['guild_battle.php'] = function() {
 	console.log('Page: guild_battle.php');
 
 	// add link to profile pics
-	var _image = $('#guild_battle_section *.fb_profile_pic_rendered');
-	_image.each(function() {
+	$('#enemy_guild_member_list *[uid]').each(function() {
 		$(this).wrap('<a class="cageGuildProfileLink" onclick="ajaxLinkSend(\'globalContainer\', \'keep.php?casuser=' + $(this).attr('uid') + '\'); return false;"></a>');
 	});
 	

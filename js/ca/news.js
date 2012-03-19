@@ -10,6 +10,8 @@ function cageNews(_full) {
 	$('#cageNewsFoot').prepend('<center>If you find bugs, just go to the blog and post them there (no signup required).<br>Logs (CTRL+SHIFT+J) are always welcome!</center>');
 	$.each([
 			'ADD: Hide upgrade messages (Settings)',
+			'ADD: Pics in Guild battles link to keep',
+			'ADD: Quickswitch to Sano on quests',	
 			'FIX: Page loader once more',
 			'FIX: Constant loading when entering gift page',
 			'FIX: Conquest defensive victories show as losses',

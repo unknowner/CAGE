@@ -17,4 +17,10 @@ tools['Page'].runtime['symbolquests.php'] = function() {
 			});
 		})).find('img:first').unwrap();
 	});
+	
+	// Add sano to subquests
+	$('div.quest_start:not(:last)').prepend($('<img class="cageQuestSanoSwitch" src="http://image4.castleagegame.com/graphics/hero_sano.jpg">').click(function() {
+		tools.General.setByName('Sano');
+	}));
+	
 };
