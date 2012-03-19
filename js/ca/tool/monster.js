@@ -160,7 +160,7 @@ tools.Monster.conquest = function() {
 					var _img = $('<div class="cageMonsterListItem ui-corner-all">').hide().css('backgroundImage', 'url(' + _e.find('img:first').attr('src') + ')');
 					_img.append('<div class="cageMonsterName">' + _e.find('> div:eq(1) > div:first > div:first').text() + '</div>');
 					_img.append($('<div class="cageMonsterButton">').click(tools.Monster.closeInstant).append(_e.find('> div:eq(2) a')));
-					_img.append('<img class="cageMonsterTag" src="http://image4.castleagegame.com/graphics/monster_button_yourmonster_on.jpg">');
+					_img.append('<img class="cageMonsterTag" src="http://image4.castleagegame.com/graphics/war_battle_guildbtllands_on.jpg">');
 					$('#cageMonsterContainer').append(_img);
 					$('div.cageMonsterListItem:last').slideDown('slow');
 				});

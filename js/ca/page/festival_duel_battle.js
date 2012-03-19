@@ -37,4 +37,9 @@ tools['Page'].runtime['festival_duel_battle.php'] = function() {
 	});
 	sortFestivalRank();
 
+	// add link to profile pics
+	var _image = $('#guild_battle_section *.fb_profile_pic_rendered');
+	_image.each(function() {
+		$(this).wrap('<a class="cageGuildProfileLink" onclick="ajaxLinkSend(\'globalContainer\', \'keep.php?casuser=' + $(this).attr('uid') + '\'); return false;"></a>');
+	});
 };
