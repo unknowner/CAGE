@@ -28,7 +28,7 @@ tools.Monster.runtimeUpdate = function() {
 			raid : item.get('cageMonsterRaid', true),
 			conquest : item.get('cageMonsterConquest', true)
 		},
-		conquestLands : {}
+		conquestLands : item.get('cageMonsterConquestLands', {})
 	};
 	$('#cageMonsterContainer').css('opacity', tools.Monster.runtime.transparent ? 0.7 : 1);
 };
@@ -158,7 +158,8 @@ tools.Monster.conquest = function() {
 				$('#guildv2_monster_list_body div[style="padding:10px 0 0 20px;"] > div', _monster).each(function(_i, _e) {
 					var _e = $(_e);
 					var _img = $('<div class="cageMonsterListItem ui-corner-all">').hide().css('backgroundImage', 'url(' + _e.find('img:first').attr('src') + ')');
-					_img.append('<div class="cageMonsterName">' + _e.find('> div:eq(1) > div:first > div:first').text() + '</div>');
+					//_img.append('<div class="cageMonsterName">' + _e.find('> div:eq(1) > div:first > div:first').text() + '</div>');
+					_img.append('<div class="cageMonsterName">' + $('div[id="guildv2_monster_list_top"]:first', _monster).text() + '</div>');
 					_img.append($('<div class="cageMonsterButton">').click(tools.Monster.closeInstant).append(_e.find('> div:eq(2) a')));
 					_img.append('<img class="cageMonsterTag" src="http://image4.castleagegame.com/graphics/war_battle_guildbtllands_on.jpg">');
 					$('#cageMonsterContainer').append(_img);
