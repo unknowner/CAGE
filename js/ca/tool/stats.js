@@ -2,7 +2,7 @@ tool('Stats');
 
 tools.Stats.update = function(_data) {
 
-	$('#gold_current_value').text($('#gold_current_value_amount', _data).val().replace(/(\d)(?=(\d{3})+\b)/g, '$1,'));
+	$('#gold_current_value').text('$' + $('#gold_current_value_amount', _data).val().replace(/(\d)(?=(\d{3})+\b)/g, '$1,'));
 
 	$('#stamina_current_value').text($('#stamina_current_value_amount', _data).val());
 	$('#stamina_current_value').next('span').text($('#stamina_current_max', _data).val());

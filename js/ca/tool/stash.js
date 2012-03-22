@@ -15,7 +15,8 @@ tools.Stash.start = function() {
 
 };
 tools.Stash.work = function() {
-	get('keep.php?do=Stash&stash_gold=' + $('#gold_current_value').text().match(/\d*/g).join('') + '&bqh=' + CastleAge.bqh, function(_data) {
+	tools.Stash.runtime.gold = parseInt($('#gold_current_value').text().match(/\d*/g).join(''), 10);
+	get('keep.php?do=Stash&stash_gold=' + tools.Stash.runtime.gold + '&bqh=' + CastleAge.bqh, function(_data) {
 		var _time_left = $('#gold_time_sec', _data);
 		if(_time_left) {
 			addFunction(function(gold_token_time_left_obj) {
@@ -26,9 +27,14 @@ tools.Stash.work = function() {
 			$('input[name="stash_gold"]').val('0');
 			$('b.money').text($('b.money').text());
 		}
-		$('#gold_current_value').text('$0');
-		console.log(tools.Stash.runtime.general);
-		console.log(tools.General.current);
+		tools.Stash.runtime.stashTimer = window.setInterval(function() {
+			tools.Stash.runtime.gold = tools.Stash.runtime.gold - (Math.pow(7, tools.Stash.runtime.gold.toString().length));
+			if(tools.Stash.runtime.gold <= 0) {
+				window.clearInterval(tools.Stash.runtime.stashTimer);
+				tools.Stash.runtime.gold = 0;
+			}
+			$('#gold_current_value').text('$' + tools.Stash.runtime.gold.toString().replace(/(\d)(?=(\d{3})+\b)/g, '$1,'));
+		}, 5);
 		if(tools.Stash.runtime.general !== tools.General.current) {
 			tools.General.setByName(tools.Stash.runtime.general, tools.Stash.done);
 		} else {
@@ -37,12 +43,22 @@ tools.Stash.work = function() {
 	});
 };
 tools.Stash.done = function() {
-	$('#cageStash').removeAttr('disabled').css('cursor', 'pointer');
+	$('#cageStash').css({
+		'cursor' : '',
+		'backgroundSize' : '',
+		'backgroundPosition' : '',
+		'backgroundImage' : ''
+	}).removeAttr('disabled');
 };
 tools.Stash.init = function() {
 	$('#cageStatsContainer').append($('<button id="cageStash" title="Stash gold using Aeris"></button>').click(function() {
 		if($('#gold_current_value').text() !== '$0') {
-			$(this).attr('disabled', 'true').css('cursor', 'wait');
+			$(this).css({
+				'cursor' : 'wait',
+				'backgroundSize' : '32px 32px',
+				'backgroundPosition' : '-4px -4px',
+				'backgroundImage' : 'url(\'http://image4.castleagegame.com/graphics/shield_wait.gif\')'
+			}).attr('disabled', 'disabled');
 			tools.Stash.start();
 		}
 	}));

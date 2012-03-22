@@ -21,7 +21,6 @@ tools.Page.runtime['keep.php'] = function() {
 		});
 	});
 	// Calulate devine power
-	//$('div.statsTMain:eq(0) img')
 	var _divPow = 0, _divItems = [], _divine = {
 		'general' : {
 			'Aegea' : 45,
@@ -76,17 +75,22 @@ tools.Page.runtime['keep.php'] = function() {
 		}
 	};
 	$('div.statsTMain:eq(0) img').each(function(_i, _e) {
-		_divItems.push(/(.+), Divine Power/.exec($(_e).attr('title'))[1]);
+		var _d = /(.+), Divine Power/.exec($(_e).attr('title'));
+		if(_d !== null) {
+			_divItems.push(_d[1]);
+		}
 	});
-	$.each(_divine, function(_i, _type) {
-		var _temp = 0;
-		$.each(_type, function(_item, _val) {
-			if(_divItems.indexOf(_item) !== -1) {
-				_temp = _temp > _val ? _temp : _val;
-			}
+	if(_divItems.length === 0) {
+		$.each(_divine, function(_i, _type) {
+			var _temp = 0;
+			$.each(_type, function(_item, _val) {
+				if(_divItems.indexOf(_item) !== -1) {
+					_temp = _temp > _val ? _temp : _val;
+				}
+			});
+			_divPow += _temp
 		});
-		_divPow += _temp
-	});
+	}
 	_divItems = _divine = undefined;
 
 	// Some more stats, like BSI, LSI... keep_data.attribute_section

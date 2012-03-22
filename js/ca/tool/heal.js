@@ -18,11 +18,21 @@ tools.Heal.start = function() {
 };
 
 tools.Heal.done = function() {
-	$('#cageHeal').removeAttr('disabled').css('cursor', 'pointer');
+	$('#cageHeal').css({
+		'cursor' : '',
+		'backgroundSize' : '',
+		'backgroundPosition' : '',
+		'backgroundImage' : ''
+	}).removeAttr('disabled');
 };
 tools.Heal.init = function() {
 	$('#cageStatsContainer').append($('<button id="cageHeal" title="Heal to full health"></button>').click(function() {
-		$(this).attr('disabled', true).css('cursor', 'wait');
+		$(this).css({
+			'cursor' : 'wait',
+			'backgroundSize' : '32px 32px',
+			'backgroundPosition' : '-4px -4px',
+			'backgroundImage' : 'url(\'http://image4.castleagegame.com/graphics/shield_wait.gif\')'
+		}).attr('disabled', 'disabled');
 		tools.Heal.start();
 	}));
 };

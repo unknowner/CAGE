@@ -31,12 +31,22 @@ tools.PotionEnergy.work = function(_pagedata) {
 	}
 };
 tools.PotionEnergy.done = function() {
-	$('#cagePotionEnergy').removeAttr('disabled').css('cursor', 'pointer');
+	$('#cagePotionEnergy').css({
+		'cursor' : '',
+		'backgroundSize' : '',
+		'backgroundPosition' : '',
+		'backgroundImage' : ''
+	}).removeAttr('disabled');
 };
 tools.PotionEnergy.init = function() {
 	$('#cageStatsContainer').append($('<button id="cagePotionEnergy" title="Use energy potion if available"><span class="cagePotionCount"></span></button>').click(function() {
 		if($(this).text() !== '' && $(this).text() !== '0') {
-			$(this).attr('disabled', 'true').css('cursor', 'wait');
+			$(this).css({
+				'cursor' : 'wait',
+				'backgroundSize' : '32px 32px',
+				'backgroundPosition' : '-4px -4px',
+				'backgroundImage' : 'url(\'http://image4.castleagegame.com/graphics/shield_wait.gif\')'
+			}).attr('disabled', 'disabled');
 			tools.PotionEnergy.start();
 		}
 	}));
