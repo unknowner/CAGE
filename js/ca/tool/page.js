@@ -18,6 +18,9 @@ tools.Page.init = function() {
 		tools.General.get();
 	});
 };
+tools.Page.settings = function() {
+	console.log(tools.Page.runtime);
+};
 tools.Page.loadPage = function(_page) {
 	console.log('Loadpage:' + _page);
 	addFunction(function(_data) {

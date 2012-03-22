@@ -80,7 +80,8 @@ tools.Page.runtime['keep.php'] = function() {
 			_divItems.push(_d[1]);
 		}
 	});
-	if(_divItems.length === 0) {
+	console.log(_divItems);
+	if(_divItems.length > 0) {
 		$.each(_divine, function(_i, _type) {
 			var _temp = 0;
 			$.each(_type, function(_item, _val) {

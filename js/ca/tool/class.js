@@ -21,10 +21,12 @@ tools.Class.start = function() {
 			'cursor' : 'pointer',
 			'backgroundImage' : 'url(\'http://image4.castleagegame.com/graphics/class_' + tools.Class.runtime.classSet + '.gif\')'
 		}).removeAttr('disabled');
+		tools.Class.statsPowerImages(_data);
 		tools.Class.showClass(_data);
 	});
 };
 tools.Class.showClass = function(_data) {
+
 	tools.Class.runtimeUpdate();
 	$('#cageClasses, #cageClassPower, #cageClassSave, #cageClassPowerSelector').empty();
 	//Get current class and setup class selector
@@ -71,7 +73,6 @@ tools.Class.showClass = function(_data) {
 			small : 'http://image4.castleagegame.com/graphics/' + $(this).val(),
 			big : $(this).next('div.imgButton').find('img').attr('src')
 		};
-		//$('#cageClassPowerSelector').append('<img src="' + tools.Class.runtime.powersOwn[_key].small + '">')
 	});
 	// equipped powers
 	$('div[id^="open_power_slot"]', _data).each(function(_index) {
@@ -160,6 +161,7 @@ tools.Class.changeClass = function(_class) {
 			'cursor' : 'pointer',
 			'backgroundImage' : 'url(\'http://image4.castleagegame.com/graphics/class_' + _class + '.gif\')'
 		}).removeAttr('disabled');
+		tools.Class.statsPowerImages(_data);
 		$('#cageStatsClass div:last').text(_class[0].toUpperCase() + _class.slice(1));
 		tools.Class.showClass(_data);
 	});
@@ -185,10 +187,32 @@ tools.Class.init = function() {
 			}).attr('disabled', 'disabled');
 			tools.Class.start();
 		}));
-		$('#main_sts_container').append('<div id="cageStatsClass" class="cageStatBackground"><div></div><hr><div>' + _class[0].toUpperCase() + _class.slice(1) + '</div></div>');
+		$('#main_sts_container').append('<div id="cageStatsClass" class="cageStatBackground"><div></div><div>' + _class[0].toUpperCase() + _class.slice(1) + '</div><span></span></div>');
+		tools.Class.statsPowerImages(data);
 	})
 	tools.Class.fbButton.add('Class', function() {
 		tools.Class.fbButton.disable();
 		tools.Class.start();
+	});
+};
+
+tools.Class.statsPowerImages = function(data) {
+	$('#cageStatsClass span img').remove();
+	$('div[id^="open_power_slot_"] img', data).each(function() {
+		$('#cageStatsClass span').append($('<img src="' + $(this).attr('src') + '">').hover(function() {
+			$(this).stop(true).animate({
+				'height' : 45,
+				'marginBottom' : 4,
+				'marginLeft' : -8,
+				'marginRight' : -8
+			}, 'fast').css('zIndex', 1);
+		}, function() {
+			$(this).stop(true).animate({
+				'height' : 16,
+				'marginBottom' : 0,
+				'marginLeft' : 0,
+				'marginRight' : 0
+			}, 'fast').css('zIndex', 0);
+		}));
 	});
 };
