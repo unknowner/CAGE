@@ -1,5 +1,4 @@
 tool('Class');
-
 tools.Class.runtimeUpdate = function() {
 	tools.Class.runtime = {
 		powersEquip : [],
@@ -14,7 +13,6 @@ tools.Class.runtimeUpdate = function() {
 		classSet : null
 	}
 };
-
 tools.Class.start = function() {
 	get('guild_class_power_equipment.php', function(_data) {
 		$('#cageStatsClassLogo').css({
@@ -26,7 +24,6 @@ tools.Class.start = function() {
 	});
 };
 tools.Class.showClass = function(_data) {
-
 	tools.Class.runtimeUpdate();
 	$('#cageClasses, #cageClassPower, #cageClassSave, #cageClassPowerSelector').empty();
 	//Get current class and setup class selector
@@ -92,7 +89,8 @@ tools.Class.showClass = function(_data) {
 					_this.data('power', '');
 					tools.Class.runtime.powersEquip[_this.data('slot')] = '';
 					_pow.slideUp('fast').data('show', false).empty();
-					_this.attr('src', 'http://image4.castleagegame.com/graphics/g_char_power_blank.gif')
+					_this.attr('src', 'http://image4.castleagegame.com/graphics/g_char_power_blank.gif');
+					$('#cageStatsClass span img:eq(' + _index + ')').hide();
 				}));
 				$.each(tools.Class.runtime.powersOwn, function(_i) {
 					if(tools.Class.runtime.powersEquip.indexOf(_i) == -1) {
@@ -106,7 +104,7 @@ tools.Class.showClass = function(_data) {
 							}, 'slow');
 						}).click(function() {
 							tools.Class.runtime.powersEquip[_this.data('slot')] = $(this).data('equip');
-							console.log(tools.Class.runtime.powersEquip);
+							$('#cageStatsClass span img:eq(' + _index + ')').show().attr('src', tools.Class.runtime.powersOwn[$(this).data('equip')].small);
 							_this.attr('src', tools.Class.runtime.powersOwn[$(this).data('equip')].small);
 							_pow.slideUp('fast').data('show', false).empty();
 						}));
@@ -195,7 +193,6 @@ tools.Class.init = function() {
 		tools.Class.start();
 	});
 };
-
 tools.Class.statsPowerImages = function(data) {
 	$('#cageStatsClass span img').remove();
 	$('div[id^="open_power_slot_"] img', data).each(function() {
