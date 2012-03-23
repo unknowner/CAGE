@@ -337,12 +337,13 @@ div.lvlBr {
 #cageNextDemi > div:nth-child(2) {
     position: absolute;
     background: #555;
-    width: 72px;
+    width: 107px;
     height: 11px !important;
     top: 4px;
     left: 24px;
     border-radius: 3px;
     border: 1px inset;
+    padding-left: 0;
 }
 #cageNextDemi > div > div {
     height: 11px;

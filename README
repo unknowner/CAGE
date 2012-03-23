@@ -3,6 +3,7 @@ VER: 1.1.29β
 ------------------------------------------------------------------
 	ADD: Sorting in conquest duels
 	ADD: Current Class in stats + powers
+	ADD: Quickswitch to discount general at Soldiers
 	FIX: Keep not showing BSI/LSI/...
 
 ==================================================================

@@ -7,7 +7,6 @@ tools['Page'].runtime['quests.php'] = function() {
 		var _ratio = parseInt($(_xp[_i]).text()) / parseInt($('div b', _e).text());
 		$('> div:first', _e).append('<span style="color:#000;"> - Ratio: ' + _ratio.toString().substr(0, 4) + '</span>');
 	});
-	
 	// Add button to faster switch generals
 	$('div.quest_act_gen:not(:has(img[src*="nogen.gif"]))').each(function() {
 		$(this).append($('<img class="cageQuestSwitchGeneral" src="http://image4.castleagegame.com/graphics/quick_switch_button.gif">').click(function() {
@@ -18,9 +17,10 @@ tools['Page'].runtime['quests.php'] = function() {
 			});
 		})).find('img:first').unwrap();
 	});
-	
 	// Add sano to subquests
-	$('div.quest_start:not(:last)').prepend($('<img class="cageQuestSanoSwitch" src="http://image4.castleagegame.com/graphics/hero_sano.jpg">').click(function() {
-		tools.General.setByName('Sano');
-	}));
+	if(tools.General.runtime.general.Sano) {
+		$('div.quest_start:not(:last)').prepend($('<img class="cageQuestSanoSwitch" src="http://image4.castleagegame.com/graphics/hero_sano.jpg">').click(function() {
+			tools.General.setByName('Sano');
+		}));
+	}
 };

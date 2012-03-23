@@ -86,6 +86,8 @@ tools.Demi.parse = function(_pagedata) {
 			_minute = parseInt(/(\d+)(?= minutes)/.exec(_pagedata)[0], 10);
 			_demi.setHours(_demi.getHours() + _hour - _wait, _demi.getMinutes() + _minute);
 		}
+		console.log(_wait);
+		console.log(_demi);
 		item.set('cageDemiLast', Date.parse(_demi));
 		item.set('cageDemiTime', _wait);
 		tools.Demi.timer();

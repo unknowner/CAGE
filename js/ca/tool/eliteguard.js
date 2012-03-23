@@ -17,7 +17,6 @@ tools.Eliteguard.getUserIds = function() {
 	});
 };
 tools.Eliteguard.start = function(_ids) {
-console.log(_ids);
 	if(!_ids) {
 		console.log('Eliteguard: Reading ids...');
 		tools.Eliteguard.runtime.id = [];
