@@ -167,3 +167,14 @@ img.cageQuestSanoSwitch:hover {
 #cageOracleGeneralSelector img:first-of-type:hover {
     opacity: 1;
 }
+#cageOracleGeneralSort {
+    cursor: pointer;
+    position: absolute;
+    background: #000;
+    opacity: 0.9;
+    padding: 2px 4px;
+    font-size: 11px;
+    color: #fff;
+    margin-left: -35px;
+    border-bottom-right-radius: 4px;
+}

@@ -1486,31 +1486,49 @@ tools.Page.runtime['oracle.php'] = function() {
 		});
 	}
 
-
-	$('div.limitedDivWrapper').before('<div id="cageOracleGeneralSelector"><div></div></div>');
-	$('div.limitedDivWrapper').css({
-		'paddingLeft' : 38,
-		'width' : 692
-	}).html('<div id="cageOracleGeneral" class="cageOracleItem"><div><b>Cost:</b> 30 Favor Points</div><img><div></div><div></div><div></div><div></div><img src="http://image4.castleagegame.com/graphics/town_button_buy.gif"></div><div id="cageOracleEq1" class="cageOracleItem"><div><b>Cost:</b> 25 Favor Points</div><img><div></div><div></div><div></div><div></div><img src="http://image4.castleagegame.com/graphics/town_button_buy.gif"></div><div id="cageOracleEq2" class="cageOracleItem"><div><b>Cost:</b> 25 Favor Points</div><img><div></div><div></div><div></div><div></div><img src="http://image4.castleagegame.com/graphics/town_button_buy.gif"></div><div id="cageOracleEq3" class="cageOracleItem"><div><b>Cost:</b> 25 Favor Points</div><img><div></div><div></div><div></div><div></div><img src="http://image4.castleagegame.com/graphics/town_button_buy.gif"></div>');
-
-	var _sel = $('#cageOracleGeneralSelector > div'), _tempGen = {}, _tempName = [], _m = monthly[monthly.length - 1];
-	$.each(monthly, function(_i, _e) {
-		_tempName.push(this.n);
-		_tempGen[this.n] = $('<span><img src="http://image4.castleagegame.com/graphics/' + this.p + '.jpg"><span>' + this.n + '</span></span>').click(function() {
-			var _m = monthly[_i];
-			fillType('cageOracleGeneral', _m);
-			fillType('cageOracleEq1', _m.e[0]);
-			fillType('cageOracleEq2', _m.e[1]);
-			fillType('cageOracleEq3', _m.e[2]);
+	function initOracleGenerals() {
+		if($('#cageOracleGeneralSelector').length === 0) {
+			$('div.limitedDivWrapper').before('<div id="cageOracleGeneralSelector"><div></div></div>');
+		} else {
+			$('#cageOracleGeneralSelector').html('<div></div>');
+		}
+		$('div.limitedDivWrapper').css({
+			'paddingLeft' : 38,
+			'width' : 692
+		}).html('<div id="cageOracleGeneralSort">Sort by date</div><div id="cageOracleGeneral" class="cageOracleItem"><div><b>Cost:</b> 30 Favor Points</div><img><div></div><div></div><div></div><div></div><img src="http://image4.castleagegame.com/graphics/town_button_buy.gif"></div><div id="cageOracleEq1" class="cageOracleItem"><div><b>Cost:</b> 25 Favor Points</div><img><div></div><div></div><div></div><div></div><img src="http://image4.castleagegame.com/graphics/town_button_buy.gif"></div><div id="cageOracleEq2" class="cageOracleItem"><div><b>Cost:</b> 25 Favor Points</div><img><div></div><div></div><div></div><div></div><img src="http://image4.castleagegame.com/graphics/town_button_buy.gif"></div><div id="cageOracleEq3" class="cageOracleItem"><div><b>Cost:</b> 25 Favor Points</div><img><div></div><div></div><div></div><div></div><img src="http://image4.castleagegame.com/graphics/town_button_buy.gif"></div>');
+		var _sel = $('#cageOracleGeneralSelector > div'), _tempGen = {}, _tempName = [], _m = monthly[monthly.length - 1];
+		$.each(monthly, function(_i, _e) {
+			_tempName.unshift(this.n);
+			_tempGen[this.n] = $('<span><img src="http://image4.castleagegame.com/graphics/' + this.p + '.jpg"><span>' + this.n + '</span></span>').click(function() {
+				var _m = monthly[_i];
+				fillType('cageOracleGeneral', _m);
+				fillType('cageOracleEq1', _m.e[0]);
+				fillType('cageOracleEq2', _m.e[1]);
+				fillType('cageOracleEq3', _m.e[2]);
+			});
 		});
-	});
-	console.log(_tempGen);
-	$.each(_tempName.sort(), function() {
-		_sel.append(_tempGen[this]);
-	});
-	fillType('cageOracleGeneral', _m);
-	fillType('cageOracleEq1', _m.e[0]);
-	fillType('cageOracleEq2', _m.e[1]);
-	fillType('cageOracleEq3', _m.e[2]);
+		if($('div.limitedDivWrapper').data('sortOrder') === 'name') {
+			_tempName.sort();
+		}
+		$.each(_tempName, function() {
+			_sel.append(_tempGen[this]);
+		});
+		fillType('cageOracleGeneral', _m);
+		fillType('cageOracleEq1', _m.e[0]);
+		fillType('cageOracleEq2', _m.e[1]);
+		fillType('cageOracleEq3', _m.e[2]);
+		$('#cageOracleGeneralSort').click(function() {
+			if($('div.limitedDivWrapper').data('sortOrder') === 'name') {
+				$(this).text('Sort by date');
+				$('div.limitedDivWrapper').data('sortOrder', 'date');
+			} else {
+				$(this).text('Sort by name');
+				$('div.limitedDivWrapper').data('sortOrder', 'name');
+			}
+			initOracleGenerals();
+		});
+	};
+
+	initOracleGenerals();
 
 };
