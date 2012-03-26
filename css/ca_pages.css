@@ -75,3 +75,95 @@ img.cageQuestSanoSwitch:hover {
 .cageGuildProfileLink:hover {
     opacity: 1;
 }
+/*
+ * Oracle
+ */
+#cageOracleGeneral {
+}
+#cageOracleEq1 {
+}
+#cageOracleEq2 {
+}
+#cageOracleEq3 {
+}
+.cageOracleItem {
+    position: relative;
+    top: 35px;
+    width: 160px;
+    height: 329px;
+    float: left;
+    margin-left: 3px;
+    opacity: 0.9;
+}
+.cageOracleItem > div:first-of-type {
+    text-align: center;
+    height: 15px;
+    font-size: 12px;
+    padding-top: 4px;
+}
+.cageOracleItem > div:nth-of-type(2) {
+    text-align: center;
+    font-weight: bold;
+    font-size: 10px;
+}
+.cageOracleItem > div:nth-of-type(3) {
+    padding: 2px;
+    font-size: 11px;
+    width: 152px;
+    text-align: center;
+    height: 40px;
+    overflow: hidden;
+}
+.cageOracleItem > div:nth-of-type(4) {
+    padding: 9px 0 0 45px;
+}
+.cageOracleItem > div:nth-of-type(5) {
+    padding: 15px 0 0 45px;
+}
+.cageOracleItem > img:first-of-type {
+    width: 148px;
+    height: 148px;
+    border: 2px inset #D0B682;
+    margin: 3px;
+}
+.cageOracleItem > img:last-of-type {
+    padding: 11px 0 0 57px;
+    cursor: pointer;
+}
+#cageOracleGeneralSelector {
+    width: 724px;
+    border: 2px inset #D0B682;
+    margin-left: 7px;
+    overflow-y: hidden;
+    overflow-x: scroll;
+    height: 97px;
+    background: #000;
+}
+#cageOracleGeneralSelector > div {
+    height: 80px;
+    white-space: nowrap;
+}
+#cageOracleGeneralSelector > div > span {
+    margin-right: 2px;
+}
+#cageOracleGeneralSelector > div > span > span {
+    position: relative;
+    bottom: 2px;
+    text-align: center;
+    color: #fff;
+    background: #000;
+    opacity: 0.75;
+    font-size: 10px;
+    left: -80px;
+    width: 80px;
+    display: inline-block;
+    margin-right: -80px;
+}
+#cageOracleGeneralSelector img:first-of-type {
+    height: 80px;
+    opacity: 0.8;
+    cursor: pointer;
+}
+#cageOracleGeneralSelector img:first-of-type:hover {
+    opacity: 1;
+}

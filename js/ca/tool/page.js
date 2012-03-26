@@ -25,6 +25,7 @@ tools.Page.loadPage = function(_page) {
 	console.log('Loadpage:' + _page);
 	addFunction(function(_data) {
 		ajaxLinkSend('globalContainer', _data);
+		return false;
 	}, JSON.stringify(_page), true, true);
 };
 tools.Page.ajaxSkip = function() {

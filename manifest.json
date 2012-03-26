@@ -1,8 +1,12 @@
 {
 	"name": "CAGE - Castle Age Game Enhancer [β]",
-	"version": "1.1.29.4",
+	"version": "1.1.30",
 	"description": "CAGE makes playing Castle Age on Facebook a bit easier and a lot more fun ;)",
 	"background_page": "background.html",
+	"browser_action": {
+		"default_title": "Disable CAGE",
+		"default_icon": "img/icon128.png"
+  	},
 	"content_scripts": [
 		{
 		"matches": ["*://web.castleagegame.com/castle/*"],
@@ -76,6 +80,7 @@
 			"js/ca/page/guildv2_conquest_command.js",
 			"js/ca/page/conquest_duel.js",
 			"js/ca/page/soldiers.js",
+			"js/ca/page/oracle.js",
 			
 			"js/castleage.js"
 			],

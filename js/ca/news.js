@@ -10,6 +10,8 @@ function cageNews(_full) {
 	$('#cageNewsFoot').prepend('<center>If you find bugs, just go to the blog and post them there (no signup required).<br>Logs (CTRL+SHIFT+J) are always welcome!</center>');
 	$.each([
 			'ADD: Sorting in conquest duels',
+			'ADD: Current Class in stats + powers',
+			'ADD: Quickswitch to discount general at Soldiers',
 			'FIX: Keep not showing BSI/LSI/...'
 		], function(_i, _e) {
 			$('#cageNewsChanges').append('<li><span>' + _e.split(':')[0] + '</span>' + _e.split(':')[1] + '</li>');
