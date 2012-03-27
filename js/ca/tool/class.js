@@ -90,7 +90,6 @@ tools.Class.showClass = function(_data) {
 					tools.Class.runtime.powersEquip[_this.data('slot')] = '';
 					_pow.slideUp('fast').data('show', false).empty();
 					_this.attr('src', 'http://image4.castleagegame.com/graphics/g_char_power_blank.gif');
-					$('#cageStatsClass span img:eq(' + _index + ')').hide();
 				}));
 				$.each(tools.Class.runtime.powersOwn, function(_i) {
 					if(tools.Class.runtime.powersEquip.indexOf(_i) == -1) {
@@ -104,7 +103,6 @@ tools.Class.showClass = function(_data) {
 							}, 'slow');
 						}).click(function() {
 							tools.Class.runtime.powersEquip[_this.data('slot')] = $(this).data('equip');
-							$('#cageStatsClass span img:eq(' + _index + ')').show().attr('src', tools.Class.runtime.powersOwn[$(this).data('equip')].small);
 							_this.attr('src', tools.Class.runtime.powersOwn[$(this).data('equip')].small);
 							_pow.slideUp('fast').data('show', false).empty();
 						}));
@@ -122,7 +120,8 @@ tools.Class.showClass = function(_data) {
 		$('#cageClassSelected').text('Saving...');
 		get('guild_class_power_equipment.php?action=class_power_equipment&class_id=' + tools.Class.runtime.classId + '&equipment=' + tools.Class.runtime.powersEquip.filter(function(e) {
 			return e
-		}).join(';'), function() {
+		}).join(';'), function(_data) {
+			tools.Class.statsPowerImages(_data);
 			tools.Class.done();
 		})
 	}).hover(function() {

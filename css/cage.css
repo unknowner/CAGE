@@ -15,12 +15,12 @@
 }
 #cageLogo {
     position: absolute;
-    left: -4px;
     height: 45px;
+    left: 0;
 }
 #cageLogoShadow {
     position: absolute;
-    left: -4px;
+    left: -2px;
     height: 45px;
     top: 4px;
     opacity: 0.5;
@@ -509,10 +509,21 @@
     left: 0;
     background: #000;
     padding: 10px;
-    border-top-right-radius: 8px;
     color: #fff;
     font-size: 11px;
     opacity: 0.75;
+    border-top-right-radius: 8px;
+}
+#cageMonsterActivity {
+    position: absolute;
+    left: 0;
+    background: #000;
+    padding: 10px;
+    color: #fff;
+    font-size: 11px;
+    opacity: 0.75;
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
 }
 /*
  * Conquest
@@ -653,3 +664,4 @@ div.cageClassPowerText {
     padding: 10px;
     border-radius: 30px;
 }
+

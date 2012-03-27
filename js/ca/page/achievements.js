@@ -40,7 +40,7 @@ tools['Page'].runtime['achievements.php'] = function() {
 	});
 	$('#achievements_3 div.positive').each(function(_i, _e) {
 		var _t = $(_e).parent().contents()[2].nodeValue.replace(/(,.*)|Slain/i, '').trim();
-		if(_ach[_t]) {
+		if(_ach[_t] && _ach[_t].have < _ach[_t].need) {
 			$(_e).text(_ach[_t].have + '/' + _ach[_t].need);
 		}
 	});

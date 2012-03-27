@@ -25,15 +25,6 @@ tools.Page.runtime.allPages = function() {
 	// Favour points
 	$('#cageFavorPoints > span').text($('#main_bn div[style*="persistent_bar_oracle.gif"]').text().trim());
 
-	// Stat Points
-	if($('#main_bntp a:contains("My Stats")').text().match(/\d+/g) !== null) {
-		$('#cageStatPoints > span').text($('#main_bntp a:contains("My Stats")').text().match(/\d+/g)[0]);
-		$('#cageStatPoints > img').attr('src', 'http://image4.castleagegame.com/graphics/keep_upgrade_orange.gif');
-	} else {
-		$('#cageStatPoints > span').text('');
-		$('#cageStatPoints > img').attr('src', 'http://image4.castleagegame.com/graphics/keep_upgrade_green.gif');
-	}
-
 	//Stats
 	$('#main_sts').css('background', $('#main_bn').css('backgroundImage'));
 	window.setTimeout(function() {

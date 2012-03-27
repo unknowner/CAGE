@@ -16,9 +16,7 @@ tools.Stats.update = function(_data) {
 };
 tools.Stats.init = function() {
 
-	$('#cageStatsContainer')
-		.append('<div id="cageFavorPoints"><img src="http://image4.castleagegame.com/graphics/favor_icon.jpg"><span></div>')
-		.append('<div id="cageStatPoints"><img src="http://image4.castleagegame.com/graphics/keep_upgrade_green.gif"><span></div>');
+	$('#cageStatsContainer').append('<div id="cageFavorPoints"><img src="http://image4.castleagegame.com/graphics/favor_icon.jpg"><span></div>');
 
 	$('#main_sts_container')
 		.prepend('<div id="cageStatBGGold" class="cageStatBackground"><div></div><hr/><div>Gold</div></div>')

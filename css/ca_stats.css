@@ -3,6 +3,7 @@
     z-index: 3;
     height: 0;
     position: fixed;
+    cursor: pointer;
 }
 #main_sts_container {
     position: fixed !important;
@@ -86,7 +87,7 @@ div.st_row_2 {
     float: none;
 }
 /* stats buttons */
-#cageStash, #cagePotionEnergy, #cageHeal, #cagePotionStamina, #cageStatsClassLogo {
+#cageStash, #cagePotionEnergy, #cageHeal, #cagePotionStamina, #cageStatsClassLogo, #cageStatPoints {
     background-position: -2px -1px;
     position: absolute;
     width: 29px;
@@ -303,23 +304,15 @@ div.lvlBr {
  * Stat Points
  */
 #cageStatPoints {
-    height: 25px;
-    position: absolute;
+    background-image: url('http://image4.castleagegame.com/graphics/keep_upgrade_green.gif');
     top: 53px;
     left: 20px;
-    border-radius: 50px;
-    border: 2px outset;
-    background: #000;
-}
-#cageStatPoints > img {
-    border-radius: 50px;
-    height: 25px;
 }
 #cageStatPoints > span {
     position: absolute;
     width: 24px;
     display: inline-block;
-    top: 4px;
+    top: 5px;
     color: #fff;
     text-shadow: 0 0 5px black;
     font-weight: bold;
@@ -418,15 +411,134 @@ strong.cageStatsText {
 }
 #cageStatsClass span > img {
     height: 16px;
-    border-radius: 10px;
+    border-radius: 15px;
     position: relative;
 }
 #cageStatsClass span > img:hover {
-    box-shadow: 0 5px 6px #000;
+    box-shadow: 0 5px 8px 3px #000;
 }
 #cageStatsClassLogo {
     background-size: 32px 33px;
     top: 53px;
     left: 352px;
     background-position: -4px -4px;
+}
+/*
+ * Level Up
+ */
+#cageLevelUp {
+    font-family: Trebuchet MS, Tahoma, Verdana, Arial, sans-serif !important;
+}
+#cageLevelUp > div:first-of-type {
+    height: 100%;
+    width: 100%;
+    background-color: #000;
+    opacity: 0.75;
+    position: fixed;
+    top: 0;
+    z-index: 998;
+}
+#cageLevelUp > div:last-of-type {
+    width: 500px;
+    height: 389px;
+    position: fixed;
+    top: 200px;
+    z-index: 1000;
+    left: 50%;
+    margin-left: -250px;
+}
+#cageLevelUpTop {
+    background-image: url('http://image4.castleagegame.com/graphics/helpmenu_top.jpg');
+    width: 500px;
+    height: 60px;
+}
+#cageLevelUpMiddle {
+    background-image: url('http://image4.castleagegame.com/graphics/helpmenu_middle.jpg');
+    width: 500px;
+    height: 300px;
+}
+#cageLevelUpBottom {
+    background-image: url('http://image4.castleagegame.com/graphics/helpmenu_bottom.jpg');
+    width: 500px;
+    height: 30px;
+}
+div.cageLevelUpStat {
+    margin: 0 0 10px 40px;
+    padding: 4px;
+    border: 2px inset;
+    width: 269px;
+    border-radius: 10px;
+    background-image: url('http://image4.castleagegame.com/graphics/bg_jobs_tile.jpg');
+}
+div.cageLevelUpStat > img:first-of-type {
+    height: 28px;
+}
+span.cageLevelUpStatName {
+    text-transform: capitalize;
+    width: 66px;
+    display: inline-block;
+    vertical-align: top;
+    margin: 3px 0 0 8px;
+}
+span.cageLevelUpStatVal {
+    width: 68px;
+    display: inline-block;
+    vertical-align: top;
+    margin: 3px 0 0 8px;
+    font-weight: bold;
+    text-align: right;
+    margin-right: 15px;
+}
+img.cageLevelUpPlus, img.cageLevelUpMinus {
+    margin: 4px;
+    box-shadow: 0 0 3px 1px #000;
+    cursor: pointer;
+}
+img.cageLevelUpPlus:hover, img.cageLevelUpMinus:hover {
+    box-shadow: 0 0 2px 0px #000;
+}
+img.cageLevelUpPlus:active, img.cageLevelUpMinus:active {
+    box-shadow: 0 0 0;
+}
+#cageLevelUpSP {
+    position: absolute;
+    top: 60px;
+    right: 40px;
+    text-align: center;
+    width: 116px;
+    font-size: 20px;
+    padding: 4px;
+    border: 2px inset;
+    border-radius: 10px;
+    background-image: url('http://image4.castleagegame.com/graphics/bg_jobs_tile.jpg');
+    line-height: 39px;
+    font-weight: bold;
+}
+#cageLevelUpBar {
+    position: absolute;
+    bottom: 60px;
+    left: 32px;
+    width: 433px;
+    border: 2px inset;
+    border-radius: 10px;
+    background-image: url('http://image4.castleagegame.com/graphics/bg_jobs_tile.jpg');
+    height: 17px;
+}
+#cageLevelUpBar > div {
+    height: 17px;
+    width: 4%;
+    background-color: #0a0;
+    border-radius: 15px;
+}
+#cageLevelUpSave {
+    position: absolute;
+    left: 32px;
+    bottom: 25px;
+    cursor: pointer;
+}
+#cageLevelUpCancel {
+    position: absolute;
+    right: 32px;
+    bottom: 25px;
+    cursor: pointer;
 }

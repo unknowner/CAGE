@@ -1,8 +1,19 @@
 ==================================================================
+VER: 1.1.31β
+------------------------------------------------------------------
+	ADD: Stats points upgrade dialog
+	ADD: Current weapons at generals image
+	ADD: Monster activity display
+	FIX: Sort order of oracle generals
+	CHG: Achievements show only have/need when have < need
+	CHG: Class powers in stats only update when saving
+	
+==================================================================
 VER: 1.1.30β
 ------------------------------------------------------------------
 	ADD: Choose old monthly generals at the Oracle
 	ADD: Have/need number at monster achievements
+	ADD: Sort order switch for Oracle generals
 	
 ==================================================================
 VER: 1.1.29β
