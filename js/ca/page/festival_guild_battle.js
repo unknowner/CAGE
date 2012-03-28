@@ -5,9 +5,8 @@ tools['Page'].runtime['festival_guild_battle.php'] = function() {
 
 	// add link to profile pics
 	$('#enemy_guild_member_list *[uid]').each(function() {
-		$(this).wrap('<a class="cageGuildProfileLink" onclick="ajaxLinkSend(\'globalContainer\', \'keep.php?casuser=' + $(this).attr('uid') + '\'); return false;"></a>');
+		$(this).wrap('<a uid="' + $(this).attr('uid') + '" class="cageGuildProfileLink" onclick="ajaxLinkSend(\'globalContainer\', \'keep.php?casuser=' + $(this).attr('uid') + '\'); return false;"></a>');
 	});
-	
 	// fix gate reseting when attacking with duel button
 	var _gate = /\d/.exec($('#enemy_guild_battle_section_battle_list').attr('class'));
 	$('#results_main_wrapper form, #enemy_guild_member_list form, #your_guild_member_list form').append('<input type="hidden" name="sel_pos" value="' + _gate + '">');
@@ -21,10 +20,12 @@ tools['Page'].runtime['festival_guild_battle.php'] = function() {
 		$_your.html($_your.html() + ' (' + _your.toFixed(1) + '%)');
 	}
 	$_enemy.html($_enemy.html() + ' (' + _enemy.toFixed(1) + '%)');
+	
+	// enemys health added to its name in results
 	$_enemy = $('span.result_body div[style*="width: 285px;"]:last');
 	if($_enemy.length > 0) {
 		var _target = $('span.result_body input[name="target_id"]').attr('value');
-		var _health = /Health:\s*(\d+)\/\d+/.exec($('#enemy_guild_battle_section_battle_list  *[uid="' + _target + '"]').parents().eq(3).text())[1];
+		var _health = /Health:\s*(\d+)\/\d+/.exec($('#enemy_guild_member_list > div > div:has(a[uid="' + _target + '"]').parents().eq(3).text())[1];
 		$_enemy.text($_enemy.text().trim() + ' (' + _health + ')');
 	}
 

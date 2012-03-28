@@ -253,28 +253,20 @@
 #cageGeneralEquipment {
     position: absolute;
     opacity: 0;
-    width: 95px;
+    width: 52px;
+    right: -52px;
+    text-align: left;
 }
 #cageGeneralEquipment > img {
-    height: 13px !important;
-    width: 13px !important;
-    vertical-align: top;
     z-index: 0;
     position: relative;
-    box-shadow: 0 2px 5px #000;
+    border: 1px solid #000;
+    margin-bottom: -1px;
 }
 #cageGeneralEquipment > img:hover {
-    height: 26px !important;
-    width: 26px !important;
+    height: 28px !important;
+    width: 28px !important;
     z-index: 1;
-    margin: 0 -6px;
-    border-bottom-left-radius: 5px;
-    border-bottom-right-radius: 5px;
+    margin: 0 -2px -5px -2px;
     box-shadow: 0 2px 5px 2px #000;
-}
-#cageGeneralEquipment > img:first-child {
-    border-bottom-left-radius: 5px;
-}
-#cageGeneralEquipment > img:last-child {
-    border-bottom-right-radius: 5px;
 }

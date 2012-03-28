@@ -13,6 +13,7 @@ function cageNews(_full) {
 			'ADD: Current weapons at generals image',
 			'ADD: Monster activity display',
 			'FIX: Sort order of oracle generals',
+			'FIX: Enemies health in guild/fest. battles in results',
 			'CHG: Achievements show only have/need when have < need',
 			'CHG: Class powers in stats only update when saving'
 		], function(_i, _e) {

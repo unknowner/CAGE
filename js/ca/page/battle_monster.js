@@ -129,9 +129,10 @@ tools['Page'].runtime['battleStats'] = function() {
 		} else {
 			$stats.append('<div><span style="display:inline-block;font-weight:bold;width:125px;">Attackers: </span><span style="display:inline-block;width:25px;text-align:right;">' + _attackers + '</span></div>');
 		}
+
 		if(_ownDamage !== null) {
 			$stats.before('<div id="cageMonsterActivity"><span style="display:inline-block;font-weight:bold;width:80px;">Activity</span><span style="display:inline-block;float:right;text-align:right;">' + _ownDamage + '</span></div>');
-			$('#cageMonsterActivity').css('bottom', $stats.outerHeight() + 35);
+			$('#cageMonsterActivity').css('bottom', $stats.find('div').length * 13 + 30);
 		}
 		if($('span.target_monster_info').length > 0) {
 			var _div = $('span.target_monster_info:first').parent();
