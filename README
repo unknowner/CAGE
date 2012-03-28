@@ -4,6 +4,7 @@ VER: 1.1.31β
 	ADD: Stats points upgrade dialog
 	ADD: Current weapons at generals image
 	ADD: Monster activity display
+	FIX: CA level bar growing to 125%
 	FIX: Sort order of oracle generals
 	FIX: Enemies health in guild/fest. battles in results
 	CHG: Achievements show only have/need when have < need

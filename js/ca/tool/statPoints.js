@@ -42,7 +42,7 @@ tools.StatPoints.start = function() {
 			im : 'stat_stamina.gif',
 			val : parseInt(_stats.eq(1).text(), 10),
 			lup : 0,
-			url : 'energy_max'
+			url : 'stamina_max'
 		};
 		_stat.attack = {
 			im : 'demi_symbol_2.gif',
