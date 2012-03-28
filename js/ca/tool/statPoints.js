@@ -35,27 +35,32 @@ tools.StatPoints.start = function() {
 		_stat.energy = {
 			im : 'stat_energy.gif',
 			val : parseInt(_stats.eq(0).text(), 10),
-			lup : 0
+			lup : 0,
+			url : 'energy_max'
 		};
 		_stat.stamina = {
 			im : 'stat_stamina.gif',
 			val : parseInt(_stats.eq(1).text(), 10),
-			lup : 0
+			lup : 0,
+			url : 'energy_max'
 		};
 		_stat.attack = {
 			im : 'demi_symbol_2.gif',
 			val : parseInt(_stats.eq(2).text(), 10),
-			lup : 0
+			lup : 0,
+			url : 'attack'
 		};
 		_stat.defense = {
 			im : 'demi_symbol_3.gif',
 			val : parseInt(_stats.eq(3).text(), 10),
-			lup : 0
+			lup : 0,
+			url : 'defense'
 		};
 		_stat.health = {
 			im : 'stat_health.gif',
 			val : parseInt(_stats.eq(4).text(), 10),
-			lup : 0
+			lup : 0,
+			url : 'health_max'
 		};
 		$('body').append('<div id="cageLevelUp"><div></div><div><div id="cageLevelUpTop"></div><div id="cageLevelUpMiddle"></div><div id="cageLevelUpBottom"></div></div></div>');
 		var _cLU = $('#cageLevelUpMiddle');
@@ -86,7 +91,7 @@ tools.StatPoints.start = function() {
 			$.each(_stat, function(_i, _e) {
 				if(_e.lup > 0) {
 					for(var i = 0; i < _e.lup; i++) {
-						_points.push('upgrade=' + _i + '_max');
+						_points.push('upgrade=' + _e.url);
 					};
 				}
 			});

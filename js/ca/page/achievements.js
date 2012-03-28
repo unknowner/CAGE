@@ -10,7 +10,7 @@ tools['Page'].runtime['achievements.php'] = function() {
 	$('#achievements_3 div.positive').each(function(_i, _e) {
 		var _t = $(_e).parent().contents()[2].nodeValue.replace(/(,.*)|Slain/i, '').trim();
 		_ach[_t] = {
-			have : parseInt($(_e).text(), 10),
+			have : parseInt($(_e).text().replace(',', ''), 10),
 			need : null
 		};
 	});
@@ -24,7 +24,7 @@ tools['Page'].runtime['achievements.php'] = function() {
 				}
 			} else if(_d.text().indexOf('Construct') > -1) {
 				var _rg = /Help Construct (\d+) siege weapons/i.exec(_d.text());
-				_ach['Sieges Assisted With'].need = _rg[1];
+				_ach['Sieges Assisted With'].need = parseInt(_rg[1], 10);
 			} else if(_d.text().indexOf('Slay') > -1) {
 				var _ts, _rg = /Requires: Slay (.+) (\d+) times/i.exec(_d.text().replace(/(,.+)\s(?=\d+)/, ' '));
 				if(_rg !== null) {
@@ -39,8 +39,10 @@ tools['Page'].runtime['achievements.php'] = function() {
 	});
 	$('#achievements_3 div.positive').each(function(_i, _e) {
 		var _t = $(_e).parent().contents()[2].nodeValue.replace(/(,.*)|Slain/i, '').trim();
+		console.log(_t);
 		if(_ach[_t] && _ach[_t].have < _ach[_t].need) {
 			$(_e).text(_ach[_t].have + '/' + _ach[_t].need);
 		}
 	});
+	console.log(_ach);
 };
