@@ -261,12 +261,12 @@
     z-index: 0;
     position: relative;
     border: 1px solid #000;
-    margin-bottom: -1px;
+    margin: 0 -1px -1px 0;
 }
 #cageGeneralEquipment > img:hover {
     height: 28px !important;
     width: 28px !important;
     z-index: 1;
-    margin: 0 -2px -5px -2px;
+    margin: 0 -2px -5px -3px;
     box-shadow: 0 2px 5px 2px #000;
 }

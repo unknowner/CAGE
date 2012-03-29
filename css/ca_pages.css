@@ -88,7 +88,6 @@ img.cageQuestSanoSwitch:hover {
 }
 .cageOracleItem {
     position: relative;
-    top: 35px;
     width: 160px;
     height: 329px;
     float: left;
@@ -130,8 +129,17 @@ img.cageQuestSanoSwitch:hover {
     padding: 11px 0 0 57px;
     cursor: pointer;
 }
+#cageOracleGeneralSelectorContainer {
+    background-image: url('http://image4.castleagegame.com/graphics/oracle_back_four.jpg');
+    width: 664px;
+    padding: 36px 33px 0 33px;
+    margin-left: 5px;
+    height: 103px;
+    z-index: 5;
+    position: relative;
+}
 #cageOracleGeneralSelector {
-    width: 724px;
+    width: 648px;
     border: 2px inset #D0B682;
     margin-left: 7px;
     overflow-y: hidden;
@@ -171,10 +179,11 @@ img.cageQuestSanoSwitch:hover {
     cursor: pointer;
     position: absolute;
     background: #000;
-    opacity: 0.9;
-    padding: 2px 4px;
+    opacity: 0.8;
+    padding: 2px 4px 2px 4px;
     font-size: 11px;
     color: #fff;
-    margin-left: -35px;
-    border-bottom-right-radius: 4px;
+    margin: -18px 10px;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
 }

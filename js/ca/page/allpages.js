@@ -38,10 +38,10 @@ tools.Page.runtime.allPages = function() {
 	}
 
 	// xp to next lvl and lvl bar fix
-	var _xpwidth = /\d+/.exec($('#st_5 > div:first > div > div')[0].style.width)[0] / 100 * 126;
-	$('#st_5 > div:first > div > div').css({
-		'width' : _xpwidth
-	});
+	var _xpwidth = /\d+/.exec($('#st_5 > div:first > div > div')[0].style.width)[0];
+	if(_xpwidth !== null) {
+		$('#st_5 > div:first > div > div').css('width', parseInt(_xpwidth, 10) / 100 * 126);
+	}
 	if($('#st_2_5 strong:contains("to")').length == 0 && /\d+\/(\d+)/.exec($('#st_2_5 strong').text()) !== null) {
 		$('#st_2_5 strong').text(/\d+/.exec($('#st_5').attr('title'))[0] + ' to ' + /\d+\/(\d+)/.exec($('#st_2_5 strong').text())[1]);
 	}
