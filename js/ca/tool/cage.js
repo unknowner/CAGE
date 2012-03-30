@@ -120,7 +120,7 @@ tools.cage.centered = function() {
 	$('body > center').css('position', (tools.cage.runtime.centered ? 'relative' : 'absolute'));
 	var _chat = tools.cage.runtime.centered ? {
 		'left' : '50% !important',
-		'marginLeft' : -373
+		'marginLeft' : -480
 	} : {
 		'left' : '5px !important',
 		'marginLeft' : 7
