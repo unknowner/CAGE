@@ -62,7 +62,7 @@ tools.StatPoints.start = function() {
 			lup : 0,
 			url : 'health_max'
 		};
-		$('body').append('<div id="cageLevelUp"><div></div><div><div id="cageLevelUpTop"></div><div id="cageLevelUpMiddle"></div><div id="cageLevelUpBottom"></div></div></div>');
+		$('body').append('<div id="cageLevelUp"><div></div><div><div id="cageLevelUpTop">Upgrade your stats!</div><div id="cageLevelUpMiddle"></div><div id="cageLevelUpBottom"></div></div></div>');
 		var _cLU = $('#cageLevelUpMiddle');
 		$.each(_stat, function(_i, _e) {
 			_cLU.append('<div class="cageLevelUpStat"><img src="http://image4.castleagegame.com/graphics/' + _e.im + '"><span class="cageLevelUpStatName">' + _i + '</span><span class="cageLevelUpStatVal">' + _e.val + '</span><img class="cageLevelUpPlus" src="http://image4.castleagegame.com/graphics/festival_achievement_plus.jpg"><img class="cageLevelUpMinus" src="http://image4.castleagegame.com/graphics/festival_achievement_minus.jpg"></div>')
@@ -110,7 +110,7 @@ tools.StatPoints.start = function() {
 			var _this = $(this);
 			$('img.cageLevelUpPlus', _this).click(function() {
 				var _s = $('span.cageLevelUpStatName', _this).text().toLowerCase();
-				if(_sp.used < _sp.have) {
+				if(_sp.used + (_s == 'stamina' ? 2 : 1) <= _sp.have) {
 					_sp.used += _s == 'stamina' ? 2 : 1;
 					_stat[_s].lup += 1;
 					$('#cageLevelUpSP').html('Stat Points<br>' + (_sp.have - _sp.used));
@@ -127,6 +127,7 @@ tools.StatPoints.start = function() {
 				}
 			});
 		});
+		$('#cageLevelUp').show();
 	});
 };
 tools.StatPoints.init = function() {

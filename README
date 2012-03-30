@@ -2,6 +2,8 @@
 VER: 1.1.32β
 ------------------------------------------------------------------
 	ADD: Conquest points added to summary
+	FIX: Monthly generals list at the oracle
+	FIX: Stat points distribution showing negativ value
 
 ==================================================================
 VER: 1.1.31β

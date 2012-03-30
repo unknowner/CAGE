@@ -135,8 +135,16 @@ img.cageQuestSanoSwitch:hover {
     padding: 36px 33px 0 33px;
     margin-left: 5px;
     height: 103px;
-    z-index: 5;
     position: relative;
+}
+#cageOracleSelected {
+    background-image: url('http://image4.castleagegame.com/graphics/oracle_back_four.jpg');
+    width: 693px;
+    padding: 0px 0 0 38px;
+    margin-left: 5px;
+    height: 363px;
+    position: relative;
+    background-position: 0 -38px;
 }
 #cageOracleGeneralSelector {
     width: 648px;

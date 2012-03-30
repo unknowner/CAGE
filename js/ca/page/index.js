@@ -45,7 +45,6 @@ tools['Page'].runtime['index.php'] = function() {
 			my_wp = txt.match(/(\d+) War Points!/i);
 			my_cp = txt.match(/(\d+) Champion Points!/i);
 			my_cop = txt.match(/(\d+) Conquest Points!/i);
-			console.log(my_cop);
 			my_cash = txt.match(/\$(\d+)/i);
 			xp += parseInt( typeof my_xp == 'object' && my_xp !== null ? my_xp[1] : 0, 10);
 			bp += parseInt( typeof my_bp == 'object' && my_bp !== null ? my_bp[1] : 0, 10) * result;

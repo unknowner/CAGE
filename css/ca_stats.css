@@ -428,6 +428,8 @@ strong.cageStatsText {
  */
 #cageLevelUp {
     font-family: Trebuchet MS, Tahoma, Verdana, Arial, sans-serif !important;
+    display: none;
+    z-index: 990;
 }
 #cageLevelUp > div:first-of-type {
     height: 100%;
@@ -436,21 +438,24 @@ strong.cageStatsText {
     opacity: 0.75;
     position: fixed;
     top: 0;
-    z-index: 998;
+    z-index: 991;
 }
 #cageLevelUp > div:last-of-type {
     width: 500px;
     height: 389px;
     position: fixed;
-    top: 200px;
+    top: 90px;
     z-index: 1000;
     left: 50%;
     margin-left: -250px;
 }
 #cageLevelUpTop {
+    color: white;
+    font-weight: bold;
+    padding: 15px 0 0 153px;
+    height: 45px;
+    width: 346px;
     background-image: url('http://image4.castleagegame.com/graphics/helpmenu_top.jpg');
-    width: 500px;
-    height: 60px;
 }
 #cageLevelUpMiddle {
     background-image: url('http://image4.castleagegame.com/graphics/helpmenu_middle.jpg');
