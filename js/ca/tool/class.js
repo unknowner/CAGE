@@ -15,7 +15,7 @@ tools.Class.runtimeUpdate = function() {
 };
 tools.Class.start = function() {
 	get('guild_class_power_equipment.php', function(_data) {
-		$('#cageStatsClassLogo').css({
+		$('#cageClassLogo').css({
 			'cursor' : 'pointer',
 			'backgroundImage' : 'url(\'http://image4.castleagegame.com/graphics/class_' + tools.Class.runtime.classSet + '.gif\')'
 		}).removeAttr('disabled');
@@ -149,12 +149,12 @@ tools.Class.showClass = function(_data) {
 	}, 'slow');
 }
 tools.Class.changeClass = function(_class) {
-	$('#cageStatsClassLogo').css({
+	$('#cageClassLogo').css({
 		'cursor' : 'wait',
 		'backgroundImage' : 'url(\'http://image4.castleagegame.com/graphics/shield_wait.gif\')'
 	}).attr('disabled', 'disabled');
 	get('guild_class_power_equipment.php?action=chooseClass&' + _class + '=' + _class, function(_data) {
-		$('#cageStatsClassLogo').css({
+		$('#cageClassLogo').css({
 			'cursor' : 'pointer',
 			'backgroundImage' : 'url(\'http://image4.castleagegame.com/graphics/class_' + _class + '.gif\')'
 		}).removeAttr('disabled');
@@ -177,14 +177,13 @@ tools.Class.init = function() {
 		CastleAge.inGuild = $('a[href="http://apps.facebook.com/castle_age/guildv2_home.php"]', data).length > 0 ? true : false;
 		var _class = /g_char_header_(\w+).jpg/.exec($('div[id="guildv2_class_top"]:first div[style*="graphics/g_char_header_"]:first', data).css('backgroundImage'))[1];
 		tools.Class.runtime.classSet = _class;
-		$('#cageStatsContainer').append($('<button id="cageStatsClassLogo" style="background-image:url(\'http://image4.castleagegame.com/graphics/class_' + _class + '.gif\')"></button>').click(function() {
-			$('#cageStatsClassLogo').css({
+		$('#cageSidebarStats').append($('<div id="cageStatsClass" class="cageSidebarStat"><div>' + _class[0].toUpperCase() + _class.slice(1) + '</div><span></span></div>')).append($('<button id="cageClassLogo" style="background-image:url(\'http://image4.castleagegame.com/graphics/class_' + _class + '.gif\')"></button>').click(function() {
+			$('#cageClassLogo').css({
 				'cursor' : 'wait',
 				'backgroundImage' : 'url(\'http://image4.castleagegame.com/graphics/shield_wait.gif\')'
 			}).attr('disabled', 'disabled');
 			tools.Class.start();
 		}));
-		$('#main_sts_container').append('<div id="cageStatsClass" class="cageStatBackground"><div></div><div>' + _class[0].toUpperCase() + _class.slice(1) + '</div><span></span></div>');
 		tools.Class.statsPowerImages(data);
 	})
 	tools.Class.fbButton.add('Class', function() {
@@ -204,7 +203,7 @@ tools.Class.statsPowerImages = function(data) {
 			}, 'fast').css('zIndex', 1);
 		}, function() {
 			$(this).stop(true).animate({
-				'height' : 16,
+				'height' : 20,
 				'marginBottom' : 0,
 				'marginLeft' : 0,
 				'marginRight' : 0

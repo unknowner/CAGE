@@ -62,13 +62,14 @@ tools.Demi.timer = function() {
 			$('#cageNextDemi span:last').text('Now');
 			$('#cageNextDemi > div:eq(1) > div').css({
 				'width' : '100%',
-				'backgroundColor' : '#c00'
+				'backgroundColor' : '#090'
 			});
 		} else {
+			var _p = (100 - (_hr * 60 + _min) * 100 / (_wait * 60));
 			$('#cageNextDemi span:last').text(_hr + ':' + ('0' + _min).slice(-2));
 			$('#cageNextDemi > div:eq(1) > div').css({
-				'width' : (100 - (_hr * 60 + _min) * 100 / (_wait * 60)) + '%',
-				'backgroundColor' : '#1A7A30'
+				'width' : _p + '%',
+				'backgroundColor' : 'hsl(' + (_p / 100 * 120) + ', ' + _p + '%, 30%)'
 			});
 		}
 	}
@@ -98,7 +99,7 @@ tools.Demi.done = function() {
 };
 tools.Demi.init = function() {
 	$('#cageContainer').append('<div id="cageDemiContainer" class="ui-corner-bottom ui-widget-content"></div>');
-	$('#main_sts_container').append('<div id="cageNextDemi" class="cageStatBackground"><div></div><div><div></div></div><span>Next Demi</span><span></span></div>');
+	$('#cageSidebarStats').append('<div id="cageNextDemi" class="cageSidebarStat"><div></div><div><div></div></div><span>Next Demi</span><span></span></div><div id="cageFavorPoints"><img src="http://image4.castleagegame.com/graphics/favor_icon.jpg"><span></div>');
 	tools.Demi.fbButton.add(language.demiButton, function() {
 		tools.Demi.fbButton.disable();
 		tools.Demi.start();

@@ -1,19 +1,150 @@
 #cageSidebar {
-    position: fixed;
-	margin-left: 763px;
-    width: 200px;
-    background-image: url('http://image4.castleagegame.com/graphics/guild_battle_black_info_bg.jpg');
-    background-position-x: -524px;
-	font-size: 12px;
-	font-family: Trebuchet MS, Tahoma, Verdana, Arial, sans-serif;
-	color: #fff;
-	box-shadow: 0 4px 5px #000;
+	position:fixed;
+	margin-left:770px;
+	width:200px;
+	font-size:12px;
+	font-family:Trebuchet MS,Tahoma,Verdana,Arial,sans-serif;
+	color:#fff;
+	box-shadow:0 4px 5px #000;
+	text-align:left;
+	border-bottom-right-radius:34px 42px;
+}
+#cageSidebarHeader {
+	height:105px;
+	width:200px;
+	background-image:url('http://image4.castleagegame.com/graphics/class_submenu_middle.jpg');
+	background-position-x:-441px;
+}
+#cageSidebarStats {
+	background-image:url('http://image4.castleagegame.com/graphics/class_submenu_middle.jpg');
+	background-position-x:-441px;
+	width:200px;
+	position:relative;
+	padding-bottom:5px;
 }
 #cageSidebarContent {
-    padding: 10px 0;
+	width:200px;
+	background-image:url('http://image4.castleagegame.com/graphics/class_submenu_middle.jpg');
+	background-position-x:-441px;
 }
 #cageSidebarBottom {
-    background-image: url('http://image4.castleagegame.com/graphics/guild_battle_black_info_bg_bottom.jpg');
-    height: 11px;
-    background-position-x: -524px;
+	background-image:url('http://image4.castleagegame.com/graphics/class_submenu_bottom.gif');
+	height:25px;
+	width:200px;
+	background-position-x:-441px;
+}
+/*
+ * ########### STATS ##########
+ */
+div.cageSidebarStat {
+	border:1px inset;
+	padding:4px;
+	border-radius:5px;
+	height:30px;
+	margin-bottom:5px;
+	background-image:url('http://image4.castleagegame.com/graphics/mainnav_holderbar.jpg');
+	width:169px;
+	margin-left:5px;
+	border-bottom-left-radius:15px;
+}
+/*
+ * Demi Timer
+ */
+#cageNextDemi {
+}
+#cageNextDemi> div:nth-child(1) {
+	position:relative;
+}
+#cageNextDemi> div:nth-child(2) {
+	background:#333;
+	width:150px;
+	margin-left:17px;
+	border-radius:3px;
+	border:1px inset;
+	top:23px;
+	position:absolute;
+}
+#cageNextDemi> div> div {
+	height:11px;
+	width:1%;
+	border-radius:2px;
+}
+#cageNextDemi> span {
+	top:17px;
+	font-size:12px;
+	color:#fff;
+}
+#cageNextDemi> span:first-of-type {
+	margin-left:25px;
+}
+#cageNextDemi> span:last-of-type {
+	right:24px;
+	position:absolute;
+	top:5px;
+}
+/*
+ * Class stats
+ */
+#cageClassLogo {
+	height:29px;
+	position:relative;
+	border-radius:50px;
+	border:2px outset;
+	background:#000;
+	left:5px;
+	width:29px;
+	margin-top:-34px;
+	background-position:-5px -5px;
+	background-size:35px;
+}
+#cageStatsClass> div {
+	margin-left:25px;
+}
+#cageStatsClass> span {
+	position:absolute;
+	bottom:13px;
+	right:19px;
+}
+#cageStatsClass span> img {
+	height:20px;
+	border-radius:15px;
+	position:relative;
+}
+#cageStatsClass span> img:hover {
+	box-shadow:0 5px 8px 3px #000;
+}
+#cageStatsClassLogo {
+	background-size:32px 33px;
+	top:53px;
+	left:352px;
+	background-position:-4px -4px;
+}
+/*
+ * Favour Points
+ */
+#cageFavorPoints {
+	height:25px;
+	position:absolute;
+	border-radius:50px;
+	border:2px outset;
+	background:#000;
+	left:5px;
+	width:25px;
+	margin-top:-34px;
+}
+#cageFavorPoints> img {
+	border-radius:50px;
+	height:25px;
+}
+#cageFavorPoints> span {
+	position:absolute;
+	width:22px;
+	display:inline-block;
+	top:4px;
+	color:#fff;
+	text-shadow:0 0 5px black;
+	font-weight:bold;
+	font-size:14px;
+	left:0;
+	text-align:center;
 }
