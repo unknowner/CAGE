@@ -1,0 +1,19 @@
+#cageSidebar {
+    position: fixed;
+	margin-left: 763px;
+    width: 200px;
+    background-image: url('http://image4.castleagegame.com/graphics/guild_battle_black_info_bg.jpg');
+    background-position-x: -524px;
+	font-size: 12px;
+	font-family: Trebuchet MS, Tahoma, Verdana, Arial, sans-serif;
+	color: #fff;
+	box-shadow: 0 4px 5px #000;
+}
+#cageSidebarContent {
+    padding: 10px 0;
+}
+#cageSidebarBottom {
+    background-image: url('http://image4.castleagegame.com/graphics/guild_battle_black_info_bg_bottom.jpg');
+    height: 11px;
+    background-position-x: -524px;
+}
