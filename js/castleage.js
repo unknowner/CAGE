@@ -1,7 +1,5 @@
 // CAGE stuff working on Castle Age site
 
-$(document.body).hide();
-
 var CastleAge = {
 	bqh : null,
 	signed_request : null,
@@ -45,7 +43,6 @@ CastleAge.startInterval = window.setInterval(function() {
 			tools.Page.runtime[_startURL]();
 		}
 		_startURL = undefined;
-		$(document.body).show();
 	} else {
 		com.send(com.task.castleAgeReady, com.port.facebook);
 	}

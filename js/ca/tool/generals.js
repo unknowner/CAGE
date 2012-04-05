@@ -143,8 +143,8 @@ tools.General.parsePage = function(_data) {
 			image : $_image.attr('src'),
 			item : $_this.find('input[name="item"]').attr('value'),
 			itype : $_this.find('input[name="itype"]').attr('value'),
-			attack : _stats.children('div:eq(0)').text().trim(),
-			defense : _stats.children('div:eq(1)').text().trim(),
+			attack : $_this.next('div:first').find('div:eq(0)').text().trim(),
+			defense : $_this.next('div:first').find('div:eq(1)').text().trim(),
 			text : $_general.children('div:last').children('div').html().trim().replace(/<br>/g, ' '),
 			level : $_general.find('div:contains("Level"):last').text().trim()
 		};

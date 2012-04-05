@@ -1,6 +1,6 @@
 {
 	"name": "CAGE - Castle Age Game Enhancer [β]",
-	"version": "1.1.32",
+	"version": "1.1.33",
 	"description": "CAGE makes playing Castle Age on Facebook a bit easier and a lot more fun ;)",
 	"background_page": "background.html",
 	"content_scripts": [
@@ -54,6 +54,7 @@
 			"js/ca/page/battle.js",
 			"js/ca/page/battle_expansion_monster.js",
 			"js/ca/page/battle_monster.js",
+			"js/ca/page/conquest_duel.js",
 			"js/ca/page/guild_battle.js",
 			"js/ca/page/festival_battle_monster.js",
 			"js/ca/page/festival_duel_battle.js",
@@ -63,23 +64,21 @@
 			"js/ca/page/gift.js",
 			"js/ca/page/goblin_emp.js",
 			"js/ca/page/guild_shop.js",
+			"js/ca/page/guildv2_conquest_command.js",
 			"js/ca/page/guildv2_conquest_expansion.js",
 			"js/ca/page/guildv2_battle_monster.js",
 			"js/ca/page/index.js",
 			"js/ca/page/keep.js",
 			"js/ca/page/monster_quests.js",
+			"js/ca/page/oracle.js",
 			"js/ca/page/player_monster_list.js",
 			"js/ca/page/quests.js",
 			"js/ca/page/raid.js",
+			"js/ca/page/soldiers.js",
 			"js/ca/page/symbolquests.js",
 			"js/ca/page/symbols.js",
 			"js/ca/page/treasure_chest.js",
-			"js/ca/page/guildv2_conquest_command.js",
-			"js/ca/page/conquest_duel.js",
-			"js/ca/page/soldiers.js",
-			"js/ca/page/oracle.js",
-			"js/ca/page/achievements.js",
-			
+
 			"js/castleage.js"
 			],
 		"all_frames": true
