@@ -5,29 +5,6 @@
 	position:fixed;
 	cursor:pointer;
 }
-#main_sts_container {
-	position:fixed !important;
-	height:95px;
-	width:750px;
-	z-index:2;
-	font-family:Trebuchet MS,Tahoma,Verdana,Arial,sans-serif !important;
-}
-#main_ststb * {
-	font-family:Trebuchet MS,Tahoma,Verdana,Arial,sans-serif !important;
-	color:#eee !important;
-	font-size:12px !important;
-}
-#main_ststb> div:first-child {
-	height:auto !important;
-}
-#main_sts {
-	height:95px !important;
-	width:750px !important;
-	border-bottom:1px solid black;
-}
-div.st_row_2 {
-	margin-top:2px;
-}
 /*
  * Keep
  */

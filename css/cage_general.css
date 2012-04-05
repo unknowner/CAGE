@@ -1,272 +1,277 @@
 #cageGeneralContainer {
-	position:fixed;
-	width:770px;
+    position: fixed;
+    width: 770px;
 }
 #cageGeneralImageContainer {
-	height:95px;
-	width:95px;
-	right:9px;
-	z-index:4;
-	position:relative;
-	left:0;
+    height: 95px;
+    width: 95px;
+    right: 9px;
+    z-index: 4;
+    position: relative;
+    left: 0;
+    padding: 2px;
 }
 #cageGeneralImage {
-	height:95px;
-	cursor:pointer;
-	z-index:2;
+    height: 95px;
+    cursor: pointer;
+    z-index: 2;
 }
 #cageGeneralSelector {
-	position:fixed;
-	box-shadow:0 10px 20px black;
-	z-index:3;
-	width:701px;
-	margin-left:10px;
-	padding:40px 25px 5px 22px;
-	top:115px;
-	display:none;
+    position: fixed;
+    box-shadow: 0 10px 20px black;
+    z-index: 3;
+    width: 701px;
+    margin-left: 10px;
+    padding: 40px 25px 5px 22px;
+    top: 115px;
+    display: none;
 }
 #cageSelectorInfo {
-	width:622px;
-	height:20px;
-	text-align:center;
-	margin:-10px 0 5px 0;
-	line-height:19px;
-	position:absolute;
-	left:7px;
+    width: 622px;
+    height: 20px;
+    text-align: center;
+    margin: -10px 0 5px 0;
+    line-height: 19px;
+    position: absolute;
+    left: 7px;
 }
 #cageSelectorList {
-	margin-top:-10px;
-	height:22px;
-	width:105px;
-	float:right;
-	position:absolute;
-	right:7px;
-	background-color:#0972a5;
-	color:#fff;
-	border-radius:6px;
-	border:1px solid #26b3f7;
+    margin-top: -10px;
+    height: 22px;
+    width: 105px;
+    float: right;
+    position: absolute;
+    right: 7px;
+    background-color: #0972a5;
+    color: #fff;
+    border-radius: 6px;
+    border: 1px solid #26b3f7;
 }
 #cageAllGenerals {
-	padding-bottom:10px;
+    padding-bottom: 10px;
 }
-#cageAllGenerals> div {
-	margin:1px;
-	display:inline-block;
-	border-radius:5px;
-	border:1px solid transparent;
-	height:50px;
+#cageAllGenerals > div {
+    margin: 1px;
+    display: inline-block;
+    border-radius: 5px;
+    border: 1px solid transparent;
+    height: 50px;
 }
-#cageAllGenerals> div:hover {
-	border:1px solid #26B3F7 !important;
+#cageAllGenerals > div:hover {
+    border: 1px solid #26B3F7 !important;
 }
-#cageAllGenerals> div> img:first-child {
-	width:50px;
-	cursor:pointer;
-	border-radius:4px;
+#cageAllGenerals > div > img:first-child {
+    width: 50px;
+    cursor: pointer;
+    border-radius: 4px;
 }
-#cageAllGenerals> div> img:last-of-type {
-	position:relative;
-	margin-left:-16px;
-	width:10px;
-	cursor:pointer;
-	background-color:black;
-	padding:3px;
-	border-top-left-radius:4px;
-	border-bottom-right-radius:4px;
-	opacity:0.7;
+#cageAllGenerals > div > img:last-of-type {
+    position: relative;
+    margin-left: -16px;
+    width: 10px;
+    cursor: pointer;
+    background-color: black;
+    padding: 3px;
+    border-top-left-radius: 4px;
+    border-bottom-right-radius: 4px;
+    opacity: 0.7;
 }
 #cageFavoriteGenerals {
-	padding:4px 0 2px;
-	margin-top:12px;
+    padding: 4px 0 2px;
+    margin-top: 12px;
 }
-#cageFavoriteGenerals> div {
-	margin:4px;
-	display:inline-block;
-	box-shadow:0 0 5px 2px #1482D2;
-	border-radius:5px;
-	height:70px;
+#cageFavoriteGenerals > div {
+    margin: 4px;
+    display: inline-block;
+    box-shadow: 0 0 5px 2px #1482D2;
+    border-radius: 5px;
+    height: 70px;
 }
-#cageFavoriteGenerals> div:hover {
-	box-shadow:0 0 10px 2px #26b3f7
+#cageFavoriteGenerals > div:hover {
+    box-shadow: 0 0 10px 2px #26b3f7
 }
-#cageFavoriteGenerals> div> img:first-child:hover {
-	box-shadow:0 0 10px 2px #26b3f7
+#cageFavoriteGenerals > div > img:first-child:hover {
+    box-shadow: 0 0 10px 2px #26b3f7
 }
-#cageFavoriteGenerals> div> img:first-child {
-	width:70px;
-	cursor:pointer;
-	border-radius:4px;
+#cageFavoriteGenerals > div > img:first-child {
+    width: 70px;
+    cursor: pointer;
+    border-radius: 4px;
 }
-#cageFavoriteGenerals> div> img:last-of-type {
-	position:relative;
-	margin-left:-16px;
-	width:10px;
-	cursor:pointer;
-	background-color:black;
-	padding:3px;
-	border-top-left-radius:4px;
-	border-bottom-right-radius:4px;
-	opacity:0.7;
+#cageFavoriteGenerals > div > img:last-of-type {
+    position: relative;
+    margin-left: -16px;
+    width: 10px;
+    cursor: pointer;
+    background-color: black;
+    padding: 3px;
+    border-top-left-radius: 4px;
+    border-bottom-right-radius: 4px;
+    opacity: 0.7;
 }
 .cageCharge {
-	position:relative;
-	border-radius:6px;
-	width:6px;
-	opacity:.8;
-	background-color:#26B3F7;
-	display:inline-block;
-	left:-100%;
-	margin-right:-6px;
+    position: relative;
+    border-radius: 6px;
+    width: 6px;
+    opacity: .8;
+    background-color: #26B3F7;
+    display: inline-block;
+    left: -100%;
+    margin-right: -6px;
 }
 #cageGeneralStats {
-	z-index:-1;
-	position:absolute;
-	right:0;
-	top:0;
-	opacity:0;
-	background:#000;
-	width:150px;
-	box-shadow:-2px 0px 8px #000;
-	border-bottom-left-radius:6px;
+    z-index: -1;
+    position: absolute;
+    right: 0;
+    top: 0;
+    opacity: 0;
+    background: #000;
+    width: 150px;
+    box-shadow: -2px 0px 8px #000;
+    border-bottom-left-radius: 6px;
+    padding-left: 5px;
 }
 #cageGeneralName {
-	position:relative;
-	top:1px;
-	color:#fff;
-	font-weight:bold;
-	white-space:nowrap;
-	text-align:center;
-	width:150px;
-	font-size:12px;
-}
-#cageGeneralAttack, #cageGeneralDefense {
-	position:absolute;
-	width:25px;
-	z-index:3;
-	top:71px;
-	color:white;
-	text-align:center;
-	font-weight:bold;
-	text-shadow:0 0 4px #000;
-	cursor:pointer;
-	opacity:0;
-	font-size:14px;
-}
-#cageGeneralAttack {
-	left:1px;
-}
-#cageGeneralDefense {
-	left:68px;
-}
-#cageGeneralAttImg, #cageGeneralDefImg {
-	height:25px;
-	top:67px;
-	position:absolute;
-	border-radius:50px;
-	opacity:0;
-	cursor:pointer;
-}
-#cageGeneralAttImg {
-	left:1px;
-	box-shadow:0px 0px 15px #f00;
-}
-#cageGeneralDefImg {
-	left:68px;
-	box-shadow:0px 0px 15px #cc0;
+    position: relative;
+    top: 1px;
+    color: #fff;
+    font-weight: bold;
+    white-space: nowrap;
+    text-align: center;
+    width: 150px;
+    font-size: 13px;
 }
 #cageGeneralText {
-	position:relative;
-	color:white;
-	width:134px;
-	padding:0 4px 4px 4px;
+    position: relative;
+    color: white;
+    width: 134px;
+    padding: 0 4px 4px 4px;
+}
+#cageGeneralAttack, #cageGeneralDefense {
+    position: absolute;
+    width: 46px;
+    z-index: -1;
+    color: white;
+    text-align: right;
+    font-weight: bold;
+    text-shadow: 0 0 4px #000;
+    font-size: 14px;
+    left: 90px;
+    padding: 2px 5px;
+}
+#cageGeneralAttack {
+    top: 3px;
+}
+#cageGeneralDefense {
+    top: 26px;
+}
+#cageGeneralAttImg, #cageGeneralDefImg {
+    height: 20px;
+}
+#cageGeneralAttImg {
+    position: absolute;
+    left: 100px;
+    top: 5px;
+}
+#cageGeneralDefImg {
+    position: absolute;
+    left: 100px;
+    top: 28px;
 }
 #cageGeneralImageCharge {
-	width:100%;
-	background-color:#26B3F7;
-	height:5px;
-	left:0;
-	position:absolute;
-	display:inline-block;
-	opacity:0.8;
+    width: 100%;
+    background-color: #26B3F7;
+    height: 5px;
+    left: 0;
+    position: absolute;
+    display: inline-block;
+    opacity: 0.8;
 }
 /*
  * Favorites
  */
 #cageFavsList {
-	display:block;
-	width:180px;
-	background-color:#8C562A;
-	font-size:14px;
-	border:1px inset #C6A56F;
-	color:#fff;
-	padding:0;
-	position:relative;
+    display: block;
+    width: 180px;
+    background-color: #8C562A;
+    font-size: 14px;
+    border: 1px inset #C6A56F;
+    color: #fff;
+    padding: 0;
+    position: relative;
 }
 .cageFavsButton {
-	width:24px;
-	background-color:#8C562A;
-	border-color:#C6A56F;
-	color:#fff;
-	font-weight:bold;
-	font-size:14px;
-	border-width:1px;
-	margin-right:2px;
+    width: 24px;
+    background-color: #8C562A;
+    border-color: #C6A56F;
+    color: #fff;
+    font-weight: bold;
+    font-size: 14px;
+    border-width: 1px;
+    margin-right: 2px;
 }
 #cageEditFavName {
-	width:128px;
-	background-color:#8C562A;
-	font-size:14px;
-	border:1px inset #C6A56F;
-	color:#fff;
-	height:20px;
-	margin-right:2px;
+    width: 128px;
+    background-color: #8C562A;
+    font-size: 14px;
+    border: 1px inset #C6A56F;
+    color: #fff;
+    height: 20px;
+    margin-right: 2px;
 }
 #cageFavsDisplay {
-	width:455px;
-	height:112px;
-	background-color:#8C562A;
-	position:relative;
-	left:0px;
-	border:1px inset #C6A56F;
-	overflow-y:auto;
-	float:left;
-	top:3px;
+    width: 455px;
+    height: 112px;
+    background-color: #8C562A;
+    position: relative;
+    left: 0px;
+    border: 1px inset #C6A56F;
+    overflow-y: auto;
+    float: left;
+    top: 3px;
 }
 #cageFavsDisplay img:first-child {
-	height:51px;
-	margin:3px 0 0 3px;
-	border-radius:3px;
-	float:left;
+    height: 51px;
+    margin: 3px 0 0 3px;
+    border-radius: 3px;
+    float: left;
 }
 #cageFavsDisplay img:last-child {
-	height:10px;
-	position:absolute;
-	margin-left:-14px;
-	margin-top:40px;
-	background-color:#000;
-	border-top-left-radius:3px;
-	padding:2px;
-	opacity:0.8;
-	border-bottom-right-radius:3px;
-	cursor:pointer;
+    height: 10px;
+    position: absolute;
+    margin-left: -14px;
+    margin-top: 40px;
+    background-color: #000;
+    border-top-left-radius: 3px;
+    padding: 2px;
+    opacity: 0.8;
+    border-bottom-right-radius: 3px;
+    cursor: pointer;
 }
 #cageGeneralEquipment {
-	position:absolute;
-	opacity:0;
-	width:52px;
-	right:-52px;
-	text-align:left;
+    position: absolute;
+    width: 88px;
+    left: 99px;
+    text-align: left;
+    top: 53px;
 }
-#cageGeneralEquipment> img {
-	z-index:0;
-	position:relative;
-	border:1px solid #000;
-	margin:0 -1px -1px 0;
+#cageGeneralEquipment > img {
+    z-index: 0;
+    position: relative;
+    border: 1px solid #000;
+    margin: 0 -1px -1px 0;
+    width: 21px !important;
+    height: 21px !important;
+    opacity: 0.8;
 }
-#cageGeneralEquipment> img:hover {
-	height:28px !important;
-	width:28px !important;
-	z-index:1;
-	margin:0 -2px -5px -3px;
-	box-shadow:0 2px 5px 2px #000;
+#cageGeneralEquipment > img:hover {
+    height: 28px !important;
+    width: 28px !important;
+    z-index: 1;
+    height: 28px !important;
+    width: 28px !important;
+    z-index: 1;
+    margin: -3px -5px -5px -3px;
+    box-shadow: 0 2px 5px 2px #000;
+    opacity: 1
 }

@@ -4,8 +4,8 @@ tools.Settings.runtime = {};
 
 tools.Settings.start = function() {
 	$('body').animate({
-	 scrollTop : 0
-	 }, 'slow')
+		scrollTop : 0
+	}, 'slow')
 	$('#app_body > table > tbody > tr > td').empty().html('<div id="results_main_wrapper" class="resultsmainwrapper" style="height:0;"><div class="results"><div class="result"><span class="result_body"></div></span></div></div></div><div id="cageSettingsTop"><span style="cursor:pointer;" id="cageShowNews">CAGE Settings<span></div><div id="cageSettingsMiddle"></div><div id="cageSettingsBottom"><a href="http://cagenhancer.blogspot.com/" target="_blank">Blog</a> <a href="http://cagenhancer.blogspot.com/p/manual.html" target="_blank">Manual</a> <a href="http://caaplayer.freeforums.org/c-a-g-e-f29.html" target="_blank">Forum</a> <a href="https://github.com/unknowner/CAGE" target="_blank">GitHub</a><br><br><span style="text-align:center;">You want to say thank you? Just visit the Blog, click an Ad or donate via PayPal.</span></div>');
 	$.each(tools, function(_index, _tool) {
 		if(_tool.settings) {
@@ -92,5 +92,11 @@ tools.Settings.dropdown = function(_text, _values, _value, _save, _callback) {
 };
 
 tools.Settings.init = function() {
-	tools.Settings.fbButton.add(language.settingsButton, tools.Settings.start);
+	$('#cageSidebarHeader').append($('<button id="cageSettingsButton">').button({
+		icons : {
+			primary : "ui-icon-gear"
+		},
+		text : false
+	}).click(tools.Settings.start));
+	//tools.Settings.fbButton.add(language.settingsButton, tools.Settings.start);
 };

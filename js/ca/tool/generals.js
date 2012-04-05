@@ -91,7 +91,11 @@ tools.General.setByName = function(_name, _callback) {
 			$('#cageGeneralImageContainer').fadeOut('slow', function() {
 				$(this).hide();
 				get('generals.php?item=' + _g.item + '&itype=' + _g.itype + '&bqh=' + CastleAge.bqh, function(_data) {
-					$('#cageGeneralEquipment').empty().append($('#main_bn div > img[style="width:24px;height:24px;"]', _data));
+					var _i = $('#main_bn div > img[style="width:24px;height:24px;"]', _data);
+					setTimeout(function() {
+						console.log(_i);
+						$('#cageGeneralEquipment').empty().append(_i);
+					}, 100);
 					tools.Stats.update($('#main_sts', _data));
 					tools.General.parsePage(_data);
 					tools.General.current = _name;
@@ -111,7 +115,7 @@ tools.General.update = function() {
 			tools.General.parsePage(_data);
 		})
 	} else {
-		window.setTimeout(tools.General.update, 200);
+		window.setTimeout(tools.General.update, 100);
 	}
 };
 tools.General.lists = function() {
@@ -152,7 +156,7 @@ tools.General.parsePage = function(_data) {
 			tools.General.runtime.general[_name].charge = /\d+/.exec(_charge)[0];
 		}
 	});
-	$('#cageGeneralSelector').empty().append('<span id="cageSelectorInfo" class="ui-state-active ui-corner-all"></span><select id="cageSelectorList"></select><div id="cageFavoriteGenerals"></div><div id="cageAllGenerals"></div>');
+	$('#cageGeneralSelector').html('<span id="cageSelectorInfo" class="ui-state-active ui-corner-all"></span><select id="cageSelectorList"></select><div id="cageFavoriteGenerals"></div><div id="cageAllGenerals"></div>');
 	var _names = [];
 	$.each(tools.General.runtime.general, function(_i, _e) {
 		_names.push(_e.name);
@@ -241,41 +245,30 @@ tools.General.init = function() {
 		generalStatsDiv : '<div id="cageGeneralStats">',
 		generalImage : '<img id="cageGeneralImage"/>',
 		generalName : '<span id="cageGeneralName"></span><hr style="margin:0;>',
-		generalValues : '<div id="cageGeneralEquipment"></div><img src="http://image4.castleagegame.com/graphics/demi_symbol_2.gif" id="cageGeneralAttImg" /><span id="cageGeneralAttack"></span><img src="http://image4.castleagegame.com/graphics/demi_symbol_3.gif" id="cageGeneralDefImg" /><span id="cageGeneralDefense"></span>',
+		generalValues : '<div id="cageGeneralEquipment"></div><img src="http://image4.castleagegame.com/graphics/icon_atk.gif" id="cageGeneralAttImg" /><span id="cageGeneralAttack"></span><img src="http://image4.castleagegame.com/graphics/icon_def.gif" id="cageGeneralDefImg" /><span id="cageGeneralDefense"></span>',
 		generalText : '<div id="cageGeneralText"></div>',
 		generalSelector : '<div id="cageGeneralSelector" class="ui-widget-content ui-corner-bottom">',
 	}
-
 	$('#cageContainer').append(_elm.general).prepend(_elm.generalSelector);
 	$('#cageSidebarHeader').append($(_elm.generalImageContainer).append(_elm.generalValues).append(_elm.generalImage).append($(_elm.generalStatsDiv).append(_elm.generalName).append(_elm.generalText)));
-	$('#cageGeneralImage, #cageGeneralAttImg, #cageGeneralDefImg, #cageGeneralAttack, #cageGeneralDefense, #cageGeneralEquipment').click(function() {
+	$('#cageGeneralImage').click(function() {
 		if(tools.General.runtime.onlyFavourites == true) {
 			$('#cageAllGenerals').hide();
 		} else {
 			$('#cageAllGenerals').show();
 		}
 		$('#cageGeneralSelector').slideToggle('slow');
-	});
-	$('#cageGeneralImageContainer').hover(function() {
+	}).hover(function() {
 		$('#cageGeneralStats').stop().animate({
 			'opacity' : 0.8,
 			'right' : 94,
 			'width' : 150
-		}, 'slow');
-		$('#cageGeneralAttImg, #cageGeneralDefImg, #cageGeneralEquipment').stop().animate({
-			'opacity' : 0.8
-		}, 'slow');
-		$('#cageGeneralAttack, #cageGeneralDefense').stop().animate({
-			'opacity' : 1
 		}, 'slow');
 	}, function() {
 		$('#cageGeneralStats').stop().animate({
 			'opacity' : 0,
 			'right' : 0,
 			'width' : 94
-		}, 'slow');
-		$('#cageGeneralAttImg, #cageGeneralDefImg, #cageGeneralAttack, #cageGeneralDefense, #cageGeneralEquipment').stop().animate({
-			'opacity' : 0
 		}, 'slow');
 	});
 	tools.General.update();

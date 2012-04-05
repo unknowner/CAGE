@@ -14,7 +14,7 @@ var CastleAge = {
 com.initPort(com.port.castleAge);
 
 var _append = '';
-$.each(['css/cage.css', 'css/cage_sidebar.css', 'css/ca_cage.css', 'css/cage_stats.css', 'css/cage_general.css', 'css/ca_pages.css', 'css/ca_monster.css', 'css/ui.selectmenu.css', 'css/settings.css'], function(_i, _e) {
+$.each(['css/cage.css', 'css/cage_sidebar.css', 'css/ca_cage.css', 'css/cage_stats.css', 'css/cage_general.css', 'css/ca_pages.css', 'css/ca_monster.css', 'css/ui.selectmenu.css', 'css/cage_settings.css'], function(_i, _e) {
 	_append += '<link rel="stylesheet" type="text/css" href="' + getPath(_e) + '?_=' + Math.random() + '" >';
 });
 _append += '<link id="cageTheme" rel="stylesheet" type="text/css" href="' + getPath('css/dark-hive/jquery-ui.css') + '" >';
@@ -26,7 +26,7 @@ $(document.body).append($('<input>').attr({
 _append = undefined;
 
 // Add CAGE container / repos menu
-$('#globalContainer').append('<div id="cageSidebar"><div id="cageSidebarHeader"></div><div id="cageSidebarStats"></div><div id="cageSidebarContent"></div><div id="cageSidebarBottom"></div></div><div id="cageStatsContainer"></div><div id="cageContainer"><div id="cageToolsContainer" class="ui-widget-content ui-corner-bottom"><a target="_blank" href="http://cagenhancer.blogspot.com/"><img id="cageLogoShadow" src="' + getPath('img/iconBarShadow.png') + '"><img id="cageLogo" src="' + getPath('img/iconBar.png') + '"></a></div></div>');
+$('#globalContainer').append('<div id="cageSidebar"><div id="cageSidebarHeader"></div><div id="cageSidebarStats"></div><div id="cageSidebarTools"></div><div id="cageSidebarBottom"><a target="_blank" href="http://cagenhancer.blogspot.com/"><img id="cageLogoShadow" src="' + getPath('img/iconBarShadow.png') + '"><img id="cageLogo" src="' + getPath('img/iconBar.png') + '"></a></div></div><div id="cageStatsContainer"></div><div id="cageContainer"></div>');
 
 CastleAge.startInterval = window.setInterval(function() {
 	if(CastleAge.signed_request !== null && CastleAge.userId !== null) {
