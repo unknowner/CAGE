@@ -118,14 +118,6 @@ tools.cage.saveData = function() {
 tools.cage.centered = function() {
 	$(document.body).hide();
 	$('body > center').css('position', (tools.cage.runtime.centered ? 'relative' : 'absolute'));
-	var _chat = tools.cage.runtime.centered ? {
-		'left' : '50% !important',
-		'marginLeft' : -480
-	} : {
-		'left' : '5px !important',
-		'marginLeft' : 7
-	};
-	$('#expandedguildchat, #collapsedguildchat').css(_chat);
 	window.setTimeout(function() {
 		$(document.body).show();
 	}, 10);

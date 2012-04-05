@@ -126,11 +126,9 @@ div.demipb_button {
     top: 3px !important;
 }
 #expandedGuildChat, #collapsedGuildChat {
-    left: 50% !important;
     z-index: 5;
     top: 60px !important;
-    margin-left: -480px;
-    position: fixed !important;
+    margin-left: 13px;
 }
 .cageCAMenu {
     width: 693px !important;
