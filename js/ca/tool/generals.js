@@ -137,7 +137,7 @@ tools.General.parsePage = function(_data) {
 	console.log('parse General page');
 	_data = _data ? $(_data) : $('#app_body');
 	$('table.layout div.general_pic_div3', _data).each(function(i, e) {
-		var $_this = $(this), $_image = $('form:has(input[name="item"]) input.imgButton', e), $_general = $_this.parent(), _name = $_general.children('div.general_name_div3:first').text().trim(), _stats = $_general.find('div.generals_indv_stats_padding'), _charge = $_general.find('div:contains("Charged"):last').text().trim();
+		var $_this = $(this), $_image = $('form:has(input[name="item"]) input.imgButton', e), $_general = $_this.parent(), _name = $_general.children('div.general_name_div3:first').text().trim(), _stats = $_general.find('div.generals_indv_stats_padding'), _charge = $_general.find('div:contains("Charged"):last').text().trim(), _gtext = $_general.children('div:last').children('div');
 		tools.General.runtime.general[_name] = {
 			name : _name,
 			image : $_image.attr('src'),
@@ -145,7 +145,7 @@ tools.General.parsePage = function(_data) {
 			itype : $_this.find('input[name="itype"]').attr('value'),
 			attack : $_this.next('div:first').find('div:eq(0)').text().trim(),
 			defense : $_this.next('div:first').find('div:eq(1)').text().trim(),
-			text : $_general.children('div:last').children('div').html().trim().replace(/<br>/g, ' '),
+			text : _gtext.html(_gtext.html().replace(/<br>/g, ' ')).text().trim(),
 			level : $_general.find('div:contains("Level"):last').text().trim()
 		};
 		if(_charge.length > 0) {
