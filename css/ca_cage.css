@@ -49,17 +49,17 @@ div.st_row_2 {
     width: 970px !important;
 }
 #AjaxLoadIcon {
-    margin-top: 56px;
-    top: 150px !important;
     width: 80px !important;
     position: fixed;
     margin-left: 50%;
-    left: -40px;
+    left: -140px;
     box-shadow: 0 5px 12px 8px #000, 0 5px 12px 8px #000 inset;
-    border-radius: 50%;
-    z-index: 99;
+    border-radius: 50px;
+    z-index: 999;
     display: none;
     height: 78px;
+    top: 145px;
+    cursor: wait;
 }
 div.resultsTop {
     border-top-left-radius: 6px;
@@ -126,14 +126,15 @@ div.demipb_button {
     top: 3px !important;
 }
 #expandedGuildChat, #collapsedGuildChat {
-    z-index: 5;
+    z-index: 11;
     top: 60px !important;
     margin-left: 13px;
+    position: fixed !important;
 }
 .cageCAMenu {
     width: 693px !important;
     position: fixed;
-    z-index: 4;
+    z-index: 10;
     top: 55px;
     padding-left: 57px;
     box-shadow: 0 5px 13px 2px #000;

@@ -23,7 +23,7 @@
     width: 701px;
     margin-left: 10px;
     padding: 40px 25px 5px 22px;
-    top: 115px;
+    top: 75px;
     display: none;
 }
 #cageSelectorInfo {
@@ -149,43 +149,84 @@
 }
 #cageGeneralAttack, #cageGeneralDefense {
     position: absolute;
-    width: 46px;
-    z-index: -1;
-    color: white;
+    width: 14px;
+    z-index: -2;
     text-align: right;
     font-weight: bold;
-    text-shadow: 0 0 4px #000;
     font-size: 14px;
-    left: 90px;
-    padding: 2px 5px;
+    padding: 1px 6px;
+    border: 1px solid #555;
+    border-bottom-right-radius: 5px;
+    left: 28px;
+    border-left: 0;
 }
 #cageGeneralAttack {
-    top: 3px;
+    top: -1px;
+    color: #ffc26f;
 }
 #cageGeneralDefense {
-    top: 26px;
+    top: -1px;
+    color: #b9deff;
+}
+#cageGeneralAttDiv {
+    position: absolute;
+    width: 29px;
+    z-index: -1;
+    left: 90px;
+    border: 1px solid #aaa;
+    border-bottom-right-radius: 5px;
+    height: 20px;
+    top: 2px;
+}
+#cageGeneralDefDiv {
+    position: absolute;
+    width: 29px;
+    z-index: -1;
+    left: 90px;
+    border: 1px solid #aaa;
+    border-bottom-right-radius: 5px;
+    height: 20px;
+    top: 28px;
 }
 #cageGeneralAttImg, #cageGeneralDefImg {
-    height: 20px;
+    height: 25px;
 }
 #cageGeneralAttImg {
     position: absolute;
-    left: 100px;
-    top: 5px;
+    left: 6px;
+    top: -3px;
 }
 #cageGeneralDefImg {
     position: absolute;
-    left: 100px;
-    top: 28px;
+    left: 6px;
+    top: -3px;
 }
 #cageGeneralImageCharge {
-    width: 100%;
-    background-color: #26B3F7;
-    height: 5px;
-    left: 0;
+    background-color: #000;
+    left: 5px;
     position: absolute;
     display: inline-block;
-    opacity: 0.8;
+    top: 83px;
+    padding: 1px;
+    border: 1px inset;
+    width: 84px;
+}
+#cageGeneralImageCharge > div {
+    background-image: url('http://image4.castleagegame.com/graphics/gen_chargebarsmall.gif');
+    height: 8px;
+}
+#cageGeneralImageCharge > span {
+    position: absolute;
+    top: -13px;
+    right: -1px;
+    font-size: 11px;
+    background-color: #000;
+    border: 1px inset;
+    border-bottom: 0;
+    height: 12px;
+    line-height: 13px;
+    padding: 0 3px;
+    border-top-left-radius: 5px;
 }
 /*
  * Favorites

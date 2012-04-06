@@ -76,8 +76,10 @@ tools.General.set = function() {
 	$('#cageGeneralDefense').text(_g.defense);
 	$('#cageGeneralText').text(_g.text);
 	$('#cageGeneralImageCharge').remove();
+	console.log('cahrge:', _g.charge);
 	if(_g.charge) {
-		$('#cageGeneralImageContainer').append('<div id="cageGeneralImageCharge" style="width:' + Math.max(5, _g.charge) + '%;' + (_g.charge < 100 ? '' : 'background-color:#4F4;') + '"></div>')
+		var _cool = _g.cooldown * 60 - (_g.cooldown * _g.charge / 10 * 6);
+		$('#cageGeneralImageContainer').append('<div id="cageGeneralImageCharge"><div style="width:' + _g.charge + '%;"></div><span>' + (_g.charge == 100 ? 'Charge!' : Math.floor((_cool - (_cool % 60)) / 60) + ':' + Math.floor((_cool % 60)) + '</span></div>'))
 	}
 	$('#cageGeneralImage').attr('src', _g.image);
 	$('#cageGeneralImageContainer').fadeIn('slow');
@@ -91,9 +93,8 @@ tools.General.setByName = function(_name, _callback) {
 			$('#cageGeneralImageContainer').fadeOut('slow', function() {
 				$(this).hide();
 				get('generals.php?item=' + _g.item + '&itype=' + _g.itype + '&bqh=' + CastleAge.bqh, function(_data) {
-					var _i = $('#main_bn div > img[style="width:24px;height:24px;"]', _data);
+					var _i = $(_data).find('#main_bn div > img[style="width:24px;height:24px;"]');
 					setTimeout(function() {
-						console.log(_i);
 						$('#cageGeneralEquipment').empty().append(_i);
 					}, 100);
 					tools.Stats.update($('#main_sts', _data));
@@ -140,20 +141,21 @@ tools.General.lists = function() {
 tools.General.parsePage = function(_data) {
 	console.log('parse General page');
 	_data = _data ? $(_data) : $('#app_body');
-	$('table.layout div.general_pic_div3', _data).each(function(i, e) {
-		var $_this = $(this), $_image = $('form:has(input[name="item"]) input.imgButton', e), $_general = $_this.parent(), _name = $_general.children('div.general_name_div3:first').text().trim(), _stats = $_general.find('div.generals_indv_stats_padding'), _charge = $_general.find('div:contains("Charged"):last').text().trim();
+	_data.find('table.layout div.general_pic_div3').each(function(i, e) {
+		var $_this = $(this), $_image = $('form:has(input[name="item"]) input.imgButton', e), $_general = $_this.parent(), _name = $_general.children('div.general_name_div3:first').text().trim(), _stats = $_general.find('div.generals_indv_stats_padding'), _charge = $_this.find('div[style*="gen_chargebarsmall.gif"]:last'), _gtext = $_general.children('div:last').children('div');
 		tools.General.runtime.general[_name] = {
 			name : _name,
 			image : $_image.attr('src'),
 			item : $_this.find('input[name="item"]').attr('value'),
 			itype : $_this.find('input[name="itype"]').attr('value'),
-			attack : _stats.children('div:eq(0)').text().trim(),
-			defense : _stats.children('div:eq(1)').text().trim(),
-			text : $_general.children('div:last').children('div').html().trim().replace(/<br>/g, ' '),
+			attack : $_this.next('div:first').children('div:eq(0)').text().trim(),
+			defense : $_this.next('div:first').children('div:eq(1)').text().trim(),
+			text : _gtext.html(_gtext.html().replace(/<br>/g, ' ')).text().trim(),
 			level : $_general.find('div:contains("Level"):last').text().trim()
 		};
 		if(_charge.length > 0) {
-			tools.General.runtime.general[_name].charge = /\d+/.exec(_charge)[0];
+			tools.General.runtime.general[_name].charge = Math.round(parseInt(_charge.css('width').replace('px', ''), 10) / (_charge.parent().css('width') == '0px' ? 1 : 1.12), 2);
+			tools.General.runtime.general[_name].cooldown = /\d+(?= Hour cooldown)/ig.exec(tools.General.runtime.general[_name].text)[0];
 		}
 	});
 	$('#cageGeneralSelector').html('<span id="cageSelectorInfo" class="ui-state-active ui-corner-all"></span><select id="cageSelectorList"></select><div id="cageFavoriteGenerals"></div><div id="cageAllGenerals"></div>');
@@ -169,7 +171,7 @@ tools.General.parsePage = function(_data) {
 			$('#cageGeneralSelector').slideToggle('slow');
 		}).hover(function() {
 			var _general = tools.General.runtime.general[$(this).attr('alt')];
-			$('#cageSelectorInfo').html(_general.name + ' (' + _general.level + ') <img src="http://image4.castleagegame.com/graphics/sword_stat.gif" style="height:12px;"/> ' + _general.attack + ' <img src="http://image4.castleagegame.com/graphics/shield_stat.gif" style="height:12px;"/> ' + _general.defense + ' - ' + _general.text);
+			$('#cageSelectorInfo').html(_general.name + ' (' + _general.level + ') <img src="http://image4.castleagegame.com/graphics/icon_atk.gif" style="height:12px;"/> ' + _general.attack + ' <img src="http://image4.castleagegame.com/graphics/icon_def.gif" style="height:12px;"/> ' + _general.defense + ' - ' + _general.text);
 		}, function() {
 			$('#cageSelectorInfo').html('');
 		})).append($('<img src="' + getPath('img/fav.png') + '" alt="' + _e.name + '" />').hover(tools.General.hoverAddIn, tools.General.hoverAddOut).click(tools.General.clickAdd)));
@@ -245,7 +247,7 @@ tools.General.init = function() {
 		generalStatsDiv : '<div id="cageGeneralStats">',
 		generalImage : '<img id="cageGeneralImage"/>',
 		generalName : '<span id="cageGeneralName"></span><hr style="margin:0;>',
-		generalValues : '<div id="cageGeneralEquipment"></div><img src="http://image4.castleagegame.com/graphics/icon_atk.gif" id="cageGeneralAttImg" /><span id="cageGeneralAttack"></span><img src="http://image4.castleagegame.com/graphics/icon_def.gif" id="cageGeneralDefImg" /><span id="cageGeneralDefense"></span>',
+		generalValues : '<div id="cageGeneralEquipment"></div><div id="cageGeneralAttDiv"><img src="http://image4.castleagegame.com/graphics/icon_atk.gif" id="cageGeneralAttImg" /><span id="cageGeneralAttack"></span></div><div id="cageGeneralDefDiv"><img src="http://image4.castleagegame.com/graphics/icon_def.gif" id="cageGeneralDefImg" /><span id="cageGeneralDefense"></span></div>',
 		generalText : '<div id="cageGeneralText"></div>',
 		generalSelector : '<div id="cageGeneralSelector" class="ui-widget-content ui-corner-bottom">',
 	}

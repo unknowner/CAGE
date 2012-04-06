@@ -36,7 +36,7 @@ button.cageToolButton:last-of-type {
     position: absolute;
     left: -2px;
     height: 45px;
-    top: 4px;
+    margin-top: 2px;
     opacity: 0.5;
 }
 .cageToolButton > span {
@@ -203,13 +203,13 @@ button.cageToolButton:last-of-type {
     position: fixed;
     width: 540px;
     box-shadow: black 0px 10px 20px;
-    z-index: 2;
+    z-index: 1;
     cursor: default;
     height: 128px;
     padding-top: 8px;
     padding-left: 18px;
     margin-left: 105px;
-    top: -100px;
+    top: -500px;
     display: none;
 }
 #cageDemiContainer > div {
@@ -554,7 +554,7 @@ button.cageToolButton:last-of-type {
 #cageClassContainer {
     position: fixed;
     box-shadow: black 0px 10px 20px;
-    z-index: 2;
+    z-index: 1;
     cursor: default;
     margin-left: 65px;
     top: -500px;

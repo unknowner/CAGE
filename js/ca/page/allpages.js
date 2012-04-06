@@ -13,6 +13,10 @@ tools.Page.runtime.allPages = function() {
 	$('div.mainMenu').unwrap().unwrap().parent().addClass('cageCAMenu').find('ul > li > ul').each(function() {
 		$(this).attr('cage', $(this).height()).css('height', 0);
 	});
+	// chat pos
+	$('#collapsedguildchat').css('left', '');
+	$('#expandedguildchat').css('left', '');
+
 	// If found update bqh
 	if($('form input[name="bqh"]:first').length > 0) {
 		CastleAge.bqh = $('form input[name="bqh"]:first').val();
@@ -23,7 +27,7 @@ tools.Page.runtime.allPages = function() {
 		$(this).html($(this).html().replace('more', ''));
 	});
 	// Favour points
-	$('#cageFavorPoints > span').text($('#main_bn div[style*="persistent_bar_oracle.gif"]').text().trim());
+	$('#cageFavorPoints').text($('#main_bn div[style*="persistent_bar_oracle.gif"]').text().trim());
 
 	//Stats
 	$('#main_sts').css('background', $('#main_bn').css('backgroundImage'));
@@ -40,7 +44,7 @@ tools.Page.runtime.allPages = function() {
 	// xp to next lvl and lvl bar fix
 	var _xpwidth = /\d+/.exec($('#st_5 > div:first > div > div')[0].style.width)[0];
 	if(_xpwidth !== null) {
-		$('#st_5 > div:first > div > div').css('width', parseInt(_xpwidth, 10) / 100 * 126);
+		$('#st_5 > div:first > div > div').css('width', parseInt(_xpwidth, 10) / 126 * 100 + '%');
 	}
 	if($('#st_2_5 strong:contains("to")').length == 0 && /\d+\/(\d+)/.exec($('#st_2_5 strong').text()) !== null) {
 		$('#st_2_5 strong').text(/\d+/.exec($('#st_5').attr('title'))[0] + ' to ' + /\d+\/(\d+)/.exec($('#st_2_5 strong').text())[1]);

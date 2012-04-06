@@ -24,7 +24,6 @@ _append = undefined;
 $('#globalContainer').append('<div id="cageSidebar"><div id="cageSidebarHeader"></div><div id="cageSidebarStats"></div><div id="cageSidebarTools"></div><div id="cageSidebarBottom"><a target="_blank" href="http://cagenhancer.blogspot.com/"><img id="cageLogoShadow" src="' + getPath('img/iconBarShadow.png') + '"><img id="cageLogo" src="' + getPath('img/iconBar.png') + '"></a></div></div><div id="cageStatsContainer"></div><div id="cageContainer"></div>').prepend($('#expandedGuildChat, #collapsedGuildChat').detach());
 CastleAge.startInterval = window.setInterval(function() {
 	if(CastleAge.signed_request !== null && CastleAge.userId !== null) {
-		$('#expandedguildchat, #collapsedguildchat').css('left', '');
 		window.clearInterval(CastleAge.startInterval);
 		window.setInterval(function() {
 			com.send(com.task.alive, com.port.facebook, null);
@@ -40,7 +39,6 @@ CastleAge.startInterval = window.setInterval(function() {
 			tools.Page.runtime[_startURL]();
 		}
 		_startURL = undefined;
-		//$(document.body).show();
 	} else {
 		com.send(com.task.castleAgeReady, com.port.facebook);
 	}

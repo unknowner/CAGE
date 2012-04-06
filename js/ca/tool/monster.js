@@ -46,7 +46,7 @@ tools.Monster.start = function() {
 		tools.Monster.checkFor();
 	}
 	$('#cageMonsterContainer').show().animate({
-		'top' : 119
+		'top' : 80
 	}, 'slow');
 
 };
@@ -179,7 +179,9 @@ tools.Monster.done = function() {
 	console.log('done:', $('#cageMonsterContainer').height());
 	$('#cageMonsterContainer').animate({
 		'top' : -119 - $('#cageMonsterContainer').height() + 10,
-	}, 'slow');
+	}, 'slow', function() {
+		$(this).hide
+	});
 	tools.Monster.fbButton.enable();
 
 };
