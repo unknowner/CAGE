@@ -61,8 +61,8 @@ tools.General.get = function() {
 		$('#cageGeneralEquipment').empty().append($('#main_bn div > img[style="width:24px;height:24px;"]'));
 		if(_old !== tools.General.current) {
 			$('#cageGeneralImageCharge').remove();
-			$('#cageGeneralImageContainer').fadeOut('slow', function() {
-				$(this).hide();
+			$('#cageGeneralImage, #cagegeneralname, #cageGeneralDefense').fadeOut('fast');
+			$('#cageGeneralAttack').fadeOut('fast', function() {
 				tools.General.set();
 			});
 		}
@@ -82,7 +82,7 @@ tools.General.set = function() {
 		$('#cageGeneralImageContainer').append('<div id="cageGeneralImageCharge"><div style="width:' + _g.charge + '%;"></div><span>' + (_g.charge == 100 ? 'Charge!' : Math.floor((_cool - (_cool % 60)) / 60) + ':' + Math.floor((_cool % 60)) + '</span></div>'))
 	}
 	$('#cageGeneralImage').attr('src', _g.image);
-	$('#cageGeneralImageContainer').fadeIn('slow');
+	$('#cageGeneralImage, #cageGeneralName, #cageGeneralDefense, #cageGeneralAttack').fadeIn('slow');
 };
 // Set General by name
 tools.General.setByName = function(_name, _callback) {
@@ -90,21 +90,19 @@ tools.General.setByName = function(_name, _callback) {
 		$('#cageGeneralImageCharge').remove();
 		var _g = tools.General.runtime.general[_name];
 		if(_g !== null) {
-			$('#cageGeneralImageContainer').fadeOut('slow', function() {
-				$(this).hide();
-				get('generals.php?item=' + _g.item + '&itype=' + _g.itype + '&bqh=' + CastleAge.bqh, function(_data) {
-					var _i = $(_data).find('#main_bn div > img[style="width:24px;height:24px;"]');
-					setTimeout(function() {
-						$('#cageGeneralEquipment').empty().append(_i);
-					}, 100);
-					tools.Stats.update($('#main_sts', _data));
-					tools.General.parsePage(_data);
-					tools.General.current = _name;
-					tools.General.set();
-					if(_callback !== undefined) {
-						_callback();
-					}
-				});
+			$('#cageGeneralImage, #cagegeneralname, #cageGeneralDefense, #cageGeneralAttack').fadeOut('fast');
+			get('generals.php?item=' + _g.item + '&itype=' + _g.itype + '&bqh=' + CastleAge.bqh, function(_data) {
+				var _i = $(_data).find('#main_bn div > img[style="width:24px;height:24px;"]');
+				setTimeout(function() {
+					$('#cageGeneralEquipment').empty().append(_i);
+				}, 100);
+				tools.Stats.update($('#main_sts', _data));
+				tools.General.parsePage(_data);
+				tools.General.current = _name;
+				tools.General.set();
+				if(_callback !== undefined) {
+					_callback();
+				}
 			});
 		}
 	}
@@ -252,7 +250,7 @@ tools.General.init = function() {
 		generalSelector : '<div id="cageGeneralSelector" class="ui-widget-content ui-corner-bottom">',
 	}
 	$('#cageContainer').append(_elm.general).prepend(_elm.generalSelector);
-	$('#cageSidebarHeader').append($(_elm.generalImageContainer).append(_elm.generalValues).append(_elm.generalImage).append($(_elm.generalStatsDiv).append(_elm.generalName).append(_elm.generalText)));
+	$('#cageSidebarHeader').append($(_elm.generalImageContainer).append(_elm.generalName).append(_elm.generalValues).append(_elm.generalImage)).append($(_elm.generalStatsDiv).append(_elm.generalText));
 	$('#cageGeneralImage').click(function() {
 		if(tools.General.runtime.onlyFavourites == true) {
 			$('#cageAllGenerals').hide();
@@ -263,14 +261,12 @@ tools.General.init = function() {
 	}).hover(function() {
 		$('#cageGeneralStats').stop().animate({
 			'opacity' : 0.8,
-			'right' : 94,
-			'width' : 150
+			'top' : 166
 		}, 'slow');
 	}, function() {
 		$('#cageGeneralStats').stop().animate({
 			'opacity' : 0,
-			'right' : 0,
-			'width' : 94
+			'top' : 5,
 		}, 'slow');
 	});
 	tools.General.update();

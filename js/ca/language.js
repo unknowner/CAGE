@@ -55,7 +55,7 @@ var language = {
 	demiButton : 'Demi',
 
 	// Elite guard
-	eliteguardButton : 'Eliteguard',
+	eliteguardButton : 'Elite Guard',
 
 	// Generals
 	generalsSetName : 'Generals',

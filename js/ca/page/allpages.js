@@ -14,8 +14,8 @@ tools.Page.runtime.allPages = function() {
 		$(this).attr('cage', $(this).height()).css('height', 0);
 	});
 	// chat pos
-	$('#collapsedguildchat').css('left', '');
-	$('#expandedguildchat').css('left', '');
+	$('#collapsedGuildChat').css('left', '');
+	$('#expandedGuildChat').css('left', '');
 
 	// If found update bqh
 	if($('form input[name="bqh"]:first').length > 0) {

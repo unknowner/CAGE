@@ -3,8 +3,12 @@
     width: 770px;
 }
 #cageGeneralImageContainer {
-    height: 95px;
-    width: 95px;
+    display: block;
+    background-image: url('http://image4.castleagegame.com/graphics/general_plate.gif');
+    width: 180px;
+    height: 167px;
+    background-repeat: no-repeat;
+    background-position: 5px;
     right: 9px;
     z-index: 4;
     position: relative;
@@ -12,9 +16,12 @@
     padding: 2px;
 }
 #cageGeneralImage {
-    height: 95px;
+    height: 110px;
     cursor: pointer;
     z-index: 2;
+    position: absolute;
+    top: 29px;
+    left: 10px;
 }
 #cageGeneralSelector {
     position: fixed;
@@ -120,31 +127,32 @@
     margin-right: -6px;
 }
 #cageGeneralStats {
-    z-index: -1;
+    z-index: 2;
     position: absolute;
-    right: 0;
-    top: 0;
+    right: 16px;
     opacity: 0;
     background: #000;
-    width: 150px;
-    box-shadow: -2px 0px 8px #000;
-    border-bottom-left-radius: 6px;
-    padding-left: 5px;
+    width: 168px;
+    box-shadow: 0px 2px 8px #000;
+    border-radius: 6px;
+    padding: 5px;
 }
 #cageGeneralName {
     position: relative;
-    top: 1px;
+    top: 3px;
     color: #fff;
     font-weight: bold;
     white-space: nowrap;
     text-align: center;
-    width: 150px;
+    width: 168px;
     font-size: 13px;
+    left: 9px;
+    display: inline-block;
 }
 #cageGeneralText {
     position: relative;
     color: white;
-    width: 134px;
+    width: 160px;
     padding: 0 4px 4px 4px;
 }
 #cageGeneralAttack, #cageGeneralDefense {
@@ -154,62 +162,48 @@
     text-align: right;
     font-weight: bold;
     font-size: 14px;
-    padding: 1px 6px;
-    border: 1px solid #555;
-    border-bottom-right-radius: 5px;
-    left: 28px;
+    left: 25px;
     border-left: 0;
 }
 #cageGeneralAttack {
-    top: -1px;
     color: #ffc26f;
 }
 #cageGeneralDefense {
-    top: -1px;
     color: #b9deff;
 }
 #cageGeneralAttDiv {
     position: absolute;
-    width: 29px;
     z-index: -1;
-    left: 90px;
-    border: 1px solid #aaa;
-    border-bottom-right-radius: 5px;
+    left: 15px;
     height: 20px;
-    top: 2px;
+    top: 145px;
 }
 #cageGeneralDefDiv {
     position: absolute;
-    width: 29px;
     z-index: -1;
-    left: 90px;
-    border: 1px solid #aaa;
-    border-bottom-right-radius: 5px;
+    left: 75px;
     height: 20px;
-    top: 28px;
+    top: 145px;
 }
 #cageGeneralAttImg, #cageGeneralDefImg {
-    height: 25px;
+    height: 20px;
 }
 #cageGeneralAttImg {
     position: absolute;
-    left: 6px;
-    top: -3px;
 }
 #cageGeneralDefImg {
     position: absolute;
-    left: 6px;
-    top: -3px;
 }
 #cageGeneralImageCharge {
     background-color: #000;
-    left: 5px;
+    left: 13px;
     position: absolute;
     display: inline-block;
-    top: 83px;
+    top: 124px;
     padding: 1px;
     border: 1px inset;
-    width: 84px;
+    width: 100px;
+    z-index: 2;
 }
 #cageGeneralImageCharge > div {
     background-image: url('http://image4.castleagegame.com/graphics/gen_chargebarsmall.gif');
@@ -291,28 +285,13 @@
 }
 #cageGeneralEquipment {
     position: absolute;
-    width: 88px;
-    left: 99px;
+    width: 54px;
+    left: 126px;
     text-align: left;
-    top: 53px;
+    top: 30px;
 }
 #cageGeneralEquipment > img {
     z-index: 0;
     position: relative;
-    border: 1px solid #000;
-    margin: 0 -1px -1px 0;
-    width: 21px !important;
-    height: 21px !important;
-    opacity: 0.8;
-}
-#cageGeneralEquipment > img:hover {
-    height: 28px !important;
-    width: 28px !important;
-    z-index: 1;
-    height: 28px !important;
-    width: 28px !important;
-    z-index: 1;
-    margin: -3px -5px -5px -3px;
-    box-shadow: 0 2px 5px 2px #000;
-    opacity: 1
+    margin: 1px 2px 2px 1px;
 }

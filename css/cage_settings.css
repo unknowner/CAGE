@@ -3,10 +3,19 @@
  */
 #cageSettingsButton {
     position: absolute;
-    top: 2px;
-    right: 12px;
-    height: 23px;
-    width: 23px;
+    top: 144px;
+    left: 125px;
+    height: 20px;
+    width: 55px;
+    z-index: 99;
+    border-radius: 1px;
+}
+#cageSettingsButton > span:first-of-type {
+    left: 1px;
+    top: 9px;
+}
+#cageSettingsButton > span:last-of-type {
+    font-size: 9px;
 }
 #cageSettings {
     position: absolute;
