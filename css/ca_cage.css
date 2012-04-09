@@ -15,7 +15,7 @@ div.game {
     position: fixed !important;
     height: 55px;
     width: 750px;
-    z-index: 2;
+    z-index: 3;
     font-family: Trebuchet MS, Tahoma, Verdana, Arial, sans-serif !important;
 }
 #main_ststb * {

@@ -6,6 +6,12 @@ tools.Page.runtime.allPages = function() {
 	$.each(tools.Page.runtime.addOn, function(_i, _e) {
 		_e();
 	})
+	//delayed stuff
+	setTimeout(function() {
+		// chat pos
+		$('#collapsedGuildChat').css('left', '');
+		$('#expandedGuildChat').css('left', '');
+	}, 250);
 	//repos CA menu & add stuff
 	tools.Functions.addToCANav('mainMenu_keep', 'alchemy.php', 'goblin_emp.php', 'Goblin');
 	tools.Functions.addToCANav('mainMenu_monster', 'public_monster_list.php?monster_tier=3', 'army_news_feed.php', 'Live feed');
@@ -13,10 +19,6 @@ tools.Page.runtime.allPages = function() {
 	$('div.mainMenu').unwrap().unwrap().parent().addClass('cageCAMenu').find('ul > li > ul').each(function() {
 		$(this).attr('cage', $(this).height()).css('height', 0);
 	});
-	// chat pos
-	$('#collapsedGuildChat').css('left', '');
-	$('#expandedGuildChat').css('left', '');
-
 	// If found update bqh
 	if($('form input[name="bqh"]:first').length > 0) {
 		CastleAge.bqh = $('form input[name="bqh"]:first').val();

@@ -10,14 +10,19 @@ function tool(_id) {
 		fbButton : {
 			id : 'cageToolButton' + _id,
 			add : function(_text, _call) {
-				$('#cageSidebarTools').append('<button id="' + this.id + '" class="cageToolButton">' + _text + '</button>');
-				$('#' + this.id).button().removeClass('ui-corner-all').click(_call);
+				$('#cageSidebarTools').append($('<button id="' + this.id + '" class="cageToolButton">' + _text + '</button>').button({
+					icons : {
+						primary : "ui-icon-play"
+					}
+				}).removeClass('ui-corner-all').click(_call));
 			},
 			enable : function() {
-				$('#' + this.id).button("option", "disabled", false).removeClass('ui-state-hover');
+				$('#' + this.id).button("option", "disabled", false).removeClass('ui-state-hover').find('img').fadeOut('slow', function() {
+					$(this).remove();
+				});
 			},
 			disable : function() {
-				$('#' + this.id).button("option", "disabled", true);
+				$('#' + this.id).append('<img style="position:absolute;top:3px;height:14px;left:7px;" src="http://image4.castleagegame.com/graphics/shield_wait.gif">').button("option", "disabled", true);
 			}
 		},
 		// prepare tool e.g add button to fb gui etc.

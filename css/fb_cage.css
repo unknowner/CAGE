@@ -81,10 +81,34 @@ li.topNavLink, li.topNavLink a {
 .cageJewels {
     position: fixed !important;
     top: -3px;
-    left: -3px;
+    left: 0px;
     z-index: 132 !important;
-    background: #3b5998;
-    border-bottom-right-radius: 10px;
-    box-shadow: 2px 2px 9px #000;
-    height: 31px;
+    background: #3B5998;
+    width: 25px;
+    height: 92px;
+    border-right: 1px solid #000
+}
+/*
+ * New flyouts
+ */
+div.cageNotificationsFlyout {
+    left: 26px !important;
+    top: 1px !important;
+}
+div.cageNotificationsFlyout div.beeperNub {
+    display: none;
+}
+div.cageMessagesFlyout {
+    left: 26px !important;
+    top: 1px !important;
+}
+div.cageMessagesFlyout div.beeperNub {
+    display: none;
+}
+div.cageRequestsFlyout {
+    left: 26px !important;
+    top: 1px !important;
+}
+div.cageRequestsFlyout div.beeperNub {
+    display: none;
 }

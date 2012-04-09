@@ -56,13 +56,15 @@ tools.General.runtimeUpdate = function() {
 //get current general from CA
 tools.General.get = function() {
 	if($('div[style*="general_plate.gif"] > div:first').length > 0) {
-		var _old = tools.General.current;
+		var _old = tools.General.current, _i = $('#main_bn div > img[style="width:24px;height:24px;"]');
 		tools.General.current = $('div[style*="general_plate.gif"] > div:first').text().trim();
-		$('#cageGeneralEquipment').empty().append($('#main_bn div > img[style="width:24px;height:24px;"]'));
+		setTimeout(function() {
+			$('#cageGeneralEquipment').empty().append(_i);
+		}, 100);
 		if(_old !== tools.General.current) {
 			$('#cageGeneralImageCharge').remove();
-			$('#cageGeneralImage, #cagegeneralname, #cageGeneralDefense').fadeOut('fast');
-			$('#cageGeneralAttack').fadeOut('fast', function() {
+			$('#cageGeneralImage, #cagegeneralname, #cageGeneralDefense').fadeOut('slow');
+			$('#cageGeneralAttack').fadeOut('slow', function() {
 				tools.General.set();
 			});
 		}
@@ -90,9 +92,12 @@ tools.General.setByName = function(_name, _callback) {
 		$('#cageGeneralImageCharge').remove();
 		var _g = tools.General.runtime.general[_name];
 		if(_g !== null) {
-			$('#cageGeneralImage, #cagegeneralname, #cageGeneralDefense, #cageGeneralAttack').fadeOut('fast');
+			$('#cageGeneralImage, #cagegeneralname, #cageGeneralDefense, #cageGeneralAttack').fadeOut('slow');
 			get('generals.php?item=' + _g.item + '&itype=' + _g.itype + '&bqh=' + CastleAge.bqh, function(_data) {
 				var _i = $(_data).find('#main_bn div > img[style="width:24px;height:24px;"]');
+				if($('div.generalContainerBox:first').length == 1) {
+					$('div.generalContainerBox:first').next('div').replaceWith($(_data).find('div.generalContainerBox:first').next('div'))
+				}
 				setTimeout(function() {
 					$('#cageGeneralEquipment').empty().append(_i);
 				}, 100);
@@ -110,9 +115,13 @@ tools.General.setByName = function(_name, _callback) {
 // update generals object
 tools.General.update = function() {
 	if(CastleAge.signed_request !== null) {
-		get('generals.php', function(_data) {
-			tools.General.parsePage(_data);
-		})
+		if($('div.generalContainerBox:first').length == 1) {
+			tools.General.parsePage();
+		} else {
+			get('generals.php', function(_data) {
+				tools.General.parsePage(_data);
+			});
+		}
 	} else {
 		window.setTimeout(tools.General.update, 100);
 	}
@@ -120,7 +129,6 @@ tools.General.update = function() {
 tools.General.lists = function() {
 	var _list = $('#cageSelectorList');
 	$.each(tools.General.runtime.favLists, function(_i, _e) {
-		console.log(_i, _e);
 		var _attr = {
 			value : _i
 		}
@@ -184,12 +192,11 @@ tools.General.parsePage = function(_data) {
 };
 tools.General.renderFavs = function() {
 	$('#cageAllGenerals > div').show();
+	$('#cageSelectorList').val()
 	if(tools.General.runtime.favorites[tools.General.runtime.favList] && tools.General.runtime.favorites[tools.General.runtime.favList].length > 0) {
 		var _tempFav = tools.General.runtime.favorites[tools.General.runtime.favList];
-		//tools.General.runtime.favorites[tools.General.runtime.favList] = [];
 		$('#cageFavoriteGenerals').html('');
 		for(var i = 0, len = _tempFav.length; i < len; i++) {
-			//$('#cageAllGenerals > div > img:last[alt="' + _tempFav[i] + '"]').click();
 			$('#cageAllGenerals > div > img[alt="' + _tempFav[i] + '"]').parent().hide().clone(true, true).appendTo('#cageFavoriteGenerals').show().find('img:last').unbind('click hover').click(tools.General.clickRemove).hover(tools.General.hoverRemoveIn, tools.General.hoverRemoveOut);
 		}
 	} else {
@@ -259,7 +266,7 @@ tools.General.init = function() {
 		}
 		$('#cageGeneralSelector').slideToggle('slow');
 	}).hover(function() {
-		$('#cageGeneralStats').stop().animate({
+		$('#cageGeneralStats').stop().show().animate({
 			'opacity' : 0.8,
 			'top' : 166
 		}, 'slow');
@@ -267,7 +274,9 @@ tools.General.init = function() {
 		$('#cageGeneralStats').stop().animate({
 			'opacity' : 0,
 			'top' : 5,
-		}, 'slow');
+		}, 'slow', function() {
+			$(this).hide()
+		});
 	});
 	tools.General.update();
 };

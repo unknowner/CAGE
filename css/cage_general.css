@@ -136,6 +136,7 @@
     box-shadow: 0px 2px 8px #000;
     border-radius: 6px;
     padding: 5px;
+    display: none;
 }
 #cageGeneralName {
     position: relative;
@@ -227,47 +228,62 @@
  */
 #cageFavsList {
     display: block;
-    width: 180px;
-    background-color: #8C562A;
-    font-size: 14px;
-    border: 1px inset #C6A56F;
+    width: 186px;
+    background-color: #232323;
+    font-size: 13px;
     color: #fff;
-    padding: 0;
+    padding: 3px;
     position: relative;
+    border: 2px ridge #999;
+    border-radius: 5px;
+    height: 97px;
+    margin-bottom: 2px;
 }
 .cageFavsButton {
     width: 24px;
-    background-color: #8C562A;
-    border-color: #C6A56F;
+    background-color: #232323;
     color: #fff;
     font-weight: bold;
     font-size: 14px;
-    border-width: 1px;
+    border-radius: 5px;
     margin-right: 2px;
+    height: 25px;
+    cursor: pointer;
 }
 #cageEditFavName {
-    width: 128px;
-    background-color: #8C562A;
-    font-size: 14px;
-    border: 1px inset #C6A56F;
+    width: 127px;
+    background-color: #232323;
+    font-size: 13px;
     color: #fff;
     height: 20px;
     margin-right: 2px;
+    border: 2px ridge #999;
+    border-radius: 5px;
+    padding-left: 4px;
 }
 #cageFavsDisplay {
-    width: 455px;
+    width: 511px;
     height: 112px;
-    background-color: #8C562A;
+    background-color: #232323;
     position: relative;
     left: 0px;
-    border: 1px inset #C6A56F;
     overflow-y: auto;
     float: left;
     top: 3px;
+    padding: 3px;
+    border: 2px ridge #999;
+    border-radius: 5px;
+}
+#cageFavsDisplay > div {
+    float: left;
+    height: 51px;
+    width: 51px;
+    border-radius: 5px;
+    margin: 0 5px 5px 0;
 }
 #cageFavsDisplay img:first-child {
     height: 51px;
-    margin: 3px 0 0 3px;
+    width: 51px;
     border-radius: 3px;
     float: left;
 }
@@ -275,12 +291,12 @@
     height: 10px;
     position: absolute;
     margin-left: -14px;
-    margin-top: 40px;
+    margin-top: 37px;
     background-color: #000;
-    border-top-left-radius: 3px;
+    border-top-left-radius: 5px;
+    border-bottom-right-radius: 5px;
     padding: 2px;
     opacity: 0.8;
-    border-bottom-right-radius: 3px;
     cursor: pointer;
 }
 #cageGeneralEquipment {

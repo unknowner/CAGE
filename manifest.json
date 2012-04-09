@@ -1,6 +1,6 @@
 {
 	"name": "CAGE - Castle Age Game Enhancer [β]",
-	"version": "1.2.0.1",
+	"version": "1.2.0.4",
 	"description": "CAGE makes playing Castle Age on Facebook a bit easier and a lot more fun ;)",
 	"background_page": "background.html",
 	"content_scripts": [
@@ -67,6 +67,7 @@
 			"js/ca/page/guildv2_battle_monster.js",
 			"js/ca/page/index.js",
 			"js/ca/page/keep.js",
+			"js/ca/page/land.js",
 			"js/ca/page/monster_quests.js",
 			"js/ca/page/player_monster_list.js",
 			"js/ca/page/quests.js",

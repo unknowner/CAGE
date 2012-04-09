@@ -1581,9 +1581,11 @@ tools.Page.runtime['oracle.php'] = function() {
 		if(_sort === 'name') {
 			_tempName.sort();
 		}
+		_sel.hide();
 		$.each(_tempName, function() {
 			_sel.append(_tempGen[this]);
 		});
+		_sel.show();
 		fillType('cageOracleGeneral', _m);
 		fillType('cageOracleEq1', _m.e[0]);
 		fillType('cageOracleEq2', _m.e[1]);
