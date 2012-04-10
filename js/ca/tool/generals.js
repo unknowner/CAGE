@@ -55,11 +55,13 @@ tools.General.runtimeUpdate = function() {
 };
 //get current general from CA
 tools.General.get = function() {
-	if($('div[style*="general_plate.gif"] > div:first').length > 0) {
+	if($('div[style*="graphics/hot_container.gif"]').length > 0) {
 		var _old = tools.General.current, _i = $('#main_bn div > img[style="width:24px;height:24px;"]');
-		tools.General.current = $('div[style*="general_plate.gif"] > div:first').text().trim();
+		tools.General.current = $('div[style*="graphics/hot_container.gif"] > div:first').text().trim();
 		setTimeout(function() {
-			$('#cageGeneralEquipment').empty().append(_i);
+			if(_i.length > 0) {
+				$('#cageGeneralEquipment').empty().append(_i);
+			}
 		}, 100);
 		if(_old !== tools.General.current) {
 			$('#cageGeneralImageCharge').remove();
@@ -78,7 +80,6 @@ tools.General.set = function() {
 	$('#cageGeneralDefense').text(_g.defense);
 	$('#cageGeneralText').text(_g.text);
 	$('#cageGeneralImageCharge').remove();
-	console.log('cahrge:', _g.charge);
 	if(_g.charge) {
 		var _cool = _g.cooldown * 60 - (_g.cooldown * _g.charge / 10 * 6);
 		$('#cageGeneralImageContainer').append('<div id="cageGeneralImageCharge"><div style="width:' + _g.charge + '%;"></div><span>' + (_g.charge == 100 ? 'Charge!' : Math.floor((_cool - (_cool % 60)) / 60) + ':' + Math.floor((_cool % 60)) + '</span></div>'))
@@ -99,7 +100,9 @@ tools.General.setByName = function(_name, _callback) {
 					$('div.generalContainerBox:first').next('div').replaceWith($(_data).find('div.generalContainerBox:first').next('div'))
 				}
 				setTimeout(function() {
-					$('#cageGeneralEquipment').empty().append(_i);
+					if(_i.length > 0) {
+						$('#cageGeneralEquipment').empty().append(_i);
+					}
 				}, 100);
 				tools.Stats.update($('#main_sts', _data));
 				tools.General.parsePage(_data);

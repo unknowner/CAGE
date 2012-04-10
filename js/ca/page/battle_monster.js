@@ -101,7 +101,7 @@ tools['Page'].runtime['battleStats'] = function() {
 			$this = $(this);
 			if($this.text() !== '') {
 				if($this.html().indexOf(CastleAge.userId) > -1) {
-					_ownDamage = /.+$/i.exec($this.text().trim())[0].trim();
+					_ownDamage = $this.find('td:last').text().trim();
 				}
 				if(/Levels|Heart of Darkness/.test($this.text()) === true) {
 					if(_temp !== '') {

@@ -8,12 +8,12 @@ tools.Gifter.init = function() {
 		tools.Sidebar.button.disable('cageGiftReceiveAndReturn');
 		tools.Gifter.start();
 	});
-	tools.Sidebar.button.add('cageGiftReceiveAndReturn', language.gifterReturn, function() {
-		tools.Sidebar.button.disable('cageGiftReceive');
-		tools.Sidebar.button.disable('cageGiftReceiveAndReturn');
-		tools.Gifter.runtime.returnGift = true;
-		tools.Gifter.start();
-	});
+	/*tools.Sidebar.button.add('cageGiftReceiveAndReturn', language.gifterReturn, function() {
+	 tools.Sidebar.button.disable('cageGiftReceive');
+	 tools.Sidebar.button.disable('cageGiftReceiveAndReturn');
+	 tools.Gifter.runtime.returnGift = true;
+	 tools.Gifter.start();
+	 });*/
 };
 tools.Gifter.settings = function() {
 	tools.Settings.heading(language.gifterSetName);
@@ -108,6 +108,7 @@ tools.Gifter.done = function() {
 		}
 	} else {
 		tools.Gifter.runtime.returnGift = false;
+		tools.Gifter.runtimeUpdate();
 		tools.Sidebar.button.enable('cageGiftReceive');
 		tools.Sidebar.button.enable('cageGiftReceiveAndReturn');
 	}
@@ -143,6 +144,7 @@ tools.Gifter.newRequestForm = function() {
 				title : tit,
 				filters : ['app_users', 'all', 'app_non_users'],
 			}, _uid = FB.getAuthResponse().userID;
+			console.log('_uid1', _uid);
 			if(cageGiftUserList.length > 0) {
 				_ui.filters.unshift({
 					name : _giftData.userList,
@@ -164,13 +166,13 @@ tools.Gifter.newRequestForm = function() {
 			}
 
 			FB.ui(_ui, function(result) {
-				console.log('result:', result);
 				$('#AjaxLoadIcon').show();
 				// fixes infinite looping for popup window if u close it before it is done loading
 				$('.fb_dialog_iframe').each(function() {
 					$(this).remove();
 				});
 				if(result && result.to) {
+					console.log('result:', result);
 					$('#results_container').html('Sending gifts...<br>').show();
 					var _resultContainer = $('#results_container'), _store = null, _uid = FB.getAuthResponse().userID;
 					_resultContainer.css('borderRadius', 5).html('Sending to: ...<br>').show();
@@ -184,8 +186,7 @@ tools.Gifter.newRequestForm = function() {
 					FB.api('/me/friends', {
 						fields : 'name'
 					}, function(response) {
-						var _friends = {};
-						var _requestids = [];
+						var _friends = {}, _requestids = [], _uid = FB.getAuthResponse().userID;
 						$.each(response.data, function(_i, _e) {
 							_friends[_e.id] = _e.name;
 						});
@@ -199,13 +200,13 @@ tools.Gifter.newRequestForm = function() {
 									localStorage[_uid + '_' + 'CAGEsendGiftTo'] = JSON.stringify(_store);
 								} else {
 									console.log('GIFTER - clear RTF list');
+									console.log(localStorage[_uid + '_' + 'CAGEsendGiftTo']);
 									localStorage.removeItem(_uid + '_' + 'CAGEsendGiftTo');
 								}
 							}
 							_resultContainer.append('<br>...' + _friends[_e] + ' (' + _e + ')' + _fr);
 						});
 						var params = 'ajax=1&signed_request=' + $('#signed_request').val();
-						//console.log(_requestids);
 						$.ajax({
 							url : 'request_handler.php?' + request_params + '&request_ids=' + result.to.join(','), // _requestids.join(',')
 							context : document.body,

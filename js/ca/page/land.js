@@ -2,7 +2,7 @@
 tools['Page'].runtime['land.php'] = function() {
 
 	console.log('Page: land.php');
-	$('div[style*="/graphics/town_header_land.jpg"]:first').after('<div id="cagePinHere" style="font-family: sans-serif;font-size: 15px;background-image: url(http://image4.castleagegame.com/graphics/town_land_bar.jpg);width: 740px;height: 93px;margin-top: 5px;"><div style="padding: 23px 0 0 114px;width: 146px;font-weight: bold;text-align:center;">Pin a item with the + on each item</div></div>');
+	$('div[style*="/graphics/town_header_land.jpg"]:first').after('<div id="cagePinHere" style="font-family: sans-serif;font-size: 15px;background-image: url(http://image4.castleagegame.com/graphics/town_land_bar.jpg);width: 740px;height: 93px;margin-top: 5px;"><div style="padding: 25px 0 0 185px;width: 238px;font-weight: bold;text-align: center;">Pin an item with the + on each item</div></div>');
 	//Reverse buy order (10-1)
 	$('#section_land form[id^="prop_"], #section_special_land form[id^="prop_"]').each(function() {
 		$(this).append($('<img class="cagePinIt" src="http://image4.castleagegame.com/graphics/town_button_expand.gif" style="cursor:pointer;height: 13px;position: absolute;margin-left: 1px;margin-top: -11px;">').click(function() {
