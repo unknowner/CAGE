@@ -54,7 +54,7 @@ tools.Page.runtime['alchemy.php'] = function() {
 		$('#cageHideRecipe').click();
 	}
 
-	$('div.statsTTitle_inc').css('paddingLeft', '36px !important').prepend($('<img src="http://image4.castleagegame.com/graphics/class_button_minus.jpg">').css({
+	$('div.statsT2 div.statsTTitle_inc').css('paddingLeft', 37).prepend($('<img src="http://image4.castleagegame.com/graphics/class_button_minus.jpg">').css({
 		'borderRadius' : 4,
 		'position' : 'absolute',
 		'marginLeft' : -31,

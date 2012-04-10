@@ -182,14 +182,14 @@ tools.Monster.done = function() {
 	}, 'slow', function() {
 		$(this).hide
 	});
-	tools.Monster.fbButton.enable();
+	tools.Sidebar.button.enable('cageMonsterStart');
 
 };
 
 tools.Monster.init = function() {
 	$('#cageContainer').append('<div id="cageMonsterContainer" class="ui-corner-bottom ui-widget-content"></div>');
-	tools.Monster.fbButton.add(language.monsterButton, function() {
-		tools.Monster.fbButton.disable();
+	tools.Sidebar.button.add('cageMonsterStart', language.monsterButton, function() {
+		tools.Sidebar.button.disable('cageMonsterStart');
 		tools.Monster.start();
 	});
 	tools.Monster.runtimeUpdate();

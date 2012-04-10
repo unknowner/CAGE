@@ -1,6 +1,6 @@
 {
 	"name": "CAGE - Castle Age Game Enhancer [β]",
-	"version": "1.2.0.4",
+	"version": "1.2.0.5",
 	"description": "CAGE makes playing Castle Age on Facebook a bit easier and a lot more fun ;)",
 	"background_page": "background.html",
 	"content_scripts": [
@@ -14,17 +14,17 @@
 			"js/common.js",
 			"js/version.js",
 			
-			"js/ca/language.js",
-			"js/ca/tool.js",
-			"js/ca/utilities.js",
-			"js/ca/ca_receiver.js",
-			"js/ca/news.js",
-			
-			"js/ca/tool/functions.js",
-			"js/ca/tool/settings.js",
-			"js/ca/tool/cage.js",
-			"js/ca/tool/castleage.js",
-			"js/ca/tool/facebook.js",
+			"js/ca/base/language.js",
+			"js/ca/base/tool.js",
+			"js/ca/base/sidebar.js",
+			"js/ca/base/utilities.js",
+			"js/ca/base/ca_receiver.js",
+			"js/ca/base/functions.js",
+			"js/ca/base/settings.js",
+			"js/ca/base/cage.js",
+			"js/ca/base/castleage.js",
+			"js/ca/base/facebook.js",
+			"js/ca/base/news.js",
 			
 			"js/ca/tool/armyCleaner.js",
 			"js/ca/tool/armyFiller.js",
@@ -44,7 +44,6 @@
 			"js/ca/tool/stats.js",
 			
 			"js/ca/page/allpages.js",
-			
 			"js/ca/page/alchemy.js",
 			"js/ca/page/arena_battle.js",
 			"js/ca/page/army.js",
@@ -66,8 +65,10 @@
 			"js/ca/page/guildv2_conquest_expansion.js",
 			"js/ca/page/guildv2_battle_monster.js",
 			"js/ca/page/index.js",
+			"js/ca/page/item.js",
 			"js/ca/page/keep.js",
 			"js/ca/page/land.js",
+			"js/ca/page/magic.js",
 			"js/ca/page/monster_quests.js",
 			"js/ca/page/player_monster_list.js",
 			"js/ca/page/quests.js",
