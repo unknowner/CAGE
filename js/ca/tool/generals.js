@@ -148,7 +148,6 @@ tools.General.lists = function() {
 	}).change();
 };
 tools.General.parsePage = function(_data) {
-	console.log('parse General page');
 	_data = _data ? $(_data) : $('#app_body');
 	_data.find('table.layout div.general_pic_div3').each(function(i, e) {
 		var $_this = $(this), $_image = $('form:has(input[name="item"]) input.imgButton', e), $_general = $_this.parent(), _name = $_general.children('div.general_name_div3:first').text().trim(), _stats = $_general.find('div.generals_indv_stats_padding'), _charge = $_this.find('div[style*="gen_chargebarsmall.gif"]:last'), _gtext = $_general.children('div:last').children('div');
