@@ -183,12 +183,12 @@ tools.Facebook.CAPlayers = function(_callback) {
 };
 
 tools.Facebook.init = function() {
-	$(document.body).append($('<img id="cageHideFBBluebar" src="http://www.facebook.com/favicon.ico" style="z-index:2;cursor:pointer;position:fixed;bottom:1px;left:2px;">').data('hidden', false).click(function() {
+	$(document.body).append($('<img id="cageHideFBBluebar" src="http://www.facebook.com/favicon.ico" class="cageFBBluebar">').data('hidden', false).click(function() {
 		if($(this).data('hidden') === false) {
-			$(this).data('hidden', true);
+			$(this).data('hidden', true).removeClass('cageFBBluebar').addClass('cageFBBluebarHidden');
 			com.send(com.task.hideBluebar, com.port.facebook);
 		} else {
-			$(this).data('hidden', false);
+			$(this).data('hidden', false).removeClass('cageFBBluebarHidden').addClass('cageFBBluebar');
 			com.send(com.task.showBluebar, com.port.facebook);
 		}
 	}));

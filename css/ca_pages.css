@@ -1,6 +1,15 @@
 /*
  * index.php
  */
+#cageBattleNews {
+    background-image: url('http://image4.castleagegame.com/10009/graphics/battle_news_wide.jpg');
+    position: relative;
+    height: 184px;
+    margin-left: 1px;
+    width: 722px;
+    padding: 40px 0 0 17px;
+    background-size: 737px 224px;
+}
 #cagePageKeepNemesisImg {
     bottom: 20px;
     position: absolute;
@@ -17,7 +26,7 @@
     margin: 8px 0 0 10px;
     width: 96px;
     height: 81px;
-    background-position: 50%;
+    background-position: 50% 5%;
     border-radius: 2px;
     box-shadow: 0 0 10px #f00 inset;
 }
@@ -52,17 +61,17 @@
  * Quests
  */
 img.cageQuestSanoSwitch {
-    position: absolute;
+    position: relative;
     cursor: pointer;
-    height: 40px;
+    height: 31px;
     border-radius: 5px;
-    margin-left: -49px;
-    border: 2px outset;
+    margin-left: -35px;
+    border: 1px outset;
     opacity: 0.8;
-    margin-top: 22px;
+    top: -33px;
 }
 img.cageQuestSanoSwitch:hover {
-    border: 2px inset;
+    border: 1px inset;
     opacity: 1;
 }
 /*

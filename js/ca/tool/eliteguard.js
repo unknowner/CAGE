@@ -44,11 +44,11 @@ tools.Eliteguard.work = function() {
 };
 tools.Eliteguard.done = function() {
 	note('Eliteguard', 'Your elite guard is full.');
-	tools.Eliteguard.fbButton.enable();
+	tools.Sidebar.button.enable('cageEliteGuardStart');
 };
 tools.Eliteguard.init = function() {
-	tools.Eliteguard.fbButton.add(language.eliteguardButton, function() {
-		tools.Eliteguard.fbButton.disable();
+	tools.Sidebar.button.add('cageEliteGuardStart', language.eliteguardButton, function() {
+		tools.Sidebar.button.disable('cageEliteGuardStart');
 		tools.Eliteguard.start();
 	});
 };

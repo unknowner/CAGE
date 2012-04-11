@@ -109,10 +109,10 @@ tools.Page.ajaxPageDone = function() {
 				$('#main_sts').html($('#main_sts', $data).html());
 				$('#main_bntp').html($('#main_bntp', $data).html());
 				$('#main_bn').html($('#main_bn', $data).html());
-				$('#app_body_container').html($('#app_body_container', $data).html()).append($data.filter('div[id]:not(.game)'));
+				$('#app_body_container').hide().html($('#app_body_container', $data).html()).append($data.filter('div[id]:not(.game)')).show();
 				var script = document.createElement("script");
 				script.type = "text/javascript";
-				script.text = $(data).filter('script').text();
+				script.text = $data.filter('script').text();
 				$('#app_body_container')[0].appendChild(script);
 				firePageURL();
 				centerPopups();

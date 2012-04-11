@@ -6,6 +6,12 @@ tools.Page.runtime.allPages = function() {
 	$.each(tools.Page.runtime.addOn, function(_i, _e) {
 		_e();
 	})
+	//delayed stuff
+	setTimeout(function() {
+		// chat pos
+		$('#collapsedGuildChat').css('left', '');
+		$('#expandedGuildChat').css('left', '');
+	}, 250);
 	//repos CA menu & add stuff
 	tools.Functions.addToCANav('mainMenu_home', 'index.php', 'specialmembership.php', 'Crusaders');
 	tools.Functions.addToCANav('mainMenu_keep', 'alchemy.php', 'goblin_emp.php', 'Goblin');
@@ -24,7 +30,7 @@ tools.Page.runtime.allPages = function() {
 		$(this).html($(this).html().replace('more', ''));
 	});
 	// Favour points
-	$('#cageFavorPoints > span').text($('#main_bn div[style*="persistent_bar_oracle.gif"]').text().trim());
+	$('#cageFavorPoints').text($('#main_bn div[style*="persistent_bar_oracle.gif"]').text().trim());
 
 	//Stats
 	$('#main_sts').css('background', $('#main_bn').css('backgroundImage'));
@@ -41,7 +47,7 @@ tools.Page.runtime.allPages = function() {
 	// xp to next lvl and lvl bar fix
 	var _xpwidth = /\d+/.exec($('#st_5 > div:first > div > div')[0].style.width)[0];
 	if(_xpwidth !== null) {
-		$('#st_5 > div:first > div > div').css('width', parseInt(_xpwidth, 10) / 100 * 126);
+		$('#st_5 > div:first > div > div').css('width', parseInt(_xpwidth, 10) / 126 * 100 + '%');
 	}
 	if($('#st_2_5 strong:contains("to")').length == 0 && /\d+\/(\d+)/.exec($('#st_2_5 strong').text()) !== null) {
 		$('#st_2_5 strong').text(/\d+/.exec($('#st_5').attr('title'))[0] + ' to ' + /\d+\/(\d+)/.exec($('#st_2_5 strong').text())[1]);

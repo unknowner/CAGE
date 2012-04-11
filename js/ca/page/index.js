@@ -1,7 +1,7 @@
 // Index
 tools['Page'].runtime['index.php'] = function() {
 
-	$('table:eq(1)').before('<div id="cageBattleNews" style="background-image:url(\'http://image4.castleagegame.com/10009/graphics/battle_news_wide.jpg\');position:relative;height: 226px;margin-left: 1px;width: 722px;padding: 40px 0 0 17px;"></div>');
+	$('table:eq(1)').before('<div id="cageBattleNews"></div>');
 	var xp = 0, bp = 0, wp = 0, cp = 0, cop = 0, win = 0, lose = 0, deaths = 0, cash = 0, list = [], users = {}, nemesis = {
 		user : null,
 		lose : 0

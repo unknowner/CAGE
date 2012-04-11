@@ -1,5 +1,4 @@
 #cageContainer {
-    width: 770px;
     font-size: 11px;
     font-family: Trebuchet MS, Tahoma, Verdana, Arial, sans-serif;
 }
@@ -13,24 +12,28 @@
     z-index: 1;
     box-shadow: 0 10px 20px black;
 }
+button.cageToolButton {
+    width: 178px;
+    margin: 0;
+    height: 23px;
+    cursor: pointer;
+    text-align: left;
+}
+button.cageToolButton:first-of-type {
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+button.cageToolButton:last-of-type {
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
 #cageLogo {
     position: absolute;
-    height: 45px;
-    left: 0;
+    top: 6px;
+    left: 8px;
 }
-#cageLogoShadow {
-    position: absolute;
-    left: -2px;
-    height: 45px;
-    top: 4px;
-    opacity: 0.5;
-}
-.cageToolButton {
-    height: 22px;
-    margin: -3px 2px 0 2px;
-}
-.cageToolButton > span {
-    padding: 0 0.75em !important;
+.cageToolButton > span:last-of-type {
+    padding: 0 0 1px 26px !important;
 }
 #cageMenu {
     white-space: nowrap;
@@ -193,13 +196,13 @@
     position: fixed;
     width: 540px;
     box-shadow: black 0px 10px 20px;
-    z-index: 2;
+    z-index: 1;
     cursor: default;
     height: 128px;
     padding-top: 8px;
     padding-left: 18px;
     margin-left: 105px;
-    top: -100px;
+    top: -500px;
     display: none;
 }
 #cageDemiContainer > div {
@@ -544,7 +547,7 @@
 #cageClassContainer {
     position: fixed;
     box-shadow: black 0px 10px 20px;
-    z-index: 2;
+    z-index: 1;
     cursor: default;
     margin-left: 65px;
     top: -500px;
@@ -664,4 +667,105 @@ div.cageClassPowerText {
     padding: 10px;
     border-radius: 30px;
 }
-
+.MonsterListBackground {
+    background-image: url('http://image4.castleagegame.com/graphics/monsterlist_container.gif');
+    background-repeat: no-repeat;
+    height: 90px;
+    padding-bottom: 15px;
+}
+.MonsterListButton {
+    float: left;
+    text-align: center;
+    padding-top: 20px;
+}
+.MonsterListName {
+    float: left;
+    text-align: center;
+    color: black;
+    padding-left: 35px;
+    width: 240px;
+    margin-right: 32px;
+    padding-top: 15px;
+}
+.MonsterListImage {
+    float: left;
+    padding: 15px 0 0 33px;
+    overflow: hidden;
+}
+.MonsterListText {
+    background-color: black;
+    padding: 1px 4px;
+    left: 0;
+    font-size: 12px;
+    top: -15px;
+    border-top-right-radius: 4px;
+    opacity: 0.7;
+    position: relative;
+    color: white;
+    font-weight: bold;
+}
+.GuildList {
+    height: 102px !important;
+    padding: 3px 0px 5px 20px !important;
+    font-size: 13px;
+}
+.GuildNum {
+    color: white;
+    position: relative;
+    top: -100px;
+    left: 6px;
+    text-shadow: 0 0 1px black, 0 0 4px black;
+    font-weight: bold;
+}
+.cageResults {
+    position: fixed;
+    top: 100px;
+    box-shadow: 0 0 3px 1px #800, 0 5px 20px black;
+    z-index: 2;
+    border-radius: 6px;
+    padding: 5px;
+    background-image: url('http://image4.castleagegame.com/graphics/bg_main_middle.jpg');
+    overflow-x: hidden;
+    overflow-y: auto;
+    max-height: 700px;
+    left: 10px;
+    width: 750px;
+}
+#cageCloseResult {
+    float: right;
+    position: relative;
+    cursor: pointer;
+    margin-bottom: -21px;
+    width: 21px;
+}
+#MonsterResultDamage {
+    float: left;
+    width: 420px;
+    text-align: left;
+    font-weight: bold;
+    padding: 10px;
+}
+/*
+ * fb Bluebar
+ */
+img.cageFBBluebar {
+    z-index: 30;
+    cursor: pointer;
+    position: fixed;
+    top: -1px;
+    left: -1px;
+}
+img.cageFBBluebarHidden {
+    z-index: 30;
+    cursor: pointer;
+    position: fixed;
+    top: 87px;
+    left: -1px;
+    background-color: #3B5998;
+    padding: 4px 5px;
+    border-bottom-right-radius: 6px;
+    border: 1px solid #000;
+}
+img.cageFBBluebarHidden:hover {
+    background-color: #4a67a1;
+}

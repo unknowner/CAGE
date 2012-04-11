@@ -180,13 +180,13 @@ tools.Assister.assist = function(_ids) {
 tools.Assister.done = function() {
 	note('Assister', 'You assisted ' + tools.Assister.runtime.Used + ' friends.');
 	tools.Assister.runtime.Used = 0;
-	tools.Assister.fbButton.enable();
+	tools.Sidebar.button.enable('cageAssisterStart');
 };
 
 tools.Assister.init = function() {
 	tools.Assister.runtimeUpdate();
-	tools.Assister.fbButton.add(language.assisterButton, function() {
-		tools.Assister.fbButton.disable();
+	tools.Sidebar.button.add('cageAssisterStart', language.assisterButton, function() {
+		tools.Sidebar.button.disable('cageAssisterStart');
 		tools.Assister.start();
 	});
 };

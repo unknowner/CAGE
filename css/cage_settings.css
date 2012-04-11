@@ -1,0 +1,194 @@
+/*
+ * Settings
+ */
+#cageSettingsButton {
+    position: absolute;
+    top: 144px;
+    left: 125px;
+    height: 20px;
+    width: 55px;
+    z-index: 99;
+    border-radius: 1px;
+}
+#cageSettingsButton > span:first-of-type {
+    left: 1px;
+    top: 9px;
+}
+#cageSettingsButton > span:last-of-type {
+    font-size: 9px;
+}
+#cageSettings {
+    position: absolute;
+    left: 0;
+    top: -1px;
+    z-index: 4;
+    width: 14px;
+    border-radius: 0 !important;
+    cursor: pointer;
+}
+#cageSettings > span.ui-icon-gear {
+    left: 5px !important;
+}
+#cageSettingsTop {
+    background-image: url('http://image4.castleagegame.com/graphics/newsfeed_b_top.jpg');
+    height: 80px;
+    background-repeat: no-repeat;
+}
+#cageSettingsTop > span {
+    position: relative;
+    left: 28px;
+    top: 28px;
+    color: white;
+    display: inline-block;
+    width: 332px;
+    background: -webkit-linear-gradient(top, #A9032A 0%,#900223 25%,#6E001A 100%);
+    background-color: #900;
+    text-align: center;
+    text-shadow: 0 0 13px black;
+    font-weight: bold;
+    font-size: 25px;
+    padding-top: 6px;
+    height: 38px;
+}
+#cageSettingsBottom {
+    background-image: url('http://image4.castleagegame.com/graphics/newsfeed_b_bottom.jpg');
+    height: 102px;
+    background-repeat: no-repeat;
+    text-align: center;
+    padding-top: 18px;
+    color: black;
+    font-weight: bold;
+}
+#cageSettingsMiddle {
+    background-image: url('http://image4.castleagegame.com/graphics/newsfeed_b_middle.jpg');
+    background-repeat: repeat-y;
+    padding-top: 5px;
+    padding-bottom: 40px;
+}
+#cageSettingsMiddle > div {
+    overflow: hidden;
+    padding-bottom: 15px;
+}
+.cageSettingsHeading {
+    color: white;
+    font-size: 15px;
+    font-weight: bold;
+    padding: 5px 0 5px 30px;
+    background: rgba(40, 0, 0, 0.3);
+    margin-right: 1px;
+    box-shadow: 0 8px 11px 0 black;
+}
+/*
+ *	Text
+ */
+.cageSettingsText {
+    padding: 15px 30px 0 30px;
+    color: white;
+}
+.cageSettingsTextbox {
+    padding: 10px 0 0 30px;
+}
+.cageSettingsTextbox > span {
+    color: white;
+    font-weight: bold;
+    padding-left: 10px;
+    width: 253px;
+    display: inline-block;
+}
+.cageSettingsTextbox > input {
+    width: 300px;
+    background-color: rgba(40, 0, 0, 0.2);
+    border-radius: 5px;
+    color: white;
+    padding-left: 5px;
+}
+.cageSettingsTextbox > button {
+    width: 95px;
+    height: 22px;
+    top: 2px;
+    float: right;
+    position: relative;
+    right: 35px;
+    background-image: url('http://image4.castleagegame.com/graphics/guild_button_submit.gif');
+    border-radius: 5px;
+    background-position: -15px;
+    cursor: pointer;
+}
+/*
+ *	Button
+ */
+.cageSettingsButton {
+    padding: 10px 0 0 30px;
+}
+.cageSettingsButton > span {
+    color: white;
+    font-weight: bold;
+    padding-left: 10px;
+    width: 250px;
+    display: inline-block;
+    padding-top: 4px;
+}
+.cageSettingsButton > button {
+    width: 95px;
+    height: 22px;
+    top: 2px;
+    float: right;
+    position: relative;
+    right: 351px;
+    background-image: url('http://image4.castleagegame.com/graphics/guild_button_submit.gif');
+    border-radius: 5px;
+    background-position: -15px;
+    cursor: pointer;
+}
+/*
+ *	OnOff
+ */
+.cageSettingsOnOff {
+    padding: 10px 0 0 0;
+}
+.cageSettingsOnOff > span {
+    color: white;
+    top: 1px;
+    font-weight: bold;
+    position: relative;
+    margin-left: 10px;
+    cursor: pointer;
+}
+.cageSettingsOnOff > button {
+    height: 21px;
+    border: 0;
+    width: 29px;
+    background-color: transparent;
+    position: relative;
+    background-image: url('http://image4.castleagegame.com/graphics/class_button_minus.jpg');
+    cursor: pointer;
+    float: left;
+    right: -295px;
+}
+/*
+ *	Dropdown
+ */
+.cageSettingsDropdown {
+    padding: 10px 0 0 30px;
+}
+.cageSettingsDropdown > span {
+    color: white;
+    font-weight: bold;
+    padding-left: 10px;
+    width: 250px;
+    display: inline-block;
+    padding-top: 4px;
+}
+.cageSettingsDropdown > select {
+    width: 200px;
+    height: 27px;
+    float: right;
+    position: relative;
+    right: 246px;
+    border-radius: 5px;
+    cursor: pointer;
+    border: 2px outset;
+    font-size: 14px;
+    background-color: #006AFF;
+    color: white;
+}

@@ -55,7 +55,7 @@ var language = {
 	demiButton : 'Demi',
 
 	// Elite guard
-	eliteguardButton : 'Eliteguard',
+	eliteguardButton : 'Elite Guard',
 
 	// Generals
 	generalsSetName : 'Generals',
@@ -63,7 +63,8 @@ var language = {
 	generalsSetFixHeight : 'Fixed height',
 
 	// Gifter
-	gifterButton : 'Receive Gifts',
+	gifterButton : 'Receive gifts',
+	gifterReturn : 'Receive & return gifts',
 	gifterSetName : 'Gifts',
 	gifterSetFilterDesc : 'Enter the name of a Facebook friendlist you like to add as an extra filter to the Send gifts dialog.',
 	giftersetFilterAction : 'Gifting friendlist',

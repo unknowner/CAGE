@@ -1,0 +1,152 @@
+#cageSidebar {
+    position: fixed;
+    margin-left: 770px;
+    width: 200px;
+    font-size: 12px;
+    font-family: Trebuchet MS, Tahoma, Verdana, Arial, sans-serif;
+    color: #fff;
+    box-shadow: 0 4px 5px #000;
+    text-align: left;
+    border-bottom-right-radius: 34px 42px;
+}
+#cageSidebarHeader {
+    padding-bottom: 5px;
+    width: 200px;
+    background-image: url('http://image4.castleagegame.com/graphics/class_submenu_middle.jpg');
+    background-position-x: -441px;
+}
+#cageSidebarStats {
+    background-image: url('http://image4.castleagegame.com/graphics/class_submenu_middle.jpg');
+    background-position-x: -441px;
+    width: 200px;
+    position: relative;
+    padding-bottom: 5px;
+}
+#cageSidebarTools {
+    width: 190px;
+    background-image: url('http://image4.castleagegame.com/graphics/class_submenu_middle.jpg');
+    background-position-x: -441px;
+    padding: 0 5px 5px 5px;
+}
+#cageSidebarBottom {
+    background-image: url('http://image4.castleagegame.com/graphics/class_submenu_bottom.gif');
+    height: 25px;
+    width: 200px;
+    background-position-x: -441px;
+}
+/*
+ * ########### STATS ##########
+ */
+div.cageSidebarStat {
+    position: relative;
+    height: 33px;
+    width: 175px;
+    background: rgba(51, 51, 51,0.6);
+    border: 1px ridge;
+    box-shadow: 0px 2px 5px #000 inset;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+    left: 5px;
+    margin-bottom: 5px;
+}
+/*
+ * Demi Timer
+ */
+#cageNextDemi {
+}
+#cageNextDemi > div:nth-child(1) {
+    position: relative;
+}
+#cageNextDemi > div:nth-child(2) {
+    background: #333;
+    width: 150px;
+    margin-left: 18px;
+    border-radius: 3px;
+    border: 1px inset;
+    top: 17px;
+    position: absolute;
+}
+#cageNextDemi > div > div {
+    height: 10px;
+    width: 1%;
+    border-radius: 2px;
+}
+#cageNextDemi > span {
+    font-size: 12px;
+    color: #fff;
+}
+#cageNextDemi > span:first-of-type {
+    margin-left: 34px;
+    position: absolute;
+}
+#cageNextDemi > span:last-of-type {
+    right: 6px;
+    position: absolute;
+}
+/*
+ * Class stats
+ */
+#cageClassLogo {
+    height: 29px;
+    position: absolute;
+    border-radius: 50px;
+    background: #000;
+    left: 8px;
+    width: 29px;
+    margin-top: -37px;
+    background-position: -5px -5px;
+    background-size: 35px;
+    cursor: pointer;
+}
+#cageStatsClass > div {
+    margin-left: 34px;
+}
+#cageStatsClass > span {
+    position: absolute;
+    bottom: 2px;
+    right: 3px;
+}
+#cageStatsClass span > img {
+    height: 20px;
+    border-radius: 15px;
+    position: relative;
+}
+#cageStatsClass span > img:hover {
+    box-shadow: 0 5px 8px 3px #000;
+}
+#cageStatsClassLogo {
+    background-size: 32px 33px;
+    top: 53px;
+    left: 352px;
+    background-position: -4px -4px;
+}
+/*
+ * Favour Points
+ */
+#cageDemiLogo {
+    height: 29px;
+    position: absolute;
+    border-radius: 50px;
+    background: #000;
+    left: 8px;
+    width: 29px;
+    margin-top: -37px;
+    background-size: 125px 29px;
+    cursor: pointer;
+    background-image: url('http://image4.castleagegame.com/graphics/choose_demi.jpg');
+}
+#cageFavorPoints {
+    position: absolute;
+    width: 23px;
+    display: inline-block;
+    top: 5px;
+    color: #fff;
+    text-shadow: 0 0 5px black;
+    font-weight: bold;
+    font-size: 14px;
+    left: 0px;
+    text-align: center;
+    z-index: 1;
+}

@@ -55,14 +55,18 @@ tools.General.runtimeUpdate = function() {
 };
 //get current general from CA
 tools.General.get = function() {
-	if($('div[style*="general_plate.gif"] > div:first').length > 0) {
-		var _old = tools.General.current;
-		tools.General.current = $('div[style*="general_plate.gif"] > div:first').text().trim();
-		$('#cageGeneralEquipment').empty().append($('#main_bn div > img[style="width:24px;height:24px;"]'));
+	if($('div[style*="graphics/hot_container.gif"]').length > 0) {
+		var _old = tools.General.current, _i = $('#main_bn div > img[style="width:24px;height:24px;"]');
+		tools.General.current = $('div[style*="graphics/hot_container.gif"] > div:first').text().trim();
+		setTimeout(function() {
+			if(_i.length > 0) {
+				$('#cageGeneralEquipment').empty().append(_i);
+			}
+		}, 100);
 		if(_old !== tools.General.current) {
 			$('#cageGeneralImageCharge').remove();
-			$('#cageGeneralImageContainer').fadeOut('slow', function() {
-				$(this).hide();
+			$('#cageGeneralImage, #cagegeneralname, #cageGeneralDefense').fadeOut('slow');
+			$('#cageGeneralAttack').fadeOut('slow', function() {
 				tools.General.set();
 			});
 		}
@@ -77,10 +81,11 @@ tools.General.set = function() {
 	$('#cageGeneralText').text(_g.text);
 	$('#cageGeneralImageCharge').remove();
 	if(_g.charge) {
-		$('#cageGeneralImageContainer').append('<div id="cageGeneralImageCharge" style="width:' + Math.max(5, _g.charge) + '%;' + (_g.charge < 100 ? '' : 'background-color:#4F4;') + '"></div>')
+		var _cool = _g.cooldown * 60 - (_g.cooldown * _g.charge / 10 * 6);
+		$('#cageGeneralImageContainer').append('<div id="cageGeneralImageCharge"><div style="width:' + _g.charge + '%;"></div><span>' + (_g.charge == 100 ? 'Charge!' : Math.floor((_cool - (_cool % 60)) / 60) + ':' + Math.floor((_cool % 60)) + '</span></div>'))
 	}
 	$('#cageGeneralImage').attr('src', _g.image);
-	$('#cageGeneralImageContainer').fadeIn('slow');
+	$('#cageGeneralImage, #cageGeneralName, #cageGeneralDefense, #cageGeneralAttack').fadeIn('slow');
 };
 // Set General by name
 tools.General.setByName = function(_name, _callback) {
@@ -88,18 +93,24 @@ tools.General.setByName = function(_name, _callback) {
 		$('#cageGeneralImageCharge').remove();
 		var _g = tools.General.runtime.general[_name];
 		if(_g !== null) {
-			$('#cageGeneralImageContainer').fadeOut('slow', function() {
-				$(this).hide();
-				get('generals.php?item=' + _g.item + '&itype=' + _g.itype + '&bqh=' + CastleAge.bqh, function(_data) {
-					$('#cageGeneralEquipment').empty().append($('#main_bn div > img[style="width:24px;height:24px;"]', _data));
-					tools.Stats.update($('#main_sts', _data));
-					tools.General.parsePage(_data);
-					tools.General.current = _name;
-					tools.General.set();
-					if(_callback !== undefined) {
-						_callback();
+			$('#cageGeneralImage, #cagegeneralname, #cageGeneralDefense, #cageGeneralAttack').fadeOut('slow');
+			get('generals.php?item=' + _g.item + '&itype=' + _g.itype + '&bqh=' + CastleAge.bqh, function(_data) {
+				var _i = $(_data).find('#main_bn div > img[style="width:24px;height:24px;"]');
+				if($('div.generalContainerBox:first').length == 1) {
+					$('div.generalContainerBox:first').next('div').replaceWith($(_data).find('div.generalContainerBox:first').next('div'))
+				}
+				setTimeout(function() {
+					if(_i.length > 0) {
+						$('#cageGeneralEquipment').empty().append(_i);
 					}
-				});
+				}, 100);
+				tools.Stats.update($('#main_sts', _data));
+				tools.General.parsePage(_data);
+				tools.General.current = _name;
+				tools.General.set();
+				if(_callback !== undefined) {
+					_callback();
+				}
 			});
 		}
 	}
@@ -107,17 +118,20 @@ tools.General.setByName = function(_name, _callback) {
 // update generals object
 tools.General.update = function() {
 	if(CastleAge.signed_request !== null) {
-		get('generals.php', function(_data) {
-			tools.General.parsePage(_data);
-		})
+		if($('div.generalContainerBox:first').length == 1) {
+			tools.General.parsePage();
+		} else {
+			get('generals.php', function(_data) {
+				tools.General.parsePage(_data);
+			});
+		}
 	} else {
-		window.setTimeout(tools.General.update, 200);
+		window.setTimeout(tools.General.update, 100);
 	}
 };
 tools.General.lists = function() {
 	var _list = $('#cageSelectorList');
 	$.each(tools.General.runtime.favLists, function(_i, _e) {
-		console.log(_i, _e);
 		var _attr = {
 			value : _i
 		}
@@ -136,23 +150,24 @@ tools.General.lists = function() {
 tools.General.parsePage = function(_data) {
 	console.log('parse General page');
 	_data = _data ? $(_data) : $('#app_body');
-	$('table.layout div.general_pic_div3', _data).each(function(i, e) {
-		var $_this = $(this), $_image = $('form:has(input[name="item"]) input.imgButton', e), $_general = $_this.parent(), _name = $_general.children('div.general_name_div3:first').text().trim(), _stats = $_general.find('div.generals_indv_stats_padding'), _charge = $_general.find('div:contains("Charged"):last').text().trim(), _gtext = $_general.children('div:last').children('div');
+	_data.find('table.layout div.general_pic_div3').each(function(i, e) {
+		var $_this = $(this), $_image = $('form:has(input[name="item"]) input.imgButton', e), $_general = $_this.parent(), _name = $_general.children('div.general_name_div3:first').text().trim(), _stats = $_general.find('div.generals_indv_stats_padding'), _charge = $_this.find('div[style*="gen_chargebarsmall.gif"]:last'), _gtext = $_general.children('div:last').children('div');
 		tools.General.runtime.general[_name] = {
 			name : _name,
 			image : $_image.attr('src'),
 			item : $_this.find('input[name="item"]').attr('value'),
 			itype : $_this.find('input[name="itype"]').attr('value'),
-			attack : $_this.next('div:first').find('div:eq(0)').text().trim(),
-			defense : $_this.next('div:first').find('div:eq(1)').text().trim(),
+			attack : $_this.next('div:first').children('div:eq(0)').text().trim(),
+			defense : $_this.next('div:first').children('div:eq(1)').text().trim(),
 			text : _gtext.html(_gtext.html().replace(/<br>/g, ' ')).text().trim(),
 			level : $_general.find('div:contains("Level"):last').text().trim()
 		};
 		if(_charge.length > 0) {
-			tools.General.runtime.general[_name].charge = /\d+/.exec(_charge)[0];
+			tools.General.runtime.general[_name].charge = Math.round(parseInt(_charge.css('width').replace('px', ''), 10) / (_charge.parent().css('width') == '0px' ? 1 : 1.12), 2);
+			tools.General.runtime.general[_name].cooldown = /\d+(?= Hour cooldown)/ig.exec(tools.General.runtime.general[_name].text)[0];
 		}
 	});
-	$('#cageGeneralSelector').empty().append('<span id="cageSelectorInfo" class="ui-state-active ui-corner-all"></span><select id="cageSelectorList"></select><div id="cageFavoriteGenerals"></div><div id="cageAllGenerals"></div>');
+	$('#cageGeneralSelector').html('<span id="cageSelectorInfo" class="ui-state-active ui-corner-all"></span><select id="cageSelectorList"></select><div id="cageFavoriteGenerals"></div><div id="cageAllGenerals"></div>');
 	var _names = [];
 	$.each(tools.General.runtime.general, function(_i, _e) {
 		_names.push(_e.name);
@@ -165,7 +180,7 @@ tools.General.parsePage = function(_data) {
 			$('#cageGeneralSelector').slideToggle('slow');
 		}).hover(function() {
 			var _general = tools.General.runtime.general[$(this).attr('alt')];
-			$('#cageSelectorInfo').html(_general.name + ' (' + _general.level + ') <img src="http://image4.castleagegame.com/graphics/sword_stat.gif" style="height:12px;"/> ' + _general.attack + ' <img src="http://image4.castleagegame.com/graphics/shield_stat.gif" style="height:12px;"/> ' + _general.defense + ' - ' + _general.text);
+			$('#cageSelectorInfo').html(_general.name + ' (' + _general.level + ') <img src="http://image4.castleagegame.com/graphics/icon_atk.gif" style="height:12px;"/> ' + _general.attack + ' <img src="http://image4.castleagegame.com/graphics/icon_def.gif" style="height:12px;"/> ' + _general.defense + ' - ' + _general.text);
 		}, function() {
 			$('#cageSelectorInfo').html('');
 		})).append($('<img src="' + getPath('img/fav.png') + '" alt="' + _e.name + '" />').hover(tools.General.hoverAddIn, tools.General.hoverAddOut).click(tools.General.clickAdd)));
@@ -180,12 +195,11 @@ tools.General.parsePage = function(_data) {
 };
 tools.General.renderFavs = function() {
 	$('#cageAllGenerals > div').show();
+	$('#cageSelectorList').val()
 	if(tools.General.runtime.favorites[tools.General.runtime.favList] && tools.General.runtime.favorites[tools.General.runtime.favList].length > 0) {
 		var _tempFav = tools.General.runtime.favorites[tools.General.runtime.favList];
-		//tools.General.runtime.favorites[tools.General.runtime.favList] = [];
 		$('#cageFavoriteGenerals').html('');
 		for(var i = 0, len = _tempFav.length; i < len; i++) {
-			//$('#cageAllGenerals > div > img:last[alt="' + _tempFav[i] + '"]').click();
 			$('#cageAllGenerals > div > img[alt="' + _tempFav[i] + '"]').parent().hide().clone(true, true).appendTo('#cageFavoriteGenerals').show().find('img:last').unbind('click hover').click(tools.General.clickRemove).hover(tools.General.hoverRemoveIn, tools.General.hoverRemoveOut);
 		}
 	} else {
@@ -241,41 +255,31 @@ tools.General.init = function() {
 		generalStatsDiv : '<div id="cageGeneralStats">',
 		generalImage : '<img id="cageGeneralImage"/>',
 		generalName : '<span id="cageGeneralName"></span><hr style="margin:0;>',
-		generalValues : '<div id="cageGeneralEquipment"></div><img src="http://image4.castleagegame.com/graphics/demi_symbol_2.gif" id="cageGeneralAttImg" /><span id="cageGeneralAttack"></span><img src="http://image4.castleagegame.com/graphics/demi_symbol_3.gif" id="cageGeneralDefImg" /><span id="cageGeneralDefense"></span>',
+		generalValues : '<div id="cageGeneralEquipment"></div><div id="cageGeneralAttDiv"><img src="http://image4.castleagegame.com/graphics/icon_atk.gif" id="cageGeneralAttImg" /><span id="cageGeneralAttack"></span></div><div id="cageGeneralDefDiv"><img src="http://image4.castleagegame.com/graphics/icon_def.gif" id="cageGeneralDefImg" /><span id="cageGeneralDefense"></span></div>',
 		generalText : '<div id="cageGeneralText"></div>',
 		generalSelector : '<div id="cageGeneralSelector" class="ui-widget-content ui-corner-bottom">',
 	}
-
-	$('#cageContainer').append($(_elm.general).prepend($(_elm.generalImageContainer).append(_elm.generalValues).append(_elm.generalImage).append($(_elm.generalStatsDiv).append(_elm.generalName).append(_elm.generalText))).prepend(_elm.generalSelector));
-	$('#cageGeneralImage, #cageGeneralAttImg, #cageGeneralDefImg, #cageGeneralAttack, #cageGeneralDefense, #cageGeneralEquipment').click(function() {
+	$('#cageContainer').append(_elm.general).prepend(_elm.generalSelector);
+	$('#cageSidebarHeader').append($(_elm.generalImageContainer).append(_elm.generalName).append(_elm.generalValues).append(_elm.generalImage)).append($(_elm.generalStatsDiv).append(_elm.generalText));
+	$('#cageGeneralImage').click(function() {
 		if(tools.General.runtime.onlyFavourites == true) {
 			$('#cageAllGenerals').hide();
 		} else {
 			$('#cageAllGenerals').show();
 		}
 		$('#cageGeneralSelector').slideToggle('slow');
-	});
-	$('#cageGeneralImageContainer').hover(function() {
-		$('#cageGeneralStats').stop().animate({
+	}).hover(function() {
+		$('#cageGeneralStats').stop().show().animate({
 			'opacity' : 0.8,
-			'right' : 94,
-			'width' : 150
-		}, 'slow');
-		$('#cageGeneralAttImg, #cageGeneralDefImg, #cageGeneralEquipment').stop().animate({
-			'opacity' : 0.8
-		}, 'slow');
-		$('#cageGeneralAttack, #cageGeneralDefense').stop().animate({
-			'opacity' : 1
+			'top' : 166
 		}, 'slow');
 	}, function() {
 		$('#cageGeneralStats').stop().animate({
 			'opacity' : 0,
-			'right' : 0,
-			'width' : 94
-		}, 'slow');
-		$('#cageGeneralAttImg, #cageGeneralDefImg, #cageGeneralAttack, #cageGeneralDefense, #cageGeneralEquipment').stop().animate({
-			'opacity' : 0
-		}, 'slow');
+			'top' : 5,
+		}, 'slow', function() {
+			$(this).hide()
+		});
 	});
 	tools.General.update();
 };
