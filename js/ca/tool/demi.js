@@ -121,7 +121,7 @@ tools.Demi.done = function() {
 tools.Demi.init = function() {
 	tools.Demi.runtimeUpdate();
 	$('#cageContainer').append('<div id="cageDemiContainer" class="ui-corner-bottom ui-widget-content"></div>');
-	$('#cageSidebarStats').append('<div id="cageNextDemi" class="cageSidebarStat"><div></div><div><div></div></div><span>Next Demi</span><span></span></div></div>').append($('<button id="cageDemiLogo" title="Receive blessing"><span id="cageFavorPoints"></span></button>').click(function() {
+	$('#cageSidebarStats').append('<div id="cageNextDemi" class="cageSidebarStat"><div></div><div><div></div></div><span>Next Demi</span><span></span></div></div>').append($('<button id="cageDemiLogo" title="Receive blessing"></button>').click(function() {
 		$('#cageDemiLogo').css({
 			'cursor' : 'wait',
 			'backgroundSize' : '33px 33px',

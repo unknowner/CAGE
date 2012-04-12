@@ -185,7 +185,7 @@ tools.Gifter.newRequestForm = function() {
 				$('.fb_dialog_iframe').each(function() {
 					$(this).remove();
 				});
-				if(cageGifterVars.result === null) {
+				if(cageGifterVars.result === null || cageGifterVars.result === undefined) {
 					fireGifterDone();
 				} else {
 					getFriendsName(giftReturning);

@@ -11,26 +11,26 @@ function receiver(_data) {
 		case com.task.alive:
 			break;
 		case com.task.hideBluebar:
+			Facebook.bluebarHidden = true;
 			$('#pagelet_bluebar').css({
-				'overflow' : 'hidden',
-				'height' : 1
+				'marginTop' : -33
 			});
 			$('#jewelContainer').addClass('cageJewels');
 			$('#fbRequestsFlyout').addClass('cageRequestsFlyout');
 			$('#fbMessagesFlyout').addClass('cageMessagesFlyout');
 			$('#fbNotificationsFlyout').addClass('cageNotificationsFlyout');
-			$('#cageIFrame').html('.cageIFrame {height:' + (_window.innerHeight - ($('#pagelet_bluebar').css('overflow') === 'hidden' ? 1 : 34)) + 'px !important;}');
+			$('#cageIFrame').html('.cageIFrame {height:' + (_window.innerHeight - (Facebook.bluebarHidden === true ? 1 : 34)) + 'px !important;}');
 			break;
 		case com.task.showBluebar:
+			Facebook.bluebarHidden = false;
 			$('#pagelet_bluebar').css({
-				'overflow' : '',
-				'height' : 32
+				'marginTop' : 0
 			});
 			$('#jewelContainer').removeClass('cageJewels');
 			$('#fbRequestsFlyout').removeClass('cageRequestsFlyout');
 			$('#fbMessagesFlyout').removeClass('cageMessagesFlyout');
 			$('#fbNotificationsFlyout').removeClass('cageNotificationsFlyout');
-			$('#cageIFrame').html('.cageIFrame {height:' + (_window.innerHeight - ($('#pagelet_bluebar').css('overflow') === 'hidden' ? 1 : 34)) + 'px !important;}');
+			$('#cageIFrame').html('.cageIFrame {height:' + (_window.innerHeight - (Facebook.bluebarHidden === true ? 1 : 34)) + 'px !important;}');
 			break;
 	}
 }

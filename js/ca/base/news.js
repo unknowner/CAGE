@@ -10,6 +10,7 @@ function cageNews(_full) {
 	$('#cageNewsFoot').prepend('<center>If you find bugs, just go to the blog and post them there (no signup required).<br>Logs (CTRL+SHIFT+J) are always welcome!</center>');
 	$.each([
 			'ADD: Receive & Return gift (gift #1 for now)',
+			'ADD: Favor points sidebar stat',
 			'FIX: Not clearing RTF list',
 			'FIX: Crusader missing in Home menu'
 		], function(_i, _e) {

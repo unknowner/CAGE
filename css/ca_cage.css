@@ -105,7 +105,7 @@ div.connect_castlepb_bg {
     top: 0;
     left: 0;
     opacity: 0;
-    z-index: 10;
+    z-index: 20;
 }
 #single_popup {
     opacity: 0;

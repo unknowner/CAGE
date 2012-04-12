@@ -14,7 +14,7 @@ tools['Page'].runtime['army_member.php'] = function() {
 		addFunction(function() {
 			fireStartFillArmy();
 		}, null, true, true);
-	})).before($('<button style="width:185px;margin-left:110px" class="cageGifterButton"><span>R</span>emove <span>N</span>one-<span>F</span>riends</button>').click(function() {
+	})).before($('<button style="width:185px;margin-left:110px" class="cageGifterButton"><span>R</span>emove <span>N</span>on-<span>F</span>riends</button>').click(function() {
 		$('button.cageGifterButton').fadeOut('slow');
 		addFunction(function() {
 			fireStartCleanArmy();

@@ -2,8 +2,10 @@
 VER: 1.2.1β
 ------------------------------------------------------------------
 	ADD: Receive & Return gift - gift 1 (allways newest) for now
+	ADD: Favor points sidebar stat
 	FIX: Crusader missing in Home menu
 	FIX: Not clearing RTF list
+	FIX: CSS stuff, most of it Firefox only
 
 ==================================================================
 VER: 1.1.32β

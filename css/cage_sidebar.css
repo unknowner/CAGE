@@ -1,6 +1,6 @@
 #cageSidebar {
     position: fixed;
-    margin-left: 770px;
+    margin-left: 764px;
     width: 200px;
     font-size: 12px;
     font-family: Trebuchet MS, Tahoma, Verdana, Arial, sans-serif;
@@ -8,16 +8,17 @@
     box-shadow: 0 4px 5px #000;
     text-align: left;
     border-bottom-right-radius: 34px 42px;
+    z-index: 2;
 }
 #cageSidebarHeader {
     padding-bottom: 5px;
     width: 200px;
     background-image: url('http://image4.castleagegame.com/graphics/class_submenu_middle.jpg');
-    background-position-x: -441px;
+    background-position: -441px 0;
 }
 #cageSidebarStats {
     background-image: url('http://image4.castleagegame.com/graphics/class_submenu_middle.jpg');
-    background-position-x: -441px;
+    background-position: -441px 0;
     width: 200px;
     position: relative;
     padding-bottom: 5px;
@@ -25,14 +26,78 @@
 #cageSidebarTools {
     width: 190px;
     background-image: url('http://image4.castleagegame.com/graphics/class_submenu_middle.jpg');
-    background-position-x: -441px;
-    padding: 0 5px 5px 5px;
+    background-position: -441px 0;
+    padding: 0 5px 8px 5px;
 }
 #cageSidebarBottom {
     background-image: url('http://image4.castleagegame.com/graphics/class_submenu_bottom.gif');
     height: 25px;
     width: 200px;
-    background-position-x: -441px;
+    background-position: -441px 0;
+}
+/*
+ * Sidebar dialog small
+ */
+div.cageDialogSmall {
+    position: absolute;
+    width: 272px;
+    right: 9px;
+    opacity: 0;
+    z-index: -1;
+    font-family: sans-serif;
+    box-shadow: 0 4px 14px #000;
+    border-radius: 15px;
+}
+div.cageDialogSmall > div:nth-child(1) {
+    background-image: url('http://image4.castleagegame.com/graphics/guild_feed_rightheader.gif');
+    height: 23px;
+    padding: 12px 23px 0 0;
+    font-weight: bold;
+    color: #fff;
+    font-size: 13px;
+    text-align: center;
+}
+div.cageDialogSmall > div:nth-child(2) {
+    background-image: url('http://image4.castleagegame.com/graphics/guild_feed_rightsubheader.gif');
+    height: 11px;
+}
+div.cageDialogSmall > div:nth-child(3) {
+    background-image: url('http://image4.castleagegame.com/graphics/guild_feed_rightsubmiddle.gif');
+    color: #fff;
+    text-align: justify;
+    padding: 0 28px 5px 25px;
+    font-size: 14px;
+}
+div.cageDialogSmall > div:nth-child(4) {
+    background-image: url('http://image4.castleagegame.com/graphics/guild_feed_rightsubbottom.gif');
+    height: 11px;
+}
+div.cageDialogSmall > div:nth-child(5) {
+    background-image: url('http://image4.castleagegame.com/graphics/guild_feed_rightbottom.gif');
+    height: 11px;
+}
+div.cageDialogSmall > div:nth-child(3) > div {
+    height: 20px;
+    padding: 10px 0;
+}
+div.cageDialogSmall > div:nth-child(3) > div > button {
+    border-radius: 5px;
+    cursor: pointer;
+}
+div.cageDialogSmall > div:nth-child(3) > div > button:active {
+    opacity: 0.75;
+}
+div.cageDialogSmall > div:nth-child(3) > div > button.ok {
+    border-radius: 5px;
+    float: left;
+    cursor: pointer;
+}
+div.cageDialogSmall > div:nth-child(3) > div > button.cancel {
+    background-image: url('http://image4.castleagegame.com/graphics/war_select_button_cancel.gif');
+    width: 100px;
+    float: right;
+    background-size: 100px;
+    background-position: 0 -2px;
 }
 /*
  * ########### STATS ##########
@@ -54,7 +119,17 @@ div.cageSidebarStat {
 /*
  * Demi Timer
  */
-#cageNextDemi {
+#cageDemiLogo {
+    height: 29px;
+    position: absolute;
+    border-radius: 50px;
+    background: #000;
+    left: 8px;
+    width: 29px;
+    margin-top: -37px;
+    background-size: 125px 29px;
+    cursor: pointer;
+    background-image: url('http://image4.castleagegame.com/graphics/choose_demi.jpg');
 }
 #cageNextDemi > div:nth-child(1) {
     position: relative;
@@ -123,9 +198,22 @@ div.cageSidebarStat {
     background-position: -4px -4px;
 }
 /*
- * Favour Points
+ * Favorpoints
  */
-#cageDemiLogo {
+#cageFavorPoints {
+    position: absolute;
+    width: 23px;
+    display: inline-block;
+    top: 5px;
+    color: #fff;
+    text-shadow: 0 0 6px black;
+    font-weight: bold;
+    font-size: 14px;
+    left: 0px;
+    text-align: center;
+    z-index: 1;
+}
+#cageFavorLogo {
     height: 29px;
     position: absolute;
     border-radius: 50px;
@@ -133,20 +221,28 @@ div.cageSidebarStat {
     left: 8px;
     width: 29px;
     margin-top: -37px;
-    background-size: 125px 29px;
+    background-size: 28px 28px;
     cursor: pointer;
-    background-image: url('http://image4.castleagegame.com/graphics/choose_demi.jpg');
+    background-image: url('http://image4.castleagegame.com/graphics/favor_icon.jpg');
+    background-position: -2px -2px;
 }
-#cageFavorPoints {
+#cageStatsFavor > div {
+    margin-left: 34px;
+}
+#cageStatsFavor > span {
     position: absolute;
-    width: 23px;
-    display: inline-block;
-    top: 5px;
-    color: #fff;
-    text-shadow: 0 0 5px black;
-    font-weight: bold;
-    font-size: 14px;
-    left: 0px;
-    text-align: center;
+    bottom: 2px;
+    right: 3px;
+}
+#cageStatsFavor span > input {
+    height: 20px;
+    border-radius: 50px;
+    position: relative;
+    border: 1px outset;
+    cursor: pointer;
+    margin-left: 3px;
+}
+#cageStatsFavor span > input:hover {
+    box-shadow: 0 5px 8px 3px #000;
     z-index: 1;
 }

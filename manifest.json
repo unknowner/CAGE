@@ -1,6 +1,6 @@
 {
 	"name": "CAGE - Castle Age Game Enhancer [β]",
-	"version": "1.2.1.0",
+	"version": "1.2.1.1",
 	"description": "CAGE makes playing Castle Age on Facebook a bit easier and a lot more fun ;)",
 	"background_page": "background.html",
 	"content_scripts": [
@@ -32,6 +32,7 @@
 			"js/ca/tool/class.js",
 			"js/ca/tool/demi.js",
 			"js/ca/tool/eliteguard.js",
+			"js/ca/tool/favor.js",
 			"js/ca/tool/generals.js",
 			"js/ca/tool/gifter.js",
 			"js/ca/tool/heal.js",
