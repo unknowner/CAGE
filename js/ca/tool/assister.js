@@ -62,19 +62,21 @@ tools.Assister.start = function() {
 
 tools.Assister.getCTA = function(_ids) {
 	get('army_news_feed.php', function(_data) {
-		$('#action_logs > a[href*="action=doObjective"]', _data).each(function(i, e) {
-			var _uid = $('*[uid]:first', $(e)).attr('uid');
+		$(_data).find('#action_logs > a[href*="action=doObjective"]').each(function(i, e) {
+			var _uid = $('*[uid]:first', $(e)).attr('uid'), _name = /(?:[You|Your] friend )(.*)(?: has requested your help)/.exec($(e).text());
 			if(tools.Assister.runtime.friendsOnly == true && _ids.indexOf(_uid) == -1) {
 				return true;
 			}
-			tools.Assister.runtime.CTA.push({
-				link : $(e).attr('href').replace(/(https|http):\/\/apps.facebook.com\/castle_age\//, ''),
-				uid : _uid,
-				name : /(?:[You|Your] friend )(.*)(?: has requested your help)/.exec($(e).text())[1],
-				image : $('img[src*="twitter"],[src*="cta"]', e).attr('src'),
-				timer : '',
-				values : []
-			});
+			if(_uid && _name !== null) {
+				tools.Assister.runtime.CTA.push({
+					link : $(e).attr('href').replace(/(https|http):\/\/apps.facebook.com\/castle_age\//, ''),
+					uid : _uid,
+					name : _name[1],
+					image : $('img[src*="twitter"],[src*="cta"]', e).attr('src'),
+					timer : '',
+					values : []
+				});
+			}
 		});
 		tools.Assister.assist();
 	});

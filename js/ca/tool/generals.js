@@ -166,7 +166,7 @@ tools.General.parsePage = function(_data) {
 			tools.General.runtime.general[_name].cooldown = /\d+(?= Hour cooldown)/ig.exec(tools.General.runtime.general[_name].text)[0];
 		}
 	});
-	$('#cageGeneralSelector').html('<span id="cageSelectorInfo" class="ui-state-active ui-corner-all"></span><select id="cageSelectorList"></select><div id="cageFavoriteGenerals"></div><div id="cageAllGenerals"></div>');
+	$('#cageGeneralSelector').html('<span id="cageSelectorInfo" class="ui-state-active ui-corner-left"></span><select id="cageSelectorList"></select><div id="cageFavoriteGenerals"></div><div id="cageAllGenerals"></div>');
 	var _names = [];
 	$.each(tools.General.runtime.general, function(_i, _e) {
 		_names.push(_e.name);
@@ -210,6 +210,7 @@ tools.General.clickAdd = function() {
 	console.log('clickAdd:', tools.General.runtime.favorites);
 	item.set('favFavorites', tools.General.runtime.favorites);
 	$(this).mouseleave().parent().hide().clone(true, true).appendTo('#cageFavoriteGenerals').show().find('img:last').unbind('click hover').click(tools.General.clickRemove).hover(tools.General.hoverRemoveIn, tools.General.hoverRemoveOut);
+	$('#cageFavsList').change();
 };
 tools.General.clickRemove = function() {
 	var _name = $(this).attr('alt');
@@ -217,6 +218,7 @@ tools.General.clickRemove = function() {
 	item.set('favFavorites', tools.General.runtime.favorites);
 	$(this).parent().hide().remove();
 	$('#cageAllGenerals img[alt="' + _name + '"]:first').parent().show();
+	$('#cageFavsList').change();
 };
 tools.General.hoverAddIn = function() {
 	$('#cageSelectorInfo').html('Add ' + $(this).attr('alt') + ' to favourites');

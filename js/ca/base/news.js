@@ -11,6 +11,7 @@ function cageNews(_full) {
 	$.each([
 			'ADD: Receive & Return gift (gift #1 for now)',
 			'ADD: Favor points sidebar stat',
+			'FIX: Sort general-fav-lists on generals page',
 			'FIX: Not clearing RTF list',
 			'FIX: Crusader missing in Home menu'
 		], function(_i, _e) {

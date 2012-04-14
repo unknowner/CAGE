@@ -26,7 +26,7 @@
 #cageGeneralSelector {
     position: fixed;
     box-shadow: 0 10px 20px black;
-    z-index: 3;
+    z-index: 5;
     width: 701px;
     margin-left: 10px;
     padding: 40px 25px 5px 22px;
@@ -228,15 +228,18 @@
  */
 #cageFavsList {
     display: block;
-    width: 186px;
+    width: 207px;
+    min-width: 207px;
+    height: 97px;
+    min-height: 97px;
     background-color: #232323;
     font-size: 13px;
     color: #fff;
     padding: 3px;
     position: relative;
     border: 2px ridge #999;
-    border-radius: 5px;
-    height: 97px;
+    border-bottom-left-radius: 5px;
+    border-top-left-radius: 5px;
     margin-bottom: 2px;
 }
 .cageFavsButton {
@@ -251,55 +254,60 @@
     cursor: pointer;
 }
 #cageEditFavName {
-    width: 127px;
+    width: 155px;
     background-color: #232323;
     font-size: 13px;
     color: #fff;
-    height: 20px;
+    height: 25px;
     margin-right: 2px;
     border: 2px ridge #999;
     border-radius: 5px;
-    padding-left: 4px;
+    padding: 2px 0 2px 4px;
 }
-#cageFavsDisplay {
-    width: 511px;
-    height: 112px;
+#cageFavsDisplayContainer {
+    width: 481px;
+    min-width: 481px;
+    max-width: 481px;
+    min-height: 121px;
     background-color: #232323;
     position: relative;
     left: 0px;
-    overflow-y: auto;
+    overflow-y: hidden;
+    overflow-x: hidden;
     float: left;
-    top: 3px;
-    padding: 3px;
     border: 2px ridge #999;
-    border-radius: 5px;
+    border-bottom-left-radius: 5px;
+    border-top-left-radius: 5px;
+}
+#cageFavsDisplay {
+    width: 473px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    min-height: 113px;
+    height: 113;
+    padding: 4px;
 }
 #cageFavsDisplay > div {
     float: left;
     height: 51px;
     width: 51px;
     border-radius: 5px;
-    margin: 0 5px 5px 0;
+    margin: 0 4px 4px 0;
+    background-size: 51px;
+    cursor: move;
 }
-#cageFavsDisplay img:first-child {
-    height: 51px;
-    width: 51px;
-    border-radius: 3px;
-    float: left;
-}
-#cageFavsDisplay img:last-child {
+#cageFavsDisplay > div > img {
     height: 10px;
-    position: absolute;
-    margin-left: -14px;
     margin-top: 37px;
     background-color: #000;
     border-top-left-radius: 5px;
     border-bottom-right-radius: 5px;
     padding: 2px;
-    opacity: 0.8;
     cursor: pointer;
+    float: right;
 }
 #cageGeneralEquipment {
+    line-height: 0;
     position: absolute;
     width: 54px;
     left: 126px;

@@ -11,11 +11,12 @@
     border-radius: 1px;
 }
 #cageSettingsButton > span:first-of-type {
-    left: 1px;
-    top: 9px;
+    left: 0px;
+    top: 8px;
 }
 #cageSettingsButton > span:last-of-type {
-    font-size: 9px;
+    font-size: 11px;
+    padding: 0 0 0 10px;
 }
 #cageSettings {
     position: absolute;

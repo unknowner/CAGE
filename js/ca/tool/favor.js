@@ -52,9 +52,9 @@ tools.Favor.init = function() {
 			//ok
 			get('oracle.php?', function(_oracle) {//option=2&buychoice=6
 				addFunction(function(data) {
-					cageStat.stamina = data.stamina;
+					cageStat.energy = data.energy;
 				}, JSON.stringify({
-					stamina : parseInt($(_oracle).find('span[id="energy_current_value"]').text(), 10) + 5000
+					energy : parseInt($(_oracle).find('span[id="energy_current_value"]').text(), 10) + 5000
 				}), true, true);
 				$('#cageFavorPoints').text($(_oracle).find('div[id="main_bn"] div[style*="persistent_bar_oracle.gif"]').text().trim());
 				$this.attr('src', 'http://image4.castleagegame.com/graphics/stat_energy.gif').removeAttr('disabled');

@@ -94,7 +94,7 @@ tools.Settings.dropdown = function(_text, _values, _value, _save, _callback) {
 tools.Settings.init = function() {
 	$('#cageSidebarHeader').append($('<button id="cageSettingsButton">CAGE</button>').button({
 		icons : {
-			primary : "ui-icon-power"
+			primary : "ui-icon-gear"
 		}
 	}).click(tools.Settings.start));
 	//tools.Settings.fbButton.add(language.settingsButton, tools.Settings.start);

@@ -3,27 +3,8 @@ tools['Page'].runtime['generals.php'] = function() {
 
 	console.log('Page: generals.php');
 
-	$('#generalContainerBox2').prepend('<div style="height:120px;position:relative;float:left;left:16px;"><div style="width:190px;float:left"><select size="5" id="cageFavsList"></select><input type="text" id="cageEditFavName"><input type="button" id="cageEditAddFav" class="cageFavsButton" value="+"><input type="button" id="cageEditDelFav" class="cageFavsButton" value="-"></div><div id="cageFavsDisplay"></div></div>');
-
+	$('#generalContainerBox2').prepend('<div style="position:relative;float:left;left:19px;"><div style="width:210px;float:left"><select size="99" id="cageFavsList"></select><input type="text" id="cageEditFavName"><input type="button" id="cageEditAddFav" class="cageFavsButton" value="+"><input type="button" id="cageEditDelFav" class="cageFavsButton" value="-"></div><div id="cageFavsDisplayContainer"><div id="cageFavsDisplay"></div></div></div>');
 	var _list = $('#cageFavsList');
-	$('#cageFavsDisplay').sortable({
-		update : function() {
-			var _names = [];
-			$('#cageFavsDisplay').find('img:[alt]').each(function() {
-				_names.push($(this).attr('alt'));
-			});
-			tools.General.runtime.favorites[tools.General.runtime.favList] = _names;
-			item.set('favLists', tools.General.runtime.favLists);
-			$('#cageFavsList').change();
-			tools.General.renderFavs();
-		},
-		revert : 200,
-		placeholder : 'ui-state-hover',
-		forcePlaceholderSize : true,
-		containment : 'parent',
-		tolerance : 'pointer',
-		cursor : 'move'
-	}).disableSelection();
 	$.each(tools.General.runtime.favLists, function(_i, _e) {
 		var _attr = {
 			value : _i
@@ -38,16 +19,16 @@ tools['Page'].runtime['generals.php'] = function() {
 		tools.General.runtime.favList = $(this).find('option:selected').text();
 		item.set('favList', tools.General.runtime.favList);
 		$('#cageEditFavName').val(tools.General.runtime.favList);
-		var _displ = $('#cageFavsDisplay');
+		var _displ = $('#cageFavsDisplay'), _dispAppend = '';
 		_displ.empty();
 		$.each(tools.General.runtime.favorites[tools.General.runtime.favList], function() {
-			_displ.append('<div class="ui-state-default"><img src="' + tools.General.runtime.general[this].image + '"><img src="' + getPath('img/favdel.png') + '" alt="' + tools.General.runtime.general[this].name + '"/></div>');
+			_dispAppend += '<div class="ui-state-default" style="background-image:url(\'' + tools.General.runtime.general[this].image + '\');"><img src="' + getPath('img/favdel.png') + '" alt="' + tools.General.runtime.general[this].name + '"/></div>';
 		});
-		$('div > img:last-child', _displ).each(function() {
+		_displ.append(_dispAppend);
+		_displ.find('div > img:last-child').each(function() {
 			$(this).click(function() {
 				tools.General.runtime.favorites[tools.General.runtime.favList].splice(tools.General.runtime.favorites[tools.General.runtime.favList].indexOf($(this).attr('alt')), 1);
 				item.set('favLists', tools.General.runtime.favLists);
-				console.log($(this).attr('alt'));
 				$('#cageFavsList').change();
 				tools.General.renderFavs();
 			});
@@ -65,6 +46,10 @@ tools['Page'].runtime['generals.php'] = function() {
 			tools.General.runtime.favList = _name;
 			item.set('favList', tools.General.runtime.favList);
 			$('#cageFavsList').append($('<option>', {
+				value : tools.General.runtime.favLists.length,
+				selected : 'selected'
+			}).text(_name)).change();
+			$('#cageSelectorList').append($('<option>', {
 				value : tools.General.runtime.favLists.length,
 				selected : 'selected'
 			}).text(_name)).change();
@@ -95,8 +80,7 @@ tools['Page'].runtime['generals.php'] = function() {
 				var _displ = $('#cageFavsDisplay');
 				_displ.empty();
 				$.each(tools.General.runtime.favorites[tools.General.runtime.favList], function() {
-					_displ.append('<div><img title="' + this + '" src="' + tools.General.runtime.general[this].image + '">');
-					$('div:last', _displ).append('<img src="' + getPath('img/favdel.png') + '" alt="' + tools.General.runtime.general[this].name + '"/></div>').click(function() {
+					_displ.append('<div style="background-image:url(\'' + tools.General.runtime.general[this].image + '\');">').append('<img src="' + getPath('img/favdel.png') + '" alt="' + tools.General.runtime.general[this].name + '"/></div>').click(function() {
 						tools.General.runtime.favorites[tools.General.runtime.favList].splice(tools.General.runtime.favorites[tools.General.runtime.favList].indexOf($(this).attr('alt')), 1);
 						item.set('favLists', tools.General.runtime.favLists);
 						console.log($(this).attr('alt'));
@@ -107,6 +91,32 @@ tools['Page'].runtime['generals.php'] = function() {
 				tools.General.renderFavs();
 			}
 		}));
+	});
+	$('#cageFavsDisplayContainer').resizable({
+		grid : [481, 57],
+		handles : 's',
+		maxWidth : 481,
+		minWidth : 481,
+		resize : function(event, ui) {
+			$('#cageFavsDisplay').height($(this).height() - 8);
+		}
+	});
+	$('#cageFavsDisplay').sortable({
+		update : function() {
+			var _names = [];
+			$('#cageFavsDisplay').find('img:[alt]').each(function() {
+				_names.push($(this).attr('alt'));
+			});
+			tools.General.runtime.favorites[tools.General.runtime.favList] = _names;
+			item.set('favFavorites', tools.General.runtime.favorites);
+			$('#cageFavsList').change();
+			tools.General.renderFavs();
+		},
+		containment : 'parent',
+		revert : 200,
+		placeholder : 'ui-state-active',
+		forcePlaceholderSize : true,
+		tolerance : 'pointer'
 	});
 	//Update generals data
 	tools['General'].parsePage()
