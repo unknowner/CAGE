@@ -204,3 +204,46 @@ img.cageQuestSanoSwitch:hover {
     border-top-left-radius: 4px;
     border-top-right-radius: 4px;
 }
+/*
+ * guildv2_formation
+ */
+div.cageMemberList {
+    background-image: url(http://image4.castleagegame.com/graphics/guild_feed_rightsubmiddle.gif);
+    background-size: 170px 12px;
+}
+div.cageMemberListFooter {
+    background-image: url(http://image4.castleagegame.com/graphics/guild_feed_rightbottom.gif);
+    width: 170px;
+    height: 22px;
+    background-size: 170px 11px;
+}
+div.cageMemberListFooter > img {
+    width: 170px;
+    height: 11px;
+}
+div.cageGuildMember {
+    color: #fff;
+    width: 148px;
+    border-radius: 5px;
+    cursor: move;
+    margin: 0 11px;
+}
+div.cageGuildMember:hover {
+    background-color: rgba(0,0,0,0.7);
+    color: #fff;
+}
+div.cageGuildMemberPlaceHolder {
+    width: 146px;
+    border-radius: 5px;
+    background-color: rgba(0,0,0,0.3);
+    margin: 0 11px;
+    border: 1px ridge;
+}
+div.cageGuildMember > img {
+    height: 20px;
+    position: absolute
+}
+div.cageGuildMember > span {
+    line-height: 20px;
+    margin-left: 23px;
+}
