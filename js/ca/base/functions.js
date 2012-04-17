@@ -156,9 +156,7 @@ tools.Functions.stat_increase_ticker = function() {
 			ticks_left = 0;
 		}
 
-		var time_container = $('#' + stat_type + '_time_container');
-		var time_value = $('#' + stat_type + '_time_value');
-		var current_val = $('#' + stat_type + '_current_value');
+		var time_container = $('#' + stat_type + '_time_container'), time_value = $('#' + stat_type + '_time_value'), current_val = $('#' + stat_type + '_current_value');
 
 		if(!time_container || !time_value || !current_val) {
 			return;
@@ -182,11 +180,11 @@ tools.Functions.stat_increase_ticker = function() {
 			return;
 		}
 
-		var mins = parseInt(ticks_left / 60);
-		var secs = ticks_left % 60;
-		time_value.html(mins + ':' + ((secs > 9) ? secs : '0' + secs ));
+		var mins = parseInt(ticks_left / 60), secs = ticks_left % 60;
+		time_value.text(mins + ':' + ((secs > 9) ? secs : '0' + secs ));
 		timedStats[stat_type] = setTimeout(function() {
 			stat_increase_ticker(ticks_left, stat_current, stat_max, tick_time, increase_value, stat_type, false);
 		}, 1000);
+		time_container = time_value = current_val = mins = secs = undefined;
 	};
 };

@@ -247,3 +247,15 @@ div.cageGuildMember > span {
     line-height: 20px;
     margin-left: 23px;
 }
+/*
+ * Goblin
+ */
+button.cageGoblinLocked {
+    position: absolute;
+    margin-left: 8px;
+    border-radius: 0;
+    margin-top: 0px;
+    border-bottom-right-radius: 4px;
+    padding: 3px;
+    width: 19px;
+}
