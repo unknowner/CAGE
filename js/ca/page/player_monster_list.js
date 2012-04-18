@@ -1,5 +1,5 @@
 // Festival duel
-tools['Page'].runtime['player_monster_list.php'] = function() {
+tools.Page.runtime['player_monster_list.php'] = function() {
 
 	console.log('Page: player_monster_list.php');
 

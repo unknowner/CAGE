@@ -56,7 +56,7 @@ tools.castleage.macBGFix = function() {
 		}
 	} else {
 		if(tools.Page.runtime.addOn['tools.castleage.macBGFix']) {
-			delete tools.Page.runtime.addOn['tools.castleage.macBGFix'];
+			tools.Page.runtime.addOn['tools.castleage.macBGFix'] = null;
 		}
 	}
 
@@ -97,7 +97,7 @@ tools.castleage.results = function() {
 		}
 	} else {
 		if(tools.Page.runtime.addOn['tools.castleage.results']) {
-			delete tools.Page.runtime.addOn['tools.castleage.results'];
+			tools.Page.runtime.addOn['tools.castleage.results'] = null
 		}
 	}
 };

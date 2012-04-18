@@ -1,5 +1,5 @@
 // Magic
-tools['Page'].runtime['magic.php'] = function() {
+tools.Page.runtime['magic.php'] = function() {
 
 	$('div[style*="/graphics/town_header.jpg"]:first').after('<div id="cagePinHere" style="font-family: sans-serif;font-size: 17px;background-image: url(http://image4.castleagegame.com/graphics/town_unit_bar.jpg);width: 740px;height: 93px;margin-top: 5px;"><div style="padding: 23px 0 0 114px;width: 146px;font-weight: bold;text-align:center;">Pin an item with the + on each item</div></div>');
 	//Reverse buy order (5-1)

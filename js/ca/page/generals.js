@@ -1,5 +1,5 @@
 // generals
-tools['Page'].runtime['generals.php'] = function() {
+tools.Page.runtime['generals.php'] = function() {
 
 	console.log('Page: generals.php');
 
@@ -62,7 +62,7 @@ tools['Page'].runtime['generals.php'] = function() {
 		console.log(_name);
 		if(_name !== 'Favorites' && _name !== undefined && _name.length !== 0) {
 			$('option:selected').remove();
-			delete tools.General.runtime.favorites[_name];
+			tools.General.runtime.favorites[_name] = null;
 			tools.General.runtime.favLists.splice(tools.General.runtime.favLists.indexOf(_name), 1);
 			item.set('favLists', tools.General.runtime.favLists);
 			tools.General.runtime.favList = $('option:selected', this).text();

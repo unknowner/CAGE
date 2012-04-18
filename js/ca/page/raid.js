@@ -1,5 +1,5 @@
 // Festival duel
-tools['Page'].runtime['raid.php'] = function() {
+tools.Page.runtime['raid.php'] = function() {
 
 	console.log('Page: raid.php');
 	$('#raid_invade_buttons > div[id^="raid_atk_lst"]').css({

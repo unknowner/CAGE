@@ -1,5 +1,5 @@
 // Open army requests
-tools['Page'].runtime['army_reqs.php'] = function() {
+tools.Page.runtime['army_reqs.php'] = function() {
 
 	console.log('Page: army_reqs.php');
 

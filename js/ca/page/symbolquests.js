@@ -1,5 +1,5 @@
 // symbolquests
-tools['Page'].runtime['symbolquests.php'] = function() {
+tools.Page.runtime['symbolquests.php'] = function() {
 
 	// Add XP/Eng ratio to quests
 	var _xp = $('div.qd_2 > b, div.qd_2_sub > b');

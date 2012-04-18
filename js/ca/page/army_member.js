@@ -1,5 +1,5 @@
 // Army
-tools['Page'].runtime['army_member.php'] = function() {
+tools.Page.runtime['army_member.php'] = function() {
 
 	console.log('Page: army_member.php');
 

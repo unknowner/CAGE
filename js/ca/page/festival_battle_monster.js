@@ -1,5 +1,5 @@
 // monster stats
-tools['Page'].runtime['festival_battle_monster.php'] = function() {
+tools.Page.runtime['festival_battle_monster.php'] = function() {
 
 	console.log('Page: festival_battle_monster.php');
 
@@ -25,7 +25,7 @@ tools['Page'].runtime['festival_battle_monster.php'] = function() {
 		});
 	}
 
-	var _defense = tools['Page'].runtime['defense'](), _stun = tools['Page'].runtime['stun_bar']().replace('Need ', '');
+	var _defense = tools.Page.runtime['defense'](), _stun = tools.Page.runtime['stun_bar']().replace('Need ', '');
 
 	// rearrange attack result
 	if($('div.result').length > 0) {
@@ -52,6 +52,6 @@ tools['Page'].runtime['festival_battle_monster.php'] = function() {
 		});
 	}
 
-	tools['Page'].runtime['battleStats']();
+	tools.Page.runtime['battleStats']();
 
 };

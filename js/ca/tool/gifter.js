@@ -146,7 +146,7 @@ tools.Gifter.newRequestForm = function() {
 				result : null,
 				userId : FB.getAuthResponse().userID,
 				sendTo : undefined
-			}
+			};
 			console.log('0:', localStorage[cageGifterVars.userId + '_' + 'CAGEsendGiftTo']);
 			cageGifterVars.sendTo = localStorage[cageGifterVars.userId + '_' + 'CAGEsendGiftTo'];
 			var _ui = {
@@ -191,6 +191,7 @@ tools.Gifter.newRequestForm = function() {
 					getFriendsName(giftReturning);
 				}
 			});
+			
 			function getFriendsName(_callback) {
 				FB.api('/me/friends', {
 					fields : 'name'
@@ -256,4 +257,4 @@ tools.Gifter.newRequestForm = function() {
 		userList : tools.Gifter.runtime.userList,
 		flid : tools.Facebook.runtime.friendlistId[tools.Gifter.runtime.userList]
 	}), true, true);
-};
+}; 

@@ -1,6 +1,6 @@
 // Festival duel
 
-tools['Page'].runtime['festival_duel_home.php'] = function () {
+tools.Page.runtime['festival_duel_home.php'] = function () {
 	console.log('Page: festival_duel_home.php');
 	$('img[src*="festival_duelchamp_invitefollow.gif"]').attr('onclick', '').click(function () {
 		addFunction(function () {

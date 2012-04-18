@@ -1,5 +1,5 @@
 // Achievements
-tools['Page'].runtime['achievements.php'] = function() {
+tools.Page.runtime['achievements.php'] = function() {
 
 	var _ach = {}, _sub = {
 		'Sylvana' : 'Sylvanas the Sorceress Queen',

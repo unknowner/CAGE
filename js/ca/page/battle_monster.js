@@ -1,5 +1,5 @@
 // monster stats
-tools['Page'].runtime['battle_monster.php'] = function() {
+tools.Page.runtime['battle_monster.php'] = function() {
 
 	console.log('Page: battle_monster.php');
 
@@ -25,7 +25,7 @@ tools['Page'].runtime['battle_monster.php'] = function() {
 		});
 	}
 
-	var _defense = tools['Page'].runtime['defense'](), _stun = tools['Page'].runtime['stun_bar']().replace('Need ', '');
+	var _defense = tools.Page.runtime['defense'](), _stun = tools.Page.runtime['stun_bar']().replace('Need ', '');
 
 	// rearrange attack result
 	if($('div.result').length > 0) {
@@ -54,10 +54,10 @@ tools['Page'].runtime['battle_monster.php'] = function() {
 		});
 	}
 
-	tools['Page'].runtime['battleStats']();
+	tools.Page.runtime['battleStats']();
 
 };
-tools['Page'].runtime['defense'] = function() {
+tools.Page.runtime['defense'] = function() {
 	// add percentage to defense/forcefield/..
 	var _defense = $('img[src*="bar_dispel.gif"],[src*="nm_green.jpg"],[src*="seamonster_ship_health.jpg"]').parent()[0], _defRegs = ['^Castle Defense$', '^Ragnarok\'s Glacial Armor$', '^Your Ship\'s Defense$', '^Illvasa, Plateau City\'s Defense$', '^Skaar\'s Mana Forcefield$', '^Party Health\\/Strength$'], _defText = $('#app_body div:containsRegex(/' + _defRegs.join('|') + '/):first');
 	if(_defense && _defense.style && _defense.style.width !== "" && _defText && _defText.text()) {
@@ -73,7 +73,7 @@ tools['Page'].runtime['defense'] = function() {
 	}
 	return '';
 }
-tools['Page'].runtime['stun_bar'] = function() {
+tools.Page.runtime['stun_bar'] = function() {
 	// add percentage to Cripple...
 	var _stun = $('#app_body div > img[src$="nm_stun_bar.gif"]:first');
 	if(_stun.length > 0) {
@@ -84,7 +84,7 @@ tools['Page'].runtime['stun_bar'] = function() {
 	}
 	return '';
 }
-tools['Page'].runtime['battleStats'] = function() {
+tools.Page.runtime['battleStats'] = function() {
 	// monster stats
 	var _bossReg = new RegExp(['monster_\\w+_large.jpg', 'boss_\\w+_large.jpg', 'boss_\\w+_big.jpg', 'nm_\\w+_large.jpg', 'nm_\\w+_large2.jpg', 'monster_\\w+_large_ca.jpg', 'seamonster_(?!ship_health)\\w*.jpg', 'seamonster_dead.jpg', 'dragon_monster_\\w+.jpg', 'boss_\\w+.jpg', '\\w+_large.jpg', '\\/monster_(?!health)\\w+.jpg'].join('|')), _img = false;
 

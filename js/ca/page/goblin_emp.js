@@ -1,5 +1,5 @@
 // Goblin Emporium
-tools['Page'].runtime['goblin_emp.php'] = function() {
+tools.Page.runtime['goblin_emp.php'] = function() {
 
 	console.log('Page: goblin_emp.php');
 	// fix rolling
@@ -26,7 +26,6 @@ tools['Page'].runtime['goblin_emp.php'] = function() {
 				type : 'POST',
 				success : function(data, textStatus, jqXHR) {
 					ajaxPageDone(jqXHR.responseText, 'globalContainer');
-					jqXHR = data = undefined;
 				}
 			});
 		};

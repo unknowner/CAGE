@@ -1,5 +1,5 @@
 // Festival duel
-tools['Page'].runtime['battle.php'] = function() {
+tools.Page.runtime['battle.php'] = function() {
 
 	console.log('Page: battle.php');
 

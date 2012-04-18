@@ -92,7 +92,7 @@ tools.Page.runtime['keep.php'] = function() {
 			_divPow += _temp
 		});
 	}
-	_divItems = _divine = undefined;
+	_divItems = _divine = null;
 
 	// Some more stats, like BSI, LSI... keep_data.attribute_section
 	var _data = {};
@@ -147,6 +147,7 @@ tools.Page.runtime['keep.php'] = function() {
 				}
 			});
 		}
+		_uid = null;
 	}
 
 };

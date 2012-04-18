@@ -1,5 +1,5 @@
 // guild shop festival stuff
-tools['Page'].runtime['guild_shop.php'] = function () {
+tools.Page.runtime['guild_shop.php'] = function () {
 	console.log('Page: guild_shop.php');
 	var $_img = $('img[src*="hero_result_button_recruit_25.jpg"]');
 	var _promoId = /promo_id=.+/.exec($_img.attr('onclick'))[0];

@@ -1,6 +1,6 @@
 // monsterquests
 
-tools['Page'].runtime['monster_quests.php'] = function() {
+tools.Page.runtime['monster_quests.php'] = function() {
 
 	console.log('Page: monster_quests.php');
 

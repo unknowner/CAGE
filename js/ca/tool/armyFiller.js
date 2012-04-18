@@ -85,7 +85,7 @@ tools.ArmyFiller.done = function() {
 	console.log('ArmyFiller - done');
 	tools.ArmyFiller.runtime.text.text(language.armyFillerReloading);
 	tools.ArmyFiller.runtime = null;
-	tools['Page'].loadPage('army_member.php');
+	tools.Page.loadPage('army_member.php');
 };
 
 tools.ArmyFiller.init = function() {

@@ -1,5 +1,5 @@
 // monster stats
-tools['Page'].runtime['battle_expansion_monster.php'] = function() {
+tools.Page.runtime['battle_expansion_monster.php'] = function() {
 
 	console.log('Page: battle_expansion_monster.php');
 

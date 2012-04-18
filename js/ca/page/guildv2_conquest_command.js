@@ -1,5 +1,5 @@
 // Conquest battle
-tools['Page'].runtime['guildv2_conquest_command.php'] = function() {
+tools.Page.runtime['guildv2_conquest_command.php'] = function() {
 
 	console.log('Page: guildv2_conquest_command.php');
 	tools.Monster.runtime.conquestLands = item.get('cageMonsterConquestLands', {});

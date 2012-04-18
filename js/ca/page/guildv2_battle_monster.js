@@ -1,5 +1,5 @@
 // monster stats
-tools['Page'].runtime['guildv2_battle_monster.php'] = function() {
+tools.Page.runtime['guildv2_battle_monster.php'] = function() {
 
 	console.log('Page: guildv2_battle_monster.php');
 

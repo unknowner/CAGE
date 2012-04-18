@@ -20,7 +20,7 @@ $(document.body).append($('<input>').attr({
 	'id' : 'signed_request',
 	'type' : 'hidden'
 })).append(_append);
-_append = undefined;
+_append = null;
 // Add CAGE container / repos menu
 $('#globalContainer').append('<div id="cageSidebar"><div id="cageSidebarHeader"></div><div id="cageSidebarStats"></div><div id="cageSidebarTools"></div><div id="cageSidebarBottom"><a href="http://cagenhancer.blogspot.com/" target="_blank">Blog</a> <a href="http://cagenhancer.blogspot.com/p/manual.html" target="_blank">Manual</a> <a href="http://caaplayer.freeforums.org/c-a-g-e-f29.html" target="_blank">Forum</a> <a href="https://github.com/unknowner/CAGE" target="_blank">GitHub</a></div></div><div id="cageStatsContainer"></div><div id="cageContainer"></div>').prepend($('#expandedGuildChat, #collapsedGuildChat').detach());
 CastleAge.startInterval = window.setInterval(function() {
@@ -39,7 +39,7 @@ CastleAge.startInterval = window.setInterval(function() {
 		if(tools.Page.runtime[_startURL]) {
 			tools.Page.runtime[_startURL]();
 		}
-		_startURL = undefined;
+		_startURL = null;
 
 		$('#AjaxLoadIcon').delay(3000).fadeOut(1000, function() {
 			$('#collapsedGuildChat').css('left', '');

@@ -97,7 +97,7 @@ tools.ArmyCleaner.done = function() {
 	console.log('ArmyCleaner - done');
 	tools.ArmyCleaner.runtime.text.text(language.armyCleanerReloading);
 	tools.ArmyCleaner.runtime = null;
-	tools['Page'].loadPage('army_member.php');
+	tools.Page.loadPage('army_member.php');
 };
 
 tools.ArmyCleaner.init = function() {
