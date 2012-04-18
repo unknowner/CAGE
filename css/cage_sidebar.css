@@ -31,9 +31,16 @@
 }
 #cageSidebarBottom {
     background-image: url('http://image4.castleagegame.com/graphics/class_submenu_bottom.gif');
-    height: 25px;
-    width: 200px;
+    height: 17px;
+    width: 192px;
     background-position: -441px 0;
+    padding: 4px;
+}
+#cageSidebarBottom > a {
+    color: #ccc;
+    font-weight: bold;
+    font-size: 12px;
+    margin: 0 5px 0 0;
 }
 /*
  * Sidebar dialog small

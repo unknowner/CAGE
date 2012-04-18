@@ -250,6 +250,32 @@ div.cageGuildMember > span {
 /*
  * Goblin
  */
+#cageHideLockedLabel {
+    position: absolute;
+    margin-left: 31px;
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
+}
+#cageHideLocked {
+    position: absolute;
+    margin-left: -16px;
+    cursor: pointer;
+    margin-top: 2px;
+}
+#cageHideUnlockedLabel {
+    position: absolute;
+    margin-left: 220px;
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
+}
+#cageHideUnlocked {
+    position: absolute;
+    margin-left: -16px;
+    cursor: pointer;
+    margin-top: 2px;
+}
 button.cageGoblinLocked {
     position: absolute;
     margin-left: 8px;

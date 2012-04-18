@@ -137,7 +137,7 @@ tools.Page.ajaxPageDone = function() {
 			}
 			startAllTimers();
 			FB.XFBML.parse(document.getElementById(div));
-			delete $data, data, div, anchor;
+			$data = data = div = anchor = _stats = undefined;
 			$('#AjaxLoadIcon').fadeOut();
 		} else {
 			$('#AjaxLoadIcon').append('<div id="cageLoadError">ERROR LOADING DATA</div>').delay(2000).fadeOut(function() {
