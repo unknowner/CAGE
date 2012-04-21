@@ -9,12 +9,12 @@ tools.Page.runtime['army_member.php'] = function() {
 		'width' : 250,
 		'textAlign' : 'left'
 	})
-	$('div:contains("Current Army Size"):last').css('width', 440).before($('<button style="width:85px;" class="cageGifterButton">F<span>ill </span>A<span>rmy</button>').click(function() {
+	$('div:contains("Current Army Size"):last').css('width', 175).before($('<button style="width:85px;" class="cageArmyEdit">F<span>ill </span>A<span>rmy</button>').click(function() {
 		$('button.cageGifterButton').fadeOut('slow');
 		addFunction(function() {
 			fireStartFillArmy();
 		}, null, true, true);
-	})).before($('<button style="width:185px;margin-left:110px" class="cageGifterButton"><span>R</span>emove <span>N</span>on-<span>F</span>riends</button>').click(function() {
+	})).before($('<button style="width:185px;" class="cageArmyEdit"><span>R</span>emove <span>N</span>on-<span>F</span>riends</button>').click(function() {
 		$('button.cageGifterButton').fadeOut('slow');
 		addFunction(function() {
 			fireStartCleanArmy();

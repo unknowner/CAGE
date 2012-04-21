@@ -7,7 +7,7 @@ tools.PotionEnergy.start = function() {
 		'ajax' : 1,
 		'signed_request' : CastleAge.signed_request
 	}, function(_data) {
-		if($('span.result_body:contains("You consumed")', _data).length > 0) {
+		if($(_data).find('span.result_body:contains("You consumed")').length > 0) {
 			addFunction(function(data) {
 				cageStat.energy = data.energy;
 			}, JSON.stringify({
@@ -15,20 +15,18 @@ tools.PotionEnergy.start = function() {
 			}), true, true);
 		}
 		tools.PotionEnergy.work(_data);
-		tools.PotionEnergy.done();
 	});
 };
 // Parse keep for Energy potions
 tools.PotionEnergy.work = function(_pagedata) {
-	if(_pagedata == null) {
-		_pagedata = $('#app_body');
-	}
+	_pagedata = _pagedata == null ? $('#app_body') : $(_pagedata);
 	var _potions = /\d+/.exec($('img[alt="Energy Potion"]', _pagedata).parent().next().text());
 	if(_potions !== null) {
-		$('#cagePotionEnergy > span.cagePotionCount').text(_potions[0]);
+		$('#cagePotionEnergy').find('span.cagePotionCount').text(_potions[0]);
 	} else {
-		$('#cagePotionEnergy > span.cagePotionCount').text('');
+		$('#cagePotionEnergy').find('span.cagePotionCount').text('');
 	}
+	tools.PotionEnergy.done();
 };
 tools.PotionEnergy.done = function() {
 	$('#cagePotionEnergy').css({

@@ -123,6 +123,7 @@ tools.General.update = function() {
 		} else {
 			get('generals.php', function(_data) {
 				tools.General.parsePage(_data);
+				_data = null;
 			});
 		}
 	} else {
@@ -191,6 +192,7 @@ tools.General.parsePage = function(_data) {
 	tools.General.renderFavs();
 	tools.General.get();
 	tools.General.generalsSetFixHeight();
+	_data = _names = null;
 };
 tools.General.renderFavs = function() {
 	$('#cageAllGenerals > div').show();
@@ -283,4 +285,5 @@ tools.General.init = function() {
 		});
 	});
 	tools.General.update();
+	_elm = null;
 };

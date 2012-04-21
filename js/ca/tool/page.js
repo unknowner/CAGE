@@ -99,36 +99,37 @@ tools.Page.get_cached_ajax = function() {
 };
 tools.Page.ajaxPageDone = function() {
 	ajaxPageDone = function(data, div, anchor) {
-		console.log('pagedata:', data.length);
+		var start1 = new Date();
 		stopTimers = false;
 		ajaxPerforming = false;
 		if(/<script type="text\/javascript">\stop.location.href = "http:\/\/apps.facebook.com\/castle_age\/.*.php";\s<\/script>/.test(data.substr(data.length < 200 ? 0 : data.length - 300)) === false) {
 			$data = $(data);
+			data = null;
 			console.log('ajaxPageDone:', div);
 			if(div === 'globalContainer') {
-				$('#main_sts').html($('#main_sts', $data).html());
-				$('#main_bntp').html($('#main_bntp', $data).html());
-				$('#main_bn').html($('#main_bn', $data).html());
-				$('#app_body_container').hide().html($('#app_body_container', $data).html()).append($data.filter('div[id]:not(.game)')).show();
-				var script = document.createElement("script");
-				script.type = "text/javascript";
-				script.text = $data.filter('script').text();
-				$('#app_body_container')[0].appendChild(script);
+				var _abc = $('#app_body_container'), start1 = new Date(), _sts = $data.find('#main_sts');
+				_sts.html(_sts.html().replace(/more/g, ''));
+				$('#main_sts')[0].innerHTML = _sts[0].innerHTML;
+				$('#main_bntp')[0].innerHTML = $data.find('#main_bntp')[0].innerHTML;
+				var start2 = new Date();
+				$('#app_body_container').hide().empty().append($data.find('#app_body_container').html()).append($data.filter('div[id]:not(.game)')).show();
+				// update stats
+				var _stats = $('#main_sts'), _stam = $('#stamina_current_value'), _ener = $('#energy_current_value'), _heal = $('#health_current_value');
+				$('#gold_current_value').text('$' + _stats.find('#gold_current_value_amount').val().replace(/(\d)(?=(\d{3})+\b)/g, '$1,'));
+				_stam.text(_stats.find('#stamina_current_value_amount').val());
+				_stam.next('span').text($('#stamina_current_max').val());
+				_ener.text(_stats.find('#energy_current_value_amount').val());
+				_ener.next('span').text($('#energy_current_max').val());
+				_heal.text(_stats.find('#health_current_value_amount').val());
+				_heal.next('span').text($('#health_current_max').val());
+				_abc.append($data.filter('script'));
 				firePageURL();
 				centerPopups();
-				script = null;
+				startAllTimers();
+				script = $data = null;
 			} else {
 				$('#' + div).html(data);
 			}
-			// update stats
-			var _stats = $('#main_sts');
-			$('#gold_current_value').text('$' + $('#gold_current_value_amount', _stats).val().replace(/(\d)(?=(\d{3})+\b)/g, '$1,'));
-			$('#stamina_current_value').text($('#stamina_current_value_amount', _stats).val());
-			$('#stamina_current_value').next('span').text($('#stamina_current_max', _stats).val());
-			$('#energy_current_value').text($('#energy_current_value_amount', _stats).val());
-			$('#energy_current_value').next('span').text($('#energy_current_max', _stats).val());
-			$('#health_current_value').text($('#health_current_value_amount', _stats).val());
-			$('#health_current_value').next('span').text($('#health_current_max', _stats).val());
 			centerPopups();
 			if(anchor) {
 				$('#' + anchor).animate({
@@ -136,16 +137,17 @@ tools.Page.ajaxPageDone = function() {
 				}, 'slow');
 			}
 			startAllTimers();
-			FB.XFBML.parse(document.getElementById(div));
-			$data = data = div = anchor = _stats = null;
+			setTimeout(function() {
+				FB.XFBML.parse(document.getElementById(div));
+			}, 1);
+			_stats = _stam = _ener = heal = null;
 			$('#AjaxLoadIcon').fadeOut();
 		} else {
 			$('#AjaxLoadIcon').append('<div id="cageLoadError">ERROR LOADING DATA</div>').delay(2000).fadeOut(function() {
 				$('#cageLoadError').remove();
 			});
-			data = div = anchor = null;
 		}
-
+		data = div = anchor = null;
 	};
 };
 tools.Page.ajaxLinkSend = function() {

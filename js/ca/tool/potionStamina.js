@@ -7,7 +7,7 @@ tools.PotionStamina.start = function() {
 		'ajax' : 1,
 		'signed_request' : CastleAge.signed_request
 	}, function(_data) {
-		if($('span.result_body:contains("You consumed")', _data).length > 0) {
+		if($(_data).find('span.result_body:contains("You consumed")').length > 0) {
 			addFunction(function(data) {
 				cageStat.stamina = data.stamina;
 			}, JSON.stringify({
@@ -15,20 +15,18 @@ tools.PotionStamina.start = function() {
 			}), true, true);
 		}
 		tools.PotionStamina.work(_data);
-		tools.PotionStamina.done();
 	});
 };
 // Parse keep for stamina potions
 tools.PotionStamina.work = function(_pagedata) {
-	if(_pagedata == null) {
-		_pagedata = $('#app_body');
-	}
-	var _potions = /\d+/.exec($('img[alt="Stamina Potion"]', _pagedata).parent().next().text());
+	_pagedata = _pagedata == null ? $('#app_body') : $(_pagedata);
+	var _potions = /\d+/.exec(_pagedata.find('img[alt="Stamina Potion"]').parent().next().text());
 	if(_potions !== null) {
-		$('#cagePotionStamina > span.cagePotionCount').text(_potions[0]);
+		$('#cagePotionStamina').find('span.cagePotionCount').text(_potions[0]);
 	} else {
-		$('#cagePotionStamina > span.cagePotionCount').text('');
+		$('#cagePotionStamina').find('span.cagePotionCount').text('');
 	}
+	tools.PotionStamina.done();
 };
 tools.PotionStamina.done = function() {
 	$('#cagePotionStamina').css({

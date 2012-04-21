@@ -5,7 +5,7 @@ tools.Page.runtime['keep.php'] = function() {
 	tools.PotionStamina.work();
 	tools.PotionEnergy.work();
 	// folding units, items ...
-	$('div.statsT2:has(div.statsTTitle)').css({
+	$('div.statsT2').has('div.statsTTitle').css({
 		'height' : 30,
 		'overflow' : 'hidden',
 		'cursor' : 'pointer'
@@ -21,7 +21,7 @@ tools.Page.runtime['keep.php'] = function() {
 		});
 	});
 	// Calulate devine power
-	var _divPow = 0, _divItems = [], _divine = {
+	var _data = {}, _divPow = 0, _divItems = [], _divine = {
 		'general' : {
 			'Aegea' : 45,
 			'Agamemnon' : 20,
@@ -35,10 +35,12 @@ tools.Page.runtime['keep.php'] = function() {
 			'Isidra' : 45,
 			'Jaelle' : 20,
 			'Jahanna' : 20,
+			'Kanbe' : 20,
 			'Kothas' : 30,
 			'Tyrant' : 30
 		},
 		'weapon' : {
+			'Living Death' : 140,
 			'Heart of the Woods' : 120,
 			'Hammer of Storms' : 40
 		},
@@ -92,11 +94,9 @@ tools.Page.runtime['keep.php'] = function() {
 			_divPow += _temp
 		});
 	}
-	_divItems = _divine = null;
 
 	// Some more stats, like BSI, LSI... keep_data.attribute_section
-	var _data = {};
-	_data.lvl = $('#st_5 div:contains("Level"):last').text();
+	_data.lvl = $('#st_5').find('div:contains("Level"):last').text();
 	_data.stats = $('div.keep_attribute_section');
 	if(_data.lvl && _data.stats.length > 0) {
 		_data.lvl = parseInt(_data.lvl.match(/\d+/)[0], 10);
@@ -116,18 +116,15 @@ tools.Page.runtime['keep.php'] = function() {
 		_data.lsi = Math.round((_data.eng + _data.sta * 2) / _data.lvl * 100) / 100;
 		_data.tsi = _data.bsi + _data.lsi;
 		$('div.keep_healer_section').prepend($('<div id="cageKeepStats">').append('<div>eAtt: ' + _data.eAt.toFixed(2) + '</div><div style="font-size:9px;">Effective Attack</div>').append('<div>eDef: ' + _data.eDe.toFixed(2) + '</div><div style="font-size:9px;">Effective Defense</div>').append('<div>BSI: ' + _data.bsi.toFixed(2) + '</div><div style="font-size:9px;">Battle Strength Index</div>').append('<div>LSI: ' + _data.lsi.toFixed(2) + '</div><div style="font-size:9px;">Levelling Speed Index</div>').append('<div>TSI: ' + _data.tsi.toFixed(2) + '</div><div style="font-size:9px;">Total Skillpoints per Level</div>').append('<div>Divine: ' + _divPow + '</div><div style="font-size:9px;">Calculated Divine Power</div>'));
-		_data = null;
-	} else {
-		_data = null;
 	}
 	// rearrange Items
 	window.setTimeout(function() {
-		$('div.statUnit a img').unwrap().unwrap().addClass('ui-corner-all');
+		$('div.statUnit').find('a img').unwrap().unwrap().addClass('ui-corner-all');
 		$('div.statUnit').find('div:last:contains(X)').addClass('itemNumbers');
-	}, 10);
+	}, 50);
 	// Add stuff on others keep
 	if($('div.keep_main_section').length === 0) {
-		var _uid = $('td.statsTB > div *[uid]').attr('uid');
+		var _uid = $('td.statsTB').children('div *[uid]').attr('uid');
 		if($('#keep_battle_frm1').length === 0) {
 			$('td.statsTB > div:eq(1)').append($('<div id="cageArmyKeep"><button>DISMISS</button></div>').click(function() {
 				$('#AjaxLoadIcon').show();
@@ -138,7 +135,7 @@ tools.Page.runtime['keep.php'] = function() {
 		} else {
 			tools.Facebook.CAPlayers(function(_ids) {
 				if(_ids.indexOf(_uid) !== -1) {
-					$('td.statsTB > div:eq(1)').append($('<div id="cageArmyKeep"><button>JOIN ARMY</button></div>').click(function() {
+					$('td.statsTB').children('div:eq(1)').append($('<div id="cageArmyKeep"><button>JOIN ARMY</button></div>').click(function() {
 						$('#AjaxLoadIcon').show();
 						get('party.php?twt=jneg&jneg=true&user=' + _uid + '&lka=' + _uid + '&etw=9&ref=nf', function() {
 							tools.Page.loadPage('keep.php?user=' + _uid);
@@ -147,7 +144,7 @@ tools.Page.runtime['keep.php'] = function() {
 				}
 			});
 		}
-		_uid = null;
-	}
 
+	}
+	_data = _uid = _divPow = _divItems = _divine = null;
 };

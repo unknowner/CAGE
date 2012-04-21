@@ -94,9 +94,6 @@ tools.Page.runtime['goblin_emp.php'] = function() {
 				item.set('cagePageGoblinLockedItems', _storedLocked);
 			}
 			setTimeout(function() {
-				console.log($this.data('locked') === true && $('#cageHideLocked').prop('checked') === true);
-				console.log($this.data('locked') === false && $('#cageHideUnlocked').prop('checked') === true);
-				console.log(($this.data('locked') === true && $('#cageHideLocked').prop('checked') === true) === true || ($this.data('locked') === false && $('#cageHideUnlocked').prop('checked') === true) === true);
 				if(($this.data('locked') === true && $('#cageHideLocked').prop('checked') === true) === true || ($this.data('locked') === false && $('#cageHideUnlocked').prop('checked') === true) === true) {
 					$this.hide('slow');
 				}

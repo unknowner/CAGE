@@ -4,6 +4,8 @@ VER: 1.2.2β
 	ADD: Change guild formation with drag&drop
 	ADD: Goblin item locker
 	ADD: All tiers at public monster list and selected tier stored
+	ADD: Alchemy item pinning
+	FIX: Fill/Remove army button in Firefox
 
 ==================================================================
 VER: 1.2.1β

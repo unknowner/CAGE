@@ -285,3 +285,103 @@ button.cageGoblinLocked {
     padding: 3px;
     width: 19px;
 }
+/*
+ * Army
+ */
+button.cageArmyEdit {
+    float: left;
+    border-radius: 5px;
+    color: #FBFBF1;
+    font-weight: bold;
+    height: 35px;
+    font-size: 17px;
+    cursor: pointer;
+    font-family: 'Times New Roman', Times, serif;
+    background-image: url('http://image4.castleagegame.com/graphics/invite_page_03.jpg');
+    text-shadow: 2px 2px black;
+    border-color: #DFCB96;
+    margin: 0 5px;
+    position: relative;
+}
+button.cageArmyEdit > span {
+    font-size: 14px;
+}
+/*
+ *  Alchemy.php
+ */
+.alchemyItemNum {
+    position: relative;
+    top: -16px;
+    text-align: right;
+    color: white;
+    background-color: black;
+    border-top-left-radius: 6px;
+    border-bottom-right-radius: 6px;
+    opacity: 0.7;
+    padding: 1px 5px;
+    font-size: 12px;
+    float: right;
+    right: 5px;
+}
+.recipetitle {
+    margin: 1px;
+}
+.alchemyRecipeBackMonster {
+    height: auto !important;
+    margin-bottom: 10px;
+}
+.alchemyRecipeBackMonster_inc {
+    padding: 1px 6px 6px 20px !important;
+}
+.alchemyRecipeBack {
+    height: auto !important;
+    margin-bottom: 10px;
+}
+.alchemyRecipeBack_inc {
+    padding: 1px 6px 6px 20px !important;
+}
+.alchemyRecipeBackClass {
+    height: auto !important;
+    margin-bottom: 10px;
+}
+.alchemyRecipeBackClass_inc {
+    padding: 1px 6px 6px 20px !important;
+}
+.alchemyQuestBack {
+    height: auto !important;
+    margin-bottom: 10px;
+}
+.alchemyQuestBack_inc {
+    padding: 1px 6px 6px 20px !important;
+}
+#cageHideRecipe {
+    margin-left: 220px;
+}
+#cageShowMarked {
+    margin-left: 445px;
+}
+div.cagePinItem {
+    position: absolute;
+    cursor: pointer;
+    right: 74px;
+    margin-top: 25px;
+}
+#cageHideRecipe, #cageShowMarked {
+    position: absolute;
+    cursor: pointer;
+    margin-top: -20px;
+}
+#cageHideRecipe > img, #cageShowMarked > img, div.cagePinItem > img {
+    border-radius: 4px;
+    height: 21px;
+}
+#cageHideRecipe > span, #cageShowMarked > span, div.cagePinItem > span {
+    top: -5px;
+    position: relative;
+    font-weight: bold;
+    left: 4px;
+    color: #000;
+}
+div.cageHideItem {
+    display: none !important;
+}

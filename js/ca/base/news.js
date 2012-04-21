@@ -1,7 +1,6 @@
 // news
 function cageNews(_full) {
-	var _hed = 'CAGE - Castle Age Game Enhancer - V ' + version.string(),
-		_sub = 'You\'re now running CAGE and making your Castle Age life a bit easier ;)';
+	var _hed = 'CAGE - Castle Age Game Enhancer - V ' + version.string(), _sub = 'You\'re now running CAGE and making your Castle Age life a bit easier ;)';
 	if(!item.get('permissions', false)){
 		_sub += '<br><span style="color:red;font-weight:bold">It\'s possible you need some extra permissons for CAGE, please check Settings > CAGE</span>';	
 	}
@@ -10,7 +9,9 @@ function cageNews(_full) {
 	$('#cageNewsFoot').prepend('<center>If you find bugs, just go to the blog and post them there (no signup required).<br>Logs (CTRL+SHIFT+J) are always welcome!</center>');
 	$.each([
 			'ADD: Change guild formation with drag&drop',
-			'ADD: Goblin item locker'
+			'ADD: Goblin item locker',
+			'ADD: All tiers at public monster list and selected tier stored',
+			'FIX: Fill/Remove army button in Firefox'
 		], function(_i, _e) {
 			$('#cageNewsChanges').append('<li><span>' + _e.split(':')[0] + '</span>' + _e.split(':')[1] + '</li>');
 	});

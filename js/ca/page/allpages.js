@@ -21,14 +21,10 @@ tools.Page.runtime.allPages = function() {
 		$(this).attr('cage', $(this).height()).css('height', 0);
 	});
 	// If found update bqh
-	if($('form input[name="bqh"]:first').length > 0) {
+	if($('form').find('input[name="bqh"]:first').length > 0) {
 		CastleAge.bqh = $('form input[name="bqh"]:first').val();
 	}
 
-	// remove 'more' from stats
-	$('#main_ststb div:last-child::contains("more")').each(function() {
-		$(this).html($(this).html().replace('more', ''));
-	});
 	// Favour points
 	$('#cageFavorPoints').text($('#main_bn div[style*="persistent_bar_oracle.gif"]').text().trim());
 
@@ -37,9 +33,10 @@ tools.Page.runtime.allPages = function() {
 	window.setTimeout(function() {
 		$('#main_sts_container').css('background', $('#main_sts').css('backgroundImage'));
 	}, 1000);
+
 	// remove CA:HOD ad, etc...
-	$('img.imgButton[src*="/graphics/iphone_cross_promo.jpg"]:first').parents('div:first').remove();
-	$('a[href="http://apps.facebook.com/castle_hod/?xprom=cax"]:first').parent('div:first').remove();
+	$('div > a > img.imgButton[src*="/graphics/iphone_cross_promo.jpg"]').parent().parent().remove();
+	$('a[href="http://apps.facebook.com/castle_hod/?xprom=cax"]').parents('div:first').remove();
 	if($('#globalContainer > div:first').height() == 80) {
 		$('#globalContainer > div:first').hide();
 	}
@@ -47,17 +44,16 @@ tools.Page.runtime.allPages = function() {
 	// xp to next lvl and lvl bar fix
 	var _xpwidth = /\d+/.exec($('#st_5 > div:first > div > div')[0].style.width)[0];
 	if(_xpwidth !== null) {
-		$('#st_5 > div:first > div > div').css('width', parseInt(_xpwidth, 10) / 126 * 100 + '%');
+		$('#st_5').find('div:first > div > div').css('width', parseInt(_xpwidth, 10) / 126 * 100 + '%');
 	}
-	if($('#st_2_5 strong:contains("to")').length == 0 && /\d+\/(\d+)/.exec($('#st_2_5 strong').text()) !== null) {
-		$('#st_2_5 strong').text(/\d+/.exec($('#st_5').attr('title'))[0] + ' to ' + /\d+\/(\d+)/.exec($('#st_2_5 strong').text())[1]);
+	if($('#st_2_5').find('strong:contains("to")').length == 0 && /\d+\/(\d+)/.exec($('#st_2_5 strong').text()) !== null) {
+		$('#st_2_5').find('strong').text(/\d+/.exec($('#st_5').attr('title'))[0] + ' to ' + /\d+\/(\d+)/.exec($('#st_2_5').find('strong').text())[1]);
 	}
 	_xpwidth = null;
 	// reworkin results
 	if($('div.results').length > 0) {
 		$('div.results').attr('style', '');
-		$('#results_main_wrapper').addClass('resultsmainwrapper').prepend('<img id="cageCloseResult" src="http://image4.castleagegame.com/graphics/popup_close_button.png">');
-		$('#results_main_wrapper > br').remove();
+		$('#results_main_wrapper').addClass('resultsmainwrapper').prepend('<img id="cageCloseResult" src="http://image4.castleagegame.com/graphics/popup_close_button.png">').children('br').remove();
 		$('#cageCloseResult').click(function() {
 			$(this).unbind('click').css({
 				'width' : 18,
@@ -71,7 +67,7 @@ tools.Page.runtime.allPages = function() {
 		// remove some stuff
 		$('#hinvite_help, #nvbar_table').empty();
 		//fix some results eg out of stamina general image
-		$('span.result_body:contains("Allocate skill points to Max") img:first').css('width', 160);
+		$('span.result_body:contains("Allocate skill points to Max")').find('img:first').css('width', 160);
 		// closing results
 		$('div.results:has(img[src$="help_close_x.gif"])').each(function(_index, _element) {
 			var $_element = $(_element);

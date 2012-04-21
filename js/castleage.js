@@ -49,4 +49,6 @@ CastleAge.startInterval = window.setInterval(function() {
 	} else {
 		com.send(com.task.castleAgeReady, com.port.facebook);
 	}
-}, 100); 
+}, 100);
+// startup repos etc...
+$('#main_ststb').html($('#main_ststb').html().replace(/more/g, ''));
