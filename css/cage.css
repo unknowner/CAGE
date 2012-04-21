@@ -367,21 +367,27 @@ button.cageToolButton:last-of-type {
 #cageClassRogue:hover {
 	background-image:url('http://image4.castleagegame.com/graphics/g_char_selectrogue.jpg');
 }
-.itemNumbers {
+.statUnit {
+	overflow:hidden;
 	position:relative;
-	top:-16px;
-	text-align:right;
-	color:white;
+}
+.statUnit img {
+	border-radius:6px;
+}
+.statUnit img + div {
 	background-color:black;
-	border-top-left-radius:6px;
 	border-bottom-right-radius:6px;
+	border-top-left-radius:6px;
+	color:white;
+	float:right;
+	font-size:11px;
 	opacity:0.7;
 	padding:1px 5px;
-	font-size:12px;
-	float:right;
-	margin-bottom:-16px;
+	text-align:right;
+	position:absolute;
+	margin-top:-15px;
+	right:2px;
 }
-
 /*
  * News
  */

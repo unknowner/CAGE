@@ -119,8 +119,7 @@ tools.Page.runtime['keep.php'] = function() {
 	}
 	// rearrange Items
 	window.setTimeout(function() {
-		$('div.statUnit').find('a img').unwrap().unwrap().addClass('ui-corner-all');
-		$('div.statUnit').find('div:last:contains(X)').addClass('itemNumbers');
+		$('.statUnit').find('img').unwrap().unwrap();
 	}, 50);
 	// Add stuff on others keep
 	if($('div.keep_main_section').length === 0) {

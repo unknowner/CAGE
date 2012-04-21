@@ -2,87 +2,87 @@
  * index.php
  */
 #cageBattleNews {
-    background-image: url('http://image4.castleagegame.com/10009/graphics/battle_news_wide.jpg');
-    position: relative;
-    height: 184px;
-    margin-left: 1px;
-    width: 722px;
-    padding: 40px 0 0 17px;
-    background-size: 737px 224px;
+	background-image:url('http://image4.castleagegame.com/10009/graphics/battle_news_wide.jpg');
+	position:relative;
+	height:184px;
+	margin-left:1px;
+	width:722px;
+	padding:40px 0 0 17px;
+	background-size:737px 224px;
 }
 #cagePageKeepNemesisImg {
-    bottom: 20px;
-    position: absolute;
-    right: 20px;
-    cursor: pointer;
-    background-image: url('http://image4.castleagegame.com/graphics/map_monster_back.jpg');
-    height: 98px;
-    width: 281px;
-    background-size: 281px 98px;
-    padding: 0px;
-    border-radius: 4px;
+	bottom:20px;
+	position:absolute;
+	right:20px;
+	cursor:pointer;
+	background-image:url('http://image4.castleagegame.com/graphics/map_monster_back.jpg');
+	height:98px;
+	width:281px;
+	background-size:281px 98px;
+	padding:0px;
+	border-radius:4px;
 }
-#cagePageKeepNemesisImg > div:first-child {
-    margin: 8px 0 0 10px;
-    width: 96px;
-    height: 81px;
-    background-position: 50% 5%;
-    border-radius: 2px;
-    box-shadow: 0 0 10px #f00 inset;
+#cagePageKeepNemesisImg> div:first-child {
+	margin:8px 0 0 10px;
+	width:96px;
+	height:81px;
+	background-position:50% 5%;
+	border-radius:2px;
+	box-shadow:0 0 10px #f00 inset;
 }
-#cagePageKeepNemesisImg > div:last-child {
-    position: absolute;
-    top: 10px;
-    left: 148px;
+#cagePageKeepNemesisImg> div:last-child {
+	position:absolute;
+	top:10px;
+	left:148px;
 }
 #cagePageKeepNemesisImg strong {
-    display: inline-block;
-    width: 60px;
-    padding-left: 5px;
+	display:inline-block;
+	width:60px;
+	padding-left:5px;
 }
 /*
  * guildv2_conquest_command.php
  */
 .cageConqKeepListLabel {
-    cursor: pointer;
-    position: absolute;
-    top: 96px;
-    font-size: 10px;
-    padding: 0px 0px 5px 11px;
-    background: #000;
-    left: 6px;
-    width: 94px;
-    border-bottom-left-radius: 8px;
-    border-bottom-right-radius: 8px;
-    opacity: 0.7;
-    font-weight: bold;
+	cursor:pointer;
+	position:absolute;
+	top:96px;
+	font-size:10px;
+	padding:0px 0px 5px 11px;
+	background:#000;
+	left:6px;
+	width:94px;
+	border-bottom-left-radius:8px;
+	border-bottom-right-radius:8px;
+	opacity:0.7;
+	font-weight:bold;
 }
 /*
  * Quests
  */
 img.cageQuestSanoSwitch {
-    position: relative;
-    cursor: pointer;
-    height: 31px;
-    border-radius: 5px;
-    margin-left: -35px;
-    border: 1px outset;
-    opacity: 0.8;
-    top: -33px;
+	position:relative;
+	cursor:pointer;
+	height:31px;
+	border-radius:5px;
+	margin-left:-35px;
+	border:1px outset;
+	opacity:0.8;
+	top:-33px;
 }
 img.cageQuestSanoSwitch:hover {
-    border: 1px inset;
-    opacity: 1;
+	border:1px inset;
+	opacity:1;
 }
 /*
  * Guild profile pics link
  */
 .cageGuildProfileLink {
-    cursor: pointer;
-    opacity: 0.8;
+	cursor:pointer;
+	opacity:0.8;
 }
 .cageGuildProfileLink:hover {
-    opacity: 1;
+	opacity:1;
 }
 /*
  * Oracle
@@ -96,292 +96,334 @@ img.cageQuestSanoSwitch:hover {
 #cageOracleEq3 {
 }
 .cageOracleItem {
-    position: relative;
-    width: 160px;
-    height: 329px;
-    float: left;
-    margin-left: 3px;
-    opacity: 0.9;
+	position:relative;
+	width:160px;
+	height:329px;
+	float:left;
+	margin-left:3px;
+	opacity:0.9;
 }
-.cageOracleItem > div:first-of-type {
-    text-align: center;
-    height: 15px;
-    font-size: 12px;
-    padding-top: 4px;
+.cageOracleItem> div:first-of-type {
+	text-align:center;
+	height:15px;
+	font-size:12px;
+	padding-top:4px;
 }
-.cageOracleItem > div:nth-of-type(2) {
-    text-align: center;
-    font-weight: bold;
-    font-size: 10px;
+.cageOracleItem> div:nth-of-type(2) {
+	text-align:center;
+	font-weight:bold;
+	font-size:10px;
 }
-.cageOracleItem > div:nth-of-type(3) {
-    padding: 2px;
-    font-size: 11px;
-    width: 152px;
-    text-align: center;
-    height: 40px;
-    overflow: hidden;
+.cageOracleItem> div:nth-of-type(3) {
+	padding:2px;
+	font-size:11px;
+	width:152px;
+	text-align:center;
+	height:40px;
+	overflow:hidden;
 }
-.cageOracleItem > div:nth-of-type(4) {
-    padding: 9px 0 0 45px;
+.cageOracleItem> div:nth-of-type(4) {
+	padding:9px 0 0 45px;
 }
-.cageOracleItem > div:nth-of-type(5) {
-    padding: 15px 0 0 45px;
+.cageOracleItem> div:nth-of-type(5) {
+	padding:15px 0 0 45px;
 }
-.cageOracleItem > img:first-of-type {
-    width: 148px;
-    height: 148px;
-    border: 2px inset #D0B682;
-    margin: 3px;
+.cageOracleItem> img:first-of-type {
+	width:148px;
+	height:148px;
+	border:2px inset #D0B682;
+	margin:3px;
 }
-.cageOracleItem > img:last-of-type {
-    padding: 11px 0 0 57px;
-    cursor: pointer;
+.cageOracleItem> img:last-of-type {
+	padding:11px 0 0 57px;
+	cursor:pointer;
 }
 #cageOracleGeneralSelectorContainer {
-    background-image: url('http://image4.castleagegame.com/graphics/oracle_back_four.jpg');
-    width: 664px;
-    padding: 36px 33px 0 33px;
-    margin-left: 5px;
-    height: 103px;
-    position: relative;
+	background-image:url('http://image4.castleagegame.com/graphics/oracle_back_four.jpg');
+	width:664px;
+	padding:36px 33px 0 33px;
+	margin-left:5px;
+	height:103px;
+	position:relative;
 }
 #cageOracleSelected {
-    background-image: url('http://image4.castleagegame.com/graphics/oracle_back_four.jpg');
-    width: 693px;
-    padding: 0px 0 0 38px;
-    margin-left: 5px;
-    height: 363px;
-    position: relative;
-    background-position: 0 -38px;
+	background-image:url('http://image4.castleagegame.com/graphics/oracle_back_four.jpg');
+	width:693px;
+	padding:0px 0 0 38px;
+	margin-left:5px;
+	height:363px;
+	position:relative;
+	background-position:0 -38px;
 }
 #cageOracleGeneralSelector {
-    width: 648px;
-    border: 2px inset #D0B682;
-    margin-left: 7px;
-    overflow-y: hidden;
-    overflow-x: scroll;
-    height: 97px;
-    background: #000;
+	width:648px;
+	border:2px inset #D0B682;
+	margin-left:7px;
+	overflow-y:hidden;
+	overflow-x:scroll;
+	height:97px;
+	background:#000;
 }
-#cageOracleGeneralSelector > div {
-    height: 80px;
-    white-space: nowrap;
+#cageOracleGeneralSelector> div {
+	height:80px;
+	white-space:nowrap;
 }
-#cageOracleGeneralSelector > div > span {
-    margin-right: 2px;
+#cageOracleGeneralSelector> div> span {
+	margin-right:2px;
 }
-#cageOracleGeneralSelector > div > span > span {
-    position: relative;
-    bottom: 2px;
-    text-align: center;
-    color: #fff;
-    background: #000;
-    opacity: 0.75;
-    font-size: 10px;
-    left: -80px;
-    width: 80px;
-    display: inline-block;
-    margin-right: -80px;
+#cageOracleGeneralSelector> div> span> span {
+	position:relative;
+	bottom:2px;
+	text-align:center;
+	color:#fff;
+	background:#000;
+	opacity:0.75;
+	font-size:10px;
+	left:-80px;
+	width:80px;
+	display:inline-block;
+	margin-right:-80px;
 }
 #cageOracleGeneralSelector img:first-of-type {
-    height: 80px;
-    opacity: 0.8;
-    cursor: pointer;
+	height:80px;
+	opacity:0.8;
+	cursor:pointer;
 }
 #cageOracleGeneralSelector img:first-of-type:hover {
-    opacity: 1;
+	opacity:1;
 }
 #cageOracleGeneralSort {
-    cursor: pointer;
-    position: absolute;
-    background: #000;
-    opacity: 0.8;
-    padding: 2px 4px 2px 4px;
-    font-size: 11px;
-    color: #fff;
-    margin: -18px 10px;
-    border-top-left-radius: 4px;
-    border-top-right-radius: 4px;
+	cursor:pointer;
+	position:absolute;
+	background:#000;
+	opacity:0.8;
+	padding:2px 4px 2px 4px;
+	font-size:11px;
+	color:#fff;
+	margin:-18px 10px;
+	border-top-left-radius:4px;
+	border-top-right-radius:4px;
 }
 /*
  * guildv2_formation
  */
 div.cageMemberList {
-    background-image: url(http://image4.castleagegame.com/graphics/guild_feed_rightsubmiddle.gif);
-    background-size: 170px 12px;
+	background-image:url(http://image4.castleagegame.com/graphics/guild_feed_rightsubmiddle.gif);
+	background-size:170px 12px;
 }
 div.cageMemberListFooter {
-    background-image: url(http://image4.castleagegame.com/graphics/guild_feed_rightbottom.gif);
-    width: 170px;
-    height: 22px;
-    background-size: 170px 11px;
+	background-image:url(http://image4.castleagegame.com/graphics/guild_feed_rightbottom.gif);
+	width:170px;
+	height:22px;
+	background-size:170px 11px;
 }
-div.cageMemberListFooter > img {
-    width: 170px;
-    height: 11px;
+div.cageMemberListFooter> img {
+	width:170px;
+	height:11px;
 }
 div.cageGuildMember {
-    color: #fff;
-    width: 148px;
-    border-radius: 5px;
-    cursor: move;
-    margin: 0 11px;
+	color:#fff;
+	width:148px;
+	border-radius:5px;
+	cursor:move;
+	margin:0 11px;
 }
 div.cageGuildMember:hover {
-    background-color: rgba(0,0,0,0.7);
-    color: #fff;
+	background-color:rgba(0,0,0,0.7);
+	color:#fff;
 }
 div.cageGuildMemberPlaceHolder {
-    width: 146px;
-    border-radius: 5px;
-    background-color: rgba(0,0,0,0.3);
-    margin: 0 11px;
-    border: 1px ridge;
+	width:146px;
+	border-radius:5px;
+	background-color:rgba(0,0,0,0.3);
+	margin:0 11px;
+	border:1px ridge;
 }
-div.cageGuildMember > img {
-    height: 20px;
-    position: absolute
+div.cageGuildMember> img {
+	height:20px;
+	position:absolute
 }
-div.cageGuildMember > span {
-    line-height: 20px;
-    margin-left: 23px;
+div.cageGuildMember> span {
+	line-height:20px;
+	margin-left:23px;
 }
 /*
  * Goblin
  */
 #cageHideLockedLabel {
-    position: absolute;
-    margin-left: 31px;
-    color: #fff;
-    font-weight: bold;
-    cursor: pointer;
+	position:absolute;
+	margin-left:31px;
+	color:#fff;
+	font-weight:bold;
+	cursor:pointer;
 }
 #cageHideLocked {
-    position: absolute;
-    margin-left: -16px;
-    cursor: pointer;
-    margin-top: 2px;
+	position:absolute;
+	margin-left:-16px;
+	cursor:pointer;
+	margin-top:2px;
 }
 #cageHideUnlockedLabel {
-    position: absolute;
-    margin-left: 220px;
-    color: #fff;
-    font-weight: bold;
-    cursor: pointer;
+	position:absolute;
+	margin-left:220px;
+	color:#fff;
+	font-weight:bold;
+	cursor:pointer;
 }
 #cageHideUnlocked {
-    position: absolute;
-    margin-left: -16px;
-    cursor: pointer;
-    margin-top: 2px;
+	position:absolute;
+	margin-left:-16px;
+	cursor:pointer;
+	margin-top:2px;
 }
 button.cageGoblinLocked {
-    position: absolute;
-    margin-left: 8px;
-    border-radius: 0;
-    margin-top: 0px;
-    border-bottom-right-radius: 4px;
-    padding: 3px;
-    width: 19px;
+	position:absolute;
+	margin-left:8px;
+	border-radius:0;
+	margin-top:0px;
+	border-bottom-right-radius:4px;
+	padding:3px;
+	width:19px;
 }
 /*
  * Army
  */
 button.cageArmyEdit {
-    float: left;
-    border-radius: 5px;
-    color: #FBFBF1;
-    font-weight: bold;
-    height: 35px;
-    font-size: 17px;
-    cursor: pointer;
-    font-family: 'Times New Roman', Times, serif;
-    background-image: url('http://image4.castleagegame.com/graphics/invite_page_03.jpg');
-    text-shadow: 2px 2px black;
-    border-color: #DFCB96;
-    margin: 0 5px;
-    position: relative;
+	float:left;
+	border-radius:5px;
+	color:#FBFBF1;
+	font-weight:bold;
+	height:35px;
+	font-size:17px;
+	cursor:pointer;
+	font-family:'Times New Roman',Times,serif;
+	background-image:url('http://image4.castleagegame.com/graphics/invite_page_03.jpg');
+	text-shadow:2px 2px black;
+	border-color:#DFCB96;
+	margin:0 5px;
+	position:relative;
 }
-button.cageArmyEdit > span {
-    font-size: 14px;
+button.cageArmyEdit> span {
+	font-size:14px;
 }
 /*
  *  Alchemy.php
  */
-.alchemyItemNum {
-    position: relative;
-    top: -16px;
-    text-align: right;
-    color: white;
-    background-color: black;
-    border-top-left-radius: 6px;
-    border-bottom-right-radius: 6px;
-    opacity: 0.7;
-    padding: 1px 5px;
-    font-size: 12px;
-    float: right;
-    right: 5px;
-}
 .recipetitle {
-    margin: 1px;
+	margin:1px;
 }
 .alchemyRecipeBackMonster {
-    height: auto !important;
-    margin-bottom: 10px;
+	height:auto !important;
+	margin-bottom:10px;
 }
 .alchemyRecipeBackMonster_inc {
-    padding: 1px 6px 6px 20px !important;
+	padding:1px 6px 6px 20px !important;
 }
 .alchemyRecipeBack {
-    height: auto !important;
-    margin-bottom: 10px;
+	height:auto !important;
+	margin-bottom:10px;
 }
 .alchemyRecipeBack_inc {
-    padding: 1px 6px 6px 20px !important;
+	padding:1px 6px 6px 20px !important;
 }
 .alchemyRecipeBackClass {
-    height: auto !important;
-    margin-bottom: 10px;
+	height:auto !important;
+	margin-bottom:10px;
 }
 .alchemyRecipeBackClass_inc {
-    padding: 1px 6px 6px 20px !important;
+	padding:1px 6px 6px 20px !important;
 }
 .alchemyQuestBack {
-    height: auto !important;
-    margin-bottom: 10px;
+	height:auto !important;
+	margin-bottom:10px;
 }
 .alchemyQuestBack_inc {
-    padding: 1px 6px 6px 20px !important;
+	padding:1px 6px 6px 20px !important;
 }
 #cageHideRecipe {
-    margin-left: 220px;
+	margin-left:220px;
 }
 #cageShowMarked {
-    margin-left: 445px;
+	margin-left:445px;
 }
 div.cagePinItem {
-    position: absolute;
-    cursor: pointer;
-    right: 74px;
-    margin-top: 25px;
+	position:absolute;
+	cursor:pointer;
+	right:74px;
+	margin-top:25px;
 }
 #cageHideRecipe, #cageShowMarked {
-    position: absolute;
-    cursor: pointer;
-    margin-top: -20px;
+	position:absolute;
+	cursor:pointer;
+	margin-top:-20px;
 }
-#cageHideRecipe > img, #cageShowMarked > img, div.cagePinItem > img {
-    border-radius: 4px;
-    height: 21px;
+#cageHideRecipe> img, #cageShowMarked> img, div.cagePinItem> img {
+	border-radius:4px;
+	height:21px;
 }
-#cageHideRecipe > span, #cageShowMarked > span, div.cagePinItem > span {
-    top: -5px;
-    position: relative;
-    font-weight: bold;
-    left: 4px;
-    color: #000;
+#cageHideRecipe> span, #cageShowMarked> span, div.cagePinItem> span {
+	top:-5px;
+	position:relative;
+	font-weight:bold;
+	left:4px;
+	color:#000;
 }
 div.cageHideItem {
-    display: none !important;
+	display:none !important;
+}
+div.cagePinedItemContainer {
+	display:block;
+	box-shadow:0 5px 10px #000;
+	border-radius:15;
+	border:1px outset;
+	position:relative;
+}
+div.cagePinedItemContainer div.cagePinItem {
+	right:32px;
+}
+div.recipeImgContainer, div.recipeImgContainer img, div.ingredientUnit img {
+	border-radius:6px;
+}
+div.statsTMain {
+	overflow:hidden;
+}
+#recipe_list div.imgButton, #cagePinnedItems div.imgButton {
+	margin-top:30px
+}
+#recipe_list div.imgButton> input, #cagePinnedItems div.imgButton> input {
+	height:50px;
+}
+div.ingredientUnit {
+	width:60px;
+	position:relative;
+}
+div.ingredientUnit> div:first-child {
+	width:60px
+}
+div.ingredientUnit div:nth-of-type(2) {
+	background-color:rgba(0,0,0,0.7);
+	border-bottom-right-radius:6px;
+	border-top-left-radius:6px;
+	color:white;
+	float:right;
+	font-size:11px;
+	padding:1px 5px;
+	text-align:right;
+	position:absolute;
+	margin-top:-15px;
+	right:2px;
+}
+.alchemyItemNum2 {
+	background-color:rgba(0,0,0,0.7);
+	border-bottom-right-radius:6px;
+	border-top-left-radius:6px;
+	color:white;
+	float:right;
+	font-size:11px;
+	padding:1px 5px;
+	text-align:right;
+	margin-top:-15px;
+	margin-right:5px;
+	z-index:25;
+	position:relative;
 }

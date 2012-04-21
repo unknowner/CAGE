@@ -2,27 +2,17 @@
 tools.Page.runtime['alchemy.php'] = function() {
 
 	// CSS stuff
-	$('div.statsT2 div.statsTTitle_inc').css({
-		'fontFamily' : 'sans-serif',
-		'textTransform' : 'capitalize',
+	$('div.statsT2 div.statsTTitle_inc').text($('div.statsT2 div.statsTTitle_inc').text().toLowerCase());
+	$('div.ingredientUnit').children('div').attr('style', '');
+	$('div.recipeImgContainer').parent().css('height', 80);
+	$('div.statsTTitle_inc').css({
+		'font-family' : 'sans-serif',
+		'text-transform' : 'capitalize',
 		'padding' : '6px 0 0 37px',
-		'textDecoration' : 'none',
-		'textShadow' : '1px 1px 1px white'
-	}).text($('div.statsT2 div.statsTTitle_inc').text().toLowerCase());
-	$('#recipe_list div.imgButton').css({
-		'marginTop' : 30
-	}).children('input').css('height', 50);
-	$('div.statsTMain').css({
-		'overflow' : 'hidden',
-		'display' : 'none'
+		'text-decoration' : 'none',
+		'text-shadow' : '1px 1px 1px white'
 	});
-	$('div.ingredientUnit').css({
-		'height' : 60,
-		'width' : 60,
-		'padding' : 2
-	}).children('div').attr('style', '').children('img').addClass('ui-corner-all');
-	$('div.recipeImgContainer').addClass('ui-corner-all').find('img').addClass('ui-corner-all').end().parent().css('height', 80);
-
+	$('div.statsTMain').css('display', 'none');
 	// Add hide & pin
 	$('div.statsT2 div.statsTTitle_inc').prepend($('<img src="http://image4.castleagegame.com/graphics/class_button_plus.jpg">').css({
 		'borderRadius' : 4,
@@ -42,19 +32,14 @@ tools.Page.runtime['alchemy.php'] = function() {
 		'cursor' : 'pointer'
 	}).toggle(function() {
 		$('div.statsTTitle_inc > img:first').attr('src', 'http://image4.castleagegame.com/graphics/class_button_minus.jpg');
-		$('div.statsTMain').css({
-			'display' : 'block'
-		});
+		$('div.statsTMain').css('display', 'block');
 	}, function() {
 		$('div.statsTTitle_inc > img:first').attr('src', 'http://image4.castleagegame.com/graphics/class_button_plus.jpg');
-		$('div.statsTMain').css({
-			'display' : 'none'
-		});
+		$('div.statsTMain').css('display', 'none');
 	});
 
 	setTimeout(function() {
 		var _ingredients = {}, $ingredientUnit = $('div.ingredientUnit');
-		$ingredientUnit.find('div:eq(1)').addClass('itemNumbers')
 		$ingredientUnit.each(function(_i, _e) {
 			_e = $(_e);
 			var _count = _e.find('div:eq(1)');
@@ -67,9 +52,9 @@ tools.Page.runtime['alchemy.php'] = function() {
 		$('div.recipeImgContainer').each(function(_i, _e) {
 			_e = $(_e);
 			var _count = _e.parent().find('> div:contains(x)');
-			_count.addClass('alchemyItemNum');
+			_count.addClass('alchemyItemNum2');
 			if(_count.length === 0) {
-				_e.parent().find('> strong:contains(" of ")').addClass('alchemyItemNum');
+				_e.parent().find('> strong:contains(" of ")').addClass('alchemyItemNum2');
 			} else {
 				var _need = parseInt(_count.text().replace('x', ''), 10), _have = 0;
 				if(_ingredients[_e.children('img:first').attr('src')]) {
@@ -80,33 +65,22 @@ tools.Page.runtime['alchemy.php'] = function() {
 			}
 		});
 		_ingredients = $ingredientUnit = null;
-		// pinned
 
-		$('#recipe_list td.statsTMainback').children('div').prepend('<div class="cagePinItem"><img src="http://image4.castleagegame.com/graphics/boss_lotus_help2.gif"><span>Pin item</span></div>');
+		// pinned
+		$('#recipe_list td.statsTMainback').children('div:not(:last)').prepend('<div class="cagePinItem"><img src="http://image4.castleagegame.com/graphics/boss_lotus_help2.gif"><span>Pin item</span></div>');
 		$('div.cagePinItem').click(function() {
 			var _storedPinned = item.get('cagePageAlchemyPinned', []), _alch = $(this).parent().find('img:last').attr('title'), _index = _storedPinned.indexOf(_alch);
-			console.log('_alch', _alch);
 			if(_index === -1) {
 				_storedPinned.push(_alch);
 				item.set('cagePageAlchemyPinned', _storedPinned);
 				var _c = $(this).parent().clone(true);
-				_c.css({
-					'display' : 'block',
-					'boxShadow' : '0 5px 10px #000',
-					'borderRadius' : 15,
-					'border' : '1px outset',
-					'position' : 'relative'
-				}).find('.cagePinItem').css({
-					'right' : 32
-				}).find('img').attr('src', 'http://image4.castleagegame.com/graphics/boss_lotus_help3.gif');
+				_c.addClass('cagePinedItemContainer').find('img[src="http://image4.castleagegame.com/graphics/boss_lotus_help2.gif"]').attr('src', 'http://image4.castleagegame.com/graphics/boss_lotus_help3.gif');
 				$('#cagePinnedItems').append(_c);
 				$(this).parent().addClass('cageHideItem');
 			} else {
 				_storedPinned.splice(_index, 1);
 				item.set('cagePageAlchemyPinned', _storedPinned);
 				$(this).parent().remove();
-				console.log('remove:', _alch);
-				console.log($('#recipe_list td.statsTMainback').children('div').has('img:last[title=' + _alch + ']'));
 				$('#recipe_list td.statsTMainback').children('div').has('img[title="' + _alch + '"]').removeClass('cageHideItem');
 			}
 		});
@@ -127,15 +101,7 @@ tools.Page.runtime['alchemy.php'] = function() {
 			var $this = $(this);
 			if(_storedPinned.indexOf($this.find('img:last').attr('title')) >= 0) {
 				var _c = $this.clone(true);
-				_c.css({
-					'display' : 'block',
-					'boxShadow' : '0 5px 10px #000',
-					'borderRadius' : 15,
-					'border' : '1px outset',
-					'position' : 'relative'
-				}).find('.cagePinItem').css({
-					'right' : 32
-				}).find('img').attr('src', 'http://image4.castleagegame.com/graphics/boss_lotus_help3.gif');
+				_c.addClass('cagePinedItemContainer').find('img[src="http://image4.castleagegame.com/graphics/boss_lotus_help2.gif"]').attr('src', 'http://image4.castleagegame.com/graphics/boss_lotus_help3.gif');
 				$('#cagePinnedItems').append(_c);
 				$this.addClass('cageHideItem');
 			}

@@ -11,6 +11,7 @@ function cageNews(_full) {
 			'ADD: Change guild formation with drag&drop',
 			'ADD: Goblin item locker',
 			'ADD: All tiers at public monster list and selected tier stored',
+			'ADD: Alchemy item pinning',
 			'FIX: Fill/Remove army button in Firefox'
 		], function(_i, _e) {
 			$('#cageNewsChanges').append('<li><span>' + _e.split(':')[0] + '</span>' + _e.split(':')[1] + '</li>');

@@ -74,11 +74,8 @@ tools.Demi.timer = function() {
 			$('#cageNextDemi span:last').text('Now');
 			$('#cageNextDemi > div:eq(1) > div').css({
 				'width' : '100%',
-				'backgroundColor' : '#55c4f2'
-			}).effect("pulsate", {
-				times : 9999
-			}, 3000);
-			;
+				'backgroundColor' : '#f00'
+			});
 		} else {
 			var _p = (100 - (_hr * 60 + _min) * 100 / (_wait * 60));
 			$('#cageNextDemi span:last').text(_hr + ':' + ('0' + _min).slice(-2));
@@ -88,6 +85,9 @@ tools.Demi.timer = function() {
 			});
 		}
 	}
+	setTimeout(function() {
+		tools.Demi.timer();
+	}, 60000);
 };
 tools.Demi.parse = function(_pagedata) {
 	// Set/check demi timer
@@ -102,8 +102,6 @@ tools.Demi.parse = function(_pagedata) {
 			_minute = parseInt(/(\d+)(?= minutes)/.exec(_pagedata)[0], 10);
 			_demi.setHours(_demi.getHours() + _hour - _wait, _demi.getMinutes() + _minute);
 		}
-		console.log(_wait);
-		console.log(_demi);
 		item.set('cageDemiLast', Date.parse(_demi));
 		item.set('cageDemiTime', _wait);
 		tools.Demi.timer();
@@ -131,7 +129,4 @@ tools.Demi.init = function() {
 		tools.Demi.start();
 	}));
 	tools.Demi.timer();
-	window.setInterval(function() {
-		tools.Demi.timer();
-	}, 60000);
 };
