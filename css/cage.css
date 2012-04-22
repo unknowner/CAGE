@@ -460,7 +460,7 @@ button.cageToolButton:last-of-type {
 	opacity:0.75;
 	border-top-right-radius:8px;
 }
-#cageMonsterActivity {
+div.cageMonsterActivity {
 	position:absolute;
 	left:0;
 	background:#000;

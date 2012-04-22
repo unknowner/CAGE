@@ -119,6 +119,7 @@ div.connect_castlepb_bg {
     z-index: 100;
     position: fixed;
     top: 120px;
+    margin-left:15px;
 }
 div.demipb_button {
     position: absolute !important;

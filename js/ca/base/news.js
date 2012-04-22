@@ -12,7 +12,9 @@ function cageNews(_full) {
 			'ADD: Goblin item locker',
 			'ADD: All tiers at public monster list and selected tier stored',
 			'ADD: Alchemy item pinning',
-			'FIX: Fill/Remove army button in Firefox'
+			'ADD: Total monster activity/dmg&def',
+			'FIX: Some CSS stuff (most for FF)',
+			'CHG: Some internals for better performance'
 		], function(_i, _e) {
 			$('#cageNewsChanges').append('<li><span>' + _e.split(':')[0] + '</span>' + _e.split(':')[1] + '</li>');
 	});

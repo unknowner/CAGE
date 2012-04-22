@@ -1,7 +1,7 @@
 // Achievements
 tools.Page.runtime['achievements.php'] = function() {
 
-	var _ach = {}, _sub = {
+	/*var _ach = {}, _sub = {
 		'Sylvana' : 'Sylvanas the Sorceress Queen',
 		'Dark Legion' : 'The Battle of the Dark Legion',
 		'Thanatos' : 'Thanatos of Fire',
@@ -44,5 +44,5 @@ tools.Page.runtime['achievements.php'] = function() {
 			$(_e).text(_ach[_t].have + '/' + _ach[_t].need);
 		}
 	});
-	console.log(_ach);
+	console.log(_ach);*/
 };

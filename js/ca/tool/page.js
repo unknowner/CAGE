@@ -128,7 +128,7 @@ tools.Page.ajaxPageDone = function() {
 				startAllTimers();
 				script = $data = null;
 			} else {
-				$('#' + div).html(data);
+				$('#' + div).html($data.html());
 			}
 			centerPopups();
 			if(anchor) {

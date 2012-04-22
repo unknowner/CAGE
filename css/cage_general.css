@@ -1,321 +1,322 @@
 #cageGeneralContainer {
-    position: fixed;
-    width: 770px;
+	position:fixed;
+	width:770px;
 }
 #cageGeneralImageContainer {
-    display: block;
-    background-image: url('http://image4.castleagegame.com/graphics/general_plate.gif');
-    width: 180px;
-    height: 167px;
-    background-repeat: no-repeat;
-    background-position: 5px;
-    right: 9px;
-    z-index: 4;
-    position: relative;
-    left: 0;
-    padding: 2px;
+	display:block;
+	background-image:url('http://image4.castleagegame.com/graphics/general_plate.gif');
+	width:180px;
+	height:167px;
+	background-repeat:no-repeat;
+	background-position:5px;
+	right:9px;
+	z-index:4;
+	position:relative;
+	left:0;
+	padding:2px;
 }
 #cageGeneralImage {
-    height: 110px;
-    cursor: pointer;
-    z-index: 2;
-    position: absolute;
-    top: 29px;
-    left: 10px;
+	height:110px;
+	cursor:pointer;
+	z-index:2;
+	position:absolute;
+	top:29px;
+	left:10px;
 }
 #cageGeneralSelector {
-    position: fixed;
-    box-shadow: 0 10px 20px black;
-    z-index: 5;
-    width: 701px;
-    margin-left: 10px;
-    padding: 40px 25px 5px 22px;
-    top: 75px;
-    display: none;
+	position:fixed;
+	box-shadow:0 10px 20px black;
+	z-index:5;
+	width:701px;
+	margin-left:10px;
+	padding:40px 25px 5px 22px;
+	top:75px;
+	display:none;
 }
 #cageSelectorInfo {
-    width: 622px;
-    height: 20px;
-    text-align: center;
-    margin: -10px 0 5px 0;
-    line-height: 19px;
-    position: absolute;
-    left: 7px;
+	width:622px;
+	height:20px;
+	text-align:center;
+	margin:-10px 0 5px 0;
+	line-height:19px;
+	position:absolute;
+	left:7px;
 }
 #cageSelectorList {
-    margin-top: -10px;
-    height: 22px;
-    width: 105px;
-    float: right;
-    position: absolute;
-    right: 7px;
-    background-color: #0972a5;
-    color: #fff;
-    border-radius: 6px;
-    border: 1px solid #26b3f7;
+	margin-top:-10px;
+	height:22px;
+	width:111px;
+	float:right;
+	position:absolute;
+	right:7px;
+	background-color:#0972a5;
+	color:#fff;
+	border:1px solid #26b3f7;
+	border-top-right-radius:6px;
+	border-bottom-right-radius:6px;
 }
 #cageAllGenerals {
-    padding-bottom: 10px;
+	padding-bottom:10px;
 }
-#cageAllGenerals > div {
-    margin: 1px;
-    display: inline-block;
-    border-radius: 5px;
-    border: 1px solid transparent;
-    height: 50px;
+#cageAllGenerals> div {
+	margin:1px;
+	display:inline-block;
+	border-radius:5px;
+	border:1px solid transparent;
+	height:50px;
 }
-#cageAllGenerals > div:hover {
-    border: 1px solid #26B3F7 !important;
+#cageAllGenerals> div:hover {
+	border:1px solid #26B3F7 !important;
 }
-#cageAllGenerals > div > img:first-child {
-    width: 50px;
-    cursor: pointer;
-    border-radius: 4px;
+#cageAllGenerals> div> img:first-child {
+	width:50px;
+	cursor:pointer;
+	border-radius:4px;
 }
-#cageAllGenerals > div > img:last-of-type {
-    position: relative;
-    margin-left: -16px;
-    width: 10px;
-    cursor: pointer;
-    background-color: black;
-    padding: 3px;
-    border-top-left-radius: 4px;
-    border-bottom-right-radius: 4px;
-    opacity: 0.7;
+#cageAllGenerals> div> img:last-of-type {
+	position:relative;
+	margin-left:-16px;
+	width:10px;
+	cursor:pointer;
+	background-color:black;
+	padding:3px;
+	border-top-left-radius:4px;
+	border-bottom-right-radius:4px;
+	opacity:0.7;
 }
 #cageFavoriteGenerals {
-    padding: 4px 0 2px;
-    margin-top: 12px;
+	padding:4px 0 2px;
+	margin-top:12px;
 }
-#cageFavoriteGenerals > div {
-    margin: 4px;
-    display: inline-block;
-    box-shadow: 0 0 5px 2px #1482D2;
-    border-radius: 5px;
-    height: 70px;
+#cageFavoriteGenerals> div {
+	margin:4px;
+	display:inline-block;
+	box-shadow:0 0 5px 2px #1482D2;
+	border-radius:5px;
+	height:70px;
 }
-#cageFavoriteGenerals > div:hover {
-    box-shadow: 0 0 10px 2px #26b3f7
+#cageFavoriteGenerals> div:hover {
+	box-shadow:0 0 10px 2px #26b3f7
 }
-#cageFavoriteGenerals > div > img:first-child:hover {
-    box-shadow: 0 0 10px 2px #26b3f7
+#cageFavoriteGenerals> div> img:first-child:hover {
+	box-shadow:0 0 10px 2px #26b3f7
 }
-#cageFavoriteGenerals > div > img:first-child {
-    width: 70px;
-    cursor: pointer;
-    border-radius: 4px;
+#cageFavoriteGenerals> div> img:first-child {
+	width:70px;
+	cursor:pointer;
+	border-radius:4px;
 }
-#cageFavoriteGenerals > div > img:last-of-type {
-    position: relative;
-    margin-left: -16px;
-    width: 10px;
-    cursor: pointer;
-    background-color: black;
-    padding: 3px;
-    border-top-left-radius: 4px;
-    border-bottom-right-radius: 4px;
-    opacity: 0.7;
+#cageFavoriteGenerals> div> img:last-of-type {
+	position:relative;
+	margin-left:-16px;
+	width:10px;
+	cursor:pointer;
+	background-color:black;
+	padding:3px;
+	border-top-left-radius:4px;
+	border-bottom-right-radius:4px;
+	opacity:0.7;
 }
 .cageCharge {
-    position: relative;
-    border-radius: 6px;
-    width: 6px;
-    opacity: .8;
-    background-color: #26B3F7;
-    display: inline-block;
-    left: -100%;
-    margin-right: -6px;
+	position:relative;
+	border-radius:6px;
+	width:6px;
+	opacity:.8;
+	background-color:#26B3F7;
+	display:inline-block;
+	left:-100%;
+	margin-right:-6px;
 }
 #cageGeneralStats {
-    z-index: 2;
-    position: absolute;
-    right: 16px;
-    opacity: 0;
-    background: #000;
-    width: 168px;
-    box-shadow: 0px 2px 8px #000;
-    border-radius: 6px;
-    padding: 5px;
-    display: none;
+	z-index:2;
+	position:absolute;
+	right:16px;
+	opacity:0;
+	background:#000;
+	width:168px;
+	box-shadow:0px 2px 8px #000;
+	border-radius:6px;
+	padding:5px;
+	display:none;
 }
 #cageGeneralName {
-    position: relative;
-    top: 3px;
-    color: #fff;
-    font-weight: bold;
-    white-space: nowrap;
-    text-align: center;
-    width: 168px;
-    font-size: 13px;
-    left: 9px;
-    display: inline-block;
+	position:relative;
+	top:3px;
+	color:#fff;
+	font-weight:bold;
+	white-space:nowrap;
+	text-align:center;
+	width:168px;
+	font-size:13px;
+	left:9px;
+	display:inline-block;
 }
 #cageGeneralText {
-    position: relative;
-    color: white;
-    width: 160px;
-    padding: 0 4px 4px 4px;
+	position:relative;
+	color:white;
+	width:160px;
+	padding:0 4px 4px 4px;
 }
 #cageGeneralAttack, #cageGeneralDefense {
-    position: absolute;
-    width: 14px;
-    z-index: -2;
-    text-align: right;
-    font-weight: bold;
-    font-size: 14px;
-    left: 25px;
-    border-left: 0;
+	position:absolute;
+	width:14px;
+	z-index:-2;
+	text-align:right;
+	font-weight:bold;
+	font-size:14px;
+	left:25px;
+	border-left:0;
 }
 #cageGeneralAttack {
-    color: #ffc26f;
+	color:#ffc26f;
 }
 #cageGeneralDefense {
-    color: #b9deff;
+	color:#b9deff;
 }
 #cageGeneralAttDiv {
-    position: absolute;
-    z-index: -1;
-    left: 15px;
-    height: 20px;
-    top: 145px;
+	position:absolute;
+	z-index:-1;
+	left:15px;
+	height:20px;
+	top:145px;
 }
 #cageGeneralDefDiv {
-    position: absolute;
-    z-index: -1;
-    left: 75px;
-    height: 20px;
-    top: 145px;
+	position:absolute;
+	z-index:-1;
+	left:75px;
+	height:20px;
+	top:145px;
 }
 #cageGeneralAttImg, #cageGeneralDefImg {
-    height: 20px;
+	height:20px;
 }
 #cageGeneralAttImg {
-    position: absolute;
+	position:absolute;
 }
 #cageGeneralDefImg {
-    position: absolute;
+	position:absolute;
 }
 #cageGeneralImageCharge {
-    background-color: #000;
-    left: 13px;
-    position: absolute;
-    display: inline-block;
-    top: 124px;
-    padding: 1px;
-    border: 1px inset;
-    width: 100px;
-    z-index: 2;
+	background-color:#000;
+	left:13px;
+	position:absolute;
+	display:inline-block;
+	top:124px;
+	padding:1px;
+	border:1px inset;
+	width:100px;
+	z-index:2;
 }
-#cageGeneralImageCharge > div {
-    background-image: url('http://image4.castleagegame.com/graphics/gen_chargebarsmall.gif');
-    height: 8px;
+#cageGeneralImageCharge> div {
+	background-image:url('http://image4.castleagegame.com/graphics/gen_chargebarsmall.gif');
+	height:8px;
 }
-#cageGeneralImageCharge > span {
-    position: absolute;
-    top: -13px;
-    right: -1px;
-    font-size: 11px;
-    background-color: #000;
-    border: 1px inset;
-    border-bottom: 0;
-    height: 12px;
-    line-height: 13px;
-    padding: 0 3px;
-    border-top-left-radius: 5px;
+#cageGeneralImageCharge> span {
+	position:absolute;
+	top:-13px;
+	right:-1px;
+	font-size:11px;
+	background-color:#000;
+	border:1px inset;
+	border-bottom:0;
+	height:12px;
+	line-height:13px;
+	padding:0 3px;
+	border-top-left-radius:5px;
 }
 /*
  * Favorites
  */
 #cageFavsList {
-    display: block;
-    width: 207px;
-    min-width: 207px;
-    height: 97px;
-    min-height: 97px;
-    background-color: #232323;
-    font-size: 13px;
-    color: #fff;
-    padding: 3px;
-    position: relative;
-    border: 2px ridge #999;
-    border-bottom-left-radius: 5px;
-    border-top-left-radius: 5px;
-    margin-bottom: 2px;
+	display:block;
+	width:207px;
+	min-width:207px;
+	height:97px;
+	min-height:97px;
+	background-color:#232323;
+	font-size:13px;
+	color:#fff;
+	padding:3px;
+	position:relative;
+	border:2px ridge #999;
+	border-bottom-left-radius:5px;
+	border-top-left-radius:5px;
+	margin-bottom:2px;
 }
 .cageFavsButton {
-    width: 24px;
-    background-color: #232323;
-    color: #fff;
-    font-weight: bold;
-    font-size: 14px;
-    border-radius: 5px;
-    margin-right: 2px;
-    height: 25px;
-    cursor: pointer;
+	width:24px;
+	background-color:#232323;
+	color:#fff;
+	font-weight:bold;
+	font-size:14px;
+	border-radius:5px;
+	margin-right:2px;
+	height:25px;
+	cursor:pointer;
 }
 #cageEditFavName {
-    width: 155px;
-    background-color: #232323;
-    font-size: 13px;
-    color: #fff;
-    height: 25px;
-    margin-right: 2px;
-    border: 2px ridge #999;
-    border-radius: 5px;
-    padding: 2px 0 2px 4px;
+	width:155px;
+	background-color:#232323;
+	font-size:13px;
+	color:#fff;
+	height:25px;
+	margin-right:2px;
+	border:2px ridge #999;
+	border-radius:5px;
+	padding:2px 0 2px 4px;
 }
 #cageFavsDisplayContainer {
-    width: 481px;
-    min-width: 481px;
-    max-width: 481px;
-    min-height: 121px;
-    background-color: #232323;
-    position: relative;
-    left: 0px;
-    overflow-y: hidden;
-    overflow-x: hidden;
-    float: left;
-    border: 2px ridge #999;
-    border-bottom-left-radius: 5px;
-    border-top-left-radius: 5px;
+	width:481px;
+	min-width:481px;
+	max-width:481px;
+	min-height:121px;
+	background-color:#232323;
+	position:relative;
+	left:0px;
+	overflow-y:hidden;
+	overflow-x:hidden;
+	float:left;
+	border:2px ridge #999;
+	border-bottom-left-radius:5px;
+	border-top-left-radius:5px;
 }
 #cageFavsDisplay {
-    width: 473px;
-    overflow-y: scroll;
-    overflow-x: hidden;
-    min-height: 113px;
-    height: 113;
-    padding: 4px;
+	width:473px;
+	overflow-y:scroll;
+	overflow-x:hidden;
+	min-height:113px;
+	height:113;
+	padding:4px;
 }
-#cageFavsDisplay > div {
-    float: left;
-    height: 51px;
-    width: 51px;
-    border-radius: 5px;
-    margin: 0 4px 4px 0;
-    background-size: 51px;
-    cursor: move;
+#cageFavsDisplay> div {
+	float:left;
+	height:51px;
+	width:51px;
+	border-radius:5px;
+	margin:0 4px 4px 0;
+	background-size:51px;
+	cursor:move;
 }
-#cageFavsDisplay > div > img {
-    height: 10px;
-    margin-top: 37px;
-    background-color: #000;
-    border-top-left-radius: 5px;
-    border-bottom-right-radius: 5px;
-    padding: 2px;
-    cursor: pointer;
-    float: right;
+#cageFavsDisplay> div> img {
+	height:10px;
+	margin-top:37px;
+	background-color:#000;
+	border-top-left-radius:5px;
+	border-bottom-right-radius:5px;
+	padding:2px;
+	cursor:pointer;
+	float:right;
 }
 #cageGeneralEquipment {
-    line-height: 0;
-    position: absolute;
-    width: 54px;
-    left: 126px;
-    text-align: left;
-    top: 30px;
+	line-height:0;
+	position:absolute;
+	width:54px;
+	left:126px;
+	text-align:left;
+	top:30px;
 }
-#cageGeneralEquipment > img {
-    z-index: 0;
-    position: relative;
-    margin: 1px 2px 2px 1px;
+#cageGeneralEquipment> img {
+	z-index:0;
+	position:relative;
+	margin:1px 2px 2px 1px;
 }

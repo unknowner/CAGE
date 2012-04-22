@@ -96,12 +96,34 @@ tools.Page.runtime['battleStats'] = function() {
 	});
 	if(_img !== false) {
 		_img.parent('div:first').css('position', 'relative').append('<div id="cageMonsterStats">');
-		var $this, _attackers = 0, _temp = '', _max, _levels, _hod, $stats = $('#cageMonsterStats'), _ownDamage = null;
+		var $this, _attackers = 0, _temp = '', _max, _levels, _hod, $stats = $('#cageMonsterStats'), _ownDamage = null, _dmgType = null, _allDamage = {
+			Activity : 0,
+			dmg : 0,
+			def : 0
+		};
 		$('td.dragonContainer table tr td:eq(1) table tr').each(function() {
 			$this = $(this);
 			if($this.text() !== '') {
-				if($this.html().indexOf(CastleAge.userId) > -1) {
-					_ownDamage = $this.find('td:last').text().trim();
+				var _line = $this.find('td:last').text().trim();
+				console.log(_line);
+				if(_dmgType === null) {
+					if(_line === 'Activity') {
+						_dmgType = 'Activity'
+					} else if(_line.indexOf('dmg') > -1) {
+						_dmgType = 'dmg'
+					}
+					console.log('_dmgType', _dmgType);
+				}
+				if(isNaN(parseInt(_line.replace(/\D/g, ''))) === false) {
+					if(_dmgType === 'dmg') {
+						_allDamage['dmg'] += parseInt(_line.split('/')[0].replace(/\D/g, ''));
+						_allDamage['def'] += parseInt(_line.split('/')[1].replace(/\D/g, ''));
+					} else {
+						_allDamage[_dmgType] += parseInt(_line.replace(/\D/g, ''));
+					}
+					if($this.html().indexOf(CastleAge.userId) > -1) {
+						_ownDamage = _line;
+					}
 				}
 				if(/Levels|Heart of Darkness/.test($this.text()) === true) {
 					if(_temp !== '') {
@@ -131,11 +153,12 @@ tools.Page.runtime['battleStats'] = function() {
 		} else {
 			$stats.append('<div><span style="display:inline-block;font-weight:bold;width:125px;">Attackers: </span><span style="display:inline-block;width:25px;text-align:right;">' + _attackers + '</span></div>');
 		}
-
+		console.log('_allDamage', _allDamage);
 		if(_ownDamage !== null) {
-			$stats.before('<div id="cageMonsterActivity"><span style="display:inline-block;font-weight:bold;width:80px;">Activity</span><span style="display:inline-block;float:right;text-align:right;">' + _ownDamage + '</span></div>');
-			$('#cageMonsterActivity').css('bottom', $stats.find('div').length * 13 + 30);
+			$stats.before($('<div class="cageMonsterActivity"><span style="display:inline-block;font-weight:bold;width:80px;">My activity</span><span style="display:inline-block;float:right;text-align:right;">' + _ownDamage + '</span></div>').css('bottom', $stats.find('div').length * 13 + 59));
 		}
+		$stats.before($('<div class="cageMonsterActivity"><span style="display:inline-block;font-weight:bold;width:80px;">Activity</span><span style="display:inline-block;float:right;text-align:right;">' + _allDamage[_dmgType].toString().replace(/(\d)(?=(\d{3})+\b)/g, '$1,') + (_dmgType === 'dmg' ? ' dmg / ' + _allDamage.def.toString().replace(/(\d)(?=(\d{3})+\b)/g, '$1,') + ' def' : '') + '</span></div>').css('bottom', $stats.find('div').length * 13 + 23));
+
 		if($('span.target_monster_info').length > 0) {
 			var _div = $('span.target_monster_info:first').parent();
 			_div.css({

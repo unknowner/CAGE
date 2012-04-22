@@ -92,10 +92,6 @@ tools.Page.runtime.allPages = function() {
 
 	// fix loader
 	$('#AjaxLoadIcon').removeClass('shield_wait');
-
 	// Random popups (quests etc.)
-	$('div.result_popup_message').css({
-		'left' : '',
-		'marginLeft' : 15
-	});
+	$('div.result_popup_message').css('left', '');
 };
