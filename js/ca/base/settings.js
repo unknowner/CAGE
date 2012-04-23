@@ -58,15 +58,15 @@ tools.Settings.onoff = function(_text, _value, _save, _callback) {
 	var _id = Math.floor(Math.random() * Math.random() * 100000000);
 	$('#cageSettingsMiddle > div:last').append('<div id="cageSettingsOnOff' + _id + '" class="cageSettingsOnOff" onoff="' + _value + '"><span>' + _text + '</span><button></button></div>');
 	if(_value === true) {
-		$('#cageSettingsOnOff' + _id + ' > button').css('backgroundImage', 'url("http://image4.castleagegame.com/graphics/boss_lotus_help3.gif")');
+		$('#cageSettingsOnOff' + _id + ' > button').css('backgroundImage', 'url("http://image4.castleagegame.com/graphics/boss_lotus_help3.gif")').html('&#10003');
 	}
 	$('#cageSettingsOnOff' + _id + ' > button').click(function() {
 		var _onoff = $('#cageSettingsOnOff' + _id), _newvalue = _onoff.attr('onoff') === 'true' ? false : true, _button = $('#cageSettingsOnOff' + _id + ' > button');
 		_onoff.attr('onoff', _newvalue);
 		if(_newvalue === true) {
-			_button.css('backgroundImage', 'url("http://image4.castleagegame.com/graphics/boss_lotus_help3.gif")');
+			_button.css('backgroundImage', 'url("http://image4.castleagegame.com/graphics/boss_lotus_help3.gif")').html('&#10003');
 		} else {
-			_button.css('backgroundImage', 'url("http://image4.castleagegame.com/graphics/boss_lotus_help2.gif")');
+			_button.css('backgroundImage', 'url("http://image4.castleagegame.com/graphics/boss_lotus_help2.gif")').html('');
 		}
 		item.set(_save, _newvalue);
 		if(_callback) {

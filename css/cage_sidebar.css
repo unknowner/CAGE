@@ -29,6 +29,12 @@
     background-position: -441px 0;
     padding: 0 5px 8px 5px;
 }
+#cageSidebarChat {
+    width: 190px;
+    background-image: url('http://image4.castleagegame.com/graphics/class_submenu_middle.jpg');
+    background-position: -441px 0;
+    padding: 0 5px 8px 5px;
+}
 #cageSidebarBottom {
     background-image: url('http://image4.castleagegame.com/graphics/class_submenu_bottom.gif');
     height: 17px;

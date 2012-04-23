@@ -15,9 +15,10 @@ var language = {
 	//Castle Age
 	cAgeheadText : 'Just a few settings to change some CA stuff.',
 	cAgeNoResults : 'Hide battles won message',
-	cageNoHourly : 'Hide hourly info messages',
-	cageNoUpgrade : 'Hide upgrade messages',
-	cageScrollGuildChat : 'Autoscroll guild chat',
+	cAgeNoHourly : 'Hide hourly info messages',
+	cAgeNoUpgrade : 'Hide upgrade messages',
+	cAgeSidebarGuildChat : 'Move Chat in Siebar',
+	cAgeScrollGuildChat : 'Autoscroll guild chat',
 
 	// Settings
 	settingsButton : 'Settings',

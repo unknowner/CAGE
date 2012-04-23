@@ -1,0 +1,37 @@
+/*
+ * tools/cage.js
+ */
+
+/* Chat in sidebar */
+.chatGuildChatSidebar {
+    font-size: 11px !important;
+    width: 174px !important;
+    position: relative;
+    padding: 0 0px 0 2px !important;
+    border: 1px inset;
+    border-radius: 5px;
+    background-color: rgba(0,0,0,0.7);
+}
+.chatGuildChatContainerSidebar {
+
+}
+.chatGuildChatTextBoxSidebar {
+
+}
+.chatGuildChatTextBoxSidebar > div > div:first-of-type {
+    margin: 4px 0 0 0px !important;
+    width: 164px !important;
+}
+.chatGuildChatTextBoxSidebar > div > div:first-of-type > input {
+    width: 160px !important;
+    height: 18px !important;
+    font-size: 11px !important;
+    border-radius: 5px !important;
+}
+.chatGuildChatTextBoxSidebar > div > div:nth-of-type(2) {
+    padding: 4px 0 0 0 !important;
+}
+.chatGuildChatTextBoxSidebar > div > div:nth-of-type(2) > input {
+    width: 14px !important;
+    height: 18px !important;
+} 

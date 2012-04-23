@@ -4,21 +4,25 @@ tools.castleage.settings = function() {
 	tools.castleage.runtimeUpdate();
 	tools.Settings.heading('Castle Age');
 	tools.Settings.text(language.cAgeheadText);
+	tools.Settings.onoff(language.cAgeSidebarGuildChat, tools.castleage.runtime.sidebarGuildChat, 'sidebarGuildChat', function() {
+		tools.castleage.runtime.sidebarGuildChat = !tools.castleage.runtime.sidebarGuildChat;
+		tools.castleage.sidebarGuildChat();
+	});
+	tools.Settings.onoff(language.cAgeScrollGuildChat, tools.castleage.runtime.scrollGuildChat, 'scrollGuildChat', function() {
+		tools.castleage.runtime.scrollGuildChat = !tools.castleage.runtime.scrollGuildChat;
+		tools.castleage.scrollGuildChat();
+	});
 	tools.Settings.onoff(language.cAgeNoResults, tools.castleage.runtime.battleResults, 'castleageBattleResults', function() {
 		tools.castleage.runtime.battleResults = !tools.castleage.runtime.battleResults;
 		tools.castleage.results();
 	});
-	tools.Settings.onoff(language.cageNoHourly, tools.castleage.runtime.hourly, 'castleageHourly', function() {
+	tools.Settings.onoff(language.cAgeNoHourly, tools.castleage.runtime.hourly, 'castleageHourly', function() {
 		tools.castleage.runtime.hourly = !tools.castleage.runtime.hourly;
 		tools.castleage.results();
 	});
-	tools.Settings.onoff(language.cageNoUpgrade, tools.castleage.runtime.upgrade, 'castleageUpgrade', function() {
+	tools.Settings.onoff(language.cAgeNoUpgrade, tools.castleage.runtime.upgrade, 'castleageUpgrade', function() {
 		tools.castleage.runtime.upgrade = !tools.castleage.runtime.upgrade;
 		tools.castleage.results();
-	});
-	tools.Settings.onoff(language.cageScrollGuildChat, tools.castleage.runtime.scrollGuildChat, 'scrollGuildChat', function() {
-		tools.castleage.runtime.scrollGuildChat = !tools.castleage.runtime.scrollGuildChat;
-		tools.castleage.scrollGuildChat();
 	});
 	tools.Settings.onoff('Mac background hack', tools.castleage.runtime.macBGFix, 'macBGFix', function() {
 		tools.castleage.runtime.macBGFix = !tools.castleage.runtime.macBGFix;
@@ -34,6 +38,8 @@ tools.castleage.runtimeUpdate = function() {
 	tools.castleage.runtime.hourly = item.get('castleageHourly', false);
 	tools.castleage.runtime.upgrade = item.get('castleageUpgrade', false);
 	tools.castleage.results();
+	tools.castleage.runtime.sidebarGuildChat = item.get('sidebarGuildChat', false);
+	tools.castleage.sidebarGuildChat();
 	tools.castleage.runtime.scrollGuildChat = item.get('scrollGuildChat', true);
 	tools.castleage.scrollGuildChat();
 	tools.castleage.runtime.macBGFix = item.get('macBGFix', false);
@@ -42,6 +48,12 @@ tools.castleage.runtimeUpdate = function() {
 
 tools.castleage.init = function() {
 	tools.castleage.runtimeUpdate();
+	// chat in sidebar button > guild logo in expanded chat
+	$('#chatHeader img:first').attr('title', 'Move guild chat to sidebar and back.').css('cursor', 'pointer').click(function() {
+		tools.castleage.runtime.sidebarGuildChat = !tools.castleage.runtime.sidebarGuildChat;
+		item.set('sidebarGuildChat', tools.castleage.runtime.sidebarGuildChat);
+		tools.castleage.sidebarGuildChat();
+	});
 }
 tools.castleage.macBGFix = function() {
 	if(tools.castleage.runtime.macBGFix) {
@@ -61,8 +73,22 @@ tools.castleage.macBGFix = function() {
 	}
 
 }
+tools.castleage.sidebarGuildChat = function() {
+	if(tools.castleage.runtime.sidebarGuildChat === true) {
+		$('#cageSidebarChat').append($('#chatGuildChat').detach()).append($('#chatGuildChatTextBox').detach());
+		$('#chatGuildChat').addClass('chatGuildChatSidebar');
+		$('#chatGuildChatContainer').addClass('chatGuildChatContainerSidebar');
+		$('#chatGuildChatTextBox').addClass('chatGuildChatTextBoxSidebar').find('input:last').attr('src', 'http://image4.castleagegame.com/graphics/button_arrow_right.gif');
+		$('#expandedGuildChat').css('height', 65);
+	} else {
+		$('#expandedGuildChat').css('height', 306).append($('#chatGuildChat').detach()).append($('#chatGuildChatTextBox').detach());
+		$('#chatGuildChat').removeClass('chatGuildChatSidebar');
+		$('#chatGuildChatContainer').removeClass('chatGuildChatContainerSidebar');
+		$('#chatGuildChatTextBox').removeClass('chatGuildChatTextBoxSidebar').find('input:last').attr('src', 'http://image4.castleagegame.com/iphone/graphics/ch_button_send.jpg');
+	}
+}
 tools.castleage.scrollGuildChat = function() {
-	if(tools.castleage.runtime.scrollGuildChat) {
+	if(tools.castleage.runtime.scrollGuildChat === true) {
 		$('#chatGuildChat').bind('DOMNodeInserted', function() {
 			$('#chatGuildChat').scrollTop($('#chatGuildChat div').length * 20);
 		});
