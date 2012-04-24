@@ -1,13 +1,14 @@
 tool('PotionStamina');
 
 tools.PotionStamina.start = function() {
-	$.post('keep.php', {
+	signedGet('keep.php', {
 		'consume' : true,
 		'item' : 2,
 		'ajax' : 1,
 		'signed_request' : CastleAge.signed_request
 	}, function(_data) {
-		if($(_data).find('span.result_body:contains("You consumed")').length > 0) {
+		_data = $(noSrc(_data));
+		if(_data.find('span.result_body:contains("You consumed")').length > 0) {
 			addFunction(function(data) {
 				cageStat.stamina = data.stamina;
 			}, JSON.stringify({

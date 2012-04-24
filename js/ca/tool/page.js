@@ -6,6 +6,22 @@ tools.Page.init = function() {
 	addFunction(tools.Page.ajaxFormSend, null, true, true);
 	addFunction(tools.Page.ajaxSkip, null, true, true);
 	addFunction(tools.Page.ajaxPageDone, null, true, true);
+	// some utilites
+	addFunction(function() {
+		noSrc = function(_t) {
+			var _re = new RegExp('src=', 'gi');
+			_t = _t.replace(_re, 'nosrc=');
+			return _t;
+		}
+		noNoSrc = function(_jqo) {
+			_jqo.find('input[nosrc], img[nosrc]').each(function() {
+				var $t = $(this);
+				$t.attr('src', $t.attr('nosrc')).removeAttr('nosrc');
+			});
+			return _jqo;
+		}
+	}, null, true, true);
+
 	// Do stuff after page loaded
 	customEvent('PageURL', function(_evt) {
 		var _page = $('#PageURL').val();
@@ -103,16 +119,16 @@ tools.Page.ajaxPageDone = function() {
 		stopTimers = false;
 		ajaxPerforming = false;
 		if(/<script type="text\/javascript">\stop.location.href = "http:\/\/apps.facebook.com\/castle_age\/.*.php";\s<\/script>/.test(data.substr(data.length < 200 ? 0 : data.length - 300)) === false) {
-			$data = $(data);
+			$data = $(noSrc(data));
 			data = null;
 			console.log('ajaxPageDone:', div);
 			if(div === 'globalContainer') {
 				var _abc = $('#app_body_container'), start1 = new Date(), _sts = $data.find('#main_sts');
 				_sts.html(_sts.html().replace(/more/g, ''));
-				$('#main_sts')[0].innerHTML = _sts[0].innerHTML;
-				$('#main_bntp')[0].innerHTML = $data.find('#main_bntp')[0].innerHTML;
+				$('#main_sts').replaceWith(noNoSrc(_sts));
+				$('#main_bntp').replaceWith(noNoSrc($data.find('#main_bntp')));
 				var start2 = new Date();
-				$('#app_body_container').hide().empty().append($data.find('#app_body_container').html()).append($data.filter('div[id]:not(.game)')).show();
+				$('#app_body_container').hide().empty().append(noNoSrc($data.find('#app_body_container')).html()).append(noNoSrc($data.filter('div[id]:not(.game)'))).show();
 				// update stats
 				var _stats = $('#main_sts'), _stam = $('#stamina_current_value'), _ener = $('#energy_current_value'), _heal = $('#health_current_value');
 				$('#gold_current_value').text('$' + _stats.find('#gold_current_value_amount').val().replace(/(\d)(?=(\d{3})+\b)/g, '$1,'));
@@ -122,13 +138,13 @@ tools.Page.ajaxPageDone = function() {
 				_ener.next('span').text($('#energy_current_max').val());
 				_heal.text(_stats.find('#health_current_value_amount').val());
 				_heal.next('span').text($('#health_current_max').val());
-				_abc.append($data.filter('script'));
+				//_abc.append($data.filter('script'));
 				firePageURL();
 				centerPopups();
 				startAllTimers();
 				script = $data = null;
 			} else {
-				$('#' + div).html($data.html());
+				$('#' + div).html(noNoSrc($data).html());
 			}
 			centerPopups();
 			if(anchor) {

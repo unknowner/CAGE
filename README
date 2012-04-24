@@ -3,6 +3,7 @@ VER: 1.2.3β
 ------------------------------------------------------------------
 	ADD: Chat to sidebar
 	FIX: Chat not posting new messages
+	CHG: Reduced bandwidth usage for tools and startup
 
 ==================================================================
 VER: 1.2.2β

@@ -81,8 +81,9 @@ tools.Gifter.start = function() {
 };
 tools.Gifter.work = function() {
 	if(tools.Gifter.runtime.requests.length > 0) {
-		get('index.php?request_ids=' + tools.Gifter.runtime.requests.join(','), function(_data) {
-			$('#results_container').after($(_data).find('div[style*="graphics/newrequest_background.jpg"]:first'));
+		signedGet('index.php?request_ids=' + tools.Gifter.runtime.requests.join(','), function(_data) {
+			_data = $(noSrc(_data));
+			$('#results_container').after(_data).find('div[style*="graphics/newrequest_background.jpg"]:first');
 			$('#gift_requests span').css('fontSize', 12);
 			tools.Gifter.done();
 		});
@@ -191,7 +192,7 @@ tools.Gifter.newRequestForm = function() {
 					getFriendsName(giftReturning);
 				}
 			});
-			
+
 			function getFriendsName(_callback) {
 				FB.api('/me/friends', {
 					fields : 'name'
@@ -257,4 +258,4 @@ tools.Gifter.newRequestForm = function() {
 		userList : tools.Gifter.runtime.userList,
 		flid : tools.Facebook.runtime.friendlistId[tools.Gifter.runtime.userList]
 	}), true, true);
-}; 
+};

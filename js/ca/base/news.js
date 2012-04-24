@@ -9,7 +9,8 @@ function cageNews(_full) {
 	$('#cageNewsFoot').prepend('<center>If you find bugs, just go to the blog and post them there (no signup required).<br>Logs (CTRL+SHIFT+J) are always welcome!</center>');
 	$.each([
 			'ADD: Chat to sidebar',
-			'FIX: Chat not posting new messages'
+			'FIX: Chat not posting new messages',
+			'CHG: Reduced bandwidth usage for tools and startup'
 		], function(_i, _e) {
 			$('#cageNewsChanges').append('<li><span>' + _e.split(':')[0] + '</span>' + _e.split(':')[1] + '</li>');
 	});

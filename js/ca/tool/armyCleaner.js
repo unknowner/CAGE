@@ -44,7 +44,7 @@ tools.ArmyCleaner.start = function() {
 tools.ArmyCleaner.readCAArmy = function(_page) {
 	_page = _page ? _page : 1;
 	//console.log('ArmyCleaner - readCAArmy: ', _page);
-	get('army_member.php?page=' + _page, function(_armydata) {
+	signedGet('army_member.php?page=' + _page, function(_armydata) {
 		$('#app_body table.layout table:eq(1)').html($('#app_body table.layout table:eq(1)', _armydata).html());
 		$('#app_body table.layout table:eq(1) div:contains("Displaying"):last').css({
 			'position' : 'absolute',
@@ -84,7 +84,7 @@ tools.ArmyCleaner.removeMember = function(_start) {
 	if(tools.ArmyCleaner.runtime.army.length > 0 && _count > 0) {
 		var _id = tools.ArmyCleaner.runtime.army.pop();
 		tools.ArmyCleaner.runtime.text.text('Removing ' + _count + ' member(s)...');
-		get('army_member.php?action=delete&player_id=' + _id, function() {
+		signedGet('army_member.php?action=delete&player_id=' + _id, function() {
 			tools.ArmyCleaner.removeMember();
 		});
 	} else {

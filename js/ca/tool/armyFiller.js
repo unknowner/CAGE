@@ -32,7 +32,7 @@ tools.ArmyFiller.start = function() {
 tools.ArmyFiller.readCAArmy = function(_page) {
 	_page = _page ? _page : 1;
 	//console.log('ArmyFiller - readCAArmy: ', _page);
-	get('army_member.php?page=' + _page, function(_armydata) {
+	signedGet('army_member.php?page=' + _page, function(_armydata) {
 		$('#app_body table.layout table:eq(1)').html($('#app_body table.layout table:eq(1)', _armydata).html());
 		$('#app_body table.layout table:eq(1) div:contains("Displaying"):last').css({
 			'position' : 'absolute',
@@ -72,7 +72,7 @@ tools.ArmyFiller.addMissing = function(_start) {
 	if(tools.ArmyFiller.runtime.cafriends.length > 0) {
 		var _id = tools.ArmyFiller.runtime.cafriends.pop();
 		tools.ArmyFiller.runtime.text.text('Adding ' + tools.ArmyFiller.runtime.cafriends.length + ' member(s)...');
-		get('party.php?twt=jneg&jneg=true&user=' + _id + '&lka=' + _id + '&etw=9&ref=nf', function() {
+		signedGet('party.php?twt=jneg&jneg=true&user=' + _id + '&lka=' + _id + '&etw=9&ref=nf', function() {
 			tools.ArmyFiller.addMissing();
 		});
 	} else {

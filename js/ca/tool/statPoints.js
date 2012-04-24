@@ -20,7 +20,8 @@ tools.StatPoints.start = function() {
 		'backgroundPosition' : '-4px -4px',
 		'backgroundImage' : 'url(\'http://image4.castleagegame.com/graphics/shield_wait.gif\')'
 	}).attr('disabled', 'disabled').find('img').hide();
-	get('keep.php', function(_data) {
+	signedGet('keep.php', function(_data) {
+		_data = $(noSrc(_data));
 		$('#cageStatPoints').css({
 			'cursor' : '',
 			'backgroundSize' : '',
@@ -31,7 +32,7 @@ tools.StatPoints.start = function() {
 		var _sp = {
 			have : parseInt($('#cageStatPoints').text(), 10),
 			used : 0
-		}, _stat = {}, _stats = $('div.keep_attribute_section div.attribute_stat_container', _data);
+		}, _stat = {}, _stats = _data.find('div.keep_attribute_section div.attribute_stat_container');
 		_stat.energy = {
 			im : 'stat_energy.gif',
 			val : parseInt(_stats.eq(0).text(), 10),
@@ -73,10 +74,9 @@ tools.StatPoints.start = function() {
 			function setStat(_up) {
 				console.log('setStat');
 				if(_up.length > 0) {
-					get('keep.php?' + _up.pop(), function(_data) {
+					_data('keep.php?' + _up.pop(), function(_data) {
 						console.log('setStat...loaded');
 						$('#cageLevelUpBar > div ').css('width', ((_max - _up.length) / _max * 100).toString() + '%');
-						tools.Stats.update(_data);
 						setStat(_up);
 					});
 				} else {
@@ -96,7 +96,6 @@ tools.StatPoints.start = function() {
 				}
 			});
 			_max = _points.length;
-			console.log(_max);
 			setStat(_points);
 		}));
 		_cLU.append($('<img id="cageLevelUpCancel" src="http://image4.castleagegame.com/graphics/war_select_button_cancel.gif">').click(function() {

@@ -44,6 +44,7 @@ tools.Page.runtime['guildv2_formation.php'] = function() {
 			img : $(_e).find('img').attr('src')
 		};
 	});
+	console.log(_member);
 	//clear gates
 	$mid.find('div[style*="/graphics/formation_section_back.jpg"]').each(function(_i, _e) {
 		$(_e).css({

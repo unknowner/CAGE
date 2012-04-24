@@ -11,13 +11,14 @@ tools.Favor.init = function() {
 		$this.attr('src', 'http://image4.castleagegame.com/graphics/shield_wait.gif').mouseleave().attr('disabled', 'disabled');
 		tools.Sidebar.smallDialog('Stamina Refill', 'Do you really want to use 10 favor points to buy a stamina refill?', function() {
 			//ok
-			get('oracle.php?option=1&buychoice=6', function(_oracle) {
+			_oracle('oracle.php?option=1&buychoice=6', function(_oracle) {
+				_oracle = $(_noSrc(_oracle));
 				addFunction(function(data) {
 					cageStat.stamina = data.stamina;
 				}, JSON.stringify({
-					stamina : parseInt($(_oracle).find('span[id="stamina_current_value"]').text(), 10)
+					stamina : parseInt(_oracle.find('span[id="stamina_current_value"]').text(), 10)
 				}), true, true);
-				$('#cageFavorPoints').text($(_oracle).find('div[id="main_bn"] div[style*="persistent_bar_oracle.gif"]').text().trim());
+				$('#cageFavorPoints').text(_oracle.find('div[id="main_bn"] div[style*="persistent_bar_oracle.gif"]').text().trim());
 				$this.attr('src', 'http://image4.castleagegame.com/graphics/stat_stamina.gif').removeAttr('disabled');
 			});
 		}, {
@@ -50,13 +51,14 @@ tools.Favor.init = function() {
 		$this.attr('src', 'http://image4.castleagegame.com/graphics/shield_wait.gif').mouseleave().attr('disabled', 'disabled');
 		tools.Sidebar.smallDialog('Refill Energy', 'Do you really want to use 10 favor points to buy a energy refill?', function() {
 			//ok
-			get('oracle.php?option=2&buychoice=6', function(_oracle) {
+			signedGet('oracle.php?option=2&buychoice=6', function(_oracle) {
+				_oracle = $(_noSrc(_oracle));
 				addFunction(function(data) {
 					cageStat.energy = data.energy;
 				}, JSON.stringify({
-					energy : parseInt($(_oracle).find('span[id="energy_current_value"]').text(), 10)
+					energy : parseInt(_oracle.find('span[id="energy_current_value"]').text(), 10)
 				}), true, true);
-				$('#cageFavorPoints').text($(_oracle).find('div[id="main_bn"] div[style*="persistent_bar_oracle.gif"]').text().trim());
+				$('#cageFavorPoints').text(_oracle.find('div[id="main_bn"] div[style*="persistent_bar_oracle.gif"]').text().trim());
 				$this.attr('src', 'http://image4.castleagegame.com/graphics/stat_energy.gif').removeAttr('disabled');
 			});
 		}, {
@@ -93,7 +95,3 @@ tools.Favor.done = function() {
 		'backgroundImage' : 'url(\'http://image4.castleagegame.com/graphics/favor_icon.jpg\')'
 	}).removeAttr('disabled');
 };
-/*
- demi_symbol_2.gif (army)
- stat_gold.gif
- */

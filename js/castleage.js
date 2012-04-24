@@ -23,11 +23,10 @@ $(document.body).append($('<input>').attr({
 _append = null;
 // Add CAGE container / repos menu / repos chat
 $('#globalContainer').append('<div id="cageSidebar"><div id="cageSidebarHeader"></div><div id="cageSidebarStats"></div><div id="cageSidebarTools"></div><div id="cageSidebarChat"></div><div id="cageSidebarBottom"><a href="http://cagenhancer.blogspot.com/" target="_blank">Blog</a> <a href="http://cagenhancer.blogspot.com/p/manual.html" target="_blank">Manual</a> <a href="http://caaplayer.freeforums.org/c-a-g-e-f29.html" target="_blank">Forum</a> <a href="https://github.com/unknowner/CAGE" target="_blank">GitHub</a></div></div><div id="cageStatsContainer"></div><div id="cageContainer"></div>').prepend($('#expandedGuildChat, #collapsedGuildChat').detach());
-$('#chatGuildChat').scrollTop($('#chatGuildChat div').length * 20);
-CastleAge.startInterval = window.setInterval(function() {
+CastleAge.startInterval = setInterval(function() {
 	if(CastleAge.signed_request !== null && CastleAge.userId !== null) {
-		window.clearInterval(CastleAge.startInterval);
-		window.setInterval(function() {
+		clearInterval(CastleAge.startInterval);
+		setInterval(function() {
 			com.send(com.task.alive, com.port.facebook, null);
 		}, 10000);
 		initTools();
@@ -45,6 +44,7 @@ CastleAge.startInterval = window.setInterval(function() {
 		$('#AjaxLoadIcon').delay(3000).fadeOut(1000, function() {
 			$('#collapsedGuildChat').css('left', '');
 			$('#expandedGuildChat').css('left', '');
+			$('#chatGuildChat').scrollTop($('#chatGuildChat div').length * 20);
 			$('#cageLoadError').remove();
 		});
 	} else {

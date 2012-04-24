@@ -66,6 +66,28 @@ function get(_url, _callback) {
 	$.get(_url + (_url.indexOf('?') > -1 ? '&' : '?') + 'signed_request=' + CastleAge.signed_request, _callback);
 }
 
+//shortcut to jQuery get with signed request reworked
+function signedGet() {
+	arguments[0] = arguments[0] + (arguments[0].indexOf('?') > -1 ? '&' : '?') + 'signed_request=' + CastleAge.signed_request;
+	$.get.apply(this, arguments);
+}
+
+// prevent loading of images
+function noSrc(_t) {
+	var _re = new RegExp('src=', 'gi');
+	_t = _t.replace(_re, 'nosrc=');
+	return _t;
+}
+
+// nsrc > src
+function noNoSrc(_jqo) {
+	_jqo.find('input[nosrc], img[nosrc]').each(function() {
+		var $t = $(this);
+		$t.attr('src', $t.attr('nosrc')).removeAttr('nosrc');
+	});
+	return _jqo;
+}
+
 //shortcut to jQuery post with signed request
 function post(_url, _callback) {
 	$.post(_url + (_url.indexOf('?') > -1 ? '&' : '?') + 'signed_request=' + CastleAge.signed_request, _callback);

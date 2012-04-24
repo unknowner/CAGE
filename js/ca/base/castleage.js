@@ -58,7 +58,7 @@ tools.castleage.init = function() {
 tools.castleage.macBGFix = function() {
 	if(tools.castleage.runtime.macBGFix) {
 		tools.Page.runtime.addOn['tools.castleage.macBGFix'] = function() {
-			window.setTimeout(function() {
+			setTimeout(function() {
 				$('#app_body div').each(function(_i, _e) {
 					if($(this).css('backgroundImage') !== "none") {
 						$(this).css('backgroundImage', $(this).css('backgroundImage'))
@@ -86,6 +86,7 @@ tools.castleage.sidebarGuildChat = function() {
 		$('#chatGuildChatContainer').removeClass('chatGuildChatContainerSidebar');
 		$('#chatGuildChatTextBox').removeClass('chatGuildChatTextBoxSidebar').find('input:last').attr('src', 'http://image4.castleagegame.com/iphone/graphics/ch_button_send.jpg');
 	}
+	$('#chatGuildChat').scrollTop($('#chatGuildChat div').length * 20);
 }
 tools.castleage.scrollGuildChat = function() {
 	if(tools.castleage.runtime.scrollGuildChat === true) {

@@ -105,7 +105,6 @@ tools.Page.runtime['battleStats'] = function() {
 			$this = $(this);
 			if($this.text() !== '') {
 				var _line = $this.find('td:last').text().trim();
-				console.log(_line);
 				if(_dmgType === null) {
 					if(_line === 'Activity') {
 						_dmgType = 'Activity'
@@ -153,7 +152,6 @@ tools.Page.runtime['battleStats'] = function() {
 		} else {
 			$stats.append('<div><span style="display:inline-block;font-weight:bold;width:125px;">Attackers: </span><span style="display:inline-block;width:25px;text-align:right;">' + _attackers + '</span></div>');
 		}
-		console.log('_allDamage', _allDamage);
 		if(_ownDamage !== null) {
 			$stats.before($('<div class="cageMonsterActivity"><span style="display:inline-block;font-weight:bold;width:80px;">My activity</span><span style="display:inline-block;float:right;text-align:right;">' + _ownDamage + '</span></div>').css('bottom', $stats.find('div').length * 13 + 59));
 		}

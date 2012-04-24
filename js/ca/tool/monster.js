@@ -61,10 +61,11 @@ tools.Monster.checkFor = function() {
 	}
 };
 tools.Monster.monster = function() {
-	get('player_monster_list.php', function(_monster) {
+	signedGet('player_monster_list.php', function(_monster) {
+		_monster = $(noSrc(_monster));
 		$('table.layout:first div[style="padding:0 0 15px 0;"] > div', _monster).each(function(_i, _e) {
 			var _e = $(_e);
-			var _img = $('<div class="cageMonsterListItem ui-corner-all">').hide().css('backgroundImage', 'url(' + _e.find('img:first').attr('src') + ')');
+			var _img = $('<div class="cageMonsterListItem ui-corner-all">').hide().css('backgroundImage', 'url(' + _e.find('img:first').attr('nosrc') + ')');
 			var _complete = _e.find('div:contains(Completed!):last').css({
 				'position' : 'absolute',
 				'marginTop' : 14,
@@ -79,14 +80,15 @@ tools.Monster.monster = function() {
 			_img.append('<div class="cageMonsterName">' + _e.find('> div:eq(1) > div:first > div:first').text() + '</div>');
 			_img.append($('<div class="cageMonsterButton">').click(tools.Monster.closeInstant).append(_e.find('> div:eq(2) form')));
 			_img.append('<img class="cageMonsterTag" src="http://image4.castleagegame.com/graphics/monster_button_yourmonster_on.jpg">');
-			$('#cageMonsterContainer').append(_img);
-			$('div.cageMonsterListItem:last').slideDown('slow');
+			$('#cageMonsterContainer').append(noNoSrc(_img));
+			$('div.cageMonsterListItem:last').show();
 		});
 		tools.Monster.checkFor();
 	});
 };
 tools.Monster.festival1 = function() {
-	get('festival_tower.php?tab=monster', function(_festMonster) {
+	signedGet('festival_tower.php?tab=monster', function(_festMonster) {
+		_festMonster = $(noSrc(_festMonster));
 		$('#listDiv > div:not(:last)', _festMonster).each(function(_i, _e) {
 			var _e = $(_e);
 			var _img = _e.find('> div:eq(1)').attr('style', '').find('div[style*="background-image"]:first').addClass('cageMonsterListItem ui-corner-all').hide().empty().unwrap();
@@ -104,14 +106,15 @@ tools.Monster.festival1 = function() {
 			_img.append('<div class="cageMonsterName">' + _e.find('> div:eq(2) > div:first').text() + '</div>');
 			_img.append($('<div class="cageMonsterButton">').click(tools.Monster.closeInstant).append(_e.find('> div:eq(3) a')));
 			_img.append('<img class="cageMonsterTag" src="http://image4.castleagegame.com/graphics/festival_monstertag_tower.gif">');
-			$('#cageMonsterContainer').append(_img);
-			$('div.cageMonsterListItem:last').slideDown('slow');
+			$('#cageMonsterContainer').append(noNoSrc(_img));
+			$('div.cageMonsterListItem:last').show();
 		});
 		tools.Monster.checkFor();
 	});
 };
 tools.Monster.festival2 = function() {
-	get('festival_tower2.php?tab=monster', function(_festMonster) {
+	signedGet('festival_tower.php?tab=monster', function(_festMonster) {
+		_festMonster = $(noSrc(_festMonster));
 		$('#listDiv > div:not(:last)', _festMonster).each(function(_i, _e) {
 			var _e = $(_e);
 			var _img = _e.find('> div:eq(1)').attr('style', '').find('div[style*="background-image"]:first').addClass('cageMonsterListItem ui-corner-all').hide().empty().unwrap();
@@ -129,14 +132,15 @@ tools.Monster.festival2 = function() {
 			_img.append('<div class="cageMonsterName">' + _e.find('> div:eq(2) > div:first').text() + '</div>');
 			_img.append($('<div class="cageMonsterButton">').click(tools.Monster.closeInstant).append(_e.find('> div:eq(3) a')));
 			_img.append('<img class="cageMonsterTag" src="http://image4.castleagegame.com/graphics/festival_monstertag2_tower.gif">');
-			$('#cageMonsterContainer').append(_img);
-			$('div.cageMonsterListItem:last').slideDown('slow');
+			$('#cageMonsterContainer').append(noNoSrc(_img));
+			$('div.cageMonsterListItem:last').show();
 		});
 		tools.Monster.checkFor();
 	});
 };
 tools.Monster.raid = function() {
-	get('raid.php', function(_raids) {
+	signedGet('raid.php', function(_raids) {
+		_raids = $(noSrc(_raids));
 		$('table.layout span', _raids).parent().parent().parent().each(function(_i, _e) {
 			var _e = $(_e);
 			if(_e.text().trim() !== '[START THIS CAMPAIGN]') {
@@ -144,8 +148,8 @@ tools.Monster.raid = function() {
 				var _img = $('<div class="cageMonsterListItem ui-corner-all">').hide().css('backgroundImage', _e.find('> div:eq(1) > div:first').css('backgroundImage'));
 				_img.append('<div class="cageMonsterName">' + $(_e).find('span').text().split(' ')[0] + '</div>');
 				_img.append($('<div class="cageMonsterButton">').click(tools.Monster.closeInstant).append(_e.find('> div:eq(3) a')));
-				$('#cageMonsterContainer').append(_img);
-				$('div.cageMonsterListItem:last').slideDown('slow');
+				$('#cageMonsterContainer').append(noNoSrc(_img));
+				$('div.cageMonsterListItem:last').show();
 			}
 		});
 		tools.Monster.checkFor();
@@ -154,16 +158,16 @@ tools.Monster.raid = function() {
 tools.Monster.conquest = function() {
 	$.each(tools.Monster.runtime.conquestLands, function(_i, _e) {
 		if(_e == true) {
-			get(_i, function(_monster) {
+			signedGet(_i, function(_monster) {
+				_monster = $(noSrc(_monster));
 				$('#guildv2_monster_list_body div[style="padding:10px 0 0 20px;"] > div', _monster).each(function(_i, _e) {
 					var _e = $(_e);
-					var _img = $('<div class="cageMonsterListItem ui-corner-all">').hide().css('backgroundImage', 'url(' + _e.find('img:first').attr('src') + ')');
-					//_img.append('<div class="cageMonsterName">' + _e.find('> div:eq(1) > div:first > div:first').text() + '</div>');
+					var _img = $('<div class="cageMonsterListItem ui-corner-all">').hide().css('backgroundImage', 'url(' + _e.find('img:first').attr('nosrc') + ')');
 					_img.append('<div class="cageMonsterName">' + $('div[id="guildv2_monster_list_top"]:first', _monster).text() + '</div>');
 					_img.append($('<div class="cageMonsterButton">').click(tools.Monster.closeInstant).append(_e.find('> div:eq(2) a')));
 					_img.append('<img class="cageMonsterTag" src="http://image4.castleagegame.com/graphics/war_battle_guildbtllands_on.jpg">');
-					$('#cageMonsterContainer').append(_img);
-					$('div.cageMonsterListItem:last').slideDown('slow');
+					$('#cageMonsterContainer').append(noNoSrc(_img));
+					$('div.cageMonsterListItem:last').show();
 				});
 			});
 		}
