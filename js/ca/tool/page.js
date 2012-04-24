@@ -128,7 +128,7 @@ tools.Page.ajaxPageDone = function() {
 				$('#main_sts').replaceWith(noNoSrc(_sts));
 				$('#main_bntp').replaceWith(noNoSrc($data.find('#main_bntp')));
 				var start2 = new Date();
-				$('#app_body_container').hide().empty().append(noNoSrc($data.find('#app_body_container')).html()).append(noNoSrc($data.filter('div[id]:not(.game)'))).show();
+				$('#app_body_container').hide().empty().append(noNoSrc($data.find('#app_body_container')).html()).append($data.filter('div[id]:not(.game)')).show();
 				// update stats
 				var _stats = $('#main_sts'), _stam = $('#stamina_current_value'), _ener = $('#energy_current_value'), _heal = $('#health_current_value');
 				$('#gold_current_value').text('$' + _stats.find('#gold_current_value_amount').val().replace(/(\d)(?=(\d{3})+\b)/g, '$1,'));
@@ -138,7 +138,7 @@ tools.Page.ajaxPageDone = function() {
 				_ener.next('span').text($('#energy_current_max').val());
 				_heal.text(_stats.find('#health_current_value_amount').val());
 				_heal.next('span').text($('#health_current_max').val());
-				//_abc.append($data.filter('script'));
+				_abc.append($data.filter('script'));
 				firePageURL();
 				centerPopups();
 				startAllTimers();

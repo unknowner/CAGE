@@ -10,6 +10,7 @@ function cageNews(_full) {
 	$.each([
 			'ADD: Chat to sidebar',
 			'FIX: Chat not posting new messages',
+			'FIX: Guild formation displayed in wrong order',
 			'CHG: Reduced bandwidth usage for tools and startup'
 		], function(_i, _e) {
 			$('#cageNewsChanges').append('<li><span>' + _e.split(':')[0] + '</span>' + _e.split(':')[1] + '</li>');

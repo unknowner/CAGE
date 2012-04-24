@@ -92,11 +92,15 @@ tools.Assister.assist = function(_ids) {
 		var _cta = tools.Assister.runtime.CTA.pop(), _num = null;
 		console.log('Assister - Friend: ' + _cta.uid);
 		signedGet(_cta.link, function(_monsterdata) {
+			console.log(_cta.link);
 			_monsterdata = noSrc(_monsterdata);
 			_monsterdata = $(_monsterdata);
-			console.log(_monsterdata.find('span_result.body').text().match(/You were the \d+(?:st|nd|rd|th) to help summon/));
-			if(_monsterdata.find('span_result.body').text().match(/You were the \d+(?:st|nd|rd|th) to help summon/) !== null && _cta.uid !== CastleAge.userId) {
-				_num = /You were the (\d+(?:st|nd|rd|th)) to help summon/.exec(_monsterdata.find('span_result.body').text())[1];
+			console.log(_monsterdata.find('.result_body').text().length);
+			if(_monsterdata.find('.result_body').text().length < 92) {
+				console.log(_monsterdata);
+			}
+			if(_monsterdata.find('.result_body').text().match(/You were the \d+(?:st|nd|rd|th) to help summon/) !== null && _cta.uid !== CastleAge.userId) {
+				_num = /You were the (\d+(?:st|nd|rd|th)) to help summon/.exec(_monsterdata.find('span.result_body').text())[1];
 				console.log(_num);
 				note('Assister', 'You\'ve assisted ' + _cta.name + '.');
 				tools.Assister.runtime.Used++;

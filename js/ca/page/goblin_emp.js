@@ -69,9 +69,10 @@ tools.Page.runtime['goblin_emp.php'] = function() {
 	}));
 	$('#cageHideLocked').prop('checked', _storedHidden);
 
+	$('div.ingredientUnit[id^="gin_"]').addClass('cageGoblinItemGin');
 	$('div.ingredientUnit[id^="gout_"]').each(function(_i, _e) {
 		var $this = $(_e), _click = $this.attr('onclick');
-		$this.data('locked', false).prepend($('<button class="cageGoblinLocked">').button({
+		$this.addClass('cageGoblinItemGout').data('locked', false).prepend($('<button class="cageGoblinLocked">').button({
 			text : false,
 			icons : {
 				primary : 'ui-icon-unlocked'
@@ -98,7 +99,7 @@ tools.Page.runtime['goblin_emp.php'] = function() {
 					$this.hide('slow');
 				}
 			}, 1000);
-		})).css('cursor', '').attr('onclick', '').find('div:last').css('height', 22).find('img:last').click(function() {
+		})).attr('onclick', '').find('div:last').css('height', 22).find('img:last').click(function() {
 			if($this.is(':hidden') === true) {
 				$this.children('button.cageGoblinLocked').hide();
 			} else {

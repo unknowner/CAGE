@@ -2,8 +2,30 @@
 tools.Page.runtime['guildv2_formation.php'] = function() {
 
 	console.log('Page: guildv2_formation.php');
-	var $mid = $('#guildv2_formation_middle'), _member = {}, $change = $mid.find('div[style*="/graphics/war_select_divider.jpg"]');
+	var $mid = $('#guildv2_formation_middle'), _member = [], $change = $mid.find('div[style*="/graphics/war_select_divider.jpg"]');
 
+	// get members
+	var _memb = $mid.find('div[id^="selected_formation_"]').toArray();
+	console.log(_memb);
+	for(var i = 0; i < _memb.length; i++) {
+		console.log($(_memb[i]).attr('id'));
+		_member.push({
+			id : /\d+$/.exec($(_memb[i]).attr('id'))[0],
+			name : $(_memb[i]).text().trim().replace(', lvl ', ' (') + ')',
+			gate : parseInt(/\d/.exec($(_memb[i]).attr('id'))[0], 10),
+			img : $(_memb[i]).find('img').attr('src')
+		});
+	};
+
+	/*$mid.find('div[id^="selected_formation_"]').each(function(_i, _e) {
+	 _member.push({
+	 id : /\d+$/.exec($(this).attr('id'))[0],
+	 name : $(_e).text().trim().replace(', lvl ', ' (') + ')',
+	 gate : parseInt(/\d/.exec($(this).attr('id'))[0], 10),
+	 img : $(_e).find('img').attr('src')
+	 });
+	 });*/
+	console.log(_member);
 	// add saving
 	$change.nextAll().remove();
 	$change.find('a').replaceWith($('<input style="margin-top:9px;" type="image" style="cursor:pointer;" id="cageSaveFormation" src="http://image4.castleagegame.com/graphics/war_select_button_accept.gif">').click(function() {
@@ -36,15 +58,7 @@ tools.Page.runtime['guildv2_formation.php'] = function() {
 		});
 
 	}));
-	// get members
-	$mid.find('div[id^="selected_formation_"]').each(function(_i, _e) {
-		_member[/\d+$/.exec($(this).attr('id'))[0]] = {
-			name : $(_e).text().trim().replace(', lvl ', ' (') + ')',
-			gate : parseInt(/\d/.exec($(this).attr('id'))[0], 10),
-			img : $(_e).find('img').attr('src')
-		};
-	});
-	console.log(_member);
+
 	//clear gates
 	$mid.find('div[style*="/graphics/formation_section_back.jpg"]').each(function(_i, _e) {
 		$(_e).css({
@@ -76,9 +90,11 @@ tools.Page.runtime['guildv2_formation.php'] = function() {
 		}).after('<div class="cageMemberListFooter"><img src="http://image4.castleagegame.com/graphics/guild_feed_rightsubbottom.gif"></div>');
 	});
 	// append members
-	$.each(_member, function(_i, _e) {
-		$('#cageGate' + _e.gate).append($('<div class="cageGuildMember"><img src="' + _e.img + '"><span>' + _e.name + '</span></div>').data('id', parseInt(_i, 10)));
-	});
+	for(var i = 0; i < _member.length; i++) {
+		var _e = _member[i];
+		console.log(_e.name);
+		$('#cageGate' + _e.gate).append($('<div class="cageGuildMember"><img src="' + _e.img + '"><span>' + _e.name + '</span></div>').data('id', _e.id));
+	};
 	// add sorting
 	$('div[id^="cageGate"]').each(function(_i, _e) {
 		$(_e).sortable({
@@ -88,8 +104,6 @@ tools.Page.runtime['guildv2_formation.php'] = function() {
 			connectWith : 'div.cageMemberList',
 			receive : function(event, ui) {
 				if($(this).children().length > 25) {
-					//ui.sender: will cancel the change.
-					//Useful in the 'receive' callback.
 					$(ui.sender).sortable('cancel');
 				}
 			}

@@ -281,9 +281,25 @@ button.cageGoblinLocked {
 	margin-left:8px;
 	border-radius:0;
 	margin-top:0px;
-	border-bottom-right-radius:4px;
 	padding:3px;
-	width:19px;
+	width:19px !important;
+	border-bottom-right-radius:4px;
+	border-top-left-radius:4px;
+}
+div.cageGoblinItemGout {
+	width:75px !important;
+	cursor:default !important;
+}
+div.cageGoblinItemGout div:nth-of-type(2) {
+	margin-top:-20px !important;
+	right:9px !important;
+}
+div.cageGoblinItemGin {
+}
+div.cageGoblinItemGin div:nth-of-type(2) {
+	margin-top:-25px !important;
+	right:7px !important;
+	font-size:11px !important;
 }
 /*
  * Army

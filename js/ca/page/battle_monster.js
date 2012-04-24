@@ -101,18 +101,18 @@ tools.Page.runtime['battleStats'] = function() {
 			dmg : 0,
 			def : 0
 		};
+		if(_dmgType === null) {
+			if($('td.dragonContainer table tr td:eq(1) table tr:eq(1)').find('td:last').text().trim().indexOf('dmg') > -1) {
+				_dmgType = 'dmg'
+			} else {
+				_dmgType = 'Activity'
+			}
+			console.log('_dmgType', _dmgType);
+		}
 		$('td.dragonContainer table tr td:eq(1) table tr').each(function() {
 			$this = $(this);
 			if($this.text() !== '') {
 				var _line = $this.find('td:last').text().trim();
-				if(_dmgType === null) {
-					if(_line === 'Activity') {
-						_dmgType = 'Activity'
-					} else if(_line.indexOf('dmg') > -1) {
-						_dmgType = 'dmg'
-					}
-					console.log('_dmgType', _dmgType);
-				}
 				if(isNaN(parseInt(_line.replace(/\D/g, ''))) === false) {
 					if(_dmgType === 'dmg') {
 						_allDamage['dmg'] += parseInt(_line.split('/')[0].replace(/\D/g, ''));

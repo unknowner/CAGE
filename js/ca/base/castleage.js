@@ -49,6 +49,16 @@ tools.castleage.runtimeUpdate = function() {
 tools.castleage.init = function() {
 	tools.castleage.runtimeUpdate();
 	// chat in sidebar button > guild logo in expanded chat
+	$('#guildChatActiveMembers').parent().css({
+		'padding' : '11px 0 0 3px',
+		'fontSize' : 10,
+		'cursor' : 'pointer'
+	}).html('Chat to sidebar<span id="guildChatActiveMembers"></span>').click(function() {
+		tools.castleage.runtime.sidebarGuildChat = !tools.castleage.runtime.sidebarGuildChat;
+		item.set('sidebarGuildChat', tools.castleage.runtime.sidebarGuildChat);
+		tools.castleage.sidebarGuildChat();
+	});
+	;
 	$('#chatHeader img:first').attr('title', 'Move guild chat to sidebar and back.').css('cursor', 'pointer').click(function() {
 		tools.castleage.runtime.sidebarGuildChat = !tools.castleage.runtime.sidebarGuildChat;
 		item.set('sidebarGuildChat', tools.castleage.runtime.sidebarGuildChat);

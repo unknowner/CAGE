@@ -3,6 +3,7 @@ VER: 1.2.3β
 ------------------------------------------------------------------
 	ADD: Chat to sidebar
 	FIX: Chat not posting new messages
+	FIX: Guild formation displayed in wrong order
 	CHG: Reduced bandwidth usage for tools and startup
 
 ==================================================================
