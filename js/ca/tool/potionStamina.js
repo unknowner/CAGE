@@ -1,21 +1,22 @@
 tool('PotionStamina');
 
 tools.PotionStamina.start = function() {
-	signedGet('keep.php', {
+	$.post('keep.php', {
 		'consume' : true,
 		'item' : 2,
 		'ajax' : 1,
 		'signed_request' : CastleAge.signed_request
 	}, function(_data) {
-		_data = $(noSrc(_data));
-		if(_data.find('span.result_body:contains("You consumed")').length > 0) {
+		_data = noSrc(_data);
+		tools.PotionStamina.work(_data);
+		console.log($(_data).find('span.result_body'));
+		if($(_data).find('span.result_body:contains("You consumed")').length > 0) {
 			addFunction(function(data) {
 				cageStat.stamina = data.stamina;
 			}, JSON.stringify({
 				stamina : parseInt($('#stamina_current_value').text(), 10) + 10
 			}), true, true);
 		}
-		tools.PotionStamina.work(_data);
 	});
 };
 // Parse keep for stamina potions

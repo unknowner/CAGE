@@ -11,8 +11,8 @@ tools.Favor.init = function() {
 		$this.attr('src', 'http://image4.castleagegame.com/graphics/shield_wait.gif').mouseleave().attr('disabled', 'disabled');
 		tools.Sidebar.smallDialog('Stamina Refill', 'Do you really want to use 10 favor points to buy a stamina refill?', function() {
 			//ok
-			_oracle('oracle.php?option=1&buychoice=6', function(_oracle) {
-				_oracle = $(_noSrc(_oracle));
+			signedGet('oracle.php?option=1&buychoice=6', function(_oracle) {
+				_oracle = $(noSrc(_oracle));
 				addFunction(function(data) {
 					cageStat.stamina = data.stamina;
 				}, JSON.stringify({
@@ -52,7 +52,7 @@ tools.Favor.init = function() {
 		tools.Sidebar.smallDialog('Refill Energy', 'Do you really want to use 10 favor points to buy a energy refill?', function() {
 			//ok
 			signedGet('oracle.php?option=2&buychoice=6', function(_oracle) {
-				_oracle = $(_noSrc(_oracle));
+				_oracle = $(noSrc(_oracle));
 				addFunction(function(data) {
 					cageStat.energy = data.energy;
 				}, JSON.stringify({

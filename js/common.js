@@ -72,6 +72,12 @@ function signedGet() {
 	$.get.apply(this, arguments);
 }
 
+//shortcut to jQuery get with signed request reworked
+function signedPost() {
+	arguments[0] = arguments[0] + (arguments[0].indexOf('?') > -1 ? '&' : '?') + 'signed_request=' + CastleAge.signed_request;
+	$.post.apply(this, arguments);
+}
+
 // prevent loading of images
 function noSrc(_t) {
 	var _re = new RegExp('src=', 'gi');

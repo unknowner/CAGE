@@ -83,7 +83,7 @@ tools.Gifter.work = function() {
 	if(tools.Gifter.runtime.requests.length > 0) {
 		signedGet('index.php?request_ids=' + tools.Gifter.runtime.requests.join(','), function(_data) {
 			_data = $(noSrc(_data));
-			$('#results_container').after(_data).find('div[style*="graphics/newrequest_background.jpg"]:first');
+			$('#results_container').after(noNoSrc(_data.find('div[style*="graphics/newrequest_background.jpg"]:first')));
 			$('#gift_requests span').css('fontSize', 12);
 			tools.Gifter.done();
 		});

@@ -105,7 +105,7 @@ tools.Page.get_cached_ajax = function() {
 						$('#globalContainer').html(data);
 					}
 					startAllTimers();
-					FB.XFBML.parse(document.getElementById('globalContainer'));
+					setTimeout(FB.XFBML.parse, 1, [document.getElementById('globalContainer')]);
 					firePageURL();
 					centerPopups();
 				}
@@ -128,7 +128,7 @@ tools.Page.ajaxPageDone = function() {
 				$('#main_sts').replaceWith(noNoSrc(_sts));
 				$('#main_bntp').replaceWith(noNoSrc($data.find('#main_bntp')));
 				var start2 = new Date();
-				$('#app_body_container').hide().empty().append(noNoSrc($data.find('#app_body_container')).html()).append($data.filter('div[id]:not(.game)')).show();
+				$('#app_body_container').hide().empty().append(noNoSrc($data.find('#app_body_container')).html()).append(noNoSrc($data.filter('div[id]:not(.game)'))).show();
 				// update stats
 				var _stats = $('#main_sts'), _stam = $('#stamina_current_value'), _ener = $('#energy_current_value'), _heal = $('#health_current_value');
 				$('#gold_current_value').text('$' + _stats.find('#gold_current_value_amount').val().replace(/(\d)(?=(\d{3})+\b)/g, '$1,'));
@@ -153,9 +153,7 @@ tools.Page.ajaxPageDone = function() {
 				}, 'slow');
 			}
 			startAllTimers();
-			setTimeout(function() {
-				FB.XFBML.parse(document.getElementById(div));
-			}, 1);
+			setTimeout(FB.XFBML.parse, 1, [document.getElementById('globalContainer')]);
 			_stats = _stam = _ener = heal = null;
 			$('#AjaxLoadIcon').fadeOut();
 		} else {

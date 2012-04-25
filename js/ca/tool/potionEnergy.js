@@ -1,21 +1,22 @@
 tool('PotionEnergy');
 
 tools.PotionEnergy.start = function() {
-	signedGet('keep.php', {
+	$.post('keep.php', {
 		'consume' : true,
 		'item' : 1,
 		'ajax' : 1,
 		'signed_request' : CastleAge.signed_request
 	}, function(_data) {
-		_data = $(noSrc(_data));
-		if(_data.find('span.result_body:contains("You consumed")').length > 0) {
+		_data = noSrc(_data);
+		tools.PotionEnergy.work(_data);
+		console.log($(_data).find('span.result_body'));
+		if($(_data).find('span.result_body:contains("You consumed")').length > 0) {
 			addFunction(function(data) {
 				cageStat.energy = data.energy;
 			}, JSON.stringify({
 				energy : parseInt($('#energy_current_value').text(), 10) + 10
 			}), true, true);
 		}
-		tools.PotionEnergy.work(_data);
 	});
 };
 // Parse keep for Energy potions

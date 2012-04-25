@@ -74,6 +74,11 @@ img.cageQuestSanoSwitch:hover {
 	border:1px inset;
 	opacity:1;
 }
+img.cageQuestPic {
+	height:60px;
+	width:98px;
+	border-radius:5px;
+}
 /*
  * Guild profile pics link
  */

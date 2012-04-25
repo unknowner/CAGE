@@ -113,7 +113,7 @@ tools.Monster.festival1 = function() {
 	});
 };
 tools.Monster.festival2 = function() {
-	signedGet('festival_tower.php?tab=monster', function(_festMonster) {
+	signedGet('festival_tower2.php?tab=monster', function(_festMonster) {
 		_festMonster = $(noSrc(_festMonster));
 		$('#listDiv > div:not(:last)', _festMonster).each(function(_i, _e) {
 			var _e = $(_e);

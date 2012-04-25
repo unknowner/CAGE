@@ -23,4 +23,9 @@ tools.Page.runtime['quests.php'] = function() {
 			tools.General.setByName('Sano');
 		}));
 	}
+	/*
+	 $('#expandQuestStory').replaceWith($('div.title_tab, div.title_tab_selected').find('img').addClass('cageQuestPic').detach());
+	 $('div[id^=stage_set_]').remove();
+	 _q = _xp = null;
+	 */
 };

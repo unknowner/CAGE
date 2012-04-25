@@ -74,7 +74,7 @@ tools.StatPoints.start = function() {
 			function setStat(_up) {
 				console.log('setStat');
 				if(_up.length > 0) {
-					_data('keep.php?' + _up.pop(), function(_data) {
+					signedGet('keep.php?' + _up.pop(), function(_data) {
 						console.log('setStat...loaded');
 						$('#cageLevelUpBar > div ').css('width', ((_max - _up.length) / _max * 100).toString() + '%');
 						setStat(_up);
