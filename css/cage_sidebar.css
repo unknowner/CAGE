@@ -15,6 +15,7 @@
     width: 200px;
     background-image: url('http://image4.castleagegame.com/graphics/class_submenu_middle.jpg');
     background-position: -441px 0;
+    position: relative;
 }
 #cageSidebarStats {
     background-image: url('http://image4.castleagegame.com/graphics/class_submenu_middle.jpg');
@@ -25,6 +26,7 @@
 }
 #cageSidebarTools {
     width: 190px;
+    position: relative;
     background-image: url('http://image4.castleagegame.com/graphics/class_submenu_middle.jpg');
     background-position: -441px 0;
     padding: 0 5px 8px 5px;
@@ -53,11 +55,11 @@
 /*
  * Hide siebar sections
  */
-#cageSidebarStatsHider {
+.cageSidebarSectionHider {
     position: absolute;
-    top: -7px;
+    top: -2px;
     left: 1px;
-    z-index: 1;
+    z-index: 10;
     background-color: #000;
     border-radius: 50px;
     opacity: 0;
@@ -65,9 +67,9 @@
     height: 16px;
     width: 16px;
 }
-#cageSidebarStatsHiderText {
+.cageSidebarSectionHiderText {
     position: absolute;
-    top: -8px;
+    top: -2px;
     left: 20px;
 }
 /*

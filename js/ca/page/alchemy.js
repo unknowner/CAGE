@@ -20,11 +20,11 @@ tools.Page.runtime['alchemy.php'] = function() {
 		'marginLeft' : -31,
 		'marginTop' : -2
 	})).append($('<div id="cageHideRecipe"><img src="http://image4.castleagegame.com/graphics/boss_lotus_help2.gif"><span></span><span>Hide incomplete recipes</span></div>').toggle(function() {
-		$('#recipe_list').find('div.alchemyRecipeBackMonster:has(div.missing), div.alchemyQuestBack:has(div.missing), div.alchemyRecipeBackClass:has(div.missing), div.alchemyRecipeBack:has(div.missing)').hide();
+		$('#recipe_list').find('div.alchemyRecipeBackMonster:has(div.missing), div.alchemyQuestBack:has(div.missing), div.alchemyRecipeBackClass:has(div.missing), div.alchemyRecipeBack:has(div.missing)').addClass('cageHideIncomplete');
 		$('#cageHideRecipe').find('span:first').html('&#10003').end().children('img').attr('src', 'http://image4.castleagegame.com/graphics/boss_lotus_help3.gif');
 		item.set('cagePageAlchemyHideIncomplete', true);
 	}, function() {
-		$('#recipe_list').find('div.alchemyRecipeBackMonster:has(div.missing), div.alchemyQuestBack:has(div.missing), div.alchemyRecipeBackClass:has(div.missing), div.alchemyRecipeBack:has(div.missing)').css('display', '');
+		$('#recipe_list').find('div.alchemyRecipeBackMonster:has(div.missing), div.alchemyQuestBack:has(div.missing), div.alchemyRecipeBackClass:has(div.missing), div.alchemyRecipeBack:has(div.missing)').removeClass('cageHideIncomplete');
 		$('#cageHideRecipe').find('span:first').html('').end().children('img').attr('src', 'http://image4.castleagegame.com/graphics/boss_lotus_help2.gif');
 		item.set('cagePageAlchemyHideIncomplete', false);
 	}));
@@ -65,53 +65,53 @@ tools.Page.runtime['alchemy.php'] = function() {
 			}
 		});
 		_ingredients = $ingredientUnit = null;
-
-		// pinned
-		$('#recipe_list td.statsTMainback').children('div:not(:last)').prepend('<div class="cagePinItem"><img src="http://image4.castleagegame.com/graphics/boss_lotus_help2.gif"><span></span><span>Pin item</span></div>');
-		$('div.cagePinItem').click(function() {
-			var $this = $(this), _storedPinned = item.get('cagePageAlchemyPinned', []), _alch = $this.parent().find('.recipeTitle').contents().first().text().trim(), _index = _storedPinned.indexOf(_alch);
-			console.log(_alch);
-			if(_index === -1) {
-				_storedPinned.push(_alch);
-				item.set('cagePageAlchemyPinned', _storedPinned);
-				var _c = $this.parent().clone(true);
-				_c.addClass('cagePinedItemContainer').find('img[src="http://image4.castleagegame.com/graphics/boss_lotus_help2.gif"]').attr('src', 'http://image4.castleagegame.com/graphics/boss_lotus_help3.gif');
-				_c.find('span:first').html('&#10003').end().find('span:last').text('Unpin item');
-				$('#cagePinnedItems').append(_c);
-				$this.parent().addClass('cageHidePinnedItem');
-			} else {
-				_storedPinned.splice(_index, 1);
-				item.set('cagePageAlchemyPinned', _storedPinned);
-				$this.parent().remove();
-				$('#recipe_list td.statsTMainback').children('div').find('.recipeTitle:contains(' + _alch + ')').parent().parent().removeClass('cageHidePinnedItem');
-			}
-		});
-		$('#recipe_list').before($('<div id="cagePinnedItems" style="margin: 10px 16px -16px 10px;"></div>').css({
-			'max-height' : 375,
-			'overflowY' : 'auto',
-			'overflowX' : 'hidden',
-			'background' : 'rgba(0,0,0,0.5)',
-			'padding' : 12,
-			'margin' : '10px 0 0 0',
-			'width' : 693,
-			'boxShadow' : '0 0 10px #000, 0 0 10px #000 inset',
-			'borderRadius' : 15,
-			'position' : 'relative'
-		}));
-		var _storedPinned = item.get('cagePageAlchemyPinned', []);
-		$('#recipe_list td.statsTMainback').children('div').each(function(_i, _e) {
-			var $this = $(this), $title = $this.find('.recipeTitle');
-			if(_storedPinned.indexOf($title.contents().first().text().trim()) >= 0) {
-				var _c = $this.clone(true);
-				_c.addClass('cagePinedItemContainer').find('img[src="http://image4.castleagegame.com/graphics/boss_lotus_help2.gif"]').attr('src', 'http://image4.castleagegame.com/graphics/boss_lotus_help3.gif');
-				$('#cagePinnedItems').append(_c);
-				$this.addClass('cageHidePinnedItem');
-			} else {
-				_storedPinned.splice(_storedPinned.indexOf($title.contents().first().text().trim()), 1);
-			}
-		});
-		item.set('cagePageAlchemyPinned', _storedPinned);
-	}, 100);
+	}, 50);
+	// pinned
+	$('#recipe_list td.statsTMainback').children('div:not(:last)').prepend('<div class="cagePinItem"><img src="http://image4.castleagegame.com/graphics/boss_lotus_help2.gif"><span></span><span>Pin item</span></div>');
+	$('div.cagePinItem').click(function() {
+		var $this = $(this), _storedPinned = item.get('cagePageAlchemyPinned', []), _alch = $this.parent().find('.recipeTitle').contents().first().text().trim(), _index = _storedPinned.indexOf(_alch);
+		console.log(_alch);
+		if(_index === -1) {
+			_storedPinned.push(_alch);
+			item.set('cagePageAlchemyPinned', _storedPinned);
+			var _c = $this.parent().clone(true);
+			console.log(_c);
+			_c.removeClass('cageHideIncomplete').addClass('cagePinedItemContainer').find('img[src="http://image4.castleagegame.com/graphics/boss_lotus_help2.gif"]').attr('src', 'http://image4.castleagegame.com/graphics/boss_lotus_help3.gif');
+			_c.find('span:first').html('&#10003').end().find('span:last').text('Unpin item');
+			$('#cagePinnedItems').append(_c);
+			$this.parent().addClass('cageHidePinnedItem');
+		} else {
+			_storedPinned.splice(_index, 1);
+			item.set('cagePageAlchemyPinned', _storedPinned);
+			$this.parent().remove();
+			$('#recipe_list td.statsTMainback').children('div').find('.recipeTitle:contains(' + _alch + ')').parent().parent().removeClass('cageHidePinnedItem');
+		}
+	});
+	$('#recipe_list').before($('<div id="cagePinnedItems" style="margin: 10px 16px -16px 10px;"></div>').css({
+		'max-height' : 375,
+		'overflowY' : 'auto',
+		'overflowX' : 'hidden',
+		'background' : 'rgba(0,0,0,0.5)',
+		'padding' : 12,
+		'margin' : '10px 0 0 0',
+		'width' : 693,
+		'boxShadow' : '0 0 10px #000, 0 0 10px #000 inset',
+		'borderRadius' : 15,
+		'position' : 'relative'
+	}));
+	var _storedPinned = item.get('cagePageAlchemyPinned', []), _storedNew = [];
+	$('#recipe_list td.statsTMainback').children('div').each(function(_i, _e) {
+		var $this = $(this), $title = $this.find('.recipeTitle');
+		if(_storedPinned.indexOf($title.contents().first().text().trim()) >= 0) {
+			_storedNew.push(_storedPinned[_storedPinned.indexOf($title.contents().first().text().trim())]);
+			var _c = $this.clone(true);
+			_c.removeClass('cageHideIncomplete').addClass('cagePinedItemContainer').find('img[src="http://image4.castleagegame.com/graphics/boss_lotus_help2.gif"]').attr('src', 'http://image4.castleagegame.com/graphics/boss_lotus_help3.gif');
+			$('#cagePinnedItems').append(_c);
+			$this.addClass('cageHidePinnedItem');
+		}
+	});
+	item.set('cagePageAlchemyPinned', _storedNew);
+	_storedPinned = _storedNew = null;
 
 	// remove some stuff
 	$('div.alchemySpaceRecipe, div.alchemySpaceClass, div.alchemySpaceMonster, div.alchemySpaceQuest').remove();

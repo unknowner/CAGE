@@ -395,6 +395,9 @@ div.cagePinItem {
     left: 4px;
     color: #000;
 }
+div.cageHideIncomplete {
+    display: none !important;
+}
 div.cageHidePinnedItem {
     display: none !important;
 }
