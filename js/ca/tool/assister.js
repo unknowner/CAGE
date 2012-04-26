@@ -95,10 +95,7 @@ tools.Assister.assist = function(_ids) {
 			console.log(_cta.link);
 			_monsterdata = noSrc(_monsterdata);
 			_monsterdata = $(_monsterdata);
-			console.log(_monsterdata.find('.result_body').text().length);
-			if(_monsterdata.find('.result_body').text().length < 92) {
-				console.log(_monsterdata);
-			}
+			console.log(_monsterdata.find('.result_body').text());
 			if(_monsterdata.find('.result_body').text().match(/You were the \d+(?:st|nd|rd|th) to help summon/) !== null && _cta.uid !== CastleAge.userId) {
 				_num = /You were the (\d+(?:st|nd|rd|th)) to help summon/.exec(_monsterdata.find('span.result_body').text())[1];
 				console.log(_num);

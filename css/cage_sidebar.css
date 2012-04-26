@@ -30,10 +30,12 @@
     padding: 0 5px 8px 5px;
 }
 #cageSidebarChat {
+    height: 150px;
     width: 190px;
     background-image: url('http://image4.castleagegame.com/graphics/class_submenu_middle.jpg');
     background-position: -441px 0;
-    padding: 0 5px 8px 5px;
+    padding: 0 5px 32px 5px;
+    display: none;
 }
 #cageSidebarBottom {
     background-image: url('http://image4.castleagegame.com/graphics/class_submenu_bottom.gif');
@@ -47,6 +49,26 @@
     font-weight: bold;
     font-size: 12px;
     margin: 0 5px 0 0;
+}
+/*
+ * Hide siebar sections
+ */
+#cageSidebarStatsHider {
+    position: absolute;
+    top: -7px;
+    left: 1px;
+    z-index: 1;
+    background-color: #000;
+    border-radius: 50px;
+    opacity: 0;
+    cursor: pointer;
+    height: 16px;
+    width: 16px;
+}
+#cageSidebarStatsHiderText {
+    position: absolute;
+    top: -8px;
+    left: 20px;
 }
 /*
  * Sidebar dialog small
@@ -258,4 +280,55 @@ div.cageSidebarStat {
 #cageStatsFavor span > input:hover {
     box-shadow: 0 5px 8px 3px #000;
     z-index: 1;
+}
+/*
+ *  Chat in sidebar
+ */
+.chatGuildChatSidebar {
+    font-size: 11px !important;
+    width: 174px !important;
+    position: relative;
+    padding: 0 0px 0 2px !important;
+    border: 1px inset;
+    border-radius: 5px;
+    background-color: rgba(0,0,0,0.7);
+}
+.chatGuildChatContainerSidebar {
+}
+.chatGuildChatTextBoxSidebar {
+}
+.chatGuildChatTextBoxSidebar > div > div:first-of-type {
+    margin: 4px 0 0 0px !important;
+    width: 164px !important;
+}
+.chatGuildChatTextBoxSidebar > div > div:first-of-type > input {
+    width: 160px !important;
+    height: 18px !important;
+    font-size: 11px !important;
+    border-radius: 5px !important;
+    box-shadow: 0 2px 5px #000 inset;
+}
+.chatGuildChatTextBoxSidebar > div > div:nth-of-type(2) {
+    padding: 4px 0 0 0 !important;
+}
+.chatGuildChatTextBoxSidebar > div > div:nth-of-type(2) > input {
+    width: 14px !important;
+    height: 18px !important;
+}
+#chatGuildChatSizeHandle {
+    background-image: url('http://image4.castleagegame.com/graphics/class_submenu_middle.jpg');
+    background-position: -441px 0;
+    height: 7px;
+}
+#chatGuildChatSizeHandle > hr {
+    width: 111px;
+    margin-right: 61px;
+    border-top: 1px solid;
+    border-left: 0;
+    border-bottom: 1px solid;
+    border-right: 0;
+    height: 1px;
+    border-color: #fff;
+    border-width: 1px;
+    margin-top: 0px;
 }

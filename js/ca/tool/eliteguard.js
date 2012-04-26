@@ -35,7 +35,7 @@ tools.Eliteguard.work = function() {
 			if(_guarddata.find('span.result_body').text().match(/YOUR Elite Guard is FULL!/i)) {
 				tools.Eliteguard.done();
 			} else {
-				tools.Eliteguard.work();
+				setTimeout(tools.Eliteguard.work, 100);
 			}
 		});
 	} else {

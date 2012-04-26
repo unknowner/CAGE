@@ -52,7 +52,7 @@ tools.Monster.start = function() {
 };
 tools.Monster.checkFor = function() {
 	if(tools.Monster.runtime.checkFor !== undefined && tools.Monster.runtime.checkFor.length > 0) {
-		tools.Monster[tools.Monster.runtime.checkFor.shift()]();
+		setTimeout(tools.Monster[tools.Monster.runtime.checkFor.shift()], 100);
 	} else {
 		$('#cageMonsterReload').text('Reload').click(function() {
 			tools.Monster.runtime.listFilled = false;

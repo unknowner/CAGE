@@ -153,7 +153,9 @@ tools.Page.ajaxPageDone = function() {
 				}, 'slow');
 			}
 			startAllTimers();
-			setTimeout(FB.XFBML.parse, 1, [document.getElementById('globalContainer')]);
+			setTimeout(function() {
+				FB.XFBML.parse(document.getElementById('globalContainer'));
+			}, 1);
 			_stats = _stam = _ener = heal = null;
 			$('#AjaxLoadIcon').fadeOut();
 		} else {

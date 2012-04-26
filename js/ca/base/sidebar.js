@@ -1,5 +1,26 @@
 new tool('Sidebar');
 
+tools.Sidebar.init = function() {
+
+	$('#cageSidebarStats').hover(function() {
+		$('#cageSidebarStatsHider').stop().animate({
+			opacity : 1
+		}, 'fast');
+	}, function() {
+		$('#cageSidebarStatsHider').stop().animate({
+			opacity : 0
+		}, 'slow');
+	});
+	$('#cageSidebarStatsHider').toggle(function() {
+		$(this).removeClass('ui-icon-circle-triangle-n').addClass('ui-icon-circle-triangle-s');
+		$('#cageSidebarStats').css('height', 4).children('.cageSidebarStat').hide().end().append('<div id="cageSidebarStatsHiderText">Stats...</div>');
+	}, function() {
+		$(this).removeClass('ui-icon-circle-triangle-s').addClass('ui-icon-circle-triangle-n');
+		$('#cageSidebarStatsHiderText').remove();
+		$('#cageSidebarStats').css('height', '').children('.cageSidebarStat').show();
+	});
+};
+
 tools.Sidebar.button = {
 
 	add : function(_id, _text, _call) {
