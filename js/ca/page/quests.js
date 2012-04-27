@@ -1,6 +1,7 @@
 // quests
 tools.Page.runtime['quests.php'] = function() {
 
+	console.log('Page: quests.php');
 	// Add XP/Eng ratio to quests
 	var _xp = $('div.qd_2 > b, div.qd_2_sub > b');
 	$('div.quest_req, div.quest_req_sub').each(function(_i, _e) {
@@ -19,7 +20,7 @@ tools.Page.runtime['quests.php'] = function() {
 	});
 	// Add sano to subquests
 	if(tools.General.runtime.general.Sano) {
-		$('div.quest_start_sub').append($('<img class="cageQuestSanoSwitch" src="http://image4.castleagegame.com/graphics/hero_sano.jpg">').click(function() {
+		$('div.quest_start_sub').prepend($('<img class="cageQuestSanoSwitch" src="http://image4.castleagegame.com/graphics/hero_sano.jpg">').click(function() {
 			tools.General.setByName('Sano');
 		}));
 	}

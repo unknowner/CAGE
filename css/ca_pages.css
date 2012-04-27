@@ -61,14 +61,13 @@
  * Quests
  */
 img.cageQuestSanoSwitch {
-    position: relative;
+    position: absolute;
     cursor: pointer;
     height: 31px;
     border-radius: 5px;
     margin-left: -35px;
     border: 1px outset;
     opacity: 0.8;
-    top: -33px;
 }
 img.cageQuestSanoSwitch:hover {
     border: 1px inset;
