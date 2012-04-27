@@ -1588,16 +1588,48 @@ tools.Page.runtime['oracle.php'] = function() {
 			n : "Gaia Bracer",
 			a : 25,
 			d : 25,
-			i : " +1 Attack to Kanbe",
+			i : "+1 Attack to Kanbe",
 			p : "eq_kanbe_gloves",
 			t : 7
 		}, {
 			b : 227,
-			n : "Recollection ",
+			n : "Recollection",
 			a : 20,
 			d : 35,
-			i : "+5 Stamina when Kanbe is equipped. ",
+			i : "+5 Stamina when Kanbe is equipped.",
 			p : "eq_kanbe_amulet",
+			t : 2
+		}]
+	}, {
+		b : 228,
+		n : "Zolthar",
+		a : 22,
+		d : 27,
+		i : "Physical Resistance And Earth Defense",
+		p : "hero_zolthar",
+		e : [{
+			b : 229,
+			n : "Might of Krios",
+			a : 28,
+			d : 25,
+			i : "+3 Attack to Zolthar",
+			p : "eq_zolthar_weapon",
+			t : 3
+		}, {
+			b : 230,
+			n : "Krios Plate",
+			a : 23,
+			d : 28,
+			i : "+3 Defense to Zolthar",
+			p : "eq_zolthar_armor",
+			t : 6
+		}, {
+			b : 231,
+			n : "Amulet of Krios ",
+			a : 20,
+			d : 25,
+			i : "+6 Stamina when Zolthar is equipped",
+			p : "eq_zolthar_amulet",
 			t : 2
 		}]
 	}];
