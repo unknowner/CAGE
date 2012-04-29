@@ -1,5 +1,5 @@
 // quests
-tools.Page.runtime['quests.php'] = function() {
+tools.Page.pages['quests.php'] = function() {
 
 	console.log('Page: quests.php');
 	// Add XP/Eng ratio to quests

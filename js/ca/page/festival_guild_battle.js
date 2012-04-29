@@ -1,5 +1,5 @@
 // Festival battle
-tools.Page.runtime['festival_guild_battle.php'] = function() {
+tools.Page.pages['festival_guild_battle.php'] = function() {
 
 	console.log('Reworking data: festival_guild_battle');
 

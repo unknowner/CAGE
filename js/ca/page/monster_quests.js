@@ -1,5 +1,5 @@
 // monsterquests
-tools.Page.runtime['monster_quests.php'] = function() {
+tools.Page.pages['monster_quests.php'] = function() {
 
 	console.log('Page: monster_quests.php');
 	// Add XP/Eng ratio to quests

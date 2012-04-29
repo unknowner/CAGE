@@ -1,5 +1,5 @@
 // Goblin Emporium
-tools.Page.runtime['goblin_emp.php'] = function() {
+tools.Page.pages['goblin_emp.php'] = function() {
 
 	console.log('Page: goblin_emp.php');
 	// fix rolling

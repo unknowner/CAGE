@@ -1,5 +1,5 @@
 // Alchemy
-tools.Page.runtime['alchemy.php'] = function() {
+tools.Page.pages['alchemy.php'] = function() {
 
 	// CSS stuff
 	$('div.statsT2 div.statsTTitle_inc').text($('div.statsT2 div.statsTTitle_inc').text().toLowerCase());

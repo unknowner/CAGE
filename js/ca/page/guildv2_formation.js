@@ -1,5 +1,5 @@
 // Goblin Emporium
-tools.Page.runtime['guildv2_formation.php'] = function() {
+tools.Page.pages['guildv2_formation.php'] = function() {
 
 	console.log('Page: guildv2_formation.php');
 	var $mid = $('#guildv2_formation_middle'), _member = [], $change = $mid.find('div[style*="/graphics/war_select_divider.jpg"]');

@@ -1,5 +1,6 @@
 tool('Page');
 tools.Page.runtime = {};
+tools.Page.pages = {};
 tools.Page.init = function() {
 	addFunction(tools.Page.get_cached_ajax, null, true, true);
 	addFunction(tools.Page.ajaxLinkSend, null, true, true);
@@ -26,9 +27,9 @@ tools.Page.init = function() {
 	customEvent('PageURL', function(_evt) {
 		var _page = $('#PageURL').val();
 		tools.Page.runtime.allPages();
-		if(tools.Page.runtime[_page]) {
+		if(tools.Page.pages[_page]) {
 			var start = new Date();
-			tools.Page.runtime[_page]();
+			tools.Page.pages[_page]();
 			console.log('Time to mod', _page, ':', (new Date() - start));
 		}
 		tools.General.get();
@@ -104,8 +105,8 @@ tools.Page.get_cached_ajax = function() {
 					} else {
 						$('#globalContainer').html(data);
 					}
-					startAllTimers();
 					setTimeout(FB.XFBML.parse, 1, [document.getElementById('globalContainer')]);
+					startAllTimers();
 					firePageURL();
 					centerPopups();
 				}

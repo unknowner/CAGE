@@ -1,5 +1,5 @@
 // Conquest battle
-tools.Page.runtime['guildv2_conquest_expansion.php'] = function() {
+tools.Page.pages['guildv2_conquest_expansion.php'] = function() {
 
 	console.log('Page: guildv2_conquest_expansion.php');
 	var _defenderHealth = 0, _actions = parseInt(/\d+/.exec($('#app_body div:contains("ACTIONS LEFT:"):last').text()), 10);

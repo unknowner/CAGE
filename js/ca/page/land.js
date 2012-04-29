@@ -1,5 +1,5 @@
 // Land
-tools.Page.runtime['land.php'] = function() {
+tools.Page.pages['land.php'] = function() {
 
 	console.log('Page: land.php');
 	$('div[style*="/graphics/town_header_land.jpg"]:first').after('<div id="cagePinHere" style="font-family: sans-serif;font-size: 15px;background-image: url(http://image4.castleagegame.com/graphics/town_land_bar.jpg);width: 740px;height: 93px;margin-top: 5px;"><div style="padding: 25px 0 0 185px;width: 238px;font-weight: bold;text-align: center;">Pin an item with the + on each item</div></div>');

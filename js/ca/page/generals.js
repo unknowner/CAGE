@@ -1,5 +1,5 @@
 // generals
-tools.Page.runtime['generals.php'] = function() {
+tools.Page.pages['generals.php'] = function() {
 
 	console.log('Page: generals.php');
 

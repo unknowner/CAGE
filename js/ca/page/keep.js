@@ -1,5 +1,5 @@
 // Keep
-tools.Page.runtime['keep.php'] = function() {
+tools.Page.pages['keep.php'] = function() {
 
 	// Update potions
 	tools.PotionStamina.work();

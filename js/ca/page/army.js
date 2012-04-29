@@ -1,5 +1,5 @@
 // Army Filler
-tools.Page.runtime['army.php'] = function() {
+tools.Page.pages['army.php'] = function() {
 
 	console.log('Page: army.php');
 	var $_img = $('img[src*="invite_army.gif"]');

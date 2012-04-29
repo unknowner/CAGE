@@ -14,6 +14,31 @@ tools.Gifter.init = function() {
 		tools.Gifter.runtime.returnGift = true;
 		tools.Gifter.start();
 	});
+	//prepare update event to receive userids and request ids
+	customEvent('GiftRequests', function() {
+		console.log('EVENT: GiftRequests');
+		var _gifts = JSON.parse($('#GiftRequests').val());
+		var _received = 0;
+		if(_gifts) {
+			$.each(_gifts.data, function(_i, _e) {
+				if(_e.from !== null) {
+					if($.inArray(_e.from.id, tools.Gifter.runtime.sendGiftTo) === -1) {
+						tools.Gifter.runtime.sendGiftTo.push(_e.from.id);
+						_received++;
+					}
+					tools.Gifter.runtime.requests.push(_e.id);
+				}
+			});
+			if(_received === 0) {
+				note('Gifter', 'No gifts to accept.');
+			} else {
+				note('Gifter', 'You accepted ' + _received + ' gift(s).');
+			}
+			item.set('CAGEsendGiftTo', tools.Gifter.runtime.sendGiftTo);
+		}
+		tools.Gifter.work();
+	});
+	customEvent('GifterDone', tools.Gifter.done);
 };
 tools.Gifter.settings = function() {
 	tools.Settings.heading(language.gifterSetName);
@@ -42,42 +67,14 @@ tools.Gifter.runtimeUpdate = function() {
 		});
 	});
 	console.log('tools.Gifter.runtime', tools.Gifter.runtime);
-};
-tools.Gifter.update = function() {
-	//prepare update event to receive userids and request ids
-	customEvent('GiftRequests', function() {
-		console.log('EVENT: GiftRequests');
-		var _gifts = JSON.parse($('#GiftRequests').val());
-		var _received = 0;
-		if(_gifts) {
-			$.each(_gifts.data, function(_i, _e) {
-				if(_e.from !== null) {
-					if($.inArray(_e.from.id, tools.Gifter.runtime.sendGiftTo) === -1) {
-						tools.Gifter.runtime.sendGiftTo.push(_e.from.id);
-						_received++;
-					}
-					tools.Gifter.runtime.requests.push(_e.id);
-				}
-			});
-			if(_received === 0) {
-				note('Gifter', 'No gifts to accept.');
-			} else {
-				note('Gifter', 'You accepted ' + _received + ' gift(s).');
-			}
-			item.set('CAGEsendGiftTo', tools.Gifter.runtime.sendGiftTo);
-		}
-		tools.Gifter.work();
-	});
-	customEvent('GifterDone', tools.Gifter.done);
+}; 7
+tools.Gifter.start = function() {
 	addFunction(function() {
 		FB.api('/me/apprequests/', function(_response) {
 			console.log('giftrewp:', _response);
 			fireGiftRequests(JSON.stringify(_response));
 		});
 	}, null, true, true);
-};
-tools.Gifter.start = function() {
-	tools.Gifter.update();
 };
 tools.Gifter.work = function() {
 	if(tools.Gifter.runtime.requests.length > 0) {

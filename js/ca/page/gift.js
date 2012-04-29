@@ -1,5 +1,5 @@
 // Festival duel
-tools.Page.runtime['gift.php'] = function() {
+tools.Page.pages['gift.php'] = function() {
 
 	console.log('Page: gift.php');
 

@@ -1,5 +1,5 @@
 // Index
-tools.Page.runtime['index.php'] = function() {
+tools.Page.pages['index.php'] = function() {
 
 	$('table:eq(1)').before('<div id="cageBattleNews"></div>');
 	var xp = 0, bp = 0, wp = 0, cp = 0, cop = 0, win = 0, lose = 0, deaths = 0, cash = 0, list = [], users = {}, nemesis = {

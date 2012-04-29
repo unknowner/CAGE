@@ -1,5 +1,5 @@
 // Guild battle
-tools.Page.runtime['guild_battle.php'] = function() {
+tools.Page.pages['guild_battle.php'] = function() {
 
 	console.log('Page: guild_battle.php');
 

@@ -1,5 +1,5 @@
 // symbolquests
-tools.Page.runtime['symbolquests.php'] = function() {
+tools.Page.pages['symbolquests.php'] = function() {
 
 	console.log('Page: quests.php');
 	// Add XP/Eng ratio to quests

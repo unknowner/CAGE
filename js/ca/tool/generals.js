@@ -149,14 +149,14 @@ tools.General.lists = function() {
 	}).change();
 };
 tools.General.parsePage = function(_data) {
+	var _names = [], _src = _data ? 'nosrc' : 'src';
 	_data = _data ? $(noSrc(_data)) : $('#app_body');
-	var _names = [];
 	_data.find('table.layout div.general_pic_div3').each(function(i, e) {
 		var $_this = $(this), $_image = $('form:has(input[name="item"]) input.imgButton', e), $_general = $_this.parent(), _name = $_general.children('div.general_name_div3:first').text().trim(), _stats = $_general.find('div.generals_indv_stats_padding'), _charge = $_this.find('div[style*="gen_chargebarsmall.gif"]:last'), _gtext = $_general.children('div:last').children('div');
 		_names.push(_name);
 		tools.General.runtime.general[_name] = {
 			name : _name,
-			image : $_image.attr('nosrc'),
+			image : $_image.attr(_src),
 			item : $_this.find('input[name="item"]').attr('value'),
 			itype : $_this.find('input[name="itype"]').attr('value'),
 			attack : $_this.next('div:first').children('div:eq(0)').text().trim(),

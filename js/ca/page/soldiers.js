@@ -1,5 +1,5 @@
 // soldiers
-tools.Page.runtime['soldiers.php'] = function() {
+tools.Page.pages['soldiers.php'] = function() {
 
 	// Add discount general
 	var _general = null;

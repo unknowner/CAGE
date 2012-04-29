@@ -1,5 +1,5 @@
 // army_news_feed
-tools.Page.runtime['army_news_feed.php'] = function() {
+tools.Page.pages['army_news_feed.php'] = function() {
 
 	console.log('Page: army_news_feed.php');
 

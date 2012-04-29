@@ -1,5 +1,5 @@
 // Oracle
-tools.Page.runtime['oracle.php'] = function() {
+tools.Page.pages['oracle.php'] = function() {
 	monthly = [{
 		b : 22,
 		n : "Aria",

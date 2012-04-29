@@ -1,5 +1,5 @@
 // arena battle
-tools.Page.runtime['arena_battle.php'] = function () {
+tools.Page.pages['arena_battle.php'] = function () {
 
 	console.log('Page: arena_battle.php');
 
