@@ -196,21 +196,14 @@ tools.Monster.done = function() {
 
 };
 
-tools.Monster.battleAdditons = function() {
-	tools.Monster.battleCTA();
+tools.Monster.battleAdditons = function(_monsterpage) {
+	var monsterBars = tools.Monster.monsterBars(), defense = tools.Monster.defense(), stunBar = tools.Monster.stunBar();
 	tools.Monster.battleStats();
-	tools.Monster.monsterSiege();
-	tools.Monster.battleResult(tools.Monster.monsterBars(), tools.Monster.defense(), tools.Monster.stun_bar());
-};
-tools.Monster.monsterSiege = function() {
-	var _sieges = [];
-	$('img[src*="_siege_small"]').each(function() {
-		_sieges.push($(this).parent().parent().text().trim().replace(/\s/g, '').replace(/,/g, '').replace(/dmg/g, '').split('-'))
-	});
-	console.log(_sieges);
+	tools.Monster.battleResult(monsterBars, defense, stunBar);
+	tools.Monster.battleCTA(_monsterpage);
 };
 tools.Monster.monsterBars = function() {
-	var _monstername = null;
+	var _monstername = null, _ret = [];
 	// add percentage to top bars
 	if($('#app_body div[style*="nm_bars.jpg"], #app_body div[style*="nm_bars_cross.jpg"]').length > 0) {
 		$('img[src*="monster_health_background.jpg"], [src*="nm_red.jpg"], [src*="nm_orange.jpg"]').each(function(_i, _e) {
@@ -218,7 +211,8 @@ tools.Monster.monsterBars = function() {
 			var _health = $(_e).parent()[0];
 			if(_health.style && _health.style.width !== "" && _monstername && _monstername.text()) {
 				var _percentage = _health.style.width.substr(0, 5);
-				_monstername.text(_monstername.text() + ' (' + _percentage + (_percentage.indexOf('%') > -1 ? ')' : '%)'));
+				_monstername.text(_monstername.text().trim() + ' (' + _percentage + (_percentage.indexOf('%') > -1 ? ')' : '%)'));
+				_ret.push(_monstername.text());
 			}
 		});
 	} else {
@@ -227,11 +221,12 @@ tools.Monster.monsterBars = function() {
 			var _health = $(_e).parent()[0];
 			if(_health.style && _health.style.width !== "" && _monstername && _monstername.text()) {
 				var _percentage = _health.style.width.substr(0, 5);
-				_monstername.text(_monstername.text() + ' (' + _percentage + (_percentage.indexOf('%') > -1 ? ')' : '%)'));
+				_monstername.text(_monstername.text().trim() + ' (' + _percentage + (_percentage.indexOf('%') > -1 ? ')' : '%)'));
+				_ret.push(_monstername.text());
 			}
 		});
 	}
-	return _monstername !== null ? _monstername.text() : '';
+	return _ret;
 };
 tools.Monster.defense = function() {
 	// add percentage to defense/forcefield/..
@@ -249,7 +244,7 @@ tools.Monster.defense = function() {
 	}
 	return '';
 }
-tools.Monster.stun_bar = function() {
+tools.Monster.stunBar = function() {
 	// add percentage to Cripple...
 	var _stun = $('#app_body div > img[src$="nm_stun_bar.gif"]:first');
 	if(_stun.length > 0) {
@@ -342,10 +337,10 @@ tools.Monster.battleStats = function() {
 	} else {
 		$stats.append('<div><span style="display:inline-block;font-weight:bold;width:125px;">Attackers: </span><span style="display:inline-block;width:25px;text-align:right;">' + _attackers + '</span></div>');
 	}
+	tools.Monster.statPos('Activity', _allDamage[_dmgType].toString().replace(/(\d)(?=(\d{3})+\b)/g, '$1,') + (_dmgType === 'dmg' ? ' dmg / ' + _allDamage.def.toString().replace(/(\d)(?=(\d{3})+\b)/g, '$1,') + ' def' : ''), 1);
 	if(_ownDamage !== null) {
-		$stats.before($('<div class="cageMonsterActivity"><span style="display:inline-block;font-weight:bold;width:80px;">My activity</span><span style="display:inline-block;float:right;text-align:right;">' + _ownDamage + '</span></div>').css('bottom', $stats.find('div').length * 13 + 61));
+		tools.Monster.statPos('My activity', _ownDamage, 2);
 	}
-	$stats.before($('<div class="cageMonsterActivity"><span style="display:inline-block;font-weight:bold;width:80px;">Activity</span><span style="display:inline-block;float:right;text-align:right;">' + _allDamage[_dmgType].toString().replace(/(\d)(?=(\d{3})+\b)/g, '$1,') + (_dmgType === 'dmg' ? ' dmg / ' + _allDamage.def.toString().replace(/(\d)(?=(\d{3})+\b)/g, '$1,') + ' def' : '') + '</span></div>').css('bottom', $stats.find('div').length * 13 + 25));
 
 	if($('span.target_monster_info').length > 0) {
 		var _div = $('span.target_monster_info:first').parent();
@@ -356,7 +351,7 @@ tools.Monster.battleStats = function() {
 	}
 
 };
-tools.Monster.battleResult = function(_monstername, _defText, _stun) {
+tools.Monster.battleResult = function(_monsterhealth, _defText, _stun) {
 	// rearrange attack result
 	if($('div.result').length > 0) {
 		//resize Elite Guard boxes
@@ -366,20 +361,37 @@ tools.Monster.battleResult = function(_monstername, _defText, _stun) {
 			'overflow' : 'hidden'
 		});
 		// add monster damage/health/... to result
-		$('div.result:has(img[src*="graphics/button_monster_attack_again.gif"]) span.result_body div:last, div.result:contains(" Again!")').append('<div id="MonsterResultDamage"><div>' + _monstername + '</div><div>' + _defText + '</div><div>Your Damage/Activity: ' + $('td.dragonContainer tr:has(a[href*="' + CastleAge.userId + '"]) > td:last').text().trim() + '<div style="text-transform: capitalize;">' + _stun + '</div></div></div>');
+		$('div.result:has(img[src*="graphics/button_monster_attack_again.gif"]) span.result_body div:last, div.result:contains(" Again!")').append('<div id="MonsterResultDamage"><div>' + _monsterhealth.join('</div><div>') + '</div><div>' + _defText + '</div><div>Your Damage/Activity: ' + $('td.dragonContainer tr:has(a[href*="' + CastleAge.userId + '"]) > td:last').text().trim() + '<div style="text-transform: capitalize;">' + _stun + '</div></div></div>');
 		if($('div.result:contains(" Again!")').length > 0) {
 			$('#MonsterResultDamage').css('float', 'none');
 		}
 	}
 }
-tools.Monster.battleCTA = function() {
+tools.Monster.battleCTA = function(_monsterpage) {
+	var $form = $('form').find('input[alt="Ask for help"]').parents('form:first'), _cta = '', _sieges = [], _dmg = 0;
+	// sieges info
+	_monsterpage = _monsterpage.replace('guildv2_battle_monster', 'battle_expansion_monster');
+	$('img[src*="_siege_small"]').each(function() {
+		_sieges.push($(this).parent().parent().text().trim().replace(/\s/g, '').replace(/,/g, '').replace(/dmg/g, '').split('-'))
+		_dmg += parseInt(_sieges[_sieges.length - 1][1], 10);
+	});
+	console.log('_sieges', _sieges);
+	console.log('_dmg', _dmg);
 	// answer CTA
-	if($('form:has(input[alt="Ask for help"]):first').length == 1) {
-		var _form = $('#app_body form:has(input[alt="Ask for help"])').clone();
-		_form.find('input[name="bqh"]').remove();
-		$('#app_body form:has(input[alt="Ask for help"])').parent().parent().find('img[src*="siege"]:last').parent().append('<a href="http://apps.facebook.com/castle_age/festival_battle_monster.php?' + _form.serialize() + '&action=doObjective"><img id="cageSummonCTA" src="http://image4.castleagegame.com/graphics/mp_button_summon.gif"></a>').unbind('click').click(function() {
-			tools.Page.loadPage('festival_battle_monster.php?' + $('form:has(div.imgButton > input[alt="Ask for help"]):first').serialize() + '&action=doObjective');
+	if($form.length == 1) {
+		$form = $form.clone();
+		var $children = $form.children().not('input[name="bqh"]');
+		$form.empty().append($children);
+		tools.Monster.statPos('Weapons ' + _sieges.length, _dmg.toString().replace(/(\d)(?=(\d{3})+\b)/g, '$1,') + ' dmg<a href="http://apps.facebook.com/castle_age/' + _monsterpage + '.php?' + $form.serialize() + '&action=doObjective"><img id="cageSummonCTA" src="http://image4.castleagegame.com/graphics/army_plus_button.gif"></a>', 0);
+		$('#cageSummonCTA').unbind('click').click(function() {
+			tools.Page.loadPage(_monsterpage + '.php?' + $('form:has(div.imgButton > input[alt="Ask for help"]):first').serialize() + '&action=doObjective');
 			return false;
 		});
+		_cta = 'http://apps.facebook.com/castle_age/' + _monsterpage + '.php?' + $form.serialize() + '&action=doObjective';
 	}
+	return _cta;
 }
+tools.Monster.statPos = function(_text, _html, _pos) {
+	$('#cageMonsterStats').after('<div class="cageMonsterActivity"><span style="display:inline-block;font-weight:bold;width:80px;">' + _text + '</span><span style="display:inline-block;float:right;text-align:right;">' + _html + '</span></div>');
+	$('#cageMonsterStats').next('.cageMonsterActivity:last').css('bottom', $('#cageMonsterStats').outerHeight() + 2 + _pos * ($('div.cageMonsterActivity:first').outerHeight() + 2));
+};

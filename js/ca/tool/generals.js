@@ -74,10 +74,10 @@ tools.General.get = function() {
 };
 // Set general image & name
 tools.General.set = function() {
-	var _g = tools.General.runtime.general[tools.General.current];
+	var _g = tools.General.runtime.general[tools.General.current], _values = $('div[style*="hot_container.gif"]').text().trim().match(/\d+/g);
 	$('#cageGeneralName').text(_g.name);
-	$('#cageGeneralAttack').text(_g.attack);
-	$('#cageGeneralDefense').text(_g.defense);
+	$('#cageGeneralAttack').text(_values[0]);
+	$('#cageGeneralDefense').text(_values[1]);
 	$('#cageGeneralText').text(_g.text);
 	$('#cageGeneralImageCharge').remove();
 	if(_g.charge) {
@@ -283,6 +283,9 @@ tools.General.init = function() {
 		}, 'slow', function() {
 			$(this).hide()
 		});
+	});
+	$('#cageGeneralEquipment').click(function() {
+		tools.Page.loadPage('guild_class_item_equipment.php')
 	});
 	tools.General.update();
 	_elm = null;

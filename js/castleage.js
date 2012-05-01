@@ -35,9 +35,9 @@ CastleAge.startInterval = setInterval(function() {
 			_startURL = _startURL.substring(0, _startURL.indexOf('?'));
 		}
 		console.log("URL:" + _startURL);
-		tools.Page.runtime.allPages();
-		if(tools.Page.runtime[_startURL]) {
-			tools.Page.runtime[_startURL]();
+		tools.Page.allPages();
+		if(tools.Page.pages[_startURL]) {
+			tools.Page.pages[_startURL]();
 		}
 		_startURL = null;
 

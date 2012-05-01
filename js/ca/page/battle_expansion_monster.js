@@ -2,6 +2,6 @@
 tools.Page.pages['battle_expansion_monster.php'] = function() {
 
 	console.log('Page: battle_expansion_monster.php');
-	tools.Monster.battleAdditons();
+	tools.Monster.battleAdditons('battle_expansion_monster');
 
 };

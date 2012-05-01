@@ -11,6 +11,10 @@ function cageNews(_full) {
 	//@formatter:off
 			'ADD: Monthly general Zolthar',
 			'FIX: Sano position in Atlantis quests',
+			'FIX: Monster stats not on every monster',
+			'FIX: General pics not showing after entering generals page',
+			'FIX: Current generals def/att stats incl. items bonuses',
+			'FIX: Generals reappear on fav list',
 			'CHG: Extra tier in public monsters disabled for now'
 	//@formatter:on
 	], function(_i, _e) {

@@ -28,7 +28,7 @@ tools.Page.pages['generals.php'] = function() {
 		_displ.find('div > img:last-child').each(function() {
 			$(this).click(function() {
 				tools.General.runtime.favorites[tools.General.runtime.favList].splice(tools.General.runtime.favorites[tools.General.runtime.favList].indexOf($(this).attr('alt')), 1);
-				item.set('favLists', tools.General.runtime.favLists);
+				item.set('favFavorites', tools.General.runtime.favorites);
 				$('#cageFavsList').change();
 				tools.General.renderFavs();
 			});
@@ -80,13 +80,15 @@ tools.Page.pages['generals.php'] = function() {
 				var _displ = $('#cageFavsDisplay');
 				_displ.empty();
 				$.each(tools.General.runtime.favorites[tools.General.runtime.favList], function() {
-					_displ.append('<div style="background-image:url(\'' + tools.General.runtime.general[this].image + '\');">').append('<img src="' + getPath('img/favdel.png') + '" alt="' + tools.General.runtime.general[this].name + '"/></div>').click(function() {
+					_displ.append($('<div>').addClass('ui-state-default').css('backgroundImage', 'url(\'' + tools.General.runtime.general[this].image + '\')').append($('<img>').attr({
+						'src' : getPath('img/favdel.png'),
+						'alt' : tools.General.runtime.general[this].name
+					}).click(function() {
 						tools.General.runtime.favorites[tools.General.runtime.favList].splice(tools.General.runtime.favorites[tools.General.runtime.favList].indexOf($(this).attr('alt')), 1);
-						item.set('favLists', tools.General.runtime.favLists);
-						console.log($(this).attr('alt'));
+						item.set('favFavorites', tools.General.runtime.favorites);
 						$('#cageFavsList').change();
 						tools.General.renderFavs();
-					});
+					})));
 				});
 				tools.General.renderFavs();
 			}

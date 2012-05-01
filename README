@@ -3,6 +3,11 @@ VER: 1.2.4β
 ------------------------------------------------------------------
 	ADD: Monthly general Zolthar
 	FIX: Sano position in Atlantis quests
+	FIX: Monster stats not on every monster
+	FIX: General pics not showing after entering generals page
+	FIX: Current generals def/att stats incl. items bonuses
+	FIX: Generals reappear on fav list
+	CHG: Extra tier in public monsters disabled for now
 	
 ==================================================================
 VER: 1.2.3β
