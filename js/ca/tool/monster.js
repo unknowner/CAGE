@@ -284,11 +284,16 @@ tools.Monster.battleStats = function() {
 	var $this, _attackers = 0, _temp = '', _max, _levels, _hod, $stats = $('#cageMonsterStats'), _ownDamage = null, _dmgType = null, _allDamage = {
 		Activity : 0,
 		dmg : 0,
-		def : 0
+		def : null
 	};
 	if(_dmgType === null) {
-		if($('td.dragonContainer table tr td:eq(1) table tr:eq(0)').find('td:last').text().trim().indexOf('dmg') > -1) {
+		var _type = $('td.dragonContainer table tr td:eq(1) table tr:last').find('td:last').text().trim();
+		console.log('_type', _type);
+		if(_type.indexOf('dmg') !== -1) {
 			_dmgType = 'dmg'
+			if(_type.indexOf('def') !== -1) {
+				_allDamage.def = 0
+			}
 		} else {
 			_dmgType = 'Activity'
 		}
@@ -298,14 +303,17 @@ tools.Monster.battleStats = function() {
 		if($this.text() !== '') {
 			var _line = $this.find('td:last').text().trim();
 			if(isNaN(parseInt(_line.replace(/\D/g, ''))) === false) {
-				if(_dmgType === 'dmg') {
-					_allDamage['dmg'] += parseInt(_line.split('/')[0].replace(/\D/g, ''));
-					_allDamage['def'] += parseInt(_line.split('/')[1].replace(/\D/g, ''));
-				} else {
-					_allDamage[_dmgType] += parseInt(_line.replace(/\D/g, ''));
-				}
 				if($this.html().indexOf(CastleAge.userId) > -1) {
 					_ownDamage = _line;
+				}
+				if(_dmgType === 'dmg') {
+					_line = _line.split('/');
+					_allDamage.dmg += parseInt(_line[0].replace(/\D/g, ''));
+					if(_allDamage.def !== null) {
+						_allDamage.def += parseInt(_line[1].replace(/\D/g, ''));
+					}
+				} else {
+					_allDamage[_dmgType] += parseInt(_line.replace(/\D/g, ''));
 				}
 			}
 			if(/Levels|Heart of Darkness/.test($this.text()) === true) {
@@ -337,7 +345,7 @@ tools.Monster.battleStats = function() {
 	} else {
 		$stats.append('<div><span style="display:inline-block;font-weight:bold;width:125px;">Attackers: </span><span style="display:inline-block;width:25px;text-align:right;">' + _attackers + '</span></div>');
 	}
-	tools.Monster.statPos('Activity', _allDamage[_dmgType].toString().replace(/(\d)(?=(\d{3})+\b)/g, '$1,') + (_dmgType === 'dmg' ? ' dmg / ' + _allDamage.def.toString().replace(/(\d)(?=(\d{3})+\b)/g, '$1,') + ' def' : ''), 1);
+	tools.Monster.statPos('Activity', _allDamage[_dmgType].toString().replace(/(\d)(?=(\d{3})+\b)/g, '$1,') + (_dmgType === 'dmg' ? ' dmg' + (_allDamage.def !== null ? ' / ' + _allDamage.def.toString().replace(/(\d)(?=(\d{3})+\b)/g, '$1,') + ' def' : '') : ''), 1);
 	if(_ownDamage !== null) {
 		tools.Monster.statPos('My activity', _ownDamage, 2);
 	}

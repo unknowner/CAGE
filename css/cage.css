@@ -454,21 +454,19 @@ button.cageToolButton:last-of-type {
     position: absolute;
     bottom: 0;
     left: 0;
-    background: #000;
+    background: rgba(0,0,0,0.75);
     padding: 8px;
     color: #fff;
     font-size: 11px;
-    opacity: 0.75;
     border-top-right-radius: 8px;
 }
 div.cageMonsterActivity {
     position: absolute;
     left: 0;
-    background: #000;
+    background: rgba(0,0,0,0.75);
     padding: 8px;
     color: #fff;
     font-size: 11px;
-    opacity: 0.75;
     border-top-right-radius: 8px;
     border-bottom-right-radius: 8px;
 }
