@@ -17,7 +17,8 @@ tools.Gifter.init = function() {
 	//prepare update event to receive userids and request ids
 	customEvent('GiftRequests', function() {
 		console.log('EVENT: GiftRequests');
-		var _gifts = JSON.parse($('#GiftRequests').val());
+		_gifts = JSON.parse(JSON.parse($('#GiftRequests').val()));
+		console.log(_gifts);
 		var _received = 0;
 		if(_gifts) {
 			$.each(_gifts.data, function(_i, _e) {
@@ -67,7 +68,8 @@ tools.Gifter.runtimeUpdate = function() {
 		});
 	});
 	console.log('tools.Gifter.runtime', tools.Gifter.runtime);
-}; 7
+};
+7
 tools.Gifter.start = function() {
 	addFunction(function() {
 		FB.api('/me/apprequests/', function(_response) {

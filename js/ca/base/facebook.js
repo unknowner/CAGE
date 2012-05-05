@@ -37,7 +37,7 @@ tools.Facebook.GetListMembers = function(_friendlist, _callback) {
 		tools.Facebook.runtime.listMembersWait = true;
 		var _listmembers = [];
 		customEvent('GetFLMembers', function() {
-			var _members = $('#GetFLMembers').val();
+			var _members = JSON.parse($('#GetFLMembers').val());
 			if(_members !== 'false') {
 				_members = JSON.parse(_members);
 				$.each(_members, function(_i, _e) {

@@ -383,17 +383,19 @@ tools.Monster.battleCTA = function(_monsterpage) {
 		_sieges.push($(this).parent().parent().text().trim().replace(/\s/g, '').replace(/,/g, '').replace(/dmg/g, '').split('-'))
 		_dmg += parseInt(_sieges[_sieges.length - 1][1], 10);
 	});
-	console.log('_sieges', _sieges);
-	console.log('_dmg', _dmg);
 	// answer CTA
-	if($form.length == 1) {
+	if($('img[title^="Construct "]').size() === 1 && $form.length === 1) {
 		$form = $form.clone();
 		var $children = $form.children().not('input[name="bqh"]');
 		$form.empty().append($children);
-		tools.Monster.statPos('Weapons ' + _sieges.length, _dmg.toString().replace(/(\d)(?=(\d{3})+\b)/g, '$1,') + ' dmg<a href="http://apps.facebook.com/castle_age/' + _monsterpage + '.php?' + $form.serialize() + '&action=doObjective"><img id="cageSummonCTA" src="http://image4.castleagegame.com/graphics/army_plus_button.gif"></a>', 0);
+		tools.Monster.statPos('<a id="cageSummonCTA" href="http://apps.facebook.com/castle_age/' + _monsterpage + '.php?' + $form.serialize() + '&action=doObjective">Weapons</a> ' + _sieges.length, _dmg.toString().replace(/(\d)(?=(\d{3})+\b)/g, '$1,') + ' dmg', 0);
 		$('#cageSummonCTA').unbind('click').click(function() {
 			tools.Page.loadPage(_monsterpage + '.php?' + $('form:has(div.imgButton > input[alt="Ask for help"]):first').serialize() + '&action=doObjective');
 			return false;
+		}).hover(function() {
+			$(this).text('Assist!');
+		}, function() {
+			$(this).text('Weapons');
 		});
 		_cta = 'http://apps.facebook.com/castle_age/' + _monsterpage + '.php?' + $form.serialize() + '&action=doObjective';
 	}

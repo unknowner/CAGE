@@ -28,7 +28,7 @@ function customEvent(_event, _function) {
 		// fire the event opt. with data
 		window[('fire' + _arg)] = function(_data) {
 			if(_data !== undefined) {
-				$('#' + _arg).val(_data);
+				$('#' + _arg).val(JSON.stringify(_data));
 			}
 			console.log('fire customEvent: ', _arg);
 			var customEvent = document.createEvent('Event');

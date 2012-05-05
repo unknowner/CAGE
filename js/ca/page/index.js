@@ -6,11 +6,11 @@ tools.Page.pages['index.php'] = function() {
 		user : null,
 		lose : 0
 	}, last = null, oldest = null;
-	$('#battleUpdateBox div.alertsContainer > div').each(function(i, el) {
+	$('#newsFeedSection div[style*="graphics/news_innercontainer_mid.gif"]').each(function(i, el) {
 		if(last === null) {
-			last = $('div.alert_title', el).text();
+			last = $(el).prev().text().replace(' ago', '').replace('Victory! ', '');
 		} else {
-			oldest = $('div.alert_title', el).text();
+			oldest = $(el).prev().text().replace(' ago', '').replace('Victory! ', '');
 		}
 		var txt = $(el).text().replace(/,/g, ''), my_xp = 0, my_bp = 0, my_wp = 0, my_cash = 0, my_cp = 0, my_cop = 0, result = 1, _uid;
 		if(txt.match(/You were killed/i)) {

@@ -284,6 +284,39 @@ div.cageSidebarStat {
     z-index: 1;
 }
 /*
+ * COPTER
+ */
+#cageCOPTERSubmit {
+    height: 29px;
+    position: absolute;
+    border-radius: 50px;
+    background: #000;
+    left: 8px;
+    width: 29px;
+    margin-top: -37px;
+    background-size: 31px 34px;
+    cursor: pointer;
+    background-image: url('http://image4.castleagegame.com/graphics/monster_help.gif');
+    background-position: -2px -3px;
+}
+#cageCOPTERDisplay > div {
+    margin-left: 34px;
+}
+#cageCOPTERDisplay > span {
+    position: absolute;
+    bottom: 2px;
+    right: 3px;
+}
+#cageCOPTERDisplay span > img {
+    height: 20px;
+    border-radius: 15px;
+    position: relative;
+}
+#cageCOPTERDisplay span > img:hover {
+    box-shadow: 0 5px 8px 3px #000;
+}
+
+/*
  *  Chat in sidebar
  */
 .chatGuildChatSidebar {

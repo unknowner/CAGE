@@ -96,7 +96,8 @@ tools.General.setByName = function(_name, _callback) {
 			$('#cageGeneralImage, #cagegeneralname, #cageGeneralDefense, #cageGeneralAttack').fadeOut('slow');
 			signedGet('generals.php?item=' + _g.item + '&itype=' + _g.itype + '&bqh=' + CastleAge.bqh, function(_data) {
 				$data = $(noSrc(_data));
-				var _i = $data.find('#main_bn div > img[style="width:24px;height:24px;"]');
+				$('#main_bn').html($data.find('#main_bn').html());
+				var _i = $('#main_bn').find('div > img[style="width:24px;height:24px;"]');
 				if($('div.generalContainerBox:first').length == 1) {
 					$('div.generalContainerBox:first').next('div').replaceWith($data.find('div.generalContainerBox:first').next('div'))
 				}
@@ -108,7 +109,6 @@ tools.General.setByName = function(_name, _callback) {
 				tools.Stats.update($('#main_sts', _data));
 				tools.General.parsePage(_data);
 				tools.General.current = _name;
-				tools.General.set();
 				if(_callback !== undefined) {
 					_callback();
 				}

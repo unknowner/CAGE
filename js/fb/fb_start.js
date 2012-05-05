@@ -8,6 +8,11 @@ function startCAGE() {
 		_i.value = Env.user;
 		document.body.appendChild(_i);
 	}, null, true, true);
+	// Fix for double scrollbars
+	$('#body').css({
+		'overflow' : '',
+		'overflowY' : ''
+	});
 	// Iframe changes
 	$('#cageIFrame').html('.cageIFrame {height:' + (window.innerHeight - 34) + 'px !important;}');
 	$('#iframe_canvas').addClass('cageIFrame').attr('scrolling', 'yes');

@@ -1,4 +1,11 @@
 ==================================================================
+VER: 1.2.5β
+------------------------------------------------------------------
+	ADD: COPTER connection
+	FIX: Battle stats
+	FIX: Double scrollbars
+
+==================================================================
 VER: 1.2.4β
 ------------------------------------------------------------------
 	ADD: Monthly general Zolthar
@@ -7,6 +14,7 @@ VER: 1.2.4β
 	FIX: General pics not showing after entering generals page
 	FIX: Current generals def/att stats incl. items bonuses
 	FIX: Generals reappear on fav list
+	FIX: Dismiss/Join in friends keep broken
 	CHG: Extra tier in public monsters disabled for now
 	
 ==================================================================
