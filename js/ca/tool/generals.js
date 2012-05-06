@@ -103,6 +103,9 @@ tools.General.setByName = function(_name, _callback) {
 				}
 				setTimeout(function() {
 					if(_i.length > 0) {
+						_i.each(function() {
+							$(this).attr('src', $(this).attr('nosrc')).attr('nosrc', '');
+						})
 						$('#cageGeneralEquipment').empty().append(_i);
 					}
 				}, 100);
