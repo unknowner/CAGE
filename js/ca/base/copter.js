@@ -3,7 +3,7 @@ tool('COPTER');
 tools.COPTER.settings = function() {
 
 	tools.Settings.heading('COPTER');
-	tools.Settings.text('Link your <a href="http://copter.bomhofintegrated.com">COPTER</a> account with CAGE. Create the link in COPTER and enter it here, after hitting submit youßre done.');
+	tools.Settings.text('Link your <a href="http://copter.bomhofintegrated.com">COPTER</a> account with CAGE. Create the link in COPTER and enter it here, after hitting submit you\'re done.');
 	tools.Settings.textbox('COPTER\'s CAGE link', tools.COPTER.runtime.link, 'cageCOPTERLink', tools.COPTER.runtimeUpdate);
 
 };
@@ -22,18 +22,22 @@ tools.COPTER.init = function() {
 	tools.COPTER.runtimeUpdate();
 };
 tools.COPTER.request = function() {
-	$.ajax({
-		url : 'http://copter.bomhofintegrated.com/cage/status',
-		data : {
-			'cage_id' : tools.COPTER.runtime.link
-		},
-		contentType : 'application/json',
-		dataType : 'jsonp',
-		jsonpCallback : 'fireCOPTERcallback',
-		success : function(_data) {
-			console.log('Data', _data);
-		}
-	});
+	if(tools.COPTER.runtime.link !== '') {
+		$.ajax({
+			url : 'http://copter.bomhofintegrated.com/cage/status',
+			data : {
+				'cage_id' : tools.COPTER.runtime.link
+			},
+			contentType : 'application/json',
+			dataType : 'jsonp',
+			jsonpCallback : 'fireCOPTERcallback',
+			success : function(_data) {
+				console.log('Data', _data);
+			}
+		});
+	} else {
+		$('#cageCOPTERDisplay').remove();
+	}
 };
 tools.COPTER.receiver = function(_data) {
 	_copter = JSON.parse(_data);
