@@ -3,6 +3,7 @@ VER: 1.2.5β
 ------------------------------------------------------------------
 	ADD: COPTER connection
 	ADD: Enable/disable CAGE (Chrome)
+	ADD: Needclicker can disable CAGE for CTAs
 	ADD: Show stats for items in keep
 	FIX: Battle stats
 	FIX: Double scrollbars

@@ -30,6 +30,8 @@ var com = {
 	task : {
 		alive : 'TASK_ALIVE',
 		init : 'TASK_INIT',
+		caStart : 'TASK_CASTART',
+		fbStart : 'TASK_FBSTART',
 		fbReady : 'TASK_FBREADY',
 		getGeneral : 'TASK_GETGENERAL',
 		general : 'TASK_GENERAL',
@@ -61,16 +63,21 @@ var com = {
 	// Called in background.html to setup port listeners
 	initBackground : function() {
 		chrome.extension.onConnect.addListener(function(_port) {
-			console.log('onconnect:', _port);
-			com.ports[_port.name] = _port;
-			_port.onMessage.addListener(function(_message) {
-				console.log('onMessage:', _message);
-				if(_message.port === com.port.background) {
-					note(_message.data);
-				} else {
-					com.ports[_message.port].postMessage(_message);
-				}
-			});
+			if(CAGE.enable === true) {
+				console.log('onconnect:', _port);
+				com.ports[_port.name] = _port;
+				_port.onMessage.addListener(function(_message) {
+					console.log('onMessage:', _message);
+					if(_message.port === com.port.background) {
+						// currently only one type, can be expanded
+						note(_message.data);
+					} else {
+						com.ports[_message.port].postMessage(_message);
+					}
+				});
+			} else {
+				console.log('connection refused');
+			}
 		});
 	},
 	// Send Messages to ports

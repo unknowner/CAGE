@@ -21,9 +21,9 @@ tools.Page.pages['land.php'] = function() {
 	}
 	// ROI
 	$('#section_land, #section_special_land').children().each(function() {
-		$this = $(this);
-		var _income = parseInt($this.children('div:eq(1), div:eq(2):has(strong.gold)').text().trim().match(/\d+$/), 10), _price = parseInt($this.find('strong.gold').text().replace(',', '').match(/\d+/));
-		console.log(_income, _price);
-		console.log(_income / _price);
+		var _income = parseInt($(this).find('div > strong.gold:first').text().replace(/,/g, ''), 10);
+		var _price = parseInt($(this).find('div > strong.gold:last').text().replace(/,/g, ''), 10);
+		console.log(_income, _price, _income / _price);
 	});
+
 };

@@ -13,11 +13,14 @@ tools.Page.pages['keep.php'] = function() {
 	// Collapsed items/untits ...
 	$('div.statsTTitle').toggle(function() {
 		$(this).parents('div.statsT2:first').css({
-			'height' : '100%'
+			'height' : '100%',
+			'overflow' : ''
 		});
+		scrollTo(0, $(this).offset().top - 110);
 	}, function() {
 		$(this).parents('div.statsT2:first').css({
-			'height' : 30
+			'height' : 30,
+			'overflow' : 'hidden'
 		});
 	});
 	// Calulate devine power
@@ -118,9 +121,31 @@ tools.Page.pages['keep.php'] = function() {
 		$('div.keep_healer_section').prepend($('<div id="cageKeepStats">').append('<div>eAtt: ' + _data.eAt.toFixed(2) + '</div><div style="font-size:9px;">Effective Attack</div>').append('<div>eDef: ' + _data.eDe.toFixed(2) + '</div><div style="font-size:9px;">Effective Defense</div>').append('<div>BSI: ' + _data.bsi.toFixed(2) + '</div><div style="font-size:9px;">Battle Strength Index</div>').append('<div>LSI: ' + _data.lsi.toFixed(2) + '</div><div style="font-size:9px;">Levelling Speed Index</div>').append('<div>TSI: ' + _data.tsi.toFixed(2) + '</div><div style="font-size:9px;">Total Skillpoints per Level</div>').append('<div>Divine: ' + _divPow + '</div><div style="font-size:9px;">Calculated Divine Power</div>'));
 	}
 	// rearrange Items
-	window.setTimeout(function() {
-		$('.statUnit').find('img').unwrap().unwrap();
+	setTimeout(function() {
+		$('.statUnit').each(function() {
+			var $this = $(this), $next = $this.next(), _text = $next.text().trim();
+			if(_text !== '') {
+				_text = _text.split(/(\r\n|\n|\r)/gm);
+				$next.remove();
+			} else {
+				_text = [$this.find('img').attr('title')];
+			}
+			for(var i = 0; i < _text.length; i++) {
+				if(_text[i].trim() == '') {
+					_text.splice(i, 1);
+					i--;
+				} else {
+					_text[i] = _text[i].trim();
+				}
+			}
+			$this.data('info', _text.join('<br>')).find('img').hover(function() {
+				$this.css('zIndex', 1).prepend('<div class="cageUnitStats"><div>' + $this.data('info') + '</div></div>');
+			}, function() {
+				$this.css('zIndex', '').children('div.cageUnitStats').remove();
+			}).attr('title', '').unwrap().unwrap();
+		})
 	}, 50);
+
 	// Add stuff on others keep
 	if($('div.keep_main_section').length === 0) {
 		if($('#keep_battle_frm1').length === 0) {

@@ -1,5 +1,5 @@
 function receiver(_data) {
-	//console.log('ca receiver: ', _data);
+	console.log('ca receiver: ', _data);
 	switch (_data.task) {
 		case com.task.signed:
 			$('#signed_request').val(_data.data);
@@ -21,6 +21,11 @@ function receiver(_data) {
 			tools.General.showAll();
 			break;
 		case com.task.alive:
+			break;
+		case com.task.caStart:
+			if(location.search.indexOf('needclickers=1') === -1) {
+				initCastleAge();
+			}
 			break;
 		default:
 			console.log(_data.task + ' unknown!');

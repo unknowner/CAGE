@@ -1,20 +1,20 @@
 // CAGE stuff working on facebook site
-Facebook = {
+var _window = window || this.unsafeWindow, Facebook = {
 	started : false,
 	bluebarHidden : false
 };
 
 com.initPort(com.port.facebook);
+com.send(com.task.fbStart, com.port.facebook, null);
 
-$('head').append('<style type="text/css" id="cageIFrame">')
-//.append('<link id="cageTheme" rel="stylesheet" type="text/css" href="' + getPath('css/dark-hive/') + 'jquery-ui.css">')
-.append('<link rel="stylesheet" type="text/css" href="' + getPath('css/fb_cage.css?x=' + Math.random() * 1000) + '">');
+function initFacebook() {
+	$('head').append('<style type="text/css" id="cageIFrame">').append('<link rel="stylesheet" type="text/css" href="' + getPath('css/fb_cage.css?x=' + Math.random() * 1000) + '">');
 
-var _window = window || this.unsafeWindow;
-_window.onresize = function(evt) {
+	_window.onresize = function(evt) {
+		$('#cageIFrame').html('.cageIFrame {height:' + (_window.innerHeight - (Facebook.bluebarHidden === true ? 1 : 34)) + 'px !important;}');
+	};
+
+	$('#contentArea').css('backgroundColor', '#000');
 	$('#cageIFrame').html('.cageIFrame {height:' + (_window.innerHeight - (Facebook.bluebarHidden === true ? 1 : 34)) + 'px !important;}');
-};
-
-$('#contentArea').css('backgroundColor', '#000');
-$('#cageIFrame').html('.cageIFrame {height:' + (_window.innerHeight - (Facebook.bluebarHidden === true ? 1 : 34)) + 'px !important;}');
-$('#iframe_canvas').addClass('cageIFrame').attr('scrolling', 'yes');
+	$('#iframe_canvas').addClass('cageIFrame').attr('scrolling', 'yes');
+}

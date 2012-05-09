@@ -32,5 +32,10 @@ function receiver(_data) {
 			$('#fbNotificationsFlyout').removeClass('cageNotificationsFlyout');
 			$('#cageIFrame').html('.cageIFrame {height:' + (_window.innerHeight - (Facebook.bluebarHidden === true ? 1 : 34)) + 'px !important;}');
 			break;
+		case com.task.fbStart:
+			if(location.search.indexOf('needclickers=1') === -1) {
+				initFacebook();
+			}
+			break;
 	}
 }
