@@ -1,14 +1,34 @@
 <script type="text/javascript" src='js/chrome.js'></script>
 <script type="text/javascript">
 
-	var CAGE = {
-		enable : localStorage['cageCAGE.enabled'] === true ? localStorage['cageCAGE.enabled'] : true
-	};
-	
-	function updateIcon() {
-		CAGE.enable = !CAGE.enable;
-		if(CAGE.enable) {
+		var CAGE = {};
+		if(localStorage['cageCAGE.enabled'] === undefined) {
 			localStorage['cageCAGE.enabled'] = true;
+		};
+		CAGE.enable = JSON.parse(localStorage['cageCAGE.enabled']);
+
+		function updateIcon() {
+			CAGE.enable = !CAGE.enable;
+			if(CAGE.enable === true) {
+				localStorage['cageCAGE.enabled'] = true;
+				chrome.browserAction.setTitle({
+					title : 'Disable CAGE'
+				});
+				chrome.browserAction.setIcon({
+					path : 'img/icon19.png'
+				});
+			} else {
+				localStorage['cageCAGE.enabled'] = false;
+				chrome.browserAction.setTitle({
+					title : 'CAGE.enable CAGE'
+				});
+				chrome.browserAction.setIcon({
+					path : 'img/icon19off.png'
+				});
+			}
+		}
+
+		if(CAGE.enable === true) {
 			chrome.browserAction.setTitle({
 				title : 'Disable CAGE'
 			});
@@ -16,7 +36,6 @@
 				path : 'img/icon19.png'
 			});
 		} else {
-			localStorage['cageCAGE.enabled'] = false;
 			chrome.browserAction.setTitle({
 				title : 'CAGE.enable CAGE'
 			});
@@ -24,24 +43,7 @@
 				path : 'img/icon19off.png'
 			});
 		}
-	}
 
-	if(CAGE.enable === true) {
 		com.initBackground();
-		chrome.browserAction.setTitle({
-			title : 'Disable CAGE'
-		});
-		chrome.browserAction.setIcon({
-			path : 'img/icon19.png'
-		});
-	} else {
-		chrome.browserAction.setTitle({
-			title : 'CAGE.enable CAGE'
-		});
-		chrome.browserAction.setIcon({
-			path : 'img/icon19off.png'
-		});
-	}
-
-	chrome.browserAction.onClicked.addListener(updateIcon);
+		chrome.browserAction.onClicked.addListener(updateIcon);
 </script>
