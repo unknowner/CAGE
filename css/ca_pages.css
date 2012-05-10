@@ -459,7 +459,7 @@ div.ingredientUnit div:nth-of-type(2) {
 .cageUnitStats {
 	position: absolute;
 	top: 100%;
-	margin-top: -6px;
+	margin-top: -3px;
 	z-index: -1;
 }
 .cageUnitStats > div {

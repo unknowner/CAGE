@@ -1,9 +1,14 @@
 ==================================================================
+VER: 1.2.6β
+------------------------------------------------------------------
+	FIX: Raid list getting messed up
+
+==================================================================
 VER: 1.2.5β
 ------------------------------------------------------------------
-	ADD: COPTER connection
+	ADD: COPTER connection (disabled)
 	ADD: Enable/disable CAGE (Chrome)
-	ADD: Needclicker can disable CAGE for CTAs
+	ADD: Needclickers can disable CAGE for CTAs
 	ADD: Show stats for items in keep
 	FIX: Battle stats
 	FIX: Double scrollbars

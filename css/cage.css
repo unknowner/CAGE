@@ -386,7 +386,9 @@ button.cageToolButton:last-of-type {
 	border-radius: 6px;
 }
 .statUnit img:hover {
-	box-shadow: 2px 2px 5px #000;
+	box-shadow: 2px 2px 7px 2px #000;
+	height: 85px !important;
+	margin: -5px;
 }
 .statUnit img + div {
 	background-color: black;
