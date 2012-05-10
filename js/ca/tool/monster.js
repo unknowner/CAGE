@@ -259,21 +259,7 @@ tools.Monster.stunBar = function() {
 tools.Monster.battleStats = function() {
 	// monster stats
 	//@formatter:off
-	var _bossReg = new RegExp([
-			'monster_\\w+_large.jpg',
-		 	'boss_\\w+_large.jpg',
-		 	'boss_\\w+_big.jpg',
-		 	'nm_\\w+_large.jpg',
-		 	'nm_\\w+_large2.jpg',
-		 	'monster_\\w+_large_ca.jpg',
-		 	'seamonster_(?!ship_health)\\w*.jpg',
-		 	'seamonster_dead.jpg',
-		 	'dragon_monster_\\w+.jpg',
-		 	'boss_\\w+.jpg',
-		 	'\\w+_large.jpg',
-		 	'\\/monster_(?!health)\\w+.jpg',
-		 	'\\w+_dead.jpg'
-	 	].join('|')), _img = false;
+	var _bossReg = new RegExp(['monster_\\w+_large.jpg', 'boss_\\w+_large.jpg', 'boss_\\w+_big.jpg', 'nm_\\w+_large.jpg', 'nm_\\w+_large2.jpg', 'monster_\\w+_large_ca.jpg', 'seamonster_(?!ship_health)\\w*.jpg', 'seamonster_dead.jpg', 'dragon_monster_\\w+.jpg', 'boss_\\w+.jpg', '\\w+_large.jpg', '\\/monster_(?!health)\\w+.jpg', '\\w+_dead.jpg'].join('|')), _img = false;
 	//@formatter:on
 	$('#app_body table.layout td > div:gt(2) div:not([id][alt][title]) > img:only-child').each(function() {
 		if(_bossReg.exec($(this).attr('src')) !== null) {
@@ -388,7 +374,7 @@ tools.Monster.battleCTA = function(_monsterpage) {
 		$form = $form.clone();
 		var $children = $form.children().not('input[name="bqh"]');
 		$form.empty().append($children);
-		tools.Monster.statPos('<a id="cageSummonCTA" href="http://apps.facebook.com/castle_age/' + _monsterpage + '.php?' + $form.serialize() + '&action=doObjective">Weapons</a> ' + _sieges.length, _dmg.toString().replace(/(\d)(?=(\d{3})+\b)/g, '$1,') + ' dmg', 0);
+		tools.Monster.statPos('<a id="cageSummonCTA" href="//apps.facebook.com/castle_age/' + _monsterpage + '.php?' + $form.serialize() + '&action=doObjective">Weapons</a> ' + _sieges.length, _dmg.toString().replace(/(\d)(?=(\d{3})+\b)/g, '$1,') + ' dmg', 0);
 		$('#cageSummonCTA').unbind('click').click(function() {
 			tools.Page.loadPage(_monsterpage + '.php?' + $('form:has(div.imgButton > input[alt="Ask for help"]):first').serialize() + '&action=doObjective');
 			return false;
@@ -397,7 +383,7 @@ tools.Monster.battleCTA = function(_monsterpage) {
 		}, function() {
 			$(this).text('Weapons');
 		});
-		_cta = 'http://apps.facebook.com/castle_age/' + _monsterpage + '.php?' + $form.serialize() + '&action=doObjective';
+		_cta = '//apps.facebook.com/castle_age/' + _monsterpage + '.php?' + $form.serialize() + '&action=doObjective';
 	}
 	return _cta;
 }

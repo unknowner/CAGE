@@ -76,7 +76,7 @@ tools.Page.allPages = function() {
 
 	// remove CA:HOD ad, etc...
 	$('div > a > img.imgButton[src*="/graphics/iphone_cross_promo.jpg"]').parent().parent().remove();
-	$('a[href="http://apps.facebook.com/castle_hod/?xprom=cax"]').parents('div:first').remove();
+	$('a[href*="apps.facebook.com/castle_hod/?xprom=cax"]').parents('div:first').remove();
 	if($('#globalContainer > div:first').height() == 80) {
 		$('#globalContainer > div:first').hide();
 	}

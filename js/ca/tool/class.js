@@ -178,7 +178,7 @@ tools.Class.init = function() {
 		var _data2 = _data;
 		_data = $(noSrc(_data));
 		var _class = /g_char_header_(\w+).jpg/.exec(_data.find('div[id="guildv2_class_top"]:first div[style*="graphics/g_char_header_"]:first').css('backgroundImage'))[1];
-		CastleAge.inGuild = _data.find('table.layout a[href="http://apps.facebook.com/castle_age/guildv2_home.php"]').length > 0 ? true : false;
+		CastleAge.inGuild = _data.find('table.layout a[href*="apps.facebook.com/castle_age/guildv2_home.php"]').length > 0 ? true : false;
 		tools.Class.runtime.classSet = _class;
 		$('#cageSidebarStats').append($('<div id="cageStatsClass" class="cageSidebarStat"><div>' + _class[0].toUpperCase() + _class.slice(1) + '</div><span></span></div>')).append($('<button id="cageClassLogo" title="Choose class and powers" style="background-image:url(\'http://image4.castleagegame.com/graphics/class_' + _class + '.gif\')"></button>').click(function() {
 			$('#cageClassLogo').css({

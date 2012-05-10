@@ -10,7 +10,7 @@ tools.Page.pages['army.php'] = function() {
 			});
 		}, null, true, true);
 	});
-	$('a[href="http://www.facebook.com/reqs.php#confirm_46755028429_0"]:contains("Accept")').remove();
+	$('a[href*="http://www.facebook.com/reqs.php#confirm_46755028429_0"]:contains("Accept")').remove();
 	$('a:contains("Ignore")').each(function() {
 		var _ignore = $(this);
 		_ignore.attr({

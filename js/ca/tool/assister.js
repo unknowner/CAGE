@@ -149,7 +149,7 @@ tools.Assister.assist = function(_ids) {
 						var _postid = _guarddata.find('div.streamContainer:has(div.streamName > a[href*="' + _cta.link + '"]) input[name="like_recent_news_post_id"]:first').val();
 						console.log('Assister - Like & Comment on FB post: ', _postid);
 						var _fbpost = _postid.match(/\d+/g);
-						console.log('Assister - Post Link: http://www.facebook.com/permalink.php?story_fbid=' + _fbpost[1] + '&id=' + _fbpost[0]);
+						console.log('Assister - Post Link: //www.facebook.com/permalink.php?story_fbid=' + _fbpost[1] + '&id=' + _fbpost[0]);
 						if(tools.Assister.runtime.assisterLikeFBPost === true) {
 							addFunction(function(_data) {
 								FB.api("/" + _data.postid + "/likes", 'post', function(response) {
