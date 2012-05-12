@@ -2,6 +2,9 @@
 VER: 1.2.7β
 ------------------------------------------------------------------
 	FIX: Battle summary on home page
+	FIX: Assisting friendlists
+	FIX: Update function (Firefox only)
+	FIX: Remove generals from favorites 
 	
 ==================================================================
 VER: 1.2.6β

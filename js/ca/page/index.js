@@ -6,12 +6,16 @@ tools.Page.pages['index.php'] = function() {
 		user : null,
 		lose : 0
 	}, last = null, oldest = null;
-	$('#newsFeedSection div[style*="graphics/news_innercontainer_mid.gif"]').each(function(i, el) {
-		if(last === null) {
-			last = $(el).prev().text().replace(' ago', '').replace('Victory! ', '');
-		} else {
-			oldest = $(el).prev().text().replace(' ago', '').replace('Victory! ', '');
+	$('#newsFeedSection span').parent().each(function() {
+		if($(this).text().indexOf('ago') !== -1) {
+			if(last === null) {
+				last = $(this).text().trim();
+			} else {
+				oldest = $(this).text().trim();
+			}
 		}
+	});
+	$('#newsFeedSection div[id^="battle_messages_"] > div').each(function(i, el) {
 		var txt = $(el).text().replace(/,/g, ''), my_xp = 0, my_bp = 0, my_wp = 0, my_cash = 0, my_cp = 0, my_cop = 0, result = 1, _uid;
 		if(txt.match(/You were killed/i)) {
 			killed = true;

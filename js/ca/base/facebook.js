@@ -39,7 +39,7 @@ tools.Facebook.GetListMembers = function(_friendlist, _callback) {
 		customEvent('GetFLMembers', function() {
 			var _members = JSON.parse($('#GetFLMembers').val());
 			if(_members !== 'false') {
-				_members = JSON.parse(_members);
+				//_members = JSON.parse(_members);
 				$.each(_members, function(_i, _e) {
 					_listmembers.push(_e.id);
 				});

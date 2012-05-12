@@ -204,7 +204,7 @@ tools.General.renderFavs = function() {
 		var _tempFav = tools.General.runtime.favorites[tools.General.runtime.favList];
 		$('#cageFavoriteGenerals').html('');
 		for(var i = 0, len = _tempFav.length; i < len; i++) {
-			$('#cageAllGenerals > div > img[alt="' + _tempFav[i] + '"]').parent().hide().clone(true, true).appendTo('#cageFavoriteGenerals').show().find('img:last').unbind('click hover').click(tools.General.clickRemove).hover(tools.General.hoverRemoveIn, tools.General.hoverRemoveOut);
+			$('#cageAllGenerals > div > img[alt="' + _tempFav[i] + '"]').parent().hide().clone(true, true).appendTo('#cageFavoriteGenerals').show().find('img:last').unbind().click(tools.General.clickRemove).hover(tools.General.hoverRemoveIn, tools.General.hoverRemoveOut);
 		}
 	} else {
 		$('#cageFavoriteGenerals').html('');
@@ -214,7 +214,7 @@ tools.General.clickAdd = function() {
 	tools.General.runtime.favorites[tools.General.runtime.favList].push($(this).attr('alt'));
 	console.log('clickAdd:', tools.General.runtime.favorites);
 	item.set('favFavorites', tools.General.runtime.favorites);
-	$(this).mouseleave().parent().hide().clone(true, true).appendTo('#cageFavoriteGenerals').show().find('img:last').unbind('click hover').click(tools.General.clickRemove).hover(tools.General.hoverRemoveIn, tools.General.hoverRemoveOut);
+	$(this).mouseleave().parent().hide().clone(true, true).appendTo('#cageFavoriteGenerals').show().find('img:last').unbind().click(tools.General.clickRemove).hover(tools.General.hoverRemoveIn, tools.General.hoverRemoveOut);
 	$('#cageFavsList').change();
 };
 tools.General.clickRemove = function() {
