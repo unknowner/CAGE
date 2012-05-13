@@ -7,6 +7,7 @@ VER: 1.2.7β
 	FIX: Remove generals from favorites 
 	FIX: Monster stats overlapping 
 	ADD: Select gift on RTF
+	FIX: Consumables in keep only shows energy
 	
 ==========================================
 VER: 1.2.6β

@@ -1,4 +1,4 @@
-// version stuff
+/** Current version, used for displaying and Firefox update check */
 version = {
 	major : 1,
 	minor : 2,

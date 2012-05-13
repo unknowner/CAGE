@@ -13,7 +13,8 @@ function cageNews(_full) {
 		'FIX: Assisting friendlists',
 		'FIX: Update function (Firefox only)',
 		'FIX: Remove generals from favorites',
-		'FIX: Monster stats overlapping'
+		'FIX: Monster stats overlapping',
+		'FIX: Consumables in keep only shows energy'
 	], function(_i, _e) {
 		$('#cageNewsChanges').append('<li><span>' + _e.split(':')[0] + '</span>' + _e.split(':')[1] + '</li>');
 	});
