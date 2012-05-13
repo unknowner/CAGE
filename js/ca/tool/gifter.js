@@ -68,8 +68,7 @@ tools.Gifter.runtimeUpdate = function() {
 		});
 	});
 	console.log('tools.Gifter.runtime', tools.Gifter.runtime);
-};
-7
+}; 7
 tools.Gifter.start = function() {
 	addFunction(function() {
 		FB.api('/me/apprequests/', function(_response) {
@@ -94,8 +93,47 @@ tools.Gifter.done = function() {
 	if(tools.Gifter.runtime.returnGift === true) {
 		if(tools.Gifter.runtime.returnGiftName === null) {
 			get('gift.php?request_ids=' + tools.Gifter.runtime.requests.join(','), function(_data) {
-				tools.Gifter.runtime.returnGiftName = $(_data).find('div[id="gift' + tools.Gifter.runtime.returnGiftNum + '"]:first').text().trim().replace('!', '');
-				tools.Gifter.done();
+				$('body').append('<div id="cageLevelUp"><div></div><div><div id="cageLevelUpTop" style="padding:15px 0 0 50px !important;width:448px !important;"></div><div id="cageLevelUpMiddle"></div><div id="cageLevelUpBottom"></div></div></div>');
+				var _cLU = $('#cageLevelUpMiddle');
+				_cLU.append('<div id="cageRTFGift"></div>')
+				console.log(tools.Gifter.runtime.returnGiftNum);
+				$(_data).find('#giftContainer div[id^="gift"]').each(function() {
+					var $this = $(this), _num = $this.attr('id').match(/\d+/)[0], _name = $this.text().trim().replace('!', '');
+					$('#cageRTFGift').append($('<img src="' + $this.find('img').attr('src') + '" >').data({
+						num : _num,
+						name : _name
+					}).click(function() {
+						tools.Gifter.runtime.returnGiftNum = $(this).data().num;
+						tools.Gifter.runtime.returnGiftName = $(this).data().name;
+						$('#cageLevelUpTop').text('Select a gift: ' + _name);
+						$('#cageRTFGift > img').removeClass('cageRTFGiftSelected');
+						$(this).addClass('cageRTFGiftSelected');
+					}));
+					if(tools.Gifter.runtime.returnGiftNum == _num) {
+						$('#cageRTFGift').children('img:last').addClass('cageRTFGiftSelected');
+						tools.Gifter.runtime.returnGiftNum = _num;
+						tools.Gifter.runtime.returnGiftName = _name;
+						$('#cageLevelUpTop').text('Select a gift: ' + _name);
+					}
+				});
+				// send gift
+				_cLU.append($('<img id="cageLevelUpSave" src="http://image4.castleagegame.com/graphics/guild_button_submit.gif">').click(function() {
+					$('#cageLevelUp').fadeOut('fast', function() {
+						$(this).remove();
+						tools.Gifter.done();
+					})
+				}));
+				//cancel gifting
+				_cLU.append($('<img id="cageLevelUpCancel" src="http://image4.castleagegame.com/graphics/war_select_button_cancel.gif">').click(function() {
+					$('#cageLevelUp').fadeOut('fast', function() {
+						$(this).remove();
+						tools.Gifter.runtime.returnGift = false;
+						tools.Gifter.done();
+					})
+				}));
+				$('#cageLevelUp').show();
+				//tools.Gifter.runtime.returnGiftName = $(_data).find('div[id="gift' + tools.Gifter.runtime.returnGiftNum + '"]:first').text().trim().replace('!', '');
+				//tools.Gifter.done();
 			});
 		} else {
 			console.log('RTF!');

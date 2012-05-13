@@ -1,20 +1,22 @@
-==================================================================
+==========================================
 VER: 1.2.7β
-------------------------------------------------------------------
+
 	FIX: Battle summary on home page
 	FIX: Assisting friendlists
 	FIX: Update function (Firefox only)
 	FIX: Remove generals from favorites 
+	FIX: Monster stats overlapping 
+	ADD: Select gift on RTF
 	
-==================================================================
+==========================================
 VER: 1.2.6β
-------------------------------------------------------------------
+
 	FIX: Raid list getting messed up
 	FIX: Problems with Iron & Rockmelt
 
-==================================================================
+==========================================
 VER: 1.2.5β
-------------------------------------------------------------------
+
 	ADD: COPTER connection (disabled)
 	ADD: Enable/disable CAGE (Chrome)
 	ADD: Needclickers can disable CAGE for CTAs
@@ -23,9 +25,9 @@ VER: 1.2.5β
 	FIX: Double scrollbars
 	FIX: General equipment not updating
 
-==================================================================
+==========================================
 VER: 1.2.4β
-------------------------------------------------------------------
+
 	ADD: Monthly general Zolthar
 	FIX: Sano position in Atlantis quests
 	FIX: Monster stats not on every monster
@@ -35,18 +37,18 @@ VER: 1.2.4β
 	FIX: Dismiss/Join in friends keep broken
 	CHG: Extra tier in public monsters disabled for now
 	
-==================================================================
+==========================================
 VER: 1.2.3β
-------------------------------------------------------------------
+
 	ADD: Chat to sidebar
 	FIX: Chat not posting new messages
 	FIX: Guild formation displayed in wrong order
 	FIX: Pinned alchemy items
 	CHG: Reduced bandwidth usage for tools and startup
 
-==================================================================
+==========================================
 VER: 1.2.2β
-------------------------------------------------------------------
+
 	ADD: Change guild formation with drag&drop
 	ADD: Goblin item locker
 	ADD: All tiers at public monster list and selected tier stored
@@ -55,9 +57,9 @@ VER: 1.2.2β
 	CHG: Some CSS stuff
 	CHG: Some performance stuff
 
-==================================================================
+==========================================
 VER: 1.2.1β
-------------------------------------------------------------------
+
 	ADD: Receive & Return gift - gift 1 (allways newest) for now
 	ADD: Favor points sidebar stat
 	FIX: Sort general-fav-lists on generals page
@@ -66,16 +68,16 @@ VER: 1.2.1β
 	FIX: CSS stuff, most of it Firefox only
 	FIX: Generals page stuff
 
-==================================================================
+==========================================
 VER: 1.1.32β
-------------------------------------------------------------------
+
 	ADD: Conquest points added to summary
 	FIX: Monthly generals list at the oracle
 	FIX: Stat points distribution showing negativ value
 
-==================================================================
+==========================================
 VER: 1.1.31β
-------------------------------------------------------------------
+
 	ADD: Stats points upgrade dialog
 	ADD: Current weapons at generals image
 	ADD: Monster activity display
@@ -85,24 +87,24 @@ VER: 1.1.31β
 	CHG: Achievements show only have/need when have < need
 	CHG: Class powers in stats only update when saving
 	
-==================================================================
+==========================================
 VER: 1.1.30β
-------------------------------------------------------------------
+
 	ADD: Choose old monthly generals at the Oracle
 	ADD: Have/need number at monster achievements
 	ADD: Sort order switch for Oracle generals
 	
-==================================================================
+==========================================
 VER: 1.1.29β
-------------------------------------------------------------------
+
 	ADD: Sorting in conquest duels
 	ADD: Current Class in stats + powers
 	ADD: Quickswitch to discount general at Soldiers
 	FIX: Keep not showing BSI/LSI/...
 
-==================================================================
+==========================================
 VER: 1.1.28β
-------------------------------------------------------------------
+
 	ADD: Hide upgrade messages (Settings)
 	ADD: Conquest monster added to monster list
 	ADD: Pics in Guild battles link to keep
@@ -112,92 +114,92 @@ VER: 1.1.28β
 	FIX: Conquest defensive victories show as losses
 	CHG: Show FB Messages/Notifications when hiding bluebar
 
-==================================================================
+==========================================
 VER: 1.1.27β
-------------------------------------------------------------------
+
 	FIX: Asking for extra permissions (1.1.27.1)
 	ADD: Even better handling for broken pages (1.1.27.1)
 	ADD: Battle news summary
 	FIX: Sure i'd fixed something...
 
-==================================================================
+==========================================
 VER: 1.1.26β
-------------------------------------------------------------------
+
 	FIX: Popup boxes sometimes placed out of sight
 	
-==================================================================
+==========================================
 VER: 1.1.25β
-------------------------------------------------------------------
+
 	ADD: Hide Facebook bluebar
 	FIX: Generals not working
 	FIX: Stats update when changing generals
 	FIX: Stash without having Aeris
 	FIX: Chat alignment
 
-==================================================================
+==========================================
 VER: 1.1.24β
-------------------------------------------------------------------
+
 	ADD: Settings for Assister
 	FIX: Entering comments brakes page
 	CHG: jQuery UI update to 1.8.18
-==================================================================
+==========================================
 VER: 1.1.23β
-------------------------------------------------------------------
+
 	ADD: Golbin & Live feed in CA menus
 	FIX: Fav generals in wrong size
 	FIX: Defense percentage missing on some monsters
 	FIX: page loader (Goblin/summon...) 
 	FIX: Broken attack buttons
 	
-==================================================================
+==========================================
 VER: 1.1.22β
-------------------------------------------------------------------
+
 	ADD: Multiple general lists
 	ADD: Health per action for conquest battles
 	ADD: More stats for some monster
 	CHG: Remove CAGE nav and repositioned CA's new nav
 
-==================================================================
+==========================================
 VER: 1.1.21β
-------------------------------------------------------------------
+
 	ADD: Monsterstats
 	FIX: Pop ups at mouse position
 	FIX: Permission for gifting lists
 	
-==================================================================
+==========================================
 VER: 1.1.20β
-------------------------------------------------------------------
+
 	FIX: Armyfiller/Armycleaner
 	FIX: Charge display for current general
 	FIX: Goblin emporium
 
-==================================================================
+==========================================
 VER: 1.1.19β
-------------------------------------------------------------------
+
 	FIX: Page loader (Summon monster/guild/etc.)
 	FIX: Some internals
 	CHG: jQuery UI updated to 1.8.17
 	CHG: Stats and generals display reworked
 	
-==================================================================
+==========================================
 VER: 1.1.18β
-------------------------------------------------------------------
+
 	ADD: Divine power added to info in keep
 	FIX: Heal using heart symbol in stats
 	FIX: A lot of stuff, mostly internals
 	
-==================================================================
+==========================================
 VER: 1.1.17β
-------------------------------------------------------------------
+
 	ADD: Numbers have/need in alchemy recipes
 	ADD: Fixed height for generals selector
 	ADD: Autoscroll in new guild chat
 	FIX: Missing text in army cleaner settings
 	FIX: Demi-tool not closing automatic
 
-==================================================================
+==========================================
 VER: 1.1.16β
-------------------------------------------------------------------
+
 	ADD: Stop messengers (open gifts/invites)
 	ADD: Army Cleaner, removes none-friends from army
 	FIX: Sometimes broken list in raids
@@ -205,62 +207,62 @@ VER: 1.1.16β
 	FIX: Stay on gate in guild/festival battles
 	CHG: Army filler reworked
 
-==================================================================
+==========================================
 VER: 1.1.15β
-------------------------------------------------------------------
+
 	FIX: Missing guild achivements in navigation
 	FIX: Activity filter in guild battles
 	CHG: Internal settings stuff
 	
-==================================================================
+==========================================
 VER: 1.1.14β
-------------------------------------------------------------------
+
 	FIX: Public monster popup
 	FIX: Festival duel sorting
 	ADD: Quick RTF gifting
 	ADD: Festival/Guild battle now saves filter settings
 	ADD: Save/load settings
 	
-==================================================================
+==========================================
 VER: 1.1.13β
-------------------------------------------------------------------
+
 	FIX: Gifter sending wrong ids
 	ADD: Save alchemy hide receipt settings
 	ADD: Save festival duel sorting settings
 	ADD: Save battle page sorting settings
 	CHG: Demi timer now works from demi tool and demi page
 	
-==================================================================
+==========================================
 VER: 1.1.12β
-------------------------------------------------------------------
+
 	CHG: Demi timer now works from demi tool and demi page
 	FIX: Facebook starting errors
 
-==================================================================
+==========================================
 VER: 1.1.11β
-------------------------------------------------------------------
+
 	FIX: Assister
 	FIX: Some guild battle stuff
 	FIX: Broken page when using Goblin Emporium
 	FIX: Exp to next level
 	FIX: Possible fix for FF start problems
 	
-==================================================================
+==========================================
 VER: 1.1.10β
-------------------------------------------------------------------
+
 	FIX: Gift sending 
 	FIX: CA timeouts / Signed request problems
 
-==================================================================
+==========================================
 VER: 1.1.9β
-------------------------------------------------------------------
+
 	ADD: Assist for friend list
 	FIX: Gift sending
 	CHG: Internals, making start up a bit faster
 
-==================================================================
+==========================================
 VER: 1.1.8β
-------------------------------------------------------------------
+
 	ADD: Dismiss/Join army members from their keeps
 	ADD: Close pop ups with X key
 	FIX: Quest/Level-up popup centered
@@ -269,9 +271,9 @@ VER: 1.1.8β
 	FIX: Scroll to top when posting in monster chat
 	CHG: Get CA Player for EG and Army Filler only once
 
-==================================================================
+==========================================
 VER: 1.1.7β
-------------------------------------------------------------------
+
 	ADD: Festival duel sorting
 	CHG: Full startup message only shows on new update
 	CHG: Summon/Copy CAT link without bqh
@@ -281,79 +283,79 @@ VER: 1.1.7β
 	FIX: Assister showing wrong number of assists
 	FIX: Another minor display fix when receiving gifts
 	
-==================================================================
+==========================================
 VER: 1.1.6β
-------------------------------------------------------------------
+
 	ADD: Alchemy page mods
 	ADD: Monster list
 	ADD: Battle page sorting
 	FIX: Some layout stuff
 
-==================================================================
+==========================================
 VER: 1.1.5β
-------------------------------------------------------------------
+
 	FIX: Demi timer showing negativ timer
 	FIX: Not showing all popups
 	ADD: Notification setting (and internals)
 	ADD: Stat Points display
 
-==================================================================
+==========================================
 VER: 1.1.4β
-------------------------------------------------------------------
+
 	FIX: Permission request for assister
 	ADD: Guild Class switcher
 	FIX: Monster/Quest pop ups
 	ADD: Demi Timer
 
-==================================================================
+==========================================
 VER: 1.1.3β
-------------------------------------------------------------------
+
 	CHG: Generals reworked once more
 	ADD: Stats reworked
 	FIX: Popup positions
 	ADD: Notificatons for some actions (assists, eliteguard)
 
-==================================================================
+==========================================
 VER: 1.1.2β
-------------------------------------------------------------------
+
 	FIX: CSS for demi points sometime unreadable
 	FIX: Theme problems, making everything unreadable
 	
-==================================================================
+==========================================
 VER: 1.1.1β
-------------------------------------------------------------------
+
 	FIX: Charge info for generals missing
 	FIX: Problems with on/off buttons in settings
 	ADD: Align CA left/centered via settings
 	FIX: Broken guild battle page
 
-==================================================================
+==========================================
 VER: 1.1.0β
-------------------------------------------------------------------
+
 	So many fixes, I was just to lazy to write them all down
 
-==================================================================
+==========================================
 VER: 1.0.56β
-------------------------------------------------------------------
+
 	FIX: Overlay problems at chests
 	CHG: Internal file path handling
 	FIX: Display errors in finished guild battles
 
-==================================================================
+==========================================
 VER: 1.0.55β
-------------------------------------------------------------------
+
 2011-12-01
 	FIX: Missing defense percentage
 	
-==================================================================
+==========================================
 VER: 1.0.54β
-------------------------------------------------------------------
+
 2011-11-29
 	FIX: Some CSS stuff
 	
-==================================================================
+==========================================
 VER: 1.0.53β
-------------------------------------------------------------------
+
 2011-11-29
 	CHG: Language handling reworked
 2011-11-26
@@ -361,9 +363,9 @@ VER: 1.0.53β
 2011-11-24
 	ADD: Percentage to new guild monsters
 
-==================================================================
+==========================================
 VER: 1.0.52β
-------------------------------------------------------------------
+
 2011-11-24
 	CHG: New Guild stuff added
 2011-11-21
@@ -371,23 +373,23 @@ VER: 1.0.52β
 2011-11-19
 	CHG: Some internal stuff optimized
 
-==================================================================
+==========================================
 VER: 1.0.51β
-------------------------------------------------------------------
+
 2011-11-18
 	FIX: FB gifting dialog fix (fb problem)
 2011-11-12
 	FIX: Genesis defense percentage
 
-==================================================================
+==========================================
 VER: 1.0.50
-------------------------------------------------------------------
+
 2011-11-12
 	CHG: CAGE is now in beta stage
 
-==================================================================
+==========================================
 VER: 1.0.49
-------------------------------------------------------------------
+
 2011-11-12
 	ADD: Quick Demi selector
 2011-11-08
@@ -399,15 +401,15 @@ VER: 1.0.49
 2011-11-01
 	FIX: Some minor CSS stuff
 
-==================================================================
+==========================================
 VER: 1.0.48
-------------------------------------------------------------------
+
 2011-11-01
 	FIX: Possible fix for framing problem (2nd try)
 	
-==================================================================
+==========================================
 VER: 1.0.47
-------------------------------------------------------------------
+
 2011-11-01
 	FIX: Possible fix for framing problem
 	FIX: Gifting not working
@@ -416,112 +418,112 @@ VER: 1.0.47
 2011-10-28
 	ADD: Turn off all animations in settings
 
-==================================================================
+==========================================
 VER: 1.0.46
-------------------------------------------------------------------
+
 2011-10-27
 	ADD: Army filler
 	FIX: Some fb CSS stuff
 2011-10-14
 	ADD: Monster stats to result when healing/strength...
 
-==================================================================
+==========================================
 VER: 1.0.45
-------------------------------------------------------------------
+
 2011-10-14
 	FIX: Missing assister log images
 	FIX: Not clearing all saved data via settings
 	ADD: Ask for feed post permission
 
-==================================================================
+==========================================
 VER: 1.0.44
-------------------------------------------------------------------
+
 2011-10-06
 	FIX: Settings shows old values when changing stuff
 	FIX: Potions stay at 1 when using last one
 	ADD: More log messages for the assister
 
-==================================================================
+==========================================
 VER: 1.0.43
-------------------------------------------------------------------
+
 2011-10-05
 	FIX: Some CSS stuff on the the guild battles
 	ADD: Extra send gift filter by using friendlist
 	ADD: Settings
 
-==================================================================
+==========================================
 VER: 1.0.42
-------------------------------------------------------------------
+
 2011-10-03
 	CHG: Stash & Heal repositioned
 	ADD: Use potions via new UI elements
 
-==================================================================
+==========================================
 VER: 1.0.41
-------------------------------------------------------------------
+
 2011-10-02
 	ADD: Assist log added (per session, not saved)
 
-==================================================================
+==========================================
 VER: 1.0.40
-------------------------------------------------------------------
+
 2011-09-30
 	FIX: Type in assister
 
-==================================================================
+==========================================
 VER: 1.0.39
-------------------------------------------------------------------
+
 2011-09-30
 	FIX: Assister stoped after first not-a-friend CTA
 
-==================================================================
+==========================================
 VER: 1.0.38
-------------------------------------------------------------------
+
 2011-09-29
 	FIX: Assister can use up to 10 stamina (was 1)
 
-==================================================================
+==========================================
 VER: 1.0.37
-------------------------------------------------------------------
+
 2011-09-29
 	ADD: More info when sending gifts
 	ADD: Assister for testing
 2011-09-26
 	FIX: Activity filter for Festival Guild Battle
 
-==================================================================
+==========================================
 VER: 1.0.36
-------------------------------------------------------------------
+
 2011-09-23
 	FIX: Gift page CSS
 	FIX: Generals selector not shown current general on start
 
-==================================================================
+==========================================
 VER: 1.0.35
-------------------------------------------------------------------
+
 2011-09-20
 	FIX: Some problems with guild battle filters
 	FIX: Background image in guild battles
 	CHG: Monsterlist changed a bit
 
-==================================================================
+==========================================
 VER: 1.0.34
-------------------------------------------------------------------
+
 2011-09-16
 	FIX: Results in Festival battle not showing
 	FIX: Guild/Festival battles selecting wrong gate
 
-==================================================================
+==========================================
 VER: 1.0.33
-------------------------------------------------------------------
+
 2011-09-16
 	FIX: Some CSS stuff due to FB changes
 	FIX: Gifting not working if RTF filter is empty
 	CHG: Some minor cosmetics
 
-==================================================================
+==========================================
 VER: 1.0.32
-------------------------------------------------------------------
+
 2011-09-15
 	CHG: Static results turned off until settings available
 2011-09-14
@@ -531,32 +533,32 @@ VER: 1.0.32
 	FIX: Results shows scrollbar for empty area
 	FIX: General switcher for Atlantis
 
-==================================================================
+==========================================
 VER: 1.0.31
-------------------------------------------------------------------
+
 2011-09-13
 	ADD: Some info to monster battle results
 	FIX: Added percentage for Thanatos
 2011-09-12
 	ADD: Static Results, no scrolling on result add/change (eg Quests)
 
-==================================================================
+==========================================
 VER: 1.0.31
-------------------------------------------------------------------
+
 2011-09-09
 	FIX: Health status missing >Good<
 
-==================================================================
+==========================================
 VER: 1.0.29
-------------------------------------------------------------------
+
 2011-09-09
 	ADD: Guild battle filter (class, status, activity)
 	ADD: Guild battle page size reduced
 	FIX: First time start didn't execute page mod
 	
-==================================================================
+==========================================
 VER: 1.0.28
-------------------------------------------------------------------
+
 2011-09-08
 	FIX: Stash brakes gold timer
 	ADD: No more timeouts
@@ -564,22 +566,22 @@ VER: 1.0.28
 	CHG: Startup optimization
 	CHG: Monster back to stock (needs rewrite)
 
-==================================================================
+==========================================
 VER: 1.0.27
-------------------------------------------------------------------
+
 2011-09-06
 	CHG: Some code cleaning and CSS fixes
 	FIX: Festival guild battle page mod is back	
 
-==================================================================
+==========================================
 VER: 1.0.26
-------------------------------------------------------------------
+
 2011-09-02
 	FIX: Broken timers because CA fixed them
 
-==================================================================
+==========================================
 VER: 1.0.25
-------------------------------------------------------------------
+
 2011-09-02
 	FIX: Facebook bar not showing (fb changes)
 	FIX: Stash when Aeris already selected not working
@@ -593,9 +595,9 @@ VER: 1.0.25
 	FIX: Skip button in monster
 	FIX: Ability info popup position
 
-==================================================================
+==========================================
 VER: 1.0.24
-------------------------------------------------------------------
+
 2011-08-24
 	ADD: Class ability changer + fix
 	
@@ -603,9 +605,9 @@ VER: 1.0.24
 	ADD: Festival Tower 2
 	CHG: All timers now work without extra page fixes (page.js fixed)
 	
-==================================================================
+==========================================
 VER: 1.0.23
-------------------------------------------------------------------
+
 2011-08-22
 	FIX: Sent gift filter not working correct
 	FIX: % for Ragnarok armor
@@ -619,9 +621,9 @@ VER: 1.0.23
 	FIX: Start problems (no menu/general)
 	CHG: Start page reworked
 
-==================================================================
+==========================================
 VER: 1.0.22
-------------------------------------------------------------------
+
 2011-08-18
 	ADD: Favourites for Generals
 	ADD: Fix for guild battle timers
@@ -634,31 +636,31 @@ VER: 1.0.22
 2011-08-15
 	CHG: No "%%" in monster bars
 
-==================================================================
+==========================================
 VER: 1.0.21
-------------------------------------------------------------------
+
 2011-08-15
 	FIX: Generals not working
 	CHG: Quest CSS reworked
 	CHG: FB CSS reworked
 
-==================================================================
+==========================================
 VER: 1.0.20
-------------------------------------------------------------------
+
 2011-08-11
 	FIX: % not shown at monster with "Party Health/Strength"
 
-==================================================================
+==========================================
 VER: 1.0.19
-------------------------------------------------------------------
+
 2011-08-11
 	ADD: Fix for monster/arena timers
 	ADD: Monster health/defense percentage
 	CHG: Generals sorted by name
 
-==================================================================
+==========================================
 VER: 1.0.18
-------------------------------------------------------------------
+
 2011-08-08
 	ADD: Festival monster added to monster list
 
@@ -669,15 +671,15 @@ VER: 1.0.18
 2011-08-06
 	ADD: Accept gifts on army page (web3 gifts?)
 
-==================================================================
+==========================================
 VER: 1.0.17
-------------------------------------------------------------------
+
 2011-08-05
 	FIX: Resizing bug in keep
 
-==================================================================
+==========================================
 VER: 1.0.16
-------------------------------------------------------------------
+
 2011-08-05
 	CHG: All CSS stuff reworked
 	ADD: General selector
@@ -688,9 +690,9 @@ VER: 1.0.16
 	CHG: IFrame positioning reworked
 	ADD: Chat fits in wide screen mode
 
-==================================================================
+==========================================
 VER: 1.0.15
-------------------------------------------------------------------
+
 2011-08-04
 	FIX: Elite guard started from army not guild
 	ADD: Theme selector
@@ -699,9 +701,9 @@ VER: 1.0.15
 	ADD: Missing Guild stuff for nav bar
 	FIX: IFrame, once more
 
-==================================================================
+==========================================
 VER: 1.0.14
-------------------------------------------------------------------
+
 2011-08-02 Unknowner
 	ADD: New Navbar
 	FIX: IFrame position
@@ -711,17 +713,17 @@ VER: 1.0.14
 	CHG: other att/def symbols
 	CHG: IFrame position reworked
 
-==================================================================
+==========================================
 VER: 1.0.13
-------------------------------------------------------------------
+
 2011-08-01 Unknowner
 	ADD: Att/Def values to current geneneral
 	FIX: Sometimes CA:HOD ad showing
 
 
-==================================================================
+==========================================
 VER: 1.0.12
-------------------------------------------------------------------
+
 2011-07-31 Unknowner
 	CHG: A lot changes to positions and css stuff
 	CHG: All tools now working in CA context
@@ -735,9 +737,9 @@ VER: 1.0.12
 	CHG: Can now close all results
 	CHG: fixed menu position
 
-==================================================================
+==========================================
 VER: 1.0.11
-------------------------------------------------------------------
+
 2011-07-23 Unknowner
 	ADD: Stash all gold, if available switch to Aeris
 	CHG: Result closing changed from get to post

@@ -1,4 +1,26 @@
 /*
- * tools/cage.js
+ * tools/gifter.js
  */
 
+#cageRTFGift {
+	border: 1px inset;
+	margin-left: 20px;
+	margin-top: -5px;
+	width: 457px;
+	height: 276px;
+	overflow-y: scroll;
+	background-color: rgba(0,0,0,.5);
+}
+#cageRTFGift > img {
+	width: 55px;
+	height: 55px;
+	cursor: pointer;
+	opacity: 0.7;
+}
+
+#cageRTFGift > img:hover {
+	opacity: 1;
+}
+.cageRTFGiftSelected {
+	opacity: 1 !important;
+}

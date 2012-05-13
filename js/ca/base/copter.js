@@ -55,14 +55,15 @@ tools.COPTER.receiver = function(_data) {
 	}
 };
 tools.COPTER.addDisplay = function() {
-	$('#cageSidebarStats').append('<div id="cageCOPTERDisplay" class="cageSidebarStat"><div>COPTER</div><div><div></div></div><span></span><span>connected</span></div></div>').append($('<button id="cageCOPTERSubmit" title="Update data"></button>').click(function() {
-		$('#cageCOPTERSubmit').css({
-			'cursor' : 'wait',
-			'backgroundSize' : '33px 33px',
-			'backgroundPosition' : '-4px -4px',
-			'backgroundImage' : 'url(\'http://image4.castleagegame.com/graphics/shield_wait.gif\')'
-		}).attr('disabled', 'disabled');
+	$('#cageSidebarStats').append('<div id="cageCOPTERDisplay" class="cageSidebarStat"><div>COPTER</div><div><div></div></div><span></span><span>connected</span></div></div>').append($('<button id="cageCOPTERSubmit" title="Update data"></button>'));
+	/*.click(function() {
+	 $('#cageCOPTERSubmit').css({
+	 'cursor' : 'wait',
+	 'backgroundSize' : '33px 33px',
+	 'backgroundPosition' : '-4px -4px',
+	 'backgroundImage' : 'url(\'http://image4.castleagegame.com/graphics/shield_wait.gif\')'
+	 }).attr('disabled', 'disabled');
 
-	}));
+	 }));*/
 
 };

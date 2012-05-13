@@ -5,7 +5,7 @@ tools.Page.pages['index.php'] = function() {
 	var xp = 0, bp = 0, wp = 0, cp = 0, cop = 0, win = 0, lose = 0, deaths = 0, cash = 0, list = [], users = {}, nemesis = {
 		user : null,
 		lose : 0
-	}, last = null, oldest = null;
+	}, last = null, oldest = '';
 	$('#newsFeedSection span').parent().each(function() {
 		if($(this).text().indexOf('ago') !== -1) {
 			if(last === null) {

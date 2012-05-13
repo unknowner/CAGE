@@ -331,7 +331,7 @@ tools.Monster.battleStats = function() {
 	} else {
 		$stats.append('<div><span style="display:inline-block;font-weight:bold;width:125px;">Attackers: </span><span style="display:inline-block;width:25px;text-align:right;">' + _attackers + '</span></div>');
 	}
-	tools.Monster.statPos('Activity', _allDamage[_dmgType].toString().replace(/(\d)(?=(\d{3})+\b)/g, '$1,') + (_dmgType === 'dmg' ? ' dmg' + (_allDamage.def !== null ? ' / ' + _allDamage.def.toString().replace(/(\d)(?=(\d{3})+\b)/g, '$1,') + ' def' : '') : ''), 1);
+	tools.Monster.statPos('Activity', _allDamage[_dmgType].toString().replace(/(\d)(?=(\d{3})+\b)/g, '$1,') + (_dmgType === 'dmg' ? ' dmg' + (_allDamage.def !== null ? ' / ' + _allDamage.def.toString().replace(/(\d)(?=(\d{3})+\b)/g, '$1,') + ' def' : '') : ''));
 	if(_ownDamage !== null) {
 		tools.Monster.statPos('My activity', _ownDamage, 2);
 	}
@@ -374,7 +374,7 @@ tools.Monster.battleCTA = function(_monsterpage) {
 		$form = $form.clone();
 		var $children = $form.children().not('input[name="bqh"]');
 		$form.empty().append($children);
-		tools.Monster.statPos('<a id="cageSummonCTA" href="//apps.facebook.com/castle_age/' + _monsterpage + '.php?' + $form.serialize() + '&action=doObjective">Weapons</a> ' + _sieges.length, _dmg.toString().replace(/(\d)(?=(\d{3})+\b)/g, '$1,') + ' dmg', 0);
+		tools.Monster.statPos('<a id="cageSummonCTA" href="//apps.facebook.com/castle_age/' + _monsterpage + '.php?' + $form.serialize() + '&action=doObjective">Weapons</a> ' + _sieges.length, _dmg.toString().replace(/(\d)(?=(\d{3})+\b)/g, '$1,') + ' dmg');
 		$('#cageSummonCTA').unbind('click').click(function() {
 			tools.Page.loadPage(_monsterpage + '.php?' + $('form:has(div.imgButton > input[alt="Ask for help"]):first').serialize() + '&action=doObjective');
 			return false;
@@ -387,7 +387,10 @@ tools.Monster.battleCTA = function(_monsterpage) {
 	}
 	return _cta;
 }
-tools.Monster.statPos = function(_text, _html, _pos) {
-	$('#cageMonsterStats').after('<div class="cageMonsterActivity"><span style="display:inline-block;font-weight:bold;width:80px;">' + _text + '</span><span style="display:inline-block;float:right;text-align:right;">' + _html + '</span></div>');
-	$('#cageMonsterStats').next('.cageMonsterActivity:last').css('bottom', $('#cageMonsterStats').outerHeight() + 2 + _pos * ($('div.cageMonsterActivity:first').outerHeight() + 2));
+tools.Monster.statPos = function(_text, _html) {
+	var _bottom = $('#cageMonsterStats').outerHeight() + 2;
+	$('.cageMonsterActivity').each(function() {
+		_bottom += $(this).outerHeight() + 2;
+	});
+	$('#cageMonsterStats').after('<div class="cageMonsterActivity" style="bottom:' + _bottom + '"><span style="display:inline-block;font-weight:bold;width:80px;">' + _text + '</span><span style="display:inline-block;float:right;text-align:right;">' + _html + '</span></div>');
 };
