@@ -11,7 +11,7 @@ tools.Class.runtimeUpdate = function() {
 			4 : 'cleric'
 		},
 		classSet : null
-	}
+	};
 };
 tools.Class.start = function() {
 	signedGet('guild_class_power_equipment.php', function(_data) {
@@ -26,7 +26,6 @@ tools.Class.showClass = function(_data) {
 	//Get current class and setup class selector
 	tools.Class.runtime.classId = parseInt(_data.find('input[name="class_id"]').val(), 10);
 	tools.Class.runtime.classSet = tools.Class.runtime.classes[tools.Class.runtime.classId];
-	var _classes = ['cleric', 'mage', 'rogue', 'warrior'];
 	$.each(tools.Class.runtime.classes, function() {
 		var _set = this.toString(), _img = $('<img id="cageClassImg' + _set + '" src="http://image4.castleagegame.com/graphics/g_char_select' + _set + '.jpg">');
 		if(_set === tools.Class.runtime.classSet) {
@@ -62,7 +61,7 @@ tools.Class.showClass = function(_data) {
 	// available powers
 	tools.Class.runtime.powersOwn = {};
 	_data.find('input[id^="slot_image_"]').each(function() {
-		var _key = /\d+_\d+_\d+/.exec($(this).attr('id'))[0]
+		var _key = /\d+_\d+_\d+/.exec($(this).attr('id'))[0];
 		tools.Class.runtime.powersOwn[_key] = {
 			small : 'http://image4.castleagegame.com/graphics/' + $(this).val(),
 			big : $(this).next('div.imgButton').find('img').attr('nosrc')
@@ -145,7 +144,7 @@ tools.Class.showClass = function(_data) {
 	$('#cageClassContainer').animate({
 		'top' : 99
 	}, 'slow');
-}
+};
 tools.Class.changeClass = function(_class) {
 	$('#cageClassLogo').css({
 		'cursor' : 'wait',
@@ -163,7 +162,7 @@ tools.Class.done = function() {
 	$('#cageClassContainer').animate({
 		'top' : -500
 	}, 'slow', function() {
-		$(this).hide
+		$(this).hide();
 	});
 	$('#cageClassLogo').css({
 		'cursor' : 'pointer',

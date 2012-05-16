@@ -18,7 +18,7 @@ tools.Page.pages['army_news_feed.php'] = function() {
 			$.each(tools['Assister'].runtime.Assisted, function(_i, _e) {
 				_alogs.append($('<div class="cageAssisterList imgButton"><img class="cageAssisterListImage" src="' + _e.image + '"><div class="cageAssisterListName">Assisted for: ' + _e.name + '<br>Time left: ' + _e.timer + '</div><div class="cageAssisterListValues">' + _e.values.join('<br>') + '</div></div>').click(function() {
 					tools.Page.loadPage(_e.link);
-				}))
+				}));
 			});
 		}));
 	}

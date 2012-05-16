@@ -8,7 +8,7 @@ tools.Page.pages['army_member.php'] = function() {
 		'marginLeft' : 515,
 		'width' : 250,
 		'textAlign' : 'left'
-	})
+	});
 	$('div:contains("Current Army Size"):last').css('width', 175).before($('<button style="width:85px;" class="cageArmyEdit">F<span>ill </span>A<span>rmy</button>').click(function() {
 		$('button.cageGifterButton').fadeOut('slow');
 		addFunction(function() {

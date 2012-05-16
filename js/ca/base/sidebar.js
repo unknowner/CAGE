@@ -20,7 +20,7 @@ tools.Sidebar.hideSection = function(_section, _child, _text) {
 		_sec.data('inOut', _inOut);
 		_sec.children('.cageSidebarSectionHider').stop().animate({
 			opacity : _sec.data('inOut')
-		})
+		});
 	}
 
 

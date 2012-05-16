@@ -23,7 +23,7 @@ tools.Page.pages['keep.php'] = function() {
 			'overflow' : 'hidden'
 		});
 	});
-	// Calulate devine power
+	// Calculate devine power
 	var _data = {}, _divPow = 0, _divItems = [], _divine = {
 		'general' : {
 			'Aegea' : 45,
@@ -94,7 +94,7 @@ tools.Page.pages['keep.php'] = function() {
 					_temp = _temp > _val ? _temp : _val;
 				}
 			});
-			_divPow += _temp
+			_divPow += _temp;
 		});
 	}
 
@@ -118,13 +118,7 @@ tools.Page.pages['keep.php'] = function() {
 		_data.bsi = Math.round((_data.att + _data.def) / _data.lvl * 100) / 100;
 		_data.lsi = Math.round((_data.eng + _data.sta * 2) / _data.lvl * 100) / 100;
 		_data.tsi = _data.bsi + _data.lsi;
-		$('div.keep_healer_section').prepend(
-				$('<div id="cageKeepStats">').append('<div>eAtt: ' + _data.eAt.toFixed(2) + '</div><div style="font-size:9px;">Effective Attack</div>').append(
-						'<div>eDef: ' + _data.eDe.toFixed(2) + '</div><div style="font-size:9px;">Effective Defense</div>').append(
-						'<div>BSI: ' + _data.bsi.toFixed(2) + '</div><div style="font-size:9px;">Battle Strength Index</div>').append(
-						'<div>LSI: ' + _data.lsi.toFixed(2) + '</div><div style="font-size:9px;">Levelling Speed Index</div>').append(
-						'<div>TSI: ' + _data.tsi.toFixed(2) + '</div><div style="font-size:9px;">Total Skillpoints per Level</div>').append(
-						'<div>Divine: ' + _divPow + '</div><div style="font-size:9px;">Calculated Divine Power</div>'));
+		$('div.keep_healer_section').prepend($('<div id="cageKeepStats">').append('<div>eAtt: ' + _data.eAt.toFixed(2) + '</div><div style="font-size:9px;">Effective Attack</div>').append('<div>eDef: ' + _data.eDe.toFixed(2) + '</div><div style="font-size:9px;">Effective Defense</div>').append('<div>BSI: ' + _data.bsi.toFixed(2) + '</div><div style="font-size:9px;">Battle Strength Index</div>').append('<div>LSI: ' + _data.lsi.toFixed(2) + '</div><div style="font-size:9px;">Levelling Speed Index</div>').append('<div>TSI: ' + _data.tsi.toFixed(2) + '</div><div style="font-size:9px;">Total Skillpoints per Level</div>').append('<div>Divine: ' + _divPow + '</div><div style="font-size:9px;">Calculated Divine Power</div>'));
 	}
 	// rearrange Items
 	setTimeout(function() {
@@ -151,7 +145,7 @@ tools.Page.pages['keep.php'] = function() {
 			}, function() {
 				$this.css('zIndex', '').children('div.cageUnitStats').remove();
 			}).attr('title', '').unwrap().unwrap();
-		})
+		});
 	}, 50);
 
 	// Add stuff on others keep

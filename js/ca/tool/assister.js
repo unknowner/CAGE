@@ -37,7 +37,7 @@ tools.Assister.runtimeUpdate = function() {
 		assisterCommentMonster : item.get('assisterCommentMonster', true),
 		assisterCommentFBPost : item.get('assisterCommentFBPost', true),
 		assisterLikeFBPost : item.get('assisterLikeFBPost', true)
-	}
+	};
 	tools.Facebook.getFriendlists(function(_names) {
 		$.each(_names, function(_i, _e) {
 			tools.Assister.runtime.assisterLists[_e] = _e;
@@ -56,7 +56,7 @@ tools.Assister.start = function() {
 	} else {
 		tools.Facebook.GetListMembers(tools.Assister.runtime.assisterList, function(_ids) {
 			tools.Assister.getCTA(_ids);
-		})
+		});
 	}
 };
 
@@ -175,7 +175,7 @@ tools.Assister.assist = function(_ids) {
 					tools.Assister.assist();
 				}
 			} else {
-				console.log('Assister - No assist, maybe already assisted')
+				console.log('Assister - No assist, maybe already assisted');
 				tools.Assister.assist();
 			}
 		}, 'text');

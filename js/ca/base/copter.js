@@ -42,7 +42,7 @@ tools.COPTER.request = function() {
 tools.COPTER.receiver = function(_data) {
 	_copter = JSON.parse(_data);
 	if(_copter && _copter.status === 'connected') {
-		var _lvl = parseInt($('#st_5').children().eq(1).text().match(/\d+/), 10)
+		var _lvl = parseInt($('#st_5').children().eq(1).text().match(/\d+/), 10);
 		if(!isNaN(_lvl) && _lvl !== _copter.level) {
 			tools.COPTER.addDisplay();
 		} else {

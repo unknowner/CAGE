@@ -27,7 +27,7 @@ tools.Page.pages['index.php'] = function() {
 					uid : _uid,
 					win : 0,
 					lose : 0
-				}
+				};
 			}
 			if(txt.match(/Victory!|VICTORIOUS/i)) {
 				win++;
@@ -42,7 +42,7 @@ tools.Page.pages['index.php'] = function() {
 					user : _uid,
 					win : users[_uid].win,
 					lose : users[_uid].lose
-				}
+				};
 			}
 			my_xp = txt.match(/(\d+) experience/i);
 			my_bp = txt.match(/(\d+) Battle Points!/i);
@@ -77,7 +77,7 @@ tools.Page.pages['index.php'] = function() {
 		if(nemesis.user !== null) {
 			$('#cageBattleNews').append($('<div id="cagePageKeepNemesisImg"><div style="background-image:url(\'http://graph.facebook.com/' + nemesis.user + '/picture?type=large\');"></div><div><strong style="width:150px;padding:0 0 3px 0;">Your Nemesis</strong><br><strong>Won</strong>' + nemesis.win + '<br><strong>Lost</strong>' + nemesis.lose + '<br></div></div>').click(function() {
 				tools.Page.loadPage('keep.php?user=' + nemesis.user);
-			}))
+			}));
 		}
 	}
 

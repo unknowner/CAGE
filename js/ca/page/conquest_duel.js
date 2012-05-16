@@ -14,7 +14,7 @@ tools.Page.pages['conquest_duel.php'] = function() {
 		});
 		_battleSorted.sort();
 		if(_sortOrder == 'descending') {
-			_battleSorted.reverse()
+			_battleSorted.reverse();
 		}
 		_divs.remove();
 		$.each(_battleSorted, function(_i, _e) {

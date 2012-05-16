@@ -16,39 +16,38 @@ tools.Facebook.runtimeUpdate = function() {
 		idWait : false,
 		idCallbacks : [],
 		id : [],
-		friendlistId : {
-		},
+		friendlistId : {},
 		listMembersWait : false,
 		listMembersNext : [],
 		hideBluebar : item.get('cage.Facebook.Bluebar', false)
 	};
 	$('#cageHideFBBluebar').data('hidden', tools.Facebook.runtime.hideBluebar);
-	if(tools.Facebook.runtime.hideBluebar === true) {
+	if (tools.Facebook.runtime.hideBluebar === true) {
 		$('#cageHideFBBluebar').data('hidden', !tools.Facebook.runtime.hideBluebar).click();
 	}
-}
+};
 /*
  * Get friendlist members
  */
 tools.Facebook.GetListMembers = function(_friendlist, _callback) {
 
-	if(tools.Facebook.runtime.listMembersWait == false) {
+	if (tools.Facebook.runtime.listMembersWait == false) {
 		console.log('tools.Facebook.GetListMembers: Reading members of ', _friendlist);
 		tools.Facebook.runtime.listMembersWait = true;
 		var _listmembers = [];
 		customEvent('GetFLMembers', function() {
 			var _members = JSON.parse($('#GetFLMembers').val());
-			if(_members !== 'false') {
-				//_members = JSON.parse(_members);
+			if (_members !== 'false') {
+				// _members = JSON.parse(_members);
 				$.each(_members, function(_i, _e) {
 					_listmembers.push(_e.id);
 				});
 			}
-			tools.Facebook.runtime.listMembersWait = false
-			if(_callback) {
+			tools.Facebook.runtime.listMembersWait = false;
+			if (_callback) {
 				_callback(_listmembers);
 			}
-			while( _call = tools.Facebook.runtime.listMembersNext.shift()) {
+			while (_call = tools.Facebook.runtime.listMembersNext.shift()) {
 				console.log('unparked...');
 				_call();
 			}
@@ -57,7 +56,7 @@ tools.Facebook.GetListMembers = function(_friendlist, _callback) {
 		addFunction(function(_list) {
 			function cageGetFLM() {
 				FB.api(_list.flid + '/members', function(_members) {
-					if(_members.error) {
+					if (_members.error) {
 						window.setTimeout(function() {
 							cageGetFLM(_list);
 						}, 100);
@@ -76,7 +75,7 @@ tools.Facebook.GetListMembers = function(_friendlist, _callback) {
 		console.log('parked...');
 		tools.Facebook.runtime.listMembersNext.push(function() {
 			tools.Facebook.GetListMembers(_friendlist, _callback);
-		})
+		});
 	}
 };
 /*
@@ -84,25 +83,25 @@ tools.Facebook.GetListMembers = function(_friendlist, _callback) {
  */
 tools.Facebook.getFriendlists = function(_callback) {
 
-	if(tools.Facebook.runtime.friendListWait == false) {
-		if(tools.Facebook.runtime.friendlists.length !== 0) {
+	if (tools.Facebook.runtime.friendListWait == false) {
+		if (tools.Facebook.runtime.friendlists.length !== 0) {
 			_callback(tools.Facebook.runtime.friendlists);
 		} else {
 			console.log('tools.Facebook.getFriendlists: Get FB friend lists...');
 			tools.Facebook.runtime.friendListWait = true;
 			customEvent('GetFriendLists', function() {
 				var _fl = $('#GetFriendLists').val();
-				if(_fl !== 'false') {
+				if (_fl !== 'false') {
 					$.each(JSON.parse(_fl), function(_i, _e) {
 						tools.Facebook.runtime.friendlistId[_e.name] = _e.id;
 						tools.Facebook.runtime.friendlists.push(_e.name);
-					})
+					});
 				}
 				tools.Facebook.runtime.friendListWait = false;
-				if(_callback) {
+				if (_callback) {
 					_callback(tools.Facebook.runtime.friendlists.sort());
 				}
-				while( _call = tools.Facebook.runtime.friendListCallbacks.shift()) {
+				while (_call = tools.Facebook.runtime.friendListCallbacks.shift()) {
 					_call(tools.Facebook.runtime.friendlists);
 				}
 				$('#GetFriendLists').val('');
@@ -112,12 +111,12 @@ tools.Facebook.getFriendlists = function(_callback) {
 					FB.api('me/friendlists', {
 						'list_type' : 'user_created'
 					}, function(responseFriendlist) {
-						if(responseFriendlist.error) {
+						if (responseFriendlist.error) {
 							window.setTimeout(getFriendlists, 100);
 						} else {
 							var _lists = [];
 							$.each(responseFriendlist.data, function(_i, _e) {
-								if(_e.name) {
+								if (_e.name) {
 									_lists.push(_e);
 								}
 							});
@@ -125,7 +124,8 @@ tools.Facebook.getFriendlists = function(_callback) {
 							fireGetFriendLists();
 						}
 					});
-				};
+				}
+				;
 
 				getFriendlists();
 			}, null, true, true);
@@ -139,8 +139,8 @@ tools.Facebook.getFriendlists = function(_callback) {
  */
 tools.Facebook.CAPlayers = function(_callback) {
 
-	if(tools.Facebook.runtime.idWait == false) {
-		if(tools.Facebook.runtime.id.length > 0) {
+	if (tools.Facebook.runtime.idWait == false) {
+		if (tools.Facebook.runtime.id.length > 0) {
 			_callback(tools.Facebook.runtime.id);
 		} else {
 			console.log('tools.Facebook.CAPlayers: Reading CA players...');
@@ -148,19 +148,19 @@ tools.Facebook.CAPlayers = function(_callback) {
 			tools.Facebook.runtime.id = [];
 			customEvent('GetArmy', function() {
 				var _army = $('#GetArmy').val();
-				if(_army !== 'false') {
+				if (_army !== 'false') {
 					_army = JSON.parse(_army);
 					$.each(_army, function(_i, _e) {
-						if(_e.installed == true) {
+						if (_e.installed == true) {
 							tools.Facebook.runtime.id.push(_e.id);
 						}
 					});
 				}
-				tools.Facebook.runtime.idWait = false
-				if(_callback) {
+				tools.Facebook.runtime.idWait = false;
+				if (_callback) {
 					_callback(tools.Facebook.runtime.id);
 				}
-				while( _call = tools.Facebook.runtime.idCallbacks.shift()) {
+				while (_call = tools.Facebook.runtime.idCallbacks.shift()) {
 					_call(tools.Facebook.runtime.id);
 				}
 				$('#GetArmy').val('');
@@ -168,7 +168,7 @@ tools.Facebook.CAPlayers = function(_callback) {
 			addFunction(function() {
 				FB.api('/me/friends?fields=installed', function(_response) {
 					console.log('tools.Facebook.CAPlayers: got army...');
-					if(_response.data.length > 0) {
+					if (_response.data.length > 0) {
 						$('#GetArmy').val(JSON.stringify(_response.data));
 					} else {
 						$('#GetArmy').val('false');
@@ -184,7 +184,7 @@ tools.Facebook.CAPlayers = function(_callback) {
 
 tools.Facebook.init = function() {
 	$(document.body).append($('<img id="cageHideFBBluebar" src="http://www.facebook.com/favicon.ico" class="cageFBBluebar">').data('hidden', false).click(function() {
-		if($(this).data('hidden') === false) {
+		if ($(this).data('hidden') === false) {
 			$(this).data('hidden', true).removeClass('cageFBBluebar').addClass('cageFBBluebarHidden');
 			com.send(com.task.hideBluebar, com.port.facebook);
 		} else {

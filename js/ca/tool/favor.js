@@ -85,7 +85,7 @@ tools.Favor.init = function() {
 			'marginLeft' : 3
 		}, 'fast');
 	}).appendTo('#cageStatsFavor span');
-}
+};
 tools.Favor.runtimeUpdate = function() {
 	tools.Favor.runtime = {};
 };

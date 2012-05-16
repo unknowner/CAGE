@@ -36,14 +36,12 @@ tools.Page.pages['festival_guild_battle.php'] = function() {
 	//reduce gate size and add number
 	if($('#enemy_guild_member_list:contains("No Soldiers Posted In This Position!")').length == 0) {
 		$('#enemy_guild_member_list > div > div, #your_guild_member_list > div > div').each(function(_i, _e) {
-			$(_e).append('<span class="GuildNum">' + (_i + 1) + '<span>')
+			$(_e).append('<span class="GuildNum">' + (_i + 1) + '<span>');
 		});
 	}
 
 	//Saved filter settings
-	var _storedClass = item.get('cagePageFestGuildBattleClass', 'All');
-	var _storedActivity = item.get('cagePageFestGuildBattleActivity', 'All');
-	var _storedStatus = item.get('cagePageFestGuildBattleStatus', 'All')
+	var _storedClass = item.get('cagePageFestGuildBattleClass', 'All'),_storedActivity = item.get('cagePageFestGuildBattleActivity', 'All'),_storedStatus = item.get('cagePageFestGuildBattleStatus', 'All');
 
 	//gate filter
 	function filterGate() {

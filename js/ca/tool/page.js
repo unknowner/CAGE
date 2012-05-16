@@ -1,6 +1,6 @@
 tool('Page');
 tools.Page.runtime = {};
-tools.Page.runtime.addOn = {}
+tools.Page.runtime.addOn = {};
 tools.Page.pages = {};
 tools.Page.init = function() {
 	addFunction(tools.Page.get_cached_ajax, null, true, true);
@@ -14,21 +14,21 @@ tools.Page.init = function() {
 			var _re = new RegExp('src=', 'gi');
 			_t = _t.replace(_re, 'nosrc=');
 			return _t;
-		}
+		};
 		noNoSrc = function(_jqo) {
 			_jqo.find('input[nosrc], img[nosrc]').each(function() {
 				var $t = $(this);
 				$t.attr('src', $t.attr('nosrc')).removeAttr('nosrc');
 			});
 			return _jqo;
-		}
+		};
 	}, null, true, true);
 
 	// Do stuff after page loaded
 	customEvent('PageURL', function(_evt) {
 		var _page = $('#PageURL').val();
 		tools.Page.allPages();
-		if(tools.Page.pages[_page]) {
+		if (tools.Page.pages[_page]) {
 			var start = new Date();
 			tools.Page.pages[_page]();
 			console.log('Time to mod', _page, ':', (new Date() - start));
@@ -42,17 +42,17 @@ tools.Page.settings = function() {
 // All Pages
 tools.Page.allPages = function() {
 
-	//Execute add ons from tools
+	// Execute add ons from tools
 	$.each(tools.Page.runtime.addOn, function(_i, _e) {
 		_e();
-	})
-	//delayed stuff
+	});
+	// delayed stuff
 	setTimeout(function() {
 		// chat pos
 		$('#collapsedGuildChat').css('left', '');
 		$('#expandedGuildChat').css('left', '');
 	}, 250);
-	//repos CA menu & add stuff
+	// repos CA menu & add stuff
 	tools.Functions.addToCANav('mainMenu_home', 'index.php', 'specialmembership.php', 'Crusaders');
 	tools.Functions.addToCANav('mainMenu_keep', 'alchemy.php', 'goblin_emp.php', 'Goblin');
 	tools.Functions.addToCANav('mainMenu_monster', 'public_monster_list.php?monster_tier=3', 'army_news_feed.php', 'Live feed');
@@ -61,14 +61,14 @@ tools.Page.allPages = function() {
 		$(this).attr('cage', $(this).height()).css('height', 0);
 	});
 	// If found update bqh
-	if($('form').find('input[name="bqh"]:first').length > 0) {
+	if ($('form').find('input[name="bqh"]:first').length > 0) {
 		CastleAge.bqh = $('form input[name="bqh"]:first').val();
 	}
 
 	// Favour points
 	$('#cageFavorPoints').text($('#main_bn div[style*="persistent_bar_oracle.gif"]').text().trim());
 
-	//Stats
+	// Stats
 	$('#main_sts').css('background', $('#main_bn').css('backgroundImage'));
 	window.setTimeout(function() {
 		$('#main_sts_container').css('background', $('#main_sts').css('backgroundImage'));
@@ -77,21 +77,21 @@ tools.Page.allPages = function() {
 	// remove CA:HOD ad, etc...
 	$('div > a > img.imgButton[src*="/graphics/iphone_cross_promo.jpg"]').parent().parent().remove();
 	$('a[href*="apps.facebook.com/castle_hod/?xprom=cax"]').parents('div:first').remove();
-	if($('#globalContainer > div:first').height() == 80) {
+	if ($('#globalContainer > div:first').height() == 80) {
 		$('#globalContainer > div:first').hide();
 	}
 
 	// xp to next lvl and lvl bar fix
 	var _xpwidth = /\d+/.exec($('#st_5 > div:first > div > div')[0].style.width)[0];
-	if(_xpwidth !== null) {
+	if (_xpwidth !== null) {
 		$('#st_5').find('div:first > div > div').css('width', parseInt(_xpwidth, 10) / 126 * 100 + '%');
 	}
-	if($('#st_2_5').find('strong:contains("to")').length == 0 && /\d+\/(\d+)/.exec($('#st_2_5 strong').text()) !== null) {
+	if ($('#st_2_5').find('strong:contains("to")').length == 0 && /\d+\/(\d+)/.exec($('#st_2_5 strong').text()) !== null) {
 		$('#st_2_5').find('strong').text(/\d+/.exec($('#st_5').attr('title'))[0] + ' to ' + /\d+\/(\d+)/.exec($('#st_2_5').find('strong').text())[1]);
 	}
 	_xpwidth = null;
 	// reworkin results
-	if($('div.results').length > 0) {
+	if ($('div.results').length > 0) {
 		$('div.results').attr('style', '');
 		$('#results_main_wrapper').addClass('resultsmainwrapper').prepend('<img id="cageCloseResult" src="http://image4.castleagegame.com/graphics/popup_close_button.png">').children('br').remove();
 		$('#cageCloseResult').click(function() {
@@ -106,7 +106,7 @@ tools.Page.allPages = function() {
 		});
 		// remove some stuff
 		$('#hinvite_help, #nvbar_table').empty();
-		//fix some results eg out of stamina general image
+		// fix some results eg out of stamina general image
 		$('span.result_body:contains("Allocate skill points to Max")').find('img:first').css('width', 160);
 		// closing results
 		$('div.results:has(img[src$="help_close_x.gif"])').each(function(_index, _element) {
@@ -155,13 +155,13 @@ tools.Page.get_cached_ajax = function() {
 		}, 'slow');
 		// just_body_cache
 		var url_key = url, _oldurl = $('#PageURL').val();
-		if(url.indexOf('?') !== -1) {
+		if (url.indexOf('?') !== -1) {
 			url_key = url.substring(0, url.indexOf('?'));
 		}
 		console.log(url_key + '-' + _oldurl);
 		setPageURL(url_key);
-		if(get_type === 'cache_body' && pageCache[url_key]) {
-			if(pageCache[url_key].lastIndexOf('<fb:') === -1) {
+		if (get_type === 'cache_body' && pageCache[url_key]) {
+			if (pageCache[url_key].lastIndexOf('<fb:') === -1) {
 				$('#app_body_container').html(pageCache[url_key]);
 			} else {
 				$('#app_body_container').html(data);
@@ -170,21 +170,21 @@ tools.Page.get_cached_ajax = function() {
 				FB.XFBML.parse();
 			}
 			firePageURL();
-			if(url_key !== _oldurl) {
+			if (url_key !== _oldurl) {
 				$('body').animate({
 					scrollTop : 0
 				}, 'slow');
 			}
 		} else {
-			if(get_type === 'get_page') {
+			if (get_type === 'get_page') {
 				stopTimers = true;
 				pageCache[url_key] = null;
-			} else if(get_type === 'destroy_all_get_page') {
+			} else if (get_type === 'destroy_all_get_page') {
 				stopTimers = true;
 				pageCache = {};
 			}
 			var params = 'ajax=1&signed_request=' + $('#signed_request').attr('value');
-			if((get_type === 'cache_body') || (get_type === 'get_body')) {
+			if ((get_type === 'cache_body') || (get_type === 'get_body')) {
 				params += '&get_type=body';
 			}
 			ajaxPerforming = true;
@@ -198,12 +198,14 @@ tools.Page.get_cached_ajax = function() {
 					stopTimers = false;
 					ajaxPerforming = false;
 					$('#AjaxLoadIcon').hide();
-					if((get_type === 'cache_body') || (get_type === 'get_body')) {
+					if ((get_type === 'cache_body') || (get_type === 'get_body')) {
 						$('#app_body_container').html(data);
 					} else {
 						$('#globalContainer').html(data);
 					}
-					setTimeout(FB.XFBML.parse, 1, [document.getElementById('globalContainer')]);
+					setTimeout(FB.XFBML.parse, 1, [
+						document.getElementById('globalContainer')
+					]);
 					startAllTimers();
 					firePageURL();
 					centerPopups();
@@ -214,19 +216,17 @@ tools.Page.get_cached_ajax = function() {
 };
 tools.Page.ajaxPageDone = function() {
 	ajaxPageDone = function(data, div, anchor) {
-		var start1 = new Date();
 		stopTimers = false;
 		ajaxPerforming = false;
-		if(/<script type="text\/javascript">\stop.location.href = "http:\/\/apps.facebook.com\/castle_age\/.*.php";\s<\/script>/.test(data.substr(data.length < 200 ? 0 : data.length - 300)) === false) {
+		if (/<script type="text\/javascript">\stop.location.href = "http:\/\/apps.facebook.com\/castle_age\/.*.php";\s<\/script>/.test(data.substr(data.length < 200 ? 0 : data.length - 300)) === false) {
 			$data = $(noSrc(data));
 			data = null;
 			console.log('ajaxPageDone:', div);
-			if(div === 'globalContainer') {
-				var _abc = $('#app_body_container'), start1 = new Date(), _sts = $data.find('#main_sts');
+			if (div === 'globalContainer') {
+				var _abc = $('#app_body_container'), _sts = $data.find('#main_sts');
 				_sts.html(_sts.html().replace(/more/g, ''));
 				$('#main_sts').replaceWith(noNoSrc(_sts));
 				$('#main_bntp').replaceWith(noNoSrc($data.find('#main_bntp')));
-				var start2 = new Date();
 				$('#app_body_container').hide().empty().append(noNoSrc($data.find('#app_body_container')).html()).append(noNoSrc($data.filter('div[id]:not(.game)'))).show();
 				// update stats
 				var _stats = $('#main_sts'), _stam = $('#stamina_current_value'), _ener = $('#energy_current_value'), _heal = $('#health_current_value');
@@ -246,7 +246,7 @@ tools.Page.ajaxPageDone = function() {
 				$('#' + div).html(noNoSrc($data).html());
 			}
 			centerPopups();
-			if(anchor) {
+			if (anchor) {
 				$('#' + anchor).animate({
 					scrollTop : 0
 				}, 'slow');
@@ -276,11 +276,11 @@ tools.Page.ajaxLinkSend = function() {
 		pageCache = {};
 		ajaxPerforming = true;
 		$('#AjaxLoadIcon').fadeIn();
-		if(!url) {
+		if (!url) {
 			url = 'index.php?adkx=2';
 		}
-		var params = 'ajax=1&signed_request=' + $('#signed_request').attr('value'), url_key = url, _oldurl = $('#PageURL').val();
-		if(url.indexOf('?') !== -1) {
+		var params = 'ajax=1&signed_request=' + $('#signed_request').attr('value'), url_key = url;
+		if (url.indexOf('?') !== -1) {
 			url_key = url.substring(0, url.indexOf('?'));
 		}
 		setPageURL(url_key);
@@ -303,7 +303,7 @@ tools.Page.ajaxLinkSend = function() {
 tools.Page.ajaxFormSend = function() {
 	ajaxFormSend = function(div, url, formElement, anchor) {
 		friend_browse_offset = 0;
-		if(!anchor) {
+		if (!anchor) {
 			$('body').animate({
 				scrollTop : 0
 			}, 'slow');
@@ -313,11 +313,11 @@ tools.Page.ajaxFormSend = function() {
 		params += '&ajax=1';
 		params += '&signed_request=' + $('#signed_request').attr('value');
 		pageCache = {};
-		if(!url) {
+		if (!url) {
 			url = 'index.php?adkx=7';
 		}
 		var url_key = url, _oldurl = $('#PageURL').val();
-		if(url.indexOf('?') !== -1) {
+		if (url.indexOf('?') !== -1) {
 			url_key = url.substring(0, url.indexOf('?'));
 		}
 		console.log(url_key + '-' + _oldurl);

@@ -8,9 +8,9 @@ tools.Page.pages['generals.php'] = function() {
 	$.each(tools.General.runtime.favLists, function(_i, _e) {
 		var _attr = {
 			value : _i
-		}
+		};
 		if(_e === tools.General.runtime.favList) {
-			_attr.selected = "selected"
+			_attr.selected = "selected";
 		}
 		_list.append($('<option>', _attr).text(_e));
 	});
@@ -121,5 +121,5 @@ tools.Page.pages['generals.php'] = function() {
 		tolerance : 'pointer'
 	});
 	//Update generals data
-	tools['General'].parsePage()
+	tools['General'].parsePage();
 };

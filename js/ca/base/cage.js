@@ -93,7 +93,7 @@ tools.cage.clearSavedData = function() {
 	tools.Settings.start();
 };
 tools.cage.loadData = function(_data) {
-	var _data = JSON.parse(_data);
+	_data = JSON.parse(_data);
 	Object.keys(_data).forEach(function(key) {
 		console.log(key, _data[key]);
 		localStorage[key] = _data[key];
@@ -131,4 +131,4 @@ tools.cage.toggleFx = function() {
 };
 tools.cage.init = function() {
 	tools.cage.runtimeUpdate();
-}
+};

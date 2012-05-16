@@ -14,23 +14,23 @@ tools.Gifter.init = function() {
 		tools.Gifter.runtime.returnGift = true;
 		tools.Gifter.start();
 	});
-	//prepare update event to receive userids and request ids
+	// prepare update event to receive userids and request ids
 	customEvent('GiftRequests', function() {
 		console.log('EVENT: GiftRequests');
 		_gifts = JSON.parse(JSON.parse($('#GiftRequests').val()));
 		console.log(_gifts);
 		var _received = 0;
-		if(_gifts) {
+		if (_gifts) {
 			$.each(_gifts.data, function(_i, _e) {
-				if(_e.from !== null) {
-					if($.inArray(_e.from.id, tools.Gifter.runtime.sendGiftTo) === -1) {
+				if (_e.from !== null) {
+					if ($.inArray(_e.from.id, tools.Gifter.runtime.sendGiftTo) === -1) {
 						tools.Gifter.runtime.sendGiftTo.push(_e.from.id);
 						_received++;
 					}
 					tools.Gifter.runtime.requests.push(_e.id);
 				}
 			});
-			if(_received === 0) {
+			if (_received === 0) {
 				note('Gifter', 'No gifts to accept.');
 			} else {
 				note('Gifter', 'You accepted ' + _received + ' gift(s).');
@@ -58,8 +58,8 @@ tools.Gifter.runtimeUpdate = function() {
 		returnGift : false,
 		returnGiftNum : 1,
 		returnGiftName : null
-	}
-	if(tools.Gifter.runtime.sendGiftTo == null) {
+	};
+	if (tools.Gifter.runtime.sendGiftTo == null) {
 		tools.Gifter.runtime.sendGiftTo = [];
 	}
 	tools.Facebook.getFriendlists(function(_names) {
@@ -68,7 +68,7 @@ tools.Gifter.runtimeUpdate = function() {
 		});
 	});
 	console.log('tools.Gifter.runtime', tools.Gifter.runtime);
-}; 7
+};
 tools.Gifter.start = function() {
 	addFunction(function() {
 		FB.api('/me/apprequests/', function(_response) {
@@ -78,7 +78,7 @@ tools.Gifter.start = function() {
 	}, null, true, true);
 };
 tools.Gifter.work = function() {
-	if(tools.Gifter.runtime.requests.length > 0) {
+	if (tools.Gifter.runtime.requests.length > 0) {
 		signedGet('index.php?request_ids=' + tools.Gifter.runtime.requests.join(','), function(_data) {
 			_data = $(noSrc(_data));
 			$('#results_container').after(noNoSrc(_data.find('div[style*="graphics/newrequest_background.jpg"]:first')));
@@ -90,12 +90,12 @@ tools.Gifter.work = function() {
 	}
 };
 tools.Gifter.done = function() {
-	if(tools.Gifter.runtime.returnGift === true) {
-		if(tools.Gifter.runtime.returnGiftName === null) {
+	if (tools.Gifter.runtime.returnGift === true) {
+		if (tools.Gifter.runtime.returnGiftName === null) {
 			get('gift.php?request_ids=' + tools.Gifter.runtime.requests.join(','), function(_data) {
 				$('body').append('<div id="cageLevelUp"><div></div><div><div id="cageLevelUpTop" style="padding:15px 0 0 50px !important;width:448px !important;"></div><div id="cageLevelUpMiddle"></div><div id="cageLevelUpBottom"></div></div></div>');
 				var _cLU = $('#cageLevelUpMiddle');
-				_cLU.append('<div id="cageRTFGift"></div>')
+				_cLU.append('<div id="cageRTFGift"></div>');
 				console.log(tools.Gifter.runtime.returnGiftNum);
 				$(_data).find('#giftContainer div[id^="gift"]').each(function() {
 					var $this = $(this), _num = $this.attr('id').match(/\d+/)[0], _name = $this.text().trim().replace('!', '');
@@ -109,7 +109,7 @@ tools.Gifter.done = function() {
 						$('#cageRTFGift > img').removeClass('cageRTFGiftSelected');
 						$(this).addClass('cageRTFGiftSelected');
 					}));
-					if(tools.Gifter.runtime.returnGiftNum == _num) {
+					if (tools.Gifter.runtime.returnGiftNum == _num) {
 						$('#cageRTFGift').children('img:last').addClass('cageRTFGiftSelected');
 						tools.Gifter.runtime.returnGiftNum = _num;
 						tools.Gifter.runtime.returnGiftName = _name;
@@ -121,19 +121,20 @@ tools.Gifter.done = function() {
 					$('#cageLevelUp').fadeOut('fast', function() {
 						$(this).remove();
 						tools.Gifter.done();
-					})
+					});
 				}));
-				//cancel gifting
+				// cancel gifting
 				_cLU.append($('<img id="cageLevelUpCancel" src="http://image4.castleagegame.com/graphics/war_select_button_cancel.gif">').click(function() {
 					$('#cageLevelUp').fadeOut('fast', function() {
 						$(this).remove();
 						tools.Gifter.runtime.returnGift = false;
 						tools.Gifter.done();
-					})
+					});
 				}));
 				$('#cageLevelUp').show();
-				//tools.Gifter.runtime.returnGiftName = $(_data).find('div[id="gift' + tools.Gifter.runtime.returnGiftNum + '"]:first').text().trim().replace('!', '');
-				//tools.Gifter.done();
+				// tools.Gifter.runtime.returnGiftName = $(_data).find('div[id="gift' + tools.Gifter.runtime.returnGiftNum +
+				// '"]:first').text().trim().replace('!', '');
+				// tools.Gifter.done();
 			});
 		} else {
 			console.log('RTF!');
@@ -163,7 +164,7 @@ tools.Gifter.newRequestForm = function() {
 
 		function getCageFriendList() {
 			FB.api(_giftData.flid + '/members', function(_members) {
-				if(_members.error) {
+				if (_members.error) {
 					window.setTimeout(getCageFriendList, 100);
 				} else {
 					console.log('GIFTER - friendlists:', _members);
@@ -175,7 +176,7 @@ tools.Gifter.newRequestForm = function() {
 			});
 		}
 
-		if(_giftData.flid) {
+		if (_giftData.flid) {
 			getCageFriendList();
 		}
 
@@ -192,19 +193,21 @@ tools.Gifter.newRequestForm = function() {
 				message : msg,
 				data : track,
 				title : tit,
-				filters : ['app_users', 'all', 'app_non_users'],
+				filters : [
+						'app_users', 'all', 'app_non_users'
+				],
 			};
 			console.log('_uid1', cageGifterVars.userId);
 			console.log('localStorage[cageGifterVars.userId CAGEsendGiftTo]', cageGifterVars.sendTo);
-			if(cageGiftUserList.length > 0) {
+			if (cageGiftUserList.length > 0) {
 				_ui.filters.unshift({
 					name : _giftData.userList,
 					user_ids : cageGiftUserList
 				});
 			}
-			if(cageGifterVars.sendTo !== undefined && cageGifterVars.sendTo !== null && JSON.parse(cageGifterVars.sendTo).length > 0) {
+			if (cageGifterVars.sendTo !== undefined && cageGifterVars.sendTo !== null && JSON.parse(cageGifterVars.sendTo).length > 0) {
 				console.log('GIFTER - RTF list: ', JSON.parse(cageGifterVars.sendTo));
-				if(rtf === true) {
+				if (rtf === true) {
 					_ui.to = cageGifterVars.sendTo;
 				} else {
 					_ui.filters.unshift({
@@ -223,7 +226,7 @@ tools.Gifter.newRequestForm = function() {
 				$('.fb_dialog_iframe').each(function() {
 					$(this).remove();
 				});
-				if(cageGifterVars.result === null || cageGifterVars.result === undefined) {
+				if (cageGifterVars.result === null || cageGifterVars.result === undefined) {
 					fireGifterDone();
 				} else {
 					getFriendsName(giftReturning);
@@ -234,7 +237,7 @@ tools.Gifter.newRequestForm = function() {
 				FB.api('/me/friends', {
 					fields : 'name'
 				}, function(response) {
-					if(response.error) {
+					if (response.error) {
 						console.log('getFriendsName error:', response);
 						getFriendsName(_callback);
 					} else {
@@ -244,13 +247,13 @@ tools.Gifter.newRequestForm = function() {
 			}
 
 			function giftReturning(_friendsnames) {
-				var _friends = {}, _requestids = [], _store = null, _resultContainer = $('#results_container'), params = 'ajax=1&signed_request=' + $('#signed_request').val();
+				var _friends = {}, _store = null, _resultContainer = $('#results_container'), params = 'ajax=1&signed_request=' + $('#signed_request').val();
 				// get all ids from sent gifts and remove them from the list
 				console.log('_friendsnames', _friendsnames);
 				console.log('GIFTER - check for RTFs');
 				_resultContainer.html('Sending gifts...<br>').show();
 				_resultContainer.css('borderRadius', 5).html('Sending to: ...<br>').show();
-				if(cageGifterVars.sendTo !== undefined) {
+				if (cageGifterVars.sendTo !== undefined) {
 					console.log('GIFTER - found open RTF');
 					_store = JSON.parse(cageGifterVars.sendTo);
 					console.log('store:', _store, 'cageGifterVars', cageGifterVars);
@@ -262,10 +265,10 @@ tools.Gifter.newRequestForm = function() {
 				$.each(cageGifterVars.result.to, function(_i, _e) {
 					var _fr = '';
 					console.log(_i, _e);
-					if(_store !== null && _store.indexOf(_e) > -1) {
+					if (_store !== null && _store.indexOf(_e) > -1) {
 						_store.splice(_store.indexOf(_e), 1);
 						_fr = ' - <b>Favor returned</b>';
-						if(_store.length > 0) {
+						if (_store.length > 0) {
 							localStorage[cageGifterVars.userId + '_' + 'CAGEsendGiftTo'] = JSON.stringify(_store);
 						} else {
 							console.log('GIFTER - clear RTF list');

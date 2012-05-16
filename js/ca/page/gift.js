@@ -13,7 +13,7 @@ tools.Page.pages['gift.php'] = function() {
 			$('#giftContainer').attr({
 				'CAGEGiftNum' : _num,
 				'CAGEGiftName' : _nam.replace('!', '')
-			})
+			});
 		}
 		_this.click(function() {
 			$('#giftContainer').attr({

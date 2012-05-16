@@ -36,7 +36,7 @@ tools.Page.pages['battle.php'] = function() {
 		item.set('cagePageBattleSortOrder', $('#cageBattleListSort span:last').text());
 		_battlesSorted.sort();
 		if($('#cageBattleListSort span:last').text() == 'descending') {
-			_battlesSorted.reverse()
+			_battlesSorted.reverse();
 		}
 		renderBattles();
 	}
@@ -50,7 +50,7 @@ tools.Page.pages['battle.php'] = function() {
 		if(_sortOrder == 'ascending') {
 			_battlesSorted.sort();
 		} else {
-			_battlesSorted.sort().reverse()
+			_battlesSorted.sort().reverse();
 		}
 		renderBattles();
 	}
@@ -69,7 +69,7 @@ tools.Page.pages['battle.php'] = function() {
 		_sortOrder = _sortOrder == 'ascending' ? 'descending' : 'ascending';
 		item.set('cagePageBattleOrder', _sortOrder);
 		$(this).text(_sortOrder);
-		chooseRank()
+		chooseRank();
 	});
 	chooseRank();
 

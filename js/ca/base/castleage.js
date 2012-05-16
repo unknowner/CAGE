@@ -31,7 +31,7 @@ tools.castleage.settings = function() {
 };
 
 tools.castleage.runtimeUpdate = function() {
-	if(!tools.castleage.runtime) {
+	if (!tools.castleage.runtime) {
 		tools.castleage.runtime = {};
 	}
 	tools.castleage.runtime.battleResults = item.get('castleageBattleResults', false);
@@ -69,27 +69,28 @@ tools.castleage.init = function() {
 		item.set('sidebarGuildChat', tools.castleage.runtime.sidebarGuildChat);
 		tools.castleage.sidebarGuildChat();
 	});
-}
+};
 tools.castleage.macBGFix = function() {
-	if(tools.castleage.runtime.macBGFix) {
+	if (tools.castleage.runtime.macBGFix) {
 		tools.Page.runtime.addOn['tools.castleage.macBGFix'] = function() {
 			setTimeout(function() {
 				$('#app_body div').each(function(_i, _e) {
-					if($(this).css('backgroundImage') !== "none") {
-						$(this).css('backgroundImage', $(this).css('backgroundImage'))
-					};
+					if ($(this).css('backgroundImage') !== "none") {
+						$(this).css('backgroundImage', $(this).css('backgroundImage'));
+					}
+					;
 				});
 			}, 100);
-		}
+		};
 	} else {
-		if(tools.Page.runtime.addOn['tools.castleage.macBGFix']) {
+		if (tools.Page.runtime.addOn['tools.castleage.macBGFix']) {
 			tools.Page.runtime.addOn['tools.castleage.macBGFix'] = null;
 		}
 	}
 
-}
+};
 tools.castleage.sidebarGuildChat = function() {
-	if(tools.castleage.runtime.sidebarGuildChat === true) {
+	if (tools.castleage.runtime.sidebarGuildChat === true) {
 		$('#cageSidebarChat').append($('#chatGuildChat').detach()).append($('#chatGuildChatTextBox').detach()).show();
 		$('#chatGuildChat').addClass('chatGuildChatSidebar').css('height', '100%');
 		$('#chatGuildChatContainer').addClass('chatGuildChatContainerSidebar');
@@ -105,44 +106,44 @@ tools.castleage.sidebarGuildChat = function() {
 		$('#chatGuildChatSizeHandle').hide();
 	}
 	$('#chatGuildChat').scrollTop($('#chatGuildChat div').length * 20);
-}
+};
 tools.castleage.scrollGuildChat = function() {
-	if(tools.castleage.runtime.scrollGuildChat === true) {
+	if (tools.castleage.runtime.scrollGuildChat === true) {
 		$('#chatGuildChat').bind('DOMNodeInserted', function() {
 			$('#chatGuildChat').scrollTop($('#chatGuildChat div').length * 20);
 		});
 	} else {
 		$('#chatGuildChat').unbind('DOMNodeInserted');
 	}
-}
+};
 tools.castleage.results = function() {
-	if(tools.castleage.runtime.battleResults || tools.castleage.runtime.hourly) {
+	if (tools.castleage.runtime.battleResults || tools.castleage.runtime.hourly) {
 		tools.Page.runtime.addOn['tools.castleage.results'] = function() {
 			var _re = [];
-			if(tools.castleage.runtime.battleResults) {
+			if (tools.castleage.runtime.battleResults) {
 				_re.push('You have now won a total');
 			}
-			if(tools.castleage.runtime.hourly) {
+			if (tools.castleage.runtime.hourly) {
 				_re.push('Dwarven Miner - |Your treasury is flourishing in Castle Age|Your potion is not ready yet');
 			}
-			if(tools.castleage.runtime.upgrade) {
+			if (tools.castleage.runtime.upgrade) {
 				_re.push('You just upgraded your');
 			}
 
 			var _reg = new RegExp(_re.join('|'), "g");
 			$('#results_main_wrapper div.results').each(function() {
-				if($(this).text().match(_reg) !== null) {
+				if ($(this).text().match(_reg) !== null) {
 					console.log('REMOVED BR');
 					$(this).remove();
 				}
 			});
-			if($('#results_main_wrapper div.results').length == 0) {
+			if ($('#results_main_wrapper div.results').length == 0) {
 				$('#results_main_wrapper div.results').hide();
 			}
-		}
+		};
 	} else {
-		if(tools.Page.runtime.addOn['tools.castleage.results']) {
-			tools.Page.runtime.addOn['tools.castleage.results'] = null
+		if (tools.Page.runtime.addOn['tools.castleage.results']) {
+			tools.Page.runtime.addOn['tools.castleage.results'] = null;
 		}
 	}
 };

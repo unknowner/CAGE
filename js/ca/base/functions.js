@@ -7,7 +7,7 @@ tools.Functions.runtime = {};
 tools.Functions.init = function() {
 	// add global cageStat
 	addFunction(function() {
-		cageStat = {}
+		cageStat = {};
 	}, null, true, true);
 	// replace CA funtions
 	addFunction(tools.Functions.stat_increase_ticker, null, true, true);
@@ -32,7 +32,7 @@ tools.Functions.cageRePos = function() {
 	window['cageRePos'] = function(fb_js_var, top) {
 		$('#single_popup_background').css('opacity', 0).removeClass('connect_castlepb_bg').fadeTo('slow', 0.75);
 		var _sp = $('#single_popup');
-		if(fb_js_var.indexOf('<div') !== -1) {
+		if (fb_js_var.indexOf('<div') !== -1) {
 			_sp.html(fb_js_var);
 		} else {
 			_sp.html($('#' + fb_js_var).html());
@@ -42,8 +42,8 @@ tools.Functions.cageRePos = function() {
 			'padding' : 0
 		});
 		var _width = _sp.width() == 0 ? _sp.find('>div:first').width() : _sp.width(), _margin = (770 - _width) / 2;
-		if(top) {
-			if(_sp.height() + (top - $(window).scrollTop() - $(window).height()) > 0) {
+		if (top) {
+			if (_sp.height() + (top - $(window).scrollTop() - $(window).height()) > 0) {
 				top -= _sp.height() + (top - $(window).scrollTop() - $(window).height());
 			}
 			_sp.css('top', top);
@@ -55,14 +55,14 @@ tools.Functions.cageRePos = function() {
 		}).fadeTo('slow', 1);
 		$(document).keypress(function(_key) {
 			console.log(_key.charCode);
-			if(_key.charCode == 120) {
+			if (_key.charCode == 120) {
 				$(document).unbind('keypress');
 				hidePositionBox();
 			}
 		});
 		_sp = _width = _margin = null;
 	};
-}
+};
 tools.Functions.centerPopups = function() {
 	window['centerPopups'] = function() {
 		$('div.result_popup_message').each(function() {
@@ -73,14 +73,14 @@ tools.Functions.centerPopups = function() {
 				'opacity' : 0
 			}).fadeTo('fast', 1);
 			$(document).keypress(function(_key) {
-				if(_key.charCode == 120) {
+				if (_key.charCode == 120) {
 					$(document).unbind('keypress');
 					hideFeedbackPositionBox();
 				}
 			});
 			_popup = null;
 		});
-	}
+	};
 };
 
 tools.Functions.generateAtPageTop = function() {
@@ -126,49 +126,49 @@ tools.Functions.PositionAndDisplayPopupAtTop = function() {
 
 tools.Functions.PopupAtMousePosition = function() {
 	window['PopupAtMousePosition'] = function(event, fb_js_var) {
-		//cageRePos(fb_js_var, Math.max(event.pageY + document.body.scrollTop - 326, 90 + document.body.scrollTop));
+		// cageRePos(fb_js_var, Math.max(event.pageY + document.body.scrollTop - 326, 90 + document.body.scrollTop));
 		cageRePos(fb_js_var, 90 + document.body.scrollTop);
 	};
 };
 tools.Functions.PositionAndDisplayPopupAutoCenter = function() {
 	window['PositionAndDisplayPopupAutoCenter'] = function(event, fb_js_var) {
 		cageRePos(fb_js_var, window.pageYOffset + 150);
-	}
+	};
 };
 // Stats Ticker + CAGE calls
 tools.Functions.stat_increase_ticker = function() {
 	// set new value via cageStat
 	window['stat_increase_ticker'] = function(ticks_left, stat_current, stat_max, tick_time, increase_value, stat_type, first_call) {
-		if(cageStat[stat_type] && cageStat[stat_type] !== null) {
+		if (cageStat[stat_type] && cageStat[stat_type] !== null) {
 			stat_current = cageStat[stat_type];
 			$('#' + stat_type + '_current_value').text(stat_current);
 			cageStat[stat_type] = null;
 		}
 
-		if(!first_call && stopTimers) {
+		if (!first_call && stopTimers) {
 			return;
 		}
 
-		if(timedStats[stat_type] && first_call) {
+		if (timedStats[stat_type] && first_call) {
 			clearTimeout(timedStats[stat_type]);
 		}
 
-		if(ticks_left < 0) {
+		if (ticks_left < 0) {
 			ticks_left = 0;
 		}
 
 		var time_container = $('#' + stat_type + '_time_container'), time_value = $('#' + stat_type + '_time_value'), current_val = $('#' + stat_type + '_current_value');
 
-		if(!time_container || !time_value || !current_val) {
+		if (!time_container || !time_value || !current_val) {
 			time_container = time_value = current_val = null;
 			return;
 		}
 
-		if(ticks_left == 0) {
+		if (ticks_left == 0) {
 			stat_current = parseInt(stat_current);
 			increase_value = parseInt(increase_value);
 			stat_current += increase_value;
-			if(stat_current > stat_max) {
+			if (stat_current > stat_max) {
 				stat_current = stat_max;
 			}
 			current_val.html(stat_current);
@@ -177,14 +177,14 @@ tools.Functions.stat_increase_ticker = function() {
 			ticks_left -= 1;
 		}
 
-		if(stat_max == stat_current) {
+		if (stat_max == stat_current) {
 			time_container.empty();
 			time_container = time_value = current_val = null;
 			return;
 		}
 
 		var mins = parseInt(ticks_left / 60), secs = ticks_left % 60;
-		time_value.text(mins + ':' + ((secs > 9) ? secs : '0' + secs ));
+		time_value.text(mins + ':' + ((secs > 9) ? secs : '0' + secs));
 		timedStats[stat_type] = setTimeout(function() {
 			stat_increase_ticker(ticks_left, stat_current, stat_max, tick_time, increase_value, stat_type, false);
 		}, 1000);

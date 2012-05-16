@@ -51,7 +51,7 @@ tools.ArmyCleaner.readCAArmy = function(_page) {
 			'marginLeft' : 515,
 			'width' : 250,
 			'textAlign' : 'left'
-		})
+		});
 		var _last = /\d+/.exec($('a[href*="army_member.php?page="]:last', _armydata).text());
 		if(_last == null) {
 			tools.ArmyCleaner.readCAArmy(_page);

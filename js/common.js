@@ -1,9 +1,9 @@
 // Add function to content site
 function addFunction(_func, _arg, _run, _once) {
 	var script = document.createElement('script');
-	script.textContent = ( _run ? '(' : '') + _func + ( _run ? ')(' + _arg + ');' : ';');
+	script.textContent = (_run ? '(' : '') + _func + (_run ? ')(' + _arg + ');' : ';');
 	document.body.appendChild(script);
-	if(_once) {
+	if (_once) {
 		document.body.removeChild(script);
 	}
 }
@@ -28,15 +28,15 @@ $.extend($.expr[':'], {
 // Return Array with unique values
 function unique(_array, _tostring) {
 	var o = {}, i, l = _array.length, r = [];
-	for( i = 0; i < l; i += 1) {
+	for (i = 0; i < l; i += 1) {
 		o[_array[i]] = _array[i];
 	}
-	if(_tostring) {
-		for(i in o) {
+	if (_tostring) {
+		for (i in o) {
 			r.push(o[i].toString());
 		}
 	} else {
-		for(i in o) {
+		for (i in o) {
 			r.push(o[i]);
 		}
 	}
@@ -45,11 +45,11 @@ function unique(_array, _tostring) {
 
 // removes all items that are listed more than once
 function removeDuplicates(_array) {
-	var _uniques = [], _dupl = [], _i = 0;
-	for(i; i <= _array.length; i++) {
+	var _uniques = [], _dupl = [], i = 0;
+	for (i; i <= _array.length; i++) {
 		var v = _array[i];
 		console.log(i + '-' + v);
-		if(_array.lastIndexOf(v) > i || _dupl.indexOf(v) > -1) {
+		if (_array.lastIndexOf(v) > i || _dupl.indexOf(v) > -1) {
 			_dupl.push(v);
 		} else {
 			_uniques[_uniques.length] = v;
@@ -61,18 +61,18 @@ function removeDuplicates(_array) {
 	});
 }
 
-//shortcut to jQuery get with signed request
+// shortcut to jQuery get with signed request
 function get(_url, _callback) {
 	$.get(_url + (_url.indexOf('?') > -1 ? '&' : '?') + 'signed_request=' + CastleAge.signed_request, _callback);
 }
 
-//shortcut to jQuery get with signed request reworked
+// shortcut to jQuery get with signed request reworked
 function signedGet() {
 	arguments[0] = arguments[0] + (arguments[0].indexOf('?') > -1 ? '&' : '?') + 'signed_request=' + CastleAge.signed_request;
 	$.get.apply(this, arguments);
 }
 
-//shortcut to jQuery get with signed request reworked
+// shortcut to jQuery get with signed request reworked
 function signedPost() {
 	arguments[0] = arguments[0] + (arguments[0].indexOf('?') > -1 ? '&' : '?') + 'signed_request=' + CastleAge.signed_request;
 	$.post.apply(this, arguments);
@@ -94,12 +94,12 @@ function noNoSrc(_jqo) {
 	return _jqo;
 }
 
-//shortcut to jQuery post with signed request
+// shortcut to jQuery post with signed request
 function post(_url, _callback) {
 	$.post(_url + (_url.indexOf('?') > -1 ? '&' : '?') + 'signed_request=' + CastleAge.signed_request, _callback);
 }
 
-//http://note19.com/2007/05/27/javascript-guid-generator/
+// http://note19.com/2007/05/27/javascript-guid-generator/
 function S4() {
 	return (((1 + Math.random()) * 0x10000) | 0).toString(16).substring(1);
 }
