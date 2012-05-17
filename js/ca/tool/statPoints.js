@@ -62,39 +62,26 @@ tools.StatPoints.start = function() {
 			val : parseInt(_stats.eq(4).text(), 10),
 			lup : 0,
 			url : 'health_max'
-		}, _cLU = $('#cageLevelUpMiddle'), _points = [], _max;
+		};
 		$('body').append('<div id="cageLevelUp"><div></div><div><div id="cageLevelUpTop">Upgrade your stats!</div><div id="cageLevelUpMiddle"></div><div id="cageLevelUpBottom"></div></div></div>');
-
+		var _cLU = $('#cageLevelUpMiddle');
 		$.each(_stat, function(_i, _e) {
 			_cLU.append('<div class="cageLevelUpStat"><img src="http://image4.castleagegame.com/graphics/' + _e.im + '"><span class="cageLevelUpStatName">' + _i + '</span><span class="cageLevelUpStatVal">' + _e.val + '</span><img class="cageLevelUpPlus" src="http://image4.castleagegame.com/graphics/festival_achievement_plus.jpg"><img class="cageLevelUpMinus" src="http://image4.castleagegame.com/graphics/festival_achievement_minus.jpg"></div>');
 		});
 		_cLU.append($('<img id="cageLevelUpSave" src="http://image4.castleagegame.com/graphics/war_select_button_accept_2.gif">').click(function() {
 			$('#cageLevelUpCancel, #cageLevelUpSave').fadeOut();
 			$('#main_bntp a:contains("My Stats")').text(_sp.have - _sp.used);
-			function setStat(_up) {
-				if (_up.length > 0) {
-					signedGet('keep.php?' + _up.pop(), function(_data) {
-						console.log('setStat...loaded');
-						$('#cageLevelUpBar > div ').css('width', ((_max - _up.length) / _max * 100).toString() + '%');
-						setStat(_up);
-					});
-				} else {
-					tools.StatPoints.update();
-					$('#cageLevelUp').fadeOut('slow', function() {
-						$(this).remove();
-					});
-				}
-			}
 
+			var _points = [];
 			$.each(_stat, function(_i, _e) {
 				if (_e.lup > 0) {
 					for ( var i = 0; i < _e.lup; i++) {
 						_points.push('upgrade=' + _e.url);
 					}
+					;
 				}
 			});
-			_max = _points.length;
-			setStat(_points);
+			tools.StatPoints.work(_points, _points.length);
 		}));
 		_cLU.append($('<img id="cageLevelUpCancel" src="http://image4.castleagegame.com/graphics/war_select_button_cancel.gif">').click(function() {
 			tools.StatPoints.update();
@@ -127,9 +114,21 @@ tools.StatPoints.start = function() {
 		$('#cageLevelUp').show();
 	});
 };
+tools.StatPoints.work = function(_up, _max) {
+	if (_up.length > 0) {
+		console.log('setStat', _up[_up.length - 1]);
+		signedGet('keep.php?' + _up.pop(), function(_data) {
+			$('#cageLevelUpBar > div ').css('width', ((_max - _up.length) / _max * 100).toString() + '%');
+			tools.StatPoints.work(_up, _max);
+		});
+	} else {
+		tools.StatPoints.update();
+		$('#cageLevelUp').fadeOut('slow', function() {
+			$(this).remove();
+		});
+	}
+}
 tools.StatPoints.init = function() {
-
 	$('#cageStatsContainer').append($('<button id="cageStatPoints"><span></span></button>').click(tools.StatPoints.start));
 	tools.Page.runtime.addOn['tools.StatPoints.update'] = tools.StatPoints.update;
-
 };

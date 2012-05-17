@@ -258,7 +258,18 @@ tools.Monster.stunBar = function() {
 tools.Monster.battleStats = function() {
 	// monster stats
 	var _bossReg = new RegExp([
-			'monster_\\w+_large.jpg', 'boss_\\w+_large.jpg', 'boss_\\w+_big.jpg', 'nm_\\w+_large.jpg', 'nm_\\w+_large2.jpg', 'monster_\\w+_large_ca.jpg', 'seamonster_(?!ship_health)\\w*.jpg', 'seamonster_dead.jpg', 'dragon_monster_\\w+.jpg', 'boss_\\w+.jpg', '\\w+_large.jpg', '\\/monster_(?!health)\\w+.jpg', '\\w+_dead.jpg'
+			'monster_\\w+_large.jpg',
+			'boss_\\w+_large.jpg',
+			'boss_\\w+_big.jpg',
+			'nm_\\w+_large.jpg',
+			'nm_\\w+_large2.jpg',
+			'monster_\\w+_large_ca.jpg',
+			'seamonster_(?!ship_health)\\w*.jpg',
+			'seamonster_dead.jpg', 'dragon_monster_\\w+.jpg',
+			'boss_\\w+.jpg',
+			'\\w+_large.jpg',
+			'\\/monster_(?!health|ca_icon|hod_icon)\\w+.jpg',
+			'\\w+_dead.jpg'
 	].join('|'));
 	$('#app_body table.layout td > div:gt(2) div:not([id][alt][title]) > img:only-child').each(function() {
 		if (_bossReg.exec($(this).attr('src')) !== null) {
@@ -391,5 +402,5 @@ tools.Monster.statPos = function(_text, _html) {
 	$('.cageMonsterActivity').each(function() {
 		_bottom += $(this).outerHeight() + 2;
 	});
-	$('#cageMonsterStats').after('<div class="cageMonsterActivity" style="bottom:' + _bottom + '"><span style="display:inline-block;font-weight:bold;width:80px;">' + _text + '</span><span style="display:inline-block;float:right;text-align:right;">' + _html + '</span></div>');
+	$('#cageMonsterStats').after('<div class="cageMonsterActivity" style="bottom:' + _bottom + 'px"><span style="display:inline-block;font-weight:bold;width:80px;">' + _text + '</span><span style="display:inline-block;float:right;text-align:right;">' + _html + '</span></div>');
 };

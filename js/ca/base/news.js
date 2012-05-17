@@ -10,7 +10,9 @@ function cageNews(_full) {
 	$('#cageNewsFoot').prepend('<center>If you find bugs, just go to the blog and post them there (no signup required).<br>Logs (CTRL+SHIFT+J) are always welcome!</center>');
 	$.each([
 			'ADD: Hide incomplete at alchemy page',
-			'ADD: Pin alchemy to top of list'
+			'ADD: Pin alchemy to top of list',
+			'ADD: Hide alchemy items',
+			'FIX: Missing monster stats'
 	], function(_i, _e) {
 		$('#cageNewsChanges').append('<li><span>' + _e.split(':')[0] + '</span>' + _e.split(':')[1] + '</li>');
 	});
