@@ -295,6 +295,25 @@ div.cageGuildMember>span {
 	line-height: 20px;
 	margin-left: 23px;
 }
+
+#cageFreeMembers {
+	background-color: rgba(0, 0, 0, 0.5);
+	border-radius: 5px;
+	padding: 4px;
+	position: relative;
+	margin: -18px 0 0px 34px;
+	width: 663px;
+	border: 1px inset;
+	min-height: 22px;
+}
+
+#cageFreeMembers>div {
+	display: inline-block;
+	vertical-align: top;
+	margin-right: 0;
+}
+
+}
 /*
  * Goblin
  */

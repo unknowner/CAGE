@@ -12,7 +12,8 @@ function cageNews(_full) {
 			'ADD: Hide incomplete at alchemy page',
 			'ADD: Pin alchemy to top of list',
 			'ADD: Hide alchemy items',
-			'FIX: Missing monster stats'
+			'FIX: Missing monster stats',
+			'FIX: Show unassigned guild members in formation'
 	], function(_i, _e) {
 		$('#cageNewsChanges').append('<li><span>' + _e.split(':')[0] + '</span>' + _e.split(':')[1] + '</li>');
 	});

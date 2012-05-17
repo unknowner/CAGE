@@ -5,6 +5,7 @@ VER: 1.2.8β
 	ADD: Pin alchemy to top of list
 	FIX: Missing monster stats
 	ADD: Hide alchemy items
+	FIX: Show unassigned guild members in formation
 	
 ==========================================
 VER: 1.2.7β

@@ -127,7 +127,7 @@ tools.StatPoints.work = function(_up, _max) {
 			$(this).remove();
 		});
 	}
-}
+};
 tools.StatPoints.init = function() {
 	$('#cageStatsContainer').append($('<button id="cageStatPoints"><span></span></button>').click(tools.StatPoints.start));
 	tools.Page.runtime.addOn['tools.StatPoints.update'] = tools.StatPoints.update;

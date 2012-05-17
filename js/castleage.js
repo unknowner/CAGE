@@ -37,16 +37,18 @@ function initCastleAge() {
 				com.send(com.task.alive, com.port.facebook, null);
 			}, 10000);
 			initTools();
-			var _startURL = $('#current_pg_url').attr('value');
-			if (_startURL.indexOf('?') !== -1) {
-				_startURL = _startURL.substring(0, _startURL.indexOf('?'));
-			}
-			console.log("URL:" + _startURL);
-			tools.Page.allPages();
-			if (tools.Page.pages[_startURL]) {
-				tools.Page.pages[_startURL]();
-			}
-			_startURL = null;
+			setTimeout(function() {
+				var _startURL = $('#current_pg_url').attr('value');
+				if (_startURL.indexOf('?') !== -1) {
+					_startURL = _startURL.substring(0, _startURL.indexOf('?'));
+				}
+				console.log("URL:" + _startURL);
+				tools.Page.allPages();
+				if (tools.Page.pages[_startURL]) {
+					tools.Page.pages[_startURL]();
+				}
+				_startURL = null;
+			}, 1000);
 			$('#AjaxLoadIcon').delay(3000).fadeOut(1000, function() {
 				$('#collapsedGuildChat').css('left', '');
 				$('#expandedGuildChat').css('left', '');
