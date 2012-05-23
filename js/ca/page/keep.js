@@ -140,6 +140,10 @@ tools.Page.pages['keep.php'] = function() {
 					_text[i] = _text[i].trim();
 				}
 			}
+			if (_text[0] !== $this.find('img').attr('alt')) {
+				_text[0] = $this.find('img').attr('alt');
+			}
+			_text[0] = _text[0].replace(',', '<br>');
 			$this.data('info', _text.join('<br>')).find('img').hover(function() {
 				$this.css('zIndex', 1).prepend('<div class="cageUnitStats"><div>' + $this.data('info') + '</div></div>');
 			}, function() {

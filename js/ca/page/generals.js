@@ -9,7 +9,7 @@ tools.Page.pages['generals.php'] = function() {
 		var _attr = {
 			value : _i
 		};
-		if(_e === tools.General.runtime.favList) {
+		if (_e === tools.General.runtime.favList) {
 			_attr.selected = "selected";
 		}
 		_list.append($('<option>', _attr).text(_e));
@@ -38,7 +38,7 @@ tools.Page.pages['generals.php'] = function() {
 	// Add fav list
 	$('#cageEditAddFav').click(function() {
 		var _name = $('#cageEditFavName').val();
-		if(_name !== 'Favorites' && _name !== undefined && _name.length !== 0 && tools.General.runtime.favorites[_name] === undefined) {
+		if (_name !== 'Favorites' && _name !== undefined && _name.length !== 0 && tools.General.runtime.favorites[_name] === undefined) {
 			tools.General.runtime.favorites[_name] = [];
 			item.set('favFavorites', tools.General.runtime.favorites);
 			tools.General.runtime.favLists.push(_name);
@@ -60,7 +60,7 @@ tools.Page.pages['generals.php'] = function() {
 	$('#cageEditDelFav').click(function() {
 		var _name = $('#cageEditFavName').val();
 		console.log(_name);
-		if(_name !== 'Favorites' && _name !== undefined && _name.length !== 0) {
+		if (_name !== 'Favorites' && _name !== undefined && _name.length !== 0) {
 			$('option:selected').remove();
 			tools.General.runtime.favorites[_name] = null;
 			tools.General.runtime.favLists.splice(tools.General.runtime.favLists.indexOf(_name), 1);
@@ -74,7 +74,7 @@ tools.Page.pages['generals.php'] = function() {
 	// add to favs from generals page
 	$('div.generalSmallContainer2').each(function() {
 		$('div.general_name_div3', this).prepend($('<img style="cursor:pointer;position:absolute;padding:1px;" src="' + getPath('img/favadd.png') + '" alt="' + $('div.general_name_div3_padding', this).text().trim() + '"/>').click(function() {
-			if(tools.General.runtime.favorites[tools.General.runtime.favList].indexOf($(this).attr('alt')) == -1) {
+			if (tools.General.runtime.favorites[tools.General.runtime.favList].indexOf($(this).attr('alt')) == -1) {
 				tools.General.runtime.favorites[tools.General.runtime.favList].push($(this).attr('alt'));
 				item.set('favFavorites', tools.General.runtime.favorites);
 				var _displ = $('#cageFavsDisplay');
@@ -95,7 +95,9 @@ tools.Page.pages['generals.php'] = function() {
 		}));
 	});
 	$('#cageFavsDisplayContainer').resizable({
-		grid : [481, 57],
+		grid : [
+				481, 57
+		],
 		handles : 's',
 		maxWidth : 481,
 		minWidth : 481,
@@ -120,6 +122,6 @@ tools.Page.pages['generals.php'] = function() {
 		forcePlaceholderSize : true,
 		tolerance : 'pointer'
 	});
-	//Update generals data
+	// Update generals data
 	tools['General'].parsePage();
 };
