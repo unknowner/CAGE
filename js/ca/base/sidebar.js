@@ -12,7 +12,7 @@ tools.Sidebar.hideSection = function(_section, _child, _text) {
 
 	function sectionHover(_sec) {
 		var _inOut = _sec.data('inOut');
-		if(_sec.data('hidden') === true) {
+		if (_sec.data('hidden') === true) {
 			_inOut = 1;
 		} else {
 			_inOut = _inOut === 0 ? 1 : 0;
@@ -22,7 +22,6 @@ tools.Sidebar.hideSection = function(_section, _child, _text) {
 			opacity : _sec.data('inOut')
 		});
 	}
-
 
 	_section.hover(function() {
 		sectionHover(_section);
@@ -69,13 +68,13 @@ tools.Sidebar.button = {
 
 tools.Sidebar.smallDialog = function(_heading, _text, _okCallBack, _okButtonCSS, _cancelCallBack, _css) {
 	var _id = guid();
-	$('#cageSidebar').append($('<div id="' + _id + '" class="cageDialogSmall"><div>' + _heading + '</div><div></div><div>' + _text + '<div><button class="ok"></button><button class="cancel"></div></button></div><div></div><div></div></div>').animate({
+	$('#cageSidebar').append($('<div id="' + _id + '" class="cageDialogSmall"><div>' + _heading + '</div><div></div><div class="cageDialogText">' + _text + '<div><button class="ok"></button><button class="cancel"></div></button></div><div></div><div></div></div>').animate({
 		'right' : 177,
 		'opacity' : 1
 	}).css(_css === undefined ? {} : _css));
 	$('#' + _id + ' button.ok:first').css(_okButtonCSS).click(function() {
 		$('#' + _id + ' button').fadeOut();
-		if(_okCallBack) {
+		if (_okCallBack) {
 			_okCallBack();
 		}
 		$('#' + _id).animate({
@@ -91,9 +90,10 @@ tools.Sidebar.smallDialog = function(_heading, _text, _okCallBack, _okButtonCSS,
 			'opacity' : 0
 		}, function() {
 			$(this).remove();
-			if(_cancelCallBack) {
+			if (_cancelCallBack) {
 				_cancelCallBack();
 			}
 		});
 	});
+	return _id;
 };

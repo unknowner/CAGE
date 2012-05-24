@@ -1,8 +1,10 @@
 ==========================================
 VER: 1.2.9β
+
 	FIX: Keep divine-item stats not showing
 	FIX: Guild class only working once
 	FIX: Alchemy info popups
+	ADD: COPTER APIs (best_offensiv/defensive_general, update_stats)
 
 ==========================================
 VER: 1.2.8β
