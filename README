@@ -5,6 +5,7 @@ VER: 1.2.9β
 	FIX: Guild class only working once
 	FIX: Alchemy info popups
 	ADD: COPTER APIs (best_offensiv/defensive_general, update_stats)
+	FIX: Kobo displaced checkboxes
 
 ==========================================
 VER: 1.2.8β

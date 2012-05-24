@@ -53,6 +53,9 @@ tools.Page.allPages = function() {
 		$('#expandedGuildChat').css('left', '');
 	}, 250);
 	// repos CA menu & add stuff
+	tools.Functions.addCAGEToCANav('mainMenu_home', 'index.php', function() {
+		$('#app_body').html('<iframe id="cageBlogiFrame" src="http://cagenhancer.blogspot.com/?CAGE=FB">');
+	}, 'CAGE - Blog');
 	tools.Functions.addToCANav('mainMenu_home', 'index.php', 'specialmembership.php', 'Crusaders');
 	tools.Functions.addToCANav('mainMenu_monster', 'public_monster_list.php?monster_tier=3', 'army_news_feed.php', 'Live feed');
 	tools.Functions.addToCANav('mainMenu_battle', 'war_rank.php', 'raid.php', 'Raid');

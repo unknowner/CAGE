@@ -2,6 +2,7 @@
 	font-size: 11px;
 	font-family: Trebuchet MS, Tahoma, Verdana, Arial, sans-serif;
 }
+
 #cageToolsContainer {
 	white-space: nowrap;
 	position: fixed;
@@ -12,6 +13,7 @@
 	z-index: 1;
 	box-shadow: 0 10px 20px black;
 }
+
 button.cageToolButton {
 	width: 178px;
 	margin: 0;
@@ -19,22 +21,27 @@ button.cageToolButton {
 	cursor: pointer;
 	text-align: left;
 }
+
 button.cageToolButton:first-of-type {
 	border-top-left-radius: 5px;
 	border-top-right-radius: 5px;
 }
+
 button.cageToolButton:last-of-type {
 	border-bottom-left-radius: 5px;
 	border-bottom-right-radius: 5px;
 }
+
 #cageLogo {
 	position: absolute;
 	top: 6px;
 	left: 6px;
 }
-.cageToolButton > span:last-of-type {
+
+.cageToolButton>span:last-of-type {
 	padding: 0 0 1px 26px !important;
 }
+
 #cageMenu {
 	white-space: nowrap;
 	position: fixed;
@@ -46,32 +53,39 @@ button.cageToolButton:last-of-type {
 	font-size: 12px;
 	margin-left: 8px;
 }
-#cageMenu ul, #cageMenu ul li {
+
+#cageMenu ul,#cageMenu ul li {
 	list-style: none;
 	padding: 0;
 }
-#cageMenu > ul {
+
+#cageMenu>ul {
 	position: relative;
 	top: -13px;
 }
-#cageMenu > ul > li {
+
+#cageMenu>ul>li {
 	display: inline-block;
 }
+
 #cageMenu button {
 	margin: 0;
 	height: 30px;
 }
+
 .cageSubMenu {
 	display: none;
 	position: absolute;
 	text-align: left;
 }
+
 .cageSubMenu button {
 	width: 100%;
 	min-width: 100px;
 	text-align: left;
 	box-shadow: 0 10px 20px black;
 }
+
 #cageSettingContainer {
 	top: 260px;
 	position: fixed;
@@ -79,17 +93,21 @@ button.cageToolButton:last-of-type {
 	padding: 3px 3px 3px 0;
 	width: 150px;
 }
+
 #cageThemeSelector {
 	width: 99%;
 }
+
 #cageThemeSelector-button {
 	font-size: 12px;
 	border-bottom-left-radius: 0;
 	border-top-left-radius: 0;
 }
+
 #cageThemeSelector-menu {
 	font-size: 12px;
 }
+
 #cageAbilitiesContainer {
 	position: fixed;
 	display: block;
@@ -109,6 +127,7 @@ button.cageToolButton:last-of-type {
 	height: 15px;
 	padding: 4px !important;
 }
+
 #cageGateClassFilter-button {
 	color: white;
 	top: 3px;
@@ -120,10 +139,12 @@ button.cageToolButton:last-of-type {
 	width: 90px !important;
 	height: 23px;
 }
+
 #cageGateClassFilter-menu {
 	font-size: 12px;
 	width: 90px !important;
 }
+
 #cageGateActivityFilter-button {
 	color: white;
 	top: 3px;
@@ -135,10 +156,12 @@ button.cageToolButton:last-of-type {
 	width: 80px !important;
 	height: 23px;
 }
+
 #cageGateActivityFilter-menu {
 	font-size: 12px;
 	width: 80px !important;
 }
+
 #cageGateStatusFilter-button {
 	color: white;
 	top: 3px;
@@ -150,10 +173,12 @@ button.cageToolButton:last-of-type {
 	width: 100px !important;
 	height: 23px;
 }
+
 #cageGateStatusFilter-menu {
 	font-size: 12px;
 	width: 100px !important;
 }
+
 #cageAssists {
 	font-weight: bold;
 	margin-left: 10px;
@@ -167,6 +192,7 @@ button.cageToolButton:last-of-type {
 	float: left;
 	margin-top: 10px;
 }
+
 .cageAssisterList {
 	background-image: url('http://image4.castleagegame.com/graphics/newsfeed_back.jpg');
 	background-repeat: no-repeat;
@@ -174,24 +200,29 @@ button.cageToolButton:last-of-type {
 	height: 174px;
 	cursor: pointer;
 }
+
 .cageAssisterList:hover {
 	background-image: url('http://image4.castleagegame.com/graphics/newsfeed_back_h.jpg');
 }
+
 .cageAssisterListImage {
 	position: relative;
 	left: 45px;
 	top: 38px;
 }
+
 .cageAssisterListName {
 	position: relative;
 	left: 150px;
 	top: -50px;
 }
+
 .cageAssisterListValues {
 	position: relative;
 	left: 150px;
 	top: -50px;
 }
+
 #cageDemiContainer {
 	position: fixed;
 	width: 540px;
@@ -205,15 +236,18 @@ button.cageToolButton:last-of-type {
 	top: -500px;
 	display: none;
 }
-#cageDemiContainer > div {
+
+#cageDemiContainer>div {
 	padding-top: 22px;
 	padding-right: 18px;
 	display: inline-block;
 }
+
 #cageDemiContainer img {
 	height: 90px;
 	border-radius: 15px;
 }
+
 .cageDemiImage {
 	width: 90px;
 	height: 90px;
@@ -223,24 +257,31 @@ button.cageToolButton:last-of-type {
 	opacity: 0.7;
 	border-radius: 10px;
 }
+
 .cageDemiImage:hover {
 	opacity: 1;
 }
+
 #cageDemienergy:hover {
 	box-shadow: 0 0 20px 5px #43936e;
 }
+
 #cageDemistamina:hover {
 	box-shadow: 0 0 20px 5px #496a79;
 }
+
 #cageDemihealth:hover {
 	box-shadow: 0 0 20px 5px #1ac176;
 }
+
 #cageDemiattack:hover {
 	box-shadow: 0 0 20px 5px #cea640;
 }
+
 #cageDemidefense:hover {
 	box-shadow: 0 0 20px 5px #40a0a0;
 }
+
 #cageDemiContainer span {
 	display: block;
 	position: relative;
@@ -256,14 +297,17 @@ button.cageToolButton:last-of-type {
 	padding: 2px;
 	border-top-left-radius: 10px;
 }
+
 .cageDemiResult {
 	font-size: 12px;
 	top: 100px;
 }
+
 .ui-widget {
 	font-family: Trebuchet MS, Tahoma, Verdana, Arial, sans-serif;
 	font-size: 12px !important;
 }
+
 #cageSummonCTA {
 	cursor: pointer;
 	height: 15px;
@@ -279,9 +323,11 @@ button.cageToolButton:last-of-type {
 	width: 60px;
 	text-align: center;
 }
+
 #cageSummonCTA:hover {
 	background-color: #c00;
 }
+
 #cageSummonCTA:active {
 	background-color: #F00;
 	border: 1px inset;
@@ -306,7 +352,9 @@ button.cageToolButton:last-of-type {
 	left: 15px;
 	width: 200px;
 }
+
 .cageInfo {
+	
 }
 /*
  * Abilities
@@ -325,9 +373,11 @@ button.cageToolButton:last-of-type {
 	background-size: 83px 36px;
 	border: 0;
 }
+
 #cageClassCleric:hover {
 	background-image: url('http://image4.castleagegame.com/graphics/g_char_selectcleric.jpg');
 }
+
 #cageClassWarrior {
 	display: none;
 	border-radius: 5px;
@@ -342,9 +392,11 @@ button.cageToolButton:last-of-type {
 	background-size: 83px 36px;
 	border: 0;
 }
+
 #cageClassWarrior:hover {
 	background-image: url('http://image4.castleagegame.com/graphics/g_char_selectwarrior.jpg');
 }
+
 #cageClassMage {
 	display: none;
 	border-radius: 5px;
@@ -359,9 +411,11 @@ button.cageToolButton:last-of-type {
 	background-size: 83px 36px;
 	border: 0;
 }
+
 #cageClassMage:hover {
 	background-image: url('http://image4.castleagegame.com/graphics/g_char_selectmage.jpg');
 }
+
 #cageClassRogue {
 	display: none;
 	border-radius: 5px;
@@ -376,21 +430,26 @@ button.cageToolButton:last-of-type {
 	background-size: 83px 36px;
 	border: 0;
 }
+
 #cageClassRogue:hover {
 	background-image: url('http://image4.castleagegame.com/graphics/g_char_selectrogue.jpg');
 }
+
 .statUnit {
 	position: relative;
 }
+
 .statUnit img {
 	border-radius: 6px;
 }
+
 .statUnit img:hover {
 	box-shadow: 2px 2px 7px 2px #000;
 	height: 85px !important;
 	margin: -5px;
 }
-.statUnit img + div {
+
+.statUnit img+div {
 	background-color: black;
 	border-bottom-right-radius: 6px;
 	border-top-left-radius: 6px;
@@ -408,36 +467,44 @@ button.cageToolButton:last-of-type {
  * News
  */
 #cageNews {
+	
 }
+
 #cageNewsHead {
 	font-weight: bold;
 	font-size: 16px;
 	padding: 10px;
 }
+
 #cageNewsSubHead {
 	padding-bottom: 15px;
 	border-bottom: 1px solid #701919;
 }
+
 #cageNewsBody {
 	padding: 0 0 0 100px;
 	border-bottom: 1px solid #701919;
 }
+
 #cageNewsFoot {
 	text-align: center;
 	padding: 10px;
 	padding: 5px 30px 0px 40px;
 }
+
 #cageNewsChanges {
 	left: 65px;
 	margin-top: -17px;
 	position: relative;
 }
+
 #cageNewsChanges span {
 	width: 45px;
 	display: inline-block;
 	font-weight: bold;
 	margin-bottom: 2px;
 }
+
 #cageNewsChanges li {
 	list-style: none;
 }
@@ -459,7 +526,8 @@ button.cageToolButton:last-of-type {
 	text-shadow: 2px 2px black;
 	border-color: #DFCB96;
 }
-.cageGifterButton > span {
+
+.cageGifterButton>span {
 	font-size: 15px;
 }
 /*
@@ -469,16 +537,17 @@ button.cageToolButton:last-of-type {
 	position: absolute;
 	bottom: 0;
 	left: 0;
-	background: rgba(0,0,0,0.75);
+	background: rgba(0, 0, 0, 0.75);
 	padding: 8px;
 	color: #fff;
 	font-size: 11px;
 	border-top-right-radius: 8px;
 }
+
 div.cageMonsterActivity {
 	position: absolute;
 	left: 0;
-	background: rgba(0,0,0,0.75);
+	background: rgba(0, 0, 0, 0.75);
 	padding: 8px;
 	color: #fff;
 	font-size: 11px;
@@ -514,6 +583,7 @@ div.cageMonsterActivity {
 	background-repeat: no-repeat;
 	background-position: 0px -156px;
 }
+
 #cageClassSelected {
 	position: absolute;
 	top: 47px;
@@ -527,12 +597,14 @@ div.cageMonsterActivity {
 	text-shadow: 0 0 4px #aaF;
 	padding-top: 1px;
 }
+
 #cageClassPower {
 	padding: 42px 0 6px 0;
 	background-image: url('http://image4.castleagegame.com/graphics/g_char_power_main.jpg');
 	width: 459px;
 	background-position: -101px -4px;
 }
+
 .cageClassPowerSlots {
 	height: 61px;
 	background-repeat: no-repeat;
@@ -540,14 +612,17 @@ div.cageMonsterActivity {
 	background-image: url('http://image4.castleagegame.com/graphics/g_char_power_blank.gif');
 	display: inline-block;
 }
+
 .cageClassPowerSlot {
 	width: 65px;
 }
-.cageClassPowerSlot > img {
+
+.cageClassPowerSlot>img {
 	cursor: pointer;
 	float: left;
 	opacity: 0;
 }
+
 div.cageClassPowerText {
 	opacity: 0;
 	text-align: left;
@@ -563,6 +638,7 @@ div.cageClassPowerText {
 	z-index: -1;
 	box-shadow: 0 3px 10px #000;
 }
+
 .cageClassPowerSelector {
 	background-image: url('http://image4.castleagegame.com/graphics/g_char_power_locked.gif');
 	position: absolute;
@@ -571,14 +647,17 @@ div.cageClassPowerText {
 	width: 65px;
 	display: none;
 }
+
 .cageClassPowerSelector img {
 	cursor: pointer;
 	width: 65px;
 	box-shadow: 0 5px 14px #000;
 }
+
 #cageClassSave {
 	padding: 10px;
 }
+
 #cageClassImgcleric {
 	position: absolute;
 	top: 1px;
@@ -586,6 +665,7 @@ div.cageClassPowerText {
 	opacity: 0;
 	cursor: pointer;
 }
+
 #cageClassImgmage {
 	position: absolute;
 	top: 1px;
@@ -593,6 +673,7 @@ div.cageClassPowerText {
 	opacity: 0;
 	cursor: pointer;
 }
+
 #cageClassImgrogue {
 	left: 335px;
 	top: 1px;
@@ -600,6 +681,7 @@ div.cageClassPowerText {
 	opacity: 0;
 	cursor: pointer;
 }
+
 #cageClassImgwarrior {
 	position: absolute;
 	top: 1px;
@@ -624,17 +706,20 @@ div.cageClassPowerText {
 	padding: 10px;
 	border-radius: 30px;
 }
+
 .MonsterListBackground {
 	background-image: url('http://image4.castleagegame.com/graphics/monsterlist_container.gif');
 	background-repeat: no-repeat;
 	height: 90px;
 	padding-bottom: 15px;
 }
+
 .MonsterListButton {
 	float: left;
 	text-align: center;
 	padding-top: 20px;
 }
+
 .MonsterListName {
 	float: left;
 	text-align: center;
@@ -644,11 +729,13 @@ div.cageClassPowerText {
 	margin-right: 32px;
 	padding-top: 15px;
 }
+
 .MonsterListImage {
 	float: left;
 	padding: 15px 0 0 33px;
 	overflow: hidden;
 }
+
 .MonsterListText {
 	background-color: black;
 	padding: 1px 4px;
@@ -661,11 +748,13 @@ div.cageClassPowerText {
 	color: white;
 	font-weight: bold;
 }
+
 .GuildList {
 	height: 102px !important;
 	padding: 3px 0px 5px 20px !important;
 	font-size: 13px;
 }
+
 .GuildNum {
 	color: white;
 	position: relative;
@@ -674,6 +763,7 @@ div.cageClassPowerText {
 	text-shadow: 0 0 1px black, 0 0 4px black;
 	font-weight: bold;
 }
+
 .cageResults {
 	position: fixed;
 	top: 100px;
@@ -688,6 +778,7 @@ div.cageClassPowerText {
 	left: 10px;
 	width: 750px;
 }
+
 #cageCloseResult {
 	float: right;
 	position: relative;
@@ -695,6 +786,7 @@ div.cageClassPowerText {
 	margin-bottom: -21px;
 	width: 21px;
 }
+
 #MonsterResultDamage {
 	float: left;
 	width: 420px;
@@ -712,6 +804,7 @@ img.cageFBBluebar {
 	top: -1px;
 	left: -1px;
 }
+
 img.cageFBBluebarHidden {
 	z-index: 9999;
 	cursor: pointer;
@@ -724,6 +817,14 @@ img.cageFBBluebarHidden {
 	border: 1px solid #000;
 	box-shadow: 1px -9px 5px #000, 2px 5px 12px #000
 }
+
 img.cageFBBluebarHidden:hover {
 	background-color: #4a67a1;
+}
+
+#cageBlogiFrame {
+	margin: -8px 0 0 -6px;
+	width: 751px;
+	border: 0;
+	height: 100%;
 }

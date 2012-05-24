@@ -65,7 +65,7 @@ tools.COPTER.request = function(_req, _data) {
 
 tools.COPTER.receiver = function(_data) {
 	console.log('COPTER:', tools.COPTER.runtime.last, _data);
-	var _copter = JSON.parse(_data);
+	var _copter = JSON.parse(_data), _done = false;
 	switch (tools.COPTER.runtime.last) {
 		case tools.COPTER.API.status:
 			if (_copter.status == 'connected') {
@@ -75,15 +75,24 @@ tools.COPTER.receiver = function(_data) {
 			break;
 		case tools.COPTER.API.best_offensive_general:
 			tools.General.setByName(_copter.name);
+			_done = true;
 			break;
 		case tools.COPTER.API.best_defensive_general:
 			tools.General.setByName(_copter.name);
+			_done = true;
 			break;
 		case tools.COPTER.API.update_stats:
+			_done = true;
 			break;
 	}
-	$(tools.COPTER.runtime.dialogId).find('div.cageDialogText > button').removeAttr('disabled').removeClass('ui-state-hover').css('opacity', 1);
+
 	tools.COPTER.runtime.last = null;
+	if (_done === true) {
+		$(tools.COPTER.runtime.dialogId).find('button.cancel').click();
+		tools.COPTER.done();
+	} else {
+		$(tools.COPTER.runtime.dialogId).find('div.cageDialogText > button').removeAttr('disabled').removeClass('ui-state-hover').css('opacity', 1);
+	}
 };
 
 tools.COPTER.getStats = function(_callback) {
@@ -121,6 +130,7 @@ tools.COPTER.addDisplay = function() {
 		// update_stats
 		$('#cageCOPTERUpdateStats').click(function() {
 			$(tools.COPTER.runtime.dialogId).find('div.cageDialogText > button').attr('disabled', 'disabled').css('opacity', 0.7);
+			$(tools.COPTER.runtime.dialogId).find('button.cancel').hide();
 			tools.COPTER.getStats(function(_stats) {
 				console.log(_stats);
 				tools.COPTER.request(tools.COPTER.API.update_stats, _stats);
@@ -129,6 +139,7 @@ tools.COPTER.addDisplay = function() {
 		// best_defensive_general
 		$('#cageCOPTERBestDefG').click(function() {
 			$(tools.COPTER.runtime.dialogId).find('div.cageDialogText > button').attr('disabled', 'disabled').css('opacity', 0.7);
+			$(tools.COPTER.runtime.dialogId).find('button.cancel').hide();
 			tools.COPTER.getStats(function(_stats) {
 				_stats.current_health = $('#health_current_value').text().trim();
 				console.log(_stats);
@@ -138,6 +149,7 @@ tools.COPTER.addDisplay = function() {
 		// best_offensive_general
 		$('#cageCOPTERBestAttG').click(function() {
 			$(tools.COPTER.runtime.dialogId).find('div.cageDialogText > button').attr('disabled', 'disabled').css('opacity', 0.7);
+			$(tools.COPTER.runtime.dialogId).find('button.cancel').hide();
 			tools.COPTER.getStats(function(_stats) {
 				_stats.current_health = $('#health_current_value').text().trim();
 				console.log(_stats);

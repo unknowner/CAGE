@@ -12,7 +12,8 @@ function cageNews(_full) {
 			'ADD: COPTER APIs (best_offensiv/defensive_general, update_stats)',
 			'FIX: Keep divine-item stats not showing',
 			'FIX: Guild class only working once',
-			'FIX: Alchemy info popups'
+			'FIX: Alchemy info popups',
+			'FIX: Kobo displaced checkboxes'
 	], function(_i, _e) {
 		$('#cageNewsChanges').append('<li><span>' + _e.split(':')[0] + '</span>' + _e.split(':')[1] + '</li>');
 	});
