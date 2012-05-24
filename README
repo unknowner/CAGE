@@ -6,6 +6,8 @@ VER: 1.2.9β
 	FIX: Alchemy info popups
 	ADD: COPTER APIs (best_offensiv/defensive_general, update_stats)
 	FIX: Kobo displaced checkboxes
+	FIX: Monster stats for new monster layout
+	ADD: Monthly general Kendra
 
 ==========================================
 VER: 1.2.8β

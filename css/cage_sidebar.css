@@ -328,11 +328,16 @@ div.cageSidebarStat {
 	width: 29px;
 	margin-top: -37px;
 	cursor: pointer;
-	background-image: url('../img/copter.png');
-	background-position: 4px 5px;
-	background-repeat: no-repeat;
-	background-size: 17px 17px;
-	background-color: #fff;
+	background-image: url('http://image4.castleagegame.com/graphics/favor_clear.gif');
+	background-size: 28px 28px;
+	background-position: -2px -2px;
+}
+
+#cageCOPTERSubmit>div {
+	font-size: 23px;
+	font-weight: bold;
+	margin: -13px 0 0 -3px;
+	position: absolute;
 }
 
 #cageCOPTERDisplay>div {

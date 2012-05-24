@@ -1,8 +1,8 @@
 function receiver(_data) {
-	//console.log('fb receiver: ', _data);
+	// console.log('fb receiver: ', _data);
 	switch (_data.task) {
 		case com.task.castleAgeReady:
-			if(Facebook.started === false) {
+			if (Facebook.started === false) {
 				com.send(com.task.fbReady, com.port.castleAge);
 				Facebook.started = true;
 				startCAGE();
@@ -33,7 +33,7 @@ function receiver(_data) {
 			$('#cageIFrame').html('.cageIFrame {height:' + (_window.innerHeight - (Facebook.bluebarHidden === true ? 1 : 34)) + 'px !important;}');
 			break;
 		case com.task.fbStart:
-			if(location.search.indexOf('needclickers=1') === -1) {
+			if (location.search.indexOf('needclickers=1') === -1) {
 				initFacebook();
 			}
 			break;

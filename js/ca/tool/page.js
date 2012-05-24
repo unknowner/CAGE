@@ -55,6 +55,7 @@ tools.Page.allPages = function() {
 	// repos CA menu & add stuff
 	tools.Functions.addCAGEToCANav('mainMenu_home', 'index.php', function() {
 		$('#app_body').html('<iframe id="cageBlogiFrame" src="http://cagenhancer.blogspot.com/?CAGE=FB">');
+		$('#cageBlogiFrame').height($('body').height() - 100)
 	}, 'CAGE - Blog');
 	tools.Functions.addToCANav('mainMenu_home', 'index.php', 'specialmembership.php', 'Crusaders');
 	tools.Functions.addToCANav('mainMenu_monster', 'public_monster_list.php?monster_tier=3', 'army_news_feed.php', 'Live feed');

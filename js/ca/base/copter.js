@@ -114,7 +114,7 @@ tools.COPTER.getStats = function(_callback) {
 };
 
 tools.COPTER.addDisplay = function() {
-	$('#cageSidebarStats').append('<div id="cageCOPTERDisplay" class="cageSidebarStat"><div>COPTER</div><div><div></div></div><span></span><span>connected</span></div></div>').append($('<button id="cageCOPTERSubmit" title="Update data"></button>').click(function() {
+	$('#cageSidebarStats').append('<div id="cageCOPTERDisplay" class="cageSidebarStat"><div>COPTER</div><div><div></div></div><span></span><span>connected</span></div></div>').append($('<button id="cageCOPTERSubmit" title="Update data"><div>C</div></button>').click(function() {
 		$('#cageCOPTERSubmit').css({
 			'cursor' : 'wait',
 			'backgroundSize' : '33px 33px',

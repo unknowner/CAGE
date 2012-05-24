@@ -258,18 +258,7 @@ tools.Monster.stunBar = function() {
 tools.Monster.battleStats = function() {
 	// monster stats
 	var _bossReg = new RegExp([
-			'monster_\\w+_large.jpg',
-			'boss_\\w+_large.jpg',
-			'boss_\\w+_big.jpg',
-			'nm_\\w+_large.jpg',
-			'nm_\\w+_large2.jpg',
-			'monster_\\w+_large_ca.jpg',
-			'seamonster_(?!ship_health)\\w*.jpg',
-			'seamonster_dead.jpg', 'dragon_monster_\\w+.jpg',
-			'boss_\\w+.jpg',
-			'\\w+_large.jpg',
-			'\\/monster_(?!health|ca_icon|hod_icon)\\w+.jpg',
-			'\\w+_dead.jpg'
+			'monster_\\w+_large.jpg', 'boss_\\w+_large.jpg', 'boss_\\w+_big.jpg', 'nm_\\w+_large.jpg', 'nm_\\w+_large2.jpg', 'monster_\\w+_large_ca.jpg', 'seamonster_(?!ship_health)\\w*.jpg', 'seamonster_dead.jpg', 'dragon_monster_\\w+.jpg', 'boss_\\w+.jpg', '\\w+_large.jpg', '\\/monster_(?!health|ca_icon|hod_icon)\\w+.jpg', '\\w+_dead.jpg'
 	].join('|'));
 	$('#app_body table.layout td > div:gt(2) div:not([id][alt][title]) > img:only-child').each(function() {
 		if (_bossReg.exec($(this).attr('src')) !== null) {
@@ -283,8 +272,8 @@ tools.Monster.battleStats = function() {
 		def : null
 	};
 	if (_dmgType === null) {
-		var _type = $('td.dragonContainer table tr td:eq(1) table tr:last').find('td:last').text().trim();
-		console.log('_type', _type);
+		var _type = $('td.dragonContainer table tr td:eq(1) table tr:last td:last, #leaderboard_0 > div:last > div > div:eq(4)').text().trim();
+		// console.log('_type', _type);
 		if (_type.indexOf('dmg') !== -1) {
 			_dmgType = 'dmg';
 			if (_type.indexOf('def') !== -1) {
@@ -294,11 +283,12 @@ tools.Monster.battleStats = function() {
 			_dmgType = 'Activity';
 		}
 	}
-	$('td.dragonContainer table tr td:eq(1) table tr').each(function() {
+	$('td.dragonContainer table tr td:eq(1) table tr, #leaderboard_0 > div').each(function() {
 		$this = $(this);
 		if ($this.text() !== '') {
-			var _line = $this.find('td:last').text().trim();
-			if (isNaN(parseInt(_line.replace(/\D/g, ''))) === false) {
+			var _line = ($this.find('td:last').length > 0 ? $this.find('td:last') : $this).text().trim();
+			// console.log('_line', _line);
+			if (/Damage Leaders:|Levels|Heart of Darkness/.test($this.text()) === false) {
 				if ($this.html().indexOf(CastleAge.userId) > -1) {
 					_ownDamage = _line;
 				}

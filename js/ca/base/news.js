@@ -10,10 +10,12 @@ function cageNews(_full) {
 	$('#cageNewsFoot').prepend('<center>If you find bugs, just go to the blog and post them there (no signup required).<br>Logs (CTRL+SHIFT+J) are always welcome!</center>');
 	$.each([
 			'ADD: COPTER APIs (best_offensiv/defensive_general, update_stats)',
+			'ADD: Monthly general Kendra',
 			'FIX: Keep divine-item stats not showing',
 			'FIX: Guild class only working once',
 			'FIX: Alchemy info popups',
-			'FIX: Kobo displaced checkboxes'
+			'FIX: Kobo displaced checkboxes',
+			'FIX: Monster stats for new monster layout'
 	], function(_i, _e) {
 		$('#cageNewsChanges').append('<li><span>' + _e.split(':')[0] + '</span>' + _e.split(':')[1] + '</li>');
 	});
