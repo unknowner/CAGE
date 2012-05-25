@@ -283,12 +283,12 @@ tools.Monster.battleStats = function() {
 			_dmgType = 'Activity';
 		}
 	}
-	$('td.dragonContainer table tr td:eq(1) table tr, #leaderboard_0 > div').each(function() {
+	$('td.dragonContainer table tr td:eq(1) table tr, #leaderboard_0 > div').add($('#leaderboard_0').nextAll('div')).each(function() {
 		$this = $(this);
 		if ($this.text() !== '') {
 			var _line = ($this.find('td:last').length > 0 ? $this.find('td:last') : $this).text().trim();
 			// console.log('_line', _line);
-			if (/Damage Leaders:|Levels|Heart of Darkness/.test($this.text()) === false) {
+			if (/Damage Leaders|Levels|Heart of Darkness/.test($this.text()) === false) {
 				if ($this.html().indexOf(CastleAge.userId) > -1) {
 					_ownDamage = _line;
 				}
@@ -299,7 +299,7 @@ tools.Monster.battleStats = function() {
 						_allDamage.def += parseInt(_line[1].replace(/\D/g, ''));
 					}
 				} else {
-					_allDamage[_dmgType] += parseInt(_line.replace(/\D/g, ''));
+					_allDamage[_dmgType] += parseInt(_line.replace(/,/g, '').match(/\d+/)[0]);
 				}
 			}
 			if (/Levels|Heart of Darkness/.test($this.text()) === true) {

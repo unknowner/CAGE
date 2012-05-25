@@ -27,8 +27,27 @@ tools.Page.pages['alchemy.php'] = function() {
 		});
 	});
 	$('div[style *= "graphics/alchfb_midrepeat_blank.jpg"]').each(function() {
-		var $this = $(this);
-		$this.data('name', $this.find('div > div:eq(2) > div:eq(0) > div').text().trim()).addClass('cageAlchemyContainer').attr('style', '');
+		var $this = $(this), $pop = $this.find('div > div[id^="display_ing_"]'), _info = [];
+		$this.data('name', $this.find('div > div:eq(2) > div:eq(0) > div').text().trim()).addClass('cageAlchemyContainer').removeAttr('style');
+		$pop.each(function() {
+			_info = $(this).text().split(/\n/);
+			for ( var i = 0; i < _info.length; i++) {
+				if (_info[i].trim() == '') {
+					_info.splice(i, 1);
+					i--;
+				} else {
+					_info[i] = _info[i].trim();
+				}
+			}
+			_info[0] = '<b>' + _info[0].trim() + '</b>';
+			$(this).prev('img').data('info', _info.join('<br>')).removeAttr('alt').removeAttr('title').removeAttr('onmouseover').removeAttr('onmouseout').hover(function() {
+				$(this).css('zIndex', 2).after('<div class="cageUnitStats" style="z-index:1;margin-top:-24px;"><div style="max-width:225px;white-space:normal;">' + $(this).data('info') + '</div></div>');
+				console.log($(this).data('info'));
+			}, function() {
+				$(this).css('zIndex', '').next('div.cageUnitStats').remove();
+			});
+			$(this).remove();
+		});
 	});
 
 	function addFilter(_id, _text, _f1, _f2) {
