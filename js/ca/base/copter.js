@@ -10,7 +10,8 @@ tools.COPTER.API = {
 	status : 'status',
 	best_offensive_general : 'best_offensive_general',
 	best_defensive_general : 'best_defensive_general',
-	update_stats : 'update_stats'
+	update_stats : 'update_stats',
+	update_generals : 'update_generals'
 };
 
 tools.COPTER.runtimeUpdate = function() {
@@ -66,26 +67,49 @@ tools.COPTER.request = function(_req, _data) {
 tools.COPTER.receiver = function(_data) {
 	console.log('COPTER:', tools.COPTER.runtime.last, _data);
 	var _copter = JSON.parse(_data), _done = false;
-	switch (tools.COPTER.runtime.last) {
-		case tools.COPTER.API.status:
-			if (_copter.status == 'connected') {
-				tools.COPTER.runtime.connected = true;
-				tools.COPTER.addDisplay();
-			}
-			break;
-		case tools.COPTER.API.best_offensive_general:
-			tools.General.setByName(_copter.name);
-			_done = true;
-			break;
-		case tools.COPTER.API.best_defensive_general:
-			tools.General.setByName(_copter.name);
-			_done = true;
-			break;
-		case tools.COPTER.API.update_stats:
-			_done = true;
-			break;
+	if (_copter.status == 'successful' || _copter.status == 'connected') {
+		switch (tools.COPTER.runtime.last) {
+			case tools.COPTER.API.status:
+				if (_copter.status == 'connected') {
+					tools.COPTER.runtime.connected = true;
+					tools.COPTER.addDisplay();
+				}
+				break;
+			case tools.COPTER.API.best_offensive_general:
+				tools.General.setByName(_copter.name);
+				_done = true;
+				break;
+			case tools.COPTER.API.best_defensive_general:
+				tools.General.setByName(_copter.name);
+				_done = true;
+				break;
+			case tools.COPTER.API.update_stats:
+				_done = true;
+				break;
+			case tools.COPTER.API.update_generals:
+				_done = true;
+				break;
+		}
+	} else if (_copter.status == 'failed') {
+		$('div').text('Sorry, the last request failed.').dialog({
+			title : 'COPTER',
+			resizable : false,
+			zIndex : 3999,
+			width : 440,
+			minHeight : 0,
+			position : [
+					'center', 50
+			],
+			draggable : false,
+			buttons : {
+				"Ok" : function() {
+					$(this).dialog("close").remove();
+				}
+			},
+			autoOpen : true
+		});
+		_done = true;
 	}
-
 	tools.COPTER.runtime.last = null;
 	if (_done === true) {
 		$(tools.COPTER.runtime.dialogId).find('button.cancel').click();
@@ -121,7 +145,7 @@ tools.COPTER.addDisplay = function() {
 			'backgroundPosition' : '-4px -4px',
 			'backgroundImage' : 'url(\'http://image4.castleagegame.com/graphics/shield_wait.gif\')'
 		}).attr('disabled', 'disabled');
-		tools.COPTER.runtime.dialogId = '#' + tools.Sidebar.smallDialog('COPTER', '<button id="cageCOPTERUpdateStats">Update stats</button><br><button id="cageCOPTERBestAttG">Best offensive general</button><button id="cageCOPTERBestDefG">Best defensive general</button>', null, {
+		tools.COPTER.runtime.dialogId = '#' + tools.Sidebar.smallDialog('COPTER', '<button id="cageCOPTERUpdateStats">Update stats</button><button id="cageCOPTERUpdateGenerals">Update generals</button><button id="cageCOPTERBestAttG">Best offensive general</button><button id="cageCOPTERBestDefG">Best defensive general</button>', null, {
 			'display' : 'none'
 		}, tools.COPTER.done, {
 			'top' : ($('#cageCOPTERDisplay').offset().top - 40)
@@ -134,6 +158,15 @@ tools.COPTER.addDisplay = function() {
 			tools.COPTER.getStats(function(_stats) {
 				console.log(_stats);
 				tools.COPTER.request(tools.COPTER.API.update_stats, _stats);
+			});
+		});
+		// update_generals
+		$('#cageCOPTERUpdateGenerals').click(function() {
+			$(tools.COPTER.runtime.dialogId).find('div.cageDialogText > button').attr('disabled', 'disabled').css('opacity', 0.7);
+			$(tools.COPTER.runtime.dialogId).find('button.cancel').hide();
+			tools.COPTER.getStats(function(_stats) {
+				console.log(_stats);
+				tools.COPTER.request(tools.COPTER.API.update_generals, _stats);
 			});
 		});
 		// best_defensive_general

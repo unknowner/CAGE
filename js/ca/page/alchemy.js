@@ -4,7 +4,8 @@ tools.Page.pages['alchemy.php'] = function() {
 	console.log('Page: alchemy.php');
 	$('div[style*="/graphics/alchfb_top.jpg"]').css('height', 320).after($('<div id="cageItemsStatus">'));
 
-	function fixTooltip($this) {
+	function fixTooltip(_this) {
+		var $this = $(_this);
 		var _info = $this.text().split(/\n/);
 		for ( var i = 0; i < _info.length; i++) {
 			if (_info[i].trim() == '') {
@@ -32,15 +33,6 @@ tools.Page.pages['alchemy.php'] = function() {
 		});
 		$this.remove();
 	}
-
-	$('div[style *= "graphics/alchfb_midrepeat.jpg"], div[style *= "graphics/alchfb_midrepeat_blank.jpg"]').each(function() {
-		var $this = $(this), $pop = $this.find('div[id^="display_"]');
-		$this.data('name', $this.find('div > div:eq(2) > div:eq(0) > div').text().trim()).addClass('cageAlchemyContainer').removeAttr('style');
-		$pop.each(function() {
-			fixTooltip($(this));
-		});
-	});
-
 	function addFilter(_id, _text, _f1, _f2) {
 		$('#cageItemsStatus').append($('<div id="' + _id + '" class="cageAlchemyButtons"><img src="http://image4.castleagegame.com/graphics/boss_lotus_help2.gif"><span></span><span>' + _text + '</span></div>').toggle(function() {
 			$('#' + _id).find('span:first').html('&#10003').end().children('img').attr('src', 'http://image4.castleagegame.com/graphics/boss_lotus_help3.gif');
@@ -49,67 +41,6 @@ tools.Page.pages['alchemy.php'] = function() {
 			$('#' + _id).find('span:first').html('').end().children('img').attr('src', 'http://image4.castleagegame.com/graphics/boss_lotus_help2.gif');
 			_f2();
 		}));
-	}
-
-	// hide incomplete button
-	addFilter('cageHideRecipe', 'Hide incomplete', function() {
-		$('#cageItemsStatus').nextAll('div.cageAlchemyContainer, div.cageAlchemyContainerBlank').filter(function() {
-			return $(this).find('input[value = "perform_alchemy"]').length == 0;
-		}).hide();
-		item.set('cagePageAlchemyHideIncomplete', true);
-	}, function() {
-		$('#cageItemsStatus').nextAll('div.cageAlchemyContainer, div.cageAlchemyContainerBlank').show();
-		item.set('cagePageAlchemyHideIncomplete', false);
-	});
-	if (item.get('cagePageAlchemyHideIncomplete', false) === true) {
-		$('#cageHideRecipe').click();
-	}
-
-	// hide items
-	$('.cageAlchemyContainer, .cageAlchemyContainerBlank').append('<button class="cageHideItem ui-icon ui-icon-cancel">');
-	addFilter('cageHideItems', 'Show hidden items', function() {
-		$('div.cageIsHidden').removeClass('cageForceHidden');
-		item.set('cagePageAlchemyShowHidden', true);
-	}, function() {
-		$('div.cageIsHidden').addClass('cageForceHidden');
-		item.set('cagePageAlchemyShowHidden', false);
-	});
-	$('button.cageHideItem').data('hidden', false).click(function() {
-		var _hidden = $(this).parent(), _stored = item.get('cagePageAlchemyHidden', []);
-		if ($(this).data('hidden') === false) {
-			_hidden.addClass('cageIsHidden ' + (item.get('cagePageAlchemyShowHidden', false) === false ? 'cageForceHidden' : '')).find('button.cagePinItem').hide();
-			$(this).data('hidden', true).css({
-				'background-color' : '#a00',
-				'top' : 9
-			});
-			if (_stored.indexOf(_hidden.data('name')) === -1) {
-				_stored.push(_hidden.data('name'));
-				item.set('cagePageAlchemyHidden', _stored);
-			}
-		} else {
-			_hidden.removeClass('cageIsHidden cageForceHidden').find('button.cagePinItem').show();
-			$(this).data('hidden', false).css({
-				'background-color' : '',
-				'top' : ''
-			});
-			if (_stored.indexOf(_hidden.data('name')) !== -1) {
-				_stored.splice(_stored.indexOf(_hidden.data('name')), 1);
-				item.set('cagePageAlchemyHidden', _stored);
-			}
-		}
-	});
-
-	// pin items
-	$('.cageAlchemyContainer, .cageAlchemyContainerBlank').append('<button class="cagePinItem ui-icon ui-icon-pin-w">');
-	addFilter('cageShowPinned', 'Always show pinned items', function() {
-		$('div.cageIsPinned').addClass('cagePinnedItems');
-		item.set('cagePageAlchemyShowPinned', true);
-	}, function() {
-		$('div.cageIsPinned').removeClass('cagePinnedItems');
-		item.set('cagePageAlchemyShowPinned', false);
-	});
-	if (item.get('cagePageAlchemyShowPinned', true) === true) {
-		$('#cageShowPinned').click();
 	}
 	function pinItem() {
 		var _topin = $(this).parent(), _stored = item.get('cagePageAlchemyPinned', []);
@@ -132,24 +63,92 @@ tools.Page.pages['alchemy.php'] = function() {
 		}
 		_topin.removeClass('cagePinnedItems cageIsPinned').find('button.cagePinItem').removeClass('ui-icon-pin-s').addClass('ui-icon-pin-w').css('background-color', '').unbind('click').click(pinItem);
 	}
+	setTimeout(function() {
+		$('div[style *= "graphics/alchfb_midrepeat.jpg"], div[style *= "graphics/alchfb_midrepeat_blank.jpg"]').each(function(_i) {
+			var $this = $(this);
+			$this.data('name', $this.find('div > div:eq(2) > div:eq(0) > div').text().trim()).addClass('cageAlchemyContainer').removeAttr('style').append('<button class="cageHideItem ui-icon ui-icon-cancel"><button class="cagePinItem ui-icon ui-icon-pin-w">');
+		});
 
-	// check for stored stuff
-	var _storedHidden = item.get('cagePageAlchemyHidden', []);
-	$('.cageAlchemyContainer, .cageAlchemyContainerBlank').each(function() {
-		if (_storedHidden.indexOf($(this).data('name')) !== -1) {
-			$(this).find('button.cageHideItem').click();
+		// hide incomplete button
+		addFilter('cageHideRecipe', 'Hide incomplete', function() {
+			$('#cageItemsStatus').nextAll('div.cageAlchemyContainer, div.cageAlchemyContainerBlank').filter(function() {
+				return $(this).find('input[value = "perform_alchemy"]').length == 0;
+			}).hide();
+			item.set('cagePageAlchemyHideIncomplete', true);
+		}, function() {
+			$('#cageItemsStatus').nextAll('div.cageAlchemyContainer, div.cageAlchemyContainerBlank').show();
+			item.set('cagePageAlchemyHideIncomplete', false);
+		});
+		if (item.get('cagePageAlchemyHideIncomplete', false) === true) {
+			$('#cageHideRecipe').click();
 		}
-	});
-	if (item.get('cagePageAlchemyShowHidden', false) === true) {
-		$('#cageHideItems').click();
-	}
-
-	$('button.cagePinItem').click(pinItem);
-	var _storedPinned = item.get('cagePageAlchemyPinned', []);
-	$('#cageItemsStatus').nextAll('div.cageAlchemyContainer, div.cageAlchemyContainerBlank').each(function() {
-		if (_storedPinned.indexOf($(this).data('name')) >= 0) {
-			$(this).find('button.cagePinItem').click();
+		// hide items
+		addFilter('cageHideItems', 'Show hidden items', function() {
+			$('div.cageIsHidden').removeClass('cageForceHidden');
+			item.set('cagePageAlchemyShowHidden', true);
+		}, function() {
+			$('div.cageIsHidden').addClass('cageForceHidden');
+			item.set('cagePageAlchemyShowHidden', false);
+		});
+		$('button.cageHideItem').data('hidden', false).click(function() {
+			var _hidden = $(this).parent(), _stored = item.get('cagePageAlchemyHidden', []);
+			if ($(this).data('hidden') === false) {
+				_hidden.addClass('cageIsHidden ' + (item.get('cagePageAlchemyShowHidden', false) === false ? 'cageForceHidden' : '')).find('button.cagePinItem').hide();
+				$(this).data('hidden', true).css({
+					'background-color' : '#a00',
+					'top' : 9
+				});
+				if (_stored.indexOf(_hidden.data('name')) === -1) {
+					_stored.push(_hidden.data('name'));
+					item.set('cagePageAlchemyHidden', _stored);
+				}
+			} else {
+				_hidden.removeClass('cageIsHidden cageForceHidden').find('button.cagePinItem').show();
+				$(this).data('hidden', false).css({
+					'background-color' : '',
+					'top' : ''
+				});
+				if (_stored.indexOf(_hidden.data('name')) !== -1) {
+					_stored.splice(_stored.indexOf(_hidden.data('name')), 1);
+					item.set('cagePageAlchemyHidden', _stored);
+				}
+			}
+		});
+		// pin items
+		addFilter('cageShowPinned', 'Always show pinned items', function() {
+			$('div.cageIsPinned').addClass('cagePinnedItems');
+			item.set('cagePageAlchemyShowPinned', true);
+		}, function() {
+			$('div.cageIsPinned').removeClass('cagePinnedItems');
+			item.set('cagePageAlchemyShowPinned', false);
+		});
+		if (item.get('cagePageAlchemyShowPinned', true) === true) {
+			$('#cageShowPinned').click();
 		}
-	});
 
+		// check for stored stuff
+		var _storedHidden = item.get('cagePageAlchemyHidden', []);
+		$('.cageAlchemyContainer, .cageAlchemyContainerBlank').each(function() {
+			if (_storedHidden.indexOf($(this).data('name')) !== -1) {
+				$(this).find('button.cageHideItem').click();
+			}
+		});
+		if (item.get('cagePageAlchemyShowHidden', false) === true) {
+			$('#cageHideItems').click();
+		}
+
+		$('button.cagePinItem').click(pinItem);
+		var _storedPinned = item.get('cagePageAlchemyPinned', []);
+		$('#cageItemsStatus').nextAll('div.cageAlchemyContainer, div.cageAlchemyContainerBlank').each(function() {
+			if (_storedPinned.indexOf($(this).data('name')) >= 0) {
+				$(this).find('button.cagePinItem').click();
+			}
+		});
+
+		setTimeout(function() {
+			$('#cageItemsStatus').parent().find('div[id^="display_"]').each(function() {
+				fixTooltip(this);
+			});
+		}, 250);
+	}, 1);
 };

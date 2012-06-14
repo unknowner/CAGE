@@ -1604,7 +1604,7 @@ tools.Page.pages['oracle.php'] = function() {
 				n : "Erynion",
 				a : 23,
 				d : 24,
-				i : "Grants Physical Pierce And Wind Offense",
+				i : "Grants Physical Pierce And Wind Defense",
 				p : "hero_erynion",
 				e : [
 						{
