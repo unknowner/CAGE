@@ -87,18 +87,19 @@ tools.COPTER.receiver = function(_data) {
 				_done = true;
 				break;
 			case tools.COPTER.API.update_generals:
+				note('COPTER', _copter.results);
 				_done = true;
 				break;
 		}
 	} else if (_copter.status == 'failed') {
-		$('div').text('Sorry, the last request failed.').dialog({
+		$('<div>').text('Sorry, the last request failed: ' + _copter.results).dialog({
 			title : 'COPTER',
 			resizable : false,
 			zIndex : 3999,
 			width : 440,
 			minHeight : 0,
 			position : [
-					'center', 50
+					'center', 150
 			],
 			draggable : false,
 			buttons : {
@@ -156,7 +157,6 @@ tools.COPTER.addDisplay = function() {
 			$(tools.COPTER.runtime.dialogId).find('div.cageDialogText > button').attr('disabled', 'disabled').css('opacity', 0.7);
 			$(tools.COPTER.runtime.dialogId).find('button.cancel').hide();
 			tools.COPTER.getStats(function(_stats) {
-				console.log(_stats);
 				tools.COPTER.request(tools.COPTER.API.update_stats, _stats);
 			});
 		});
@@ -164,10 +164,13 @@ tools.COPTER.addDisplay = function() {
 		$('#cageCOPTERUpdateGenerals').click(function() {
 			$(tools.COPTER.runtime.dialogId).find('div.cageDialogText > button').attr('disabled', 'disabled').css('opacity', 0.7);
 			$(tools.COPTER.runtime.dialogId).find('button.cancel').hide();
-			tools.COPTER.getStats(function(_stats) {
-				console.log(_stats);
-				tools.COPTER.request(tools.COPTER.API.update_generals, _stats);
+			var _copterGenerals = {
+				generals : {}
+			};
+			$.each(tools.General.runtime.general, function() {
+				_copterGenerals.generals[this.name] = /\d+/.exec(this.level)[0];
 			});
+			tools.COPTER.request(tools.COPTER.API.update_generals, _copterGenerals);
 		});
 		// best_defensive_general
 		$('#cageCOPTERBestDefG').click(function() {
@@ -175,7 +178,6 @@ tools.COPTER.addDisplay = function() {
 			$(tools.COPTER.runtime.dialogId).find('button.cancel').hide();
 			tools.COPTER.getStats(function(_stats) {
 				_stats.current_health = $('#health_current_value').text().trim();
-				console.log(_stats);
 				tools.COPTER.request(tools.COPTER.API.best_defensive_general, _stats);
 			});
 		});
@@ -185,7 +187,6 @@ tools.COPTER.addDisplay = function() {
 			$(tools.COPTER.runtime.dialogId).find('button.cancel').hide();
 			tools.COPTER.getStats(function(_stats) {
 				_stats.current_health = $('#health_current_value').text().trim();
-				console.log(_stats);
 				tools.COPTER.request(tools.COPTER.API.best_offensive_general, _stats);
 			});
 		});

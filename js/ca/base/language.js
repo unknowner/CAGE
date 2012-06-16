@@ -37,6 +37,7 @@ var language = {
 	armyCleanerGetArmy : 'Getting army members...',
 	armyCleanerRemoveMissing : 'Removing none-friends from army...',
 	armyCleanerReloading : 'Done, reloading...',
+	armyCleanerKeepiPhone : 'Keep iPhone players',
 
 	//Assister
 	assisterButton : 'Assister',

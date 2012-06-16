@@ -5,17 +5,19 @@ tools.ArmyCleaner.settings = function() {
 	tools.Settings.heading('Army Cleaner');
 	tools.Settings.text(language.armyCleanerSetDesc);
 	tools.Settings.textbox(language.armyCleanerSetMinArmy, tools.ArmyCleaner.runtime.keepArmy, 'armyCleanerKeepArmy');
+	tools.Settings.onoff(language.armyCleanerKeepiPhone, tools.ArmyCleaner.runtime.iPhone, 'armyCleanerKeepiPhone', tools.ArmyCleaner.runtimeUpdate);
 };
 
 tools.ArmyCleaner.runtimeUpdate = function() {
-	if(!tools.ArmyCleaner.runtime) {
+	if (!tools.ArmyCleaner.runtime) {
 		tools.ArmyCleaner.runtime = {
 			count : null,
 			army : [],
 			cafriends : [],
 			busy : true,
 			text : null,
-			keepArmy : item.get('armyCleanerKeepArmy', 541)
+			keepArmy : item.get('armyCleanerKeepArmy', 541),
+			iPhone : item.get('armyCleanerKeepiPhone', true)
 		};
 	}
 };
@@ -25,7 +27,7 @@ tools.ArmyCleaner.start = function() {
 	console.log('ArmyCleaner - start');
 	tools.ArmyCleaner.runtimeUpdate();
 	tools.ArmyCleaner.runtime.count = parseInt($('div:contains("Current Army Size"):last').next().text(), 10);
-	if(tools.ArmyCleaner.runtime.count >0) {
+	if (tools.ArmyCleaner.runtime.count > 0) {
 		$('#AjaxLoadIcon').show();
 		$('#app_body table.layout table:eq(1)').parent('div:first').css({
 			'height' : 28,
@@ -43,7 +45,7 @@ tools.ArmyCleaner.start = function() {
 
 tools.ArmyCleaner.readCAArmy = function(_page) {
 	_page = _page ? _page : 1;
-	//console.log('ArmyCleaner - readCAArmy: ', _page);
+	// console.log('ArmyCleaner - readCAArmy: ', _page);
 	signedGet('army_member.php?page=' + _page, function(_armydata) {
 		$('#app_body table.layout table:eq(1)').html($('#app_body table.layout table:eq(1)', _armydata).html());
 		$('#app_body table.layout table:eq(1) div:contains("Displaying"):last').css({
@@ -53,19 +55,25 @@ tools.ArmyCleaner.readCAArmy = function(_page) {
 			'textAlign' : 'left'
 		});
 		var _last = /\d+/.exec($('a[href*="army_member.php?page="]:last', _armydata).text());
-		if(_last == null) {
+		if (_last == null) {
 			tools.ArmyCleaner.readCAArmy(_page);
 			return false;
 		}
 		_last = parseInt(_last[0], 10);
 		$('tr > td > a', _armydata).each(function(_i, _e) {
-			tools.ArmyCleaner.runtime.army.push($('*[uid]:first', _e).attr('uid'));
+			// tools.ArmyCleaner.runtime.iPhone
+			var _id = $('*[uid]:first', _e).attr('uid');
+			if (tools.ArmyCleaner.runtime.iPhone === true && _id.length === 15 && _id.indexOf('4', 0) === 0) {
+				console.log('iphone');
+				return;
+			}
+			tools.ArmyCleaner.runtime.army.push();
 		});
-		if(_last == _page - 1) {
+		if (_last == _page - 1) {
 			tools.ArmyCleaner.runtime.text.text(language.armyFillerRemoveMissing);
 			var _toAdd = [];
 			$.each(tools.ArmyCleaner.runtime.army, function(_i, _e) {
-				if(tools.ArmyCleaner.runtime.cafriends.indexOf(_e) == -1) {
+				if (tools.ArmyCleaner.runtime.cafriends.indexOf(_e) == -1) {
 					_toAdd.push(_e);
 					;
 				}
@@ -81,7 +89,7 @@ tools.ArmyCleaner.readCAArmy = function(_page) {
 tools.ArmyCleaner.removeMember = function(_start) {
 
 	var _count = tools.ArmyCleaner.runtime.cafriends.length + tools.ArmyCleaner.runtime.army.length - tools.ArmyCleaner.runtime.keepArmy;
-	if(tools.ArmyCleaner.runtime.army.length > 0 && _count > 0) {
+	if (tools.ArmyCleaner.runtime.army.length > 0 && _count > 0) {
 		var _id = tools.ArmyCleaner.runtime.army.pop();
 		tools.ArmyCleaner.runtime.text.text('Removing ' + _count + ' member(s)...');
 		signedGet('army_member.php?action=delete&player_id=' + _id, function() {

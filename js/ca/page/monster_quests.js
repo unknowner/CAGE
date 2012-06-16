@@ -10,13 +10,15 @@ tools.Page.pages['monster_quests.php'] = function() {
 	});
 	// Add button to faster switch generals
 	$('div.quest_act_gen:not(:has(img[src*="nogen.gif"]))').each(function() {
-		$(this).append($('<img class="cageQuestSwitchGeneral" src="http://image4.castleagegame.com/graphics/quick_switch_button.gif">').click(function() {
-			var _img = $(this);
-			_img.fadeOut();
-			tools['General'].setByName(_img.prevAll('img').attr('title'), function() {
-				_img.fadeIn();
-			});
-		})).find('img:first').unwrap();
+		if (tools.General.runtime.general[$(this).find('img["title"]:first').attr('title')]) {
+			$(this).append($('<img class="cageQuestSwitchGeneral" src="http://image4.castleagegame.com/graphics/quick_switch_button.gif">').click(function() {
+				var _img = $(this);
+				_img.fadeOut();
+				tools.General.setByName(_img.prevAll('img').attr('title'), function() {
+					_img.fadeIn();
+				});
+			})).find('img:first').unwrap();
+		}
 	});
 
 };

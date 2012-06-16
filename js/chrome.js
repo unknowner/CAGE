@@ -1,9 +1,13 @@
 /*
-* CHROME only
-*/
+ * CHROME only
+ */
 // Chrome Desktop notifications
 function note(_data) {
-	var _note = webkitNotifications.createNotification('img/icon64.png', _data.t, _data.m);
+	// var _note = webkitNotifications.createNotification('img/icon64.png', _data.t, _data.m);
+	var _note = webkitNotifications.createHTMLNotification('./js/bg/note.html#' + JSON.stringify({
+		title : _data.t,
+		message : _data.m
+	}));
 	_note.show();
 	setTimeout(function() {
 		_note.cancel();
@@ -63,12 +67,12 @@ var com = {
 	// Called in background.html to setup port listeners
 	initBackground : function() {
 		chrome.extension.onConnect.addListener(function(_port) {
-			if(CAGE.enable === true) {
+			if (CAGE.enable === true) {
 				console.log('onconnect:', _port);
 				com.ports[_port.name] = _port;
 				_port.onMessage.addListener(function(_message) {
 					console.log('onMessage:', _message);
-					if(_message.port === com.port.background) {
+					if (_message.port === com.port.background) {
 						// currently only one type, can be expanded
 						note(_message.data);
 					} else {

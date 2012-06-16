@@ -5,6 +5,12 @@ VER: 1.2.10β
 	CHG: Updated jQuery UI
 	CHG: Error handling for COPTER
 	FIX: COPTER enabled in Firefox
+	ADD: Update COPTER generals
+	ADD: Option to keep iPhone players in army (untested)
+	FIX: Buy generals from quests
+	FIX: Update war council breaks CAGE
+	ADD: Sort war council by effective attack
+	FIX: Own damage in monster results
 
 ==========================================
 VER: 1.2.9β

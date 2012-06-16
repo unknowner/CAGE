@@ -78,22 +78,24 @@ tools.General.get = function() {
 };
 // Set general image & name
 tools.General.set = function() {
-	var _g = tools.General.runtime.general[tools.General.current], _values = $('div[style*="hot_container.gif"]').text().trim().match(/\d+/g);
-	$('#cageGeneralName').text(_g.name);
-	$('#cageGeneralAttack').text(_values[0]);
-	$('#cageGeneralDefense').text(_values[1]);
-	$('#cageGeneralText').text(_g.text);
-	$('#cageGeneralImageCharge').remove();
-	if (_g.charge) {
-		var _cool = _g.cooldown * 60 - (_g.cooldown * _g.charge / 10 * 6);
-		$('#cageGeneralImageContainer').append('<div id="cageGeneralImageCharge"><div style="width:' + _g.charge + '%;"></div><span>' + (_g.charge == 100 ? 'Charge!' : Math.floor((_cool - (_cool % 60)) / 60) + ':' + Math.floor((_cool % 60)) + '</span></div>'));
+	if (tools.General.runtime.general[tools.General.current]) {
+		var _g = tools.General.runtime.general[tools.General.current], _values = $('div[style*="hot_container.gif"]').text().trim().match(/\d+/g);
+		$('#cageGeneralName').text(_g.name);
+		$('#cageGeneralAttack').text(_values[0]);
+		$('#cageGeneralDefense').text(_values[1]);
+		$('#cageGeneralText').text(_g.text);
+		$('#cageGeneralImageCharge').remove();
+		if (_g.charge) {
+			var _cool = _g.cooldown * 60 - (_g.cooldown * _g.charge / 10 * 6);
+			$('#cageGeneralImageContainer').append('<div id="cageGeneralImageCharge"><div style="width:' + _g.charge + '%;"></div><span>' + (_g.charge == 100 ? 'Charge!' : Math.floor((_cool - (_cool % 60)) / 60) + ':' + Math.floor((_cool % 60)) + '</span></div>'));
+		}
+		$('#cageGeneralImage').attr('src', _g.image);
+		$('#cageGeneralImage, #cageGeneralName, #cageGeneralDefense, #cageGeneralAttack').fadeIn('slow');
 	}
-	$('#cageGeneralImage').attr('src', _g.image);
-	$('#cageGeneralImage, #cageGeneralName, #cageGeneralDefense, #cageGeneralAttack').fadeIn('slow');
 };
 // Set General by name
 tools.General.setByName = function(_name, _callback) {
-	if (_name !== tools.General.current) {
+	if (tools.General.runtime.general[_name] && _name !== tools.General.current) {
 		$('#cageGeneralImageCharge').remove();
 		var _g = tools.General.runtime.general[_name];
 		if (_g !== null) {
@@ -102,8 +104,8 @@ tools.General.setByName = function(_name, _callback) {
 				$data = $(noSrc(_data));
 				$('#main_bn').html($data.find('#main_bn').html());
 				var _i = $('#main_bn').find('div > img[style="width:24px;height:24px;"]');
-				if ($('div.generalContainerBox:first').length == 1) {
-					$('div.generalContainerBox:first').next('div').replaceWith($data.find('div.generalContainerBox:first').next('div'));
+				if ($('div.generalContainerBox').length == 1) {
+					$('div.generalContainerBox').next('div').html(noNoSrc($data.find('div.generalContainerBox').next('div')).html());
 				}
 				setTimeout(function() {
 					if (_i.length > 0) {
