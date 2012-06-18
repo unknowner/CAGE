@@ -17,6 +17,8 @@ function cageNews(_full) {
 			'FIX: COPTER enabled in Firefox',
 			'FIX: Update war council breaks CAGE',
 			'FIX: Own damage in monster results',
+			'FIX: Shown stats when heal/strengthen...',
+			'FIX: Alchemy page stuck (Firefox)',
 			'CHG: Updated jQuery UI',
 			'CHG: Error handling for COPTER'
 	], function(_i, _e) {

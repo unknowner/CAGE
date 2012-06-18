@@ -52,7 +52,7 @@ tools.castleage.init = function() {
 	$('#cageSidebarChat').resizable({
 		handles : 's',
 		stop : function() {
-			$('#chatGuildChat').scrollTop($('#chatGuildChat div').length * 100);
+			$('#chatGuildChat').scrollTop($('#chatGuildChat div').length * 1000);
 		}
 	}).after('<div id="chatGuildChatSizeHandle"><hr></div>');
 	$('#guildChatActiveMembers').parent().css({

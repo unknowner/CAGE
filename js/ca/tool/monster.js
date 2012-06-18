@@ -355,7 +355,7 @@ tools.Monster.battleResult = function(_monsterhealth, _defText, _stun) {
 			'overflow' : 'hidden'
 		});
 		// add monster damage/health/... to result
-		$('div.result:has(img[src*="graphics/button_monster_attack_again.gif"]) span.result_body div:last, div.result:contains(" Again!")').append('<div id="MonsterResultDamage"><div>' + _monsterhealth.join('</div><div>') + '</div><div>' + _defText + '</div><div>Your Damage/Activity: ' + $('#leaderboard_0 > div > div:has(a[href*="' + CastleAge.userId + '"]) > div:eq(4), td.dragonContainer tr:has(a[href*="' + CastleAge.userId + '"]) > td:last').text().trim() + '<div style="text-transform: capitalize;">' + _stun + '</div></div></div>');
+		$('div.result:has(img[src*="graphics/button_monster_attack_again.gif"]) span.result_body div:last, div.result:contains(" Again!"), div.result:has(img[alt="Repeat Action!"])').append('<div id="MonsterResultDamage"><div>' + _monsterhealth.join('</div><div>') + '</div><div>' + _defText + '</div><div>Your Damage/Activity: ' + $('#leaderboard_0 > div > div:has(a[href*="' + CastleAge.userId + '"]) > div:eq(4), td.dragonContainer tr:has(a[href*="' + CastleAge.userId + '"]) > td:last').text().trim() + '<div style="text-transform: capitalize;">' + _stun + '</div></div></div>');
 		if ($('div.result:contains(" Again!")').length > 0) {
 			$('#MonsterResultDamage').css('float', 'none');
 		}

@@ -52,7 +52,7 @@ function initCastleAge() {
 			$('#AjaxLoadIcon').delay(3000).fadeOut(1000, function() {
 				$('#collapsedGuildChat').css('left', '');
 				$('#expandedGuildChat').css('left', '');
-				$('#chatGuildChat').scrollTop($('#chatGuildChat div').length * 20);
+				$('#chatGuildChat').scrollTop($('#chatGuildChat div').length * 1000);
 				$('#cageLoadError').remove();
 			});
 		} else {

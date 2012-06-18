@@ -11,6 +11,8 @@ VER: 1.2.10β
 	FIX: Update war council breaks CAGE
 	ADD: Sort war council by effective attack
 	FIX: Own damage in monster results
+	FIX: Shown stats when heal/strengthen...
+	FIX: Alchemy page stuck (Firefox)
 
 ==========================================
 VER: 1.2.9β
