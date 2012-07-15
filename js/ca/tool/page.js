@@ -53,13 +53,13 @@ tools.Page.allPages = function() {
 		$('#expandedGuildChat').css('left', '');
 	}, 250);
 	// repos CA menu & add stuff
-	tools.Functions.addCAGEToCANav('mainMenu_home', 'index.php', function() {
+	tools.Functions.addToCANav('mainMenu_home', 'Main', 'specialmembership.php', 'Crusaders');
+	tools.Functions.addToCANav('mainMenu_monster', 'Public List', 'army_news_feed.php', 'Live feed');
+	tools.Functions.addToCANav('mainMenu_battle', 'War Rank', 'raid.php', 'Raid');
+	tools.Functions.addCAGEToCANav('mainMenu_home', 'Crusaders', function() {
 		$('#app_body').html('<iframe id="cageBlogiFrame" src="http://cagenhancer.blogspot.com/?CAGE=FB">');
 		$('#cageBlogiFrame').height($('body').height() - 100);
 	}, 'CAGE - Blog');
-	tools.Functions.addToCANav('mainMenu_home', 'index.php', 'specialmembership.php', 'Crusaders');
-	tools.Functions.addToCANav('mainMenu_monster', 'public_monster_list.php?monster_tier=3', 'army_news_feed.php', 'Live feed');
-	tools.Functions.addToCANav('mainMenu_battle', 'war_rank.php', 'raid.php', 'Raid');
 	$('div.mainMenu').unwrap().unwrap().parent().addClass('cageCAMenu').find('ul > li > ul').each(function() {
 		$(this).attr('cage', $(this).height()).css('height', 0);
 	});
@@ -246,7 +246,7 @@ tools.Page.ajaxPageDone = function() {
 				startAllTimers();
 				script = $data = null;
 			} else {
-				$('#' + div).html(noNoSrc($data).html());
+				$('#' + div).html(noNoSrc($data));
 			}
 			centerPopups();
 			if (anchor) {
@@ -305,7 +305,6 @@ tools.Page.ajaxLinkSend = function() {
 };
 tools.Page.ajaxFormSend = function() {
 	ajaxFormSend = function(div, url, formElement, anchor) {
-		friend_browse_offset = 0;
 		if (!anchor) {
 			$('body').animate({
 				scrollTop : 0
@@ -313,8 +312,7 @@ tools.Page.ajaxFormSend = function() {
 		}
 		stopTimers = true;
 		var params = $(formElement).serialize();
-		params += '&ajax=1';
-		params += '&signed_request=' + $('#signed_request').attr('value');
+		params += '&ajax=1&signed_request=' + $('#signed_request').attr('value');
 		pageCache = {};
 		if (!url) {
 			url = 'index.php?adkx=7';

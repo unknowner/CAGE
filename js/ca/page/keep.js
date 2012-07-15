@@ -100,11 +100,10 @@ tools.Page.pages['keep.php'] = function() {
 
 	// Some more stats, like BSI, LSI... keep_data.attribute_section
 	_data.lvl = $('#st_5').find('div:contains("Level"):last').text();
-	_data.stats = $('div.keep_attribute_section');
+	_data.stats = $('#app_body').find('div[style="width:240px;height:54px;overflow:hidden;"]');
 	if (_data.lvl && _data.stats.length > 0) {
 		_data.lvl = parseInt(_data.lvl.match(/\d+/)[0], 10);
 		// stats
-		_data.stats = $('div.attribute_stat_container', _data.stats);
 		_data.eng = parseInt(_data.stats.eq(0).text(), 10);
 		_data.sta = parseInt(_data.stats.eq(1).text(), 10);
 		_data.att = /(\d+)(?:\s\((.\d+)?\))?/.exec(_data.stats.eq(2).text());
@@ -113,45 +112,26 @@ tools.Page.pages['keep.php'] = function() {
 		_data.def = /(\d+)(?:\s\((.\d+)?\))?/.exec(_data.stats.eq(3).text());
 		_data.def = parseInt(_data.def[1], 10) + (_data.def[2] == null ? 0 : parseInt(_data.def[2], 10));
 		// calculated stats
-		_data.eAt = _data.att + _data.def * 0.7;
-		_data.eDe = _data.def + _data.att * 0.7;
+		_data.eAt = (_data.att + _data.def * 0.7).toFixed(2);
+		_data.eDe = (_data.def + _data.att * 0.7).toFixed(2);
 		_data.bsi = Math.round((_data.att + _data.def) / _data.lvl * 100) / 100;
 		_data.lsi = Math.round((_data.eng + _data.sta * 2) / _data.lvl * 100) / 100;
 		_data.tsi = _data.bsi + _data.lsi;
-		$('div.keep_healer_section').prepend($('<div id="cageKeepStats">').append('<div>eAtt: ' + _data.eAt.toFixed(2) + '</div><div style="font-size:9px;">Effective Attack</div>').append('<div>eDef: ' + _data.eDe.toFixed(2) + '</div><div style="font-size:9px;">Effective Defense</div>').append('<div>BSI: ' + _data.bsi.toFixed(2) + '</div><div style="font-size:9px;">Battle Strength Index</div>').append('<div>LSI: ' + _data.lsi.toFixed(2) + '</div><div style="font-size:9px;">Levelling Speed Index</div>').append('<div>TSI: ' + _data.tsi.toFixed(2) + '</div><div style="font-size:9px;">Total Skillpoints per Level</div>').append('<div>Divine: ' + _divPow + '</div><div style="font-size:9px;">Calculated Divine Power</div>'));
+		console.log(_data);
+		$('#keepAltStats').before($('<div id="cageKeepStats">').append('<div><div>eAtt: ' + _data.eAt + '</div><div style="font-size:9px;">Effective Attack</div></div>').append('<div><div>eDef: ' + _data.eDe + '</div><div style="font-size:9px;">Effective Defense</div></div>').append('<div><div>BSI: ' + _data.bsi.toFixed(2) + '</div><div style="font-size:9px;">Battle Strength Index</div></div>').append('<div><div>LSI: ' + _data.lsi.toFixed(2) + '</div><div style="font-size:9px;">Levelling Speed Index</div></div>').append('<div><div>TSI: ' + _data.tsi.toFixed(2) + '</div><div style="font-size:9px;">Total Skillpoints per Level</div>').append('<div><div>Divine: ' + _divPow + '</div><div style="font-size:9px;">Calculated Divine Power</div></div>'));
 	}
 	// rearrange Items
-	setTimeout(function() {
-		$('td.statsTMainback').not(':contains("CONSUMABLES")').find('div.statUnit').each(function() {
-			var $this = $(this), $next = $this.next(), _text = $next.text().trim();
-			if (_text !== '') {
-				_text = _text.split(/(\r\n|\n|\r)/gm);
-				$next.remove();
-			} else {
-				_text = [
-					$this.find('img').attr('title')
-				];
-			}
-			for ( var i = 0; i < _text.length; i++) {
-				if (_text[i].trim() == '') {
-					_text.splice(i, 1);
-					i--;
-				} else {
-					_text[i] = _text[i].trim();
-				}
-			}
-			if (_text[0] !== $this.find('img').attr('alt')) {
-				_text[0] = $this.find('img').attr('alt');
-			}
-			_text[0] = _text[0].replace(',', '<br>');
-			$this.data('info', _text.join('<br>')).find('img').hover(function() {
-				$this.css('zIndex', 1).prepend('<div class="cageUnitStats"><div>' + $this.data('info') + '</div></div>');
-			}, function() {
-				$this.css('zIndex', '').children('div.cageUnitStats').remove();
-			}).attr('title', '').unwrap().unwrap();
-		});
-	}, 50);
-
+	/*
+	 * setTimeout(function() { $('td.statsTMainback').not(':contains("CONSUMABLES")').find('div.statUnit').each(function() {
+	 * var $this = $(this), $next = $this.next(), _text = $next.text().trim(); if (_text !== '') { _text =
+	 * _text.split(/(\r\n|\n|\r)/gm); $next.remove(); } else { _text = [ $this.find('img').attr('title') ]; } for ( var i =
+	 * 0; i < _text.length; i++) { if (_text[i].trim() == '') { _text.splice(i, 1); i--; } else { _text[i] =
+	 * _text[i].trim(); } } if (_text[0] !== $this.find('img').attr('alt')) { _text[0] = $this.find('img').attr('alt'); }
+	 * _text[0] = _text[0].replace(',', '<br>'); $this.data('info', _text.join('<br>')).find('img').hover(function() {
+	 * $this.css('zIndex', 1).prepend('<div class="cageUnitStats"><div>' + $this.data('info') + '</div></div>'); },
+	 * function() { $this.css('zIndex', '').children('div.cageUnitStats').remove(); }).attr('title',
+	 * '').unwrap().unwrap(); }); }, 50);
+	 */
 	// Add stuff on others keep
 	if ($('div.keep_main_section').length === 0) {
 		if ($('#keep_battle_frm1').length === 0) {

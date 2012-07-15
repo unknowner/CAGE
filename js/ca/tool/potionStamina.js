@@ -22,9 +22,9 @@ tools.PotionStamina.start = function() {
 // Parse keep for stamina potions
 tools.PotionStamina.work = function(_pagedata) {
 	_pagedata = _pagedata == null ? $('#app_body') : $(_pagedata);
-	var _potions = /\d+/.exec(_pagedata.find('img[alt="Stamina Potion"]').parent().next().text());
+	var _potions = _pagedata.find('div[title="Stamina Potion"]').text().match(/\d+/g);
 	if(_potions !== null) {
-		$('#cagePotionStamina').find('span.cagePotionCount').text(_potions[0]);
+		$('#cagePotionStamina').find('span.cagePotionCount').text(_potions[1]);
 	} else {
 		$('#cagePotionStamina').find('span.cagePotionCount').text('');
 	}

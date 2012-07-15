@@ -119,32 +119,38 @@ tools.Page.pages['alchemy.php'] = function() {
 	});
 
 	// check for stored stuff
-	var _storedHidden = item.get('cagePageAlchemyHidden', []);
-	$('.cageAlchemyContainer, .cageAlchemyContainerBlank').each(function() {
-		if (_storedHidden.indexOf($(this).data('name')) !== -1) {
-			$(this).find('button.cageHideItem').click();
-		}
-	});
-
-	var _pinItem = '<button class="cageHideItem ui-icon ui-icon-cancel"><button class="cagePinItem ui-icon ui-icon-pin-w">', _storedPinned = item.get('cagePageAlchemyPinned', []);
+	var _pinItem = '<button class="cageHideItem ui-icon ui-icon-cancel"><button class="cagePinItem ui-icon ui-icon-pin-w">', _storedPinned = item.get('cagePageAlchemyPinned', []), _storedHidden = item.get('cagePageAlchemyHidden', []);
+	_storedHidden = unique($.map(_storedHidden, function(n, i) {
+		return (n.toLowerCase());
+	}));
+	item.set('cagePageAlchemyHidden', _storedHidden);
+	_storedPinned = unique($.map(_storedPinned, function(n, i) {
+		return (n.toLowerCase());
+	}));
+	item.set('cagePageAlchemyPinned', _storedPinned);
 	$('table.layout div[style *= "graphics/alchfb_midrepeat.jpg"], table.layout div[style *= "graphics/alchfb_midrepeat_blank.jpg"]').each(function(_i) {
-		var $this = $(this), _index = _storedPinned.indexOf($this.data('name'));
+		var $this = $(this), _name = $this.find('div:eq(9)').text().trim().toLowerCase();
 		setTimeout(function() {
 			$this.find('div[id ^= "display_"]').each(function() {
 				fixTooltip(this);
 			});
 		}, 50);
-		$this.data('name', $this.find('div:eq(9)').text().trim()).addClass('cageAlchemyContainer').removeAttr('style').append(_pinItem);
-		if (_index >= 0) {
-			$(this).find('button.cagePinItem').click();
+		$this.data('name', _name).addClass('cageAlchemyContainer').removeAttr('style').append(_pinItem);
+		$this.find('button.cagePinItem').click(pinItem);
+		$this.find('button.cageHideItem').data('hidden', false).click(pageAlchemyHidden);
+		if (_storedPinned.indexOf(_name) >= 0) {
+			$this.find('button.cagePinItem').click();
+		}
+		if (_storedHidden.indexOf($(this).data('name')) !== -1) {
+			$this.find('button.cageHideItem').click();
 		}
 	});
 
-	$('button.cagePinItem').click(pinItem);
+	// $('button.cagePinItem').click(pinItem);
 	if (item.get('cagePageAlchemyShowPinned', true) === true) {
 		$('#cageShowPinned').click();
 	}
-	$('button.cageHideItem').data('hidden', false).click(pageAlchemyHidden);
+	// $('button.cageHideItem').data('hidden', false).click(pageAlchemyHidden);
 	if (item.get('cagePageAlchemyShowHidden', false) === true) {
 		$('#cageHideItems').click();
 	}

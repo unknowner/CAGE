@@ -67,7 +67,7 @@ tools.ArmyCleaner.readCAArmy = function(_page) {
 				console.log('iphone');
 				return;
 			}
-			tools.ArmyCleaner.runtime.army.push();
+			tools.ArmyCleaner.runtime.army.push(_id);
 		});
 		if (_last == _page - 1) {
 			tools.ArmyCleaner.runtime.text.text(language.armyFillerRemoveMissing);
@@ -88,7 +88,7 @@ tools.ArmyCleaner.readCAArmy = function(_page) {
 
 tools.ArmyCleaner.removeMember = function(_start) {
 
-	var _count = tools.ArmyCleaner.runtime.cafriends.length + tools.ArmyCleaner.runtime.army.length - tools.ArmyCleaner.runtime.keepArmy;
+	var _count = tools.ArmyCleaner.runtime.cafriends.length + tools.ArmyCleaner.runtime.army.length - tools.ArmyCleaner.runtime.keepArmy - 1;
 	if (tools.ArmyCleaner.runtime.army.length > 0 && _count > 0) {
 		var _id = tools.ArmyCleaner.runtime.army.pop();
 		tools.ArmyCleaner.runtime.text.text('Removing ' + _count + ' member(s)...');

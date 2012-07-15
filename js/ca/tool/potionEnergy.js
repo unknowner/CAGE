@@ -10,7 +10,7 @@ tools.PotionEnergy.start = function() {
 		_data = noSrc(_data);
 		tools.PotionEnergy.work(_data);
 		console.log($(_data).find('span.result_body'));
-		if($(_data).find('span.result_body:contains("You consumed")').length > 0) {
+		if ($(_data).find('span.result_body:contains("You consumed")').length > 0) {
 			addFunction(function(data) {
 				cageStat.energy = data.energy;
 			}, JSON.stringify({
@@ -22,9 +22,9 @@ tools.PotionEnergy.start = function() {
 // Parse keep for Energy potions
 tools.PotionEnergy.work = function(_pagedata) {
 	_pagedata = _pagedata == null ? $('#app_body') : $(_pagedata);
-	var _potions = /\d+/.exec($('img[alt="Energy Potion"]', _pagedata).parent().next().text());
-	if(_potions !== null) {
-		$('#cagePotionEnergy').find('span.cagePotionCount').text(_potions[0]);
+	var _potions = _pagedata.find('div[title="Energy Potion"]').text().match(/\d+/g);
+	if (_potions !== null) {
+		$('#cagePotionEnergy').find('span.cagePotionCount').text(_potions[1]);
 	} else {
 		$('#cagePotionEnergy').find('span.cagePotionCount').text('');
 	}
@@ -40,7 +40,7 @@ tools.PotionEnergy.done = function() {
 };
 tools.PotionEnergy.init = function() {
 	$('#cageStatsContainer').append($('<button id="cagePotionEnergy" title="Use energy potion if available"><span class="cagePotionCount"></span></button>').click(function() {
-		if($(this).text() !== '' && $(this).text() !== '0') {
+		if ($(this).text() !== '' && $(this).text() !== '0') {
 			$(this).css({
 				'cursor' : 'wait',
 				'backgroundSize' : '32px 32px',

@@ -32,7 +32,7 @@ tools.StatPoints.start = function() {
 		var _sp = {
 			have : parseInt($('#cageStatPoints').text(), 10),
 			used : 0
-		}, _stat = {}, _stats = _data.find('div.keep_attribute_section div.attribute_stat_container');
+		}, _stat = {}, _stats = _data.find('div[style="width:240px;height:54px;overflow:hidden;"]');
 		_stat.energy = {
 			im : 'stat_energy.gif',
 			val : parseInt(_stats.eq(0).text(), 10),

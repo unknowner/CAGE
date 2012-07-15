@@ -68,9 +68,9 @@ var com = {
 	initBackground : function() {
 		chrome.extension.onConnect.addListener(function(_port) {
 			if (CAGE.enable === true) {
-				console.log('onconnect:', _port);
 				com.ports[_port.name] = _port;
 				_port.onMessage.addListener(function(_message) {
+					console.log(_message);
 					console.log('onMessage:', _message);
 					if (_message.port === com.port.background) {
 						// currently only one type, can be expanded

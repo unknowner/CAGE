@@ -123,7 +123,7 @@ tools.COPTER.receiver = function(_data) {
 tools.COPTER.getStats = function(_callback) {
 	signedGet('keep.php', function(_data) {
 		_data = $(noSrc(_data));
-		var _stats = _data.find('div.keep_attribute_section div.attribute_stat_container'), _stat = {
+		var _stats = _data.find('div[style="width:240px;height:54px;overflow:hidden;"]'), _stat = {
 			stats : {
 				energy : _stats.eq(0).text().trim().match(/\d+/)[0],
 				stamina : _stats.eq(1).text().trim().match(/\d+/)[0],

@@ -18,13 +18,13 @@ tools.Page.pages['guild_battle.php'] = function() {
 	var $_enemy = $('span:contains("ENEMY\'S GUILD")');
 	$_your.html($_your.html() + ' (' + _your.toFixed(1) + '%)');
 	$_enemy.html($_enemy.html() + ' (' + _enemy.toFixed(1) + '%)');
-	
+
 	// enemys health added to its name in results
 	$_enemy = $('span.result_body div[style*="width: 285px;"]:last');
-	if($_enemy.length > 0) {
+	if ($_enemy.length > 0) {
 		var _target = $('span.result_body input[name="target_id"]').attr('value');
 		var _health = /Health:\s*(\d+)\/\d+/.exec($('#enemy_guild_member_list > div > div:has(a[uid="' + _target + '"]):first').text());
-		if(_health !== null) {
+		if (_health !== null) {
 			$_enemy.html($_enemy.html() + ' (' + _health[1] + ')');
 		}
 	}
@@ -41,20 +41,20 @@ tools.Page.pages['guild_battle.php'] = function() {
 	// add current tokens to result
 	var _tokens = $('div.result div:contains("-1 Battle Tokens"):last');
 	_tokens.text(_tokens.text() + ' (' + $('#guild_token_current_value').text() + ' left)');
-	//reduce gate size and add number
-	//$('#your_guild_member_list, #enemy_guild_member_list').css('backgroundSize', '641px 110px');
-	if($('#your_guild_member_list:contains("No Soldiers Posted In This Position!"), #enemy_guild_member_list:contains("No Soldiers Posted In This Position!")').length === 0) {
+	// reduce gate size and add number
+	// $('#your_guild_member_list, #enemy_guild_member_list').css('backgroundSize', '641px 110px');
+	if ($('#your_guild_member_list:contains("No Soldiers Posted In This Position!"), #enemy_guild_member_list:contains("No Soldiers Posted In This Position!")').length === 0) {
 		$('#enemy_guild_member_list > div > div, #your_guild_member_list > div > div').each(function(_i, _e) {
 			$(_e).append('<span class="GuildNum">' + (_i + 1) + '<span>');
 		});
 	}
 
-	//Saved filter settings
+	// Saved filter settings
 	var _storedClass = item.get('cagePageGuildBattleClass', 'All');
 	var _storedActivity = item.get('cagePageGuildBattleActivity', 'All');
 	var _storedStatus = item.get('cagePageGuildBattleStatus', 'All');
 
-	//gate filter
+	// gate filter
 	function filterGate() {
 		var _class = new RegExp($('#cageGateClassFilter').val());
 		var _activ = new RegExp($('#cageGateActivityFilter').val());
@@ -62,7 +62,7 @@ tools.Page.pages['guild_battle.php'] = function() {
 		var _count = 0;
 		$('#your_guild_member_list > div > div, #enemy_guild_member_list > div > div').each(function(_i, _e) {
 			var _text = $(_e).text();
-			if(_text.match(_class) && _text.match(_activ) && _text.match(_state)) {
+			if (_text.match(_class) && _text.match(_activ) && _text.match(_state)) {
 				$(_e).show();
 				_count += 1;
 			} else {
@@ -74,7 +74,7 @@ tools.Page.pages['guild_battle.php'] = function() {
 		_gate.html(_gate.html().replace(/\).*/, ')').replace(')', ')<br/><span style="font-size:14px;font-weight:bold;">Filtered: ' + _count + '</span>'));
 	}
 
-	//class filter
+	// class filter
 	var filterClass = {
 		'All' : '\.*',
 		'Cleric' : 'Cleric',
@@ -125,7 +125,9 @@ tools.Page.pages['guild_battle.php'] = function() {
 		_storedClass = $(this).find("option:selected").text();
 		item.set('cagePageGuildBattleClass', _storedClass);
 		filterGate();
-	}).selectmenu();
+	}).selectmenu({
+		style : 'popup'
+	});
 	// Activity filter
 	$('#guild_battle_health').append('<span class="cageGateFilterTitle ui-state-default"> Activity </span><select id="cageGateActivityFilter">');
 	_sel = $('#cageGateActivityFilter');
@@ -136,7 +138,9 @@ tools.Page.pages['guild_battle.php'] = function() {
 		_storedActivity = $(this).find("option:selected").text();
 		item.set('cagePageGuildBattleActivity', _storedActivity);
 		filterGate();
-	}).selectmenu();
+	}).selectmenu({
+		style : 'popup'
+	});
 	// status filter
 	$('#guild_battle_health').append('<span class="cageGateFilterTitle ui-state-default"> Status </span><select id="cageGateStatusFilter">');
 	_sel = $('#cageGateStatusFilter');
@@ -147,7 +151,9 @@ tools.Page.pages['guild_battle.php'] = function() {
 		_storedStatus = $(this).find("option:selected").text();
 		item.set('cagePageGuildBattleStatus', _storedStatus);
 		filterGate();
-	}).selectmenu();
+	}).selectmenu({
+		style : 'popup'
+	});
 	filterGate();
 
 };

@@ -1769,6 +1769,74 @@ tools.Page.pages['oracle.php'] = function() {
 							t : 9
 						}
 				]
+			}, {
+				b : 236,
+				n : "Brakus",
+				a : 27,
+				d : 23,
+				i : "Physical Pierce And Fire Offense",
+				p : "hero_brakus",
+				e : [
+						{
+							b : 237,
+							n : "Fenix Blade",
+							a : 29,
+							d : 26,
+							i : "+2 Attack to Brakus",
+							p : "eq_brakus_weapon",
+							t : 3
+						}, {
+							b : 238,
+							n : "Koralan Defender",
+							a : 18,
+							d : 21,
+							i : "+2 Defense to Brakus",
+							p : "eq_brakus_helm",
+							t : 5
+						}, {
+							b : 239,
+							n : "Burning Bracers",
+							a : 16,
+							d : 11,
+							i : "+2 Attack to Brakus",
+							p : "eq_brakus_gauntlet",
+							t : 7
+						}
+				]
+			}, {
+				b : 240,
+				n : "Ravendor",
+				a : 24,
+				d : 28,
+				i : "Abilities: Physical Resistance And Fire Defense",
+				p : "hero_ravendor",
+				e : [
+						{
+							b : 241,
+							n : "Raven Blight",
+							a : 27,
+							d : 29,
+							i : "+2 Attack to Ravendor",
+							p : "eq_ravendor_weapon",
+							t : 3
+						}, {
+							b : 242,
+							n : "Ravens Grasp",
+							a : 16,
+							d : 20,
+							i : "+2 Attack to Ravendor",
+							p : "eq_ravendor_spell",
+							t : 9
+						}, {
+							b : 243,
+							n : "Nalzir Robes",
+							a : 23,
+							d : 29,
+							i : "+2 Defense to Ravendor",
+							p : "eq_ravendor_armor",
+							t : 6
+						}
+				]
 			}
 	];
 	/*
