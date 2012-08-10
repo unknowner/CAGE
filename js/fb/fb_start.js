@@ -24,11 +24,12 @@ function startCAGE() {
 	// renews signed_request every 10 minutes
 	window.setInterval(function() {
 		$.get('//apps.facebook.com/castle_age/index.php', function(_data) {
+			var _sr = $(_data.match(/<input.*name="signed_request".*\/>/)[0]).val();
 			$('#signed_request').remove();
-			$(document.body).append('<input id="signed_request" type="hidden" value="' + $(_data).find('input[name="signed_request"]').val() + '">');
+			$(document.body).append('<input id="signed_request" type="hidden" value="' + _sr + '">');
 			com.send(com.task.signed, com.port.castleAge, $('#signed_request').val());
 			_data = null;
-		}, 'text');
+		}, 'html');
 	}, 1200000);
 
 	window.setInterval(function() {

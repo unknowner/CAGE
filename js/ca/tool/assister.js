@@ -2,7 +2,7 @@ tool('Assister');
 
 tools.Assister.settings = function() {
 
-	//tools.Assister.runtimeUpdate();
+	// tools.Assister.runtimeUpdate();
 	tools.Settings.heading(language.assisterSetName);
 	tools.Settings.textbox(language.assisterSetMaxStamAction, tools.Assister.runtime.Stamina, 'cageAssisterStamina');
 	tools.Settings.text(language.assisterSetMessDesc);
@@ -49,7 +49,7 @@ tools.Assister.runtimeUpdate = function() {
  */
 tools.Assister.start = function() {
 	console.log('Assister - CTAs: ', tools.Assister.runtime.CTA, tools.Assister.runtime.assisterList);
-	if(tools.Assister.runtime.assisterList == 'Castle Age players') {
+	if (tools.Assister.runtime.assisterList == 'Castle Age players') {
 		tools.Facebook.CAPlayers(function(_ids) {
 			tools.Assister.getCTA(_ids);
 		});
@@ -66,10 +66,10 @@ tools.Assister.getCTA = function(_ids) {
 		_data.find('#action_logs > a[href*="action=doObjective"]').each(function(_i, _e) {
 			_e = $(_e);
 			var _uid = _e.find('*[uid]:first').attr('uid'), _name = /(?:[You|Your] friend )(.*)(?: has requested your help)/.exec(_e.text());
-			if(tools.Assister.runtime.friendsOnly == true && _ids.indexOf(_uid) == -1) {
+			if (tools.Assister.runtime.friendsOnly == true && _ids.indexOf(_uid) == -1) {
 				return true;
 			}
-			if(_uid && _name !== null) {
+			if (_uid && _name !== null) {
 				tools.Assister.runtime.CTA.push({
 					link : _e.attr('href').replace(/(https|http):\/\/apps.facebook.com\/castle_age\//, ''),
 					uid : _uid,
@@ -88,7 +88,7 @@ tools.Assister.getCTA = function(_ids) {
  */
 tools.Assister.assist = function(_ids) {
 
-	if(tools.Assister.runtime.Used < tools.Assister.runtime.Stamina && tools.Assister.runtime.CTA.length > 0) {
+	if (tools.Assister.runtime.Used < tools.Assister.runtime.Stamina && tools.Assister.runtime.CTA.length > 0) {
 		var _cta = tools.Assister.runtime.CTA.pop(), _num = null;
 		console.log('Assister - Friend: ' + _cta.uid);
 		signedGet(_cta.link, function(_monsterdata) {
@@ -96,8 +96,8 @@ tools.Assister.assist = function(_ids) {
 			_monsterdata = noSrc(_monsterdata);
 			_monsterdata = $(_monsterdata);
 			console.log(_monsterdata.find('.result_body').text());
-			if(_monsterdata.find('.result_body').text().match(/You were the \d+(?:st|nd|rd|th) to help summon/) !== null && _cta.uid !== CastleAge.userId) {
-				_num = /You were the (\d+(?:st|nd|rd|th)) to help summon/.exec(_monsterdata.find('span.result_body').text())[1];
+			if (_monsterdata.find('.result_body').text().match(/You were the \d+(?:st|nd|rd|th) to help summon/) !== null && _cta.uid !== CastleAge.userId) {
+				_num = /You were the (\d+(?:st|nd|rd|th)) to help summon/.exec(_monsterdata.find('span.result_body').text())[1].replace('3th','3rd').replace('2th','2nd').replace('1th','1st');
 				console.log(_num);
 				note('Assister', 'You\'ve assisted ' + _cta.name + '.');
 				tools.Assister.runtime.Used++;
@@ -108,11 +108,11 @@ tools.Assister.assist = function(_ids) {
 				}), true, true);
 				// Collect data from assisted monster for assists list
 				var _monstername, _monstervalues = [];
-				if($('#app_body div[style*="nm_bars.jpg"], #app_body div[style*="nm_bars_cross.jpg"]', _monsterdata).length > 0) {
+				if ($('#app_body div[style*="nm_bars.jpg"], #app_body div[style*="nm_bars_cross.jpg"]', _monsterdata).length > 0) {
 					$('img[nosrc*="monster_health_background.jpg"], [nosrc*="nm_red.jpg"], [nosrc*="nm_orange.jpg"]', _monsterdata).each(function(_i, _e) {
 						_monstername = $(_e).parent().parent().find('div:contains("\'s Life"):last, #app_body div:contains("\'s life"):last');
 						var _health = $(_e).parent()[0];
-						if(_health.style && _health.style.width !== "" && _monstername && _monstername.text()) {
+						if (_health.style && _health.style.width !== "" && _monstername && _monstername.text()) {
 							var _percentage = _health.style.width.substr(0, 5);
 							_monstervalues.push((_monstername.text() + ' (' + _percentage + (_percentage.indexOf('%') > -1 ? ')' : '%)')).trim());
 						}
@@ -121,7 +121,7 @@ tools.Assister.assist = function(_ids) {
 					$('img[nosrc*="monster_health_background.jpg"], [nosrc*="nm_red.jpg"]', _monsterdata).each(function(_i, _e) {
 						_monstername = $(_e).parent().parent().parent().parent().find('div:contains("\'s Life"):last, #app_body div:contains("\'s life"):last');
 						var _health = $(_e).parent()[0];
-						if(_health.style && _health.style.width !== "" && _monstername && _monstername.text()) {
+						if (_health.style && _health.style.width !== "" && _monstername && _monstername.text()) {
 							var _percentage = _health.style.width.substr(0, 5);
 							_monstervalues.push((_monstername.text() + ' (' + _percentage + (_percentage.indexOf('%') > -1 ? ')' : '%)')).trim());
 						}
@@ -131,7 +131,7 @@ tools.Assister.assist = function(_ids) {
 				// add percentage to defense/forcefield/..
 				var _defense = $('img[nosrc*="bar_dispel.gif"],[nosrc*="nm_green.jpg"],[nosrc*="seamonster_ship_health.jpg"]', _monsterdata).parent()[0];
 				var _defText = $('#app_body div:textEquals("Ragnarok\'s Glacial Armor "):first, div:contains("Party Health/Strength"):last, #app_body div:textEquals("Skaar\'s Mana Forcefield "):first, #app_body div:textEquals("Illvasa, Plateau City\'s Defense "):first, #app_body div:textEquals("Castle Defense"):first, #app_body div:textEquals("Your Ship\'s Defense"):first', _monsterdata);
-				if(_defense && _defense.style && _defense.style.width !== "" && _defText && _defText.text()) {
+				if (_defense && _defense.style && _defense.style.width !== "" && _defText && _defText.text()) {
 					var _percentage = _defense.style.width.substr(0, 5);
 					_monstervalues.push((_defText.text() + ' (' + _percentage + (_percentage.indexOf('%') > -1 ? ')' : '%)')).trim());
 				}
@@ -140,17 +140,17 @@ tools.Assister.assist = function(_ids) {
 				//
 				console.log('Assister - Assisted for:', _cta);
 				tools.Assister.runtime.Assisted.push(_cta);
-				if(tools.Assister.runtime.assisterCommentMonster === true) {
+				if (tools.Assister.runtime.assisterCommentMonster === true) {
 					post(_cta.link.replace('doObjective', 'commentDragon') + '&text=' + _num + ' for ' + _cta.name + ' ' + tools.Assister.runtime.monsterMessage + ' ');
 				}
-				if(tools.Assister.runtime.assisterCommentFBPost === true || tools.Assister.runtime.assisterLikeFBPost === true) {
+				if (tools.Assister.runtime.assisterCommentFBPost === true || tools.Assister.runtime.assisterLikeFBPost === true) {
 					signedGet('party.php?casuser=' + _cta.uid, function(_guarddata) {
 						_guarddata = $(noSrc(_guarddata));
 						var _postid = _guarddata.find('div.streamContainer:has(div.streamName > a[href*="' + _cta.link + '"]) input[name="like_recent_news_post_id"]:first').val();
 						console.log('Assister - Like & Comment on FB post: ', _postid);
 						var _fbpost = _postid.match(/\d+/g);
 						console.log('Assister - Post Link: //www.facebook.com/permalink.php?story_fbid=' + _fbpost[1] + '&id=' + _fbpost[0]);
-						if(tools.Assister.runtime.assisterLikeFBPost === true) {
+						if (tools.Assister.runtime.assisterLikeFBPost === true) {
 							addFunction(function(_data) {
 								FB.api("/" + _data.postid + "/likes", 'post', function(response) {
 									console.log('Assister - FB Like done: ', response);
@@ -159,7 +159,7 @@ tools.Assister.assist = function(_ids) {
 								postid : _postid
 							}), true, false);
 						}
-						if(tools.Assister.runtime.assisterCommentFBPost === true) {
+						if (tools.Assister.runtime.assisterCommentFBPost === true) {
 							addFunction(function(_data) {
 								FB.api("/" + _data.postid + "/comments", 'post', _data, function(response) {
 									console.log('Assister - FB Comment done: ', response);
@@ -169,14 +169,20 @@ tools.Assister.assist = function(_ids) {
 								message : _num + ' ' + tools.Assister.runtime.facebookMessage
 							}), true, false);
 						}
-						tools.Assister.assist();
+						window.setTimeout(function() {
+							tools.Assister.assist();
+						}, 1000);
 					});
 				} else {
-					tools.Assister.assist();
+					window.setTimeout(function() {
+						tools.Assister.assist();
+					}, 1000);
 				}
 			} else {
 				console.log('Assister - No assist, maybe already assisted');
-				tools.Assister.assist();
+				window.setTimeout(function() {
+					tools.Assister.assist();
+				}, 1000);
 			}
 		}, 'text');
 	} else {

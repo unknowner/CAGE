@@ -1,4 +1,12 @@
 ==========================================
+VER: 1.2.12
+
+	FIX: CAGE Timeouts
+	FIX: Manifest (internal stuff)
+	CHG: Assister pauses between assist a bit  
+	CHG: Fix CA grammar on assist (1th, 2th, 3th)
+
+==========================================
 VER: 1.2.11β
 
 	FIX: A lot of other stuff and finally bringing CAGE back to life ;)
