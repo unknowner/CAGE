@@ -229,7 +229,11 @@ tools.Monster.defense = function() {
 	// add percentage to defense/forcefield/..
 	var _defense = $('img[src*="bar_dispel.gif"],[src*="nm_green.jpg"],[src*="seamonster_ship_health.jpg"]').parent()[0], _defRegs = [
 			'^Castle Defense$', '^Ragnarok\'s Glacial Armor$', '^Your Ship\'s Defense$', '^Illvasa, Plateau City\'s Defense$', '^Skaar\'s Mana Forcefield$', '^Party Health\\/Strength$'
-	], _defText = $('#app_body div:containsRegex(/' + _defRegs.join('|') + '/):first');
+	], _defReg = new RegExp(_defRegs.join('|'));
+	_defText = $('#app_body').find('div').filter(function() {
+		return this.id.match(_defReg);
+	});
+	// _defText = $('#app_body').find('div:containsRegex(/' + _defRegs.join('|') + '/):first');
 	if (_defense && _defense.style && _defense.style.width !== "" && _defText && _defText.text()) {
 		var _percentage = _defense.style.width.substr(0, 5);
 		var _maxHealth = false;
@@ -291,6 +295,12 @@ tools.Monster.battleStats = function() {
 			if (/Damage Leaders|Levels|Heart of Darkness/.test($this.text()) === false) {
 				if ($this.html().indexOf(CastleAge.userId) > -1) {
 					_ownDamage = _line;
+					$this.css({
+						'backgroundColor' : 'rgba(0,0,0,0.5)',
+						'marginRight' : 10,
+						'marginLeft' : 10,
+						'borderRadius' : 5
+					});
 				}
 				if (_dmgType === 'dmg') {
 					_line = _line.split('/');

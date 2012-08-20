@@ -9,10 +9,10 @@ function cageNews(_full) {
 			.append('<div id="cageNews"><center id="cageNewsHead">' + _hed + '</center><center id="cageNewsSubHead">' + _sub + '</center><div id="cageNewsBody"><br><b>Changelog:</b><ul id="cageNewsChanges"></ul></div><div id="cageNewsFoot"><br><a href="http://cagenhancer.blogspot.com/" target="_blank">Blog</a> <a href="http://cagenhancer.blogspot.com/p/manual.html" target="_blank">Manual</a> <form action="https://www.paypal.com/cgi-bin/webscr" target="_blank" method="post" style="display:inline-block;bottom:-8px;position:relative"><input type="hidden" name="cmd" value="_s-xclick"><input type="hidden" name="hosted_button_id" value="PC84GRGBLQ2J8"><input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!"><img alt="" border="0" src="https://www.paypalobjects.com/de_DE/i/scr/pixel.gif" width="1" height="1"></form> <a href="http://caaplayer.freeforums.org/c-a-g-e-f29.html" target="_blank">Forum</a> <a href="https://github.com/unknowner/CAGE" target="_blank">GitHub</a><br><br><span style="font-size:12px;text-align:center;">You want to say thank you? Just visit the Blog, click an Ad or donate via PayPal.</span></div></div>');
 	$('#cageNewsFoot').prepend('<center>If you find bugs, just go to the blog and post them there (no signup required).<br>Logs (CTRL+SHIFT+J) are always welcome!</center>');
 	$.each([
-			'FIX: CAGE Timeouts',
-			'FIX: Manifest (internal stuff)',
-			'CHG: Assister pauses between assist a bit',
-			'CHG: Fix CA grammar on assist (1th, 2th, 3th)'
+			'FIX: Monster stats',
+			'FIX: Demi tool',
+			'FIX: Selecting generals at quests',
+			'FIX: Guild battle filters'
 	], function(_i, _e) {
 		$('#cageNewsChanges').append('<li><span>' + _e.split(':')[0] + '</span>' + _e.split(':')[1] + '</li>');
 	});

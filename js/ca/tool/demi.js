@@ -36,7 +36,7 @@ tools.Demi.start = function() {
 			tools.Demi.runtime.bgSet = $(this).attr('symbol');
 			signedGet('symbols.php?action=tribute&symbol=' + tools.Demi.runtime.bgSet, function(_blessed) {
 				_blessed = $(noSrc(_blessed));
-				$('#cageDemiResult').text($('div.result[contains("You cannot pay another tribute so soon"])', _blessed).text().trim()).dialog({
+				$('#cageDemiResult').text($('div.result:contains("You cannot pay another tribute so soon")', _blessed).text().trim()).dialog({
 					title : 'Demi Power',
 					resizable : false,
 					zIndex : 3999,
