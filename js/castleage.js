@@ -16,7 +16,7 @@ function initCastleAge() {
 	$('#AjaxLoadIcon').append('<img id="cageLogo" src="' + getPath('img/icon64.png') + '">').append('<div id="cageLoadError">Loading CAGE...</div>').fadeIn('slow');
 	var _append = '';
 	$.each([
-			'css/cage.css', 'css/cage_sidebar.css', 'css/ca_cage.css', 'css/cage_stats.css', 'css/cage_general.css', 'css/ca_pages.css', 'css/ca_monster.css', 'css/ui.selectmenu.css', 'css/cage_settings.css', 'css/cage_tools.css'
+			'css/cage.css', 'css/cage_sidebar.css', 'css/ca_cage.css', 'css/cage_stats.css', 'css/cage_general.css', 'css/ca_pages.css', 'css/ca_monster.css', 'css/cage_settings.css', 'css/cage_tools.css'
 	], function(_i, _e) {
 		_append += '<link rel="stylesheet" type="text/css" href="' + getPath(_e) + '?_=' + Math.random() + '" >';
 	});

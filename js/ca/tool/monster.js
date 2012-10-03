@@ -231,7 +231,7 @@ tools.Monster.defense = function() {
 			'^Castle Defense$', '^Ragnarok\'s Glacial Armor$', '^Your Ship\'s Defense$', '^Illvasa, Plateau City\'s Defense$', '^Skaar\'s Mana Forcefield$', '^Party Health\\/Strength$'
 	], _defReg = new RegExp(_defRegs.join('|'));
 	_defText = $('#app_body').find('div').filter(function() {
-		return this.id.match(_defReg);
+		return $(this).text().match(_defReg);
 	});
 	// _defText = $('#app_body').find('div:containsRegex(/' + _defRegs.join('|') + '/):first');
 	if (_defense && _defense.style && _defense.style.width !== "" && _defText && _defText.text()) {

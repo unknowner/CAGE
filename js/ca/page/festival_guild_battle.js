@@ -110,7 +110,6 @@ tools.Page.pages['festival_guild_battle.php'] = function() {
 		_sel.append('<option value="' + _e + '" ' + (_storedClass == _i ? 'selected = "selected"' : '') + ' >' + _i + '</option>');
 	});
 	_sel.change(function() {
-		$(this).css('backgroundColor', '#222222');
 		_storedClass = $(this).find("option:selected").text();
 		item.set('cagePageGuildBattleClass', _storedClass);
 		filterGate();
@@ -122,7 +121,6 @@ tools.Page.pages['festival_guild_battle.php'] = function() {
 		_sel.append('<option value="' + _e + '" ' + (_storedActivity == _i ? 'selected = "selected"' : '') + ' >' + _i + '</option>');
 	});
 	_sel.change(function() {
-		$(this).css('backgroundColor', '#222222');
 		_storedActivity = $(this).find("option:selected").text();
 		item.set('cagePageGuildBattleActivity', _storedActivity);
 		filterGate();
@@ -134,7 +132,6 @@ tools.Page.pages['festival_guild_battle.php'] = function() {
 		_sel.append('<option value="' + _e + '" ' + (_storedStatus == _i ? 'selected = "selected"' : '') + ' >' + _i + '</option>');
 	});
 	_sel.change(function() {
-		$(this).css('backgroundColor', '#222222');
 		_storedStatus = $(this).find("option:selected").text();
 		item.set('cagePageGuildBattleStatus', _storedStatus);
 		filterGate();
@@ -145,6 +142,9 @@ tools.Page.pages['festival_guild_battle.php'] = function() {
 		'color' : '#fff',
 		'height' : 25,
 		'border' : '1 solid #444444',
-		'backgroundColor' : '#222'
+		'backgroundColor' : '#222',
+		'position' : 'relative',
+		'left' : 9,
+		'top' : 3
 	});
 };
