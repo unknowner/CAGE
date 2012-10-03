@@ -11,8 +11,8 @@ tools.Page.init = function() {
 	// some utilites
 	addFunction(function() {
 		noSrc = function(_t) {
-			var _re = new RegExp('src=', 'gi');
-			_t = _t.replace(_re, 'nosrc=');
+			var _re = new RegExp('src="', 'gi');
+			_t = _t.replace(_re, 'nosrc="');
 			return _t;
 		};
 		noNoSrc = function(_jqo) {
@@ -226,11 +226,13 @@ tools.Page.ajaxPageDone = function() {
 			data = null;
 			console.log('ajaxPageDone:', div);
 			if (div === 'globalContainer') {
+				console.log('>>>> here');
 				var _abc = $('#app_body_container'), _sts = $data.find('#main_sts');
 				_sts.html(_sts.html().replace(/more/g, ''));
 				$('#main_sts').replaceWith(noNoSrc(_sts));
 				$('#main_bntp').replaceWith(noNoSrc($data.find('#main_bntp')));
-				$('#app_body_container').hide().empty().append(noNoSrc($data.find('#app_body_container')).html()).append(noNoSrc($data.filter('div[id]:not(.game)'))).show();
+				$('#app_body_container').hide().html(noNoSrc($data.find('#app_body_container')).html() + noNoSrc($data.filter('div[id]:not(.game)')).html()).show();
+				console.log('>>>>', $('#forge_slot_2'));
 				// update stats
 				var _stats = $('#main_sts'), _stam = $('#stamina_current_value'), _ener = $('#energy_current_value'), _heal = $('#health_current_value');
 				$('#gold_current_value').text('$' + _stats.find('#gold_current_value_amount').val().replace(/(\d)(?=(\d{3})+\b)/g, '$1,'));
