@@ -17,7 +17,7 @@ function updateIcon() {
 	} else {
 		localStorage['cageCAGE.enabled'] = false;
 		chrome.browserAction.setTitle({
-			title : 'CAGE.enable CAGE'
+			title : 'Enable CAGE'
 		});
 		chrome.browserAction.setIcon({
 			path : 'img/icon19off.png'

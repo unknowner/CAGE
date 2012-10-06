@@ -41,7 +41,9 @@ tools.Page.pages['festival_guild_battle.php'] = function() {
 	}
 
 	// Saved filter settings
-	var _storedClass = item.get('cagePageFestGuildBattleClass', 'All'), _storedActivity = item.get('cagePageFestGuildBattleActivity', 'All'), _storedStatus = item.get('cagePageFestGuildBattleStatus', 'All');
+	var _storedClass = item.get('cagePageFestGuildBattleClass', 'All'),
+			_storedActivity = item.get('cagePageFestGuildBattleActivity', 'All'),
+			_storedStatus = item.get('cagePageFestGuildBattleStatus', 'All');
 
 	// gate filter
 	function filterGate() {
@@ -111,7 +113,7 @@ tools.Page.pages['festival_guild_battle.php'] = function() {
 	});
 	_sel.change(function() {
 		_storedClass = $(this).find("option:selected").text();
-		item.set('cagePageGuildBattleClass', _storedClass);
+		item.set('cagePageFestGuildBattleClass', _storedClass);
 		filterGate();
 	});
 	// Activity filter
@@ -122,7 +124,7 @@ tools.Page.pages['festival_guild_battle.php'] = function() {
 	});
 	_sel.change(function() {
 		_storedActivity = $(this).find("option:selected").text();
-		item.set('cagePageGuildBattleActivity', _storedActivity);
+		item.set('cagePageFestGuildBattleActivity', _storedActivity);
 		filterGate();
 	});
 	// status filter
@@ -133,7 +135,7 @@ tools.Page.pages['festival_guild_battle.php'] = function() {
 	});
 	_sel.change(function() {
 		_storedStatus = $(this).find("option:selected").text();
-		item.set('cagePageGuildBattleStatus', _storedStatus);
+		item.set('cagePageFestGuildBattleStatus', _storedStatus);
 		filterGate();
 	});
 	filterGate();

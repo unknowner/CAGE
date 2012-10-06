@@ -83,7 +83,7 @@ tools.Monster.monster = function() {
 				_img.append(_complete);
 			}
 			_img.append('<div class="cageMonsterName">' + _e.find('> div:eq(1) > div:first > div:first').text() + '</div>');
-			_img.append($('<div class="cageMonsterButton">').click(tools.Monster.closeInstant).append(_e.find('> div:eq(2) form')));
+			_img.append($('<div class="cageMonsterButton">').click(tools.Monster.closeInstant).append(_e.find('a')));
 			_img.append('<img class="cageMonsterTag" src="http://image4.castleagegame.com/graphics/monster_button_yourmonster_on.jpg">');
 			$('#cageMonsterContainer').append(noNoSrc(_img));
 			$('div.cageMonsterListItem:last').show();

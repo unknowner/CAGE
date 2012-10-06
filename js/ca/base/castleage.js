@@ -105,7 +105,7 @@ tools.castleage.sidebarGuildChat = function() {
 		$('#chatGuildChatTextBox').removeClass('chatGuildChatTextBoxSidebar').find('input:last').attr('src', 'http://image4.castleagegame.com/iphone/graphics/ch_button_send.jpg');
 		$('#chatGuildChatSizeHandle').hide();
 	}
-	$('#chatGuildChat').scrollTop($('#chatGuildChat div').length * 20);
+	$('#chatGuildChat').scrollTop($('#chatGuildChat div').length * 50);
 };
 tools.castleage.scrollGuildChat = function() {
 	if (tools.castleage.runtime.scrollGuildChat === true) {
