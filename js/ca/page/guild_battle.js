@@ -57,55 +57,55 @@ tools.Page.pages['guild_battle.php'] = function() {
 
 	// gate filter
 	function filterGate() {
-			var _class = new RegExp($('#cageGateClassFilter').val());
-			var _activ = new RegExp($('#cageGateActivityFilter').val());
-			var _state = new RegExp($('#cageGateStatusFilter').val());
-			var _points = $('#cageGatePointsFilter').val();
-			var _count = 0;
-			var _myLevel=$('a[href*="keep.php"] > div[style="color:#ffffff"]').text().match(/\d+/);
-			var myLevel = Number(_myLevel[0]);
-			$('#your_guild_member_list > div > div, #enemy_guild_member_list > div > div').each(function(_i, _e) {
-				var _text = $(_e).text();
-				if (_text.match(_class) && _text.match(_activ) && _text.match(_state)) {
-					var targetLevelText = _text.match(/Level: \d+/);	
-					var targetLevelString = targetLevelText[0].match(/\d+/);
-					var targetLevel = Number(targetLevelString[0]);
-					switch (_points) {
-					case '240' : 
-						if (targetLevel>myLevel*1.2) {
+		var _class = new RegExp($('#cageGateClassFilter').val());
+		var _activ = new RegExp($('#cageGateActivityFilter').val());
+		var _state = new RegExp($('#cageGateStatusFilter').val());
+		var _points = $('#cageGatePointsFilter').val();
+		var _count = 0;
+		var _myLevel = $('a[href*="keep.php"] > div[style="color:#ffffff"]').text().match(/\d+/);
+		var myLevel = Number(_myLevel[0]);
+		$('#your_guild_member_list > div > div, #enemy_guild_member_list > div > div').each(function(_i, _e) {
+			var _text = $(_e).text();
+			if (_text.match(_class) && _text.match(_activ) && _text.match(_state) && _text.match(/Level: \d+/)) {
+				var targetLevelText = _text.match(/Level: \d+/);
+				var targetLevelString = targetLevelText[0].match(/\d+/);
+				var targetLevel = Number(targetLevelString[0]);
+				switch (_points) {
+					case '240':
+						if (targetLevel > myLevel * 1.2) {
 							$(_e).show();
 							_count += 1;
 						} else {
 							$(_e).hide();
-						};
+						}
 						break;
-					case '200' : 
-						if ((targetLevel>myLevel*0.8)&&(targetLevel<=myLevel*1.2)) {
+					case '200':
+						if ((targetLevel > myLevel * 0.8) && (targetLevel <= myLevel * 1.2)) {
 							$(_e).show();
 							_count += 1;
 						} else {
 							$(_e).hide();
-						};
+						}
 						break;
-					case '160' : 
-						if (targetLevel<=myLevel*0.8) {
+					case '160':
+						if (targetLevel <= myLevel * 0.8) {
 							$(_e).show();
 							_count += 1;
 						} else {
 							$(_e).hide();
-						};
+						}
 						break;
 					default:
 						$(_e).show();
-						_count += 1;				
-					}
-				} else {
-					$(_e).hide();
+						_count += 1;
 				}
-			});
-			var _gateNum = $('#enemy_guild_battle_section_battle_list, #your_guild_battle_section_battle_list').attr('class').match(/\d/)[0];
-			var _gate = $('#enemy_guild_tab_' + _gateNum + ' > div, #your_guild_tab_' + _gateNum + ' > div');
-			_gate.html(_gate.html().replace(/\).*/, ')').replace(')', ')<br/><span style="font-size:14px;font-weight:bold;">Filtered: ' + _count + '</span>'));
+			} else {
+				$(_e).hide();
+			}
+		});
+		var _gateNum = $('#enemy_guild_battle_section_battle_list, #your_guild_battle_section_battle_list').attr('class').match(/\d/)[0];
+		var _gate = $('#enemy_guild_tab_' + _gateNum + ' > div, #your_guild_tab_' + _gateNum + ' > div');
+		_gate.html(_gate.html().replace(/\).*/, ')').replace(')', ')<br/><span style="font-size:14px;font-weight:bold;">Filtered: ' + _count + '</span>'));
 	}
 
 	// class filter

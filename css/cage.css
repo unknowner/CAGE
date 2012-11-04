@@ -661,7 +661,7 @@ div.cageClassPowerText {
 #cageClassImgcleric {
 	position: absolute;
 	top: 1px;
-	left: 190px;
+	left: 191px;
 	opacity: 0;
 	cursor: pointer;
 }
@@ -669,13 +669,13 @@ div.cageClassPowerText {
 #cageClassImgmage {
 	position: absolute;
 	top: 1px;
-	left: 480px;
+	left: 481px;
 	opacity: 0;
 	cursor: pointer;
 }
 
 #cageClassImgrogue {
-	left: 335px;
+	left: 336px;
 	top: 1px;
 	position: absolute;
 	opacity: 0;
@@ -685,7 +685,7 @@ div.cageClassPowerText {
 #cageClassImgwarrior {
 	position: absolute;
 	top: 1px;
-	left: 45px;
+	left: 46px;
 	opacity: 0;
 	cursor: pointer;
 }

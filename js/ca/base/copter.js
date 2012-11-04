@@ -32,6 +32,7 @@ tools.COPTER.init = function() {
 	});
 	tools.COPTER.runtimeUpdate();
 };
+
 tools.COPTER.done = function() {
 	$('#cageCOPTERSubmit').css({
 		'cursor' : '',
