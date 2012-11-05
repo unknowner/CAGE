@@ -3,10 +3,6 @@ tools.Page.pages['guild_battle.php'] = function() {
 
 	console.log('Page: guild_battle.php');
 
-	// add link to profile pics
-	$('#enemy_guild_member_list *[uid]').each(function() {
-		$(this).wrap('<a uid="' + $(this).attr('uid') + '" class="cageGuildProfileLink" onclick="ajaxLinkSend(\'globalContainer\', \'keep.php?casuser=' + $(this).attr('uid') + '\'); return false;"></a>');
-	});
 	// fix gate reseting when attacking with duel button
 	var _gate = /\d/.exec($('#enemy_guild_battle_section_battle_list, #your_guild_battle_section_battle_list').attr('class'));
 	$('#results_main_wrapper form, #enemy_guild_member_list form, #your_guild_member_list form').append('<input type="hidden" name="sel_pos" value="' + _gate + '">');
@@ -65,39 +61,47 @@ tools.Page.pages['guild_battle.php'] = function() {
 		var _myLevel = $('a[href*="keep.php"] > div[style="color:#ffffff"]').text().match(/\d+/);
 		var myLevel = Number(_myLevel[0]);
 		$('#your_guild_member_list > div > div, #enemy_guild_member_list > div > div').each(function(_i, _e) {
+			// add link to profile pics
+			$('*[uid]', this).wrap('<a uid="' + $('*[uid]', this).attr('uid') + '" class="cageGuildProfileLink" onclick="ajaxLinkSend(\'globalContainer\', \'keep.php?casuser=' + $('*[uid]', this).attr('uid') + '\'); return false;"></a>');
+
 			var _text = $(_e).text();
-			if (_text.match(_class) && _text.match(_activ) && _text.match(_state) && _text.match(/Level: \d+/)) {
-				var targetLevelText = _text.match(/Level: \d+/);
-				var targetLevelString = targetLevelText[0].match(/\d+/);
-				var targetLevel = Number(targetLevelString[0]);
-				switch (_points) {
-					case '240':
-						if (targetLevel > myLevel * 1.2) {
+			if (_text.match(_class) && _text.match(_activ) && _text.match(_state)) {
+				if (_points !== 'All' && _text.match(/Level: \d+/)) {
+					var targetLevelText = _text.match(/Level: \d+/);
+					var targetLevelString = targetLevelText[0].match(/\d+/);
+					var targetLevel = Number(targetLevelString[0]);
+					switch (_points) {
+						case '240':
+							if (targetLevel > myLevel * 1.2) {
+								$(_e).show();
+								_count += 1;
+							} else {
+								$(_e).hide();
+							}
+							break;
+						case '200':
+							if ((targetLevel > myLevel * 0.8) && (targetLevel <= myLevel * 1.2)) {
+								$(_e).show();
+								_count += 1;
+							} else {
+								$(_e).hide();
+							}
+							break;
+						case '160':
+							if (targetLevel <= myLevel * 0.8) {
+								$(_e).show();
+								_count += 1;
+							} else {
+								$(_e).hide();
+							}
+							break;
+						default:
 							$(_e).show();
 							_count += 1;
-						} else {
-							$(_e).hide();
-						}
-						break;
-					case '200':
-						if ((targetLevel > myLevel * 0.8) && (targetLevel <= myLevel * 1.2)) {
-							$(_e).show();
-							_count += 1;
-						} else {
-							$(_e).hide();
-						}
-						break;
-					case '160':
-						if (targetLevel <= myLevel * 0.8) {
-							$(_e).show();
-							_count += 1;
-						} else {
-							$(_e).hide();
-						}
-						break;
-					default:
-						$(_e).show();
-						_count += 1;
+					}
+				} else {
+					$(_e).show();
+					_count += 1;
 				}
 			} else {
 				$(_e).hide();
@@ -189,7 +193,6 @@ tools.Page.pages['guild_battle.php'] = function() {
 		item.set('cagePageGuildBattleStatus', _storedStatus);
 		filterGate();
 	});
-	filterGate();
 	$('#cageGateStatusFilter, #cageGateClassFilter, #cageGateActivityFilter').css({
 		'float' : 'left',
 		'color' : '#fff',
@@ -211,7 +214,7 @@ tools.Page.pages['guild_battle.php'] = function() {
 		item.set('cagePageGuildBattlePoints', _storedPoints);
 		filterGate();
 	});
-	filterGate();
+
 	$('#cageGatePointsFilter, #cageGateStatusFilter, #cageGateClassFilter, #cageGateActivityFilter').css({
 		'float' : 'left',
 		'color' : '#fff',
@@ -222,4 +225,7 @@ tools.Page.pages['guild_battle.php'] = function() {
 		'left' : 9,
 		'top' : 3
 	});
+	window.setTimeout(function() {
+		filterGate();
+	}, 10);
 };
