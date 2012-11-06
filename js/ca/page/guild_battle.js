@@ -66,38 +66,44 @@ tools.Page.pages['guild_battle.php'] = function() {
 
 			var _text = $(_e).text();
 			if (_text.match(_class) && _text.match(_activ) && _text.match(_state)) {
-				if (_points !== 'All' && _text.match(/Level: \d+/)) {
-					var targetLevelText = _text.match(/Level: \d+/);
-					var targetLevelString = targetLevelText[0].match(/\d+/);
-					var targetLevel = Number(targetLevelString[0]);
-					switch (_points) {
-						case '240':
-							if (targetLevel > myLevel * 1.2) {
+				if (_points !== 'All') {
+					if (_text.match(/Level: \d+/)) {
+						var targetLevelText = _text.match(/Level: \d+/);
+						var targetLevelString = targetLevelText[0].match(/\d+/);
+						var targetLevel = Number(targetLevelString[0]);
+						switch (_points) {
+							case '240':
+								if (targetLevel > myLevel * 1.2) {
+									$(_e).show();
+									_count += 1;
+								} else {
+									$(_e).hide();
+								}
+								break;
+							case '200':
+								if ((targetLevel > myLevel * 0.8) && (targetLevel <= myLevel * 1.2)) {
+									$(_e).show();
+									_count += 1;
+								} else {
+									$(_e).hide();
+								}
+								break;
+							case '160':
+								if (targetLevel <= myLevel * 0.8) {
+									$(_e).show();
+									_count += 1;
+								} else {
+									$(_e).hide();
+								}
+								break;
+							default:
 								$(_e).show();
 								_count += 1;
-							} else {
-								$(_e).hide();
 							}
-							break;
-						case '200':
-							if ((targetLevel > myLevel * 0.8) && (targetLevel <= myLevel * 1.2)) {
-								$(_e).show();
-								_count += 1;
-							} else {
-								$(_e).hide();
-							}
-							break;
-						case '160':
-							if (targetLevel <= myLevel * 0.8) {
-								$(_e).show();
-								_count += 1;
-							} else {
-								$(_e).hide();
-							}
-							break;
-						default:
-							$(_e).show();
-							_count += 1;
+					} else {
+						console.log('Error in points filter!');
+						$(_e).show();
+						_count += 1;
 					}
 				} else {
 					$(_e).show();
