@@ -317,6 +317,36 @@ div.cageSidebarStat {
 	z-index: 1;
 }
 /*
+ * Loadout
+ */
+#cageLoadoutSubmit {
+	height: 29px;
+	position: absolute;
+	border-radius: 50px;
+	background: #000;
+	left: 8px;
+	width: 29px;
+	margin-top: -37px;
+	cursor: pointer;
+	background-image: url('http://image4.castleagegame.com/graphics/favor_clear.gif');
+	background-size: 28px 28px;
+	background-position: -2px -2px;
+}
+
+#cageLoadoutDisplay>div {
+	margin-left: 34px;
+}
+
+#cageLoadoutDisplay>div:last-of-type>img {
+	height: 20px;
+	border-radius: 50px;
+	position: relative;
+	border: 1px outset;
+	cursor: pointer;
+	width: 20px;
+}
+
+/*
  * COPTER
  */
 #cageCOPTERSubmit {

@@ -23,7 +23,7 @@ tools.Page.pages['conquest_duel.php'] = function() {
 	}
 
 	// Sorting
-	$('table.layout div[style*="/graphics/war_conquest_header.jpg"]:first div:contains("NEMESIS"):last').parent().parent().append('<div id="cageBattleListSort" style="color:white;position:absolute;margin:20px 0 0 180px;font-size:13px;font-weight:bold;text-align:center;">Sort by <span style="cursor:pointer;text-decoration:underline;">' + _sortOrder + '</span> rank / <span style="cursor:pointer;text-decoration:underline;">Reload</span></div>');
+	$('table.layout div[style*="/graphics/war_conquest_header2.jpg"]:first div:contains("NEMESIS"):last').parent().parent().append('<div id="cageBattleListSort" style="color:white;position:absolute;margin:20px 0 0 180px;font-size:13px;font-weight:bold;text-align:center;">Sort by <span style="cursor:pointer;text-decoration:underline;">' + _sortOrder + '</span> rank / <span style="cursor:pointer;text-decoration:underline;">Reload</span></div>');
 
 	$('#cageBattleListSort span:first').click(function() {
 		_sortOrder = _sortOrder == 'descending' ? 'ascending' : 'descending';
