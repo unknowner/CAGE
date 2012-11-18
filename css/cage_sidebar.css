@@ -337,13 +337,25 @@ div.cageSidebarStat {
 	margin-left: 34px;
 }
 
-#cageLoadoutDisplay>div:last-of-type>img {
+#cageLoadoutDisplay>div:last-of-type {
+	position: absolute;
+	bottom: 3px;
+	right: 3px;
+}
+
+#cageLoadoutDisplay>div:last-of-type>input {
 	height: 20px;
 	border-radius: 50px;
 	position: relative;
 	border: 1px outset;
 	cursor: pointer;
 	width: 20px;
+	background-color: #000;
+}
+
+#cageLoadoutDisplay>div:last-of-type>input:hover {
+	box-shadow: 0 5px 8px 3px #000;
+	z-index: 1;
 }
 
 /*

@@ -292,12 +292,6 @@ tools.Page.ajaxLinkSend = function() {
 			data : params,
 			type : 'POST',
 			success : function(data, textStatus, jqXHR) {
-				FB.init({
-					appId : '46755028429',
-					status : true,
-					cookie : true,
-					xfbml : true
-				});
 				ajaxPageDone(jqXHR.responseText, div);
 			}
 		});
