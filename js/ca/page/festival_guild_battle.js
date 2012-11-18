@@ -41,21 +41,66 @@ tools.Page.pages['festival_guild_battle.php'] = function() {
 	}
 
 	// Saved filter settings
-	var _storedClass = item.get('cagePageFestGuildBattleClass', 'All'),
-			_storedActivity = item.get('cagePageFestGuildBattleActivity', 'All'),
-			_storedStatus = item.get('cagePageFestGuildBattleStatus', 'All');
+	var _storedClass = item.get('cagePageFestGuildBattleClass', 'All');
+	var _storedActivity = item.get('cagePageFestGuildBattleActivity', 'All');
+	var	_storedStatus = item.get('cagePageFestGuildBattleStatus', 'All');
+	var _storedPoints = item.get('cagePageFestGuildBattlePoints', 'All');
 
 	// gate filter
 	function filterGate() {
 		var _class = new RegExp($('#cageGateClassFilter').val());
 		var _activ = new RegExp($('#cageGateActivityFilter').val());
 		var _state = new RegExp($('#cageGateStatusFilter').val());
+		var _points = $('#cageGatePointsFilter').val();
 		var _count = 0;
+		var _myLevel = $('a[href*="keep.php"] > div[style="color:#ffffff"]').text().match(/\d+/);
+		var myLevel = Number(_myLevel[0]);
 		$('#your_guild_member_list > div > div, #enemy_guild_member_list > div > div').each(function(_i, _e) {
 			var _text = $(_e).text();
 			if (_text.match(_class) && _text.match(_activ) && _text.match(_state)) {
-				$(_e).show();
-				_count += 1;
+				if (_points !== 'All') {
+					if (_text.match(/Level: \d+/)) {
+						var targetLevelText = _text.match(/Level: \d+/);
+						var targetLevelString = targetLevelText[0].match(/\d+/);
+						var targetLevel = Number(targetLevelString[0]);
+						switch (_points) {
+							case '240':
+								if (targetLevel > myLevel * 1.2) {
+									$(_e).show();
+									_count += 1;
+								} else {
+									$(_e).hide();
+								}
+								break;
+							case '200':
+								if ((targetLevel > myLevel * 0.8) && (targetLevel <= myLevel * 1.2)) {
+									$(_e).show();
+									_count += 1;
+								} else {
+									$(_e).hide();
+								}
+								break;
+							case '160':
+								if (targetLevel <= myLevel * 0.8) {
+									$(_e).show();
+									_count += 1;
+								} else {
+									$(_e).hide();
+								}
+								break;
+							default:
+								$(_e).show();
+								_count += 1;
+							}
+					} else {
+						console.log('Error in points filter!');
+						$(_e).show();
+						_count += 1;
+					}
+				} else {
+					$(_e).show();
+					_count += 1;
+				}
 			} else {
 				$(_e).hide();
 			}
@@ -85,6 +130,11 @@ tools.Page.pages['festival_guild_battle.php'] = function() {
 		'Fair' : 'Fair',
 		'Weakened' : 'Weakened',
 		'Stunned' : 'Stunned'
+	}, filterPoints = {
+		'All' : 'All',
+		'240' : '240',
+		'200' : '200',
+		'160' : '160'
 	};
 	$('body > ul.ui-selectmenu-menu').remove();
 	$('#guild_battle_health').append($('<button>Clear filters</button>').button().css({
@@ -149,4 +199,29 @@ tools.Page.pages['festival_guild_battle.php'] = function() {
 		'left' : 9,
 		'top' : 3
 	});
+	// Battle activity points filter
+	$('#guild_battle_health').append('<span class="cageGateFilterTitle ui-state-default"> Points </span><select id="cageGatePointsFilter" class="cagegatefiltertitle">');
+	_sel = $('#cageGatePointsFilter');
+	$.each(filterPoints, function(_i, _e) {
+		_sel.append('<option value="' + _e + '" ' + (_storedPoints == _i ? 'selected = "selected"' : '') + ' >' + _i + '</option>');
+	});
+	_sel.change(function() {
+		_storedPoints = $(this).find("option:selected").text();
+		item.set('cagePageFestGuildBattlePoints', _storedPoints);
+		filterGate();
+	});
+
+	$('#cageGatePointsFilter, #cageGateStatusFilter, #cageGateClassFilter, #cageGateActivityFilter').css({
+		'float' : 'left',
+		'color' : '#fff',
+		'height' : 25,
+		'border' : '1 solid #444444',
+		'backgroundColor' : '#222',
+		'position' : 'relative',
+		'left' : 9,
+		'top' : 3
+	});
+	window.setTimeout(function() {
+		filterGate();
+	}, 10);
 };
