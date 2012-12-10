@@ -11,7 +11,8 @@ tools.COPTER.API = {
 	best_offensive_general : 'best_offensive_general',
 	best_defensive_general : 'best_defensive_general',
 	update_stats : 'update_stats',
-	update_generals : 'update_generals'
+	update_generals : 'update_generals',
+	update_soldiers : 'update_soldiers'
 };
 
 tools.COPTER.runtimeUpdate = function() {
@@ -91,6 +92,10 @@ tools.COPTER.receiver = function(_data) {
 				note('COPTER', _copter.results);
 				_done = true;
 				break;
+			case tools.COPTER.API.update_soldiers:
+				note('COPTER', _copter.results);
+				_done = true;
+				break;
 		}
 	} else if (_copter.status == 'failed') {
 		$('<div>').text('Sorry, the last request failed: ' + _copter.results).dialog({
@@ -135,7 +140,29 @@ tools.COPTER.getStats = function(_callback) {
 				level : $('#st_5').text().match(/\d+/)[0]
 			}
 		};
+		console.log(_stat);
 		_callback(_stat);
+	});
+};
+
+tools.COPTER.getSoldiers = function(_callback) {
+	signedGet('soldiers.php', function(_data) {
+		var _copterSoldiers = {
+			soldiers : {}
+		};
+		var _soldiers = [],
+			_src = _data ? 'nosrc' : 'src';
+		_data = _data ? $(noSrc(_data)) : $('#app_body');
+		_data.find('div[style*=town_unit_bar]').each(function(i, e) {
+			var $_this = $(this),
+				_name = $_this.find('div div strong:first').text().trim();
+				_attack = $_this.children('div:contains("Attack")').text().match(/\d+/)[0];
+				_defense = $_this.children('div:contains("Defense")').text().match(/\d+/)[0];
+			_copterSoldiers.soldiers[_name + "|" + _attack + "|" + _defense] = $_this.find('div div span:contains("Owned:")').text().match(/\d+/)[0];
+		});
+
+		console.log(_copterSoldiers);
+		_callback(_copterSoldiers);
 	});
 };
 
@@ -147,7 +174,7 @@ tools.COPTER.addDisplay = function() {
 			'backgroundPosition' : '-4px -4px',
 			'backgroundImage' : 'url(\'http://image4.castleagegame.com/graphics/shield_wait.gif\')'
 		}).attr('disabled', 'disabled');
-		tools.COPTER.runtime.dialogId = '#' + tools.Sidebar.smallDialog('COPTER', '<button id="cageCOPTERUpdateStats">Update stats</button><button id="cageCOPTERUpdateGenerals">Update generals</button><button id="cageCOPTERBestAttG">Best offensive general</button><button id="cageCOPTERBestDefG">Best defensive general</button>', null, {
+		tools.COPTER.runtime.dialogId = '#' + tools.Sidebar.smallDialog('COPTER', '<button id="cageCOPTERUpdateStats">Update stats</button><button id="cageCOPTERUpdateGenerals">Update generals</button><button id="cageCOPTERUpdateSoldiers">Update soldiers</button><button id="cageCOPTERBestAttG">Best offensive general</button><button id="cageCOPTERBestDefG">Best defensive general</button>', null, {
 			'display' : 'none'
 		}, tools.COPTER.done, {
 			'top' : ($('#cageCOPTERDisplay').offset().top - 40)
@@ -172,6 +199,13 @@ tools.COPTER.addDisplay = function() {
 				_copterGenerals.generals[this.name] = /\d+/.exec(this.level)[0];
 			});
 			tools.COPTER.request(tools.COPTER.API.update_generals, _copterGenerals);
+		});
+		$('#cageCOPTERUpdateSoldiers').click(function() {
+			$(tools.COPTER.runtime.dialogId).find('div.cageDialogText > button').attr('disabled', 'disabled').css('opacity', 0.7);
+			$(tools.COPTER.runtime.dialogId).find('button.cancel').hide();
+			tools.COPTER.getSoldiers(function(_soldiers) {
+				tools.COPTER.request(tools.COPTER.API.update_soldiers, _soldiers);
+			});
 		});
 		// best_defensive_general
 		$('#cageCOPTERBestDefG').click(function() {
