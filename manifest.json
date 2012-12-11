@@ -88,7 +88,6 @@
 			"js/ca/tool/page.js",
 			"js/ca/tool/potionEnergy.js",
 			"js/ca/tool/potionStamina.js",
-			"js/ca/tool/soldiers.js",
 			"js/ca/tool/stash.js",
 			"js/ca/tool/statPoints.js",
 			"js/ca/tool/stats.js",
