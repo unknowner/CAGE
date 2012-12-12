@@ -11,7 +11,11 @@ tools.COPTER.API = {
 	best_offensive_general : 'best_offensive_general',
 	best_defensive_general : 'best_defensive_general',
 	update_stats : 'update_stats',
-	update_generals : 'update_generals'
+	update_generals : 'update_generals',
+	update_soldiers : 'update_soldiers',
+	update_items : 'update_items',
+	update_magic : 'update_magic',
+	update_land : 'update_land'
 };
 
 tools.COPTER.runtimeUpdate = function() {
@@ -51,14 +55,18 @@ tools.COPTER.request = function(_req, _data) {
 		$.extend(_ajaxData, _data);
 		tools.COPTER.runtime.last = _req;
 		$.ajax({
+			type : 'POST',
 			url : 'http://copter.bomhofintegrated.com/cage/' + _req,
 			data : _ajaxData,
-			contentType : 'application/json',
-			dataType : 'jsonp',
-			jsonpCallback : 'fireCOPTERcallback',
-			success : function(_data) {
-				console.log('Data', _data);
+			// contentType : 'application/json',
+			dataType : 'json',
+			// jsonpCallback : 'fireCOPTERcallback',
+			success : function(data) {
+				tools.COPTER.receiver(data)
 			}
+			// success : function(_data) {
+			// 	console.log('Data', _data);
+			// }
 		});
 	} else {
 		$('#cageCOPTERDisplay').remove();
@@ -67,7 +75,7 @@ tools.COPTER.request = function(_req, _data) {
 
 tools.COPTER.receiver = function(_data) {
 	console.log('COPTER:', tools.COPTER.runtime.last, _data);
-	var _copter = JSON.parse(_data), _done = false;
+	var _copter = _data, _done = false;
 	if (_copter.status == 'successful' || _copter.status == 'connected') {
 		switch (tools.COPTER.runtime.last) {
 			case tools.COPTER.API.status:
@@ -88,6 +96,22 @@ tools.COPTER.receiver = function(_data) {
 				_done = true;
 				break;
 			case tools.COPTER.API.update_generals:
+				note('COPTER', _copter.results);
+				_done = true;
+				break;
+			case tools.COPTER.API.update_soldiers:
+				note('COPTER', _copter.results);
+				_done = true;
+				break;
+			case tools.COPTER.API.update_items:
+				note('COPTER', _copter.results);
+				_done = true;
+				break;
+			case tools.COPTER.API.update_magic:
+				note('COPTER', _copter.results);
+				_done = true;
+				break;
+			case tools.COPTER.API.update_land:
 				note('COPTER', _copter.results);
 				_done = true;
 				break;
@@ -135,7 +159,90 @@ tools.COPTER.getStats = function(_callback) {
 				level : $('#st_5').text().match(/\d+/)[0]
 			}
 		};
+		console.log(_stat);
 		_callback(_stat);
+	});
+};
+
+tools.COPTER.getSoldiers = function(_callback) {
+	signedGet('soldiers.php', function(_data) {
+		var _copterSoldiers = {
+			soldiers : {}
+		};
+		var _soldiers = [],
+			_src = _data ? 'nosrc' : 'src';
+		_data = _data ? $(noSrc(_data)) : $('#app_body');
+		_data.find('div[style*=town_unit_bar]').each(function(i, e) {
+			var $_this = $(this),
+				_name = $_this.find('div div strong:first').text().trim();
+				_attack = $_this.find('div div div:contains("Attack")').text().match(/\d+/)[0];
+				_defense = $_this.find('div div div:contains("Defense")').text().match(/\d+/)[0];
+			_copterSoldiers.soldiers[_name + "|" + _attack + "|" + _defense] = $_this.find('div div span:contains("Owned:")').text().match(/\d+/)[0];
+		});
+
+		console.log(_copterSoldiers);
+		_callback(_copterSoldiers);
+	});
+};
+
+tools.COPTER.getItems = function(_callback) {
+	signedGet('item.php', function(_data) {
+		var _copterItems = {
+			items : {}
+		};
+		var _items = [],
+			_src = _data ? 'nosrc' : 'src';
+		_data = _data ? $(noSrc(_data)) : $('#app_body');
+		_data.find('div[style*=town_unit_bar]').each(function(i, e) {
+			var $_this = $(this),
+				_name = $_this.find('div div strong:first').text().trim();
+				_attack = $_this.find('div div div:contains("Attack")').text().match(/\d+/)[0];
+				_defense = $_this.find('div div div:contains("Defense")').text().match(/\d+/)[0];
+			_copterItems.items[_name + "|" + _attack + "|" + _defense] = $_this.find('div div span:contains("Owned:")').text().match(/\d+/)[0];
+		});
+
+		console.log(_copterItems);
+		_callback(_copterItems);
+	});
+};
+
+tools.COPTER.getMagic = function(_callback) {
+	signedGet('magic.php', function(_data) {
+		var _copterMagic = {
+			magic : {}
+		};
+		var _magic = [],
+			_src = _data ? 'nosrc' : 'src';
+		_data = _data ? $(noSrc(_data)) : $('#app_body');
+		_data.find('div[style*=town_unit_bar]').each(function(i, e) {
+			var $_this = $(this),
+				_name = $_this.find('div div strong:first').text().trim();
+				_attack = $_this.find('div div div:contains("Attack")').text().match(/\d+/)[0];
+				_defense = $_this.find('div div div:contains("Defense")').text().match(/\d+/)[0];
+			_copterMagic.magic[_name + "|" + _attack + "|" + _defense] = $_this.find('div div span:contains("Owned:")').text().match(/\d+/)[0];
+		});
+
+		console.log(_copterMagic);
+		_callback(_copterMagic);
+	});
+};
+
+tools.COPTER.getLand = function(_callback) {
+	signedGet('land.php', function(_data) {
+		var _copterLand = {
+			land : {}
+		};
+		var _land = [],
+			_src = _data ? 'nosrc' : 'src';
+		_data = _data ? $(noSrc(_data)) : $('#app_body');
+		_data.find('div[style*=town_land_bar]').each(function(i, e) {
+			var $_this = $(this),
+				_name = $_this.find('div div strong:first').text().trim();
+			_copterLand.land[_name] = $_this.find('div div span:contains("Owned:")').text().match(/\d+/)[0];
+		});
+
+		console.log(_copterLand);
+		_callback(_copterLand);
 	});
 };
 
@@ -147,7 +254,7 @@ tools.COPTER.addDisplay = function() {
 			'backgroundPosition' : '-4px -4px',
 			'backgroundImage' : 'url(\'http://image4.castleagegame.com/graphics/shield_wait.gif\')'
 		}).attr('disabled', 'disabled');
-		tools.COPTER.runtime.dialogId = '#' + tools.Sidebar.smallDialog('COPTER', '<button id="cageCOPTERUpdateStats">Update stats</button><button id="cageCOPTERUpdateGenerals">Update generals</button><button id="cageCOPTERBestAttG">Best offensive general</button><button id="cageCOPTERBestDefG">Best defensive general</button>', null, {
+		tools.COPTER.runtime.dialogId = '#' + tools.Sidebar.smallDialog('COPTER', '<button id="cageCOPTERUpdateStats">Update stats</button><button id="cageCOPTERUpdateGenerals">Update generals</button><button id="cageCOPTERUpdateSoldiers">Update soldiers</button><button id="cageCOPTERUpdateItems">Update items</button><button id="cageCOPTERUpdateMagic">Update magic</button><button id="cageCOPTERUpdateLand">Update land</button><button id="cageCOPTERBestAttG">Best offensive general</button><button id="cageCOPTERBestDefG">Best defensive general</button>', null, {
 			'display' : 'none'
 		}, tools.COPTER.done, {
 			'top' : ($('#cageCOPTERDisplay').offset().top - 40)
@@ -172,6 +279,38 @@ tools.COPTER.addDisplay = function() {
 				_copterGenerals.generals[this.name] = /\d+/.exec(this.level)[0];
 			});
 			tools.COPTER.request(tools.COPTER.API.update_generals, _copterGenerals);
+		});
+		// update_soldiers
+		$('#cageCOPTERUpdateSoldiers').click(function() {
+			$(tools.COPTER.runtime.dialogId).find('div.cageDialogText > button').attr('disabled', 'disabled').css('opacity', 0.7);
+			$(tools.COPTER.runtime.dialogId).find('button.cancel').hide();
+			tools.COPTER.getSoldiers(function(_soldiers) {
+				tools.COPTER.request(tools.COPTER.API.update_soldiers, _soldiers);
+			});
+		});
+		// update_items
+		$('#cageCOPTERUpdateItems').click(function() {
+			$(tools.COPTER.runtime.dialogId).find('div.cageDialogText > button').attr('disabled', 'disabled').css('opacity', 0.7);
+			$(tools.COPTER.runtime.dialogId).find('button.cancel').hide();
+			tools.COPTER.getItems(function(_items) {
+				tools.COPTER.request(tools.COPTER.API.update_items, _items);
+			});
+		});
+		// update_magic
+		$('#cageCOPTERUpdateMagic').click(function() {
+			$(tools.COPTER.runtime.dialogId).find('div.cageDialogText > button').attr('disabled', 'disabled').css('opacity', 0.7);
+			$(tools.COPTER.runtime.dialogId).find('button.cancel').hide();
+			tools.COPTER.getMagic(function(_magic) {
+				tools.COPTER.request(tools.COPTER.API.update_magic, _magic);
+			});
+		});
+		// update_land
+		$('#cageCOPTERUpdateLand').click(function() {
+			$(tools.COPTER.runtime.dialogId).find('div.cageDialogText > button').attr('disabled', 'disabled').css('opacity', 0.7);
+			$(tools.COPTER.runtime.dialogId).find('button.cancel').hide();
+			tools.COPTER.getLand(function(_land) {
+				tools.COPTER.request(tools.COPTER.API.update_land, _land);
+			});
 		});
 		// best_defensive_general
 		$('#cageCOPTERBestDefG').click(function() {
