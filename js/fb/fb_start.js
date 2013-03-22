@@ -5,7 +5,8 @@ function startCAGE() {
 		var _i = document.createElement('INPUT');
 		_i.type = 'hidden';
 		_i.id = 'EnvUser';
-		_i.value = Env.user;
+		_i.value = getCookie('c_user');
+		// _i.value = Env.user;
 		document.body.appendChild(_i);
 	}, null, true, true);
 	// Fix for double scrollbars
