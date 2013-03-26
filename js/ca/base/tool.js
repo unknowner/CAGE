@@ -31,7 +31,7 @@ function initTools() {
 	signedGet('keep.php', function(_keepdata) {
 		console.log('signedGet keep:', (new Date() - start));
 		_keepdata = _keepdata.replace(/src="/g, 'nosrc=');
-		CastleAge.bqh = $('input[name="bqh"]:first', _keepdata).val();
+		CastleAge.bqh = $('input[name="bqh"]:first', $.parseHTML(_keepdata)).val();
 		tools.PotionStamina.work(_keepdata);
 		tools.PotionEnergy.work(_keepdata);
 	});

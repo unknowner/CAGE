@@ -1,6 +1,6 @@
 var item = {
 	get : function(_name, _default) {
-		if(localStorage[CastleAge.userId + '_' + _name] !== undefined && localStorage[CastleAge.userId + '_' + _name] !== null) {
+		if (localStorage[CastleAge.userId + '_' + _name] !== undefined && localStorage[CastleAge.userId + '_' + _name] !== null) {
 			return JSON.parse(localStorage[CastleAge.userId + '_' + _name]);
 		} else {
 			return _default;
@@ -15,7 +15,7 @@ var item = {
 };
 // Notes
 function note(_h, _m) {
-	if(tools.cage.runtime.showNotes == 'true' || tools.cage.runtime.showNotes == true) {
+	if (tools.cage.runtime.showNotes == 'true' || tools.cage.runtime.showNotes == true) {
 		com.note(_h, _m);
 	}
 }
@@ -27,7 +27,7 @@ function customEvent(_event, _function) {
 		var _arg = arguments[0].event;
 		// fire the event opt. with data
 		window[('fire' + _arg)] = function(_data) {
-			if(_data !== undefined) {
+			if (_data !== undefined) {
 				$('#' + _arg).val(JSON.stringify(_data));
 			}
 			console.log('fire customEvent: ', _arg);
@@ -51,3 +51,15 @@ function customEvent(_event, _function) {
 	$(document.body).append($('<input type="hidden" id="' + _event + '" value="" />').bind(_event, _function));
 
 }
+
+// http://forum.jquery.com/topic/beginner-function-toggle-deprecated-what-to-use-instead 
+$.fn.toggleClick = function() {
+	var functions = arguments;
+	return this.click(function() {
+		var iteration = $(this).data('iteration') || 0;
+		// console.log(iteration)
+		functions[iteration].apply(this, arguments);
+		iteration = (iteration + 1) % functions.length;
+		$(this).data('iteration', iteration);
+	});
+};

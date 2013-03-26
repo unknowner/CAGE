@@ -62,7 +62,7 @@ tools.COPTER.request = function(_req, _data) {
 			dataType : 'json',
 			// jsonpCallback : 'fireCOPTERcallback',
 			success : function(data) {
-				tools.COPTER.receiver(data)
+				tools.COPTER.receiver(data);
 			}
 			// success : function(_data) {
 			// 	console.log('Data', _data);
@@ -169,8 +169,6 @@ tools.COPTER.getSoldiers = function(_callback) {
 		var _copterSoldiers = {
 			soldiers : {}
 		};
-		var _soldiers = [],
-			_src = _data ? 'nosrc' : 'src';
 		_data = _data ? $(noSrc(_data)) : $('#app_body');
 		_data.find('div[style*=town_unit_bar]').each(function(i, e) {
 			var $_this = $(this),
@@ -190,8 +188,6 @@ tools.COPTER.getItems = function(_callback) {
 		var _copterItems = {
 			items : {}
 		};
-		var _items = [],
-			_src = _data ? 'nosrc' : 'src';
 		_data = _data ? $(noSrc(_data)) : $('#app_body');
 		_data.find('div[style*=town_unit_bar]').each(function(i, e) {
 			var $_this = $(this),
@@ -211,8 +207,6 @@ tools.COPTER.getMagic = function(_callback) {
 		var _copterMagic = {
 			magic : {}
 		};
-		var _magic = [],
-			_src = _data ? 'nosrc' : 'src';
 		_data = _data ? $(noSrc(_data)) : $('#app_body');
 		_data.find('div[style*=town_unit_bar]').each(function(i, e) {
 			var $_this = $(this),
@@ -232,8 +226,6 @@ tools.COPTER.getLand = function(_callback) {
 		var _copterLand = {
 			land : {}
 		};
-		var _land = [],
-			_src = _data ? 'nosrc' : 'src';
 		_data = _data ? $(noSrc(_data)) : $('#app_body');
 		_data.find('div[style*=town_land_bar]').each(function(i, e) {
 			var $_this = $(this),

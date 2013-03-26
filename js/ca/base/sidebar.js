@@ -29,7 +29,7 @@ tools.Sidebar.hideSection = function(_section, _child, _text) {
 		'hidden' : false,
 		'inOut' : 0
 	}).prepend('<div class="cageSidebarSectionHider ui-icon ui-icon-circle-triangle-n">');
-	_section.children('.cageSidebarSectionHider').toggle(function() {
+	_section.children('.cageSidebarSectionHider').toggleClick(function() {
 		_section.unbind('hover').data('hidden', true).children('.cageSidebarSectionHider').removeClass('ui-icon-circle-triangle-n').addClass('ui-icon-circle-triangle-s');
 		_section.css({
 			'height' : 9,

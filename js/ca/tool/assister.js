@@ -143,9 +143,13 @@ tools.Assister.assist = function(_ids) {
 				if (tools.Assister.runtime.assisterCommentMonster === true) {
 					post(_cta.link.replace('doObjective', 'commentDragon') + '&text=' + _num + ' for ' + _cta.name + ' ' + tools.Assister.runtime.monsterMessage + ' ');
 				}
-				if (tools.Assister.runtime.assisterCommentFBPost === true || tools.Assister.runtime.assisterLikeFBPost === true) {
+				window.setTimeout(function() {
+					tools.Assister.assist();
+				}, 1000);
+				// FB part currently not working, any way to get post id?
+				/*if (tools.Assister.runtime.assisterCommentFBPost === true || tools.Assister.runtime.assisterLikeFBPost === true) {
 					signedGet('party.php?casuser=' + _cta.uid, function(_guarddata) {
-						_guarddata = $(noSrc(_guarddata));
+						_guarddata = $($.parseHTML(noSrc(_guarddata)));
 						var _postid = _guarddata.find('div.streamContainer:has(div.streamName > a[href*="' + _cta.link + '"]) input[name="like_recent_news_post_id"]:first').val();
 						console.log('Assister - Like & Comment on FB post: ', _postid);
 						var _fbpost = _postid.match(/\d+/g);
@@ -177,7 +181,7 @@ tools.Assister.assist = function(_ids) {
 					window.setTimeout(function() {
 						tools.Assister.assist();
 					}, 1000);
-				}
+				}*/
 			} else {
 				console.log('Assister - No assist, maybe already assisted');
 				window.setTimeout(function() {

@@ -21,7 +21,7 @@ tools.PotionEnergy.start = function() {
 };
 // Parse keep for Energy potions
 tools.PotionEnergy.work = function(_pagedata) {
-	_pagedata = _pagedata == null ? $('#app_body') : $(_pagedata);
+	_pagedata = _pagedata == null ? $('#app_body') : $($.parseHTML(_pagedata));
 	var _potions = _pagedata.find('div[title="Energy Potion"]').text().match(/\d+/g);
 	if (_potions !== null) {
 		$('#cagePotionEnergy').find('span.cagePotionCount').text(_potions[1]);

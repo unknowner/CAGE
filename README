@@ -1,5 +1,16 @@
 ==========================================
-VER: 1.2.15
+VER: 1.2.16
+
+	FIX: Assister (FB like & comment disabled for now)
+	CHG: jQuery & jQuery UI updated
+	
+==========================================
+VER: 1.2.15.5
+
+	FIX: CAGE not starting (thanks to Ismo & Matthew)
+	
+==========================================
+VER: 1.2.15.4
 
 	ADD: Update much more COPTER data (thanks to Mr. Larson himself)
 	ADD: Festival battle filter for battle points (thanks to Bonbons)

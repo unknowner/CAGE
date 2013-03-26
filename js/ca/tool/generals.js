@@ -101,7 +101,7 @@ tools.General.setByName = function(_name, _callback) {
 		if (_g !== null) {
 			$('#cageGeneralImage, #cagegeneralname, #cageGeneralDefense, #cageGeneralAttack').fadeOut('slow');
 			signedGet('generals.php?item=' + _g.item + '&itype=' + _g.itype + '&bqh=' + CastleAge.bqh, function(_data) {
-				$data = $(noSrc(_data));
+				$data = $($.parseHTML(noSrc(_data)));
 				$('#main_bn').html($data.find('#main_bn').html());
 				var _i = $('#main_bn').find('div > img[style="width:24px;height:24px;"]');
 				if ($('div.generalContainerBox').length == 1) {
@@ -115,7 +115,7 @@ tools.General.setByName = function(_name, _callback) {
 						$('#cageGeneralEquipment').empty().append(_i);
 					}
 				}, 100);
-				tools.Stats.update($('#main_sts', _data));
+				tools.Stats.update($('#main_sts', $data));
 				tools.General.parsePage(_data);
 				tools.General.current = _name;
 				if (_callback !== undefined) {
@@ -159,7 +159,7 @@ tools.General.lists = function() {
 };
 tools.General.parsePage = function(_data) {
 	var _names = [], _src = _data ? 'nosrc' : 'src';
-	_data = _data ? $(noSrc(_data)) : $('#app_body');
+	_data = _data ? $($.parseHTML(noSrc(_data))) : $('#app_body');
 	_data.find('table.layout div.general_pic_div3').each(function(i, e) {
 		var $_this = $(this), $_image = $('form:has(input[name="item"]) input.imgButton', e), $_general = $_this.parent(), _name = $_general.children('div.general_name_div3:first').text().trim(), _charge = $_this.find('div[style*="gen_chargebarsmall.gif"]:last'), _gtext = $_general.children('div:last').children('div');
 		_names.push(_name);
@@ -179,7 +179,7 @@ tools.General.parsePage = function(_data) {
 		}
 	});
 	_names.sort();
-	$('#cageGeneralSelector').html('<span id="cageSelectorInfo" class="ui-state-active ui-corner-left"></span><select id="cageSelectorList"></select><div id="cageFavoriteGenerals"></div><div id="cageAllGenerals"></div>');
+	$('#cageGeneralSelector').html('<span id="cageSelectorInfo" class="ui-state-active"></span><select id="cageSelectorList"></select><div id="cageFavoriteGenerals"></div><div id="cageAllGenerals"></div>');
 
 	console.log(tools.General.runtime.general);
 	for ( var i = 0, len = _names.length; i < len; i++) {

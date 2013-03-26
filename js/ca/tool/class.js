@@ -5,7 +5,7 @@ tools.Class.init = function() {
 	$('#cageContainer').append('<div id="cageClassContainer"><div id="cageClassSelected">ACTIVE</div><div id="cageClasses" style="width:603px;height:50px;background-image:url(http://image4.castleagegame.com/graphics/g_char_selectchar_plate.gif);"></div><div id="cageClassPower"></div><div id="cageClassSave"></div></div>');
 	signedGet('guild_class_power_equipment.php', function(_data) {
 		var _data2 = _data;
-		_data = $(noSrc(_data));
+		_data = $($.parseHTML(noSrc(_data)));
 		var _class = /g_char_header_(\w+).jpg/.exec(_data.find('div[id="guildv2_class_top"]:first div[style*="graphics/g_char_header_"]:first').css('backgroundImage'))[1];
 		CastleAge.inGuild = _data.find('table.layout a[href*="apps.facebook.com/castle_age/guildv2_home.php"]').length > 0 ? true : false;
 		tools.Class.runtime.classSet = _class;
@@ -199,7 +199,7 @@ tools.Class.changeClass = function(_class) {
 };
 
 tools.Class.statsPowerImages = function(_data) {
-	_data = $(noSrc(_data));
+	_data = $($.parseHTML(noSrc(_data)));
 	$('#cageStatsClass span img').remove();
 	_data.find('div[id^="open_power_slot_"] img').each(function() {
 		$('#cageStatsClass span').append($('<img src="' + $(this).attr('nosrc') + '">').hover(function() {
