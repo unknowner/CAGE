@@ -17,7 +17,7 @@ tools.Stash.start = function() {
 tools.Stash.work = function() {
 	tools.Stash.runtime.gold = parseInt($('#gold_current_value').text().match(/\d*/g).join(''), 10);
 	signedGet('keep.php?do=Stash&stash_gold=' + tools.Stash.runtime.gold + '&bqh=' + CastleAge.bqh, function(_data) {
-		_data = $(noSrc(_data));
+		_data = $($.parseHTML(noSrc(_data)));
 		var _time_left = _data.find('#gold_time_sec');
 		if(_time_left) {
 			addFunction(function(gold_token_time_left_obj) {

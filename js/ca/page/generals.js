@@ -73,7 +73,7 @@ tools.Page.pages['generals.php'] = function() {
 	});
 	// add to favs from generals page
 	$('div.generalSmallContainer2').each(function() {
-		$('div.general_name_div3', this).prepend($('<img style="cursor:pointer;position:absolute;padding:1px;" src="' + getPath('img/favadd.png') + '" alt="' + $('div.general_name_div3_padding', this).text().trim() + '"/>').click(function() {
+		$('div.general_name_div3', this).prepend($('<img class="cageGeneralAddFav" src="' + getPath('img/favadd.png') + '" alt="' + $('div.general_name_div3_padding', this).text().trim() + '"/>').click(function() {
 			if (tools.General.runtime.favorites[tools.General.runtime.favList].indexOf($(this).attr('alt')) == -1) {
 				tools.General.runtime.favorites[tools.General.runtime.favList].push($(this).attr('alt'));
 				item.set('favFavorites', tools.General.runtime.favorites);
@@ -108,7 +108,7 @@ tools.Page.pages['generals.php'] = function() {
 	$('#cageFavsDisplay').sortable({
 		update : function() {
 			var _names = [];
-			$('#cageFavsDisplay').find('img:[alt]').each(function() {
+			$('img[alt]', '#cageFavsDisplay').each(function() {
 				_names.push($(this).attr('alt'));
 			});
 			tools.General.runtime.favorites[tools.General.runtime.favList] = _names;

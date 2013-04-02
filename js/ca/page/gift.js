@@ -42,7 +42,7 @@ tools.Page.pages['gift.php'] = function() {
 		'padding' : '3px 0 13px 2px'
 	});
 
-	var $_img = $('img[src*="invite_sendgift.gif"]');
+	var $_img = $('img[src*="request_fb_gift.gif"]');
 	var _giftNum = /(?:act=create&gift=)(\d+)/.exec($_img.attr('onclick'))[1];
 	var _giftName = /(sent you a )(.+)( in Castle Age!)/.exec($_img.attr('onclick'))[2];
 	$_img.attr('onclick', '').click(function() {

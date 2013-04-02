@@ -68,7 +68,7 @@ tools.Monster.checkFor = function() {
 };
 tools.Monster.monster = function() {
 	signedGet('player_monster_list.php', function(_monster) {
-		_monster = $(noSrc(_monster));
+		_monster = $($.parseHTML(noSrc(_monster)));
 		$('table.layout:first div[style="padding:0 0 15px 0;"] > div', _monster).each(function(_i, _e) {
 			_e = $(_e);
 			var _img = $('<div class="cageMonsterListItem ui-corner-all">').hide().css('backgroundImage', 'url(' + _e.find('img:first').attr('nosrc') + ')'), _complete = _e.find('div:contains(Completed!):last').css({
@@ -93,7 +93,7 @@ tools.Monster.monster = function() {
 };
 tools.Monster.festival1 = function() {
 	signedGet('festival_tower.php?tab=monster', function(_festMonster) {
-		_festMonster = $(noSrc(_festMonster));
+		_festMonster = $($.parseHTML(noSrc(_festMonster)));
 		$('#listDiv > div:not(:last)', _festMonster).each(function(_i, _e) {
 			_e = $(_e);
 			var _img = _e.find('> div:eq(1)').attr('style', '').find('div[style*="background-image"]:first').addClass('cageMonsterListItem ui-corner-all').hide().empty().unwrap(), _complete = _e.find('div:contains(Completed!):last').css({
@@ -118,7 +118,7 @@ tools.Monster.festival1 = function() {
 };
 tools.Monster.festival2 = function() {
 	signedGet('festival_tower2.php?tab=monster', function(_festMonster) {
-		_festMonster = $(noSrc(_festMonster));
+		_festMonster = $($.parseHTML(noSrc(_festMonster)));
 		$('#listDiv > div:not(:last)', _festMonster).each(function(_i, _e) {
 			_e = $(_e);
 			var _img = _e.find('> div:eq(1)').attr('style', '').find('div[style*="background-image"]:first').addClass('cageMonsterListItem ui-corner-all').hide().empty().unwrap(), _complete = _e.find('div:contains(Completed!):last').css({
@@ -143,7 +143,7 @@ tools.Monster.festival2 = function() {
 };
 tools.Monster.raid = function() {
 	signedGet('raid.php', function(_raids) {
-		_raids = $(noSrc(_raids));
+		_raids = $($.parseHTML(noSrc(_raids)));
 		$('table.layout span', _raids).parent().parent().parent().each(function(_i, _e) {
 			_e = $(_e);
 			if (_e.text().trim() !== '[START THIS CAMPAIGN]') {
@@ -162,7 +162,7 @@ tools.Monster.conquest = function() {
 	$.each(tools.Monster.runtime.conquestLands, function(_i, _e) {
 		if (_e == true) {
 			signedGet(_i, function(_monster) {
-				_monster = $(noSrc(_monster));
+				_monster = $($.parseHTML(noSrc(_monster)));
 				$('#guildv2_monster_list_body div[style="padding:10px 0 0 20px;"] > div', _monster).each(function(_i, _e) {
 					_e = $(_e);
 					var _img = $('<div class="cageMonsterListItem ui-corner-all">').hide().css('backgroundImage', 'url(' + _e.find('img:first').attr('nosrc') + ')');

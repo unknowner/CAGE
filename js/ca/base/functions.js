@@ -9,6 +9,8 @@ tools.Functions.init = function() {
 	addFunction(function() {
 		cageStat = {};
 	}, null, true, true);
+	// fix for dropped browser detection in jquery 1.9
+	addFunction(function(){$.browser = {};}, null, true, true);
 	// replace CA funtions
 	addFunction(tools.Functions.stat_increase_ticker, null, true, true);
 	addFunction(tools.Functions.PopupAtMousePosition, null, true, true);

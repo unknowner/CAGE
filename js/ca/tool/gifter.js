@@ -80,7 +80,7 @@ tools.Gifter.start = function() {
 tools.Gifter.work = function() {
 	if (tools.Gifter.runtime.requests.length > 0) {
 		signedGet('index.php?request_ids=' + tools.Gifter.runtime.requests.join(','), function(_data) {
-			_data = $(noSrc(_data));
+			_data = $($.parseHTML(noSrc(_data)));
 			$('#results_container').after(noNoSrc(_data.find('div[style*="graphics/newrequest_background.jpg"]:first')));
 			$('#gift_requests span').css('fontSize', 12);
 			tools.Gifter.done();
@@ -93,13 +93,14 @@ tools.Gifter.done = function() {
 	if (tools.Gifter.runtime.returnGift === true) {
 		if (tools.Gifter.runtime.returnGiftName === null) {
 			get('gift.php?request_ids=' + tools.Gifter.runtime.requests.join(','), function(_data) {
+				_data = $($.parseHTML(noSrc(_data)));
 				$('body').append('<div id="cageLevelUp"><div></div><div><div id="cageLevelUpTop" style="padding:15px 0 0 50px !important;width:448px !important;"></div><div id="cageLevelUpMiddle"></div><div id="cageLevelUpBottom"></div></div></div>');
 				var _cLU = $('#cageLevelUpMiddle');
 				_cLU.append('<div id="cageRTFGift"></div>');
 				console.log(tools.Gifter.runtime.returnGiftNum);
 				$(_data).find('#giftContainer div[id^="gift"]').each(function() {
 					var $this = $(this), _num = $this.attr('id').match(/\d+/)[0], _name = $this.text().trim().replace('!', '');
-					$('#cageRTFGift').append($('<img src="' + $this.find('img').attr('src') + '" >').data({
+					$('#cageRTFGift').append($('<img src="' + $this.find('img').attr('nosrc') + '" >').data({
 						num : _num,
 						name : _name
 					}).click(function() {

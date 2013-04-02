@@ -334,14 +334,13 @@ div.cageGuildMember>span {
 }
 
 button.cageGoblinLocked {
-	position: absolute;
 	margin-left: 8px;
 	border-radius: 0;
-	margin-top: 0px;
 	padding: 3px;
 	width: 19px !important;
 	border-bottom-right-radius: 4px;
-	border-top-left-radius: 4px;
+	position: absolute;
+	margin: 0 0 0 -30px;
 }
 
 div.cageGoblinItemGout {

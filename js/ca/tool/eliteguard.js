@@ -6,7 +6,7 @@ tools.Eliteguard.getUserIds = function() {
 
 	console.log('Eliteguard: Reading guild...');
 	signedGet('guild.php', function(_guild) {
-		_guild = $(noSrc(_guild));
+		_guild = $($.parseHTML(noSrc(_guild)));
 		console.log('Eliteguard: got guild...');
 		_guild.find('#cta_log input[name="guild_player_id"]').each(function() {
 			tools.Eliteguard.runtime.id.push($(this).prop('value'));
@@ -31,7 +31,7 @@ tools.Eliteguard.work = function() {
 	if(tools.Eliteguard.runtime.id.length > 0) {
 		var _id = tools.Eliteguard.runtime.id.shift();
 		signedGet('party.php?twt=jneg&jneg=true&user=' + _id + '&lka=' + _id + '&etw=1&ref=nf', function(_guarddata) {
-			_guarddata = $(noSrc(_guarddata));
+			_guarddata = $($.parseHTML(noSrc(_guarddata)));
 			if(_guarddata.find('span.result_body').text().match(/YOUR Elite Guard is FULL!/i)) {
 				tools.Eliteguard.done();
 			} else {

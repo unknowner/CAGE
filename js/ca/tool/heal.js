@@ -3,7 +3,7 @@ tool('Heal');
 tools.Heal.start = function() {
 	if(parseInt($('#health_current_value').next().text(), 10) - parseInt($('#health_current_value').text(), 10) > 0) {
 		signedGet('keep.php?signed_request=' + CastleAge.signed_request, function(_data) {
-			_data = $(noSrc(_data));
+			_data = $($.parseHTML(noSrc(_data)));
 			CastleAge.bqh = _data.find('input[name="bqh"]:first').attr('value');
 			post('keep.php?action=heal_avatar&bqh=' + CastleAge.bqh, function() {
 				addFunction(function() {

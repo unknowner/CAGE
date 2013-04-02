@@ -222,7 +222,7 @@ tools.Page.ajaxPageDone = function() {
 		stopTimers = false;
 		ajaxPerforming = false;
 		if (/<script type="text\/javascript">\stop.location.href = "http:\/\/apps.facebook.com\/castle_age\/.*.php";\s<\/script>/.test(data.substr(data.length < 200 ? 0 : data.length - 300)) === false) {
-			$data = $($.parseHTML(noSrc(data)));
+			$data = $($.parseHTML(noSrc(data), true));
 			data = null;
 			console.log('ajaxPageDone:', div);
 			if (div === 'globalContainer') {

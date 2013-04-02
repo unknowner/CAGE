@@ -12,7 +12,7 @@ tools.Page.pages['player_monster_list.php'] = function() {
 
 	get('festival_tower.php?tab=monster', function(_festMonster) {
 		$('#cageTempLoaderImg1').remove();
-		$('#listDiv > div', _festMonster).not(':last').each(function(_i, _e) {
+		$('#listDiv > div', $.parseHTML(_festMonster)).not(':last').each(function(_i, _e) {
 			if(_i == 0) {
 				$('#cageMonsterTower1').append('<div style="text-align:center;"><img src="http://image4.castleagegame.com/graphics/festival_monster_towerbutton.jpg" class="cageTowerImage"></div>');
 			}
@@ -24,7 +24,7 @@ tools.Page.pages['player_monster_list.php'] = function() {
 		});
 		get('festival_tower2.php?tab=monster', function(_festMonster) {
 			$('#cageTempLoaderImg2').remove();
-			$('#listDiv > div', _festMonster).not(':last').each(function(_i, _e) {
+			$('#listDiv > div', $.parseHTML(_festMonster)).not(':last').each(function(_i, _e) {
 				console.log(_i);
 				if(_i == 0) {
 					$('#cageMonsterTower2').append('<div style="text-align:center;"><img src="http://image4.castleagegame.com/graphics/festival_monster2_towerbutton.jpg" class="cageTowerImage"></div>');
