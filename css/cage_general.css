@@ -103,17 +103,19 @@
 #cageFavoriteGenerals>div {
 	margin: 4px;
 	display: inline-block;
-	box-shadow: 0 0 5px 2px #1482D2;
+	box-shadow: 0 0 1px 1px #1482D2;
 	border-radius: 5px;
 	height: 70px;
+	opacity: 0.8;
 }
 
 #cageFavoriteGenerals>div:hover {
-	box-shadow: 0 0 10px 2px #26b3f7
+	box-shadow: 0 0 1px 1px #26b3f7;
+	opacity: 1;
 }
 
 #cageFavoriteGenerals>div>img:first-child:hover {
-	box-shadow: 0 0 10px 2px #26b3f7
+	box-shadow: 0 0 1px 1px #26b3f7
 }
 
 #cageFavoriteGenerals>div>img:first-child {

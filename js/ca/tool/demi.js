@@ -16,7 +16,7 @@ tools.Demi.start = function() {
 	var _demi = $('#cageDemiContainer');
 	$('body > center').append('<div id="cageDemiResult">');
 	signedGet('symbols.php', function(_demipage) {
-		_demipage = noSrc(_demipage);
+		_demipage = $($.parseHTML(noSrc(_demipage)));
 		$('div[id^="symbol_displaysymbols"]', _demipage).each(function(_i, _e) {
 			var _text = $(_e).text(), _deity = /\+1 max (\w+)/.exec(_text)[1], _points = /You have (\d+)/.exec(_text)[1];
 			_demi.append('<div><div id="cageDemi' + _deity + '" class="cageDemiImage" style="background-image:url(http://image4.castleagegame.com/graphics/deity_' + _deity + '.jpg);" symbol="' + (_i + 1) + '"><span>' + _points + '<br>' + _deity.substr(0, 1).toUpperCase() + _deity.substr(1) + '</span></div></div>');
@@ -35,7 +35,7 @@ tools.Demi.start = function() {
 		$('div.cageDemiImage').click(function() {
 			tools.Demi.runtime.bgSet = $(this).attr('symbol');
 			signedGet('symbols.php?action=tribute&symbol=' + tools.Demi.runtime.bgSet, function(_blessed) {
-				_blessed = $(noSrc(_blessed));
+				_blessed = $($.parseHTML(noSrc(_blessed)));
 				$('#cageDemiResult').text($('div.result:contains(You cannot pay another tribute so soon), div.result:contains(You have paid tribute to)', _blessed).text().trim()).dialog({
 					title : 'Demi Power',
 					resizable : false,

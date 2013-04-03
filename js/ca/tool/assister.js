@@ -62,7 +62,7 @@ tools.Assister.start = function() {
 
 tools.Assister.getCTA = function(_ids) {
 	signedGet('army_news_feed.php', function(_data) {
-		_data = $(noSrc(_data));
+		_data = $($.parseHTML(noSrc(_data)));
 		_data.find('#action_logs > a[href*="action=doObjective"]').each(function(_i, _e) {
 			_e = $(_e);
 			var _uid = _e.find('*[uid]:first').attr('uid'), _name = /(?:[You|Your] friend )(.*)(?: has requested your help)/.exec(_e.text());
@@ -93,8 +93,7 @@ tools.Assister.assist = function(_ids) {
 		console.log('Assister - Friend: ' + _cta.uid);
 		signedGet(_cta.link, function(_monsterdata) {
 			console.log(_cta.link);
-			_monsterdata = noSrc(_monsterdata);
-			_monsterdata = $(_monsterdata);
+			_monsterdata = $($.parseHTML(noSrc(_monsterdata)));
 			console.log(_monsterdata.find('.result_body').text());
 			if (_monsterdata.find('.result_body').text().match(/You were the \d+(?:st|nd|rd|th) to help summon/) !== null && _cta.uid !== CastleAge.userId) {
 				_num = /You were the (\d+(?:st|nd|rd|th)) to help summon/.exec(_monsterdata.find('span.result_body').text())[1].replace('3th','3rd').replace('2th','2nd').replace('1th','1st');
