@@ -2,7 +2,7 @@
 	"manifest_version": 2,
 	"content_security_policy": "script-src 'self'; object-src 'self'",
 	"name": "CAGE - Castle Age Game Enhancer [β]",
-	"version": "1.2.16.2",
+	"version": "1.2.16.3",
 	"description": "CAGE makes playing Castle Age on Facebook a bit easier and a lot more fun ;)",
 	"background": {
 		"page": "background.html",

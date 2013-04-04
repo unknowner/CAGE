@@ -147,7 +147,7 @@ tools.COPTER.receiver = function(_data) {
 
 tools.COPTER.getStats = function(_callback) {
 	signedGet('keep.php', function(_data) {
-		_data = $(noSrc(_data));
+		_data = $($.parseHTML(noSrc(_data)));
 		var _stats = _data.find('div[style="width:240px;height:54px;overflow:hidden;"]'), _stat = {
 			stats : {
 				energy : _stats.eq(0).text().trim().match(/\d+/)[0],
@@ -169,7 +169,7 @@ tools.COPTER.getSoldiers = function(_callback) {
 		var _copterSoldiers = {
 			soldiers : {}
 		};
-		_data = _data ? $(noSrc(_data)) : $('#app_body');
+		_data = _data ? $($.parseHTML(noSrc(_data))) : $('#app_body');
 		_data.find('div[style*=town_unit_bar]').each(function(i, e) {
 			var $_this = $(this),
 				_name = $_this.find('div div strong:first').text().trim();
@@ -188,7 +188,7 @@ tools.COPTER.getItems = function(_callback) {
 		var _copterItems = {
 			items : {}
 		};
-		_data = _data ? $(noSrc(_data)) : $('#app_body');
+		_data = _data ? $($.parseHTML(noSrc(_data))) : $('#app_body');
 		_data.find('div[style*=town_unit_bar]').each(function(i, e) {
 			var $_this = $(this),
 				_name = $_this.find('div div strong:first').text().trim();
@@ -207,7 +207,7 @@ tools.COPTER.getMagic = function(_callback) {
 		var _copterMagic = {
 			magic : {}
 		};
-		_data = _data ? $(noSrc(_data)) : $('#app_body');
+		_data = _data ? $($.parseHTML(noSrc(_data))) : $('#app_body');
 		_data.find('div[style*=town_unit_bar]').each(function(i, e) {
 			var $_this = $(this),
 				_name = $_this.find('div div strong:first').text().trim();
@@ -226,7 +226,7 @@ tools.COPTER.getLand = function(_callback) {
 		var _copterLand = {
 			land : {}
 		};
-		_data = _data ? $(noSrc(_data)) : $('#app_body');
+		_data = _data ? $($.parseHTML(noSrc(_data))) : $('#app_body');
 		_data.find('div[style*=town_land_bar]').each(function(i, e) {
 			var $_this = $(this),
 				_name = $_this.find('div div strong:first').text().trim();
@@ -249,7 +249,7 @@ tools.COPTER.addDisplay = function() {
 		tools.COPTER.runtime.dialogId = '#' + tools.Sidebar.smallDialog('COPTER', '<button id="cageCOPTERUpdateStats">Update stats</button><button id="cageCOPTERUpdateGenerals">Update generals</button><button id="cageCOPTERUpdateSoldiers">Update soldiers</button><button id="cageCOPTERUpdateItems">Update items</button><button id="cageCOPTERUpdateMagic">Update magic</button><button id="cageCOPTERUpdateLand">Update land</button><button id="cageCOPTERBestAttG">Best offensive general</button><button id="cageCOPTERBestDefG">Best defensive general</button>', null, {
 			'display' : 'none'
 		}, tools.COPTER.done, {
-			'top' : ($('#cageCOPTERDisplay').offset().top - 40)
+			'top' : 130
 		});
 		$(tools.COPTER.runtime.dialogId).find('div.cageDialogText > button').css('width', '98%').button();
 		// update_stats
