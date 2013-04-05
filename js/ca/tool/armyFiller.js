@@ -33,7 +33,7 @@ tools.ArmyFiller.readCAArmy = function(_page) {
 	_page = _page ? _page : 1;
 	//console.log('ArmyFiller - readCAArmy: ', _page);
 	signedGet('army_member.php?page=' + _page, function(_armydata) {
-		_armydata = $($.parseHTML(nosrc(_armydata)));
+		_armydata = $($.parseHTML(noSrc(_armydata)));
 		$('#app_body table.layout table:eq(1)').html($('#app_body table.layout table:eq(1)', _armydata).html());
 		$('#app_body table.layout table:eq(1) div:contains("Displaying"):last').css({
 			'position' : 'absolute',
