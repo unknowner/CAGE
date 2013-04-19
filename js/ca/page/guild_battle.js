@@ -37,8 +37,8 @@ tools.Page.pages['guild_battle.php'] = function() {
 	// add current tokens to result
 	var _tokens = $('div.result div:contains("-1 Battle Tokens"):last');
 	_tokens.text(_tokens.text() + ' (' + $('#guild_token_current_value').text() + ' left)');
+	
 	// reduce gate size and add number
-	// $('#your_guild_member_list, #enemy_guild_member_list').css('backgroundSize', '641px 110px');
 	if ($('#your_guild_member_list:contains("No Soldiers Posted In This Position!"), #enemy_guild_member_list:contains("No Soldiers Posted In This Position!")').length === 0) {
 		$('#enemy_guild_member_list > div > div, #your_guild_member_list > div > div').each(function(_i, _e) {
 			$(_e).append('<span class="GuildNum">' + (_i + 1) + '<span>');
@@ -64,8 +64,13 @@ tools.Page.pages['guild_battle.php'] = function() {
 			// add link to profile pics
 			$('*[uid]', this).wrap('<a uid="' + $('*[uid]', this).attr('uid') + '" class="cageGuildProfileLink" onclick="ajaxLinkSend(\'globalContainer\', \'keep.php?casuser=' + $('*[uid]', this).attr('uid') + '\'); return false;"></a>');
 
-			var _text = $(_e).text();
-			if (_text.match(_class) && _text.match(_activ) && _text.match(_state)) {
+			var _text = $(_e).text(),_start,_end,_test;
+			_start = _text.search("Health");
+			_end = _text.search("Status");
+			_test = _text.substr(_start,_end-_start-28);
+			_test = _test.replace(/(\d+)(?:(\/\1$))/gi,"FullHealth");
+
+			if (_text.match(_class) && _text.match(_activ) && (_text.match(_state) || _test.match(_state)) ) {
 				if (_points !== 'All') {
 					if (_text.match(/Level: \d+/)) {
 						var targetLevelText = _text.match(/Level: \d+/);
@@ -131,6 +136,7 @@ tools.Page.pages['guild_battle.php'] = function() {
 		'Inactive' : 'Battle Points: 0'
 	}, filterStatus = {
 		'All' : '\.*',
+		'Full health' : 'FullHealth',
 		'Got health' : 'Health: [^0]',
 		'No health' : 'Health: 0/',
 		'Healthy' : 'Healthy',
