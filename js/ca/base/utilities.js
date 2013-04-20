@@ -20,7 +20,7 @@ function note(_h, _m) {
 	}
 }
 
-// Add custom event to centent site and listener to content_script
+// Add custom event to content site and listener to content_script
 function customEvent(_event, _function) {
 
 	addFunction(function() {
