@@ -29,9 +29,11 @@ tools.Page.init = function() {
 		var _page = $('#PageURL').val();
 		tools.Page.allPages();
 		if (tools.Page.pages[_page]) {
-			var start = new Date();
-			tools.Page.pages[_page]();
-			console.log('Time to mod', _page, ':', (new Date() - start));
+			setTimeout(function() {
+				var start = new Date();
+				tools.Page.pages[_page]();
+				console.log('Time to mod', _page, ':', (new Date() - start));
+			}, 0);
 		}
 		tools.General.get();
 	});
@@ -53,7 +55,7 @@ tools.Page.allPages = function() {
 		$('#expandedGuildChat').css('left', '');
 	}, 250);
 	// repos CA menu & add stuff
-	//tools.Functions.addToCANav('mainMenu_home', 'Main', 'specialmembership.php', 'Crusaders');
+	// tools.Functions.addToCANav('mainMenu_home', 'Main', 'specialmembership.php', 'Crusaders');
 	tools.Functions.addToCANav('mainMenu_monster', 'Public List', 'army_news_feed.php', 'Live feed');
 	tools.Functions.addToCANav('mainMenu_battle', 'War Rank', 'raid.php', 'Raid');
 	tools.Functions.addCAGEToCANav('mainMenu_home', 'Crusaders', function() {

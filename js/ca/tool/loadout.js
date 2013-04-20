@@ -1,7 +1,7 @@
 tool('Loadout');
 
 tools.Loadout.init = function() {
-	tools.Loadout.runtimeUpdate();
+
 	$('#cageSidebarStats').append('<div id="cageLoadoutDisplay" class="cageSidebarStat"><div>Loadouts</div><div></div></div>').append($('<button id="cageLoadoutSubmit" title="Update data"><div></div></button>').click(function() {
 
 	}));
@@ -31,16 +31,4 @@ tools.Loadout.init = function() {
 			}));
 		}
 	});
-};
-
-tools.Loadout.runtimeUpdate = function() {
-
-};
-
-tools.Loadout.start = function() {
-
-};
-
-tools.Loadout.done = function() {
-
 };

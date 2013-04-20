@@ -462,7 +462,7 @@ button.cageArmyEdit>span {
 }
 
 div.cageAlchemyContainer {
-	background-image: url('http://image4.castleagegame.com/10952/graphics/alchfb_midrepeat.jpg');
+	background-image: url('http://image4.castleagegame.com/graphics/alchfb_midrepeat.jpg');
 	width: 740px;
 	height: 110px;
 	font-weight: bold;
@@ -472,7 +472,7 @@ div.cageAlchemyContainer {
 }
 
 div.cageAlchemyContainerBlank {
-	background-image: url('http://image4.castleagegame.com/10952/graphics/alchfb_midrepeat_blank.jpg');
+	background-image: url('http://image4.castleagegame.com/graphics/alchfb_midrepeat_blank.jpg');
 	width: 740px;
 	height: 110px;
 	font-weight: bold;
