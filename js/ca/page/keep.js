@@ -25,6 +25,7 @@ tools.Page.pages['keep.php'] = function() {
 	});
 
 	// Some more stats, like BSI, LSI... keep_data.attribute_section
+	_data = [];
 	_data.lvl = $('#st_5').find('div:contains("Level"):last').text();
 	_data.stats = $('#app_body').find('div[style="width:240px;height:54px;overflow:hidden;"]');
 	if (_data.lvl && _data.stats.length > 0) {
@@ -44,7 +45,7 @@ tools.Page.pages['keep.php'] = function() {
 		_data.lsi = Math.round((_data.eng + _data.sta * 2) / _data.lvl * 100) / 100;
 		_data.tsi = _data.bsi + _data.lsi;
 		console.log(_data);
-		$('#keepAltStats').before($('<div id="cageKeepStats">').append('<div><div>eAtt: ' + _data.eAt + '</div><div style="font-size:9px;">Effective Attack</div></div>').append('<div><div>eDef: ' + _data.eDe + '</div><div style="font-size:9px;">Effective Defense</div></div>').append('<div><div>BSI: ' + _data.bsi.toFixed(2) + '</div><div style="font-size:9px;">Battle Strength Index</div></div>').append('<div><div>LSI: ' + _data.lsi.toFixed(2) + '</div><div style="font-size:9px;">Levelling Speed Index</div></div>').append('<div><div>TSI: ' + _data.tsi.toFixed(2) + '</div><div style="font-size:9px;">Total Skillpoints per Level</div>'));
+		$('#keepAltStats').before($('<div id="cageKeepStats">').append('<div><div>eAtt: ' + _data.eAt + '</div><div style="font-size:9px;">Effective Attack</div></div>').append('<div><div>eDef: ' + _data.eDe + '</div><div style="font-size:9px;">Effective Defense</div></div><div/><div/>').append('<div><div>BSI: ' + _data.bsi.toFixed(2) + '</div><div style="font-size:9px;">Battle Strength Index</div></div>').append('<div><div>LSI: ' + _data.lsi.toFixed(2) + '</div><div style="font-size:9px;">Levelling Speed Index</div></div>').append('<div><div>TSI: ' + _data.tsi.toFixed(2) + '</div><div style="font-size:9px;">Total Skillpoints per Level</div>'));
 	}
 	// rearrange Items
 	/*

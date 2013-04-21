@@ -9,21 +9,20 @@
  * Keep
  */
 #cageKeepStats {
-	background-color: #000;
-	margin-left: 26px;
-	margin-bottom: 14px;
-	opacity: 0.8;
-	color: #eee;
-	text-align: left;
-	padding: 10px;
-	height: 65px;
-	width: 667px;
+	background-image: url('http://image4.castleagegame.com/20843/graphics/essencebox.gif');
+	background-repeat: no-repeat;
+	width: 657px;
+	height: 122px;
+	margin-left: 40px;
+	margin-bottom: 16px;
 }
 
 #cageKeepStats>div {
+	text-shadow: 2px 2px #000;
 	float: left;
-	width: 165px;
-	margin-bottom: 5px;
+	width: 144px;
+	height: 25px;
+	padding: 20px 0 0 20px;
 }
 /*
  * All Stats
