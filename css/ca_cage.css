@@ -18,7 +18,7 @@ div.game {
     z-index: 3;
     font-family: Trebuchet MS, Tahoma, Verdana, Arial, sans-serif !important;
 }
-#main_ststb * {
+#main_ststb span, #main_ststb strong{
     font-family: Trebuchet MS, Tahoma, Verdana, Arial, sans-serif !important;
     color: #eee !important;
     font-size: 12px !important;

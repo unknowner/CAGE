@@ -37,13 +37,18 @@ tools.Page.pages['guild_battle.php'] = function() {
 	// add current tokens to result
 	var _tokens = $('div.result div:contains("-1 Battle Tokens"):last');
 	_tokens.text(_tokens.text() + ' (' + $('#guild_token_current_value').text() + ' left)');
-	
+
 	// reduce gate size and add number
 	if ($('#your_guild_member_list:contains("No Soldiers Posted In This Position!"), #enemy_guild_member_list:contains("No Soldiers Posted In This Position!")').length === 0) {
 		$('#enemy_guild_member_list > div > div, #your_guild_member_list > div > div').each(function(_i, _e) {
 			$(_e).append('<span class="GuildNum">' + (_i + 1) + '<span>');
 		});
 	}
+
+	$('#your_guild_member_list > div > div, #enemy_guild_member_list > div > div').each(function(_i, _e) {
+		// add link to profile pics
+		$('*[uid]', this).wrap('<a uid="' + $('*[uid]', this).attr('uid') + '" class="cageGuildProfileLink" onclick="ajaxLinkSend(\'globalContainer\', \'keep.php?casuser=' + $('*[uid]', this).attr('uid') + '\'); return false;"></a>');
+	});
 
 	// Saved filter settings
 	var _storedClass = item.get('cagePageGuildBattleClass', 'All');
@@ -61,50 +66,43 @@ tools.Page.pages['guild_battle.php'] = function() {
 		var _myLevel = $('a[href*="keep.php"] > div[style="color:#ffffff"]').text().match(/\d+/);
 		var myLevel = Number(_myLevel[0]);
 		$('#your_guild_member_list > div > div, #enemy_guild_member_list > div > div').each(function(_i, _e) {
-			// add link to profile pics
-			$('*[uid]', this).wrap('<a uid="' + $('*[uid]', this).attr('uid') + '" class="cageGuildProfileLink" onclick="ajaxLinkSend(\'globalContainer\', \'keep.php?casuser=' + $('*[uid]', this).attr('uid') + '\'); return false;"></a>');
 
-			var _text = $(_e).text(),_start,_end,_test;
+			var _text = $(_e).text().trim(), _start, _end, _test;
 			_start = _text.search("Health");
 			_end = _text.search("Status");
-			_test = _text.substr(_start,_end-_start-28);
-			_test = _test.replace(/(\d+)(?:(\/\1$))/gi,"FullHealth");
+			_test = _text.substr(_start, _end - _start - 28);
+			_test = _test.replace(/(\d+)(?:(\/\1$))/gi, "FullHealth");
 
-			if (_text.match(_class) && _text.match(_activ) && (_text.match(_state) || _test.match(_state)) ) {
+			if (_class.test(_text) && _activ.test(_text) && _state.test(_text)) {
 				if (_points !== 'All') {
-					if (_text.match(/Level: \d+/)) {
-						var targetLevelText = _text.match(/Level: \d+/);
-						var targetLevelString = targetLevelText[0].match(/\d+/);
-						var targetLevel = Number(targetLevelString[0]);
+					if (/Level: \d+/.test(_text)) {
+						var targetLevel = parseInt(/(?:Level: )(\d+)/g.exec(_text)[1]);
+						var _showTarget = false;
 						switch (_points) {
 							case '240':
 								if (targetLevel > myLevel * 1.2) {
-									$(_e).show();
-									_count += 1;
-								} else {
-									$(_e).hide();
+									_showTarget = true;
 								}
 								break;
 							case '200':
 								if ((targetLevel > myLevel * 0.8) && (targetLevel <= myLevel * 1.2)) {
-									$(_e).show();
-									_count += 1;
-								} else {
-									$(_e).hide();
+									_showTarget = true;
 								}
 								break;
 							case '160':
 								if (targetLevel <= myLevel * 0.8) {
-									$(_e).show();
-									_count += 1;
-								} else {
-									$(_e).hide();
+									_showTarget = true;
 								}
 								break;
 							default:
-								$(_e).show();
-								_count += 1;
-							}
+								_showTarget = true;
+						}
+						if (_showTarget) {
+							$(_e).show();
+							_count += 1;
+						} else {
+							$(_e).hide();
+						}
 					} else {
 						console.log('Error in points filter!');
 						$(_e).show();
@@ -125,17 +123,17 @@ tools.Page.pages['guild_battle.php'] = function() {
 
 	// class filter
 	var filterClass = {
-		'All' : '\.*',
+		'All' : '\.',
 		'Cleric' : 'Cleric',
 		'Mage' : 'Mage',
 		'Rogue' : 'Rogue',
 		'Warrior' : 'Warrior'
 	}, filterActivity = {
-		'All' : '\.*',
+		'All' : '\.',
 		'Active' : 'Battle Points: [^0]',
 		'Inactive' : 'Battle Points: 0'
 	}, filterStatus = {
-		'All' : '\.*',
+		'All' : '\.',
 		'Full health' : 'FullHealth',
 		'Got health' : 'Health: [^0]',
 		'No health' : 'Health: 0/',
@@ -162,15 +160,12 @@ tools.Page.pages['guild_battle.php'] = function() {
 		'borderRadius' : 0
 	}).click(function() {
 		$('span.ui-selectmenu-status').text('All');
-		$('#cageGateClassFilter, #cageGateActivityFilter, #cageGateStatusFilter').val('All');
-		_storedClass = 'All';
-		item.set('cagePageGuildBattleClass', _storedClass);
-		_storedActivity = 'All';
-		item.set('cagePageGuildBattleActivity', _storedActivity);
-		_storedStatus = 'All';
-		item.set('cagePageGuildBattleStatus', _storedStatus);
-		_storedPoints = 'All';
-		item.set('cagePageGuildBattlePoints', _storedPoints);
+		$('#cageGateClassFilter, #cageGateActivityFilter, #cageGateStatusFilter, #cageGatePointsFilter').val('All');
+		_storedClass = _storedActivity = _storedStatus = _storedPoints = 'All';
+		item.set('cagePageGuildBattleClass', 'All');
+		item.set('cagePageGuildBattleActivity', 'All');
+		item.set('cagePageGuildBattleStatus', 'All');
+		item.set('cagePageGuildBattlePoints', 'All');
 		filterGate();
 	}));
 	$('#guild_battle_health').append('<span class="cageGateFilterTitle ui-state-default"> Class </span><select id="cageGateClassFilter" class="cagegatefiltertitle">');

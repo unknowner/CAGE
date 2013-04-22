@@ -4,25 +4,6 @@ tools.Page.pages['keep.php'] = function() {
 	// Update potions
 	tools.PotionStamina.work();
 	tools.PotionEnergy.work();
-	// folding units, items ...
-	$('div.statsT2').has('div.statsTTitle').css({
-		'height' : 30,
-		'overflow' : 'hidden',
-		'cursor' : 'pointer'
-	});
-	// Collapsed items/untits ...
-	$('div.statsTTitle').toggle(function() {
-		$(this).parents('div.statsT2:first').css({
-			'height' : '100%',
-			'overflow' : ''
-		});
-		scrollTo(0, $(this).offset().top - 110);
-	}, function() {
-		$(this).parents('div.statsT2:first').css({
-			'height' : 30,
-			'overflow' : 'hidden'
-		});
-	});
 
 	// Some more stats, like BSI, LSI... keep_data.attribute_section
 	_data = [];
@@ -47,18 +28,7 @@ tools.Page.pages['keep.php'] = function() {
 		console.log(_data);
 		$('#keepAltStats').before($('<div id="cageKeepStats">').append('<div><div>eAtt: ' + _data.eAt + '</div><div style="font-size:9px;">Effective Attack</div></div>').append('<div><div>eDef: ' + _data.eDe + '</div><div style="font-size:9px;">Effective Defense</div></div><div/><div/>').append('<div><div>BSI: ' + _data.bsi.toFixed(2) + '</div><div style="font-size:9px;">Battle Strength Index</div></div>').append('<div><div>LSI: ' + _data.lsi.toFixed(2) + '</div><div style="font-size:9px;">Levelling Speed Index</div></div>').append('<div><div>TSI: ' + _data.tsi.toFixed(2) + '</div><div style="font-size:9px;">Total Skillpoints per Level</div>'));
 	}
-	// rearrange Items
-	/*
-	 * setTimeout(function() { $('td.statsTMainback').not(':contains("CONSUMABLES")').find('div.statUnit').each(function() {
-	 * var $this = $(this), $next = $this.next(), _text = $next.text().trim(); if (_text !== '') { _text =
-	 * _text.split(/(\r\n|\n|\r)/gm); $next.remove(); } else { _text = [ $this.find('img').attr('title') ]; } for ( var i =
-	 * 0; i < _text.length; i++) { if (_text[i].trim() == '') { _text.splice(i, 1); i--; } else { _text[i] =
-	 * _text[i].trim(); } } if (_text[0] !== $this.find('img').attr('alt')) { _text[0] = $this.find('img').attr('alt'); }
-	 * _text[0] = _text[0].replace(',', '<br>'); $this.data('info', _text.join('<br>')).find('img').hover(function() {
-	 * $this.css('zIndex', 1).prepend('<div class="cageUnitStats"><div>' + $this.data('info') + '</div></div>'); },
-	 * function() { $this.css('zIndex', '').children('div.cageUnitStats').remove(); }).attr('title',
-	 * '').unwrap().unwrap(); }); }, 50);
-	 */
+
 	// Add stuff on others keep
 	if ($('div.keep_main_section').length === 0) {
 		if ($('#keep_battle_frm1').length === 0) {

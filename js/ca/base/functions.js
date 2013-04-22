@@ -187,6 +187,7 @@ tools.Functions.stat_increase_ticker = function() {
 
 		var mins = parseInt(ticks_left / 60), secs = ticks_left % 60;
 		time_value.text(mins + ':' + ((secs > 9) ? secs : '0' + secs));
+		clearTimeout(timedStats[stat_type]);
 		timedStats[stat_type] = setTimeout(function() {
 			stat_increase_ticker(ticks_left, stat_current, stat_max, tick_time, increase_value, stat_type, false);
 		}, 1000);

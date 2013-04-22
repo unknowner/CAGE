@@ -67,7 +67,7 @@ tools.Page.allPages = function() {
 	});
 	// If found update bqh
 	if ($('form').find('input[name="bqh"]:first').length > 0) {
-		CastleAge.bqh = $('form input[name="bqh"]:first').val();
+		CastleAge.bqh = $('form').find('input[name="bqh"]:first').val();
 	}
 
 	// Favour points
