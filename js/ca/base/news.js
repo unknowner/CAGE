@@ -11,7 +11,8 @@ function cageNews(_full) {
 	$.each([
 	    'ADD: Full Health Filter for Guild Battles (thanks to Bonbons)',
 	    'FIX: Guild Conquest health/actions display',
-	    'FIX: Gate reseting when attacking with duel button (thanks to Bonbons)'
+	    'FIX: Gate resetting when attacking with duel button (thanks to Bonbons)',
+	    'FIX: Guild battle points filter not resetting'
 	], function(_i, _e) {
 		$('#cageNewsChanges').append('<li><span>' + _e.split(':')[0] + '</span>' + _e.split(':')[1] + '</li>');
 	});

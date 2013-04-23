@@ -117,7 +117,7 @@ tools.Page.pages['festival_guild_battle.php'] = function() {
 			}
 		});
 		var _gateNum = $('#enemy_guild_battle_section_battle_list, #your_guild_battle_section_battle_list').attr('class').match(/\d/)[0];
-		var _gate = $('#enemy_guild_tab_' + _gateNum + ' > div, #your_guild_tab_' + _gateNum + ' > div');
+		var _gate = $('#enemy_arena_tab_' + _gateNum + ' > div, #your_arena_tab_' + _gateNum + ' > div');
 		_gate.html(_gate.html().replace(/\).*/, ')').replace(')', ')<br/><span style="font-size:11px;font-weight:bold;">Filtered: ' + _count + '</span>'));
 	}
 
