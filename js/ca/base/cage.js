@@ -21,9 +21,9 @@ tools.cage.settings = function() {
 		tools.cage.runtime.showNotes = !tools.cage.runtime.showNotes;
 	});
 	tools.Settings.text('');
-	tools.Settings.text('You should reload Castle Age after loading settings.');
+	tools.Settings.text('Settings are stored as an FB note called "CAGE-Settings". Do not mess with that note if you don\'t know what you\'re doing! ;)<br>You have to reload Castle Age after loading settings.');
 	tools.Settings.button(language.cageSaveSettings, tools.cage.saveData);
-	tools.Settings.textbox(language.cageLoadSettings, '', null, tools.cage.loadData);
+	tools.Settings.button(language.cageLoadSettings, tools.cage.loadData);
 
 	tools.Settings.text('');
 	tools.Settings.text(language.cageSetReqPermDesc);
@@ -31,7 +31,7 @@ tools.cage.settings = function() {
 
 };
 tools.cage.runtimeUpdate = function() {
-	if(!tools.cage.runtime) {
+	if (!tools.cage.runtime) {
 		tools.cage.runtime = {};
 	}
 	tools.cage.runtime.centered = item.get('cageCentered', true);
@@ -63,7 +63,7 @@ tools.cage.runtimeUpdate = function() {
 		'Trontastic' : 'http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/trontastic/',
 		'Vader' : 'http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/vader/'
 	};
-	if(!tools.cage.runtime.themes[tools.cage.runtime.theme]) {
+	if (!tools.cage.runtime.themes[tools.cage.runtime.theme]) {
 		tools.cage.runtime.theme = 'Dark Hive (default)';
 		item.set('cageTheme', 'Dark Hive (default)');
 	}
@@ -75,44 +75,112 @@ tools.cage.runtimeUpdate = function() {
 tools.cage.requestPermisson = function() {
 	addFunction(function() {
 		FB.login(function(response) {
-			if(response.status === 'connected') {
-				localStorage[FB.getAuthResponse().userID + '_' + 'permissions'] = '"1.1.21"';
+			if (response.status === 'connected') {
+				localStorage[FB.getAuthResponse().userID + '_' + 'permissions'] = '"1.2.18"';
 			}
 		}, {
-			scope : 'publish_stream, read_friendlists'
+			scope : 'publish_stream, read_friendlists, user_notes, create_note'
 		});
 	}, null, true, true);
 };
 tools.cage.clearSavedData = function() {
 
 	Object.keys(localStorage).forEach(function(key) {
-		if(key.indexOf(CastleAge.userId) == 0) {
+		if (key.indexOf(CastleAge.userId) == 0) {
 			localStorage.removeItem(key);
 		}
 	});
 	tools.Settings.start();
 };
 tools.cage.loadData = function(_data) {
-	_data = JSON.parse(_data);
-	Object.keys(_data).forEach(function(key) {
-		console.log(key, _data[key]);
-		localStorage[key] = _data[key];
+
+	customEvent('GetCAGESettings', function() {
+		var _load = JSON.parse($('#GetCAGESettings').val());
+		if (_load == 'NODATA') {
+			alert('No CAGE-Settings stored');
+		} else {
+			Object.keys(_load).forEach(function(key) {
+				localStorage[key] = _load[key];
+			});
+			alert('CAGE-Settings loaded');
+		}
 	});
+
+	addFunction(function() {
+		FB.api(FB.getAuthResponse().userID + '/notes', function(_notes) {
+			console.log('notes');
+			if (_notes.error) {
+				console.log('error:', _notes);
+				$('#GetCAGESettings').val(JSON.stringify('NODATA'));
+				fireGetCAGESettings();
+			} else {
+				var _gotData = false;
+				$.each(_notes.data, function(_i, _n) {
+					if (_n.subject === 'CAGE-Settings') {
+						var _load = JSON.parse($('<DIV>').html(_n.message).text());
+						_gotData = true;
+						$('#GetCAGESettings').val(JSON.stringify(_load));
+						fireGetCAGESettings();
+						return false;
+					}
+				});
+				if (!_gotData) {
+					$('#GetCAGESettings').val(JSON.stringify('NODATA'));
+					fireGetCAGESettings();
+				}
+			}
+		});
+	}, null, true, true);
+
 };
+
 tools.cage.saveData = function() {
 	var _save = {};
 	Object.keys(localStorage).forEach(function(key) {
-		if(key.indexOf(CastleAge.userId) == 0) {
+		if (key.indexOf(CastleAge.userId) == 0) {
 			_save[key] = localStorage.getItem(key);
 		}
 	});
-	var _pop1 = '<div style="margin-top:0;margin-right:0;margin-bottom:0;margin-left:0;padding-top:0;padding-right:0;padding-bottom:0;padding-left:0"><div style="float:left;width:500px;height:390px"><div style="background-image:url(\'http://image4.castleagegame.com/graphics/helpmenu_top.jpg\');width:500px;height:60px"><div style="padding:15px 0 0 36px"><div style="float:left;width:395px;height:25px;text-align:center;overflow:hidden"><div style="clear:both"></div><div style="color:white;font-size:18px"> SAVE SETTINGS </div><div style="clear:both"></div></div><div style="padding:3px 15px 0 0"><div style="float:right"><div style="text-align:right"><a href="#" onclick="hidePositionBox();return false"><img src="http://image4.castleagegame.com/graphics/popup_close_button.png"></a></div></div></div></div></div><div style="background-image:url(\'http://image4.castleagegame.com/graphics/helpmenu_middle.jpg\');width:500px;height:300px"><div style="padding:0 0 0 15px"><div style="float:left;width:470px;height:300px;text-align:left;overflow-y:auto"><div style="clear:both"></div><div style="color:black;font-size:16px;font-family:Times New Roman"> You can copy this data into  a text file and keep it there for later use. When you have to use CAGE on another computer you can restore your data easily.<br><b>Data</b><textarea rows="14" cols="55" readonly>';
-	var _pop2 = '</textarea></div><div style="clear:both"></div></div></div></div><div style="background-image:url(\'http://image4.castleagegame.com/graphics/helpmenu_bottom.jpg\');width:500px;height:30px;overflow:hidden"></div></div></div>';
 	addFunction(function(_data) {
-		console.log(1);
-		cageRePos(_data.html);
+
+		var _noteid = null;
+
+		FB.api(FB.getAuthResponse().userID + '/notes', function(_notes) {
+			console.log('notes');
+			if (_notes.error) {
+				console.log('error:', _notes);
+			} else {
+				$.each(_notes.data, function(_i, _n) {
+					if (_n.subject === 'CAGE-Settings') {
+						_noteid = _n.id;
+						return false;
+					}
+				});
+				var eventData = {
+					"subject" : 'CAGE-Settings',
+					"message" : _data.save,
+					"privacy" : {
+						"value" : "SELF"
+					}
+				};
+				if (_noteid === null) {
+					FB.api("/me/notes/", 'post', eventData, function(response) {
+						if (response.id) {
+							alert('Note "CAGE-Settings" created');
+						}
+					});
+				} else {
+					FB.api("/" + _noteid, 'post', eventData, function(response) {
+						if (response === true) {
+							alert('Note "CAGE-Settings" updated');
+						}
+					});
+				}
+			}
+		});
+
 	}, JSON.stringify({
-		html : _pop1 + JSON.stringify(_save) + _pop2
+		save : _save
 	}), true, true);
 };
 tools.cage.centered = function() {

@@ -2,7 +2,7 @@
 var language = {
 	//CAGE
 	cageSetClearDataDesc : 'If you have problems with gifting, cages or anything else, its the best to clear all saved data and reload Castle Age. You will loose all settings for your current user id!',
-	cageSetClearDataAction : 'Clear saved data',
+	cageSetClearDataAction : 'Clear saved data, not the settings note.',
 	cageSetAnimationAction : 'Animations',
 	cageSetThemeAction : 'Choose theme',
 	cageSetAlignCenter : 'Castle Age centered',

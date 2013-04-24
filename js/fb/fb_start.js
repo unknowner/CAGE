@@ -2,12 +2,20 @@ function startCAGE() {
 
 	// Create uid-input from CA (easier to get uid)
 	addFunction(function() {
-		var _i = document.createElement('INPUT');
-		_i.type = 'hidden';
-		_i.id = 'EnvUser';
-		_i.value = getCookie('c_user');
-		// _i.value = Env.user;
-		document.body.appendChild(_i);
+		function cageGetUID() {
+			var _i = document.createElement('INPUT');
+			_i.type = 'hidden';
+			_i.id = 'EnvUser';
+			_i.value = getCookie('c_user');
+			console.log('cageGetUID:', _i.value);
+			// _i.value = Env.user;
+			if (_i.value !== null) {
+				document.body.appendChild(_i);
+			} else {
+				cageGetUID();
+			}
+		}
+		cageGetUID();
 	}, null, true, true);
 	// Fix for double scrollbars
 	$('#body').css({
