@@ -97,12 +97,12 @@ tools.cage.loadData = function(_data) {
 	customEvent('GetCAGESettings', function() {
 		var _load = JSON.parse($('#GetCAGESettings').val());
 		if (_load == 'NODATA') {
-			alert('No CAGE-Settings stored');
+			note('CAGE', 'No CAGE-Settings stored!');
 		} else {
 			Object.keys(_load).forEach(function(key) {
 				localStorage[key] = _load[key];
 			});
-			alert('CAGE-Settings loaded');
+			note('CAGE', 'Settings loaded from note.');
 		}
 	});
 
@@ -118,6 +118,7 @@ tools.cage.loadData = function(_data) {
 				$.each(_notes.data, function(_i, _n) {
 					if (_n.subject === 'CAGE-Settings') {
 						var _load = JSON.parse($('<DIV>').html(_n.message).text());
+						console.log(_load);
 						_gotData = true;
 						$('#GetCAGESettings').val(JSON.stringify(_load));
 						fireGetCAGESettings();
@@ -141,6 +142,7 @@ tools.cage.saveData = function() {
 			_save[key] = localStorage.getItem(key);
 		}
 	});
+	addFunction(DumpObjectIndented, null, false, false);
 	addFunction(function(_data) {
 
 		var _noteid = null;
@@ -156,9 +158,12 @@ tools.cage.saveData = function() {
 						return false;
 					}
 				});
+				var _savedata = _data.save;
+				_savedata = DumpObjectIndented(_savedata, ' ');
+				console.log(_savedata);
 				var eventData = {
 					"subject" : 'CAGE-Settings',
-					"message" : _data.save,
+					"message" : _savedata,
 					"privacy" : {
 						"value" : "SELF"
 					}
@@ -166,13 +171,13 @@ tools.cage.saveData = function() {
 				if (_noteid === null) {
 					FB.api("/me/notes/", 'post', eventData, function(response) {
 						if (response.id) {
-							alert('Note "CAGE-Settings" created');
+							alert('CAGE-Settings created.');
 						}
 					});
 				} else {
 					FB.api("/" + _noteid, 'post', eventData, function(response) {
 						if (response === true) {
-							alert('Note "CAGE-Settings" updated');
+							alert('CAGE-Settings updated.');
 						}
 					});
 				}

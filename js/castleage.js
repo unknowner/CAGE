@@ -16,15 +16,7 @@ function initCastleAge() {
 	$('#AjaxLoadIcon').append('<img id="cageLogo" src="' + getPath('img/icon64.png') + '"><div id="cageLoadError">Loading CAGE...</div>').fadeIn('slow');
 	var _append = '';
 	$.each([
-			'css/ca_cage.css',
-			'css/ca_monster.css',
-			'css/ca_pages.css',
-			'css/cage_general.css',
-			'css/cage_settings.css',
-			'css/cage_sidebar.css',
-			'css/cage_stats.css',
-			'css/cage_tools.css',
-			'css/cage.css'
+			'css/ca_cage.css', 'css/ca_monster.css', 'css/ca_pages.css', 'css/cage_general.css', 'css/cage_settings.css', 'css/cage_sidebar.css', 'css/cage_stats.css', 'css/cage_tools.css', 'css/cage.css'
 	], function(_i, _e) {
 		_append += '<link rel="stylesheet" type="text/css" href="' + getPath(_e) + '?_=' + Math.random() + '" >';
 	});
@@ -56,13 +48,14 @@ function initCastleAge() {
 					tools.Page.pages[_startURL]();
 				}
 				_startURL = null;
-			}, 1000);
+			}, 500);
 			$('#AjaxLoadIcon').delay(3000).fadeOut(1000, function() {
 				$('#collapsedGuildChat').css('left', '');
 				$('#expandedGuildChat').css('left', '');
 				$('#chatGuildChat').scrollTop($('#chatGuildChat div').length * 1000);
 				$('#cageLoadError').remove();
 			});
+		
 		} else {
 			com.send(com.task.castleAgeReady, com.port.facebook);
 		}

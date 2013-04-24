@@ -17,4 +17,5 @@ function initFacebook() {
 	$('#contentArea').css('backgroundColor', '#000');
 	$('#cageIFrame').html('.cageIFrame {height:' + (_window.innerHeight - (Facebook.bluebarHidden === true ? 1 : 34)) + 'px !important;}');
 	$('#iframe_canvas').addClass('cageIFrame').attr('scrolling', 'yes');
+
 }

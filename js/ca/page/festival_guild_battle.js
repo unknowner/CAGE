@@ -67,13 +67,13 @@ tools.Page.pages['festival_guild_battle.php'] = function() {
 		var myLevel = Number(_myLevel[0]);
 		$('#your_guild_member_list > div > div, #enemy_guild_member_list > div > div').each(function(_i, _e) {
 
-			var _text = $(_e).text().trim(), _start, _end, _test;
+			var _text = $(_e).text().trim(), _start, _end, _fullhealth;
 			_start = _text.search("Health");
 			_end = _text.search("Status");
-			_test = _text.substr(_start, _end - _start - 28);
-			_test = _test.replace(/(\d+)(?:(\/\1$))/gi, "FullHealth");
+			_fullhealth = _text.substr(_start, _end - _start - 28);
+			_fullhealth = _fullhealth.replace(/(\d+)(?:(\/\1$))/gi, "FullHealth");
 
-			if (_class.test(_text) && _activ.test(_text) && _state.test(_text)) {
+			if (_class.test(_text) && _activ.test(_text) && (_state.test(_text)||_state.test(_fullhealth))) {
 				if (_points !== 'All') {
 					if (/Level: \d+/.test(_text)) {
 						var targetLevel = parseInt(/(?:Level: )(\d+)/g.exec(_text)[1]);
