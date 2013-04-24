@@ -117,16 +117,15 @@ tools.cage.loadData = function(_data) {
 				var _gotData = false;
 				$.each(_notes.data, function(_i, _n) {
 					if (_n.subject === 'CAGE-Settings') {
-						var _load = JSON.parse($('<DIV>').html(_n.message).text());
-						console.log(_load);
+						var _load = $('<DIV>').html(_n.message).text();
 						_gotData = true;
-						$('#GetCAGESettings').val(JSON.stringify(_load));
+						$('#GetCAGESettings').val(_load);
 						fireGetCAGESettings();
 						return false;
 					}
 				});
 				if (!_gotData) {
-					$('#GetCAGESettings').val(JSON.stringify('NODATA'));
+					$('#GetCAGESettings').val('NODATA');
 					fireGetCAGESettings();
 				}
 			}
@@ -142,7 +141,7 @@ tools.cage.saveData = function() {
 			_save[key] = localStorage.getItem(key);
 		}
 	});
-	addFunction(DumpObjectIndented, null, false, false);
+
 	addFunction(function(_data) {
 
 		var _noteid = null;
@@ -159,8 +158,7 @@ tools.cage.saveData = function() {
 					}
 				});
 				var _savedata = _data.save;
-				_savedata = DumpObjectIndented(_savedata, ' ');
-				console.log(_savedata);
+				_savedata = JSON.stringify(_savedata, undefined, 2);
 				var eventData = {
 					"subject" : 'CAGE-Settings',
 					"message" : _savedata,

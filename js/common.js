@@ -109,29 +109,3 @@ function S4() {
 function guid() {
 	return (S4() + S4() + "-" + S4() + "-" + S4() + "-" + S4() + "-" + S4() + S4() + S4());
 }
-
-// http://stackoverflow.com/questions/130404/javascript-data-formatting-pretty-printer
-function DumpObjectIndented(obj, indent) {
-	var result = "{\n";
-	if (indent == null)
-		indent = "";
-	for ( var property in obj) {
-		var value = obj[property];
-		if (typeof value == 'object') {
-			if (value instanceof Array) {
-				// Just let JS convert the Array to a string!
-				value = "[ " + value + " ]";
-			} else {
-				// Recursive dump
-				// (replace " " by "\t" or something else if you prefer)
-				var od = DumpObjectIndented(value, indent + "\t");
-				// If you like { on the same line as the key
-				// value = "{\n" + od + "\n" + indent + "}";
-				// If you prefer { and } to be aligned
-				value = "{\n" + od + "\n" + indent + "}";
-			}
-		}
-		result += indent + '"' + property + '" : ' + value + ",\n";
-	}
-	return result.replace(/,\n$/, "") + "\n}";
-}
