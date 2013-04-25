@@ -99,6 +99,11 @@ tools.cage.loadData = function(_data) {
 		if (_load == 'NODATA') {
 			note('CAGE', 'No CAGE-Settings stored!');
 		} else {
+			Object.keys(localStorage).forEach(function(key) {
+				if (key.indexOf(CastleAge.userId) == 0) {
+					localStorage.removeItem(key);
+				}
+			});
 			Object.keys(_load).forEach(function(key) {
 				localStorage[key] = _load[key];
 			});
