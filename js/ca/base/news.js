@@ -13,8 +13,9 @@ function cageNews(_full) {
 		tools.Settings.start();
 	});
 	$.each([
-	    'ADD: Save settings as FB note',
+	    'ADD: Save settings as FB note (use your settings on every PC)',
 	    'ADD: Full Health Filter for Guild Battles (thanks to Bonbons)',
+	    'ADD: Faster profile pic loading',
 	    'FIX: Guild Conquest health/actions display',
 	    'FIX: Gate resetting when attacking with duel button (thanks to Bonbons)',
 	    'FIX: Guild battle points filter not resetting'

@@ -3,9 +3,16 @@ tools.Page.pages['festival_guild_battle.php'] = function() {
 
 	console.log('Reworking data: festival_guild_battle');
 
+	// add link to profile pics
+	$('#your_guild_member_list, #enemy_guild_member_list').find('*[uid][size]').each(function(_i, _e) {
+		_uid = $(_e).attr('uid');
+		$(_e).wrap('<a uid="' + _uid + '" class="cageGuildProfileLink" onclick="ajaxLinkSend(\'globalContainer\', \'keep.php?casuser=' + _uid + '\'); return false;"></a>');
+	});
+
 	// fix gate reseting when attacking with duel button
 	var _gate = /\d/.exec($('#enemy_guild_battle_section_battle_list, #your_guild_battle_section_battle_list').attr('class'));
 	$('#results_main_wrapper form, #enemy_guild_member_list form, #your_guild_member_list form').append('<input type="hidden" name="sel_pos" value="' + _gate + '">');
+	$('#results_main_wrapper form, #enemy_guild_member_list form, #your_guild_member_list form').append('<input type="hidden" name="attacking_position" value="' + _gate + '">');
 
 	// add percentage to health bars
 	var _your = (1 - ($('div[style*="/guild_battle_bar_you.gif"]').width() / $('div[style*="/guild_battle_bar_you.gif"]').parent().width())) * 100;
@@ -45,11 +52,6 @@ tools.Page.pages['festival_guild_battle.php'] = function() {
 		});
 	}
 
-	$('#your_guild_member_list > div > div, #enemy_guild_member_list > div > div').each(function(_i, _e) {
-		// add link to profile pics
-		$('*[uid]', this).wrap('<a uid="' + $('*[uid]', this).attr('uid') + '" class="cageGuildProfileLink" onclick="ajaxLinkSend(\'globalContainer\', \'keep.php?casuser=' + $('*[uid]', this).attr('uid') + '\'); return false;"></a>');
-	});
-
 	// Saved filter settings
 	var _storedClass = item.get('cagePageFestGuildBattleClass', 'All');
 	var _storedActivity = item.get('cagePageFestGuildBattleActivity', 'All');
@@ -73,7 +75,7 @@ tools.Page.pages['festival_guild_battle.php'] = function() {
 			_fullhealth = _text.substr(_start, _end - _start - 28);
 			_fullhealth = _fullhealth.replace(/(\d+)(?:(\/\1$))/gi, "FullHealth");
 
-			if (_class.test(_text) && _activ.test(_text) && (_state.test(_text)||_state.test(_fullhealth))) {
+			if (_class.test(_text) && _activ.test(_text) && (_state.test(_text) || _state.test(_fullhealth))) {
 				if (_points !== 'All') {
 					if (/Level: \d+/.test(_text)) {
 						var targetLevel = parseInt(/(?:Level: )(\d+)/g.exec(_text)[1]);

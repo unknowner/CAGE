@@ -18,7 +18,7 @@ tools.Page.init = function() {
 		noNoSrc = function(_jqo) {
 			_jqo.find('input[nosrc], img[nosrc]').each(function() {
 				var $t = $(this);
-				$t.attr('src', $t.attr('nosrc')).removeAttr('nosrc');
+				$t.attr('src', $t.attr('nosrc'));
 			});
 			return _jqo;
 		};
@@ -66,8 +66,8 @@ tools.Page.allPages = function() {
 		$(this).attr('cage', $(this).height()).css('height', 0);
 	});
 	// If found update bqh
-	if ($('form').find('input[name="bqh"]:first').length > 0) {
-		CastleAge.bqh = $('form').find('input[name="bqh"]:first').val();
+	if ($('form').find('input[name="bqh"]').filter(":first").length > 0) {
+		CastleAge.bqh = $('form').find('input[name="bqh"]').filter(":first").val();
 	}
 
 	// Favour points
@@ -258,7 +258,21 @@ tools.Page.ajaxPageDone = function() {
 			}
 			startAllTimers();
 			setTimeout(function() {
-				FB.XFBML.parse(document.getElementById('globalContainer'));
+				// FB.XFBML.parse(document.getElementById('globalContainer'));
+				$('#app_body_container *[uid][size]').each(function(_i, _e) {
+					var _fbProfilePic = $(_e), _uid = _fbProfilePic.attr('uid'), _size = _fbProfilePic.attr('size'), _width = _fbProfilePic.attr('width'), _height = _fbProfilePic.attr('height');
+					if (_width) {
+						_width = ' width="' + _width + '" ';
+					} else {
+						_width = '';
+					}
+					if (_height) {
+						_height = ' width="' + _height + '" ';
+					} else {
+						_height = '';
+					}
+					_fbProfilePic.replaceWith('<img class="fbProfilePic" uid="' + _fbProfilePic.attr('uid') + '" ' +  _width + _height + ' src="http://graph.facebook.com/' + _uid + '/picture?size=' + _size + '">');
+				});
 			}, 1);
 			_stats = _stam = _ener = heal = null;
 			$('#AjaxLoadIcon').fadeOut();

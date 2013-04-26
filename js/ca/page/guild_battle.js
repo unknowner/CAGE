@@ -3,6 +3,12 @@ tools.Page.pages['guild_battle.php'] = function() {
 
 	console.log('Page: guild_battle.php');
 
+	// add link to profile pics
+	$('#your_guild_member_list, #enemy_guild_member_list').find('*[uid][size]').each(function(_i, _e) {
+		_uid = $(_e).attr('uid');
+		$(_e).wrap('<a uid="' + _uid + '" class="cageGuildProfileLink" onclick="ajaxLinkSend(\'globalContainer\', \'keep.php?casuser=' + _uid + '\'); return false;"></a>');
+	});
+
 	// fix gate reseting when attacking with duel button
 	var _gate = /\d/.exec($('#enemy_guild_battle_section_battle_list, #your_guild_battle_section_battle_list').attr('class'));
 	$('#results_main_wrapper form, #enemy_guild_member_list form, #your_guild_member_list form').append('<input type="hidden" name="sel_pos" value="' + _gate + '">');
@@ -45,11 +51,6 @@ tools.Page.pages['guild_battle.php'] = function() {
 		});
 	}
 
-	$('#your_guild_member_list > div > div, #enemy_guild_member_list > div > div').each(function(_i, _e) {
-		// add link to profile pics
-		$('*[uid]', this).wrap('<a uid="' + $('*[uid]', this).attr('uid') + '" class="cageGuildProfileLink" onclick="ajaxLinkSend(\'globalContainer\', \'keep.php?casuser=' + $('*[uid]', this).attr('uid') + '\'); return false;"></a>');
-	});
-
 	// Saved filter settings
 	var _storedClass = item.get('cagePageGuildBattleClass', 'All');
 	var _storedActivity = item.get('cagePageGuildBattleActivity', 'All');
@@ -73,7 +74,7 @@ tools.Page.pages['guild_battle.php'] = function() {
 			_fullhealth = _text.substr(_start, _end - _start - 28);
 			_fullhealth = _fullhealth.replace(/(\d+)(?:(\/\1$))/gi, "FullHealth");
 
-			if (_class.test(_text) && _activ.test(_text) && (_state.test(_text)||_state.test(_fullhealth))) {
+			if (_class.test(_text) && _activ.test(_text) && (_state.test(_text) || _state.test(_fullhealth))) {
 				if (_points !== 'All') {
 					if (/Level: \d+/.test(_text)) {
 						var targetLevel = parseInt(/(?:Level: )(\d+)/g.exec(_text)[1]);

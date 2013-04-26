@@ -7,10 +7,9 @@ tools.PotionStamina.start = function() {
 		'ajax' : 1,
 		'signed_request' : CastleAge.signed_request
 	}, function(_data) {
-		_data = noSrc(_data);
+		_data = $($.parseHTML(noSrc(_data)));
 		tools.PotionStamina.work(_data);
-		console.log($(_data).find('span.result_body'));
-		if($(_data).find('span.result_body:contains("You consumed")').length > 0) {
+		if (_data.find('span.result_body:contains("You consumed")').length > 0) {
 			addFunction(function(data) {
 				cageStat.stamina = data.stamina;
 			}, JSON.stringify({
@@ -23,7 +22,7 @@ tools.PotionStamina.start = function() {
 tools.PotionStamina.work = function(_pagedata) {
 	_pagedata = _pagedata == null ? $('#app_body') : $($.parseHTML(_pagedata));
 	var _potions = _pagedata.find('div[title="Stamina Potion"]').text().match(/\d+/g);
-	if(_potions !== null) {
+	if (_potions !== null) {
 		$('#cagePotionStamina').find('span.cagePotionCount').text(_potions[1]);
 	} else {
 		$('#cagePotionStamina').find('span.cagePotionCount').text('');
@@ -40,7 +39,7 @@ tools.PotionStamina.done = function() {
 };
 tools.PotionStamina.init = function() {
 	$('#cageStatsContainer').append($('<button id="cagePotionStamina" title="Use stamina potion if available"><span class="cagePotionCount"></span></button>').click(function() {
-		if($(this).text() !== '' && $(this).text() !== '0') {
+		if ($(this).text() !== '' && $(this).text() !== '0') {
 			$(this).css({
 				'cursor' : 'wait',
 				'backgroundSize' : '32px 32px',

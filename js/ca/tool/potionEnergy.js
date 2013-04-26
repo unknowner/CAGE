@@ -7,14 +7,13 @@ tools.PotionEnergy.start = function() {
 		'ajax' : 1,
 		'signed_request' : CastleAge.signed_request
 	}, function(_data) {
-		_data = noSrc(_data);
-		tools.PotionEnergy.work(_data);
-		console.log($(_data).find('span.result_body'));
-		if ($(_data).find('span.result_body:contains("You consumed")').length > 0) {
+		_data = $($.parseHTML(noSrc(_data)));
+		tools.PotionStamina.work(_data);
+		if (_data.find('span.result_body:contains("You consumed")').length > 0) {
 			addFunction(function(data) {
-				cageStat.energy = data.energy;
+				cageStat.stamina = data.stamina;
 			}, JSON.stringify({
-				energy : parseInt($('#energy_current_value').text(), 10) + 10
+				stamina : parseInt($('#energy_current_value').text(), 10) + 10
 			}), true, true);
 		}
 	});
