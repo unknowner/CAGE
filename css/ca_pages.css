@@ -491,3 +491,29 @@ div.cageAlchemyContainerBlank {
 	white-space: nowrap;
 	box-shadow: 1px 1px 3px #000;
 }
+/*
+* 
+*/
+#cageConquestBattleFilter {
+	position: absolute;
+	margin-top: -20px;
+	margin-left: 18px;
+	width: 517px;
+	height: 32px;
+	border-bottom-left-radius: 8px;
+	border-bottom-right-radius: 8px;
+	box-shadow: 0 5px 5px #000;
+	padding-left: 44px;
+}
+
+#cageGateClassFilter,#cageGateStatusFilter,#cageGatePointsFilter {
+	color: #fff;
+	height: 25px;
+	border: 1px solid #444444;
+	background-color: #222;
+	position: relative;
+	top: 3px;
+	left: 9px;
+	float: left;
+}
+);

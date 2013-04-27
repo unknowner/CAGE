@@ -31,73 +31,71 @@ tools.Page.pages['guildv2_conquest_expansion.php'] = function() {
 			var _myLevel = $('a[href*="keep.php"] > div[style="color:#ffffff"]').text().match(/\d+/);
 			var myLevel = Number(_myLevel[0]);
 			$('#your_guild_member_list_1 > div').each(function(_i, _e) {
-				if (_i > 0) {
-					var _text = $(_e).text().trim(), _health, _maxHealth, _fullhealth, _eClass;
+				var _text = $(_e).text().trim(), _health, _maxHealth, _fullhealth, _eClass;
 
-					/* enemy class */
-					_eClass = $(_e).find('img[title="Cleric"],img[title="Mage"],img[title="Warrior"],img[title="Rogue"]').attr("title");
+				/* enemy class */
+				_eClass = $(_e).find('img[title="Cleric"], img[title="Mage"], img[title="Warrior"], img[title="Rogue"]').attr("title");
 
-					/* enemy full health */
-					_health = /(\d+)\//.exec(_text)[1];
-					_maxHealth = /\/(\d+)/.exec(_text)[1];
-					if ((_maxHealth - _health) === 0) {
-						_fullhealth = true;
-					} else {
-						_fullhealth = false;
-					}
+				/* enemy full health */
+				_health = /(\d+)\//.exec(_text)[1];
+				_maxHealth = /\/(\d+)/.exec(_text)[1];
+				if ((_maxHealth - _health) === 0) {
+					_fullhealth = true;
+				} else {
+					_fullhealth = false;
+				}
 
-					if (_class.test(_eClass) && (_state.test(_text) || (_state.test('FullHealth') && _fullhealth))) {
-						if (_points !== 'All') {
-							if (/Level: \d+/.test(_text)) {
-								var targetLevel = parseInt(/(?:Level: )(\d+)/g.exec(_text)[1]);
-								var _showTarget = false;
-								switch (_points) {
-									case '50':
-										if (targetLevel > 900) {
-											_showTarget = true;
-										}
-										break;
-									case '40':
-										if ((targetLevel > 600) && (targetLevel <= 900)) {
-											_showTarget = true;
-										}
-										break;
-									case '30':
-										if ((targetLevel > 300) && (targetLevel <= 600)) {
-											_showTarget = true;
-										}
-										break;
-									case '20':
-										if ((targetLevel > 100) && (targetLevel <= 300)) {
-											_showTarget = true;
-										}
-										break;
-									case '10':
-										if (targetLevel <= 100) {
-											_showTarget = true;
-										}
-										break;
-									default:
+				if (_class.test(_eClass) && (_state.test(_text) || (_state.test('FullHealth') && _fullhealth))) {
+					if (_points !== 'All') {
+						if (/Level: \d+/.test(_text)) {
+							var targetLevel = parseInt(/(?:Level: )(\d+)/g.exec(_text)[1]);
+							var _showTarget = false;
+							switch (_points) {
+								case '50':
+									if (targetLevel > 900) {
 										_showTarget = true;
-								}
-								if (_showTarget) {
-									$(_e).show();
-									_count += 1;
-								} else {
-									$(_e).hide();
-								}
-							} else {
-								console.log('Error in points filter!');
+									}
+									break;
+								case '40':
+									if ((targetLevel > 600) && (targetLevel <= 900)) {
+										_showTarget = true;
+									}
+									break;
+								case '30':
+									if ((targetLevel > 300) && (targetLevel <= 600)) {
+										_showTarget = true;
+									}
+									break;
+								case '20':
+									if ((targetLevel > 100) && (targetLevel <= 300)) {
+										_showTarget = true;
+									}
+									break;
+								case '10':
+									if (targetLevel <= 100) {
+										_showTarget = true;
+									}
+									break;
+								default:
+									_showTarget = true;
+							}
+							if (_showTarget) {
 								$(_e).show();
 								_count += 1;
+							} else {
+								$(_e).hide();
 							}
 						} else {
+							console.log('Error in points filter!');
 							$(_e).show();
 							_count += 1;
 						}
 					} else {
-						$(_e).hide();
+						$(_e).show();
+						_count += 1;
 					}
+				} else {
+					$(_e).hide();
 				}
 			});
 			$('#app_body div[id="cageHealthAction"]:last').html($('#app_body div[id="cageHealthAction"]:last').html().replace(/.*Health\/Action:/, 'Health/Action:').replace('Health/Action:', 'Filtered: ' + _count + '<br/>Health/Action:'));
@@ -128,7 +126,7 @@ tools.Page.pages['guildv2_conquest_expansion.php'] = function() {
 			'10' : '10'
 		};
 		$('body > ul.ui-selectmenu-menu').remove();
-		$('#your_guild_member_list_1').before('<div id="cageConquestBattleFilter" style="position: absolute;margin-top: -20px;margin-left: 71px;width: 466px;height: 32px;border-bottom-left-radius: 8px;border-bottom-right-radius: 8px;box-shadow: 0 5px 5px #000;" class="ui-state-default"></div>');
+		$('#your_guild_member_list_1').before('<div id="cageConquestBattleFilter" class="ui-state-default"></div>');
 		var _cCBF = $('#cageConquestBattleFilter');
 		// Battle activity points filter
 		_cCBF.prepend('<span class="cageGateFilterTitle ui-state-default"> Points </span><select id="cageGatePointsFilter" class="cagegatefiltertitle">');
@@ -168,10 +166,10 @@ tools.Page.pages['guildv2_conquest_expansion.php'] = function() {
 			'position' : 'relative !important',
 			'left' : 9,
 			'top' : 3,
-			'float' : 'left',
 			'fontSize' : 12,
 			'height' : 25,
-			'borderRadius' : 0
+			'borderRadius' : 0,
+			'float' : 'left'
 		}).click(function() {
 			$('span.ui-selectmenu-status').text('All');
 			$('#cageGateClassFilter, #cageGateStatusFilter, #cageGatePointsFilter').val('All');
@@ -181,16 +179,6 @@ tools.Page.pages['guildv2_conquest_expansion.php'] = function() {
 			item.set('cagePageConquestBattlePoints', 'All');
 			filterGate();
 		}));
-		$('#cageGateClassFilter, #cageGateStatusFilter, #cageGatePointsFilter').css({
-			'float' : 'left',
-			'color' : '#fff',
-			'height' : 25,
-			'border' : '1 solid #444444',
-			'backgroundColor' : '#222',
-			'position' : 'relative',
-			'left' : 9,
-			'top' : 3
-		});
 		window.setTimeout(function() {
 			filterGate();
 		}, 10);
