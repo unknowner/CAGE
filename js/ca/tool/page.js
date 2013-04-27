@@ -258,20 +258,16 @@ tools.Page.ajaxPageDone = function() {
 			}
 			startAllTimers();
 			setTimeout(function() {
-				// FB.XFBML.parse(document.getElementById('globalContainer'));
-				$('#app_body_container *[uid][size]').each(function(_i, _e) {
-					var _fbProfilePic = $(_e), _uid = _fbProfilePic.attr('uid'), _size = _fbProfilePic.attr('size'), _width = _fbProfilePic.attr('width'), _height = _fbProfilePic.attr('height');
-					if (_width) {
-						_width = ' width="' + _width + '" ';
-					} else {
-						_width = '';
+				// add link to profile pics
+				$('#app_body_container img').filter('[nosrc*="//graph.facebook.com/"]').each(function(_i, _e) {
+					var _fbProfilePic = $(_e), _uid = /\/\/graph\.facebook\.com\/(\d+)\/picture/g.exec(_fbProfilePic.attr('nosrc'));
+					if (_uid !== null && _uid.length === 2) {
+						_fbProfilePic.attr({
+							'class' : 'cageProfileLink',
+							'uid' : _uid[1],
+							'onclick' : 'ajaxLinkSend(\'globalContainer\', \'keep.php?casuser=' + _uid[1] + '\'); return false;'
+						});
 					}
-					if (_height) {
-						_height = ' width="' + _height + '" ';
-					} else {
-						_height = '';
-					}
-					_fbProfilePic.replaceWith('<img class="fbProfilePic" uid="' + _fbProfilePic.attr('uid') + '" ' +  _width + _height + ' src="http://graph.facebook.com/' + _uid + '/picture?size=' + _size + '">');
 				});
 			}, 1);
 			_stats = _stam = _ener = heal = null;

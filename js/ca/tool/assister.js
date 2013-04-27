@@ -65,7 +65,7 @@ tools.Assister.getCTA = function(_ids) {
 		_data = $($.parseHTML(noSrc(_data)));
 		_data.find('#action_logs > a[href*="action=doObjective"]').each(function(_i, _e) {
 			_e = $(_e);
-			var _uid = _e.find('*[uid]:first').attr('uid'), _name = /(?:[You|Your] friend )(.*)(?: has requested your help)/.exec(_e.text());
+			var _uid = /\/\/graph\.facebook\.com\/(\d+)\/picture/g.exec(_e.find('img[nosrc*="//graph.facebook.com/"]').attr('nosrc'))[1], _name = /(?:[You|Your] friend )(.*)(?: has requested your help)/.exec(_e.text());
 			if (tools.Assister.runtime.friendsOnly == true && _ids.indexOf(_uid) == -1) {
 				return true;
 			}
@@ -96,7 +96,7 @@ tools.Assister.assist = function(_ids) {
 			_monsterdata = $($.parseHTML(noSrc(_monsterdata)));
 			console.log(_monsterdata.find('.result_body').text());
 			if (_monsterdata.find('.result_body').text().match(/You were the \d+(?:st|nd|rd|th) to help summon/) !== null && _cta.uid !== CastleAge.userId) {
-				_num = /You were the (\d+(?:st|nd|rd|th)) to help summon/.exec(_monsterdata.find('span.result_body').text())[1].replace('3th','3rd').replace('2th','2nd').replace('1th','1st');
+				_num = /You were the (\d+(?:st|nd|rd|th)) to help summon/.exec(_monsterdata.find('span.result_body').text())[1].replace('3th', '3rd').replace('2th', '2nd').replace('1th', '1st');
 				console.log(_num);
 				note('Assister', 'You\'ve assisted ' + _cta.name + '.');
 				tools.Assister.runtime.Used++;
@@ -146,41 +146,22 @@ tools.Assister.assist = function(_ids) {
 					tools.Assister.assist();
 				}, 1000);
 				// FB part currently not working, any way to get post id?
-				/*if (tools.Assister.runtime.assisterCommentFBPost === true || tools.Assister.runtime.assisterLikeFBPost === true) {
-					signedGet('party.php?casuser=' + _cta.uid, function(_guarddata) {
-						_guarddata = $($.parseHTML(noSrc(_guarddata)));
-						var _postid = _guarddata.find('div.streamContainer:has(div.streamName > a[href*="' + _cta.link + '"]) input[name="like_recent_news_post_id"]:first').val();
-						console.log('Assister - Like & Comment on FB post: ', _postid);
-						var _fbpost = _postid.match(/\d+/g);
-						console.log('Assister - Post Link: //www.facebook.com/permalink.php?story_fbid=' + _fbpost[1] + '&id=' + _fbpost[0]);
-						if (tools.Assister.runtime.assisterLikeFBPost === true) {
-							addFunction(function(_data) {
-								FB.api("/" + _data.postid + "/likes", 'post', function(response) {
-									console.log('Assister - FB Like done: ', response);
-								});
-							}, JSON.stringify({
-								postid : _postid
-							}), true, false);
-						}
-						if (tools.Assister.runtime.assisterCommentFBPost === true) {
-							addFunction(function(_data) {
-								FB.api("/" + _data.postid + "/comments", 'post', _data, function(response) {
-									console.log('Assister - FB Comment done: ', response);
-								});
-							}, JSON.stringify({
-								postid : _postid,
-								message : _num + ' ' + tools.Assister.runtime.facebookMessage
-							}), true, false);
-						}
-						window.setTimeout(function() {
-							tools.Assister.assist();
-						}, 1000);
-					});
-				} else {
-					window.setTimeout(function() {
-						tools.Assister.assist();
-					}, 1000);
-				}*/
+				/*
+				 * if (tools.Assister.runtime.assisterCommentFBPost === true || tools.Assister.runtime.assisterLikeFBPost ===
+				 * true) { signedGet('party.php?casuser=' + _cta.uid, function(_guarddata) { _guarddata =
+				 * $($.parseHTML(noSrc(_guarddata))); var _postid = _guarddata.find('div.streamContainer:has(div.streamName >
+				 * a[href*="' + _cta.link + '"]) input[name="like_recent_news_post_id"]:first').val(); console.log('Assister -
+				 * Like & Comment on FB post: ', _postid); var _fbpost = _postid.match(/\d+/g); console.log('Assister - Post
+				 * Link: //www.facebook.com/permalink.php?story_fbid=' + _fbpost[1] + '&id=' + _fbpost[0]); if
+				 * (tools.Assister.runtime.assisterLikeFBPost === true) { addFunction(function(_data) { FB.api("/" +
+				 * _data.postid + "/likes", 'post', function(response) { console.log('Assister - FB Like done: ', response); }); },
+				 * JSON.stringify({ postid : _postid }), true, false); } if (tools.Assister.runtime.assisterCommentFBPost ===
+				 * true) { addFunction(function(_data) { FB.api("/" + _data.postid + "/comments", 'post', _data,
+				 * function(response) { console.log('Assister - FB Comment done: ', response); }); }, JSON.stringify({ postid :
+				 * _postid, message : _num + ' ' + tools.Assister.runtime.facebookMessage }), true, false); }
+				 * window.setTimeout(function() { tools.Assister.assist(); }, 1000); }); } else { window.setTimeout(function() {
+				 * tools.Assister.assist(); }, 1000); }
+				 */
 			} else {
 				console.log('Assister - No assist, maybe already assisted');
 				window.setTimeout(function() {

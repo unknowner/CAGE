@@ -3,12 +3,6 @@ tools.Page.pages['guild_battle.php'] = function() {
 
 	console.log('Page: guild_battle.php');
 
-	// add link to profile pics
-	$('#your_guild_member_list, #enemy_guild_member_list').find('*[uid][size]').each(function(_i, _e) {
-		_uid = $(_e).attr('uid');
-		$(_e).wrap('<a uid="' + _uid + '" class="cageGuildProfileLink" onclick="ajaxLinkSend(\'globalContainer\', \'keep.php?casuser=' + _uid + '\'); return false;"></a>');
-	});
-
 	// fix gate reseting when attacking with duel button
 	var _gate = /\d/.exec($('#enemy_guild_battle_section_battle_list, #your_guild_battle_section_battle_list').attr('class'));
 	$('#results_main_wrapper form, #enemy_guild_member_list form, #your_guild_member_list form').append('<input type="hidden" name="sel_pos" value="' + _gate + '">');

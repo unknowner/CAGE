@@ -84,17 +84,7 @@ img.cageQuestPic {
 	width: 98px;
 	border-radius: 5px;
 }
-/*
- * Guild profile pics link
- */
-.cageGuildProfileLink {
-	cursor: pointer;
-	opacity: 0.8;
-}
 
-.cageGuildProfileLink:hover {
-	opacity: 1;
-}
 /*
  * Oracle
  */

@@ -1,150 +1,187 @@
 html {
-    overflow: auto;
+	overflow: auto;
 }
+
 body {
-    background-attachment: fixed;
+	background-attachment: fixed;
 }
+
 div.game {
-    width: 770px !important;
-    position: absolute;
+	width: 770px !important;
+	position: absolute;
 }
+
 #globalcss {
-    padding-left: 10px !important;
+	padding-left: 10px !important;
 }
+
 #main_sts_container {
-    position: fixed !important;
-    height: 55px;
-    width: 750px;
-    z-index: 3;
-    font-family: Trebuchet MS, Tahoma, Verdana, Arial, sans-serif !important;
+	position: fixed !important;
+	height: 55px;
+	width: 750px;
+	z-index: 3;
+	font-family: Trebuchet MS, Tahoma, Verdana, Arial, sans-serif !important;
 }
-#main_ststb span, #main_ststb strong{
-    font-family: Trebuchet MS, Tahoma, Verdana, Arial, sans-serif !important;
-    color: #eee !important;
-    font-size: 12px !important;
+
+#main_ststb span,#main_ststb strong {
+	font-family: Trebuchet MS, Tahoma, Verdana, Arial, sans-serif !important;
+	color: #eee !important;
+	font-size: 12px !important;
 }
-#main_ststb > div:first-child {
-    height: auto !important;
+
+#main_ststb>div:first-child {
+	height: auto !important;
 }
+
 #main_sts {
-    height: 55px !important;
-    width: 750px !important;
-    border-bottom: 1px solid black;
+	height: 55px !important;
+	width: 750px !important;
+	border-bottom: 1px solid black;
 }
+
 div.st_row_2 {
-    margin-top: 2px;
+	margin-top: 2px;
 }
+
 #app_body {
-    width: 740px !important;
-    padding: 25px 5px 5px 5px !important;
-    margin-top: 8px !important;
+	width: 740px !important;
+	padding: 25px 5px 5px 5px !important;
+	margin-top: 8px !important;
 }
-#nvbar, #nvbar_div_end, #main_bn, #main_bn_container, #main_bntp {
-    display: none !important;
+
+#nvbar,#nvbar_div_end,#main_bn,#main_bn_container,#main_bntp {
+	display: none !important;
 }
+
 #app_body_container {
-    padding-top: 75px !important;
+	padding-top: 75px !important;
 }
+
 #globalContainer {
-    width: 970px !important;
+	width: 970px !important;
 }
+
 #AjaxLoadIcon {
-    width: 80px !important;
-    position: fixed;
-    margin-left: 50%;
-    left: -140px;
-    box-shadow: 0 5px 12px 8px #000, 0 5px 12px 8px #000 inset;
-    border-radius: 50px;
-    z-index: 999;
-    display: none;
-    height: 78px;
-    top: 145px;
-    cursor: wait;
+	width: 80px !important;
+	position: fixed;
+	margin-left: 50%;
+	left: -140px;
+	box-shadow: 0 5px 12px 8px #000, 0 5px 12px 8px #000 inset;
+	border-radius: 50px;
+	z-index: 999;
+	display: none;
+	height: 78px;
+	top: 145px;
+	cursor: wait;
 }
+
 div.resultsTop {
-    border-top-left-radius: 6px;
-    border-top-right-radius: 6px;
+	border-top-left-radius: 6px;
+	border-top-right-radius: 6px;
 }
+
 div.resultsBottom {
-    border-bottom-left-radius: 6px;
-    border-bottom-right-radius: 6px;
+	border-bottom-left-radius: 6px;
+	border-bottom-right-radius: 6px;
 }
+
 div.resultsmainwrapper {
-    margin-bottom: 10px;
-    background-image: url('http://image4.castleagegame.com/graphics/bg_main_middle.jpg');
-    border-radius: 6px;
-    border: 1px solid #701919;
-    width: 738px;
+	margin-bottom: 10px;
+	background-image: url('http://image4.castleagegame.com/graphics/bg_main_middle.jpg');
+	border-radius: 6px;
+	border: 1px solid #701919;
+	width: 738px;
 }
+
 div.results {
-    border: 0;
-    width: 728px;
-    border-radius: 6px;
-    padding: 5px !important;
+	border: 0;
+	width: 728px;
+	border-radius: 6px;
+	padding: 5px !important;
 }
+
 div.connect_castlepb_bg {
-    z-index: 11 !important;
-    height: 100% !important;
+	z-index: 11 !important;
+	height: 100% !important;
 }
+
 .cageQuestSwitchGeneral {
-    top: -14px;
-    position: relative;
-    width: 78px;
-    cursor: pointer;
+	top: -14px;
+	position: relative;
+	width: 78px;
+	cursor: pointer;
 }
 /*
  * Popups
  */
 #single_popup_background {
-    cursor: pointer;
-    display: block;
-    height: 100%;
-    position: fixed;
-    width: 100%;
-    background-color: black;
-    top: 0;
-    left: 0;
-    opacity: 0;
-    z-index: 20;
+	cursor: pointer;
+	display: block;
+	height: 100%;
+	position: fixed;
+	width: 100%;
+	background-color: black;
+	top: 0;
+	left: 0;
+	opacity: 0;
+	z-index: 20;
 }
+
 #single_popup {
-    opacity: 0;
-    position: absolute;
-    top: 140px;
-    display: block;
+	opacity: 0;
+	position: absolute;
+	top: 140px;
+	display: block;
 }
+
 #result_popup_message {
-    overflow-x: hidden;
-    overflow-y: hidden;
-    z-index: 100;
-    position: fixed;
-    top: 120px;
-    margin-left:15px;
+	overflow-x: hidden;
+	overflow-y: hidden;
+	z-index: 100;
+	position: fixed;
+	top: 120px;
+	margin-left: 15px;
 }
+
 div.demipb_button {
-    position: absolute !important;
-    left: 456px !important;
-    top: 3px !important;
+	position: absolute !important;
+	left: 456px !important;
+	top: 3px !important;
 }
-#expandedGuildChat, #collapsedGuildChat {
-    z-index: 11;
-    top: 60px !important;
-    margin-left: 13px;
-    position: fixed !important;
+
+#expandedGuildChat,#collapsedGuildChat {
+	z-index: 11;
+	top: 60px !important;
+	margin-left: 13px;
+	position: fixed !important;
 }
+
 .cageCAMenu {
-    width: 693px !important;
-    position: fixed;
-    z-index: 10;
-    top: 55px;
-    padding-left: 57px;
-    box-shadow: 0 5px 13px 2px #000;
+	width: 693px !important;
+	position: fixed;
+	z-index: 10;
+	top: 55px;
+	padding-left: 57px;
+	box-shadow: 0 5px 13px 2px #000;
 }
+
 div.mainMenu a {
-    font-size: 12px !important;
-    color: #55c4f2 !important;
-    font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px !important;
+	color: #55c4f2 !important;
+	font-family: Arial, Helvetica, sans-serif;
 }
+
 #conquest_report {
 	top: 20px !important;
+}
+/*
+ * Guild profile pics link
+ */
+.cageProfileLink {
+	cursor: pointer;
+	opacity: 0.7;
+}
+
+.cageProfileLink:hover {
+	opacity: 1;
 }

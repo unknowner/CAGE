@@ -12,7 +12,8 @@ tools.Monster.settings = function() {
 	tools.Settings.onoff(language.monsterSetFestival1, tools.Monster.runtime.toCheck.festival1, 'cageMonsterFestival1', tools.Monster.runtimeUpdate);
 	tools.Settings.onoff(language.monsterSetFestival2, tools.Monster.runtime.toCheck.festival2, 'cageMonsterFestival2', tools.Monster.runtimeUpdate);
 	tools.Settings.onoff(language.monsterSetRaid, tools.Monster.runtime.toCheck.raid, 'cageMonsterRaid', tools.Monster.runtimeUpdate);
-	tools.Settings.onoff(language.monsterSetConquest, tools.Monster.runtime.toCheck.conquest, 'cageMonsterConquest', tools.Monster.runtimeUpdate);
+	// tools.Settings.onoff(language.monsterSetConquest, tools.Monster.runtime.toCheck.conquest, 'cageMonsterConquest',
+	// tools.Monster.runtimeUpdate);
 };
 tools.Monster.runtimeUpdate = function() {
 
@@ -24,8 +25,8 @@ tools.Monster.runtimeUpdate = function() {
 			festival1 : item.get('cageMonsterFestival1', true),
 			festival2 : item.get('cageMonsterFestival2', true),
 			monster : item.get('cageMonsterMonster', true),
-			raid : item.get('cageMonsterRaid', true),
-			conquest : item.get('cageMonsterConquest', true)
+			raid : item.get('cageMonsterRaid', true)
+		// conquest : item.get('cageMonsterConquest', true)
 		},
 		conquestLands : item.get('cageMonsterConquestLands', {})
 	};
@@ -262,7 +263,20 @@ tools.Monster.stunBar = function() {
 tools.Monster.battleStats = function() {
 	// monster stats
 	var _bossReg = new RegExp([
-			'monster_\\w+_large.jpg', 'boss_\\w+_large.jpg', 'boss_\\w+_big.jpg', 'nm_\\w+_large.jpg', 'nm_\\w+_large2.jpg', 'monster_\\w+_large_ca.jpg', 'seamonster_(?!ship_health)\\w*.jpg', 'seamonster_dead.jpg', 'dragon_monster_\\w+.jpg', 'boss_\\w+.jpg', '\\w+_large.jpg', '\\/monster_(?!health|ca_icon|hod_icon)\\w+.jpg', '\\w+_dead.jpg'
+			'monster_\\w+_large.jpg',
+			'boss_\\w+_large.jpg',
+			'boss_\\w+_big.jpg',
+			'nm_\\w+_large.jpg',
+			'nm_\\w+_large2.jpg',
+			'nm_\\w+_large_2.jpg',
+			'monster_\\w+_large_ca.jpg',
+			'seamonster_(?!ship_health)\\w*.jpg',
+			'seamonster_dead.jpg',
+			'dragon_monster_\\w+.jpg',
+			'boss_\\w+.jpg',
+			'\\w+_large.jpg',
+			'\\/monster_(?!health|ca_icon|hod_icon)\\w+.jpg',
+			'\\w+_dead.jpg'
 	].join('|'));
 	$('#app_body table.layout td > div:gt(2) div:not([id][alt][title]) > img:only-child').each(function() {
 		if (_bossReg.exec($(this).attr('src')) !== null) {
