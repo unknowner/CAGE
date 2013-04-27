@@ -3,17 +3,17 @@ tools.Page.pages['guildv2_conquest_expansion.php'] = function() {
 
 	console.log('Page: guildv2_conquest_expansion.php');
 	/* Mist land conquest battle */
-	if ($('#your_guild_member_list_1').length>0) {
+	if ($('#your_guild_member_list_1').length > 0) {
 		console.log('Mist land conquest battle');
-		
+
 		var _defenderHealth = 0, _actions = parseInt(/\d+/.exec($('#app_body div:contains("ACTIONS LEFT:"):last').text()), 10);
-		
-		$('#your_guild_member_list_1 > div').each(function(_i,_e) {
+
+		$('#your_guild_member_list_1 > div').each(function(_i, _e) {
 			_defenderHealth += parseInt(/(\d+)(?:\/)/.exec($(this).text())[1], 10);
-			$(_e,'div > div').append('<div style="clear:both;"></div>');
-			$(_e,'div > div').append('<span class="GuildNum">' + (_i + 1) + '<span>');
+			$(_e, 'div > div').append('<div style="clear:both;"></div>');
+			$(_e, 'div > div').append('<span class="GuildNum">' + (_i + 1) + '<span>');
 		});
-		if(_defenderHealth > 0) {
+		if (_defenderHealth > 0) {
 			$('#app_body div[style*="/graphics/war_art24.jpg"]:last').prepend('<div id="cageHealthAction">Health/Action: ' + (_defenderHealth / _actions).toFixed(0) + '</div>');
 		}
 
@@ -21,7 +21,7 @@ tools.Page.pages['guildv2_conquest_expansion.php'] = function() {
 		var _storedClass = item.get('cagePageConquestBattleClass', 'All');
 		var _storedStatus = item.get('cagePageConquestBattleStatus', 'All');
 		var _storedPoints = item.get('cagePageConquestBattlePoints', 'All');
-		
+
 		// gate filter
 		function filterGate() {
 			var _class = new RegExp($('#cageGateClassFilter').val());
@@ -31,22 +31,22 @@ tools.Page.pages['guildv2_conquest_expansion.php'] = function() {
 			var _myLevel = $('a[href*="keep.php"] > div[style="color:#ffffff"]').text().match(/\d+/);
 			var myLevel = Number(_myLevel[0]);
 			$('#your_guild_member_list_1 > div').each(function(_i, _e) {
-				if (_i>0){
-					var _text = $(_e).text().trim(), _health, _maxHealth, _fullhealth, _eClass;		
-					
+				if (_i > 0) {
+					var _text = $(_e).text().trim(), _health, _maxHealth, _fullhealth, _eClass;
+
 					/* enemy class */
-					_eClass=$(_e).find('img[title="Cleric"],img[title="Mage"],img[title="Warrior"],img[title="Rogue"]').attr("title");						
-					
+					_eClass = $(_e).find('img[title="Cleric"],img[title="Mage"],img[title="Warrior"],img[title="Rogue"]').attr("title");
+
 					/* enemy full health */
 					_health = /(\d+)\//.exec(_text)[1];
 					_maxHealth = /\/(\d+)/.exec(_text)[1];
-					if ((_maxHealth-_health)===0) {
-						_fullhealth=true;
+					if ((_maxHealth - _health) === 0) {
+						_fullhealth = true;
 					} else {
-						_fullhealth=false;
-					} 
+						_fullhealth = false;
+					}
 
-					if (_class.test(_eClass) && (_state.test(_text) || (_state.test('FullHealth')&&_fullhealth))) {
+					if (_class.test(_eClass) && (_state.test(_text) || (_state.test('FullHealth') && _fullhealth))) {
 						if (_points !== 'All') {
 							if (/Level: \d+/.test(_text)) {
 								var targetLevel = parseInt(/(?:Level: )(\d+)/g.exec(_text)[1]);
@@ -100,10 +100,9 @@ tools.Page.pages['guildv2_conquest_expansion.php'] = function() {
 					}
 				}
 			});
-			$('#app_body div[id="cageHealthAction"]:last').html($('#app_body div[id="cageHealthAction"]:last').html().replace(/.*Health\/Action:/, 'Health/Action:').replace('Health/Action:','Filtered: '+_count+ '<br/>Health/Action:'));
+			$('#app_body div[id="cageHealthAction"]:last').html($('#app_body div[id="cageHealthAction"]:last').html().replace(/.*Health\/Action:/, 'Health/Action:').replace('Health/Action:', 'Filtered: ' + _count + '<br/>Health/Action:'));
 		}
-		
-		
+
 		// class filter
 		var filterClass = {
 			'All' : '\.',
@@ -129,9 +128,10 @@ tools.Page.pages['guildv2_conquest_expansion.php'] = function() {
 			'10' : '10'
 		};
 		$('body > ul.ui-selectmenu-menu').remove();
-		$('#your_guild_member_list_1').prepend('<div style="clear:both;"></div>');
+		$('#your_guild_member_list_1').before('<div id="cageConquestBattleFilter" style="position: absolute;margin-top: -20px;margin-left: 71px;width: 466px;height: 32px;border-bottom-left-radius: 8px;border-bottom-right-radius: 8px;box-shadow: 0 5px 5px #000;" class="ui-state-default"></div>');
+		var _cCBF = $('#cageConquestBattleFilter');
 		// Battle activity points filter
-		$('#your_guild_member_list_1').prepend('<span class="cageGateFilterTitle ui-state-default"> Points </span><select id="cageGatePointsFilter" class="cagegatefiltertitle">');
+		_cCBF.prepend('<span class="cageGateFilterTitle ui-state-default"> Points </span><select id="cageGatePointsFilter" class="cagegatefiltertitle">');
 		_sel = $('#cageGatePointsFilter');
 		$.each(filterPoints, function(_i, _e) {
 			_sel.append('<option value="' + _e + '" ' + (_storedPoints == _i ? 'selected = "selected"' : '') + ' >' + _i + '</option>');
@@ -142,7 +142,7 @@ tools.Page.pages['guildv2_conquest_expansion.php'] = function() {
 			filterGate();
 		});
 		// status filter
-		$('#your_guild_member_list_1').prepend('<span class="cageGateFilterTitle ui-state-default"> Status </span><select id="cageGateStatusFilter" class="cagegatefiltertitle">');
+		_cCBF.prepend('<span class="cageGateFilterTitle ui-state-default"> Status </span><select id="cageGateStatusFilter" class="cagegatefiltertitle">');
 		_sel = $('#cageGateStatusFilter');
 		$.each(filterStatus, function(_i, _e) {
 			_sel.append('<option value="' + _e + '" ' + (_storedStatus == _i ? 'selected = "selected"' : '') + ' >' + _i + '</option>');
@@ -153,7 +153,7 @@ tools.Page.pages['guildv2_conquest_expansion.php'] = function() {
 			filterGate();
 		});
 		// Class filter
-		$('#your_guild_member_list_1').prepend('<span class="cageGateFilterTitle ui-state-default"> Class </span><select id="cageGateClassFilter" class="cagegatefiltertitle">');
+		_cCBF.prepend('<span class="cageGateFilterTitle ui-state-default"> Class </span><select id="cageGateClassFilter" class="cagegatefiltertitle">');
 		_sel = $('#cageGateClassFilter');
 		$.each(filterClass, function(_i, _e) {
 			_sel.append('<option value="' + _e + '" ' + (_storedClass == _i ? 'selected = "selected"' : '') + ' >' + _i + '</option>');
@@ -164,7 +164,7 @@ tools.Page.pages['guildv2_conquest_expansion.php'] = function() {
 			filterGate();
 		});
 		// Clear filters
-		$('#your_guild_member_list_1').prepend($('<button>Clear filters</button>').button().css({
+		_cCBF.prepend($('<button>Clear filters</button>').button().css({
 			'position' : 'relative !important',
 			'left' : 9,
 			'top' : 3,
