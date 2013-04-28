@@ -3,7 +3,7 @@ tool('ArmyFiller');
 tools.ArmyFiller.start = function() {
 
 	console.log('ArmyFiller - start');
-	if(tools.ArmyFiller.runtime == null) {
+	if (tools.ArmyFiller.runtime == null) {
 		tools.ArmyFiller.runtime = {
 			count : null,
 			army : [],
@@ -11,8 +11,10 @@ tools.ArmyFiller.start = function() {
 			busy : true,
 			text : null
 		};
-		tools.ArmyFiller.runtime.count = parseInt($('div:contains("Current Army Size"):last').next().text(), 10);
-		if(tools.ArmyFiller.runtime.count > 0) {
+		var _current = $('div:contains("Current Army Size"):last');
+		_current.css('width', 142);
+		tools.ArmyFiller.runtime.count = parseInt(_current.next().text(), 10);
+		if (tools.ArmyFiller.runtime.count > 0) {
 			$('#AjaxLoadIcon').show();
 			$('#app_body table.layout table:eq(1)').parent('div:first').css({
 				'height' : 28,
@@ -31,7 +33,7 @@ tools.ArmyFiller.start = function() {
 
 tools.ArmyFiller.readCAArmy = function(_page) {
 	_page = _page ? _page : 1;
-	//console.log('ArmyFiller - readCAArmy: ', _page);
+	// console.log('ArmyFiller - readCAArmy: ', _page);
 	signedGet('army_member.php?page=' + _page, function(_armydata) {
 		_armydata = $($.parseHTML(noSrc(_armydata)));
 		$('#app_body table.layout table:eq(1)').html($('#app_body table.layout table:eq(1)', _armydata).html());
@@ -42,19 +44,23 @@ tools.ArmyFiller.readCAArmy = function(_page) {
 			'textAlign' : 'left'
 		});
 		var _last = /\d+/.exec($('a[href*="army_member.php?page="]:last', _armydata).text());
-		if(_last == null) {
+		if (_last == null) {
 			tools.ArmyFiller.readCAArmy(_page);
 			return false;
 		}
 		_last = parseInt(_last[0], 10);
-		$('tr > td > a', _armydata).each(function(_i, _e) {
-			tools.ArmyFiller.runtime.army.push($('*[uid]:first', _e).attr('uid'));
+		$('#app_body_container img', _armydata).filter('[nosrc*="//graph.facebook.com/"]').each(function(_i, _e) {
+			var _fbProfilePic = $(_e), _uid = /\/\/graph\.facebook\.com\/(\d+)\/picture/g.exec(_fbProfilePic.attr('nosrc'));
+			if (_uid !== null) {
+				tools.ArmyFiller.runtime.army.push(_uid[1]);
+			}
 		});
-		if(_last == _page - 1) {
+
+		if (_last == _page - 1) {
 			tools.ArmyFiller.runtime.text.text(language.armyFillerAddMissing);
 			var _toAdd = [];
 			$.each(tools.ArmyFiller.runtime.cafriends, function(_i, _e) {
-				if(tools.ArmyFiller.runtime.army.indexOf(_e) == -1) {
+				if (tools.ArmyFiller.runtime.army.indexOf(_e) == -1) {
 					_toAdd.push(_e);
 					;
 				}
@@ -69,8 +75,8 @@ tools.ArmyFiller.readCAArmy = function(_page) {
 
 tools.ArmyFiller.addMissing = function(_start) {
 
-	//console.log('ArmyFiller - addMissing');
-	if(tools.ArmyFiller.runtime.cafriends.length > 0) {
+	// console.log('ArmyFiller - addMissing');
+	if (tools.ArmyFiller.runtime.cafriends.length > 0) {
 		var _id = tools.ArmyFiller.runtime.cafriends.pop();
 		tools.ArmyFiller.runtime.text.text('Adding ' + tools.ArmyFiller.runtime.cafriends.length + ' member(s)...');
 		signedGet('party.php?twt=jneg&jneg=true&user=' + _id + '&lka=' + _id + '&etw=9&ref=nf', function() {

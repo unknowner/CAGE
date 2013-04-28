@@ -61,15 +61,17 @@ tools.ArmyCleaner.readCAArmy = function(_page) {
 			return false;
 		}
 		_last = parseInt(_last[0], 10);
-		$('tr > td > a', _armydata).each(function(_i, _e) {
-			// tools.ArmyCleaner.runtime.iPhone
-			var _id = $('*[uid]:first', _e).attr('uid');
-			if (tools.ArmyCleaner.runtime.iPhone === true && _id.length === 15 && _id.indexOf('4', 0) === 0) {
-				console.log('iphone');
-				return;
+		$('#app_body_container img', _armydata).filter('[nosrc*="//graph.facebook.com/"]').each(function(_i, _e) {
+			var _fbProfilePic = $(_e), _uid = /\/\/graph\.facebook\.com\/(\d+)\/picture/g.exec(_fbProfilePic.attr('nosrc'));
+			if (_uid !== null) {
+				if (tools.ArmyCleaner.runtime.iPhone === true && _uid[1].length === 15 && _uid[1].indexOf('4', 0) === 0) {
+					console.log('iphone');
+					return;
+				}
+				tools.ArmyCleaner.runtime.army.push(_uid[1]);
 			}
-			tools.ArmyCleaner.runtime.army.push(_id);
 		});
+
 		if (_last == _page - 1) {
 			tools.ArmyCleaner.runtime.text.text(language.armyFillerRemoveMissing);
 			var _toAdd = [];

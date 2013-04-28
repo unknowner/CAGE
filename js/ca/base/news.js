@@ -15,7 +15,9 @@ function cageNews(_full) {
 	$.each([
 	    'ADD: Clickable user images',
 	    'ADD: Filters for guild conquest battles',
-	    'FIX: Assister (still no FB comments)'
+	    'FIX: Assister (still no FB comments)',
+	    'FIX: Stay on current page when changing Loadouts',
+	    'FIX: Army cleaner & filler'
 	], function(_i, _e) {
 		$('#cageNewsChanges').append('<li><span>' + _e.split(':')[0] + '</span>' + _e.split(':')[1] + '</li>');
 	});

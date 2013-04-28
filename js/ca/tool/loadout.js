@@ -11,7 +11,7 @@ tools.Loadout.init = function() {
 			$('#cageLoadoutDisplay > div:last').append($('<input>').attr({
 				'type' : 'image',
 				'src' : _img,
-				'onclick' : $(_e).attr('onclick').replace('index.php', '')
+				'onclick' : $(_e).attr('onclick').replace('\'index.php', '$(\'#PageURL\').val() + \'')
 			}).hover(function() {
 				$(this).stop().animate({
 					'height' : 28,
