@@ -126,7 +126,8 @@ tools.Page.pages['guildv2_conquest_expansion.php'] = function() {
 			'10' : '10'
 		};
 		$('body > ul.ui-selectmenu-menu').remove();
-		$('#your_guild_member_list_1').before('<div id="cageConquestBattleFilter" class="ui-state-default"></div>');
+
+		$('div[style*="/graphics/conq2_insideland_battle_mid.jpg"]').after('<div id="cageConquestBattleFilterContainer"><div id="cageConquestBattleFilter" class="ui-state-default"></div></div>');
 		var _cCBF = $('#cageConquestBattleFilter');
 		// Battle activity points filter
 		_cCBF.prepend('<span class="cageGateFilterTitle ui-state-default"> Points </span><select id="cageGatePointsFilter" class="cagegatefiltertitle">');

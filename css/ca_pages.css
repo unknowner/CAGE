@@ -494,16 +494,24 @@ div.cageAlchemyContainerBlank {
 /*
 * 
 */
+#cageConquestBattleFilterContainer {
+	background-image: url('http://image4.castleagegame.com/20843/graphics/conq2_insideland_midrepeat.jpg');
+	width: 740px;
+	position: relative;
+	top: -10px;
+	margin-bottom: -10px;
+	height: 57px;
+}
+
 #cageConquestBattleFilter {
-	position: absolute;
-	margin-top: -20px;
-	margin-left: 18px;
-	width: 517px;
-	height: 32px;
+	height: 30px;
 	border-bottom-left-radius: 8px;
 	border-bottom-right-radius: 8px;
 	box-shadow: 0 5px 5px #000;
-	padding-left: 44px;
+	padding: 0 11px 0 4px;
+	position: relative;
+	width: 450px;
+	margin-left: 140px;
 }
 
 #cageGateClassFilter,#cageGateStatusFilter,#cageGatePointsFilter {
@@ -516,4 +524,3 @@ div.cageAlchemyContainerBlank {
 	left: 9px;
 	float: left;
 }
-);
