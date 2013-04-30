@@ -14,7 +14,7 @@ function cageNews(_full) {
 	});
 	$.each([
 	    'ADD: Clickable user images',
-	    'ADD: Filters for guild conquest battles',
+	    'ADD: Filters for guild conquest battles (thanks to Bonbons)',
 	    'FIX: Assister (still no FB comments)',
 	    'FIX: Stay on current page when changing Loadouts',
 	    'FIX: Army cleaner & filler'
