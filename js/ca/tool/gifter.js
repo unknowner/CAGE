@@ -14,33 +14,11 @@ tools.Gifter.init = function() {
 		tools.Gifter.runtime.returnGift = true;
 		tools.Gifter.start();
 	});
-	// prepare update event to receive userids and request ids
-	customEvent('GiftRequests', function() {
-		console.log('EVENT: GiftRequests');
-		_gifts = JSON.parse(JSON.parse($('#GiftRequests').val()));
-		console.log(_gifts);
-		var _received = 0;
-		if (_gifts) {
-			$.each(_gifts.data, function(_i, _e) {
-				if (_e.from !== null) {
-					if ($.inArray(_e.from.id, tools.Gifter.runtime.sendGiftTo) === -1) {
-						tools.Gifter.runtime.sendGiftTo.push(_e.from.id);
-						_received++;
-					}
-					tools.Gifter.runtime.requests.push(_e.id);
-				}
-			});
-			if (_received === 0) {
-				note('Gifter', 'No gifts to accept.');
-			} else {
-				note('Gifter', 'You accepted ' + _received + ' gift(s).');
-			}
-			item.set('CAGEsendGiftTo', tools.Gifter.runtime.sendGiftTo);
-		}
-		tools.Gifter.work();
-	});
+
+	customEvent('GiftRequests', tools.Gifter.getGiftIDsFromFB);
 	customEvent('GifterDone', tools.Gifter.done);
 };
+
 tools.Gifter.settings = function() {
 	tools.Settings.heading(language.gifterSetName);
 	tools.Settings.text(language.gifterSetFilterDesc);
@@ -57,7 +35,12 @@ tools.Gifter.runtimeUpdate = function() {
 		userList : item.get('cageGifterUserList', ''),
 		returnGift : false,
 		returnGiftNum : 1,
-		returnGiftName : null
+		returnGiftName : null,
+
+		// new gifting system
+		sendToID : item.get('cage.Gifter.sendToID', []),
+		sendToList : item.get('cage.Gifter.sendToList', {})
+
 	};
 	if (tools.Gifter.runtime.sendGiftTo == null) {
 		tools.Gifter.runtime.sendGiftTo = [];
@@ -69,15 +52,74 @@ tools.Gifter.runtimeUpdate = function() {
 	});
 	console.log('tools.Gifter.runtime', tools.Gifter.runtime);
 };
+tools.Gifter.getGiftIDsFromFB = function() {
+	console.log('EVENT: GiftRequests');
+	var _gifts = JSON.parse(JSON.parse($('#GiftRequests').val())), _received = 0;
+	if (_gifts) {
+		$.each(_gifts.data, function(_i, _e) {
+			if (_e.from !== null) {
+				tools.Gifter.runtime.sendToID.push(_e.from.id);
+				_received++;
+			}
+		});
+		if (_received === 0) {
+			note('Gifter', 'No gifts to accept.');
+		} else {
+			note('Gifter', _received + ' gift(s) found...');
+			item.set('cage.Gifter.sendToID', tools.Gifter.runtime.sendToID);
+		}
+	}
+	tools.Gifter.work();
+};
+
 tools.Gifter.start = function() {
 	addFunction(function() {
 		FB.api('/me/apprequests/', function(_response) {
-			console.log('giftrewp:', _response);
 			fireGiftRequests(JSON.stringify(_response));
 		});
 	}, null, true, true);
 };
+
+// New gifting stuff
+tools.Gifter.receiveGift = function() {
+	// allgifts: http://apps.facebook.com/castle_age/index.php?feed=allies&news_feed_accept=0
+	// prepare update event to receive userids and request ids
+	/*
+	 * feed: "allies" news_feed_accept: "1" request_id: "0" request_type: "1001" sender_id: "xxxx"
+	 * 
+	 * _gifts application: Object created_time: "2013-04-26T11:54:01+0000" data: "abc=123" from: Object >>id:
+	 * "100000092298590" >>name: "Jeannette Kemp" __proto__: Object id: "176411245848062_1444886476" message: "Jeannette
+	 * Kemp has sent you a Mystery Shield Gift in Castle Age! Click to accept gift."
+	 * 
+	 * 
+	 */
+	var _id = tools.Gifter.runtime.sendToID.pop();
+	signedGet('http://apps.facebook.com/castle_age/index.php?feed=allies&news_feed_accept=1&sender_id=' + _id + '&request_id=0&request_type=1001', function(_data) {
+		_data = $($.parseHTML(noSrc(_data)));
+		item.set('cage.Gifter.sendToID', tools.Gifter.runtime.sendToID);
+		var _img = /([^\/]+$)/.exec(_data.find('div[style*="/graphics/gift_background.jpg"] img:first').attr('nosrc'))[0];
+		if (!tools.Gifter.runtime.sendToList[_img]) {
+			tools.Gifter.runtime.sendToList[_img] = [];
+		}
+		tools.Gifter.runtime.sendToList[_img].push(_id);
+		item.set('cage.Gifter.sendToList', tools.Gifter.runtime.sendToList);
+		if (tools.Gifter.runtime.sendToID.length !== 0) {
+			tools.Gifter.receiveGift();
+		} else {
+			tools.Gifter.work();
+		}
+	});
+};
+
 tools.Gifter.work = function() {
+	if (tools.Gifter.runtime.sendToID.length !== 0) {
+		tools.Gifter.receiveGift();
+	} else {
+		console.log(tools.Gifter.runtime.sendToList);
+		tools.Gifter.done();
+	}
+};
+tools.Gifter.workOLD = function() {
 	if (tools.Gifter.runtime.requests.length > 0) {
 		signedGet('index.php?request_ids=' + tools.Gifter.runtime.requests.join(','), function(_data) {
 			_data = $($.parseHTML(noSrc(_data)));

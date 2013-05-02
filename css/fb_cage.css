@@ -1,115 +1,142 @@
 body {
-    overflow: hidden !important;
-    background-color: #000 !important;
+	overflow: hidden !important;
+	background-color: #000 !important;
 }
+
 #pagelet_bluebar {
-    height: 32px;
+	height: 32px;
 }
+
 #blueBarHolder {
-    height: 0 !important;
+	height: 0 !important;
 }
+
 #blueBar {
-    display: block !important;
-    height: 2px !important;
-    min-width: 0 !important;
+	display: block !important;
+	height: 2px !important;
+	min-width: 0 !important;
 }
+
 a.jewelButton {
-    height: 30px !important;
+	height: 30px !important;
 }
-li.topNavLink, li.topNavLink a {
-    height: 30px !important;
+
+li.topNavLink,li.topNavLink a {
+	height: 30px !important;
 }
+
 #globalContainer {
-    width: 100% !important;
-    left: 0 !important;
-    padding-right: 0 !important;
-    min-width: 0 !important;
+	width: 100% !important;
+	left: 0 !important;
+	padding-right: 0 !important;
+	min-width: 0 !important;
 }
-#pageLogo > a {
-    margin-top: 0 !important;
+
+#pageLogo>a {
+	margin-top: 0 !important;
 }
+
 #jewelContainer {
-    padding-top: 0 !important;
+	padding-top: 0 !important;
 }
+
 #pageNav {
-    padding-top: 1px !important;
+	padding-top: 1px !important;
 }
+
 #pageHead {
-    min-width: 0 !important;
-    height: 31px !important;
-    padding: 0 0 0 5px !important;
-    background-color: #3B5998 !important;
-    border-bottom: black solid 1px !important;
-    width: 100% !important;
-    margin-left: 0 !important;
-    left: 0 !important;
+	overflow: hidden; min-width : 0 !important;
+	height: 31px !important;
+	padding: 0 0 0 5px !important;
+	background-color: #3B5998 !important;
+	border-bottom: black solid 1px !important;
+	width: 100% !important;
+	margin-left: 0 !important;
+	left: 0 !important;
+	min-width: 0 !important;
 }
+
 #headNav {
-    margin-top: 2px !important;
-    min-width: 600px;
+	margin-top: 2px !important;
+	min-width: 600px;
 }
+
 #fbDockChat {
-    margin-right: 3px !important;
+	margin-right: 3px !important;
 }
+
 #contentCol {
-    padding: 0 !important;
+	padding: 0 !important;
 }
+
 #rightCol {
-    display: none !important;
+	display: none !important;
 }
+
 #contentArea {
-    width: 100% !important;
-    padding-left: 0 !important;
-    margin-left: 0 !important;
+	width: 100% !important;
+	padding-left: 0 !important;
+	margin-left: 0 !important;
 }
+
 #pagelet_canvas_footer_content {
-    display: none !important;
+	display: none !important;
 }
+
 .fbJewelFlyout {
-    top: 32px !important;
+	top: 32px !important;
 }
+
 #navSearch {
-    margin-top: 5px !important;
+	margin-top: 5px !important;
 }
+
 #fbDockChat {
-    margin-left: -20px;
-    left: 19px;
+	margin-left: -20px;
+	left: 19px;
 }
+
 .fbDockWrapperRight {
-    right: 20px;
+	right: 20px;
 }
+
 .cageJewels {
-    position: fixed !important;
-    top: -3px;
-    left: 0px;
-    z-index: 132 !important;
-    background: #3B5998;
-    width: 25px;
-    height: 92px;
-    border-right: 1px solid #000;
-    box-shadow: 2px -6px 5px #000;
+	position: fixed !important;
+	top: -3px;
+	left: 0px;
+	z-index: 132 !important;
+	background: #3B5998;
+	width: 25px;
+	height: 92px;
+	border-right: 1px solid #000;
+	box-shadow: 2px -6px 5px #000;
 }
 /*
  * New flyouts
  */
 div.cageNotificationsFlyout {
-    left: 26px !important;
-    top: 1px !important;
+	left: 26px !important;
+	top: 1px !important;
 }
+
 div.cageNotificationsFlyout div.beeperNub {
-    display: none;
+	display: none;
 }
+
 div.cageMessagesFlyout {
-    left: 26px !important;
-    top: 1px !important;
+	left: 26px !important;
+	top: 1px !important;
 }
+
 div.cageMessagesFlyout div.beeperNub {
-    display: none;
+	display: none;
 }
+
 div.cageRequestsFlyout {
-    left: 26px !important;
-    top: 1px !important;
+	left: 26px !important;
+	top: 1px !important;
 }
+
 div.cageRequestsFlyout div.beeperNub {
-    display: none;
+	display: none;
 }

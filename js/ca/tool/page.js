@@ -226,6 +226,7 @@ tools.Page.ajaxPageDone = function() {
 		if (/<script type="text\/javascript">\stop.location.href = "http:\/\/apps.facebook.com\/castle_age\/.*.php";\s<\/script>/.test(data.substr(data.length < 200 ? 0 : data.length - 300)) === false) {
 			$data = $($.parseHTML(noSrc(data), true));
 			data = null;
+			startAllTimers();
 			console.log('ajaxPageDone:', div);
 			if (div === 'globalContainer') {
 				var _abc = $('#app_body_container'), _sts = $data.find('#main_sts');
@@ -256,7 +257,6 @@ tools.Page.ajaxPageDone = function() {
 					scrollTop : 0
 				}, 'slow');
 			}
-			startAllTimers();
 			setTimeout(function() {
 				// add link to profile pics
 				$('#app_body_container img').filter('[nosrc*="//graph.facebook.com/"]').each(function(_i, _e) {
