@@ -17,7 +17,8 @@ function cageNews(_full) {
 	    'ADD: Filters for guild conquest battles (thanks to Bonbons)',
 	    'FIX: Assister (still no FB comments)',
 	    'FIX: Stay on current page when changing Loadouts',
-	    'FIX: Army cleaner & filler'
+	    'FIX: Army cleaner & filler',
+	    'FIX: Temporary fix for new FB Layout'
 	], function(_i, _e) {
 		$('#cageNewsChanges').append('<li><span>' + _e.split(':')[0] + '</span>' + _e.split(':')[1] + '</li>');
 	});
