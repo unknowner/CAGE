@@ -8,7 +8,7 @@ tools.PotionEnergy.start = function() {
 		'signed_request' : CastleAge.signed_request
 	}, function(_data) {
 		_data = $($.parseHTML(noSrc(_data)));
-		tools.PotionStamina.work(_data);
+		tools.PotionEnergy.work(_data);
 		if (_data.find('span.result_body:contains("You consumed")').length > 0) {
 			addFunction(function(data) {
 				cageStat.stamina = data.stamina;
@@ -20,7 +20,7 @@ tools.PotionEnergy.start = function() {
 };
 // Parse keep for Energy potions
 tools.PotionEnergy.work = function(_pagedata) {
-	_pagedata = _pagedata == null ? $('#app_body') : $($.parseHTML(_pagedata));
+	_pagedata = _pagedata == null ? $('#app_body') : $(_pagedata);
 	var _potions = _pagedata.find('div[title="Energy Potion"]').text().match(/\d+/g);
 	if (_potions !== null) {
 		$('#cagePotionEnergy').find('span.cagePotionCount').text(_potions[1]);

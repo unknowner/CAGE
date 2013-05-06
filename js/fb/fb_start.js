@@ -25,6 +25,7 @@ function startCAGE() {
 	// Iframe changes
 	$('#cageIFrame').html('.cageIFrame {height:' + (window.innerHeight - 34) + 'px !important;}');
 	$('#iframe_canvas').addClass('cageIFrame').attr('scrolling', 'yes');
+	$('#js_0').width('100%');
 
 	$(document.body).append('<input id="signed_request" type="hidden" value="' + $('input[name="signed_request"]').val() + '">');
 	com.send(com.task.signed, com.port.castleAge, $('#signed_request').val());

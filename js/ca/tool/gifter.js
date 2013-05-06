@@ -94,15 +94,18 @@ tools.Gifter.receiveGift = function() {
 	 * 
 	 */
 	var _id = tools.Gifter.runtime.sendToID.pop();
-	signedGet('http://apps.facebook.com/castle_age/index.php?feed=allies&news_feed_accept=1&sender_id=' + _id + '&request_id=0&request_type=1001', function(_data) {
+	signedGet('index.php?feed=allies&news_feed_accept=1&sender_id=' + _id + '&request_id=0&request_type=1001', function(_data) {
 		_data = $($.parseHTML(noSrc(_data)));
 		item.set('cage.Gifter.sendToID', tools.Gifter.runtime.sendToID);
-		var _img = /([^\/]+$)/.exec(_data.find('div[style*="/graphics/gift_background.jpg"] img:first').attr('nosrc'))[0];
-		if (!tools.Gifter.runtime.sendToList[_img]) {
-			tools.Gifter.runtime.sendToList[_img] = [];
+		console.log($('div[style*="/graphics/gift_background.jpg"] img:first', _data));
+		var _img = /([^\/]+$)/.exec($('div[style*="/graphics/gift_background.jpg"] img:first', _data).attr('nosrc'))[0];
+		if (_img) {
+			if (!tools.Gifter.runtime.sendToList[_img]) {
+				tools.Gifter.runtime.sendToList[_img] = [];
+			}
+			tools.Gifter.runtime.sendToList[_img].push(_id);
+			item.set('cage.Gifter.sendToList', tools.Gifter.runtime.sendToList);
 		}
-		tools.Gifter.runtime.sendToList[_img].push(_id);
-		item.set('cage.Gifter.sendToList', tools.Gifter.runtime.sendToList);
 		if (tools.Gifter.runtime.sendToID.length !== 0) {
 			tools.Gifter.receiveGift();
 		} else {
