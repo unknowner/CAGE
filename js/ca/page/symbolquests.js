@@ -21,9 +21,45 @@ tools.Page.pages['symbolquests.php'] = function() {
 		}
 	});
 	// Add sano to subquests
-	if(tools.General.runtime.general.Sano) {
+	if (tools.General.runtime.general.Sano) {
 		$('div.quest_start_sub').prepend($('<img class="cageQuestSanoSwitch" src="http://image4.castleagegame.com/graphics/hero_sano.jpg">').click(function() {
 			tools.General.setByName('Sano');
 		}));
 	}
+
+	/*
+	 * Hide complete quests
+	 */
+
+	function showHideQuests(_hide) {
+		if (_hide) {
+			$('div.quests_background, div.quests_background_sub').each(function(_i, _e) {
+				var _influence = /INFLUENCE: (\d+)%/g.exec($(_e).text());
+				if (_influence.length === 2 && _influence[1] === '100') {
+					$(_e).hide();
+				}
+			});
+		} else {
+			$('div.quests_background, div.quests_background_sub').show();
+		}
+	}
+
+	// Add hide/show checkbox
+	$('#symbol_displaysymbolquests1').before($('<div id="cagePageQuestsHide" style="margin-left: 31px;" class="cageAlchemyButtons"><img src="http://image4.castleagegame.com/graphics/boss_lotus_help2.gif"><span></span><span>Hide completed quests</span></div>').toggle(function() {
+		$('#cagePageQuestsHide').find('span:first').html('&#10003').end().children('img').attr('src', 'http://image4.castleagegame.com/graphics/boss_lotus_help3.gif');
+		item.set('cage.Page.symbolquests.hide', true);
+		showHideQuests(true);
+	}, function() {
+		$('#cagePageQuestsHide').find('span:first').html('').end().children('img').attr('src', 'http://image4.castleagegame.com/graphics/boss_lotus_help2.gif');
+		item.set('cage.Page.symbolquests.hide', false);
+		showHideQuests(false);
+	}));
+
+	if (item.get('cage.Page.symbolquests.hide', false) === true) {
+		$('#cagePageQuestsHide').click();
+	}
+
+	// remove some ugly space ;)
+	$('table.quests_layout tr').find('div[style="width: 730px; height: 28px;"]').remove();
+
 };

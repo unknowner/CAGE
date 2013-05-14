@@ -1,6 +1,6 @@
 // Language data (English is default)
 var language = {
-	//CAGE
+	// CAGE
 	cageSetClearDataDesc : 'If you have problems with gifting, cages or anything else, its the best to clear all saved data and reload Castle Age. You will loose all settings for your current user id!',
 	cageSetClearDataAction : 'Clear saved data, not the settings note.',
 	cageSetAnimationAction : 'Animations',
@@ -12,7 +12,7 @@ var language = {
 	cageSetReqPermDesc : 'CAGE requires some extra permissions to work. The Assister needs to post in your name and the gifting needs to read your friendlists. Click here to grant Castle Age that permissions.<br>If the pop up opens and and closes automatically you already granted the needed permissions. You can remove the permission anytime you like (<a href="http://www.facebook.com/settings?tab=applications&app_id=46755028429" target:"_blank">Link</a>). If a window just pops up and closes you already have given the permission.',
 	cageSetReqPermAction : 'Request permission',
 
-	//Castle Age
+	// Castle Age
 	cAgeheadText : 'Just a few settings to change some CA stuff.',
 	cAgeNoResults : 'Hide battles won message',
 	cAgeNoHourly : 'Hide hourly info messages',
@@ -39,7 +39,7 @@ var language = {
 	armyCleanerReloading : 'Done, reloading...',
 	armyCleanerKeepiPhone : 'Keep iPhone players',
 
-	//Assister
+	// Assister
 	assisterButton : 'Assister',
 	assisterSetName : 'Assister',
 	assisterSetMaxStamAction : 'Maximun stamina for CTAs',
@@ -66,7 +66,7 @@ var language = {
 
 	// Gifter
 	gifterButton : 'Receive gifts',
-	gifterReturn : 'Receive & return gifts',
+	gifterReturn : 'Send gifts',
 	gifterSetName : 'Gifts',
 	gifterSetFilterDesc : 'Enter the name of a Facebook friendlist you like to add as an extra filter to the Send gifts dialog.',
 	giftersetFilterAction : 'Gifting friendlist',

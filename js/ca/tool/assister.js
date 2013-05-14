@@ -140,7 +140,9 @@ tools.Assister.assist = function(_ids) {
 				console.log('Assister - Assisted for:', _cta);
 				tools.Assister.runtime.Assisted.push(_cta);
 				if (tools.Assister.runtime.assisterCommentMonster === true) {
-					post(_cta.link.replace('doObjective', 'commentDragon') + '&text=' + _num + ' for ' + _cta.name + ' ' + tools.Assister.runtime.monsterMessage + ' ');
+					signedPost(_cta.link.replace('doObjective', 'commentDragon'), {
+						text : _num + ' for ' + _cta.name + ' ' + tools.Assister.runtime.monsterMessage + ' ツ'
+					});
 				}
 				window.setTimeout(function() {
 					tools.Assister.assist();

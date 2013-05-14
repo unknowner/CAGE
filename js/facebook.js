@@ -8,6 +8,7 @@ com.initPort(com.port.facebook);
 com.send(com.task.fbStart, com.port.facebook, null);
 
 function initFacebook() {
+
 	$('head').append('<style type="text/css" id="cageIFrame">').append('<link rel="stylesheet" type="text/css" href="' + getPath('css/fb_cage.css?x=' + Math.random() * 1000) + '">');
 
 	_window.onresize = function(evt) {

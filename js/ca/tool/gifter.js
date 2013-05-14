@@ -2,17 +2,17 @@ tool('Gifter');
 
 tools.Gifter.init = function() {
 	tools.Gifter.runtimeUpdate();
-	tools.Gifter.newRequestForm();
+	// tools.Gifter.newRequestForm();
 	tools.Sidebar.button.add('cageGiftReceive', language.gifterButton, function() {
 		tools.Sidebar.button.disable('cageGiftReceive');
 		tools.Sidebar.button.disable('cageGiftReceiveAndReturn');
 		tools.Gifter.start();
 	});
-	tools.Sidebar.button.add('cageGiftReceiveAndReturn', language.gifterReturn, function() {
+	tools.Sidebar.button.add('cageGiftReturn', language.gifterReturn, function() {
 		tools.Sidebar.button.disable('cageGiftReceive');
-		tools.Sidebar.button.disable('cageGiftReceiveAndReturn');
+		tools.Sidebar.button.disable('cageGiftReturn');
 		tools.Gifter.runtime.returnGift = true;
-		tools.Gifter.start();
+		tools.Gifter.start(true);
 	});
 
 	customEvent('GiftRequests', tools.Gifter.getGiftIDsFromFB);
@@ -33,12 +33,12 @@ tools.Gifter.runtimeUpdate = function() {
 		requests : tools.Gifter.runtime === null ? [] : tools.Gifter.runtime.requests,
 		userLists : {},
 		userList : item.get('cageGifterUserList', ''),
-		returnGift : false,
 		returnGiftNum : 1,
 		returnGiftName : null,
 
 		// new gifting system
-		sendToID : item.get('cage.Gifter.sendToID', []),
+		receiveGifts : item.get('cage.Gifter.receiveGifts', []),
+		received : 0,
 		sendToList : item.get('cage.Gifter.sendToList', {})
 
 	};
@@ -52,76 +52,82 @@ tools.Gifter.runtimeUpdate = function() {
 	});
 	console.log('tools.Gifter.runtime', tools.Gifter.runtime);
 };
-tools.Gifter.getGiftIDsFromFB = function() {
-	console.log('EVENT: GiftRequests');
-	var _gifts = JSON.parse(JSON.parse($('#GiftRequests').val())), _received = 0;
-	if (_gifts) {
-		$.each(_gifts.data, function(_i, _e) {
-			if (_e.from !== null) {
-				tools.Gifter.runtime.sendToID.push(_e.from.id);
-				_received++;
-			}
-		});
-		if (_received === 0) {
-			note('Gifter', 'No gifts to accept.');
-		} else {
-			note('Gifter', _received + ' gift(s) found...');
-			item.set('cage.Gifter.sendToID', tools.Gifter.runtime.sendToID);
-		}
+
+// ---------------------------------------------------------------------------
+tools.Gifter.start = function(_return) {
+	if (_return) {
+
+	} else {
+		tools.Gifter.receiveGifts();
 	}
-	tools.Gifter.work();
 };
-
-tools.Gifter.start = function() {
-	addFunction(function() {
-		FB.api('/me/apprequests/', function(_response) {
-			fireGiftRequests(JSON.stringify(_response));
-		});
-	}, null, true, true);
+tools.Gifter.work = function() {
+	if (tools.Gifter.runtime.receiveGifts.length !== 0) {
+		tools.Gifter.receiveGift();
+	} else {
+		console.log(tools.Gifter.runtime);
+		tools.Gifter.done();
+	}
 };
+tools.Gifter.done = function() {
+	tools.Sidebar.button.enable('cageGiftReceive');
+	tools.Sidebar.button.enable('cageGiftReturn');
+	$('#AjaxLoadIcon').hide();
+};
+/*
+ * Get available gifts with sender and request id
+ */
+tools.Gifter.receiveGifts = function() {
 
-// New gifting stuff
-tools.Gifter.receiveGift = function() {
-	// allgifts: http://apps.facebook.com/castle_age/index.php?feed=allies&news_feed_accept=0
-	// prepare update event to receive userids and request ids
-	/*
-	 * feed: "allies" news_feed_accept: "1" request_id: "0" request_type: "1001" sender_id: "xxxx"
-	 * 
-	 * _gifts application: Object created_time: "2013-04-26T11:54:01+0000" data: "abc=123" from: Object >>id:
-	 * "100000092298590" >>name: "Jeannette Kemp" __proto__: Object id: "176411245848062_1444886476" message: "Jeannette
-	 * Kemp has sent you a Mystery Shield Gift in Castle Age! Click to accept gift."
-	 * 
-	 * 
-	 */
-	var _id = tools.Gifter.runtime.sendToID.pop();
-	signedGet('index.php?feed=allies&news_feed_accept=1&sender_id=' + _id + '&request_id=0&request_type=1001', function(_data) {
+	signedGet('news_feed_view.php?feed=allies', function(_data) {
 		_data = $($.parseHTML(noSrc(_data)));
-		item.set('cage.Gifter.sendToID', tools.Gifter.runtime.sendToID);
+		$('#alliesFeed_0 a', _data).each(function(_i, _e) {
+			var _param = $(_e).attr('href');
+			_param = deparam(_param.substr(_param.lastIndexOf('?')));
+			tools.Gifter.runtime.receiveGifts.push({
+				sender_id : _param.sender_id,
+				request_id : _param.request_id
+			});
+		});
+		item.set('cage.Gifter.receiveGifts', tools.Gifter.runtime.receiveGifts);
+		tools.Gifter.receiveGift();
+	});
+};
+/*
+ * Receive gifts and store gift type (by image) and ids
+ */
+tools.Gifter.receiveGift = function() {
+	var _gift = tools.Gifter.runtime.receiveGifts.pop();
+	signedPost('index.php', {
+		feed : 'allies',
+		news_feed_accept : 1,
+		sender_id : _gift.sender_id,
+		request_id : _gift.sender_id,
+		request_type : 1001
+	}, function(_data) {
+		_data = $($.parseHTML(noSrc(_data)));
+		item.set('cage.Gifter.receiveGifts', tools.Gifter.runtime.receiveGifts);
 		console.log($('div[style*="/graphics/gift_background.jpg"] img:first', _data));
 		var _img = /([^\/]+$)/.exec($('div[style*="/graphics/gift_background.jpg"] img:first', _data).attr('nosrc'))[0];
 		if (_img) {
 			if (!tools.Gifter.runtime.sendToList[_img]) {
 				tools.Gifter.runtime.sendToList[_img] = [];
 			}
-			tools.Gifter.runtime.sendToList[_img].push(_id);
+			tools.Gifter.runtime.sendToList[_img].push(_gift.sender_id);
 			item.set('cage.Gifter.sendToList', tools.Gifter.runtime.sendToList);
 		}
-		if (tools.Gifter.runtime.sendToID.length !== 0) {
+		tools.Gifter.runtime.received += 1;
+		if (tools.Gifter.runtime.receiveGifts.length !== 0) {
 			tools.Gifter.receiveGift();
 		} else {
+			note('Gifter', 'You received ' + tools.Gifter.runtime.received + ' gift(s).');
 			tools.Gifter.work();
 		}
 	});
 };
 
-tools.Gifter.work = function() {
-	if (tools.Gifter.runtime.sendToID.length !== 0) {
-		tools.Gifter.receiveGift();
-	} else {
-		console.log(tools.Gifter.runtime.sendToList);
-		tools.Gifter.done();
-	}
-};
+// ---------------------------------------------------------------------------
+
 tools.Gifter.workOLD = function() {
 	if (tools.Gifter.runtime.requests.length > 0) {
 		signedGet('index.php?request_ids=' + tools.Gifter.runtime.requests.join(','), function(_data) {
@@ -134,7 +140,7 @@ tools.Gifter.workOLD = function() {
 		tools.Gifter.done();
 	}
 };
-tools.Gifter.done = function() {
+tools.Gifter.done2 = function() {
 	if (tools.Gifter.runtime.returnGift === true) {
 		if (tools.Gifter.runtime.returnGiftName === null) {
 			get('gift.php?request_ids=' + tools.Gifter.runtime.requests.join(','), function(_data) {
@@ -207,6 +213,11 @@ tools.Gifter.newRequestForm = function() {
 	addFunction(function(_giftData) {
 
 		var cageGiftUserList = [];
+
+		// Enable frictionless gifting
+		FB.init({
+			frictionlessRequests : true
+		});
 
 		function getCageFriendList() {
 			FB.api(_giftData.flid + '/members', function(_members) {

@@ -21,4 +21,38 @@ tools.Page.pages['monster_quests.php'] = function() {
 		}
 	});
 
+	/*
+	 * Hide complete quests
+	 */
+
+	function showHideQuests(_hide) {
+		if (_hide) {
+			$('div.quests_background, div.quests_background_sub').each(function(_i, _e) {
+				var _influence = /INFLUENCE: (\d+)%/g.exec($(_e).text());
+				if (_influence.length === 2 && _influence[1] === '100') {
+					$(_e).hide();
+				}
+			});
+		} else {
+			$('div.quests_background, div.quests_background_sub').show();
+		}
+	}
+	// Add hide/show checkbox
+	$('table.quests_layout').prepend($('<div id="cagePageQuestsHide" style="margin-left: 31px;" class="cageAlchemyButtons"><img src="http://image4.castleagegame.com/graphics/boss_lotus_help2.gif"><span></span><span>Hide completed quests</span></div>').toggle(function() {
+		$('#cagePageQuestsHide').find('span:first').html('&#10003').end().children('img').attr('src', 'http://image4.castleagegame.com/graphics/boss_lotus_help3.gif');
+		item.set('cage.Page.monster_quests.hide', true);
+		showHideQuests(true);
+	}, function() {
+		$('#cagePageQuestsHide').find('span:first').html('').end().children('img').attr('src', 'http://image4.castleagegame.com/graphics/boss_lotus_help2.gif');
+		item.set('cage.Page.monster_quests.hide', false);
+		showHideQuests(false);
+	}));
+
+	if (item.get('cage.Page.monster_quests.hide', false) === true) {
+		$('#cagePageQuestsHide').click();
+	}
+
+	// remove some ugly space ;)
+	$('table.quests_layout tr').find('div[style="width: 730px; height: 28px;"]').remove();
+
 };

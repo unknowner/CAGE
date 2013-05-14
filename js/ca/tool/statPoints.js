@@ -21,7 +21,7 @@ tools.StatPoints.start = function() {
 		'backgroundImage' : 'url(\'http://image4.castleagegame.com/graphics/shield_wait.gif\')'
 	}).attr('disabled', 'disabled').find('img').hide();
 	signedGet('keep.php', function(_data) {
-		_data = $(noSrc(_data));
+		_data = $($.parseHTML(noSrc(_data)));
 		$('#cageStatPoints').css({
 			'cursor' : '',
 			'backgroundSize' : '',

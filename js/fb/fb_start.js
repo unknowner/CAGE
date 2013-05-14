@@ -1,7 +1,8 @@
 function startCAGE() {
 
-	// Create uid-input from CA (easier to get uid)
 	addFunction(function() {
+
+		// Create uid-input from CA (easier to get uid)
 		function cageGetUID() {
 			var _i = document.createElement('INPUT');
 			_i.type = 'hidden';

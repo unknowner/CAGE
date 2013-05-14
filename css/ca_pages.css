@@ -524,3 +524,31 @@ div.cageAlchemyContainerBlank {
 	left: 9px;
 	float: left;
 }
+/*
+* Gift
+*/
+#giftsContent {
+	background-image: url(http://image4.castleagegame.com/graphics/keep_tabsubheader_mid.jpg);
+	padding: 0 55px 40px;
+}
+
+.cageGifterButton {
+	border-radius: 5px;
+	color: #FBFBF1;
+	font-weight: bold;
+	width: 200px;
+	height: 35px;
+	font-size: 18px;
+	cursor: pointer;
+	font-family: 'Times New Roman', Times, serif;
+	background-image: url('http://image4.castleagegame.com/graphics/invite_page_03.jpg');
+	text-shadow: 2px 2px black;
+	border-color: #DFCB96;
+	float: left;
+	margin-top: 3px;
+	margin-right: 7px;
+}
+
+.cageGifterButton>span {
+	font-size: 15px;
+}
