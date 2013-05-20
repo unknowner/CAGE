@@ -24,7 +24,7 @@ function startCAGE() {
 		'overflowY' : ''
 	});
 	// Iframe changes
-	$('#cageIFrame').html('.cageIFrame {height:' + (window.innerHeight - 34) + 'px !important;}');
+	$('#cageIFrame').html('.cageIFrame {height:' + (window.innerHeight - 42) + 'px !important;}');
 	$('#iframe_canvas').addClass('cageIFrame').attr('scrolling', 'yes');
 	$('#js_0').width('100%');
 

@@ -4,7 +4,7 @@ body {
 }
 
 #pagelet_bluebar {
-	height: 32px;
+	height: 42px;
 }
 
 #blueBarHolder {
@@ -36,29 +36,14 @@ li.topNavLink,li.topNavLink a {
 	margin-top: 0 !important;
 }
 
-#jewelContainer {
-	padding-top: 0 !important;
-}
-
-#pageNav {
-	padding-top: 1px !important;
-}
-
 #pageHead {
-	overflow: hidden; min-width : 0 !important;
-	height: 31px !important;
-	padding: 0 0 0 5px !important;
+	height: 42px !important;
 	background-color: #3B5998 !important;
 	border-bottom: black solid 1px !important;
 	width: 100% !important;
 	margin-left: 0 !important;
 	left: 0 !important;
 	min-width: 0 !important;
-}
-
-#headNav {
-	margin-top: 2px !important;
-	min-width: 600px;
 }
 
 #fbDockChat {
@@ -107,7 +92,7 @@ li.topNavLink,li.topNavLink a {
 	z-index: 132 !important;
 	background: #3B5998;
 	width: 25px;
-	height: 92px;
+	height: 76px !important;
 	border-right: 1px solid #000;
 	box-shadow: 2px -6px 5px #000;
 }

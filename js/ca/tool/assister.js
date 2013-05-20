@@ -148,6 +148,8 @@ tools.Assister.assist = function(_ids) {
 					tools.Assister.assist();
 				}, 1000);
 				// FB part currently not working, any way to get post id?
+				
+				//   me/home?application=46755028429&limit=2
 				/*
 				 * if (tools.Assister.runtime.assisterCommentFBPost === true || tools.Assister.runtime.assisterLikeFBPost ===
 				 * true) { signedGet('party.php?casuser=' + _cta.uid, function(_guarddata) { _guarddata =

@@ -552,3 +552,43 @@ div.cageAlchemyContainerBlank {
 .cageGifterButton>span {
 	font-size: 15px;
 }
+
+#giftsRTF {
+	margin-top: 18px;
+	margin-bottom: -39px;
+}
+
+.cageRTFGift {
+	background-image: url('http://image4.castleagegame.com/graphics/essencebox.gif');
+	width: 623px;
+	margin-left: -13px;
+	height: 91px;
+	color: #fff;
+	padding: 17px;
+	background-repeat: no-repeat;
+}
+
+.cageRTFGiftImgContainer {
+	height: 80px;
+	width: 329px;
+	overflow-x: hidden;
+	overflow-y: auto;
+	border: 1px inset;
+	padding: 3px;
+	border-radius: 5px 0 0 5px;
+	background-color: rgba(0, 0, 0, 0.5);
+	float: left;
+}
+
+.cageRTFGiftImg {
+	border-radius: 5px;
+	border: 1px #000 solid;
+	margin-right: 2px;
+	height: 35px;
+}
+
+.cageRTFGiftPic {
+	height: 86px;
+	border: 1px inset;
+	border-radius: 0 5px 5px 0;
+}

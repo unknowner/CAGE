@@ -13,24 +13,26 @@ function receiver(_data) {
 		case com.task.hideBluebar:
 			Facebook.bluebarHidden = true;
 			$('#pagelet_bluebar').css({
-				'marginTop' : -33
+				'marginTop' : -42
 			});
-			$('#jewelContainer').addClass('cageJewels');
+			$('a.jewelButton').attr('style', 'background-size: 22px 22px !important;');
+			$('#jewelContainer').addClass('cageJewels').css('paddingTop', 5);
 			$('#fbRequestsFlyout').addClass('cageRequestsFlyout');
 			$('#fbMessagesFlyout').addClass('cageMessagesFlyout');
 			$('#fbNotificationsFlyout').addClass('cageNotificationsFlyout');
-			$('#cageIFrame').html('.cageIFrame {height:' + (_window.innerHeight - (Facebook.bluebarHidden === true ? 1 : 34)) + 'px !important;}');
+			$('#cageIFrame').html('.cageIFrame {height:' + (_window.innerHeight - (Facebook.bluebarHidden === true ? 1 : 42)) + 'px !important;}');
 			break;
 		case com.task.showBluebar:
 			Facebook.bluebarHidden = false;
 			$('#pagelet_bluebar').css({
 				'marginTop' : 0
 			});
-			$('#jewelContainer').removeClass('cageJewels');
+			$('a.jewelButton').removeAttr('style');
+			$('#jewelContainer').removeClass('cageJewels').css('paddingTop', 0);
 			$('#fbRequestsFlyout').removeClass('cageRequestsFlyout');
 			$('#fbMessagesFlyout').removeClass('cageMessagesFlyout');
 			$('#fbNotificationsFlyout').removeClass('cageNotificationsFlyout');
-			$('#cageIFrame').html('.cageIFrame {height:' + (_window.innerHeight - (Facebook.bluebarHidden === true ? 1 : 34)) + 'px !important;}');
+			$('#cageIFrame').html('.cageIFrame {height:' + (_window.innerHeight - (Facebook.bluebarHidden === true ? 1 : 42)) + 'px !important;}');
 			break;
 		case com.task.fbStart:
 			if (location.search.indexOf('needclickers=1') === -1) {
