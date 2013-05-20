@@ -2,9 +2,13 @@
 VER: 1.2.20
 
 	ADD: Hide completed quests
-	ADD: New gifting system
 	FIX: Energy/Stamina shortcut showing nothing
-	FIX: Long Assister comments not working
+	FIX: Adjusted to new FB layout
+	FIX: Hero update potion dialog position
+	CHG: Removed Assister
+	CHG: Removed Gifting
+	CHG: Removed Army filler/cleaner
+	CHG: Stashing with manual switch to Aeris
 
 ==========================================
 VER: 1.2.19

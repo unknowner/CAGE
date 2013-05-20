@@ -201,6 +201,9 @@ tools.General.parsePage = function(_data) {
 	tools.General.renderFavs();
 	tools.General.get();
 	tools.General.generalsSetFixHeight();
+	if(tools.General.runtime.general['Aeris']){
+		
+	}
 	_data = _names = null;
 };
 tools.General.renderFavs = function() {

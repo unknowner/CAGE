@@ -81,16 +81,21 @@ tools.Gifter.receiveGifts = function() {
 
 	signedGet('news_feed_view.php?feed=allies', function(_data) {
 		_data = $($.parseHTML(noSrc(_data)));
-		$('#alliesFeed_0 a', _data).each(function(_i, _e) {
-			var _param = $(_e).attr('href');
-			_param = deparam(_param.substr(_param.lastIndexOf('?')));
-			tools.Gifter.runtime.receiveGifts.push({
-				sender_id : _param.sender_id,
-				request_id : _param.request_id
+		if ($('#alliesFeed_0 a', _data).length > 0) {
+			$('#alliesFeed_0 a', _data).each(function(_i, _e) {
+				var _param = $(_e).attr('href');
+				_param = deparam(_param.substr(_param.lastIndexOf('?')));
+				tools.Gifter.runtime.receiveGifts.push({
+					sender_id : _param.sender_id,
+					request_id : _param.request_id
+				});
 			});
-		});
-		item.set('cage.Gifter.receiveGifts', tools.Gifter.runtime.receiveGifts);
-		tools.Gifter.receiveGift();
+			item.set('cage.Gifter.receiveGifts', tools.Gifter.runtime.receiveGifts);
+			tools.Gifter.receiveGift();
+		} else {
+			note('Gifter', 'No gifts available.');
+			tools.Gifter.done();
+		}
 	});
 };
 /*
@@ -109,6 +114,23 @@ tools.Gifter.receiveGift = function() {
 		item.set('cage.Gifter.receiveGifts', tools.Gifter.runtime.receiveGifts);
 		console.log($('div[style*="/graphics/gift_background.jpg"] img:first', _data));
 		var _img = /([^\/]+$)/.exec($('div[style*="/graphics/gift_background.jpg"] img:first', _data).attr('nosrc'))[0];
+		_img.replace('.jpg', '')
+				.replace(/\d$/, '')
+				.replace(/_$/, '')
+				.replace('eq_', 'gift_')
+				.replace('_helm', '')
+				.replace('_blade', '')
+				.replace('_axe', '')
+				.replace('_red', '')
+				.replace('_green', '')
+				.replace('_blue', '')
+				.replace('_emerald', '')
+				.replace('_ancient', '')
+				.replace('_amethyst', '')
+				.replace('_gold', '')
+				.replace('orb_alperon', 'apleron_gift')
+				.replace('orb_', 'gift_')
+				.replace('ingredient_','gift_');
 		if (_img) {
 			if (!tools.Gifter.runtime.sendToList[_img]) {
 				tools.Gifter.runtime.sendToList[_img] = [];
@@ -277,7 +299,6 @@ tools.Gifter.newRequestForm = function() {
 			}
 			FB.ui(_ui, function(result) {
 				cageGifterVars.result = result;
-				console.log('.reuslt', cageGifterVars.result);
 				$('#AjaxLoadIcon').show();
 				// fixes infinite looping for popup window if u close it before it is done loading
 				$('.fb_dialog_iframe').each(function() {

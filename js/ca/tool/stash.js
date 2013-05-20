@@ -6,12 +6,7 @@ tools.Stash.runtime.general = null;
 
 tools.Stash.start = function() {
 
-	tools.Stash.runtime.general = tools.General.current;
-	if(tools.General.runtime.general.Aeris !== undefined && tools.General.current !== "Aeris") {
-		tools.General.setByName('Aeris', tools.Stash.work);
-	} else {
-		tools.Stash.work();
-	}
+	tools.Stash.work();
 
 };
 tools.Stash.work = function() {
@@ -19,28 +14,24 @@ tools.Stash.work = function() {
 	signedGet('keep.php?do=Stash&stash_gold=' + tools.Stash.runtime.gold + '&bqh=' + CastleAge.bqh, function(_data) {
 		_data = $($.parseHTML(noSrc(_data)));
 		var _time_left = _data.find('#gold_time_sec');
-		if(_time_left) {
+		if (_time_left) {
 			addFunction(function(gold_token_time_left_obj) {
 				gold_increase_ticker(gold_token_time_left_obj, 0, $('#gold_current_recharge_time').val(), $('#gold_current_increment').val(), 'gold', true);
 			}, JSON.stringify(_time_left.val()), true, true);
 		}
-		if($('input[name="stash_gold"]').length > 0) {
+		if ($('input[name="stash_gold"]').length > 0) {
 			$('input[name="stash_gold"]').val('0');
 			$('b.money').text($('b.money').text());
 		}
 		tools.Stash.runtime.stashTimer = window.setInterval(function() {
 			tools.Stash.runtime.gold = tools.Stash.runtime.gold - (Math.pow(7, tools.Stash.runtime.gold.toString().length));
-			if(tools.Stash.runtime.gold <= 0) {
+			if (tools.Stash.runtime.gold <= 0) {
 				window.clearInterval(tools.Stash.runtime.stashTimer);
 				tools.Stash.runtime.gold = 0;
 			}
 			$('#gold_current_value').text('$' + tools.Stash.runtime.gold.toString().replace(/(\d)(?=(\d{3})+\b)/g, '$1,'));
 		}, 5);
-		if(tools.Stash.runtime.general !== tools.General.current) {
-			tools.General.setByName(tools.Stash.runtime.general, tools.Stash.done);
-		} else {
-			tools.Stash.done();
-		}
+
 	});
 };
 tools.Stash.done = function() {
@@ -52,8 +43,8 @@ tools.Stash.done = function() {
 	}).removeAttr('disabled');
 };
 tools.Stash.init = function() {
-	$('#cageStatsContainer').append($('<button id="cageStash" title="Stash gold using Aeris"></button>').click(function() {
-		if($('#gold_current_value').text() !== '$0') {
+	$('#cageStatsContainer').append($('<button id="cageStash" title="Stash gold"></button>').click(function() {
+		if ($('#gold_current_value').text() !== '$0') {
 			$(this).css({
 				'cursor' : 'wait',
 				'backgroundSize' : '32px 32px',

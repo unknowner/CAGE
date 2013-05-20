@@ -6,6 +6,6 @@ version = {
 	build : 0,
 	state : 'b',
 	string : function() {
-		return version.major + '.' + version.minor + '.' + version.revision + version.state;
+		return version.major + '.' + version.minor + '.' + version.revision + '.' + version.build + version.state;
 	}
 };

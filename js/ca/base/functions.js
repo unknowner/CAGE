@@ -10,7 +10,9 @@ tools.Functions.init = function() {
 		cageStat = {};
 	}, null, true, true);
 	// fix for dropped browser detection in jquery 1.9
-	addFunction(function(){$.browser = {};}, null, true, true);
+	addFunction(function() {
+		$.browser = {};
+	}, null, true, true);
 	// replace CA funtions
 	addFunction(tools.Functions.stat_increase_ticker, null, true, true);
 	addFunction(tools.Functions.PopupAtMousePosition, null, true, true);
@@ -43,18 +45,20 @@ tools.Functions.cageRePos = function() {
 			'margin' : 0,
 			'padding' : 0
 		});
-		var _width = _sp.width() == 0 ? _sp.find('>div:first').width() : _sp.width(), _margin = (770 - _width) / 2;
+
 		if (top) {
 			if (_sp.height() + (top - $(window).scrollTop() - $(window).height()) > 0) {
 				top -= _sp.height() + (top - $(window).scrollTop() - $(window).height());
 			}
 			_sp.css('top', top);
 		}
-
 		_sp.css({
-			'marginLeft' : (_margin),
 			'opacity' : 0
 		}).fadeTo('slow', 1);
+		var _width = _sp.width() === 0 ? _sp.find('>div:first').width() : _sp.width(), _margin = (770 - _width) / 2;
+		_sp.css({
+			'marginLeft' : _margin,
+		});
 		$(document).keypress(function(_key) {
 			console.log(_key.charCode);
 			if (_key.charCode == 120) {
