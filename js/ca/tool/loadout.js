@@ -39,7 +39,7 @@ tools.Loadout.init = function() {
 				'cursor' : 'wait',
 				'backgroundImage' : 'url(\'http://image4.castleagegame.com/graphics/shield_wait.gif\')'
 			});
-			signedGet('index.php?&action=select_loadout&loadout=' + _loadoutNum, function(_data) {
+			signedGet('generals.php?&action=select_loadout&loadout=' + _loadoutNum, function(_data) {
 				$data = $($.parseHTML(noSrc(_data)));
 				$('#main_bn').html($data.find('#main_bn').html());
 				var _i = $('#main_bn').find('div > img[style="width:24px;height:24px;"]');
@@ -49,7 +49,7 @@ tools.Loadout.init = function() {
 				setTimeout(function() {
 					if (_i.length > 0) {
 						_i.each(function() {
-							$(this).attr('src', $(this).attr('nosrc')).attr('nosrc', '');
+							$(this).attr('src', $(this).attr('nosrc'));
 						});
 						$('#cageGeneralEquipment').empty().append(_i);
 					}
@@ -57,7 +57,7 @@ tools.Loadout.init = function() {
 				tools.Stats.update($('#main_sts', $data));
 				tools.General.parsePage(_data);
 				$('#cageLoadoutSubmit').css({
-					'cursor' : 'wait',
+					'cursor' : 'pointer',
 					'backgroundImage' : 'url(\'http://image4.castleagegame.com/graphics/achivement_tabicons_conquest_duel_rank.gif\')'
 				});
 			});
