@@ -328,9 +328,9 @@ div.cageSidebarStat {
 	width: 29px;
 	margin-top: -37px;
 	cursor: pointer;
-	background-image: url('http://image4.castleagegame.com/graphics/favor_clear.gif');
-	background-size: 28px 28px;
-	background-position: -2px -2px;
+	background-image: url('http://image4.castleagegame.com/graphics/achivement_tabicons_conquest_duel_rank.gif');
+	background-size: 61px;
+	background-position: -18px -16px;
 }
 
 #cageLoadoutDisplay>div {

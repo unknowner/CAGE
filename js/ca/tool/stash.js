@@ -31,7 +31,7 @@ tools.Stash.work = function() {
 			}
 			$('#gold_current_value').text('$' + tools.Stash.runtime.gold.toString().replace(/(\d)(?=(\d{3})+\b)/g, '$1,'));
 		}, 5);
-
+		tools.Stash.done();
 	});
 };
 tools.Stash.done = function() {

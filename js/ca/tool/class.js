@@ -37,10 +37,8 @@ tools.Class.runtimeUpdate = function() {
 
 tools.Class.start = function() {
 	signedGet('guild_class_power_equipment.php', function(_data) {
-		console.log('tools.Class.start2');
 		tools.Class.statsPowerImages(_data);
 		tools.Class.showClass(_data);
-		console.log('tools.Class.start3');
 	});
 };
 
@@ -58,7 +56,7 @@ tools.Class.done = function() {
 };
 
 tools.Class.showClass = function(_data) {
-	_data = $(noSrc(_data));
+	_data = $($.parseHTML(noSrc(_data)));
 	tools.Class.runtimeUpdate();
 	$('#cageClasses, #cageClassPower, #cageClassSave, #cageClassPowerSelector').empty();
 	$('#cageClassContainer').show();
