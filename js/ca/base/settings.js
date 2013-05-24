@@ -8,7 +8,7 @@ tools.Settings.start = function() {
 	}, 'slow');
 	$('#app_body > table > tbody > tr > td').empty().html('<div id="results_main_wrapper" class="resultsmainwrapper" style="height:0;"><div class="results"><div class="result"><span class="result_body"></div></span></div></div></div><div id="cageSettingsTop"><span style="cursor:pointer;" id="cageShowNews">CAGE Settings<span></div><div id="cageSettingsMiddle"></div><div id="cageSettingsBottom"><a href="http://cagenhancer.blogspot.com/" target="_blank">Blog</a> <a href="http://cagenhancer.blogspot.com/p/manual.html" target="_blank">Manual</a> <a href="http://caaplayer.freeforums.org/c-a-g-e-f29.html" target="_blank">Forum</a> <a href="https://github.com/unknowner/CAGE" target="_blank">GitHub</a><br><br><span style="text-align:center;">You want to say thank you? Just visit the Blog, click an Ad or donate via PayPal.</span></div>');
 	$.each(tools, function(_index, _tool) {
-		if(_tool.settings) {
+		if (_tool.settings) {
 			_tool.settings();
 		}
 	});
@@ -33,22 +33,30 @@ tools.Settings.text = function(_text) {
 };
 // text, currentvalue, savename, callback func
 tools.Settings.textbox = function(_text, _value, _save, _callback) {
-	$('#cageSettingsMiddle > div:last').append('<div id="cageSettingsTextBox' + _save + '" class="cageSettingsTextbox"><span>' + _text + '</span><input type="text" value="' + _value + '"><button></button></div>');
-	$('#cageSettingsTextBox' + _save + ' > button').click(function() {
-		if(_save) {
-			item.set(_save, $('#cageSettingsTextBox' + _save + ' > input').val());
+	$('#cageSettingsMiddle > div:last').append('<div id="cageSettingsTextBox' + _save.replace(/\./g, '') + '" class="cageSettingsTextbox"><span>' + _text + '</span><input type="text" value="' + _value + '"><button></button></div>');
+	$('#cageSettingsTextBox' + _save.replace(/\./g, '') + ' > button').click(function() {
+		if (_save) {
+			item.set(_save, $('#cageSettingsTextBox' + _save.replace(/\./g, '') + ' > input').val());
 		}
-		if(_callback) {
-			_callback($('#cageSettingsTextBox' + _save + ' > input').val());
+		if (_callback) {
+			_callback($('#cageSettingsTextBox' + _save.replace(/\./g, '') + ' > input').val());
 		}
 	});
 };
+// text, currentvalue, savename, callback func
+tools.Settings.file = function(_text, _save, _callback) {
+	$('#cageSettingsMiddle > div:last').append('<div id="cageSettingsFile' + _save.replace(/\./g, '') + '" class="cageSettingsTextbox"><span>' + _text + '</span><input type="file" name="' + _save.replace(/\./g, '') + '" multiple /></div>');
+	$('#cageSettingsFile' + _save.replace(/\./g, '') + ' > input').change(function(evt) {
+		_callback(evt.target.files);
+	});
+};
+
 // text, callback func
 tools.Settings.button = function(_text, _callback) {
 	var _id = Math.floor(Math.random() * Math.random() * 100000000);
 	$('#cageSettingsMiddle > div:last').append('<div id="cageSettingsButton' + _id + '" class="cageSettingsButton"><span>' + _text + '</span><button></button></div>');
 	$('#cageSettingsButton' + _id + ' > button').click(function() {
-		if(_callback) {
+		if (_callback) {
 			_callback();
 		}
 	});
@@ -57,19 +65,19 @@ tools.Settings.button = function(_text, _callback) {
 tools.Settings.onoff = function(_text, _value, _save, _callback) {
 	var _id = Math.floor(Math.random() * Math.random() * 100000000);
 	$('#cageSettingsMiddle > div:last').append('<div id="cageSettingsOnOff' + _id + '" class="cageSettingsOnOff" onoff="' + _value + '"><span>' + _text + '</span><button></button></div>');
-	if(_value === true) {
+	if (_value === true) {
 		$('#cageSettingsOnOff' + _id + ' > button').css('backgroundImage', 'url("http://image4.castleagegame.com/graphics/boss_lotus_help3.gif")').html('&#10003');
 	}
 	$('#cageSettingsOnOff' + _id + ' > button').click(function() {
 		var _onoff = $('#cageSettingsOnOff' + _id), _newvalue = _onoff.attr('onoff') === 'true' ? false : true, _button = $('#cageSettingsOnOff' + _id + ' > button');
 		_onoff.attr('onoff', _newvalue);
-		if(_newvalue === true) {
+		if (_newvalue === true) {
 			_button.css('backgroundImage', 'url("http://image4.castleagegame.com/graphics/boss_lotus_help3.gif")').html('&#10003');
 		} else {
 			_button.css('backgroundImage', 'url("http://image4.castleagegame.com/graphics/boss_lotus_help2.gif")').html('');
 		}
 		item.set(_save, _newvalue);
-		if(_callback) {
+		if (_callback) {
 			_callback();
 		}
 	});
@@ -85,7 +93,7 @@ tools.Settings.dropdown = function(_text, _values, _value, _save, _callback) {
 	});
 	_sel.change(function() {
 		item.set(_save, $(this).val());
-		if(_callback) {
+		if (_callback) {
 			_callback($(this).val());
 		}
 	});
@@ -97,5 +105,5 @@ tools.Settings.init = function() {
 			primary : "ui-icon-gear"
 		}
 	}).click(tools.Settings.start));
-	//tools.Settings.fbButton.add(language.settingsButton, tools.Settings.start);
+	// tools.Settings.fbButton.add(language.settingsButton, tools.Settings.start);
 };

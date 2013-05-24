@@ -59,9 +59,9 @@ tools.General.runtimeUpdate = function() {
 };
 // get current general from CA
 tools.General.get = function() {
-	if ($('div[style*="graphics/hot_container.gif"]').length > 0) {
+	if ($('div[style*="graphics/hot_general_container.gif"]').length > 0) {
 		var _old = tools.General.current, _i = $('#main_bn div > img[style="width:24px;height:24px;"]');
-		tools.General.current = $('div[style*="graphics/hot_container.gif"] > div:first').text().trim();
+		tools.General.current = $('div[style*="graphics/hot_general_container.gif"] > div:first').text().trim();
 		setTimeout(function() {
 			if (_i.length > 0) {
 				$('#cageGeneralEquipment').empty().append(_i);
@@ -79,7 +79,7 @@ tools.General.get = function() {
 // Set general image & name
 tools.General.set = function() {
 	if (tools.General.runtime.general[tools.General.current]) {
-		var _g = tools.General.runtime.general[tools.General.current], _values = $('div[style*="hot_container.gif"]').text().trim().match(/\d+/g);
+		var _g = tools.General.runtime.general[tools.General.current], _values = $('div[style*="hot_general_container.gif"]').text().trim().match(/\d+/g);
 		$('#cageGeneralName').text(_g.name);
 		$('#cageGeneralAttack').text(_values[0]);
 		$('#cageGeneralDefense').text(_values[1]);

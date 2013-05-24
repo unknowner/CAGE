@@ -225,6 +225,11 @@ tools.Page.ajaxPageDone = function() {
 		ajaxPerforming = false;
 		if (/<script type="text\/javascript">\stop.location.href = "http:\/\/apps.facebook.com\/castle_age\/.*.php";\s<\/script>/.test(data.substr(data.length < 200 ? 0 : data.length - 300)) === false) {
 			$data = $($.parseHTML(noSrc(data), true));
+			/*if (cageImageReplaceData !== undefined && cageImageReplaceData !== null) {
+				if (cageImageReplaceData.onOff === true && cageImageReplaceData.images !== {}) {
+					$data = cageImageReplace($data);
+				}
+			}*/
 			data = null;
 			startAllTimers();
 			console.log('ajaxPageDone:', div);

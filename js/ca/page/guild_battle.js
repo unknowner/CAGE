@@ -62,7 +62,7 @@ tools.Page.pages['guild_battle.php'] = function() {
 		var myLevel = Number(_myLevel[0]);
 		$('#your_guild_member_list > div > div, #enemy_guild_member_list > div > div').each(function(_i, _e) {
 
-			var _text = $(_e).text().trim(), _start, _end, _fullhealth;
+			var _text = $(_e).html().trim(), _start, _end, _fullhealth;
 			_start = _text.search("Health");
 			_end = _text.search("Status");
 			_fullhealth = _text.substr(_start, _end - _start - 28);

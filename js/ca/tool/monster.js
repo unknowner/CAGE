@@ -2,7 +2,7 @@ tool('Monster');
 
 tools.Monster.settings = function() {
 
-	tools.Assister.runtimeUpdate();
+	tools.Monster.runtimeUpdate();
 	tools.Settings.heading(language.monsterSetName);
 	tools.Settings.text('');
 	tools.Settings.onoff(language.monsterSetCloseInstant, tools.Monster.runtime.closeInstant, 'cageMonsterCloseInstant', tools.Monster.runtimeUpdate);
