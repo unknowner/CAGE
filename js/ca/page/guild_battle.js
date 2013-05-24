@@ -98,7 +98,7 @@ tools.Page.pages['guild_battle.php'] = function() {
 	}, filterStatus = {
 		'All' : '\.',
 		'Full health' : 'FullHealth',
-		'Got health' : '[^0]\d+\/\d+',
+		'Got health' : '[^0]\/\d+',
 		'No health' : '\s0\/\d+',
 		'Healthy' : 'Healthy',
 		'Good' : 'Good',
