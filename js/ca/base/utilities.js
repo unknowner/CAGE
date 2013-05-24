@@ -21,7 +21,7 @@ function note(_h, _m) {
 }
 
 // Add custom event to content site and listener to content_script
-function customEvent(_event, _function) {
+function customEvent(_event, _function, _data) {
 
 	addFunction(function() {
 		var _arg = arguments[0].event;
@@ -52,7 +52,7 @@ function customEvent(_event, _function) {
 
 }
 
-// http://forum.jquery.com/topic/beginner-function-toggle-deprecated-what-to-use-instead 
+// http://forum.jquery.com/topic/beginner-function-toggle-deprecated-what-to-use-instead
 $.fn.toggleClick = function() {
 	var functions = arguments;
 	return this.click(function() {
@@ -66,20 +66,19 @@ $.fn.toggleClick = function() {
 
 // http://stackoverflow.com/questions/6992585/jquery-deserialize-form
 function deparam(query) {
-  var pairs, i, keyValuePair, key, value, map = {};
-  // remove leading question mark if its there
-  if (query.slice(0, 1) === '?') {
-      query = query.slice(1);
-  }
-  if (query !== '') {
-      pairs = query.split('&');
-      for (i = 0; i < pairs.length; i += 1) {
-          keyValuePair = pairs[i].split('=');
-          key = decodeURIComponent(keyValuePair[0]);
-          value = (keyValuePair.length > 1) ? decodeURIComponent(keyValuePair[1]) : undefined;
-          map[key] = value;
-      }
-  }
-  return map;
+	var pairs, i, keyValuePair, key, value, map = {};
+	// remove leading question mark if its there
+	if (query.slice(0, 1) === '?') {
+		query = query.slice(1);
+	}
+	if (query !== '') {
+		pairs = query.split('&');
+		for (i = 0; i < pairs.length; i += 1) {
+			keyValuePair = pairs[i].split('=');
+			key = decodeURIComponent(keyValuePair[0]);
+			value = (keyValuePair.length > 1) ? decodeURIComponent(keyValuePair[1]) : undefined;
+			map[key] = value;
+		}
+	}
+	return map;
 }
-

@@ -3,12 +3,12 @@ tool('Loadout');
 tools.Loadout.init = function() {
 
 	$('#cageSidebarStats').append('<div id="cageLoadoutDisplay" class="cageSidebarStat"><div>Loadouts</div><div></div></div>').append($('<button id="cageLoadoutSubmit" title=""><div></div></button>').click(function() {
-
+		tools.Page.loadPage('player_loadouts.php');
 	}));
-	$('#main_bn div img.imgButton[onclick*="action=select_loadout"]').each(function(_i, _e) {
+	$('#hot_swap_loadouts_content_div img.imgButton').each(function(_i, _e) {
 
 		var _img = $(_e).parent('div').next('div').find('img').attr('src');
-		var _loadoutNum = /loadout=(\d+)/.exec($(_e).attr('onclick'))[1];
+		var _loadoutNum = /\d+/.exec($(_e).attr('onclick'))[0];
 
 		if (_img !== undefined) {
 			$('#cageLoadoutDisplay > div:last').append($('<input>').attr({
@@ -39,23 +39,16 @@ tools.Loadout.init = function() {
 				'cursor' : 'wait',
 				'backgroundImage' : 'url(\'http://image4.castleagegame.com/graphics/shield_wait.gif\')'
 			});
-			signedGet('generals.php?&action=select_loadout&loadout=' + _loadoutNum, function(_data) {
-				$data = $($.parseHTML(noSrc(_data)));
-				$('#main_bn').html($data.find('#main_bn').html());
-				var _i = $('#main_bn').find('div > img[style="width:24px;height:24px;"]');
-				if ($('div.generalContainerBox').length == 1) {
-					$('div.generalContainerBox').next('div').html(noNoSrc($data.find('div.generalContainerBox').next('div')).html());
-				}
-				setTimeout(function() {
-					if (_i.length > 0) {
-						_i.each(function() {
-							$(this).attr('src', $(this).attr('nosrc'));
-						});
-						$('#cageGeneralEquipment').empty().append(_i);
-					}
-				}, 100);
-				tools.Stats.update($('#main_sts', $data));
-				tools.General.parsePage(_data);
+
+			addFunction(function(lo) {
+				doHotSwapLoadout(lo.num);
+			}, JSON.stringify({
+				num : _loadoutNum
+			}), true, true);
+
+			customEvent('ChangeLoadout', function(_evt) {
+				var _i = $('#hot_swap_gen_incl_container').find('div > img[style="width:24px;height:24px;"]');
+				tools.General.get();
 				$('#cageLoadoutSubmit').css({
 					'cursor' : 'pointer',
 					'backgroundImage' : 'url(\'http://image4.castleagegame.com/graphics/achivement_tabicons_conquest_duel_rank.gif\')'

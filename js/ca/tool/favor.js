@@ -10,9 +10,9 @@ tools.Favor.init = function() {
 		var $this = $(this);
 		$this.attr('src', 'http://image4.castleagegame.com/graphics/shield_wait.gif').mouseleave().attr('disabled', 'disabled');
 		tools.Sidebar.smallDialog('Stamina Refill', 'Do you really want to use 10 favor points to buy a stamina refill?', function() {
-			//ok
+			// ok
 			signedGet('oracle.php?option=1&buychoice=6', function(_oracle) {
-				_oracle = $(noSrc(_oracle));
+				_oracle = $($.parseHTML(noSrc(_oracle)));
 				addFunction(function(data) {
 					cageStat.stamina = data.stamina;
 				}, JSON.stringify({
@@ -25,7 +25,7 @@ tools.Favor.init = function() {
 			'backgroundImage' : 'url(\'http://image4.castleagegame.com/graphics/quick_buy_button.jpg\')',
 			'width' : 97
 		}, function() {
-			//cancel
+			// cancel
 			$this.attr('src', 'http://image4.castleagegame.com/graphics/stat_stamina.gif').removeAttr('disabled');
 		}, {
 			'top' : 160
@@ -50,9 +50,9 @@ tools.Favor.init = function() {
 		var $this = $(this);
 		$this.attr('src', 'http://image4.castleagegame.com/graphics/shield_wait.gif').mouseleave().attr('disabled', 'disabled');
 		tools.Sidebar.smallDialog('Refill Energy', 'Do you really want to use 10 favor points to buy a energy refill?', function() {
-			//ok
+			// ok
 			signedGet('oracle.php?option=2&buychoice=6', function(_oracle) {
-				_oracle = $(noSrc(_oracle));
+				_oracle = $($.parseHTML(noSrc(_oracle)));
 				addFunction(function(data) {
 					cageStat.energy = data.energy;
 				}, JSON.stringify({
@@ -65,7 +65,7 @@ tools.Favor.init = function() {
 			'backgroundImage' : 'url(\'http://image4.castleagegame.com/graphics/quick_buy_button.jpg\')',
 			'width' : 97
 		}, function() {
-			//cancel
+			// cancel
 			$this.attr('src', 'http://image4.castleagegame.com/graphics/stat_energy.gif').removeAttr('disabled');
 		}, {
 			'top' : 160

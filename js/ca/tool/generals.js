@@ -96,33 +96,23 @@ tools.General.set = function() {
 // Set General by name
 tools.General.setByName = function(_name, _callback) {
 	if (tools.General.runtime.general[_name] && _name !== tools.General.current) {
-		$('#cageGeneralImageCharge').remove();
-		var _g = tools.General.runtime.general[_name];
-		if (_g !== null) {
-			$('#cageGeneralImage, #cagegeneralname, #cageGeneralDefense, #cageGeneralAttack').fadeOut('slow');
-			signedGet('generals.php?item=' + _g.item + '&itype=' + _g.itype + '&bqh=' + CastleAge.bqh, function(_data) {
-				$data = $($.parseHTML(noSrc(_data)));
-				$('#main_bn').html($data.find('#main_bn').html());
-				var _i = $('#main_bn').find('div > img[style="width:24px;height:24px;"]');
-				if ($('div.generalContainerBox').length == 1) {
-					$('div.generalContainerBox').next('div').html(noNoSrc($data.find('div.generalContainerBox').next('div')).html());
-				}
-				setTimeout(function() {
-					if (_i.length > 0) {
-						_i.each(function() {
-							$(this).attr('src', $(this).attr('nosrc')).attr('nosrc', '');
-						});
-						$('#cageGeneralEquipment').empty().append(_i);
-					}
-				}, 100);
-				tools.Stats.update($('#main_sts', $data));
-				tools.General.parsePage(_data);
+
+		addFunction(function(g) {
+			doHotSwapGeneral(g.item, g.itype);
+		}, JSON.stringify(tools.General.runtime.general[_name]), true, true);
+
+		customEvent('ChangeGeneral', function(_evt) {
+			$('#cageGeneralImageCharge').remove();
+			var _g = tools.General.runtime.general[_name];
+			if (_g !== null) {
+				$('#cageGeneralImage, #cagegeneralname, #cageGeneralDefense, #cageGeneralAttack').fadeOut('slow');
+				tools.General.get();
 				tools.General.current = _name;
 				if (_callback !== undefined) {
 					_callback();
 				}
-			});
-		}
+			}
+		});
 	}
 };
 // update generals object
@@ -201,8 +191,8 @@ tools.General.parsePage = function(_data) {
 	tools.General.renderFavs();
 	tools.General.get();
 	tools.General.generalsSetFixHeight();
-	if(tools.General.runtime.general['Aeris']){
-		
+	if (tools.General.runtime.general['Aeris']) {
+
 	}
 	_data = _names = null;
 };

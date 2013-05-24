@@ -20,11 +20,12 @@ function tool(_id) {
 
 function initTools() {
 
+	var _timer = 1;
 	$.each(tools, function(_index, _tool) {
-		if(_tool.init) {
+		if (_tool.init) {
 			console.log('INIT@' + com.port.current.name + ':' + _tool.id);
-			_tool.init();
-			_tool = null;
+			window.setTimeout(_tool.init, _timer * 500);
+			_timer += 1;
 		}
 	});
 	var start = new Date();

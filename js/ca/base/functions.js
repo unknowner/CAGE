@@ -24,6 +24,9 @@ tools.Functions.init = function() {
 	addFunction(tools.Functions.centerPopups, null, true, true);
 	addFunction(tools.Functions.hideFeedbackPositionBox, null, true, true);
 	addFunction(tools.Functions.cageRePos, null, true, true);
+	addFunction(tools.Functions.doHotSwapLoadout, null, true, true);
+	addFunction(tools.Functions.doHotSwapGeneral, null, true, true);
+	
 };
 tools.Functions.addCAGEToCANav = function(_ul, _after, _callback, _text) {
 	$('#' + _ul + ' li:contains("' + _after + '")').after($('<li><a href="#" style="color:#00fafd;cursor:pointer;">' + _text + '</a></li>').click(_callback));
@@ -196,5 +199,43 @@ tools.Functions.stat_increase_ticker = function() {
 			stat_increase_ticker(ticks_left, stat_current, stat_max, tick_time, increase_value, stat_type, false);
 		}, 1000);
 		time_container = time_value = current_val = mins = secs = null;
+	};
+};
+
+tools.Functions.doHotSwapLoadout = function() {
+	window['doHotSwapLoadout'] = function(num) {
+		params = prepHotSwapRequest('change_loadout');
+		params['target_loadout'] = num;
+		$.ajax({
+			url : 'hot_swap_ajax_handler.php',
+			context : document.body,
+			data : params,
+			type : 'POST',
+			success : function(data) {
+				if (data && data.length > 0) {
+					$('#hot_swap_gen_incl_container').html(data);
+				}
+				fireChangeLoadout();
+			}
+		});
+	};
+};
+tools.Functions.doHotSwapGeneral = function() {
+	window['doHotSwapGeneral'] = function(i, t) {
+		params = prepHotSwapRequest('equip_general');
+		params['i'] = i;
+		params['t'] = t;
+		$.ajax({
+			url : 'hot_swap_ajax_handler.php',
+			context : document.body,
+			data : params,
+			type : 'POST',
+			success : function(data) {
+				if (data && data.length > 0) {
+					$('#hot_swap_gen_incl_container').html(data);
+				}
+				fireChangeGeneral();
+			}
+		});
 	};
 };

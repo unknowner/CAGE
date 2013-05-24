@@ -69,7 +69,6 @@ function get(_url, _callback) {
 
 // shortcut to jQuery get with signed request reworked
 function signedGet() {
-	console.log('arguments:', arguments);
 	arguments[0] = arguments[0] + (arguments[0].indexOf('?') > -1 ? '&' : '?') + 'signed_request=' + CastleAge.signed_request;
 	$.get.apply(this, arguments);
 }
