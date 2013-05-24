@@ -24,7 +24,7 @@ function initTools() {
 	$.each(tools, function(_index, _tool) {
 		if (_tool.init) {
 			console.log('INIT@' + com.port.current.name + ':' + _tool.id);
-			window.setTimeout(_tool.init, _timer * 500);
+			window.setTimeout(_tool.init, _timer * 100);
 			_timer += 1;
 		}
 	});

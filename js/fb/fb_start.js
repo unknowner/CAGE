@@ -4,16 +4,19 @@ function startCAGE() {
 
 		// Create uid-input from CA (easier to get uid)
 		function cageGetUID() {
-			var _i = document.createElement('INPUT');
-			_i.type = 'hidden';
-			_i.id = 'EnvUser';
-			_i.value = getCookie('c_user');
-			console.log('cageGetUID:', _i.value);
-			// _i.value = Env.user;
-			if (_i.value !== null) {
-				document.body.appendChild(_i);
+			if (getCookie !== undefined) {
+				var _i = document.createElement('INPUT');
+				_i.type = 'hidden';
+				_i.id = 'EnvUser';
+				_i.value = getCookie('c_user');
+				console.log('cageGetUID:', _i.value);
+				if (_i.value !== null) {
+					document.body.appendChild(_i);
+				} else {
+					window.setTimeout(cageGetUID, 250);
+				}
 			} else {
-				cageGetUID();
+				window.setTimeout(cageGetUID, 250);
 			}
 		}
 		cageGetUID();

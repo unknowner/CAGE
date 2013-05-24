@@ -53,63 +53,33 @@ tools.Page.pages['guild_battle.php'] = function() {
 
 	// gate filter
 	function filterGate() {
-		var _class = new RegExp($('#cageGateClassFilter').val());
-		var _activ = new RegExp($('#cageGateActivityFilter').val());
-		var _state = new RegExp($('#cageGateStatusFilter').val());
+		var _class = $('#cageGateClassFilter').val();
+		var _activ = new RegExp($('#cageGateActivityFilter').val(), "g");
+		var _state = $('#cageGateStatusFilter').val();
 		var _points = $('#cageGatePointsFilter').val();
 		var _count = 0;
-		var _myLevel = $('a[href*="keep.php"] > div[style="color:#ffffff"]').text().match(/\d+/);
-		var myLevel = Number(_myLevel[0]);
 		$('#your_guild_member_list > div > div, #enemy_guild_member_list > div > div').each(function(_i, _e) {
 
-			var _text = $(_e).html().trim(), _start, _end, _fullhealth;
-			_start = _text.search("Health");
-			_end = _text.search("Status");
-			_fullhealth = _text.substr(_start, _end - _start - 28);
-			_fullhealth = _fullhealth.replace(/(\d+)(?:(\/\1$))/gi, "FullHealth");
+			var _text = $(_e).text().trim(), _stateTest = 1;
+			if (_state === "FullHealth") {
+				var _test = /(\d+)\/(\d+)/g.exec(_text);
+				_stateTest = (_test.length === 3 && _test[1] === _test[2]) ? 1 : 0;
+			} else {
+				var _test = new RegExp(_state, "g");
+				console.log(_test.exec(_text));
+				_stateTest = _test.exec(_text) ? 1 : 0;
+			}
 
-			if (_class.test(_text) && _activ.test(_text) && (_state.test(_text) || _state.test(_fullhealth))) {
-				if (_points !== 'All') {
-					if (/Level: \d+/.test(_text)) {
-						var targetLevel = parseInt(/(?:Level: )(\d+)/g.exec(_text)[1]);
-						var _showTarget = false;
-						switch (_points) {
-							case '240':
-								if (targetLevel > myLevel * 1.2) {
-									_showTarget = true;
-								}
-								break;
-							case '200':
-								if ((targetLevel > myLevel * 0.8) && (targetLevel <= myLevel * 1.2)) {
-									_showTarget = true;
-								}
-								break;
-							case '160':
-								if (targetLevel <= myLevel * 0.8) {
-									_showTarget = true;
-								}
-								break;
-							default:
-								_showTarget = true;
-						}
-						if (_showTarget) {
-							$(_e).show();
-							_count += 1;
-						} else {
-							$(_e).hide();
-						}
-					} else {
-						console.log('Error in points filter!');
-						$(_e).show();
-						_count += 1;
-					}
-				} else {
-					$(_e).show();
-					_count += 1;
-				}
+			var _classTest = _class === 'all' ? 1 : $(_e).find('img[src*="/graphics/class_' + _class + '.gif"]').length;
+			var _pointTest = _points === 'all' ? 1 : $(_e).find('img[title="Battle Points for Victory: ' + _points + '"]').length;
+			console.log(_classTest, _activ.test(_text), _pointTest, _stateTest);
+			if (_classTest > 0 && _activ.test(_text) && _pointTest > 0 && _stateTest > 0) {
+				$(_e).show();
+				_count += 1;
 			} else {
 				$(_e).hide();
 			}
+
 		});
 		var _gateNum = $('#enemy_guild_battle_section_battle_list, #your_guild_battle_section_battle_list').attr('class').match(/\d/)[0];
 		var _gate = $('#enemy_guild_tab_' + _gateNum + ' > div, #your_guild_tab_' + _gateNum + ' > div');
@@ -118,11 +88,11 @@ tools.Page.pages['guild_battle.php'] = function() {
 
 	// class filter
 	var filterClass = {
-		'All' : '\.',
-		'Cleric' : 'Cleric',
-		'Mage' : 'Mage',
-		'Rogue' : 'Rogue',
-		'Warrior' : 'Warrior'
+		'All' : 'all',
+		'Cleric' : 'cleric',
+		'Mage' : 'mage',
+		'Rogue' : 'rogue',
+		'Warrior' : 'warrior'
 	}, filterActivity = {
 		'All' : '\.',
 		'Active' : 'Battle Points: [^0]',
@@ -130,15 +100,15 @@ tools.Page.pages['guild_battle.php'] = function() {
 	}, filterStatus = {
 		'All' : '\.',
 		'Full health' : 'FullHealth',
-		'Got health' : 'Health: [^0]',
-		'No health' : 'Health: 0/',
+		'Got health' : '[^0]\d+\/\d+',
+		'No health' : '\s0\/\d+',
 		'Healthy' : 'Healthy',
 		'Good' : 'Good',
 		'Fair' : 'Fair',
 		'Weakened' : 'Weakened',
 		'Stunned' : 'Stunned'
 	}, filterPoints = {
-		'All' : 'All',
+		'All' : 'all',
 		'240' : '240',
 		'200' : '200',
 		'160' : '160'

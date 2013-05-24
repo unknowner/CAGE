@@ -69,8 +69,7 @@ tools.General.get = function() {
 		}, 100);
 		if (_old !== tools.General.current) {
 			$('#cageGeneralImageCharge').remove();
-			$('#cageGeneralImage, #cagegeneralname, #cageGeneralDefense').fadeOut('slow');
-			$('#cageGeneralAttack').fadeOut('slow', function() {
+			$('#cageGeneralImage, #cagegeneralname, #cageGeneralDefense, #cageGeneralAttack').fadeOut('slow', function() {
 				tools.General.set();
 			});
 		}
@@ -96,18 +95,15 @@ tools.General.set = function() {
 // Set General by name
 tools.General.setByName = function(_name, _callback) {
 	if (tools.General.runtime.general[_name] && _name !== tools.General.current) {
-
+		// Call CA function for hot swap
 		addFunction(function(g) {
 			doHotSwapGeneral(g.item, g.itype);
 		}, JSON.stringify(tools.General.runtime.general[_name]), true, true);
-
+		// fired when new general was loaded
 		customEvent('ChangeGeneral', function(_evt) {
-			$('#cageGeneralImageCharge').remove();
 			var _g = tools.General.runtime.general[_name];
 			if (_g !== null) {
-				$('#cageGeneralImage, #cagegeneralname, #cageGeneralDefense, #cageGeneralAttack').fadeOut('slow');
 				tools.General.get();
-				tools.General.current = _name;
 				if (_callback !== undefined) {
 					_callback();
 				}
