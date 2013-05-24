@@ -61,12 +61,22 @@ tools.Page.pages['guild_battle.php'] = function() {
 		$('#your_guild_member_list > div > div, #enemy_guild_member_list > div > div').each(function(_i, _e) {
 
 			var _text = $(_e).text().trim(), _stateTest = true;
-			if (_state === "FullHealth") {
-				var _test = /(\d+)\/(\d+)/g.exec(_text);
-				_stateTest = (_test.length === 3 && _test[1] === _test[2]) ? true : false;
-			} else {
-				var _test = new RegExp(_state, "g");
-				_stateTest = _test.test(_text);
+			switch (_state) {
+				case 'FullHealth':
+					var _test = /(\d+)\/(\d+)/g.exec(_text);
+					_stateTest = (_test.length === 3 && _test[1] === _test[2]) ? true : false;
+					break;
+				case 'GotHealth':
+					var _test = /(\d+)\/(\d+)/g.exec(_text);
+					_stateTest = (_test.length === 3 && !(eval(_test[1]) === 0)) ? true : false;
+					break;
+				case 'NoHealth':
+					var _test = /(\d+)\/(\d+)/g.exec(_text);
+					_stateTest = (_test.length === 3 && eval(_test[1]) === 0) ? true : false;
+					break;
+				default:
+					var _test = new RegExp(_state, "g");
+					_stateTest = _test.test(_text);
 			}
 
 			var _classTest = _class === 'all' ? 1 : $(_e).find('img[src*="/graphics/class_' + _class + '.gif"]').length;
@@ -98,8 +108,8 @@ tools.Page.pages['guild_battle.php'] = function() {
 	}, filterStatus = {
 		'All' : '\.',
 		'Full health' : 'FullHealth',
-		'Got health' : '[^0]\/\d+',
-		'No health' : '\s0\/\d+',
+		'Got health' : 'GotHealth',
+		'No health' : 'NoHealth',
 		'Healthy' : 'Healthy',
 		'Good' : 'Good',
 		'Fair' : 'Fair',
