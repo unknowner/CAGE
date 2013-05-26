@@ -24,29 +24,36 @@ tools.Page.pages['guildv2_conquest_expansion.php'] = function() {
 
 		// gate filter
 		function filterGate() {
-			var _class = new RegExp($('#cageGateClassFilter').val());
-			var _state = new RegExp($('#cageGateStatusFilter').val());
+			var _class = $('#cageGateClassFilter').val();
+			var _state = $('#cageGateStatusFilter').val();
 			var _points = $('#cageGatePointsFilter').val();
 			var _count = 0;
 			var _myLevel = $('a[href*="keep.php"] > div[style="color:#ffffff"]').text().match(/\d+/);
 			var myLevel = Number(_myLevel[0]);
 			$('#your_guild_member_list_1 > div').each(function(_i, _e) {
-				var _text = $(_e).text().trim(), _health, _maxHealth, _fullhealth, _eClass;
+				var _text = $(_e).text().trim(), _stateTest = true;
+				switch (_state) {
+					case 'FullHealth':
+						var _test = /(\d+)\/(\d+)/g.exec(_text);
+						_stateTest = (_test.length === 3 && _test[1] === _test[2]) ? true : false;
+						break;
+					case 'GotHealth':
+						var _test = /(\d+)\/(\d+)/g.exec(_text);
+						_stateTest = (_test.length === 3 && !(eval(_test[1]) === 0)) ? true : false;
+						break;
+					case 'NoHealth':
+						var _test = /(\d+)\/(\d+)/g.exec(_text);
+						_stateTest = (_test.length === 3 && eval(_test[1]) === 0) ? true : false;
+						break;
+					default:
+						var _test = new RegExp(_state, "g");
+						_stateTest = _test.test(_text);
+				};
 
-				/* enemy class */
-				_eClass = $(_e).find('img[title="Cleric"], img[title="Mage"], img[title="Warrior"], img[title="Rogue"]').attr("title");
+				var _classTest = _class === 'all' ? 1 : $(_e).find('img[src*="/graphics/class_' + _class + '.gif"]').length;
 
-				/* enemy full health */
-				_health = /(\d+)\//.exec(_text)[1];
-				_maxHealth = /\/(\d+)/.exec(_text)[1];
-				if ((_maxHealth - _health) === 0) {
-					_fullhealth = true;
-				} else {
-					_fullhealth = false;
-				}
-
-				if (_class.test(_eClass) && (_state.test(_text) || (_state.test('FullHealth') && _fullhealth))) {
-					if (_points !== 'All') {
+				if (_classTest > 0  && _stateTest === true) {
+					if (_points !== 'all') {
 						if (/Level: \d+/.test(_text)) {
 							var targetLevel = parseInt(/(?:Level: )(\d+)/g.exec(_text)[1]);
 							var _showTarget = false;
@@ -103,22 +110,23 @@ tools.Page.pages['guildv2_conquest_expansion.php'] = function() {
 
 		// class filter
 		var filterClass = {
-			'All' : '\.',
-			'Cleric' : 'Cleric',
-			'Mage' : 'Mage',
-			'Rogue' : 'Rogue',
-			'Warrior' : 'Warrior'
+			'All' : 'all',
+			'Cleric' : 'cleric',
+			'Mage' : 'mage',
+			'Rogue' : 'rogue',
+			'Warrior' : 'warrior'
 		}, filterStatus = {
 			'All' : '\.',
 			'Full health' : 'FullHealth',
-			'Got health' : '[^0]\/',
+			'Got health' : 'GotHealth',
+			'No health' : 'NoHealth',
 			'Healthy' : 'Healthy',
 			'Good' : 'Good',
 			'Fair' : 'Fair',
 			'Weakened' : 'Weakened',
 			'Stunned' : 'Stunned'
 		}, filterPoints = {
-			'All' : 'All',
+			'All' : 'all',
 			'50' : '50',
 			'40' : '40',
 			'30' : '30',
