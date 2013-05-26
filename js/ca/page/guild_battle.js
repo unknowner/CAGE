@@ -40,8 +40,14 @@ tools.Page.pages['guild_battle.php'] = function() {
 
 	// reduce gate size and add number
 	if ($('#your_guild_member_list:contains("No Soldiers Posted In This Position!"), #enemy_guild_member_list:contains("No Soldiers Posted In This Position!")').length === 0) {
+		var _guildnum = 1;
 		$('#enemy_guild_member_list > div > div, #your_guild_member_list > div > div').each(function(_i, _e) {
-			$(_e).append('<span class="GuildNum">' + (_i + 1) + '<span>');
+			if ($(_e).text().trim().length > 0) {
+				$(_e).append('<span class="GuildNum">' + (_guildnum) + '<span>');
+				_guildnum += 1;
+			} else {
+				$(_e).remove();
+			}
 		});
 	}
 
@@ -61,12 +67,22 @@ tools.Page.pages['guild_battle.php'] = function() {
 		$('#your_guild_member_list > div > div, #enemy_guild_member_list > div > div').each(function(_i, _e) {
 
 			var _text = $(_e).text().trim(), _stateTest = true;
-			if (_state === "FullHealth") {
-				var _test = /(\d+)\/(\d+)/g.exec(_text);
-				_stateTest = (_test.length === 3 && _test[1] === _test[2]) ? true : false;
-			} else {
-				var _test = new RegExp(_state, "g");
-				_stateTest = _test.test(_text);
+			switch (_state) {
+				case 'FullHealth':
+					var _test = /(\d+)\/(\d+)/g.exec(_text);
+					_stateTest = (_test.length === 3 && _test[1] === _test[2]) ? true : false;
+					break;
+				case 'GotHealth':
+					var _test = /(\d+)\/(\d+)/g.exec(_text);
+					_stateTest = (_test.length === 3 && !(eval(_test[1]) === 0)) ? true : false;
+					break;
+				case 'NoHealth':
+					var _test = /(\d+)\/(\d+)/g.exec(_text);
+					_stateTest = (_test.length === 3 && eval(_test[1]) === 0) ? true : false;
+					break;
+				default:
+					var _test = new RegExp(_state, "g");
+					_stateTest = _test.test(_text);
 			}
 
 			var _classTest = _class === 'all' ? 1 : $(_e).find('img[src*="/graphics/class_' + _class + '.gif"]').length;
@@ -93,13 +109,13 @@ tools.Page.pages['guild_battle.php'] = function() {
 		'Warrior' : 'warrior'
 	}, filterActivity = {
 		'All' : '\.',
-		'Active' : 'Battle Points: [^0]',
+		'Active' : 'Battle Points: [1-9]',
 		'Inactive' : 'Battle Points: 0'
 	}, filterStatus = {
 		'All' : '\.',
 		'Full health' : 'FullHealth',
-		'Got health' : '[^0]\/\d+',
-		'No health' : '\s0\/\d+',
+		'Got health' : 'GotHealth',
+		'No health' : 'NoHealth',
 		'Healthy' : 'Healthy',
 		'Good' : 'Good',
 		'Fair' : 'Fair',
@@ -177,7 +193,7 @@ tools.Page.pages['guild_battle.php'] = function() {
 	$('#guild_battle_health').append('<span class="cageGateFilterTitle ui-state-default"> Points </span><select id="cageGatePointsFilter" class="cagegatefiltertitle">');
 	_sel = $('#cageGatePointsFilter');
 	$.each(filterPoints, function(_i, _e) {
-		_sel.append('<option value="' + _e + '" ' + (_storedPoints == _i ? 'selected = "selected"' : '') + ' >' + _i + '</option>');
+		_sel.prepend('<option value="' + _e + '" ' + (_storedPoints == _i ? 'selected = "selected"' : '') + ' >' + _i + '</option>');
 	});
 	_sel.change(function() {
 		_storedPoints = $(this).find("option:selected").text();

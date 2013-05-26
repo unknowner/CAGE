@@ -69,6 +69,7 @@ tools.castleage.init = function() {
 		item.set('sidebarGuildChat', tools.castleage.runtime.sidebarGuildChat);
 		tools.castleage.sidebarGuildChat();
 	});
+	$('#persistent_layer').hide();
 };
 tools.castleage.macBGFix = function() {
 	if (tools.castleage.runtime.macBGFix) {

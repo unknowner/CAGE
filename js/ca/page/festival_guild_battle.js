@@ -40,11 +40,15 @@ tools.Page.pages['festival_guild_battle.php'] = function() {
 	_tokens.text(_tokens.text() + ' (' + $('#guild_token_current_value').text() + ' left)');
 
 	// reduce gate size and add number
-	if ($('#your_guild_member_list:contains("No Soldiers Posted In This Position!"), #enemy_guild_member_list:contains("No Soldiers Posted In This Position!")').length === 0) {
-		$('#enemy_guild_member_list > div > div, #your_guild_member_list > div > div').each(function(_i, _e) {
-			$(_e).append('<span class="GuildNum">' + (_i + 1) + '<span>');
-		});
-	}
+	var _guildnum = 1;
+	$('#enemy_guild_member_list > div > div, #your_guild_member_list > div > div').each(function(_i, _e) {
+		if ($(_e).text().trim().length > 0) {
+			$(_e).append('<span class="GuildNum">' + (_guildnum) + '<span>');
+			_guildnum += 1;
+		} else {
+			$(_e).remove();
+		}
+	});
 
 	// Saved filter settings
 	var _storedClass = item.get('cagePageFestGuildBattleClass', 'All');
@@ -54,60 +58,38 @@ tools.Page.pages['festival_guild_battle.php'] = function() {
 
 	// gate filter
 	function filterGate() {
-		var _class = new RegExp($('#cageGateClassFilter').val());
+		var _class = $('#cageGateClassFilter').val();
 		var _activ = new RegExp($('#cageGateActivityFilter').val());
-		var _state = new RegExp($('#cageGateStatusFilter').val());
+		var _state = $('#cageGateStatusFilter').val();
 		var _points = $('#cageGatePointsFilter').val();
 		var _count = 0;
-		var _myLevel = $('a[href*="keep.php"] > div[style="color:#ffffff"]').text().match(/\d+/);
-		var myLevel = Number(_myLevel[0]);
+
 		$('#your_guild_member_list > div > div, #enemy_guild_member_list > div > div').each(function(_i, _e) {
 
-			var _text = $(_e).text().trim(), _start, _end, _fullhealth;
-			_start = _text.search("Health");
-			_end = _text.search("Status");
-			_fullhealth = _text.substr(_start, _end - _start - 28);
-			_fullhealth = _fullhealth.replace(/(\d+)(?:(\/\1$))/gi, "FullHealth");
+			var _text = $(_e).text().trim(), _stateTest = true;
+			switch (_state) {
+				case 'FullHealth':
+					var _test = /(\d+)\/(\d+)/g.exec(_text);
+					_stateTest = (_test.length === 3 && _test[1] === _test[2]) ? true : false;
+					break;
+				case 'GotHealth':
+					var _test = /(\d+)\/(\d+)/g.exec(_text);
+					_stateTest = (_test.length === 3 && !(eval(_test[1]) === 0)) ? true : false;
+					break;
+				case 'NoHealth':
+					var _test = /(\d+)\/(\d+)/g.exec(_text);
+					_stateTest = (_test.length === 3 && eval(_test[1]) === 0) ? true : false;
+					break;
+				default:
+					var _test = new RegExp(_state, "g");
+					_stateTest = _test.test(_text);
+			}
 
-			if (_class.test(_text) && _activ.test(_text) && (_state.test(_text) || _state.test(_fullhealth))) {
-				if (_points !== 'All') {
-					if (/Level: \d+/.test(_text)) {
-						var targetLevel = parseInt(/(?:Level: )(\d+)/g.exec(_text)[1]);
-						var _showTarget = false;
-						switch (_points) {
-							case '240':
-								if (targetLevel > myLevel * 1.2) {
-									_showTarget = true;
-								}
-								break;
-							case '200':
-								if ((targetLevel > myLevel * 0.8) && (targetLevel <= myLevel * 1.2)) {
-									_showTarget = true;
-								}
-								break;
-							case '160':
-								if (targetLevel <= myLevel * 0.8) {
-									_showTarget = true;
-								}
-								break;
-							default:
-								_showTarget = true;
-						}
-						if (_showTarget) {
-							$(_e).show();
-							_count += 1;
-						} else {
-							$(_e).hide();
-						}
-					} else {
-						console.log('Error in points filter!');
-						$(_e).show();
-						_count += 1;
-					}
-				} else {
-					$(_e).show();
-					_count += 1;
-				}
+			var _classTest = _class === 'all' ? 1 : $(_e).find('img[src*="/graphics/class_' + _class + '.gif"]').length;
+			var _pointTest = _points === 'all' ? 1 : $(_e).find('img[title="Battle Points for Victory: ' + _points + '"]').length;
+			if (_classTest > 0 && _activ.test(_text) && _pointTest > 0 && _stateTest === true) {
+				$(_e).show();
+				_count += 1;
 			} else {
 				$(_e).hide();
 			}
@@ -119,27 +101,27 @@ tools.Page.pages['festival_guild_battle.php'] = function() {
 
 	// class filter
 	var filterClass = {
-		'All' : '\.*',
-		'Cleric' : 'Cleric',
-		'Mage' : 'Mage',
-		'Rogue' : 'Rogue',
-		'Warrior' : 'Warrior'
+		'All' : 'all',
+		'Cleric' : 'cleric',
+		'Mage' : 'mage',
+		'Rogue' : 'rogue',
+		'Warrior' : 'warrior'
 	}, filterActivity = {
 		'All' : '\.*',
-		'Active' : 'Battle Points: [^0]',
+		'Active' : 'Battle Points: [1-9]',
 		'Inactive' : 'Battle Points: 0'
 	}, filterStatus = {
 		'All' : '\.*',
 		'Full health' : 'FullHealth',
-		'Got health' : 'Health: [^0]',
-		'No health' : 'Health: 0/',
+		'Got health' : 'GotHealth',
+		'No health' : 'NoHealth',
 		'Healthy' : 'Healthy',
 		'Good' : 'Good',
 		'Fair' : 'Fair',
 		'Weakened' : 'Weakened',
 		'Stunned' : 'Stunned'
 	}, filterPoints = {
-		'All' : 'All',
+		'All' : 'all',
 		'240' : '240',
 		'200' : '200',
 		'160' : '160'
