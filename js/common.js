@@ -81,9 +81,8 @@ function signedPost() {
 
 // prevent loading of images
 function noSrc(_t) {
-	var _re = new RegExp('src=', 'gi');
-	_t = _t.replace(_re, 'nosrc=');
-	return _t;
+	var _n = _t.replace(/src=/g, 'nosrc=');
+	return _n;
 }
 
 // nsrc > src

@@ -13,14 +13,8 @@ function cageNews(_full) {
 		tools.Settings.start();
 	});
 	$.each([
-	    'ADD: Hide completed quests',
-	  	'FIX: Energy/Stamina shortcut showing nothing',
-	  	'FIX: Adjusted to new FB layout',
-	  	'FIX: Hero update potion dialog position',
-	  	'CHG: Removed Assister',
-	  	'CHG: Removed Gifting',
-	  	'CHG: Removed Army filler/cleaner',
-	  	'CHG: Stashing with manual switch to Aeris'
+	    'FIX: Chat Switch',
+	  	'FIX: Double click fiasco ;)'
 	], function(_i, _e) {
 		$('#cageNewsChanges').append('<li><span>' + _e.split(':')[0] + '</span>' + _e.split(':')[1] + '</li>');
 	});

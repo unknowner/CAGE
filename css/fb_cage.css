@@ -33,7 +33,8 @@ li.topNavLink,li.topNavLink a {
 }
 
 #pageLogo>a {
-	margin-top: 0 !important;
+	margin-top: 0px !important;
+	height: 10px !important;
 }
 
 #pageHead {

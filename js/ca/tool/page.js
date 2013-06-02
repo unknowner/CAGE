@@ -11,14 +11,13 @@ tools.Page.init = function() {
 	// some utilites
 	addFunction(function() {
 		noSrc = function(_t) {
-			var _re = new RegExp('src="', 'gi');
-			_t = _t.replace(_re, 'nosrc="');
-			return _t;
+			var _n = _t.replace(/src=/g, 'nosrc=');
+			return _n;
 		};
 		noNoSrc = function(_jqo) {
 			_jqo.find('input[nosrc], img[nosrc]').each(function() {
 				var $t = $(this);
-				$t.attr('src', $t.attr('nosrc'));
+				$t.attr('src', $t.attr('nosrc')).removeAttr('nosrc');
 			});
 			return _jqo;
 		};
@@ -224,12 +223,8 @@ tools.Page.ajaxPageDone = function() {
 		stopTimers = false;
 		ajaxPerforming = false;
 		if (/<script type="text\/javascript">\stop.location.href = "http:\/\/apps.facebook.com\/castle_age\/.*.php";\s<\/script>/.test(data.substr(data.length < 200 ? 0 : data.length - 300)) === false) {
-			$data = $($.parseHTML(noSrc(data), true));
-			/*if (cageImageReplaceData !== undefined && cageImageReplaceData !== null) {
-				if (cageImageReplaceData.onOff === true && cageImageReplaceData.images !== {}) {
-					$data = cageImageReplace($data);
-				}
-			}*/
+			data = noSrc(data);
+			$data = $($.parseHTML(data, true));
 			data = null;
 			startAllTimers();
 			console.log('ajaxPageDone:', div);

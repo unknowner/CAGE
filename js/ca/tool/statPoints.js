@@ -119,7 +119,9 @@ tools.StatPoints.work = function(_up, _max) {
 		console.log('setStat', _up[_up.length - 1]);
 		signedGet('keep.php?' + _up.pop(), function(_data) {
 			$('#cageLevelUpBar > div ').css('width', ((_max - _up.length) / _max * 100).toString() + '%');
-			tools.StatPoints.work(_up, _max);
+			window.setTiemout(function() {
+				tools.StatPoints.work(_up, _max);
+			}, 250);
 		});
 	} else {
 		tools.StatPoints.update();

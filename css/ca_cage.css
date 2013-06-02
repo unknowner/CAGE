@@ -101,7 +101,6 @@ div.results {
 }
 
 div.connect_castlepb_bg {
-	z-index: 11 !important;
 	height: 100% !important;
 }
 
@@ -124,7 +123,6 @@ div.connect_castlepb_bg {
 	top: 0;
 	left: 0;
 	opacity: 0;
-	z-index: 20;
 }
 
 #single_popup {
@@ -150,7 +148,7 @@ div.demipb_button {
 }
 
 #expandedGuildChat,#collapsedGuildChat {
-	z-index: 11;
+	z-index: 11 !important;
 	top: 60px !important;
 	margin-left: 13px;
 	position: fixed !important;
