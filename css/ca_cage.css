@@ -115,7 +115,6 @@ div.connect_castlepb_bg {
  */
 #single_popup_background {
 	cursor: pointer;
-	display: block;
 	height: 100%;
 	position: fixed;
 	width: 100%;
@@ -123,6 +122,7 @@ div.connect_castlepb_bg {
 	top: 0;
 	left: 0;
 	opacity: 0;
+	display: none;
 }
 
 #single_popup {

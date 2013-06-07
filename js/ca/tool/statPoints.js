@@ -121,7 +121,7 @@ tools.StatPoints.work = function(_up, _max) {
 			$('#cageLevelUpBar > div ').css('width', ((_max - _up.length) / _max * 100).toString() + '%');
 			window.setTiemout(function() {
 				tools.StatPoints.work(_up, _max);
-			}, 250);
+			}, 500);
 		});
 	} else {
 		tools.StatPoints.update();
