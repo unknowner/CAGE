@@ -28,12 +28,14 @@ function initTools() {
 			_timer += 1;
 		}
 	});
-	var start = new Date();
-	signedGet('keep.php', function(_keepdata) {
-		console.log('signedGet keep:', (new Date() - start));
-		_keepdata = _keepdata.replace(/src="/g, 'nosrc=');
-		CastleAge.bqh = $('input[name="bqh"]:first', $.parseHTML(_keepdata)).val();
-		tools.PotionStamina.work(_keepdata);
-		tools.PotionEnergy.work(_keepdata);
-	});
+	window.setTimeout(function() {
+		var start = new Date();
+		signedGet('keep.php', function(_keepdata) {
+			tools.PotionStamina.work(_keepdata);
+			tools.PotionEnergy.work(_keepdata);
+			console.log('signedGet keep:', (new Date() - start));
+			_keepdata = _keepdata.replace(/src="/g, 'nosrc=');
+			CastleAge.bqh = $('input[name="bqh"]:first', $.parseHTML(_keepdata)).val();
+		});
+	}, _timer * 500);
 }

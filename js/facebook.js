@@ -15,7 +15,7 @@ function initFacebook() {
 		$('#cageIFrame').html('.cageIFrame {height:' + (_window.innerHeight - (Facebook.bluebarHidden === true ? 1 : 42)) + 'px !important;}');
 	};
 
-	$('#contentArea').css('backgroundColor', '#000');
+	// $('#contentArea').css('backgroundColor', '#000');
 	$('#cageIFrame').html('.cageIFrame {height:' + (_window.innerHeight - (Facebook.bluebarHidden === true ? 1 : 42)) + 'px !important;}');
 	$('#iframe_canvas').addClass('cageIFrame').attr('scrolling', 'yes');
 

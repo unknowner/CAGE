@@ -3,6 +3,7 @@ tools.Page.pages['army_news_feed.php'] = function() {
 
 	console.log('Page: army_news_feed.php');
 
+	/*
 	if(tools['Assister'].runtime.Assisted !== undefined && tools['Assister'].runtime.Assisted.length > 0) {
 		var _alogs = $('#action_logs');
 		$('div:first', _alogs).append($('<div id="cageAssists" class="imgButton">Assists</div>').click(function() {
@@ -22,4 +23,5 @@ tools.Page.pages['army_news_feed.php'] = function() {
 			});
 		}));
 	}
+	*/
 };

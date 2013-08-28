@@ -81,7 +81,7 @@ function signedPost() {
 
 // prevent loading of images
 function noSrc(_t) {
-	var _n = _t.replace(/src=/g, 'nosrc=');
+	var _n = String(_t).replace(/src=/g, 'nosrc=');
 	return _n;
 }
 

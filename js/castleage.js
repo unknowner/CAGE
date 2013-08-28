@@ -16,7 +16,15 @@ function initCastleAge() {
 	$('#AjaxLoadIcon').append('<img id="cageLogo" src="' + getPath('img/icon64.png') + '"><div id="cageLoadError">Loading CAGE...</div>').fadeIn('slow');
 	var _append = '';
 	$.each([
-			'css/ca_cage.css', 'css/ca_monster.css', 'css/ca_pages.css', 'css/cage_general.css', 'css/cage_settings.css', 'css/cage_sidebar.css', 'css/cage_stats.css', 'css/cage_tools.css', 'css/cage.css'
+			'css/cage_stats.css',
+			'css/ca_cage.css',
+			'css/ca_monster.css',
+			'css/ca_pages.css',
+			'css/cage_general.css',
+			'css/cage_settings.css',
+			'css/cage_sidebar.css',
+			'css/cage_tools.css',
+			'css/cage.css'
 	], function(_i, _e) {
 		_append += '<link rel="stylesheet" type="text/css" href="' + getPath(_e) + '?_=' + Math.random() + '" >';
 	});
@@ -55,7 +63,13 @@ function initCastleAge() {
 				$('#chatGuildChat').scrollTop($('#chatGuildChat div').length * 1000);
 				$('#cageLoadError').remove();
 			});
-		
+
+			// Rearrange new ca info bar / statsbar
+			$('#main_sts_container > div:first').css('marginLeft', -4);
+			$('#mainHeaderTabs > mainHeaderTabSection').each(function(i, e) {
+				$(e).find('> div:first, >div:last').css('padding', '0 0 0 2px');
+			});
+			$('#app_body_container').before($('#mainHeaderTabs').detach());
 		} else {
 			com.send(com.task.castleAgeReady, com.port.facebook);
 		}

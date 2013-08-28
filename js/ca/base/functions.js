@@ -24,9 +24,9 @@ tools.Functions.init = function() {
 	addFunction(tools.Functions.centerPopups, null, true, true);
 	addFunction(tools.Functions.hideFeedbackPositionBox, null, true, true);
 	addFunction(tools.Functions.cageRePos, null, true, true);
+	addFunction(tools.Functions.selectLoadout, null, true, true);
 	addFunction(tools.Functions.doHotSwapLoadout, null, true, true);
 	addFunction(tools.Functions.doHotSwapGeneral, null, true, true);
-	
 };
 tools.Functions.addCAGEToCANav = function(_ul, _after, _callback, _text) {
 	$('#' + _ul + ' li:contains("' + _after + '")').after($('<li><a href="#" style="color:#00fafd;cursor:pointer;">' + _text + '</a></li>').click(_callback));
@@ -37,6 +37,7 @@ tools.Functions.addToCANav = function(_ul, _after, _href, _text) {
 // Fixed Popups
 tools.Functions.cageRePos = function() {
 	window['cageRePos'] = function(fb_js_var, top) {
+		console.log(fb_js_var);
 		$('#single_popup_background').css('opacity', 0).removeClass('connect_castlepb_bg').fadeTo('slow', 0.75);
 		var _sp = $('#single_popup');
 		if (fb_js_var.indexOf('<div') !== -1) {
@@ -202,10 +203,21 @@ tools.Functions.stat_increase_ticker = function() {
 	};
 };
 
+tools.Functions.selectLoadout = function() {
+	window['selectLoadout'] = function(sel) {
+		var i = sel.options[sel.selectedIndex].value;
+		if (validLoadouts[i]) {
+			doHotSwapLoadout(i);
+		} else {
+			ajaxLinkSend('globalContainer', 'player_loadouts.php?loadout=' + i);
+		}
+	};
+};
+
 tools.Functions.doHotSwapLoadout = function() {
-	window['doHotSwapLoadout'] = function(num) {
+	window['doHotSwapLoadout'] = function(l) {
 		params = prepHotSwapRequest('change_loadout');
-		params['target_loadout'] = num;
+		params['target_loadout'] = l;
 		$.ajax({
 			url : 'hot_swap_ajax_handler.php',
 			context : document.body,
@@ -214,12 +226,13 @@ tools.Functions.doHotSwapLoadout = function() {
 			success : function(data) {
 				if (data && data.length > 0) {
 					$('#hot_swap_gen_incl_container').html(data);
+					fireChooseLoadout();
 				}
-				fireChangeLoadout();
 			}
 		});
 	};
 };
+
 tools.Functions.doHotSwapGeneral = function() {
 	window['doHotSwapGeneral'] = function(i, t) {
 		params = prepHotSwapRequest('equip_general');
@@ -233,8 +246,8 @@ tools.Functions.doHotSwapGeneral = function() {
 			success : function(data) {
 				if (data && data.length > 0) {
 					$('#hot_swap_gen_incl_container').html(data);
+					fireChangeGeneral();
 				}
-				fireChangeGeneral();
 			}
 		});
 	};

@@ -15,7 +15,7 @@ function receiver(_data) {
 			$('#pagelet_bluebar').css({
 				'marginTop' : -42
 			});
-			$('a.jewelButton').attr('style', 'background-size: 22px 22px !important;');
+			$('a.jewelButton').attr('style', 'left: -8px;');
 			$('#jewelContainer').addClass('cageJewels').css('paddingTop', 5);
 			$('#fbRequestsFlyout').addClass('cageRequestsFlyout');
 			$('#fbMessagesFlyout').addClass('cageMessagesFlyout');

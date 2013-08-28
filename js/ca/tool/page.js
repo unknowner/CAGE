@@ -72,11 +72,12 @@ tools.Page.allPages = function() {
 	// Favour points
 	$('#cageFavorPoints').text($('#main_bn div[style*="persistent_bar_oracle.gif"]').text().trim());
 
-	// Stats
+	/* Stats
 	$('#main_sts').css('background', $('#main_bn').css('backgroundImage'));
 	window.setTimeout(function() {
 		$('#main_sts_container').css('background', $('#main_sts').css('backgroundImage'));
 	}, 1000);
+	*/
 
 	// remove CA:HOD ad, etc...
 	$('div > a > img.imgButton[src*="/graphics/iphone_cross_promo.jpg"]').parent().parent().remove();
@@ -85,15 +86,6 @@ tools.Page.allPages = function() {
 		$('#globalContainer > div:first').hide();
 	}
 
-	// xp to next lvl and lvl bar fix
-	var _xpwidth = /\d+/.exec($('#st_5 > div:first > div > div')[0].style.width)[0];
-	if (_xpwidth !== null) {
-		$('#st_5').find('div:first > div > div').css('width', parseInt(_xpwidth, 10) / 126 * 100 + '%');
-	}
-	if ($('#st_2_5').find('strong:contains("to")').length == 0 && /\d+\/(\d+)/.exec($('#st_2_5 strong').text()) !== null) {
-		$('#st_2_5').find('strong').text(/\d+/.exec($('#st_5').attr('title'))[0] + ' to ' + /\d+\/(\d+)/.exec($('#st_2_5').find('strong').text())[1]);
-	}
-	_xpwidth = null;
 	// reworkin results
 	if ($('div.results').length > 0) {
 		$('div.results').attr('style', '');
@@ -138,6 +130,7 @@ tools.Page.allPages = function() {
 	$('#AjaxLoadIcon').removeClass('shield_wait');
 	// Random popups (quests etc.)
 	$('div.result_popup_message').css('left', '');
+	
 };
 
 tools.Page.loadPage = function(_page) {
@@ -224,25 +217,17 @@ tools.Page.ajaxPageDone = function() {
 		ajaxPerforming = false;
 		if (/<script type="text\/javascript">\stop.location.href = "http:\/\/apps.facebook.com\/castle_age\/.*.php";\s<\/script>/.test(data.substr(data.length < 200 ? 0 : data.length - 300)) === false) {
 			data = noSrc(data);
-			$data = $($.parseHTML(data, true));
+			var $data = $($.parseHTML(data, true));
 			data = null;
 			startAllTimers();
 			console.log('ajaxPageDone:', div);
 			if (div === 'globalContainer') {
-				var _abc = $('#app_body_container'), _sts = $data.find('#main_sts');
-				_sts.html(_sts.html().replace(/more/g, ''));
-				$('#main_sts').replaceWith(noNoSrc(_sts));
-				$('#main_bntp').replaceWith(noNoSrc($data.find('#main_bntp')));
-				$('#app_body_container').hide().empty().append(noNoSrc($data.find('#app_body_container')).html()).append(noNoSrc($data.filter('div[id]:not(.game)'))).show();
-				// update stats
-				var _stats = $('#main_sts'), _stam = $('#stamina_current_value'), _ener = $('#energy_current_value'), _heal = $('#health_current_value');
-				$('#gold_current_value').text('$' + _stats.find('#gold_current_value_amount').val().replace(/(\d)(?=(\d{3})+\b)/g, '$1,'));
-				_stam.text(_stats.find('#stamina_current_value_amount').val());
-				_stam.next('span').text($('#stamina_current_max').val());
-				_ener.text(_stats.find('#energy_current_value_amount').val());
-				_ener.next('span').text($('#energy_current_max').val());
-				_heal.text(_stats.find('#health_current_value_amount').val());
-				_heal.next('span').text($('#health_current_max').val());
+				var _abc = $('#app_body_container');
+				$('#main_bntp').replaceWith(noNoSrc($('#main_bntp', $data)));
+				$('#app_body_container').hide().empty().append(noNoSrc($('#app_body_container', $data)).html()).append(noNoSrc($data.filter('div[id]:not(.game)'))).show();
+			// update stats
+				$('#main_sts_container').html(noNoSrc($('#main_sts_container', $data)).html());
+				$('#mainHeaderTabs').html(noNoSrc($('#mainHeaderTabs',$data)).html());
 				_abc.append($data.filter('script'));
 				firePageURL();
 				centerPopups();
@@ -282,10 +267,10 @@ tools.Page.ajaxPageDone = function() {
 };
 tools.Page.ajaxLinkSend = function() {
 	ajaxLinkSend = function(div, url) {
+		console.log('ajaxLinkSend: div=' + div + " - url=" + url);
 		$('body').animate({
 			scrollTop : 0
 		}, 'slow');
-		console.log('ajaxLinkSend div:', div, ' - url:', url);
 		friend_browse_offset = 0;
 		reset_raid_lst();
 		pageCache = {};
@@ -304,7 +289,29 @@ tools.Page.ajaxLinkSend = function() {
 			data : params,
 			type : 'POST',
 			success : function(data, textStatus, jqXHR) {
-				ajaxPageDone(jqXHR.responseText, div);
+				var begin = jqXHR.responseText.slice(0, 150);
+				var end = jqXHR.responseText.slice(jqXHR.responseText.length - (jqXHR.responseText.length < 150 ? jqXHR.responseText.length : 150));
+				if (jqXHR === undefined || begin.indexOf('top.location.href') >= 0 || end.indexOf('top.location.href') >= 0) {
+					var rstr;
+					if (begin.indexOf('top.location.href') >= 0) {
+						rstr = begin;
+					} else {
+						rstr = end;
+					}
+					var redirect = /(?:castle_age\/)(.*\.php)/.exec(rstr);
+					if (redirect.length == 2){
+						ajaxLinkSend(div, redirect[1]);
+						$('#AjaxLoadIcon').append('<div id="cageLoadError">Redirecting...</div>').delay(1000).fadeOut(function() {
+							$('#cageLoadError').remove();
+						});
+					} else {
+						$('#AjaxLoadIcon').append('<div id="cageLoadError">ERROR LOADING DATA</div>').delay(2000).fadeOut(function() {
+							$('#cageLoadError').remove();
+						});
+					}
+				} else {
+					ajaxPageDone(jqXHR.responseText, div);
+				}
 			}
 		});
 	};
@@ -336,6 +343,9 @@ tools.Page.ajaxFormSend = function() {
 			data : params,
 			type : 'POST',
 			success : function(data, textStatus, jqXHR) {
+				console.log(data.length);
+				console.log(textStatus);
+				console.log(jqXHR.length);
 				ajaxPageDone(jqXHR.responseText, div, anchor);
 			}
 		});

@@ -16,16 +16,12 @@ tools.StatPoints.start = function() {
 	}
 	$('#cageStatPoints').css({
 		'cursor' : 'wait',
-		'backgroundSize' : '32px 32px',
-		'backgroundPosition' : '-4px -4px',
 		'backgroundImage' : 'url(\'http://image4.castleagegame.com/graphics/shield_wait.gif\')'
 	}).attr('disabled', 'disabled').find('img').hide();
 	signedGet('keep.php', function(_data) {
 		_data = $($.parseHTML(noSrc(_data)));
 		$('#cageStatPoints').css({
 			'cursor' : '',
-			'backgroundSize' : '',
-			'backgroundPosition' : '',
 			'backgroundImage' : ''
 		}).removeAttr('disabled');
 		tools.StatPoints.update();
@@ -119,7 +115,7 @@ tools.StatPoints.work = function(_up, _max) {
 		console.log('setStat', _up[_up.length - 1]);
 		signedGet('keep.php?' + _up.pop(), function(_data) {
 			$('#cageLevelUpBar > div ').css('width', ((_max - _up.length) / _max * 100).toString() + '%');
-			window.setTiemout(function() {
+			window.setTimeout(function() {
 				tools.StatPoints.work(_up, _max);
 			}, 500);
 		});
@@ -130,7 +126,9 @@ tools.StatPoints.work = function(_up, _max) {
 		});
 	}
 };
+
 tools.StatPoints.init = function() {
 	$('#cageStatsContainer').append($('<button id="cageStatPoints"><span></span></button>').click(tools.StatPoints.start));
 	tools.Page.runtime.addOn['tools.StatPoints.update'] = tools.StatPoints.update;
+	tools.StatPoints.update();
 };

@@ -7,7 +7,7 @@ tools.Page.pages['keep.php'] = function() {
 
 	// Some more stats, like BSI, LSI... keep_data.attribute_section
 	_data = [];
-	_data.lvl = $('#st_5').find('div:contains("Level"):last').text();
+	_data.lvl = $('#main_sts_container').find('div:contains("Level"):last').text();
 	_data.stats = $('#app_body').find('div[style="width:240px;height:54px;overflow:hidden;"]');
 	if (_data.lvl && _data.stats.length > 0) {
 		_data.lvl = parseInt(_data.lvl.match(/\d+/)[0], 10);

@@ -337,13 +337,25 @@ div.cageSidebarStat {
 	margin-left: 34px;
 }
 
-#cageLoadoutDisplay>div:last-of-type {
+#chooseLoadout {
+	width: 72px !important;
+	height: 18px !important;
+	margin: -6px 3px 1px 0px !important;
+	float: right !important;
+	font-size: 11px !important;
+	border-radius: 4px !important;
+	border: 1px inset !important;
+	background-color: #555;
+	color: #fff;
+}
+
+#XcageLoadoutDisplay>div:last-of-type {
 	position: absolute;
 	bottom: 3px;
 	right: 3px;
 }
 
-#cageLoadoutDisplay>div:last-of-type>input {
+#XcageLoadoutDisplay>div:last-of-type>input {
 	height: 20px;
 	border-radius: 50px;
 	position: relative;
@@ -353,7 +365,7 @@ div.cageSidebarStat {
 	background-color: #000;
 }
 
-#cageLoadoutDisplay>div:last-of-type>input:hover {
+#XcageLoadoutDisplay>div:last-of-type>input:hover {
 	box-shadow: 0 5px 8px 3px #000;
 	z-index: 1;
 }

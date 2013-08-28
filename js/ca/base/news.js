@@ -13,8 +13,7 @@ function cageNews(_full) {
 		tools.Settings.start();
 	});
 	$.each([
-	    'FIX: Chat Switch',
-	  	'FIX: Double click fiasco ;)'
+	    'FIX: CAGE is back to life ;)'
 	], function(_i, _e) {
 		$('#cageNewsChanges').append('<li><span>' + _e.split(':')[0] + '</span>' + _e.split(':')[1] + '</li>');
 	});

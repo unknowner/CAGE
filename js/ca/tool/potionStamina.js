@@ -7,8 +7,8 @@ tools.PotionStamina.start = function() {
 		'ajax' : 1,
 		'signed_request' : CastleAge.signed_request
 	}, function(_data) {
-		_data = $($.parseHTML(noSrc(_data)));
 		tools.PotionStamina.work(_data);
+		_data = $($.parseHTML(noSrc(_data)));
 		if (_data.find('span.result_body:contains("You consumed")').length > 0) {
 			addFunction(function(data) {
 				cageStat.stamina = data.stamina;
@@ -32,8 +32,6 @@ tools.PotionStamina.work = function(_pagedata) {
 tools.PotionStamina.done = function() {
 	$('#cagePotionStamina').css({
 		'cursor' : '',
-		'backgroundSize' : '',
-		'backgroundPosition' : '',
 		'backgroundImage' : ''
 	}).removeAttr('disabled');
 };
@@ -42,8 +40,6 @@ tools.PotionStamina.init = function() {
 		if ($(this).text() !== '' && $(this).text() !== '0') {
 			$(this).css({
 				'cursor' : 'wait',
-				'backgroundSize' : '32px 32px',
-				'backgroundPosition' : '-4px -4px',
 				'backgroundImage' : 'url(\'http://image4.castleagegame.com/graphics/shield_wait.gif\')'
 			}).attr('disabled', 'disabled');
 			tools.PotionStamina.start();

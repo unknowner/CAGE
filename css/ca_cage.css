@@ -17,36 +17,44 @@ div.game {
 
 #main_sts_container {
 	position: fixed !important;
-	height: 55px;
-	width: 750px;
+	height: 50px;
+	width: 752px;
 	z-index: 3;
-	font-family: Trebuchet MS, Tahoma, Verdana, Arial, sans-serif !important;
+	top: -1px;
+	overflow: hidden;
 }
 
-#main_ststb span,#main_ststb strong {
-	font-family: Trebuchet MS, Tahoma, Verdana, Arial, sans-serif !important;
-	color: #eee !important;
-	font-size: 12px !important;
+#main_sts_container>div:first-child {
+	height: 50px !important;
 }
 
-#main_ststb>div:first-child {
-	height: auto !important;
+#mainHeaderTabs {
+	background-image: url(https://castleagegame1-a.akamaihd.net/graphics/header_persist_background.jpg);
+	background-position-y: -50px;
+	width: 750px;
+	margin-top: -8px;
+	font-size: 10px;
+	font-weight: bold !important;
+	margin-left: 0px;
+	position: fixed;
+	top: 100px;
+	z-index: 5;
+	box-shadow: 0 5px 13px 2px #000;
 }
 
-#main_sts {
-	height: 55px !important;
-	width: 750px !important;
-	border-bottom: 1px solid black;
+#mainHeaderTabs>div>div:first-child {
+	padding: 0 0 0 2px !important;
 }
 
-div.st_row_2 {
-	margin-top: 2px;
+#mainHeaderTabs>div>div:nth-last-child(2) {
+	float: right !important;
+	padding: 0 3px 0 0 !important;
 }
 
 #app_body {
 	width: 740px !important;
-	padding: 25px 5px 5px 5px !important;
-	margin-top: 8px !important;
+	padding: 7px 5px 5px 5px !important;
+	margin-top: 1px !important;
 }
 
 #nvbar,#nvbar_div_end,#main_bn,#main_bn_container,#main_bntp {
@@ -54,7 +62,7 @@ div.st_row_2 {
 }
 
 #app_body_container {
-	padding-top: 75px !important;
+	padding-top: 95px !important;
 }
 
 #globalContainer {
@@ -128,8 +136,9 @@ div.connect_castlepb_bg {
 #single_popup {
 	opacity: 0;
 	position: absolute;
-	top: 140px;
+	top: 51px;
 	display: block;
+	left: 1px;
 }
 
 #result_popup_message {
@@ -149,16 +158,20 @@ div.demipb_button {
 
 #expandedGuildChat,#collapsedGuildChat {
 	z-index: 11 !important;
-	top: 60px !important;
+	top: 54px !important;
 	margin-left: 13px;
 	position: fixed !important;
+}
+
+#collapsedGuildChat {
+	background-size: 51px 31px;
 }
 
 .cageCAMenu {
 	width: 693px !important;
 	position: fixed;
 	z-index: 10;
-	top: 55px;
+	top: 49px;
 	padding-left: 57px;
 	box-shadow: 0 5px 13px 2px #000;
 }
@@ -167,6 +180,18 @@ div.mainMenu a {
 	font-size: 12px !important;
 	color: #55c4f2 !important;
 	font-family: Arial, Helvetica, sans-serif;
+}
+
+.mainMenu li ul {
+	box-shadow: 0 5px 13px 2px #000;
+	border-bottom-left-radius: 10;
+	border-bottom-right-radius: 10;
+	width: 98px;
+	height: auto !important;
+}
+
+.mainMenu li div.bottom {
+	height: 3px !important;
 }
 
 #conquest_report {
