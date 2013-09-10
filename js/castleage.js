@@ -29,7 +29,10 @@ function initCastleAge() {
 		_append += '<link rel="stylesheet" type="text/css" href="' + getPath(_e) + '?_=' + Math.random() + '" >';
 	});
 	_append += '<link id="cageTheme" rel="stylesheet" type="text/css" href="' + getPath('css/dark-hive/jquery-ui.css') + '" >';
+	_append += '<script type="text/javascript" language="javascript" src="' + getPath('js/jqmig.js') + '"></script>';
 	_append += '<script type="text/javascript" language="javascript" src="' + getPath('js/jquery.js') + '"></script>';
+	_append += '<script type="text/javascript" language="javascript" src="' + getPath('js/jqueryui.js') + '"></script>';
+	
 	$(document.body).append($('<input>').attr({
 		'id' : 'signed_request',
 		'type' : 'hidden'
@@ -37,7 +40,7 @@ function initCastleAge() {
 	_append = null;
 
 	// Add CAGE container / repos menu / repos chat
-	$('#globalContainer').append('<div id="cageSidebar"><div id="cageSidebarHeader"></div><div id="cageSidebarStats"></div><div id="cageSidebarTools"></div><div id="cageSidebarChat"></div><div id="cageSidebarBottom"><a href="http://cagenhancer.blogspot.com/" target="_blank">Blog</a> <a href="http://cagenhancer.blogspot.com/p/manual.html" target="_blank">Manual</a> <a href="http://caaplayer.freeforums.org/c-a-g-e-f29.html" target="_blank">Forum</a> <a href="https://github.com/unknowner/CAGE" target="_blank">GitHub</a></div></div><div id="cageStatsContainer"></div><div id="cageContainer"></div>').prepend($('#expandedGuildChat, #collapsedGuildChat').detach());
+	$('#globalContainer').append('<div id="cageSidebar"><div id="cageSidebarHeader"></div><div id="cageSidebarStats"></div><div id="cageSidebarTools"></div><div id="cageSidebarChat"></div><div id="cageSidebarBottom"><a href="http://cagenhancer.blogspot.com/" target="_blank">Blog</a> <a href="http://cagenhancer.blogspot.com/p/manual.html" target="_blank">Manual</a> <a href="http://caaplayer.freeforums.org/c-a-g-e-f29.html" target="_blank">Forum</a> <a href="https://github.com/unknowner/CAGE" target="_blank">GitHub</a></div></div><div id="cageStatsContainer"></div><div id="cageContainer"></div>');
 	CastleAge.startInterval = setInterval(function() {
 		if (CastleAge.signed_request !== null && CastleAge.userId !== null) {
 			clearInterval(CastleAge.startInterval);
@@ -69,7 +72,7 @@ function initCastleAge() {
 			$('#mainHeaderTabs > mainHeaderTabSection').each(function(i, e) {
 				$(e).find('> div:first, >div:last').css('padding', '0 0 0 2px');
 			});
-			$('#app_body_container').before($('#mainHeaderTabs').detach());
+			//$('#app_body_container').before($('#mainHeaderTabs').detach());
 		} else {
 			com.send(com.task.castleAgeReady, com.port.facebook);
 		}

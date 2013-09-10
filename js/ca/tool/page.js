@@ -72,13 +72,6 @@ tools.Page.allPages = function() {
 	// Favour points
 	$('#cageFavorPoints').text($('#main_bn div[style*="persistent_bar_oracle.gif"]').text().trim());
 
-	/* Stats
-	$('#main_sts').css('background', $('#main_bn').css('backgroundImage'));
-	window.setTimeout(function() {
-		$('#main_sts_container').css('background', $('#main_sts').css('backgroundImage'));
-	}, 1000);
-	*/
-
 	// remove CA:HOD ad, etc...
 	$('div > a > img.imgButton[src*="/graphics/iphone_cross_promo.jpg"]').parent().parent().remove();
 	$('a[href*="apps.facebook.com/castle_hod/?xprom=cax"]').parents('div:first').remove();
@@ -130,7 +123,7 @@ tools.Page.allPages = function() {
 	$('#AjaxLoadIcon').removeClass('shield_wait');
 	// Random popups (quests etc.)
 	$('div.result_popup_message').css('left', '');
-	
+
 };
 
 tools.Page.loadPage = function(_page) {
@@ -216,19 +209,19 @@ tools.Page.ajaxPageDone = function() {
 		stopTimers = false;
 		ajaxPerforming = false;
 		if (/<script type="text\/javascript">\stop.location.href = "http:\/\/apps.facebook.com\/castle_age\/.*.php";\s<\/script>/.test(data.substr(data.length < 200 ? 0 : data.length - 300)) === false) {
-			data = noSrc(data);
-			var $data = $($.parseHTML(data, true));
-			data = null;
+			var $data = $($.parseHTML(noSrc(data), true));
 			startAllTimers();
 			console.log('ajaxPageDone:', div);
 			if (div === 'globalContainer') {
 				var _abc = $('#app_body_container');
 				$('#main_bntp').replaceWith(noNoSrc($('#main_bntp', $data)));
-				$('#app_body_container').hide().empty().append(noNoSrc($('#app_body_container', $data)).html()).append(noNoSrc($data.filter('div[id]:not(.game)'))).show();
-			// update stats
+				_abc.empty().append(noNoSrc($('#app_body_container', $data)).html()).append(noNoSrc($data.filter('div[id]:not(.game)'))).show();
+				// update stats
+				// $('#mainHeaderTabs').replaceWith(noNoSrc($('#mainHeaderTabs', $data)).detach());
 				$('#main_sts_container').html(noNoSrc($('#main_sts_container', $data)).html());
-				$('#mainHeaderTabs').html(noNoSrc($('#mainHeaderTabs',$data)).html());
-				_abc.append($data.filter('script'));
+				$('#cageFavorPoints').text(/\d+/.exec($('#persistHomeFPPlateOpen', $data).text())[0]);
+				_abc.append(noNoSrc($data.filter('script')));
+
 				firePageURL();
 				centerPopups();
 				startAllTimers();
@@ -262,11 +255,11 @@ tools.Page.ajaxPageDone = function() {
 				$('#cageLoadError').remove();
 			});
 		}
-		data = div = anchor = null;
+		$data = data = div = anchor = null;
 	};
 };
 tools.Page.ajaxLinkSend = function() {
-	ajaxLinkSend = function(div, url) {
+	ajaxLinkSend = function(div, url, addparams) {
 		console.log('ajaxLinkSend: div=' + div + " - url=" + url);
 		$('body').animate({
 			scrollTop : 0
@@ -279,7 +272,15 @@ tools.Page.ajaxLinkSend = function() {
 		if (!url) {
 			url = 'index.php?adkx=2';
 		}
-		var params = 'ajax=1&signed_request=' + $('#signed_request').attr('value'), url_key = url;
+		var params = {
+			ajax : 1,
+			signed_request : $('#signed_request').attr('value')
+		}, url_key = url;
+		
+		if (addparams !== undefined) {
+			$.extend(params, addparams);
+		}
+		
 		if (url.indexOf('?') !== -1) {
 			url_key = url.substring(0, url.indexOf('?'));
 		}
@@ -299,7 +300,7 @@ tools.Page.ajaxLinkSend = function() {
 						rstr = end;
 					}
 					var redirect = /(?:castle_age\/)(.*\.php)/.exec(rstr);
-					if (redirect.length == 2){
+					if (redirect.length == 2) {
 						ajaxLinkSend(div, redirect[1]);
 						$('#AjaxLoadIcon').append('<div id="cageLoadError">Redirecting...</div>').delay(1000).fadeOut(function() {
 							$('#cageLoadError').remove();
@@ -343,9 +344,9 @@ tools.Page.ajaxFormSend = function() {
 			data : params,
 			type : 'POST',
 			success : function(data, textStatus, jqXHR) {
-				console.log(data.length);
-				console.log(textStatus);
-				console.log(jqXHR.length);
+				console.log('data.length:' + data.length);
+				console.log('textStatus:' + textStatus);
+				console.log('jqXHR:' + jqXHR);
 				ajaxPageDone(jqXHR.responseText, div, anchor);
 			}
 		});

@@ -2,7 +2,7 @@
    "manifest_version":2,
    "content_security_policy":"script-src 'self'; object-src 'self'",
    "name":"CAGE - Castle Age Game Enhancer [β]",
-   "version":"1.4.0.4",
+   "version":"1.4.0.7",
    "description":"CAGE makes playing Castle Age on Facebook a bit easier and a lot more fun ;)",
    "background":{
       "page":"background.html",
@@ -14,6 +14,8 @@
    },
    "web_accessible_resources":[
       "js/jquery.js",
+      "js/jqueryui.js",
+      "js/jqmig.js",
       "css/ca_cage.css",
       "css/ca_monster.css",
       "css/ca_pages.css",
@@ -91,6 +93,7 @@
             "js/ca/page/arena_battle.js",
             "js/ca/page/battle_expansion_monster.js",
             "js/ca/page/battle_monster.js",
+            "js/ca/page/dungeon_view.js",
             "js/ca/page/festival_battle_monster.js",
             "js/ca/page/festival_duel_battle.js",
             "js/ca/page/festival_duel_home.js",
@@ -100,6 +103,7 @@
             "js/ca/page/goblin_emp.js",
             "js/ca/page/guild_shop.js",
             "js/ca/page/guild_battle.js",
+            "js/ca/page/guildv2_battle.js",
             "js/ca/page/guildv2_conquest_expansion.js",
             "js/ca/page/guildv2_battle_monster.js",
             "js/ca/page/guildv2_formation.js",

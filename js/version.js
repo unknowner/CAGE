@@ -3,7 +3,7 @@ version = {
 	major : 1,
 	minor : 4,
 	revision :0,
-	build : 4,
+	build : 7,
 	state : 'b',
 	string : function() {
 		return version.major + '.' + version.minor + '.' + version.revision + '.' + version.build + version.state;

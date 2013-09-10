@@ -26,6 +26,8 @@ div.game {
 
 #main_sts_container>div:first-child {
 	height: 50px !important;
+	left: -5px;
+	position: absolute;
 }
 
 #mainHeaderTabs {
@@ -33,13 +35,12 @@ div.game {
 	background-position-y: -50px;
 	width: 750px;
 	margin-top: -8px;
-	font-size: 10px;
 	font-weight: bold !important;
-	margin-left: 0px;
 	position: fixed;
 	top: 100px;
 	z-index: 5;
 	box-shadow: 0 5px 13px 2px #000;
+	margin-left: 5px;
 }
 
 #mainHeaderTabs>div>div:first-child {
@@ -159,7 +160,7 @@ div.demipb_button {
 #expandedGuildChat,#collapsedGuildChat {
 	z-index: 11 !important;
 	top: 54px !important;
-	margin-left: 13px;
+	margin: 0 0 0 -54px !important;
 	position: fixed !important;
 }
 

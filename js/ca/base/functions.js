@@ -27,6 +27,7 @@ tools.Functions.init = function() {
 	addFunction(tools.Functions.selectLoadout, null, true, true);
 	addFunction(tools.Functions.doHotSwapLoadout, null, true, true);
 	addFunction(tools.Functions.doHotSwapGeneral, null, true, true);
+
 };
 tools.Functions.addCAGEToCANav = function(_ul, _after, _callback, _text) {
 	$('#' + _ul + ' li:contains("' + _after + '")').after($('<li><a href="#" style="color:#00fafd;cursor:pointer;">' + _text + '</a></li>').click(_callback));

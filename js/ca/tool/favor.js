@@ -85,6 +85,7 @@ tools.Favor.init = function() {
 			'marginLeft' : 3
 		}, 'fast');
 	}).appendTo('#cageStatsFavor span');
+	$('#cageFavorPoints').text(/\d+/.exec($('#persistHomeFPPlateOpen').text())[0]);
 };
 tools.Favor.runtimeUpdate = function() {
 	tools.Favor.runtime = {};
